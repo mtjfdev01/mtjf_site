@@ -1,0 +1,201 @@
+.donation_feature_container {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2vw;
+}
+.left-column{
+      min-width:260px;
+    }
+
+.arrow-btn{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      font-size:20px;
+      user-select:none;
+      border:2px solid #ddd;
+      background:transparent;
+    }
+.arrow-btn:disabled{
+      opacity:0.4;
+      cursor:not-allowed;
+    }
+
+.blue{
+      background:#31A9F0;
+      color:#fff;
+      border:2px solid #31A9F0;
+    }
+.blue:disabled{
+      background:rgba(49,169,240,0.6);
+      border-color:rgba(49,169,240,0.6);
+    }
+
+.right-column{
+      flex:2;
+      padding:10px 10px 10px 20px;
+      min-width:520px;
+    }
+
+.features{
+      gap:22px 28px;
+    }
+
+.icon{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      flex-shrink:0;
+      background:#fff;
+      box-shadow:0 0 0 6px rgba(0,0,0,0.03) inset;
+    }
+
+.feature h3{
+      margin:0;
+      font-size:15px;
+      font-weight:700;
+    }
+.feature p{
+      margin:6px 0 0 0;
+      font-size:13px;
+      color:#6b6b6b;
+      line-height:1.4;
+      max-width:270px;
+    }
+.health svg { stroke:#31A9F0; }
+.education svg { stroke:#3FCF8E; }
+.water svg { stroke:#2B97F2; }
+.marriage svg { stroke:#F9A33B; }
+.food svg { stroke:#F59E0B; }
+.shelter svg { stroke:#7C3AED; }
+
+
+
+/* ---------- Responsive overrides ---------- */
+
+/* Larger tablets / small laptops */
+@media (max-width: 1024px) {
+  .right-column {
+    min-width: 420px; /* allow right column to shrink */
+    padding: 12px 12px 12px 18px;
+  }
+
+  .left-column {
+    min-width: 220px;
+    padding: 26px 16px;
+  }
+
+  .feature p {
+    max-width: 220px;
+    font-size: 13px;
+  }
+}
+
+/* Tablets and small screens: stack columns and make grid 2 -> 1 on narrower widths */
+@media (max-width: 768px) {
+  .donation_feature_container {
+    display: flex;      /* keep flex rules but change direction */
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    gap: 18px;
+  }
+
+  .left-column,
+  .right-column {
+    min-width: 0; /* allow columns to be fluid */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .left-column .label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .label::before,
+  .label::after {
+    display: none; /* hide decorative lines to save space on small screens */
+  }
+
+  .left-column h1 {
+    font-size: 22px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .arrowsn {
+    justify-content: center;
+  }
+
+  /* make features a single column stack */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: stretch;
+  }
+
+  .feature {
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.03) inset;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .feature h3 {
+    font-size: 15px;
+  }
+
+  .feature p {
+    max-width: 100%;
+    font-size: 13px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .left-column {
+    padding: 16px 12px;
+  }
+
+  .left-column h1 {
+    font-size: 18px;
+    margin: 6px 0 12px 0;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-width: 1.5px;
+  }
+
+  .blue {
+    border-width: 1.5px;
+  }
+
+  .features {
+    gap: 12px;
+  }
+
+  .feature p {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* tighten spacing for very small screens */
+  .donation_feature_container {
+    gap: 12px;
+  }
+}

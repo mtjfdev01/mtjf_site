@@ -1,0 +1,232 @@
+.partners-wrap{
+      width:100%;
+      max-width:1000px;
+      text-align:center;
+      justify-items: center;
+    }
+
+    /* small label with lines */
+.small-label{
+      display:inline-flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:8px;
+      color:#9b9b9b;
+      font-size:14px;
+      letter-spacing:0.6px;
+    }
+.small-label::before,
+.small-label::after{
+      content:"";
+      width:40px;
+      height:3px;
+      background:linear-gradient(90deg,#F98167, #e6a38e 60%);
+      border-radius:3px;
+      display:inline-block;
+      vertical-align:middle;
+    }
+
+.partners-title{
+      margin:8px 0 28px;
+      font-size:34px;
+      letter-spacing:0.2px;
+      font-weight:700;
+    }
+
+    /* logos row */
+.logos{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:center;
+      padding:0 18px;
+      margin-bottom:22px;
+      flex-wrap:wrap;
+    }
+
+.logo-card{
+      background:#fafafa;
+      width:110px;
+      height:82px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.03);
+      transition:transform .18s ease;
+    }
+.logo-card:hover{ transform:translateY(-4px); }
+
+    /* simple placeholder logo inside card */
+.logo-card img{
+      max-width:80%;
+      max-height:60%;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* pagination dots */
+.dots{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      align-items:center;
+      margin-top:6px;
+    }
+.dot{
+      width:10px;
+      height:6px;
+      border-radius:6px;
+      background:#eee;
+      display:inline-block;
+    }
+.dot.active{
+      background:#2fb65e;
+      width:24px;
+      height:6px;
+      border-radius:6px;
+      box-shadow:0 2px 6px rgba(47,182,94,0.18);
+    }
+
+    
+@media (max-width: 1024px) {
+  .partners-wrap {
+    padding: 0 20px;
+    max-width: 900px;
+  }
+
+  .logos {
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .logo-card {
+    width: 100px;
+    height: 78px;
+  }
+
+  .small-label::before,
+  .small-label::after {
+    width: 32px;
+  }
+}
+
+/* Medium tablets: move to multi-row flexible grid-like layout */
+@media (max-width: 768px) {
+  .partners-wrap {
+    max-width: 720px;
+  }
+
+  /* allow 3 items per row using flexible basis */
+  .logos {
+    justify-content: center;
+  }
+
+  .logo-card {
+    /* let items wrap evenly */
+    flex: 0 1 calc(33.333% - 14px);
+    max-width: 160px; /* prevents huge cards */
+    min-width: 84px;
+    margin-bottom: 12px;
+  }
+
+  .logo-card img {
+    max-width: 78%;
+    max-height: 60%;
+  }
+
+  h2 {
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+
+  .dots { margin-top: 8px; }
+}
+
+/* Small phones / narrow screens: 2 per row then 1 per row */
+@media (max-width: 480px) {
+  .partners-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+    max-width: 100%;
+  }
+
+  .logos {
+    gap: 10px;
+    padding: 0 6px;
+  }
+
+  /* two items per row for small phones */
+  .logo-card {
+    flex: 0 1 calc(50% - 10px);
+    width: auto;
+    height: 66px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .logo-card img {
+    max-width: 72%;
+    max-height: 56%;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 10px 0 14px;
+    line-height: 1.1;
+  }
+
+  .small-label {
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .small-label::before,
+  .small-label::after {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .dot { width: 8px; height: 6px; }
+  .dot.active { width: 20px; height: 6px; }
+}
+
+/* Extra-small / very narrow devices: stack logos vertically (1 per row) */
+@media (max-width: 360px) {
+  .logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-card {
+    flex: 0 1 92%;
+    width: 92%;
+    max-width: 340px;
+    height: 64px;
+    margin-bottom: 10px;
+  }
+
+  .logo-card img {
+    max-width: 70%;
+    max-height: 56%;
+  }
+
+  h2 { font-size: 18px; margin-bottom: 12px; }
+}
+
+/* Small visual polish: reduce hover translate on touch devices */
+@media (hover: none) {
+  .logo-card:hover {
+    transform: none;
+  }
+}
+
+/* Ensure images remain crisp and accessible on all viewports */
+.logo-card img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+}

@@ -1,0 +1,496 @@
+/* =========================
+   MTJ Foundation – base.css
+   A minimal utility-first starter for React projects
+   ========================= */
+
+/*--------------------------------------
+  0) CSS Variables (Design Tokens)
+---------------------------------------*/
+:root {
+    /* Brand colors (edit to match MTJ) */
+    --color-primary: #30AEE3;   /* MTJ navy */
+    --color-primary-hover: #2896c2;
+    --color-secondary: #802b55; /* maroon/rose */
+    --color-accent: #D8B861;    /* gold */
+    --color-info: #30AEE3;
+    --color-success: #2E7D32;
+    --color-warning: #ffda79;
+    --color-danger:  #C62828;
+    --color-base-orange: #F98167;
+  
+    /* Neutrals */
+    --color-black: #0b0b0b;
+    --color-900: #1a1a1a;
+    --color-800: #2a2a2a;
+    --color-700: #3f3f3f;
+    --color-600: #575757;
+    --color-500: #6f6f6f;
+    --color-400: #9a9a9a;
+    --color-300: #c9c9c9;
+    --color-200: #e6e6e6;
+    --color-100: #f2f2f2;
+    --color-white: #ffffff;
+  
+    /* Backgrounds & text */
+    --bg: var(--color-white);
+    --text: var(--color-900);
+    --text-muted: var(--color-600);
+  
+    /* Typography */
+    --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --fs-12: 0.75rem;
+    --fs-14: 0.875rem;
+    --fs-16: 1rem;
+    --fs-18: 1.125rem;
+    --fs-20: 1.25rem;
+    --fs-24: 1.5rem;
+    --fs-28: 1.75rem;
+    --fs-32: 2rem;
+  
+    /* Spacing scale (px) */
+    --space-0: 0px;
+    --space-4: 4px;
+    --space-8: 8px;
+    --space-10: 10px;
+    --space-12: 12px;
+    --space-14: 14px;
+    --space-16: 16px;
+    --space-18: 18px;
+    --space-20: 20px;
+    --space-22: 22px;
+    --space-24: 24px;
+    --space-28: 28px;
+    --space-30: 30px;
+    --space-32: 32px;
+    --space-36: 36px;
+    --space-40: 40px;
+    --space-44: 44px;
+    --space-48: 48px;
+    --space-52: 52px;
+    --space-56: 56px;
+    --space-64: 64px;
+    --space-72: 72px;
+    --space-80: 80px;
+    --space-96: 96px;
+    --space-100: 100px;
+    --space-120: 120px;
+    --space-150: 150px;
+    --space-200: 200px;
+  
+    /* Radius & shadow */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 6px 16px rgba(0,0,0,0.12);
+    --shadow-lg: 0 16px 40px rgba(0,0,0,0.18);
+  
+    /* Borders */
+    --border: 1px solid var(--color-200);
+  
+    /* Transitions */
+    --ease: cubic-bezier(.2,.7,.3,1);
+    --transition: all .2s var(--ease);
+  
+    /* Breakpoints (used below) */
+    --bp-xsm:430px;
+    --bp-sm: 576px;
+    --bp-md: 768px;
+    --bp-lg: 992px;
+    --bp-xl: 1200px;
+    --bp-xxl: 1440px;
+  
+    /* Container widths */
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-xxl: 1320px;
+  }
+  
+  /*--------------------------------------
+    1) Base / Reset
+  ---------------------------------------*/
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  
+  html, body, #root {
+    height: 100%;
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    color: var(--text);
+    /* background: var(--bg); */
+    /* background-color: var(--color-black); */
+    font-size: var(--fs-16);
+    line-height: 1.5;
+  }
+  
+  img, video { max-width: 100%; height: auto; display: block; }
+  button { cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  
+  /*--------------------------------------
+    2) Layout helpers
+  ---------------------------------------*/
+  .container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 576px){ .container { max-width: var(--container-sm); } }
+  @media (min-width: 768px){ .container { max-width: var(--container-md);}}
+  @media (min-width: 992px){ .container { max-width: var(--container-lg); } }
+  @media (min-width:1200px){ .container { max-width: var(--container-xl); } }
+  @media (min-width:1440px){ .container { max-width: var(--container-xxl); } }
+  
+  /* Grid (12-col) */
+  .grid { display: grid; gap: var(--space-16); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-6 { grid-template-columns: repeat(6, 1fr); }
+  .grid-12 { grid-template-columns: repeat(12, 1fr); }
+  .grid-auto { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .gap-8 { gap: var(--space-8); }
+  .gap-12 { gap: var(--space-12); }
+  .gap-16 { gap: var(--space-16); }
+  .gap-24 { gap: var(--space-24); }
+  .gap-32 { gap: var(--space-32); }
+  .gap-40 {gap: var(--space-40);}
+  .row-gap-24 { row-gap: var(--space-24); }
+  .col-gap-24 { column-gap: var(--space-24); }
+  
+  /* Grid Column Span Classes */
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+  
+  /* Flex */
+  .flex { display: flex; }
+  .inline-flex { display: inline-flex; }
+  .flex-col { flex-direction: column; }
+  .flex-row { flex-direction: row; }
+  .flex-wrap { flex-wrap: wrap; }
+  .items-start { align-items: flex-start; }
+  .items-center { align-items: center; }
+  .items-end   { align-items: flex-end; }
+  .justify-start { justify-content: flex-start; }
+  .justify-center { justify-content: center; }
+  .justify-around {justify-content: space-around;}
+  .justify-between { justify-content: space-between; }
+  .justify-end { justify-content: flex-end; }
+  .flex-1 { flex: 1 1 0%; }
+  .shrink-0 { flex-shrink: 0; }
+  
+  /* Display / Visibility */
+  .d-none { display: none !important; }
+  .d-block { display: block; }
+  .d-inline { display: inline; }
+  .d-inline-block { display: inline-block; }
+  .d-grid { display: grid; }
+  .d-flex { display: flex; } /* alias */
+  .flex { display: flex; }   /* requested short name */
+  
+  /* Position */
+  .relative { position: relative; }
+  .absolute { position: absolute; }
+  .fixed { position: fixed; }
+  .sticky { position: sticky; top: 0; }
+  
+  /* Sizing */
+  .w-100 { width: 100%; }
+  .h-100 { height: 100%; }
+  .max-w-sm { max-width: 480px; }
+  .max-w-md { max-width: 720px; }
+  .max-w-lg { max-width: 960px; }
+  
+  /* Overflow & Z */
+  .overflow-hidden { overflow: hidden; }
+  .overflow-auto { overflow: auto; }
+  .z-1 { z-index: 1; }
+  .z-10 { z-index: 10; }
+  .z-100 { z-index: 100; }
+  
+  /*--------------------------------------
+    3) Spacing Utilities
+    Use any of: 0,4,8,12,16,20,24,32,40,48,64
+  ---------------------------------------*/
+  :root {
+    /* map to allow class variables */
+    --s-0: var(--space-0);
+    --s-4: var(--space-4);
+    --s-8: var(--space-8);
+    --s-10: var(--space-10);
+    --s-12: var(--space-12);
+    --s-14: var(--space-14);
+    --s-16: var(--space-16);
+    --s-18: var(--space-18);
+    --s-20: var(--space-20);
+    --s-22: var(--space-22);
+    --s-24: var(--space-24);
+    --s-28: var(--space-28);
+    --s-30: var(--space-30);
+    --s-32: var(--space-32);
+    --s-36: var(--space-36);
+    --s-40: var(--space-40);
+    --s-44: var(--space-44);
+    --s-48: var(--space-48);
+    --s-52: var(--space-52);
+    --s-56: var(--space-56);
+    --s-64: var(--space-64);
+    --s-72: var(--space-72);
+    --s-80: var(--space-80);
+    --s-96: var(--space-96);
+    --s-100: var(--space-100);
+    --s-120: var(--space-120);
+    --s-150: var(--space-150);
+    --s-200: var(--space-200);
+  }
+  
+  /* Padding (shorthand .p-16, axes, and sides) */
+  .p-0{padding:var(--s-0)} .p-4{padding:var(--s-4)} .p-8{padding:var(--s-8)} .p-12{padding:var(--s-12)}
+  .p-16{padding:var(--s-16)} .p-20{padding:var(--s-20)} .p-24{padding:var(--s-24)} .p-32{padding:var(--s-32)}
+  .p-40{padding:var(--s-40)} .p-48{padding:var(--s-48)} .p-64{padding:var(--s-64)}
+  
+  .px-8{padding-left:var(--s-8); padding-right:var(--s-8)}
+  .px-16{padding-left:var(--s-16); padding-right:var(--s-16)}
+  .px-24{padding-left:var(--s-24); padding-right:var(--s-24)}
+  .py-8{padding-top:var(--s-8); padding-bottom:var(--s-8)}
+  .py-16{padding-top:var(--s-16); padding-bottom:var(--s-16)}
+  .py-24{padding-top:var(--s-24); padding-bottom:var(--s-24)}
+  
+  .pt-4{padding-top:var(--s-4)} .pr-4{padding-right:var(--s-4)} .pb-4{padding-bottom:var(--s-4)} .pl-4{padding-left:var(--s-4)}
+  .pt-8{padding-top:var(--s-8)} .pr-8{padding-right:var(--s-8)} .pb-8{padding-bottom:var(--s-8)} .pl-8{padding-left:var(--s-8)}
+  .pt-12{padding-top:var(--s-12)} .pr-12{padding-right:var(--s-12)} .pb-12{padding-bottom:var(--s-12)} .pl-12{padding-left:var(--s-12)}
+  .pt-16{padding-top:var(--s-16)} .pr-16{padding-right:var(--s-16)} .pb-16{padding-bottom:var(--s-16)} .pl-16{padding-left:var(--s-16)}
+  .pt-20{padding-top:var(--s-20)} .pb-20{padding-bottom:var(--s-20)}
+  .pt-24{padding-top:var(--s-24)} .pb-24{padding-bottom:var(--s-24)}
+  .pt-32{padding-top:var(--s-32)} .pb-32{padding-bottom:var(--s-32)}
+  .pt-48{padding-top:var(--s-48)} .pb-48{padding-bottom:var(--s-48)}
+  
+  /* (Requested kebab aliases) */
+  .p-t-10{ padding-top:var(--s-10) } .p-b-10{ padding-bottom:var(--s-10) }
+  .p-l-10{ padding-left:var(--s-10) } .p-r-10{ padding-right:var(--s-10) }
+  .p-b-8{ padding-bottom:var(--s-8) } .p-b-16{ padding-bottom:var(--s-16) }
+  .p-b-24{ padding-bottom:var(--s-24) } .p-b-32{ padding-bottom:var(--s-32) }
+  
+  /* Margin */
+  .m-0{margin:var(--s-0)} .m-4{margin:var(--s-4)} .m-8{margin:var(--s-8)} .m-12{margin:var(--s-12)}
+  .m-16{margin:var(--s-16)} .m-20{margin:var(--s-20)} .m-24{margin:var(--s-24)} .m-32{margin:var(--s-32)}
+  .m-40{margin:var(--s-40)} .m-48{margin:var(--s-48)} .m-64{margin:var(--s-64)}
+  
+  .mx-auto{margin-left:auto;margin-right:auto}
+  .mx-16{margin-left:var(--s-16); margin-right:var(--s-16)}
+  .my-16{margin-top:var(--s-16); margin-bottom:var(--s-16)}
+  .mt-8{margin-top:var(--s-8)} .mr-8{margin-right:var(--s-8)} .mb-8{margin-bottom:var(--s-8)} .ml-8{margin-left:var(--s-8)}
+  .mt-16{margin-top:var(--s-16)} .mr-16{margin-right:var(--s-16)} .mb-16{margin-bottom:var(--s-16)} .ml-16{margin-left:var(--s-16)}
+  .mt-24{margin-top:var(--s-24)} .mr-24{margin-right:var(--s-24)} .mb-24{margin-bottom:var(--s-24)} .ml-24{margin-left:var(--s-24)}
+  .mt-32{margin-top:var(--s-32)} .mr-32{margin-right:var(--s-32)} .mb-32{margin-bottom:var(--s-32)} .ml-32{margin-left:var(--s-32)}
+  
+  /* (Kebab aliases for margin bottom) */
+  .m-b-8{ margin-bottom:var(--s-8) } .m-b-16{ margin-bottom:var(--s-16) }
+  .m-b-24{ margin-bottom:var(--s-24) } .m-b-32{ margin-bottom:var(--s-32) }
+  
+  /*--------------------------------------
+    4) Typography & Colors
+  ---------------------------------------*/
+  .h1{font-size:var(--fs-32); line-height:1.2; font-weight:700; margin:0 0 var(--s-16)}
+  .h2{font-size:var(--fs-28); line-height:1.25; font-weight:700; margin:0 0 var(--s-16)}
+  .h3{font-size:var(--fs-24); line-height:1.3; font-weight:600; margin:0 0 var(--s-12)}
+  .h4{font-size:var(--fs-20); line-height:1.35; font-weight:600; margin:0 0 var(--s-8)}
+  
+  .text-xs{font-size:var(--fs-12)} .text-sm{font-size:var(--fs-14)} .text-base{font-size:var(--fs-16)}
+  .text-lg{font-size:var(--fs-18)} .text-xl{font-size:var(--fs-20)}
+  
+  .text-center{text-align:center} .text-right{text-align:right} .text-left{text-align:left}
+  .bold{font-weight:700} .semi{font-weight:600} .normal{font-weight:400}
+  .muted{color:var(--text-muted)}
+  
+  .text-primary{ color: var(--color-primary); }
+  .text-secondary{ color: var(--color-secondary); }
+  .text-accent{ color: var(--color-accent); }
+  .text-success{ color: var(--color-success); }
+  .text-warning{ color: var(--color-warning); }
+  .text-danger{ color: var(--color-danger); }
+  .text-white{color: var(--color-white);}
+  
+  /* Backgrounds & borders */
+  .bg-primary{ background: var(--color-primary); color: #fff; }
+  .bg-secondary{ background: var(--color-secondary); color:#fff; }
+  .bg-accent{ background: var(--color-accent); }
+  .bg-muted{ background: var(--color-100); }
+  .border{ border: var(--border); }
+  .rounded-sm{ border-radius: var(--radius-sm); }
+  .rounded{ border-radius: var(--radius-md); }
+  .rounded-lg{ border-radius: var(--radius-lg); }
+  .shadow-sm{ box-shadow: var(--shadow-sm); }
+  .shadow-md{ box-shadow: var(--shadow-md); }
+  .shadow-lg{ box-shadow: var(--shadow-lg); }
+  
+  /*--------------------------------------
+    5) Buttons, Inputs, Cards
+  ---------------------------------------*/
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font-weight: 600;
+    line-height: 1;
+    transition: var(--transition);
+    user-select: none;
+    color: white;
+    background-color: var(--color-primary);
+  } 
+  .btn:hover {
+    /* apply opacity on hover */
+    background-color: var(--color-primary-hover);
+    transition: var(--transition);
+  }
+  .btn:disabled { opacity: .6; cursor: not-allowed; }
+  
+  .btn--primary { background: var(--color-primary); color: #fff; }
+  .btn--primary:hover { filter: brightness(1.05); }
+  
+  .btn--secondary { background: var(--color-secondary); color: #fff; }
+  .btn--secondary:hover { filter: brightness(1.05); }
+  
+  .btn--outline {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .btn--outline:hover { background: rgba(10,26,79,.06); }
+  
+  .btn--ghost {
+    background: transparent;
+    color: var(--text);
+  }
+  .btn--ghost:hover { background: var(--color-100); }
+  
+  .input, .select, .textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    transition: var(--transition);
+  }
+  .input:focus, .select:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(10,26,79,.12);
+  }
+  
+  .card {
+    background: #fff;
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-16);
+  }
+  
+  /*--------------------------------------
+    6) Responsive helpers (by breakpoint)
+    usage: .sm:d-none, .md:flex, .lg:grid, etc.
+  ---------------------------------------*/
+  @media (min-width: 576px) { 
+    .sm\:d-none{display:none !important}
+    .sm\:d-block{display:block !important}
+    .sm\:d-flex{display:flex}
+    .sm\:grid{display:grid}
+    .sm\:p-16{padding:var(--s-16)}
+    .sm\:px-24{padding-left:var(--s-24);padding-right:var(--s-24)}
+    .sm-1{grid-column:span 1} .sm-2{grid-column:span 2} .sm-3{grid-column:span 3} .sm-4{grid-column:span 4}
+    .sm-5{grid-column:span 5} .sm-6{grid-column:span 6} .sm-7{grid-column:span 7} .sm-8{grid-column:span 8}
+    .sm-9{grid-column:span 9} .sm-10{grid-column:span 10} .sm-11{grid-column:span 11} .sm-12{grid-column:span 12}
+  }
+  @media (min-width: 768px) {
+    .md\:d-none{display:none !important}
+    .md\:d-block{display:block !important}
+    .md\:d-flex{display:flex !important}
+    .md\:grid{display:grid}
+    .md\:p-24{padding:var(--s-24)}
+    .md\:gap-24{gap:var(--space-24)}
+    .md-1{grid-column:span 1} .md-2{grid-column:span 2} .md-3{grid-column:span 3} .md-4{grid-column:span 4}
+    .md-5{grid-column:span 5} .md-6{grid-column:span 6} .md-7{grid-column:span 7} .md-8{grid-column:span 8}
+    .md-9{grid-column:span 9} .md-10{grid-column:span 10} .md-11{grid-column:span 11} .md-12{grid-column:span 12}
+  }
+  @media (min-width: 992px) {
+    .lg\:d-none{display:none !important}
+    .lg\:d-block{display:block !important}
+    .lg\:d-flex{display:flex}
+    .lg\:grid{display:grid}
+    .lg\:p-32{padding:var(--s-32)}
+    .lg\:gap-32{gap:var(--space-32)}
+    .lg-1{grid-column:span 1} .lg-2{grid-column:span 2} .lg-3{grid-column:span 3} .lg-4{grid-column:span 4}
+    .lg-5{grid-column:span 5} .lg-6{grid-column:span 6} .lg-7{grid-column:span 7} .lg-8{grid-column:span 8}
+    .lg-9{grid-column:span 9} .lg-10{grid-column:span 10} .lg-11{grid-column:span 11} .lg-12{grid-column:span 12}
+  }
+  @media (min-width: 1200px) {
+    .xl\:p-40{padding:var(--s-40)}
+    .xl\:gap-40{gap:var(--space-40)}
+    .xl-1{grid-column:span 1} .xl-2{grid-column:span 2} .xl-3{grid-column:span 3} .xl-4{grid-column:span 4}
+    .xl-5{grid-column:span 5} .xl-6{grid-column:span 6} .xl-7{grid-column:span 7} .xl-8{grid-column:span 8}
+    .xl-9{grid-column:span 9} .xl-10{grid-column:span 10} .xl-11{grid-column:span 11} .xl-12{grid-column:span 12}
+  }
+  @media (min-width: 1440px) {
+    .xxl-1{grid-column:span 1} .xxl-2{grid-column:span 2} .xxl-3{grid-column:span 3} .xxl-4{grid-column:span 4}
+    .xxl-5{grid-column:span 5} .xxl-6{grid-column:span 6} .xxl-7{grid-column:span 7} .xxl-8{grid-column:span 8}
+    .xxl-9{grid-column:span 9} .xxl-10{grid-column:span 10} .xxl-11{grid-column:span 11} .xxl-12{grid-column:span 12}
+  }
+
+  /*--------------------------------------
+    7) Helpers & Effects
+  ---------------------------------------*/
+  .clickable { cursor: pointer; }
+  .center { display:grid; place-items:center; }
+  .hidden-visually {
+    position:absolute !important; height:1px; width:1px;
+    overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px;
+  }
+  .hr { height:1px; background:var(--color-200); border:0; }
+  
+  /* Links with underline on hover */
+  .link {
+    color: var(--color-primary);
+    position: relative;
+  }
+  .link::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:100%; height:2px;
+    background: currentColor; transform: scaleX(0); transform-origin:left; transition: transform .2s var(--ease);
+  }
+  .link:hover::after{ transform: scaleX(1); }
+  
+  /*--------------------------------------
+    8) Utilities you’ll use daily
+  ---------------------------------------*/
+  .nowrap { white-space: nowrap; }
+  .wrap { white-space: normal; }
+  .upper { text-transform: uppercase; letter-spacing: .04em; }
+  .ellipsis { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+  .pointer { cursor: pointer; }
+  .no-select { user-select: none; }
+  .opacity-50 { opacity: .5; }
+  .rotate-90 { transform: rotate(90deg); }
+  

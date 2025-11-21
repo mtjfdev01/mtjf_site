@@ -1,0 +1,52 @@
+.hamburger {
+  margin-right: 20px;
+  width: 40px;
+  height: 30px;
+  position: relative;
+  display: block;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.bar {
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  transform-origin: center;
+  transition:
+    top 320ms cubic-bezier(.2,.8,.2,1),
+    transform 320ms cubic-bezier(.2,.8,.2,1),
+    opacity 220ms ease;
+}
+
+/* Different bar colors */
+.bar1 { top: 3px;  background: rgb(248, 181, 24); }
+.bar2 { top: 10px; background: rgb(48, 174, 227); }
+.bar3 { top: 17px; background: rgb(226, 32, 38); }
+.bar4 { top: 24px; background: rgb(83, 176, 72); }
+
+/* When menu is open → form X */
+.hamburger.open .bar1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.hamburger.open .bar4 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.hamburger.open .bar2,
+.hamburger.open .bar3 {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.4);
+}
+/* .hamburger{
+  display: none;
+} */
+
