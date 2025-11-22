@@ -4,14 +4,21 @@ import Hero from "../components/hero/Hero";
 import HeroContent from '../components/heroContent/HeroContent'
 import Partners from "../components/partners/Partners";
 import CtaCircles from "../components/ctaCircles/CtaCircles"; 
+import Projects from "../components/projects/Projects";
+import Stats from "../components/stats/Stats";
+import Events from "../components/events/Events";
+import Blogs from "../components/blogs/Blogs";
 const Home = () => {
   return <>
      <Hero />
      <HeroContent />
      <DonationFeatures/>
      <CtaCircles/>
+     <Projects/>
+     <Stats />
+     <Events />
+     <Blogs />
      {/* <Partners/> */}
-     {/* <Causes/> */}
       </>
 };
 export default Home;
