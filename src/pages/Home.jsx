@@ -8,6 +8,8 @@ import Projects from "../components/projects/Projects";
 import Stats from "../components/stats/Stats";
 import Events from "../components/events/Events";
 import Blogs from "../components/blogs/Blogs";
+import DonationCta from "../components/donationCta/DonationCta";
+import Footer from "../components/footer/Footer";
 const Home = () => {
   return <>
      <Hero />
@@ -18,6 +20,8 @@ const Home = () => {
      <Stats />
      <Events />
      <Blogs />
+     <DonationCta />
+     <Footer />
      {/* <Partners/> */}
       </>
 };

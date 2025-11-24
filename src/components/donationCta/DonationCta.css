@@ -1,0 +1,106 @@
+.donation-cta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-40) var(--space-16);
+}
+
+.donation-cta-card {
+  width: 100vw;
+  max-width: 100%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-20);
+  text-align: center;
+}
+
+.donation-cta-intro {
+  font-size: var(--fs-14);
+  color: var(--color-400);
+  margin: 0;
+  font-weight: 400;
+}
+
+.donation-cta-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.donation-cta-icon {
+  color: var(--color-primary);
+  font-size: var(--fs-24);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.donation-cta-title {
+  font-size: var(--fs-20);
+  font-weight: 600;
+  color: var(--color-900);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.donation-cta-btn {
+  width: auto !important;
+  min-width: 160px;
+  padding: var(--space-12) var(--space-32);
+  font-size: var(--fs-16);
+  margin-top: var(--space-8);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.donation-cta-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Medium devices and above (768px+) */
+@media (min-width: 768px) {
+  .donation-cta-card {
+    width: 70vw;
+    max-width: 900px;
+    padding: var(--space-40) var(--space-32);
+  }
+  
+  .donation-cta-title {
+    font-size: var(--fs-24);
+  }
+  
+  .donation-cta-intro {
+    font-size: var(--fs-16);
+  }
+  
+  .donation-cta-icon {
+    font-size: var(--fs-28);
+  }
+}
+
+/* Large devices and above (992px+) */
+@media (min-width: 992px) {
+  .donation-cta-card {
+    padding: var(--space-48) var(--space-40);
+  }
+  
+  .donation-cta-title {
+    font-size: var(--fs-28);
+  }
+}
+

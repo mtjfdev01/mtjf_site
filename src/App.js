@@ -3,6 +3,7 @@ import Navbar from './components/navbar';
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import Publications from "./pages/Publications";
 import GetInvolved from "./pages/GetInvolved";
 import DonorResources from "./pages/DonorResources"
@@ -22,6 +23,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/publications" element={<Publications />} />
         <Route path="/getInvolved" element={<GetInvolved />} />  
         <Route path="/donorResources" element={<DonorResources />} />            
