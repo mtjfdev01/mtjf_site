@@ -10,10 +10,12 @@ import Events from "../components/events/Events";
 import Blogs from "../components/blogs/Blogs";
 import DonationCta from "../components/donationCta/DonationCta";
 import Footer from "../components/footer/Footer";
+import DonationForm from "../components/donationForm/DonationForm";
 const Home = () => {
   return <>
      <Hero />
      <HeroContent />
+     <DonationForm />
      <DonationFeatures/>
      <CtaCircles/>
      <Projects/>

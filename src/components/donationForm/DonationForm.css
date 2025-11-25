@@ -136,13 +136,4 @@
   grid-template-columns: repeat(4, minmax(100px, 1fr));
 }
 
-@media (max-width: 768px) {
-  .donation-form-frequency {
-    flex-direction: column;
-  }
-
-  .donation-form-amounts {
-    grid-template-columns: 1fr;
-  }
-}
 
