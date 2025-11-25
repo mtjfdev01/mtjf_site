@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import Footer from '../components/footer/Footer'
+import DonationForm from '../components/donationForm/DonationForm'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
 
@@ -9,14 +9,6 @@ const ProjectDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const project = PROJECTS_DETAIL_DATA[id]
-
-  const [donationData, setDonationData] = useState({
-    frequency: 'once',
-    currency: 'PKR',
-    amount: '',
-    category: 'General',
-    customAmount: ''
-  })
 
   if (!project) {
     return (
@@ -27,27 +19,11 @@ const ProjectDetail = () => {
     )
   }
 
-  const getDonationAmounts = (currency) => {
-    if (project?.donationOptions && project.donationOptions[currency]) {
-      return project.donationOptions[currency]
-    }
-    return currency === 'PKR'
-      ? [5000, 10000, 25000, 50000]
-      : currency === 'USD'
-        ? [50, 100, 250, 500]
-        : [45, 90, 225, 450]
+  const handleDonationSubmit = (formData) => {
+    navigate('/donate', { state: { project: project.id, ...formData } })
   }
 
-  const handleDonationSubmit = (e) => {
-    e.preventDefault()
-    // Handle donation submission
-    console.log('Donation submitted:', donationData)
-    navigate('/donate', { state: { project: project.id, ...donationData } })
-  }
-
-  const handleAmountClick = (amount) => {
-    setDonationData({ ...donationData, amount: amount.toString(), customAmount: '' })
-  }
+  const categoryOptions = ['General', project.donateCategory].filter(Boolean)
 
   return (
     <div className="project-detail-page">
@@ -104,102 +80,13 @@ const ProjectDetail = () => {
 
           {/* Right Sidebar - Donate Form */}
           <div className="project-donate-sidebar col-12 lg-4">
-            <div className="project-donate-card">
-              <h3 className="h2 mb-24">Donate</h3>
-
-              <form onSubmit={handleDonationSubmit}>
-                {/* Frequency Buttons */}
-                <div className="donate-frequency mb-24">
-                  <button
-                    type="button"
-                    className={`donate-frequency-btn ${donationData.frequency === 'once' ? 'active' : ''}`}
-                    onClick={() => setDonationData({ ...donationData, frequency: 'once' })}
-                  >
-                    Give Once
-                  </button>
-                  <button
-                    type="button"
-                    className={`donate-frequency-btn ${donationData.frequency === 'monthly' ? 'active' : ''}`}
-                    onClick={() => setDonationData({ ...donationData, frequency: 'monthly' })}
-                  >
-                    Give Monthly
-                  </button>
-                </div>
-
-                {/* Currency */}
-                <div className="donate-field mb-24">
-                  <label className="donate-label">Currency</label>
-                  <select
-                    className="donate-input"
-                    value={donationData.currency}
-                    onChange={(e) =>
-                      setDonationData({
-                        ...donationData,
-                        currency: e.target.value,
-                        amount: '',
-                        customAmount: ''
-                      })
-                    }
-                  >
-                    <option value="PKR">PKR</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                  </select>
-                </div>
-
-                {/* Pre-set Amounts */}
-                <div className="donate-amounts mb-24">
-                  <div className="donate-amounts-grid grid grid-2 gap-12">
-                    {getDonationAmounts(donationData.currency).map((amount) => (
-                      <button
-                        key={amount}
-                        type="button"
-                        className={`donate-amount-btn ${donationData.amount === amount.toString() ? 'active' : ''}`}
-                        onClick={() => handleAmountClick(amount)}
-                      >
-                        {amount.toLocaleString()} {donationData.currency}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Custom Amount */}
-                <div className="donate-field mb-24">
-                  <label className="donate-label">{donationData.currency} Enter an amount</label>
-                  <input
-                    type="number"
-                    className="donate-input"
-                    placeholder="Enter custom amount"
-                    value={donationData.customAmount}
-                    onChange={(e) => {
-                      setDonationData({
-                        ...donationData,
-                        customAmount: e.target.value,
-                        amount: ''
-                      })
-                    }}
-                  />
-                </div>
-
-                {/* Category */}
-                <div className="donate-field mb-32">
-                  <label className="donate-label">Category</label>
-                  <select
-                    className="donate-input"
-                    value={donationData.category}
-                    onChange={(e) => setDonationData({ ...donationData, category: e.target.value })}
-                  >
-                    <option value="General">General</option>
-                    <option value={project.donateCategory}>{project.donateCategory}</option>
-                  </select>
-                </div>
-
-                {/* Submit Button */}
-                <button type="submit" className="donate-submit-btn">
-                  Donate
-                </button>
-              </form>
-            </div>
+            <DonationForm
+              formId="project-detail-donation-form"
+              donationOptions={project.donationOptions}
+              categoryOptions={categoryOptions}
+              defaultCategory={project.donateCategory}
+              onSubmit={handleDonationSubmit}
+            />
           </div>
         </div>
       </section>

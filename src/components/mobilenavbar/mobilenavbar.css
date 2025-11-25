@@ -1,14 +1,15 @@
 .mbl{
-    height: 400px;
-    padding-top: 60px;
-    margin-top: 10px;
-    text-align: center;
-    background-color: #FAFAFA33;
+  width: 100vw;
+  text-align: center;
+  background-color: #1d1d1dd4;
+  position: fixed;
+  top: calc(48px + 72px);
+  z-index: 10;
 }
 
 
 .mbl li{
-    margin: 12px;
+    margin: 15px;
 }
 .mbl a {
   position: relative;

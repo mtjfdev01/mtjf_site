@@ -1,5 +1,17 @@
 .banner_img {
     max-height: 70vh;
+    opacity: 0;
+    transform: scale(1.01);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.banner_img img {
+    display: block;
+}
+
+body.banner-visible .banner_img {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .heading-primary {
@@ -61,4 +73,13 @@
   .cta_primary_btn:hover {
     background-color: var(--color-primary-hover);
     transition: var(--transition);
+  }
+
+  @media screen and (max-width: 768px) {
+    .banner_img {
+        height: 60vh;
+    }
+    .banner_img img {
+        height: 100% !important;
+    } 
   }

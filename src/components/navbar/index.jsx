@@ -1,20 +1,80 @@
-import {useState} from 'react' 
-import { Link } from 'react-router-dom';
+import {useState, useEffect, useRef} from 'react' 
+import { Link, useLocation } from 'react-router-dom';
 import './index.css' 
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
 import logo from '../../assets/img/logos/only_logo.png'
+import StickyBar from '../stickybar';
 
 
 
 const Navbar = () => {
    const [activeLink, setActiveLink] = useState("Home");
+   const [isLightTheme, setIsLightTheme] = useState(false);
+   const location = useLocation();
+   const observerRef = useRef(null);
+
+   useEffect(() => {
+     // Check if we're on home page
+     const isHomePage = location.pathname === '/' || location.pathname === '/home';
+     
+     if (!isHomePage) {
+       setIsLightTheme(false);
+       return;
+     }
+
+     // Check if banner_img or hero_content elements are visible
+     const checkElementsVisibility = () => {
+       const bannerImg = document.querySelector('.banner_img');
+       const heroContent = document.querySelector('.hero_content');
+       
+       if (!bannerImg && !heroContent) {
+         setIsLightTheme(false);
+         return;
+       }
+
+       // Use Intersection Observer to check visibility
+       const observer = new IntersectionObserver(
+         (entries) => {
+           const isVisible = entries.some(entry => entry.isIntersecting);
+           setIsLightTheme(isVisible);
+         },
+         {
+           threshold: 0.1, // Trigger when 10% visible
+           rootMargin: '-100px 0px' // Account for navbar height
+         }
+       );
+
+       // Observe both elements
+       if (bannerImg) observer.observe(bannerImg);
+       if (heroContent) observer.observe(heroContent);
+
+       observerRef.current = observer;
+
+       return () => {
+         if (observerRef.current) {
+           observerRef.current.disconnect();
+         }
+       };
+     };
+
+     // Small delay to ensure DOM is ready
+     const timeoutId = setTimeout(checkElementsVisibility, 100);
+
+     return () => {
+       clearTimeout(timeoutId);
+       if (observerRef.current) {
+         observerRef.current.disconnect();
+       }
+     };
+   }, [location.pathname]);
+
      const handleClick = (linkName) => {
     setActiveLink(linkName);
   };
   return (
     <>
-    <div className='nav-container  rounded  fixed'>
+    <div className={`nav-container rounded fixed ${isLightTheme ? 'nav-light-theme' : 'nav-dark-theme'}`}>
         <div className='flex justify-between  items-center'>
             {/* logo section */}
             <div className='flex items-center logo_section '>
@@ -26,7 +86,7 @@ const Navbar = () => {
             {/* menu section */}
             {/* <div className='ul-btn'> */}
              <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
-              <ul className='hvr flex  gap-24 text-white' >
+              <ul className={`hvr flex gap-24 ${isLightTheme ? 'text-white' : 'text-dark'}`} >
                  {[
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },

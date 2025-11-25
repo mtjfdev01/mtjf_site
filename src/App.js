@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from './components/navbar';
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,13 +11,21 @@ import DonorResources from "./pages/DonorResources"
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import './App.css';
+import StickyBar from "./components/stickybar";
 
 
 
 function App() {
+
+  useEffect(() => {
+    document.body.classList.add('banner-visible');
+    return () => document.body.classList.remove('banner-visible');
+  }, []);
+
   return (
     
       <Router>
+      <StickyBar />
       <Navbar />
       <Routes>
       <Route path="/" element={<Home />} />

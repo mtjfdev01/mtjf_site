@@ -1,11 +1,44 @@
 .nav-container{
-    background-color: rgba(235, 232, 232, 0.4);
     width: 85%;
-    top: 35px;
+    top: 48px;
     left: 50%;
-    padding: 1px 7px;
+    padding: 8px 16px;
     transform: translateX(-50%);
     z-index: 10;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+  }
+
+.nav-container > .flex {
+    width: 100%;
+    min-height: inherit;
+}
+
+  /* Light theme - for hero/banner sections (desktop/tablet only) */
+  @media (min-width: 768px) {
+    .nav-container.nav-light-theme {
+      background-color: rgba(235, 232, 232, 0.4);
+    }
+
+    .nav-container.nav-light-theme .hvr li a {
+      color: var(--color-white);
+    }
+
+    /* Dark theme - for white background sections */
+    .nav-container.nav-dark-theme {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-container.nav-dark-theme .hvr li a {
+      color: var(--color-900);
+    }
+
+    .text-dark {
+      color: var(--color-900);
+    }
   }
 .logo_section .logo {
     width: 70px;
@@ -53,11 +86,15 @@
 
 @media (max-width: 768px) {
   .nav-container {
-    top: 0;                
+    top: 48px;                
     left: 0;               
     transform: none;      
     width: 100%;         
-    border-radius: 0;      
+    border-radius: 0;    
+    z-index: 20;
+    background-color: rgba(235, 232, 232, 0.4);
+    min-height: 72px;
+    height: 72px;
   }
 }
 
