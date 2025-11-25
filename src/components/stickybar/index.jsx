@@ -12,7 +12,7 @@ const StickyBar = () => {
           </a>
           <a href="tel:+13108001170" className="sticky_bar-link">
             <FaPhone />
-            <span>Call &amp; Text: +1 (310) 800-1170</span>
+            <span> +1 (310) 800-1170</span>
           </a>
         </div>
         <div className="sticky_bar-social">

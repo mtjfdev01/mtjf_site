@@ -30,6 +30,7 @@
     /* Dark theme - for white background sections */
     .nav-container.nav-dark-theme {
       background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.12);
     }
 
     .nav-container.nav-dark-theme .hvr li a {
@@ -86,7 +87,7 @@
 
 @media (max-width: 768px) {
   .nav-container {
-    top: 48px;                
+    top: 45px;                
     left: 0;               
     transform: none;      
     width: 100%;         

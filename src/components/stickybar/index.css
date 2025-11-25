@@ -2,8 +2,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  min-height: 40px;
-  background-color: #af2d37;
+
+  background-color: var(--color-primary);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -52,13 +52,29 @@
 
 @media (max-width: 768px) {
   .sticky_bar-content {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
   }
 
   .sticky_bar-contact {
     flex-direction: column;
     gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .sticky_bar-contact {
+    flex: 1;
+    gap: 4px;
+  }
+
+  .sticky_bar-social {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
   }
 }
