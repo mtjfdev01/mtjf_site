@@ -6,9 +6,9 @@ const StickyBar = () => {
     <div className="sticky_bar_container">
       <div className="sticky_bar-content container">
         <div className="sticky_bar-contact">
-          <a href="mailto:contact@akhuwat.org" className="sticky_bar-link">
+          <a href="mailto:info@mtjfoundation.org" className="sticky_bar-link">
             <FaEnvelope />
-            <span>contact@akhuwat.org</span>
+            <span>info@mtjfoundation.org</span>
           </a>
           <a href="tel:+13108001170" className="sticky_bar-link">
             <FaPhone />
