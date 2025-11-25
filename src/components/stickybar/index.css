@@ -1,0 +1,64 @@
+.sticky_bar_container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 40px;
+  background-color: #af2d37;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.sticky_bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.sticky_bar-contact {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sticky_bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.sticky_bar-link svg {
+  font-size: 0.95rem;
+}
+
+.sticky_bar-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sticky_bar-social a {
+  color: #fff;
+  display: inline-flex;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sticky_bar-content {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .sticky_bar-contact {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
