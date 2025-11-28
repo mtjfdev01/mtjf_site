@@ -1,0 +1,45 @@
+/* Pagination */
+.careers-pagination {
+    /* margin-top: var(--space-64); */
+    padding: var(--space-24) 0;
+  }
+  
+  .careers-pagination-btn,
+  .careers-pagination-page {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid var(--color-300);
+    background:#F2F2F2;
+    color: #CFCFCF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: var(--fs-14);
+  }
+  
+  .careers-pagination-btn:hover:not(:disabled),
+  .careers-pagination-page:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(48, 174, 227, 0.05);
+  }
+  
+  .careers-pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .careers-pagination-btn.active,
+  .careers-pagination-page.active {
+    background: #F7B518;
+    /* border-color: var(--color-base-orange); */
+    color: var(--color-white);
+  }
+  
+  .careers-pagination-page {
+    min-width: 40px;
+  }

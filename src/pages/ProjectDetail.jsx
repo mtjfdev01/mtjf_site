@@ -4,6 +4,7 @@ import Footer from '../components/footer/Footer'
 import DonationForm from '../components/donationForm/DonationForm'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
+import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
 
 const ProjectDetail = () => {
   const { id } = useParams()
@@ -80,7 +81,7 @@ const ProjectDetail = () => {
 
           {/* Right Sidebar - Donate Form */}
           <div className="project-donate-sidebar col-12 lg-4">
-            <DonationForm
+          <VerticalDonationForm
               formId="project-detail-donation-form"
               donationOptions={project.donationOptions}
               categoryOptions={categoryOptions}

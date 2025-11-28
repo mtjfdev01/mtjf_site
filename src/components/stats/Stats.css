@@ -96,10 +96,6 @@
 }
 
 @media (max-width: 480px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
   .stat-icon-container {
     width: 60px;
     height: 60px;

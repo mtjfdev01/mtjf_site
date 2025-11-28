@@ -1,4 +1,14 @@
+import Career from "../components/career/Career";
+import JoinTeam from "../components/JoinTeam/JoinTeam";
+import Pagination from "../components/pagination/Pagination";
+// import Careers from "../components/career/Career"
+
+
 const Careers = () => {
-  return <h1>Career Page</h1>;
+  return <>
+  <Career/>
+  {/* <Pagination/> */}
+  <JoinTeam/>
+  </>;
 };
 export default Careers;

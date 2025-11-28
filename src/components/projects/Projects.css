@@ -4,6 +4,42 @@
 
 .projects-header {
   margin-bottom: var(--space-32);
+  gap: var(--space-24);
+}
+
+.projects-subtitle {
+  font-size: var(--fs-20);
+  font-weight: 600;
+  color: var(--color-primary);
+  position: relative;
+  margin-bottom: var(--space-8);
+}
+
+.projects-subtitle::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+.projects-title {
+  font-size: var(--fs-28);
+  font-weight: 700;
+  color: var(--color-900);
+  margin: 0;
+}
+
+.projects-link {
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(48, 174, 227, 0.12);
+  padding: var(--space-10) var(--space-16);
+  border-radius: var(--radius-lg);
 }
 
 .projects-wrapper {
@@ -73,11 +109,13 @@
 }
 
 .project-card {
-  min-width: 380px;
-  max-width: 380px;
-  min-height: 580px;
-  padding: 0;
-  overflow: hidden;
+  min-width: 360px;
+  max-width: 360px;
+  min-height: 520px;
+  padding: var(--space-24);
+  border-radius: 28px;
+  background: var(--color-white);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
   text-decoration: none;
   color: inherit;
@@ -88,14 +126,15 @@
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
 }
 
 .project-image-container {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 220px;
   overflow: hidden;
+  border-radius: 22px;
 }
 
 .project-image {
@@ -106,30 +145,26 @@
 }
 
 .project-category-tag {
-  position: absolute;
-  top: var(--space-16);
-  left: var(--space-16);
-  padding: var(--space-6) var(--space-12);
-  border-radius: var(--radius-md);
   font-size: var(--fs-12);
   font-weight: 600;
-  color: var(--color-white);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  z-index: 2;
+  color: var(--color-primary);
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(48, 174, 227, 0.12);
 }
 
 .project-progress-bar-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  height: 8px;
+  background-color: rgba(135, 111, 255, 0.2);
+  max-width: 100%;
+  border-radius: 999px;
+  margin-bottom: var(--space-16);
 }
 
 .project-progress-bar {
+  border-radius: 999px;
   height: 100%;
   transition: width 0.3s ease;
 }
@@ -160,25 +195,34 @@
 }
 
 .project-goal-info {
-  margin-bottom: 0;
-  margin-top: 0;
+  margin-bottom: var(--space-12);
+  margin-top: var(--space-4);
   font-size: var(--fs-14);
   flex-shrink: 0;
+  color: var(--color-600);
+  gap: var(--space-12);
 }
 
 .project-actions {
   display: flex;
-  gap: var(--space-12);
-  margin-top: auto;
 }
 
-.project-actions .cta_primary_btn {
-  width: auto;
-  padding: var(--space-10) var(--space-16);
-  font-size: var(--fs-14);
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
+.project-donate-btn {
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  border: none;
+  border-radius: 999px;
+  background: #00c853;
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--fs-16);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.project-donate-btn:hover {
+  box-shadow: 0 12px 20px rgba(0, 200, 83, 0.25);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -214,8 +258,9 @@
   }
 
   .project-card {
-    min-width: 320px;
-    max-width: 320px;
+    min-width: 310px;
+    max-width: 310px;
+    padding: var(--space-20);
   }
 
   .project-image-container {

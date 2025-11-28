@@ -1,0 +1,120 @@
+.contact-section {
+  width: 100%;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-32);
+  padding: var(--space-48);
+  background: var(--color-white);
+  border-radius: 32px;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08);
+}
+
+.contact-guide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.contact-guide-subtitle {
+  font-size: var(--fs-18);
+  font-weight: 600;
+  color: var(--color-primary);
+  position: relative;
+  margin-bottom: var(--space-8);
+}
+
+.contact-guide-subtitle::before,
+.contact-guide-subtitle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 32px;
+  background: var(--color-primary);
+}
+
+.contact-guide-subtitle::before {
+  left: -40px;
+}
+
+.contact-guide-subtitle::after {
+  right: -40px;
+}
+
+.contact-guide-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-900);
+}
+
+ .contact-guide-description {
+   color: var(--color-600);
+   line-height: 1.6;
+ }
+
+.contact-guide-socials {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.contact-social {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--color-white);
+  font-size: var(--fs-18);
+}
+
+.contact-social-whatsapp {
+  background: #25d366;
+}
+
+.contact-social-facebook {
+  background: #1877f2;
+}
+
+.contact-social-twitter {
+  background: #1da1f2;
+}
+
+.contact-social-instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+}
+
+.contact-form-wrapper .donation-form-card {
+  background: var(--color-white);
+  box-shadow: none;
+  border-radius: 24px;
+}
+
+.contact-form-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.contact-textarea {
+  min-height: 140px;
+  resize: vertical;
+  height: auto;
+}
+
+.contact-submit-btn {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    padding: var(--space-32);
+  }
+
+  .contact-guide-title {
+    font-size: 2rem;
+  }
+}
+

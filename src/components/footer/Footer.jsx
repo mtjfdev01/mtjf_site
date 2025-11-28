@@ -120,13 +120,13 @@ const Footer = () => {
             <h4 className="footer-heading h4">Blogs</h4>
             <ul className="footer-list flex flex-col gap-12">
               <li>
-                <Link to="/donor-resources" className="footer-link">Zakat</Link>
+                <Link to="/blogs" className="footer-link">Blogs</Link>
               </li>
               <li>
-                <Link to="/publications" className="footer-link">Newsletters</Link>
+                <Link to="/registration" className="footer-link">Registration</Link>
               </li>
               <li>
-                <Link to="/careers" className="footer-link">Careers</Link>
+                <Link to="/contact" className="footer-link">Contact Us</Link>
               </li>
             </ul>
           </div>

@@ -167,10 +167,10 @@ const Projects = () => {
     <section className="projects-section container py-48">
       <div className="projects-header flex justify-between items-center mb-32">
         <div>
-          <h1 className="heading-secondary mb-16">Projects</h1>
-          <h2 className="h2">Some projects we have in World</h2>
+          <p className="projects-subtitle">Projects</p>
+          <h2 className="projects-title">Some projects we have in World</h2>
         </div>
-        <Link to="/projects" className="btn">
+        <Link to="/projects" className="projects-link">
           More Causes &gt;
         </Link>
       </div>
@@ -209,10 +209,19 @@ const Projects = () => {
                 />
                 <div
                   className="project-category-tag"
-                  style={{ backgroundColor: project.categoryColor }}
+                  style={{
+                    color: project.categoryColor,
+                    backgroundColor: `${project.categoryColor}20`
+                  }}
                 >
                   {project.category}
                 </div>
+
+              </div>
+
+              <div className="project-content p-20">
+                <h3 className="h3 mb-12">{project.title}</h3>
+                <p className="text-sm muted mb-16">{project.description}</p>
                 <div className="project-progress-bar-container">
                   <div
                     className="project-progress-bar"
@@ -222,36 +231,16 @@ const Projects = () => {
                     }}
                   />
                 </div>
-              </div>
 
-              <div className="project-content p-20">
-                <h3 className="h3 mb-12">{project.title}</h3>
-                <p className="text-sm muted mb-16">{project.description}</p>
-
-                <div className="project-goal-info flex justify-between items-center mb-20 text-sm">
-                  <span className="muted">
-                    Goal: {formatCurrency(project.goal)}
-                  </span>
-                  <span className="muted">
-                    Pledged: {formatCurrency(project.pledged)}
-                  </span>
+                <div className="project-goal-info">
+                  Goal : {formatCurrency(project.pledged)} - Pledged :{' '}
+                  {formatCurrency(project.goal)}
                 </div>
 
-                <div className="project-actions flex gap-12">
+                <div className="project-actions">
                   <button
                     type="button"
-                    className="cta_primary_btn flex-1 text-center"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                      navigate(project.learnMorePath)
-                    }}
-                  >
-                    Learn More
-                  </button>
-                  <button
-                    type="button"
-                    className="cta_primary_btn flex-1 text-center"
+                    className="project-donate-btn"
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
@@ -261,6 +250,7 @@ const Projects = () => {
                     Donate
                   </button>
                 </div>
+
               </div>
             </Link>
           ))}

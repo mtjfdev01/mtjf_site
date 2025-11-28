@@ -9,7 +9,7 @@ const HeroContent = () => {
          {/* <h4>
          — <span className='text-white'>MTJ Foundation</span> —
          </h4> */}
-         <h1 className='heading-primary'>MTJ Foundation</h1>
+         <h2 className='heading-primary'>MTJ Foundation</h2>
          <h3>Welcome to <br/>
           Molana Tariq Jamil <br/>
            Foundation.

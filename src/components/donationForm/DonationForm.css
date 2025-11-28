@@ -28,6 +28,82 @@
   gap: var(--space-12);
 }
 
+.donation-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .donation-form-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Position currency and category to be adjacent */
+  .donation-form-currency {
+    grid-column: 2;
+    padding-right: calc(var(--space-16) / 2);
+  }
+  
+  .donation-form-category {
+    grid-column: 3;
+    padding-left: calc(var(--space-16) / 2);
+  }
+  
+  /* When project is shown, adjust category position */
+  .donation-form-row:has(.donation-form-group:not(.donation-form-frequency-group):not(.donation-form-currency):not(.donation-form-category)) .donation-form-category {
+    grid-column: 4;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation-form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Frequency takes full width on mobile */
+  .donation-form-frequency-group {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  
+  /* Ensure currency and category are in the same row on mobile */
+  .donation-form-currency {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .donation-form-category {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .donation-form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Frequency takes full width on small mobile too */
+  .donation-form-frequency-group {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  
+  /* Keep currency and category in same row even on small mobile */
+  .donation-form-currency {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .donation-form-category {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
 .donation-form-label {
   font-size: var(--fs-14);
   font-weight: 600;
@@ -41,8 +117,11 @@
   border-radius: var(--radius-md);
   background-color: var(--color-white);
   font-size: var(--fs-16);
+  line-height: 1.5;
   color: var(--color-900);
   transition: var(--transition);
+  box-sizing: border-box;
+  height: 44px;
 }
 
 .donation-form-input:focus {
@@ -74,10 +153,40 @@
   border-color: #4caf50;
 }
 
+.donation-form-amounts-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
 .donation-form-amounts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .donation-form-amounts-row {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--space-16);
+  }
+  
+  .donation-form-amounts {
+    grid-template-columns: repeat(4, 1fr);
+    flex: 1;
+  }
+  
+  .donation-form-actions-input {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .donation-form-submit {
+    flex: 0 0 auto;
+    min-width: 120px;
+  }
 }
 
 .donation-form-amount-btn {
@@ -103,17 +212,31 @@
   border-color: var(--color-primary);
 }
 
-.donation-form-submit {
+.donation-form-actions-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.donation-form-actions-input .donation-form-input {
   width: 100%;
-  padding: var(--space-16) var(--space-24);
+}
+
+.donation-form-submit {
+  padding: var(--space-12) var(--space-24);
   border: none;
   border-radius: var(--radius-md);
   background-color: #4caf50;
   color: var(--color-white);
-  font-size: var(--fs-18);
+  font-size: var(--fs-16);
   font-weight: 700;
+  line-height: 1.5;
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  min-width: 120px;
+  box-sizing: border-box;
+  height: 44px;
 }
 
 .donation-form-submit:hover {

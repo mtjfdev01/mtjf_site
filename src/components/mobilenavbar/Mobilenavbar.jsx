@@ -6,9 +6,8 @@ const links = [
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },
                 { name: "Projects", path: "/projects" },
-                { name: "Publications", path: "/publications " },
-                { name: "Involved ", path: "/getInvolved " },
-                { name: "Donor ", path: "/donorResources " },
+                { name: "blogs ", path: "/blogs " },
+                { name: "registration", path: "/registration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" }
 ];

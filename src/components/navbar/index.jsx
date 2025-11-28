@@ -91,9 +91,8 @@ const Navbar = () => {
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },
                 { name: "Projects", path: "/projects" },
-                { name: "Publications", path: "/publications " },
-                { name: "Involved ", path: "/getInvolved " },
-                { name: "Resources ", path: "/donorResources " },
+                { name: "Blogs", path: "/blogs " },
+                { name: "Registration", path: "/registration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" }
               ].map((item) => (

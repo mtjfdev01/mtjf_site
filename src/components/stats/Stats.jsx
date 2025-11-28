@@ -120,7 +120,7 @@ const Stats = () => {
         </h2>
       </div>
 
-      <div className="stats-grid grid grid-4 gap-24">
+      <div className="stats-grid">
         {STATS_DATA.map((stat) => (
           <div key={stat.id} className="stat-card card text-center">
             <div

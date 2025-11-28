@@ -11,11 +11,12 @@ import Blogs from "../components/blogs/Blogs";
 import DonationCta from "../components/donationCta/DonationCta";
 import Footer from "../components/footer/Footer";
 import DonationForm from "../components/donationForm/DonationForm";
+import { ALL_PROJECTS_DATA } from "../data/projectsData";
 const Home = () => {
   return <>
      <Hero />
      <HeroContent />
-     <DonationForm />
+     <DonationForm layout="vertical" showProjectSelect={true} projects={ALL_PROJECTS_DATA} />
      <DonationFeatures/>
      <CtaCircles/>
      <Projects/>

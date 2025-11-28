@@ -1,0 +1,171 @@
+/* Core Values Component Styles */
+/* Using base.css and common.css utilities, only custom styles here */
+
+.core-values-section {
+  /* background-color: var(--color-black); */
+  /* color: var(--color-white); */
+  /* border: 5px solid red; */
+  margin-top: 70px;
+}
+
+/* Header Section */
+.core-values-header {
+  background-color: var(--color-white);
+  padding: var(--space-64) 0 var(--space-48);
+  /* border : 5px solid green; */
+  margin-bottom: -45px;
+}
+
+.core-values-header .container {
+  text-align: center;
+}
+
+.core-values-title {
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.core-values-title::before,
+.core-values-title::after {
+  background-color: var(--color-base-orange);
+}
+
+/* Content Section with Background */
+.core-values-content {
+  position: relative;
+  min-height: 400px;
+  /* padding: var(--space-48) 0 var(--space-64); */
+  overflow: hidden;
+  /* border: 5px solid black; */
+}
+
+.core-values-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/img/coreValues/464d5612d21ba58311a27ef50c2f9410dac3f357.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  z-index: 1;
+}
+
+/* Semi-transparent overlay box */
+.core-values-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-48) var(--space-32);
+  margin: 0 auto;
+  max-width: 900px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Grid layout for values */
+.core-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-32) var(--space-24);
+  align-items: center;
+}
+
+/* Individual value item */
+.core-value-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.core-value-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-value-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.core-value-text {
+  color: var(--color-white);
+  font-size: var(--fs-18);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .core-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-24) var(--space-20);
+  }
+  
+  .core-values-overlay {
+    padding: var(--space-40) var(--space-24);
+    margin-top: 7vh;
+  }     
+  
+  .core-value-text {
+    font-size: var(--fs-16);
+  }
+}
+
+@media (max-width: 767px) {
+    .core-values-section {
+        margin-top: 0;
+    }
+  .core-values-header {
+    padding: var(--space-48) 0 var(--space-32);
+  }
+  
+  .core-values-content {
+    min-height: 500px;
+    padding: var(--space-32) 0 var(--space-48);
+  }
+  
+  .core-values-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-20);
+  }
+  
+  .core-values-overlay {
+    padding: var(--space-32) var(--space-20);
+    margin: 0 var(--space-16);
+    border-radius: var(--radius-md);
+  }
+  
+  .core-value-item {
+    gap: var(--space-12);
+  }
+  
+  .core-value-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .core-value-text {
+    font-size: var(--fs-16);
+  }
+}
+
+@media (min-width: 1200px) {
+  .core-values-overlay {
+    max-width: 1000px;
+    padding: var(--space-56) var(--space-40);
+    margin-top: 11vh;
+    /* margin-top: -5vh; */
+  }
+  
+  .core-values-grid {
+    gap: var(--space-40) var(--space-32);
+  }
+}
+
