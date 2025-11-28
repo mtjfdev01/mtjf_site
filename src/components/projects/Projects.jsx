@@ -167,7 +167,7 @@ const Projects = () => {
     <section className="projects-section container py-48">
       <div className="projects-header flex justify-between items-center mb-32">
         <div>
-          <p className="projects-subtitle">Projects</p>
+          <h2 className="heading-secondary">Projects</h2>
           <h2 className="projects-title">Some projects we have in World</h2>
         </div>
         <Link to="/projects" className="projects-link">

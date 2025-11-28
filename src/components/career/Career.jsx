@@ -73,11 +73,9 @@ const Career = () => {
         {/* Header */}
       <div className="careers-header mb-48">
         <div className="careers-heading">
-          <span className="careers-heading-line" />
-          <h1 className="careers-heading-title">Career</h1>
-          <span className="careers-heading-line" />
+          <h1 className="heading-secondary">Career</h1>
         </div>
-        <p className="careers-heading-subtitle">
+        <p className="h2">
           Current Openings
         </p>
       </div>

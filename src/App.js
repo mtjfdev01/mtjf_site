@@ -12,6 +12,7 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import './App.css';
 import StickyBar from "./components/stickybar";
+import BlogsPage from "./pages/Blogs";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/donorResources" element={<DonorResources />} />            
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<BlogsPage />} />
       </Routes>
     </Router>
   );

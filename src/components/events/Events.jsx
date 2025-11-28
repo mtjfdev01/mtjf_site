@@ -42,8 +42,8 @@ const Events = () => {
   return (
     <section className="events-section container py-64">
       <div className="events-header mb-48">
-        <h1 className="heading-secondary mb-16">Events</h1>
-        <h2 className="h2">Exciting events & announcements</h2>
+        <p className="heading-secondary events-kicker mb-16">Events</p>
+        <h2 className="events-title">Exciting events & announcements</h2>
       </div>
 
       <div className="events-grid grid grid-12 gap-24">
@@ -84,33 +84,23 @@ const Events = () => {
         </div>
 
         {/* Right Column - Featured Card */}
-        <div className="featured-event col-12 lg-5">
+        <div className="featured-event col-12 lg-6">
           <Link
             to={FEATURED_EVENT.link}
-            className="featured-card card relative overflow-hidden"
+            className="featured-card simple-featured"
+            style={{ backgroundImage: `url(${FEATURED_EVENT.image})` }}
           >
-            <div
-              className="featured-image-wrapper absolute w-100 h-100"
-              style={{
-                backgroundImage: `url(${FEATURED_EVENT.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            >
-              <div className="featured-overlay absolute w-100 h-100"></div>
-            </div>
-            
-            <div className="featured-content relative z-1 flex flex-col h-100 p-24">
-              <div className="featured-category heading-secondary text-gray-500 mb-16">
+            <div className="featured-content flex flex-col h-100">
+              <div className="featured-category heading-secondary mb-16">
                 {FEATURED_EVENT.category}
               </div>
-              
+
               <h3 className="mb-16">{FEATURED_EVENT.title}</h3>
-              
+
               <p className="text-sm mb-24 flex-1">
                 {FEATURED_EVENT.description}
               </p>
-              
+
               <button
                 className="btn btn-join"
                 onClick={(e) => {

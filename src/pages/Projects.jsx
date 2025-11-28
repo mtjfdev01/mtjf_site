@@ -5,13 +5,17 @@ import image2 from '../assets/img/causes/Rectangle 34625788.png'
 import image3 from '../assets/img/causes/Rectangle 34625789.png'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { ALL_PROJECTS_DATA } from '../data/projectsData'
+import Events from '../components/events/Events'
+import Blogs from '../components/blogs/Blogs'
+import DonationCta from '../components/donationCta/DonationCta'
+import Footer from '../components/footer/Footer'
 
 
 
 const Projects = () => {
   const navigate = useNavigate()
 
-  return (
+  return (<>
     <section className="projects-page-section container py-48">
       <PageHeader image={image1} />
       <div className="projects-page-header text-center mb-48">
@@ -63,7 +67,13 @@ const Projects = () => {
           </div>
         ))}
       </div>
+
     </section>
+    <Events />
+      <Blogs />
+      <DonationCta />
+      <Footer />
+    </>
   )
 }
 

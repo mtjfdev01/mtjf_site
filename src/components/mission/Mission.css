@@ -1,11 +1,11 @@
 /* Mission Component Styles */
 /* Using base.css and common.css utilities, only custom styles here */
 
-.mission-section {
+ .mission-section {
   background-color: var(--color-white);
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow: visible;
   width: 100%;
-  margin-top: 10vw;
+  margin-top: 6vw;
 }
 
 /* Full-width black background */
@@ -13,7 +13,8 @@
   width: 100%;
   background-color: var(--color-black);
   position: relative;
-  padding: var(--space-64) 0;
+  padding: var(--space-48) 0;
+  overflow: visible;
 }
 
 .mission-container {
@@ -21,8 +22,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-32);
-  align-items: center;
-  margin-top: 2vw;
+  align-items: start;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -32,9 +32,8 @@
 .mission-content {
   color: var(--color-white);
   z-index: 1;
-  height: 65vw;
   width: 100%;
-  max-width: 100%;
+  max-width: 600px;
   box-sizing: border-box;
   padding: 0 var(--space-16);
 }
@@ -68,13 +67,13 @@
 /* Image box - Right side */
 .mission-image-box {
   position: relative;
-  width: 80%;
-  max-width: 100%;
+  width: 100%;
+  max-width: 420px;
   z-index: 2;
-  margin-top: -28vw;
   box-shadow: var(--shadow-lg);
-  background-color: var(--color-200);
+  background-color: var(--color-white);
   box-sizing: border-box;
+  border-radius: var(--radius-lg);
 }
 
 .mission-img {
@@ -94,7 +93,7 @@
 /* Responsive Design */
 @media (min-width: 768px) {
   .mission-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-48);
   }
   
@@ -104,7 +103,8 @@
   }
   
   .mission-image-box {
-    max-width: 100%;
+    justify-self: end;
+    max-width: 520px;
   }
 }
 
@@ -113,8 +113,6 @@
   
   .mission-black-bg {
     padding: var(--space-32) 0;
-    height: auto; /* Remove fixed height on mobile */
-    min-height: auto;
   }
   
   .mission-container {
@@ -124,7 +122,6 @@
   }
   
   .mission-content {
-    height: auto; /* Remove fixed height on mobile */
     padding: var(--space-16);
     width: 100%;
     max-width: 100%;
@@ -133,7 +130,7 @@
   .mission-image-box {
     width: 100%;
     max-width: 100%;
-    margin-top: 0; /* Remove negative margin on mobile */
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
     order: -1; /* Image first on mobile */
@@ -156,12 +153,22 @@
 }
 
 @media (min-width: 992px) {
-  .mission-black-bg {
-    padding: var(--space-80) 0;
+  .mission-container {
+    padding-right: 42%;
   }
-  
+
   .mission-content {
     padding-right: var(--space-32);
     padding-left: 0;
+  }
+
+  .mission-image-box {
+    position: absolute;
+    top: 0;
+    right: 3vw;
+    width: 30%;
+    max-width: 420px;
+    transform: translateY(75px);
+    margin: 0;
   }
 }

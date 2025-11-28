@@ -65,23 +65,15 @@ const Blogs = () => {
         <div className="featured-blog col-12 lg-8">
           <Link
             to={FEATURED_BLOG.link}
-            className="featured-blog-card card relative overflow-hidden"
+            className="featured-blog-card simple-featured-blog"
+            style={{ backgroundImage: `url(${FEATURED_BLOG.image})` }}
           >
-            <div
-              className="featured-blog-image absolute w-100 h-100"
-              style={{
-                backgroundImage: `url(${FEATURED_BLOG.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            />
-            <div className="featured-blog-overlay absolute w-100 h-100" />
-            <div className="featured-blog-content relative z-1 flex flex-col h-100 justify-end p-32">
-              <div className="blog-category heading-secondary mb-12 text-gray-500">
+            <div className="featured-blog-content flex flex-col h-100 justify-end">
+              <div className="blog-category heading-secondary mb-12">
                 {FEATURED_BLOG.category}
               </div>
-              <h3 className="h2  mb-16">{FEATURED_BLOG.title}</h3>
-              <p className="text-sm ">{FEATURED_BLOG.excerpt}</p>
+              <h3 className="h2 mb-16">{FEATURED_BLOG.title}</h3>
+              <p className="text-sm">{FEATURED_BLOG.excerpt}</p>
             </div>
           </Link>
         </div>

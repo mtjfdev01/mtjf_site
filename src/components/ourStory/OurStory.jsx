@@ -13,7 +13,7 @@ const OurStory = () => {
   const handleToggle = () => setIsExpanded((prev) => !prev)
 
   return (
-    <section className="our-story-section py-64">
+    <section className="our-story-section py-16">
       <div className="container our-story-grid">
         {/* Orbit visual */}
         <div className="our-story-visual center">
