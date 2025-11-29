@@ -6,7 +6,7 @@
 }
 
 .directors-wrapper {
-  max-width: 1200px;
+  /* max-width: 1200px; */
 }
 
 .directors-heading-block {
@@ -29,7 +29,7 @@
 }
 
 .directors-panel {
-  border-radius: var(--radius-lg);
+  /* border-radius: var(--radius-lg); */
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   background: linear-gradient(160deg, #0f0f0f 0%, #050505 100%);
@@ -39,6 +39,7 @@
   position: relative;
   margin: 0;
   min-height: 320px;
+  max-height: 450px;
 }
 
 .directors-image {
@@ -46,12 +47,13 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  max-height: 450px;
 }
 
 .directors-label {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -55px;
   width: 100%;
   padding: var(--space-24);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 70%);
@@ -76,6 +78,7 @@
 
 .directors-text-panel {
   padding: var(--space-32);
+  padding-top: var(--space-72);
   background-color: rgba(0, 0, 0, 0.92);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;

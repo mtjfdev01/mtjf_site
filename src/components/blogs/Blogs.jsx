@@ -34,7 +34,7 @@ const Blogs = () => {
         <h2 className="h2 mb-24">
           Poor people are at high risk of severe malnutrition and no education.
         </h2>
-        <Link to="/blogs" className="btn blogs-cta">
+        <Link to="/blogs" className="btn blogs-cta mb-16">
           Explore More
         </Link>
       </div>
@@ -66,8 +66,12 @@ const Blogs = () => {
           <Link
             to={FEATURED_BLOG.link}
             className="featured-blog-card simple-featured-blog"
-            style={{ backgroundImage: `url(${FEATURED_BLOG.image})` }}
           >
+            <img 
+              src={FEATURED_BLOG.image} 
+              alt={FEATURED_BLOG.title}
+              className="featured-blog-background-image"
+            />
             <div className="featured-blog-content flex flex-col h-100 justify-end">
               <div className="blog-category heading-secondary mb-12">
                 {FEATURED_BLOG.category}

@@ -18,7 +18,7 @@ const Directors = ({
 }) => {
   return (
     <section className="directors-section">
-      <div className="container directors-wrapper">
+      <div className=" directors-wrapper">
         <div className="directors-heading-block text-center">
           <p className="heading-primary directors-heading-title">
             Directors

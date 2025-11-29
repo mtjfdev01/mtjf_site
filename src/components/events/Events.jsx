@@ -42,8 +42,8 @@ const Events = () => {
   return (
     <section className="events-section container py-64">
       <div className="events-header mb-48">
-        <p className="heading-secondary events-kicker mb-16">Events</p>
-        <h2 className="events-title">Exciting events & announcements</h2>
+        <p className="heading-secondary events-kicker mb-16">News & Events</p>
+        <h2 className="events-title">News & Events</h2>
       </div>
 
       <div className="events-grid grid grid-12 gap-24">
@@ -88,8 +88,12 @@ const Events = () => {
           <Link
             to={FEATURED_EVENT.link}
             className="featured-card simple-featured"
-            style={{ backgroundImage: `url(${FEATURED_EVENT.image})` }}
           >
+            <img 
+              src={FEATURED_EVENT.image} 
+              alt={FEATURED_EVENT.title}
+              className="featured-background-image"
+            />
             <div className="featured-content flex flex-col h-100">
               <div className="featured-category heading-secondary mb-16">
                 {FEATURED_EVENT.category}
