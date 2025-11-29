@@ -240,6 +240,9 @@
   .projects-nav-next {
     right: -20px;
   }
+  .projects-header {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -250,6 +253,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-16);
+    padding: 20px;
   }
 
   .projects-header .btn {

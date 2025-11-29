@@ -26,6 +26,7 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  max-width: 1350px;
 }
 
 /* Text content - Left side */
@@ -110,7 +111,9 @@
 
 @media (max-width: 767px) {
 
-  
+  .mission-section {
+    margin-top: 20vw;
+  }
   .mission-black-bg {
     padding: var(--space-32) 0;
   }
@@ -122,18 +125,19 @@
   }
   
   .mission-content {
+    order: 1; /* Content first on mobile */
     padding: var(--space-16);
     width: 100%;
     max-width: 100%;
   }
-  
+
   .mission-image-box {
     width: 100%;
     max-width: 100%;
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    order: -1; /* Image first on mobile */
+    order: 2; /* Image second on mobile */
   }
   
   .mission-heading {

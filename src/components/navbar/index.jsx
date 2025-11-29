@@ -10,37 +10,50 @@ import StickyBar from '../stickybar';
 
 const Navbar = () => {
    const [activeLink, setActiveLink] = useState("Home");
-   const [isLightTheme, setIsLightTheme] = useState(false);
    const location = useLocation();
    const observerRef = useRef(null);
+   
+   // Check if we're on home page
+   const isHomePage = location.pathname === '/' || location.pathname === '/home';
+   // Start transparent on home page, white on other pages
+   const [isLightTheme, setIsLightTheme] = useState(isHomePage);
 
    useEffect(() => {
-     // Check if we're on home page
      const isHomePage = location.pathname === '/' || location.pathname === '/home';
      
+     // For non-home pages, always use white background (no scroll detection)
      if (!isHomePage) {
        setIsLightTheme(false);
+       // Clean up any existing observer
+       if (observerRef.current) {
+         observerRef.current.disconnect();
+         observerRef.current = null;
+       }
        return;
      }
 
-     // Check if banner_img or hero_content elements are visible
-     const checkElementsVisibility = () => {
+     // Home page: transparent initially, white on scroll
+     setIsLightTheme(true); // Start transparent
+
+     const setupScrollDetection = () => {
        const bannerImg = document.querySelector('.banner_img');
        const heroContent = document.querySelector('.hero_content');
        
+       // If elements don't exist yet (lazy loading), retry
        if (!bannerImg && !heroContent) {
-         setIsLightTheme(false);
-         return;
+         return false;
        }
 
-       // Use Intersection Observer to check visibility
+       // Use Intersection Observer to detect when hero/banner scrolls out of view
        const observer = new IntersectionObserver(
          (entries) => {
+           // Check if any hero element is still visible
            const isVisible = entries.some(entry => entry.isIntersecting);
+           // Transparent when hero is visible, white when scrolled past
            setIsLightTheme(isVisible);
          },
          {
-           threshold: 0.1, // Trigger when 10% visible
+           threshold: 0, // Trigger as soon as element enters/leaves viewport
            rootMargin: '-100px 0px' // Account for navbar height
          }
        );
@@ -50,21 +63,27 @@ const Navbar = () => {
        if (heroContent) observer.observe(heroContent);
 
        observerRef.current = observer;
-
-       return () => {
-         if (observerRef.current) {
-           observerRef.current.disconnect();
-         }
-       };
+       return true;
      };
 
-     // Small delay to ensure DOM is ready
-     const timeoutId = setTimeout(checkElementsVisibility, 100);
+     // Retry mechanism for lazy-loaded components
+     const checkWithRetry = (attempts = 0) => {
+       requestAnimationFrame(() => {
+         if (setupScrollDetection() || attempts >= 10) {
+           // Successfully set up or max attempts reached
+           return;
+         }
+         // Retry if elements not found yet
+         checkWithRetry(attempts + 1);
+       });
+     };
+
+     checkWithRetry();
 
      return () => {
-       clearTimeout(timeoutId);
        if (observerRef.current) {
          observerRef.current.disconnect();
+         observerRef.current = null;
        }
      };
    }, [location.pathname]);

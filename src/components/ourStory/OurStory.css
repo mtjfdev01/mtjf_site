@@ -132,6 +132,16 @@
     padding-bottom: 0 !important;
   }
   
+  /* Reorder: content first, visual second on mobile */
+  .our-story-content {
+    order: 1;
+    text-align: center;
+  }
+
+  .our-story-visual {
+    order: 2;
+  }
+  
   .orbit-center {
     width: 160px;
     height: 160px;
@@ -154,10 +164,6 @@
 
   .avatar-right {
     right: -18%;
-  }
-
-  .our-story-content {
-    text-align: center;
   }
 
   .heading-secondary {

@@ -11,6 +11,8 @@
     height: 66px;
     display: flex;
     align-items: center;
+    /* Default transparent background - will be overridden by theme classes */
+    background-color: transparent;
   }
 
 .nav-container > .flex {

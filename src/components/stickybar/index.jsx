@@ -10,19 +10,19 @@ const StickyBar = () => {
             <FaEnvelope />
             <span>info@mtjfoundation.org</span>
           </a>
-          <a href="tel:+13108001170" className="sticky_bar-link">
+          <a href="tel:061-111-786-853" className="sticky_bar-link">
             <FaPhone />
-            <span> +1 (310) 800-1170</span>
+            <span> 061-111-786-853 </span>
           </a>
         </div>
         <div className="sticky_bar-social">
-          <a href="https://instagram.com" aria-label="Instagram">
+          <a href="https://www.instagram.com/mtjfoundation_pakistan/?hl=en" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
             <FaInstagram />
           </a>
-          <a href="https://facebook.com" aria-label="Facebook">
+          <a href="https://www.facebook.com/foundation.mtj" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
             <FaFacebookF />
           </a>
-          <a href="https://youtube.com" aria-label="YouTube">
+          <a href="https://youtube.com/@foundation_mtj?si=NCJMYOSXihYOqMjK" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
             <FaYoutube />
           </a>
         </div>
