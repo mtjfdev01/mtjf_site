@@ -2,8 +2,21 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: var(--space-40) var(--space-16);
+  align-items: stretch;
+  padding: var(--space-40) 0;
+  overflow: hidden;
+  min-height: 260px;
+  padding-bottom: 0;
+}
+
+.donation-cta-colored-section {
+  flex: 1;
+  background-color: var(--color-primary);
+  min-width: 0;
+  height: 40%;
+  min-height: 80px;
+  max-height: 150px;
+  align-self: flex-end;
 }
 
 .donation-cta-card {
@@ -12,6 +25,9 @@
   background-color: var(--color-white);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-lg);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: none;
   padding: var(--space-32) var(--space-24);
   display: flex;
   flex-direction: column;

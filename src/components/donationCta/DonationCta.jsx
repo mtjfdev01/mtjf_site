@@ -3,6 +3,7 @@ import './DonationCta.css'
 const DonationCta = () => {
   return (
     <section className="donation-cta">
+      <div className="donation-cta-colored-section donation-cta-colored-section--left"></div>
       <div className="donation-cta-card">
         <p className="donation-cta-intro text-gray-500">
           You can send your
@@ -20,6 +21,7 @@ const DonationCta = () => {
           Learn More
         </button>
       </div>
+      <div className="donation-cta-colored-section donation-cta-colored-section--right"></div>
     </section>
   )
 }
