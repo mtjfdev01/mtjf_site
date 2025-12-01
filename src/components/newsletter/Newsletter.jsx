@@ -32,7 +32,7 @@ const Newsletter = ({ onSubmit }) => {
   }
 
   return (
-    <section className="newsletter-section">
+    <section className="newsletter-section mt-32">
       <div className="container">
         <div className="newsletter-content text-center">
           <h2 className="newsletter-heading">SUBSCRIBE</h2>

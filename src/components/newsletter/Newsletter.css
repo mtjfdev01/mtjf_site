@@ -1,6 +1,6 @@
 .newsletter-section {
   background-color: #30AEE3; /* Teal color matching the design */
-  padding: var(--space-64) var(--space-16);
+  padding: var(--space-32) var(--space-16);
   width: 100%;
 }
 
