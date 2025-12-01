@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Blogs.css'
-import blog1 from '../../assets/img/causes/Rectangle 34625787.png'
-import blog2 from '../../assets/img/causes/Rectangle 34625788.png'
+import blog1 from '../../assets/img/causes/poor boy.webp'
+import blog2 from '../../assets/img/causes/meet box.webp'
 
 const FEATURED_BLOG = {
   id: 'qurbani-meaning',

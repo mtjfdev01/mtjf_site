@@ -1,7 +1,7 @@
 import './JoinTeam.css'
-import joinTeamMain from '../../assets/img/career/Rectangle 34625876 (1).png'
-import joinCtaBg from '../../assets/img/career/joinus.png'
-import joinTeamSecondary from '../../assets/img/career/join.png'
+import joinTeamMain from '../../assets/img/career/yousaf.webp'
+import joinCtaBg from '../../assets/img/career/joinus.webp'
+import joinTeamSecondary from '../../assets/img/career/join.webp'
 const JoinTeam = ()=>{
     return(
         <>

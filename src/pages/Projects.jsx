@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
-import image1 from '../assets/img/causes/Rectangle 34625787.png'
+import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { ALL_PROJECTS_DATA } from '../data/projectsData'
 

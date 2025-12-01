@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
-import image1 from "../assets/img/causes/Rectangle 34625787.png";
+import image1 from "../assets/img/career/hero career.webp";
 
 const Career = lazy(() => import("../components/career/Career"));
 const JoinTeam = lazy(() => import("../components/JoinTeam/JoinTeam"));

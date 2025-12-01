@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import '../../common/styles/base.css'
 import '../../common/styles/common.css'
-import centralImg from '../../assets/img/ourStory/donateImg.png'
-import topLeftImg from '../../assets/img/ourStory/Ellipse 7.png'
-import bottomLeftImg from '../../assets/img/ourStory/Ellipse 5.png'
-import rightImg from '../../assets/img/ourStory/Ellipse 6.png'
+import centralImg from '../../assets/img/ourStory/donate cap.webp'
+import topLeftImg from '../../assets/img/ourStory/man1.webp'
+import bottomLeftImg from '../../assets/img/ourStory/man2.webp'
+import rightImg from '../../assets/img/ourStory/man3.webp'
 import './OurStory.css'
 
 const OurStory = () => {
@@ -27,15 +27,15 @@ const OurStory = () => {
             </div>
 
             <figure className="orbit-avatar avatar-top-left shadow-lg">
-              <img src={centralImg} alt="Volunteer 1" />
+              <img src={topLeftImg} alt="Volunteer 1" />
             </figure>
 
             <figure className="orbit-avatar avatar-bottom-left shadow-lg">
-              <img src={centralImg} alt="Volunteer 2" />
+              <img src={bottomLeftImg} alt="Volunteer 2" />
             </figure>
 
             <figure className="orbit-avatar avatar-right shadow-lg"> 
-              <img src={centralImg} alt="Volunteer 3" /> 
+              <img src={rightImg} alt="Volunteer 3" /> 
             </figure>
           </div>
         </div>

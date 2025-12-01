@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/causes/Rectangle 34625787.png'
+import image1 from '../assets/img/blogs/hero section for blogs.webp'
 
 const Events = lazy(() => import('../components/events/Events'))
 const Blogs = lazy(() => import('../components/blogs/Blogs'))
@@ -19,7 +19,7 @@ const BlogsPage = () => {
 
   return (
     <>
-      <PageHeader title="Blogs Page" image={image1} />
+      <PageHeader  image={image1} />
 
       {showContent && (
         <>

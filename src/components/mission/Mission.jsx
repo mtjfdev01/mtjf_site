@@ -1,7 +1,6 @@
 import React from 'react'
 import './Mission.css'
-import missionImg from '../../assets/img/mission/mission.png'
-import logo from '../../assets/img/logos/only_logo.png'
+import missionImg from '../../assets/img/mission/mission.webp'
 const Mission = () => {
   return (
     <section className="mission-section">

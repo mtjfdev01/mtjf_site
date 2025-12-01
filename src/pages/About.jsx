@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
-import image1 from "../assets/img/causes/Rectangle 34625787.png";
+import image1 from '../assets/img/hero section for about/hero-about.webp'
 
 const OurStory = lazy(() => import("../components/ourStory/OurStory"));
 const Mission = lazy(() => import("../components/mission/Mission"));

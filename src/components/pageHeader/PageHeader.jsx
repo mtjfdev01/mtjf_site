@@ -1,6 +1,5 @@
 import './PageHeader.css'
-
-const PageHeader = ({ title, image }) => {
+const PageHeader = ({ title, image}) => {
   return (
     <section className="page-header">
       <div className="page-header-container">

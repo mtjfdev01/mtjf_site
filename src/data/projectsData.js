@@ -1,6 +1,11 @@
-import image1 from '../assets/img/projects/education_main.png'
-import image2 from '../assets/img/causes/Rectangle 34625788.png'
-import image3 from '../assets/img/causes/Rectangle 34625789.png'
+import image1 from '../assets/img/projects/camp.webp'
+import image2 from '../assets/img/projects/convocation.webp'
+import image3 from '../assets/img/projects/group of boys.webp'
+import image4 from '../assets/img/projects/handpump.webp'
+import image5 from '../assets/img/projects/molana yousaf.webp'
+import image6 from '../assets/img/projects/marriage things.webp'
+import image7 from '../assets/img/projects/plant.webp'
+import image8 from '../assets/img/projects/rastion packs.webp'
 import {
   FaSchool,
   FaGraduationCap,
@@ -293,7 +298,7 @@ export const ALL_PROJECTS_DATA = [
     id: 'clean-water',
     title: 'Clean Water',
     description: 'Clean Water project is a welfare project initiated by MTJ Foundation to address the dire need for safe drinking water in deprived areas of the country.',
-    image: image1,
+    image: image4,
     learnMorePath: '/projects/clean-water',
     donatePath: '/donate/clean-water'
   },
@@ -301,7 +306,7 @@ export const ALL_PROJECTS_DATA = [
     id: 'ecommerce-training',
     title: 'E Commerce Training',
     description: 'At the core of our mission, MTJ Foundation is dedicated to comprehensive livelihood support, committed to elevating the well-being of communities through sustainable economic empowerment initiatives.',
-    image: image2,
+    image: image5,
     learnMorePath: '/projects/ecommerce-training',
     donatePath: '/donate/ecommerce-training'
   },
@@ -309,7 +314,7 @@ export const ALL_PROJECTS_DATA = [
     id: 'marriage-gift',
     title: 'Marriage Gift',
     description: 'Molana Tariq Jamil Foundation is doing a truly remarkable and heartwarming favor to distribute wedding gifts to poor girls. In many parts of the world, poverty can be a significant barrier to celebrating life\'s important milestones, including weddings.',
-    image: image3,
+    image: image6,
     learnMorePath: '/projects/marriage-gift',
     donatePath: '/donate/marriage-gift'
   },
@@ -317,7 +322,7 @@ export const ALL_PROJECTS_DATA = [
     id: 'maskan',
     title: 'Maskan',
     description: 'MTJ Foundation\'s Maskan Program is a revolutionary initiative to provide shelter to the homeless. Our dream is that no one in Pakistan should be left to sleep under open sky.',
-    image: image1,
+    image: image7,
     learnMorePath: '/projects/maskan',
     donatePath: '/donate/maskan'
   },
@@ -325,7 +330,7 @@ export const ALL_PROJECTS_DATA = [
     id: 'monthly-ration',
     title: 'Monthly Ration',
     description: 'Pakistan has a high rate of poverty and low development. This leads to citizens of lower socioeconomic classes suffering due to the lack of resources available to them. It is hard for many families to afford basic necessities including food.',
-    image: image2,
+    image: image8,
     learnMorePath: '/projects/monthly-ration',
     donatePath: '/donate/monthly-ration'
   }

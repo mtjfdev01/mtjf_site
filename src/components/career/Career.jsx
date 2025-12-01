@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 import './Careers.css'
-import iconA from '../../assets/img/career/A.png'
-import iconB from '../../assets/img/career/B.png'
-import iconC from '../../assets/img/career/C.png'
-import iconD from '../../assets/img/career/D.png'
-import iconE from '../../assets/img/career/E.png'
-import iconF from '../../assets/img/career/F.png'
+import iconA from '../../assets/img/career/A.webp'
+import iconB from '../../assets/img/career//B.webp'
+import iconC from '../../assets/img/career/C.webp'
+import iconD from '../../assets/img/career/D.webp'
+import iconE from '../../assets/img/career/E.webp'
+import iconF from '../../assets/img/career/F.webp'
 
 const JOBS_DATA = [
   {
