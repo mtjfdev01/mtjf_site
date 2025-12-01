@@ -1,14 +1,14 @@
 import './CtaCircles.css'
-import donateImg from '../../assets/img/causes/Rectangle 34625787.png'
-import reliefImg from '../../assets/img/causes/Rectangle 34625788.png'
-import volunteerImg from '../../assets/img/causes/Rectangle 34625789.png'
+import donateImg from '../../assets/img/donation_volunteer_cta/donation box.webp'
+import reliefImg from '../../assets/img/donation_volunteer_cta/poor man.webp'
+import volunteerImg from '../../assets/img/donation_volunteer_cta/unity hands.webp'
 
 const CTA_ITEMS = [
   {
     id: 'donation',
     label: 'Make Donation',
     color: '#F5C46E',
-    image: donateImg,
+    image: donateImg, 
     alt: 'Donation jar filled with coins',
     hideOnSm: false
   },

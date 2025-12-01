@@ -3,7 +3,7 @@ import './Events.css'
 import event1 from '../../assets/img/causes/Rectangle 34625787.png'
 import event2 from '../../assets/img/causes/Rectangle 34625788.png'
 import event3 from '../../assets/img/causes/Rectangle 34625789.png'
-import featuredImg from '../../assets/img/causes/Rectangle 34625787.png'
+import featuredImg from '../../assets/img/causes/marriage_gift.webp' 
 
 const EVENTS_DATA = [
   {
@@ -42,8 +42,8 @@ const Events = () => {
   return (
     <section className="events-section container py-64">
       <div className="events-header mb-48">
-        <p className="heading-secondary events-kicker mb-16">News & Events</p>
-        <h2 className="events-title">News & Events</h2>
+        <h2 className="heading-secondary events-kicker mb-16">News & Events</h2>
+        <h2>News & Events</h2> 
       </div>
 
       <div className="events-grid grid grid-12 gap-24">
@@ -95,9 +95,9 @@ const Events = () => {
               className="featured-background-image"
             />
             <div className="featured-content flex flex-col h-100">
-              <div className="featured-category heading-secondary mb-16">
+              <h2 className="featured-category heading-primary mb-16">
                 {FEATURED_EVENT.category}
-              </div>
+              </h2>
 
               <h3 className="mb-16">{FEATURED_EVENT.title}</h3>
 

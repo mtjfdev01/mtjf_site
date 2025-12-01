@@ -15,6 +15,7 @@ const DonorResources = lazy(() => import("./pages/DonorResources"));
 const Careers = lazy(() => import("./pages/Careers"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogsPage = lazy(() => import("./pages/Blogs"));
+const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 
 
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
         </Routes>
       </Suspense>
     </Router>

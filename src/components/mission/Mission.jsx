@@ -10,7 +10,7 @@ const Mission = () => {
           
           {/* Text content - Left side */}
           <div className="mission-content">
-            <h5 className="heading-secondary mission-title">Our Mission</h5>
+            <h2 className="heading-secondary mission-title">Our Mission</h2>
             
             <h2 className="mission-heading h2 text-white mb-24">
               Standing Strong for a Free and Dignified Pakistan

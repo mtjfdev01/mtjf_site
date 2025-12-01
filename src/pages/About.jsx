@@ -8,7 +8,7 @@ const CoreValues = lazy(() =>
   import("../components/coreValues/CoreValues")
 );
 const Directors = lazy(() => import("../components/directors/Directors"));
-// const Team = lazy(() => import("../components/team/Team"));
+const Team = lazy(() => import("../components/team/Team"));
 const Events = lazy(() => import("../components/events/Events"));
 const Blogs = lazy(() => import("../components/blogs/Blogs"));
 const DonationCta = lazy(() =>
@@ -55,9 +55,9 @@ const About = () => {
               ]}
             />
           </Suspense>
-          {/* <Suspense fallback={null}>
+          <Suspense fallback={null}>
             <Team />
-          </Suspense> */}
+          </Suspense>
           <Suspense fallback={null}>
             <Events />
           </Suspense>

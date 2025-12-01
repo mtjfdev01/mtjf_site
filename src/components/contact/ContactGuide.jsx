@@ -16,7 +16,7 @@ const ContactGuide = ({
 }) => {
   return (
     <div className="contact-guide">
-      <p className="heading-secondary">{subtitle}</p>
+      <h2 className="heading-secondary">{subtitle}</h2>
       <h3 className="contact-guide-title">{title}</h3>
       <p className="contact-guide-description">{description}</p>
       <div className="contact-guide-socials">

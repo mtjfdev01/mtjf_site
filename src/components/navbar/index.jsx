@@ -1,5 +1,5 @@
 import {useState, useEffect, useRef} from 'react' 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './index.css' 
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
@@ -11,6 +11,7 @@ import StickyBar from '../stickybar';
 const Navbar = () => {
    const [activeLink, setActiveLink] = useState("Home");
    const location = useLocation();
+   const navigate = useNavigate();
    const observerRef = useRef(null);
    
    // Check if we're on home page
@@ -88,8 +89,52 @@ const Navbar = () => {
      };
    }, [location.pathname]);
 
-     const handleClick = (linkName) => {
+  const handleClick = (linkName) => {
     setActiveLink(linkName);
+  };
+
+  const handleDonateClick = () => {
+    const isHomePage = location.pathname === '/' || location.pathname === '/home';
+    
+    if (!isHomePage) {
+      // Navigate to home page
+      navigate('/home');
+      
+      // Wait for navigation and page load, then scroll to donation form
+      setTimeout(() => {
+        scrollToDonationForm();
+      }, 100);
+    } else {
+      // Already on home page, just scroll to donation form
+      scrollToDonationForm();
+    }
+  };
+
+  const scrollToDonationForm = () => {
+    // Try multiple selectors to find the donation form
+    const donationForm = document.querySelector('.donation-form') || 
+                        document.querySelector('.donation-form-card') ||
+                        document.querySelector('[class*="donation-form"]');
+    
+    if (donationForm) {
+      donationForm.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+      
+      // Focus on the form for better accessibility
+      const firstInput = donationForm.querySelector('input, select, button');
+      if (firstInput) {
+        setTimeout(() => {
+          firstInput.focus();
+        }, 500);
+      }
+    } else {
+      // If form not found (lazy loading), retry after a delay
+      setTimeout(() => {
+        scrollToDonationForm();
+      }, 300);
+    }
   };
   return (
     <>
@@ -111,7 +156,7 @@ const Navbar = () => {
                 { name: "About", path: "/about" },
                 { name: "Projects", path: "/projects" },
                 { name: "Blogs", path: "/blogs " },
-                { name: "Registration", path: "/registration " },
+                { name: "Registration", path: "/volunteerRegistration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" }
               ].map((item) => (
@@ -130,7 +175,14 @@ const Navbar = () => {
 
             {/* button section */}
              <div>
-            <button className='btn' style={{margin:'10px'}}>Donate Now</button>
+            <button 
+              className='btn' 
+              style={{margin:'10px'}}
+              onClick={handleDonateClick}
+              aria-label="Navigate to donation form"
+            >
+              Donate Now
+            </button>
             </div>
             <div className='md:d-none'>
              <Hamburger/>

@@ -20,9 +20,9 @@ const Directors = ({
     <section className="directors-section">
       <div className=" directors-wrapper">
         <div className="directors-heading-block text-center">
-          <p className="heading-primary directors-heading-title">
+          <h2 className="heading-primary directors-heading-title">
             Directors
-          </p>
+          </h2>
           <p className="directors-heading-text text-base">
           Board of Directors.
           </p>

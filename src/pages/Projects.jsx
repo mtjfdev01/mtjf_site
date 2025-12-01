@@ -4,6 +4,7 @@ import '../components/projects/ProjectsPage.css'
 import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { ALL_PROJECTS_DATA } from '../data/projectsData'
+import Loading from '../components/loading/Loading'
 
 const Events = lazy(() => import('../components/events/Events'))
 const Blogs = lazy(() => import('../components/blogs/Blogs'))
@@ -86,16 +87,16 @@ const Projects = () => {
 
       {showContent && (
         <>
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading />}>
             <Events />
           </Suspense>
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading />}>
             <Blogs />
           </Suspense>
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading />}>
             <DonationCta />
           </Suspense>
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading />}>
             <Footer />
           </Suspense>
         </>

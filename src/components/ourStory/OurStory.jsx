@@ -42,7 +42,7 @@ const OurStory = () => {
 
         {/* Text content */}
         <div className="our-story-content">
-          <p className="heading-secondary text-right mb-16">Our Story</p>
+          <h2 className="heading-secondary text-right mb-16">Our Story</h2>
 
           <h2 className="h2 text-white mb-24">
             Molana Tariq Jamil, a revered figure since the 1980s, has dedicated his life
