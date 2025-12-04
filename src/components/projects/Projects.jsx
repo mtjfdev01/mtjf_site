@@ -1,14 +1,13 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Projects.css'
-import image1 from '../../assets/img/causes/Rectangle 34625787.png'
-import image3 from '../../assets/img/causes/Rectangle 34625789.png'
 
-import health from '../../assets/img/projects/cards/health.webp'
-import education from '../../assets/img/projects/cards/education.webp' 
-import marriage_gift from '../../assets/img/projects/cards/merrage_gift.webp' 
-import water from '../../assets/img/projects/cards/water.webp'
-import apna_ghr from '../../assets/img/projects/cards/apna_ghr.webp'
+
+import health from '../../assets/img/projects/health.webp'
+import education from '../../assets/img/projects/education.webp' 
+import marriage_gift from '../../assets/img/projects/marriage_gift.webp' 
+import water from '../../assets/img/projects/water.webp'
+import apna_ghr from '../../assets/img/projects/apna_ghr.webp'
 
 
 const PROJECTS_DATA = [
@@ -16,8 +15,8 @@ const PROJECTS_DATA = [
     id: 'medicine',
     category: 'Medicine',
     categoryColor: '#FFB6C1',
-    title: 'Sehatmand Zindagi, Behtar Mustaqbil',
-    description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us.',
+    title: 'A healthy life is a human right.”',
+    description: 'In many communities, basic healthcare is still out of reach. We step in with medical support that saves lives and restores dignity. This project matters because no one should lose their life due to lack of treatment, and your generosity keeps families whole.',
     image: health,
     progress: 47.56,
     progressColor: '#9B59B6',
@@ -30,8 +29,8 @@ const PROJECTS_DATA = [
     id: 'education',
     category: 'Education',
     categoryColor: '#90EE90',
-    title: 'Taleem Har Bachay Ka Haq',
-    description: 'Education is the process of gaining knowledge, skills, personal and social growth.',
+    title: 'Because every child deserves a chance to rise.',
+    description: 'We educate children who have been denied opportunity their entire lives. With your support, a child who once struggled for a future can finally sit in a classroom, hold a book, and believe in tomorrow. This project matters because education is the first step out of poverty, and you can give that step.',
     image: education,
     progress: 47.58,
     progressColor: '#2ECC71',
@@ -58,8 +57,8 @@ const PROJECTS_DATA = [
     id: 'water',
     category: 'Clean Water',
     categoryColor: '#87CEEB',
-    title: 'Saf Pani, Behtar Zindagi',
-    description: 'Clean water is safe, fresh water free from pollutants — essential for health and hygiene.',
+    title: 'Clean water changes everything.',
+    description: 'Women walk miles just to fetch unsafe water that makes their children sick. Your support helps us build sustainable water solutions that restore health, comfort, and hope. This project matters because clean water is the foundation of life and you can place that foundation in someone’s home.',
     image: water,
     progress: 52.30,
     progressColor: '#3498DB',
@@ -72,8 +71,8 @@ const PROJECTS_DATA = [
     id: 'shelter',
     category: 'Shelter',
     categoryColor: '#DDA0DD',
-    title: 'Ghar Har Kisi Ka',
-    description: 'Providing safe shelter and housing for families in need.',
+    title: 'A home where lost futures are rebuilt',
+    description: 'Apna Ghar gives vulnerable widows and orphans a safe place to sleep, learn, and simply be loved. This project matters because everyone deserves a family, warmth, and stability, and you make that possible.',
     image: apna_ghr,
     progress: 38.25,
     progressColor: '#9B59B6',
@@ -173,11 +172,11 @@ const Projects = () => {
     <section className="projects-section container py-48">
       <div className="projects-header flex justify-between items-center mb-32">
         <div>
-          <h2 className="heading-secondary">Projects</h2>
-          <h2 className="projects-title">Some projects we have in World</h2>
+          <h2 className="heading-secondary">Our Projects</h2>
+          <h3 className="projects-title">Where Your Support Meets Real Impact </h3>
         </div>
         <Link to="/projects" className="projects-link">
-          More Causes &gt;
+          Learn More &gt;
         </Link>
       </div>
 

@@ -1,9 +1,20 @@
 import { useState } from 'react'
 import './DonationFeatures.css'
+import DisasterRelief from '../../assets/img/projects/icons/disaster_relief.webp'
+import Health from '../../assets/img/projects/icons/health.webp'
+import Education from '../../assets/img/projects/icons/education.webp'
+import CleanWater from '../../assets/img/projects/icons/clean_water.webp'
+import ApnaGhar from '../../assets/img/projects/icons/apnaghar.webp'
+import Qurbani from '../../assets/img/projects/icons/qurbani.webp'
+import KASB from '../../assets/img/projects/icons/kasb.webp'
+import Seeds from '../../assets/img/projects/icons/seeds.webp'
+import Community from '../../assets/img/projects/icons/community.webp'
+import AASLab from '../../assets/img/projects/icons/aaslab.webp'
+ 
 
 const ICON_PROPS = {
-  width: 30,
-  height: 30,
+  width: 40,
+  height: 40,
   viewBox: '0 0 24 24',
   fill: 'none',
   strokeWidth: '2',
@@ -13,117 +24,97 @@ const ICON_PROPS = {
 
 const FEATURE_ITEMS = [
   {
-    id: 'marriage',
-    title: 'Marriage Support',
+    id: 'seeds',
+    title: 'Seeds of Change',
     description:
-      'Marriage support provides guidance and builds strong, healthy relationships.',
+      'Planting trees and raising awareness to build a greener, climate-resilient Pakistan.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <circle cx="8.5" cy="12" r="3.2"></circle>
-        <circle cx="15.5" cy="12" r="3.2"></circle>
-        <path d="M11 12c.5-2 1.5-3.5 3-4"></path>
-      </svg>
+      <img src={Seeds} alt="Seeds of Change Icon"  {...ICON_PROPS}/>
     )
   },
   {
-    id: 'food',
-    title: 'Food Assistance',
-    description: 'Nutritious meals and ration packs for vulnerable families.',
+    id: 'qurbani',
+    title: 'Qurbani Barai Mustehqeen',
+    description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M4 10h16"></path>
-        <path d="M5 10a3 3 0 0 0 6 0V4"></path>
-        <path d="M13 4h6v6a3 3 0 0 1-3 3"></path>
-        <path d="M7 20h10"></path>
-      </svg>
-    )
+     <img src={Qurbani} alt="Qurbani Icon"  {...ICON_PROPS}/>
+)
   },
   {
     id: 'shelter',
     title: 'Disaster Relief',
     description: 'Rapid shelter, blankets, and essentials after emergencies.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M3 11 12 4l9 7"></path>
-        <path d="M5 10v10h14V10"></path>
-        <path d="M9 21V12h6v9"></path>
-      </svg>
+      <img src={DisasterRelief} alt="Disaster Relief Icon"  {...ICON_PROPS}/>
     )
   },
   {
     id: 'health',
     title: 'Health',
     description:
-      'Health is a state of physical, mental, and emotional well-being, not just of illness.',
+      'Bringing essential healthcare to everyone, ensuring timely treatments for all.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M21 10v6a3 3 0 0 1-6 0v-6"></path>
-        <path d="M3 13a8 8 0 0 0 8 8"></path>
-        <circle cx="18" cy="7" r="2"></circle>
-      </svg>
+     <img src={Health} alt='health Icon' {...ICON_PROPS} />
     )
   },
   {
     id: 'education',
     title: 'Education',
     description:
-      'Education is the process of gaining knowledge, skills, personal and social growth.',
+      'Opening doors to brighter futures through accessible, quality learning for every child.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M12 2L2 7l10 5 10-5-10-5Z"></path>
-        <path d="M12 12v8"></path>
-        <path d="M7 18a5 5 0 0 0 10 0"></path>
-      </svg>
+     <img src={Education} alt="Education Icon"  {...ICON_PROPS}/>
     )
   },
   {
     id: 'water',
     title: 'Clean Water',
     description:
-      'Clean water is safe, fresh water free from pollutants — essential for health and hygiene.',
+      'Providing clean, safe drinking water to restore health, dignity, and daily ease.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M12 2s6 6.5 6 10a6 6 0 1 1-12 0c0-3.5 6-10 6-10Z"></path>
-      </svg>
-    )
+     <img src={CleanWater} alt="CleanWater Icon"  {...ICON_PROPS}/>
+)
   },
   {
-    id: 'marriage',
-    title: 'Marriage Support',
+    id: 'apnaghar',
+    title: 'Apna Ghar',
     description:
-      'Marriage support provides guidance and builds strong, healthy relationships.',
+      'Offering vulnerable widows and children a safe, nurturing home to call their own.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <circle cx="8.5" cy="12" r="3.2"></circle>
-        <circle cx="15.5" cy="12" r="3.2"></circle>
-        <path d="M11 12c.5-2 1.5-3.5 3-4"></path>
-      </svg>
+    <img src={ApnaGhar} alt="ApnaGhar Icon"  {...ICON_PROPS}/>
     )
   },
   {
-    id: 'food',
-    title: 'Food Assistance',
-    description: 'Nutritious meals and ration packs for vulnerable families.',
+    id: 'kasb',
+    title: 'KASB Skill Development',
+    description: 'Empowering youth and women with skills that create income and independence.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M4 10h16"></path>
-        <path d="M5 10a3 3 0 0 0 6 0V4"></path>
-        <path d="M13 4h6v6a3 3 0 0 1-3 3"></path>
-        <path d="M7 20h10"></path>
-      </svg>
+      <img src={KASB} alt="KASB Icon"  {...ICON_PROPS}/>
+    )
+  },
+   {
+    id: 'community',
+    title: 'Community Services',
+    description: 'Supporting families with essential aid to meet immediate needs with dignity.',
+    icon: (
+      <img src={Community} alt="Community Icon"  {...ICON_PROPS}/>
     )
   },
   {
-    id: 'shelter',
+    id: 'disaster',
     title: 'Disaster Relief',
-    description: 'Rapid shelter, blankets, and essentials after emergencies.',
+    description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
     icon: (
-      <svg {...ICON_PROPS}>
-        <path d="M3 11 12 4l9 7"></path>
-        <path d="M5 10v10h14V10"></path>
-        <path d="M9 21V12h6v9"></path>
-      </svg>
-    )
+    <img src={DisasterRelief} alt="Disaster Relief Icon"  {...ICON_PROPS}/>
+   )
+  },
+   {
+    id: 'aaslab',
+    title: 'AAS Lab & Diagnostics',
+    description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
+    icon: (
+    <img src={AASLab} alt="AAS Lab Icon"  {...ICON_PROPS}/>
+   )
   }
 ]
 
@@ -150,8 +141,8 @@ const DonationFeatures = () => {
     <div className='donation_feature_container d-flex gap-32 items-start w-100 mt-16'>
       {/* LEFT COLUMN*/}
       <div className='left-column flex-1'>
-        <h1 className='heading-secondary d-flex items-center gap-12 mb-8'>Make A Donation</h1>
-        <h2>Various things we <br /> help in whole world</h2>
+        <h3 className='heading-secondary d-flex items-center gap-12 mb-8'>Make A Donation</h3>
+        <h2>Changing Lives through these Initiatives</h2>
         <div className="arrowsn d-flex gap-12 items-center mt-24">
           <button
             type="button"
