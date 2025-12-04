@@ -1,18 +1,16 @@
 import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/blogs/hero section for blogs.webp'
+import image1 from '../assets/img/contact us/hero contact.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
-const Events = lazy(() => import('../components/events/Events'))
-const Blogs = lazy(() => import('../components/blogs/Blogs'))
-const DonationCta = lazy(() =>
-  import('../components/donationCta/DonationCta')
+const CheckoutForm = lazy(() =>
+  import('../components/checkoutForm/CheckoutForm')
 )
+const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const Footer = lazy(() => import('../components/footer/Footer'))
-const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 
-const BlogsPage = () => {
-  const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
+const Checkout = () => {
+  const [formRef, showForm] = useIntersectionObserver({ 
     rootMargin: '100px',
     loadImmediately: true 
   });
@@ -22,12 +20,12 @@ const BlogsPage = () => {
 
   return (
     <>
-      <PageHeader image={image1} />
+      <PageHeader title="Checkout" image={image1} />
 
-      <div ref={firstSectionRef}>
-        {showFirstSection && (
+      <div ref={formRef}>
+        {showForm && (
           <Suspense fallback={null}>
-            <Events />
+            <CheckoutForm />
           </Suspense>
         )}
       </div>
@@ -35,12 +33,6 @@ const BlogsPage = () => {
       <div ref={restRef} style={{ minHeight: '50px' }}>
         {showRest && (
           <>
-            {/* <Suspense fallback={null}>
-              <Blogs />
-            </Suspense> */}
-            <Suspense fallback={null}>
-              <Newsletter />
-            </Suspense>
             <Suspense fallback={null}>
               <DonationCta />
             </Suspense>
@@ -53,5 +45,4 @@ const BlogsPage = () => {
     </>
   )
 }
-
-export default BlogsPage
+export default Checkout

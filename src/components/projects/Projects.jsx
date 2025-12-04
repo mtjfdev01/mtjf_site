@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import LazyImage from '../common/LazyImage'
 import './Projects.css'
 import image1 from '../../assets/img/causes/Rectangle 34625787.png'
 import image3 from '../../assets/img/causes/Rectangle 34625789.png'
@@ -208,10 +209,11 @@ const Projects = () => {
               className="project-card card"
             >
               <div className="project-image-container relative">
-                <img
+                <LazyImage
                   src={project.image}
                   alt={project.title}
                   className="project-image"
+                  rootMargin="50px"
                 />
                 <div
                   className="project-category-tag"

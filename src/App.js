@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { CartProvider } from './contexts/CartContext';
+import { DonationProvider } from './contexts/DonationContext';
 import Navbar from './components/navbar';
 import './App.css';
 import StickyBar from "./components/stickybar";
@@ -18,6 +19,7 @@ const JobDetail = lazy(() => import("./pages/JobDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogsPage = lazy(() => import("./pages/Blogs"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 
 
 
@@ -31,25 +33,28 @@ function App() {
   return (
     <Router>
       <CartProvider>
-        <StickyBar />
-        <Navbar />
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/publications" element={<Publications />} />
-            <Route path="/getInvolved" element={<GetInvolved />} />
-            <Route path="/donorResources" element={<DonorResources />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/careers/:id" element={<JobDetail />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
-          </Routes>
-        </Suspense>
+        <DonationProvider>
+          <StickyBar />
+          <Navbar />
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/publications" element={<Publications />} />
+              <Route path="/getInvolved" element={<GetInvolved />} />
+              <Route path="/donorResources" element={<DonorResources />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/careers/:id" element={<JobDetail />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+          </Suspense>
+        </DonationProvider>
       </CartProvider>
     </Router>
   );
