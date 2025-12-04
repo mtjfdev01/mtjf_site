@@ -246,6 +246,10 @@
 }
 
 @media (max-width: 768px) {
+  .projects-section {
+    padding: 0;
+    padding-bottom: var(--space-32);
+  }
   .projects-nav-btn {
     display: none;
   }

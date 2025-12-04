@@ -15,6 +15,7 @@ const DonationCta = lazy(() =>
   import("../components/donationCta/DonationCta")
 );
 const Footer = lazy(() => import("../components/footer/Footer"));
+const Newsletter = lazy(() => import("../components/newsletter/Newsletter"));
 
 const About = () => {
   const [showContent, setShowContent] = useState(false);
@@ -41,7 +42,9 @@ const About = () => {
             <CoreValues />
           </Suspense>
           <Suspense fallback={null}>
-            <Directors />
+            <Directors
+              directorRole="Chairman"
+             />
           </Suspense>
           <Suspense fallback={null}>
             <Directors
@@ -63,6 +66,9 @@ const About = () => {
           </Suspense>
           <Suspense fallback={null}>
             <Blogs />
+          </Suspense>
+          <Suspense fallback={null}>
+            <Newsletter />
           </Suspense>
           <Suspense fallback={null}>
             <DonationCta />

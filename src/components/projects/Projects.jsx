@@ -2,8 +2,14 @@ import { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Projects.css'
 import image1 from '../../assets/img/causes/Rectangle 34625787.png'
-import image2 from '../../assets/img/causes/Rectangle 34625788.png'
 import image3 from '../../assets/img/causes/Rectangle 34625789.png'
+
+import health from '../../assets/img/projects/cards/health.webp'
+import education from '../../assets/img/projects/cards/education.webp' 
+import marriage_gift from '../../assets/img/projects/cards/merrage_gift.webp' 
+import water from '../../assets/img/projects/cards/water.webp'
+import apna_ghr from '../../assets/img/projects/cards/apna_ghr.webp'
+
 
 const PROJECTS_DATA = [
   {
@@ -12,7 +18,7 @@ const PROJECTS_DATA = [
     categoryColor: '#FFB6C1',
     title: 'Sehatmand Zindagi, Behtar Mustaqbil',
     description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us.',
-    image: image1,
+    image: health,
     progress: 47.56,
     progressColor: '#9B59B6',
     goal: 100000,
@@ -26,7 +32,7 @@ const PROJECTS_DATA = [
     categoryColor: '#90EE90',
     title: 'Taleem Har Bachay Ka Haq',
     description: 'Education is the process of gaining knowledge, skills, personal and social growth.',
-    image: image2,
+    image: education,
     progress: 47.58,
     progressColor: '#2ECC71',
     goal: 100000,
@@ -40,7 +46,7 @@ const PROJECTS_DATA = [
     categoryColor: '#FFD700',
     title: 'Tabahi Ke Baad Naye Hoslay',
     description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us.',
-    image: image3,
+    image: marriage_gift,
     progress: 47.58,
     progressColor: '#F39C12',
     goal: 100000,
@@ -54,7 +60,7 @@ const PROJECTS_DATA = [
     categoryColor: '#87CEEB',
     title: 'Saf Pani, Behtar Zindagi',
     description: 'Clean water is safe, fresh water free from pollutants — essential for health and hygiene.',
-    image: image1,
+    image: water,
     progress: 52.30,
     progressColor: '#3498DB',
     goal: 150000,
@@ -68,7 +74,7 @@ const PROJECTS_DATA = [
     categoryColor: '#DDA0DD',
     title: 'Ghar Har Kisi Ka',
     description: 'Providing safe shelter and housing for families in need.',
-    image: image2,
+    image: apna_ghr,
     progress: 38.25,
     progressColor: '#9B59B6',
     goal: 200000,

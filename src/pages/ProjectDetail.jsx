@@ -5,6 +5,8 @@ import DonationForm from '../components/donationForm/DonationForm'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
+import Newsletter from '../components/newsletter/Newsletter'
+import DonationCta from '../components/donationCta/DonationCta'
 
 const ProjectDetail = () => {
   const { id } = useParams()
@@ -112,7 +114,8 @@ const ProjectDetail = () => {
           ))}
         </div>
       </section>
-
+      <Newsletter />
+      <DonationCta />
       <Footer />
     </div>
   )

@@ -13,7 +13,7 @@ const defaultTexts = [
 const Directors = ({
   imageUrl = directorImage,
   directorName = 'Molana Tariq Jamil',
-  directorRole = "Chairman's Message",
+  directorRole = "Chairman",
   directorTexts = defaultTexts
 }) => {
   return (
@@ -21,11 +21,8 @@ const Directors = ({
       <div className=" directors-wrapper">
         <div className="directors-heading-block text-center">
           <h2 className="heading-primary directors-heading-title">
-            Directors
+            {directorRole}
           </h2>
-          <p className="directors-heading-text text-base">
-          Board of Directors.
-          </p>
         </div>
 
         <div className="directors-panel">
@@ -39,7 +36,7 @@ const Directors = ({
             <figcaption className="directors-label">
               <span className="directors-name h2">{directorName}</span>
               <span className="directors-role text-accent">
-                {directorRole}
+                {directorRole}'s Message
               </span>
             </figcaption>
           </figure>

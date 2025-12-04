@@ -1,4 +1,5 @@
 import './CtaCircles.css'
+import { useCart } from '../../contexts/CartContext'
 import donateImg from '../../assets/img/donation_volunteer_cta/donation box.webp'
 import reliefImg from '../../assets/img/donation_volunteer_cta/poor man.webp'
 import volunteerImg from '../../assets/img/donation_volunteer_cta/unity hands.webp'
@@ -31,27 +32,53 @@ const CTA_ITEMS = [
 ]
 
 const CtaCircles = () => {
+  const { shortDonate, handleVolunteerRegistration } = useCart()
+
+  const handleDonationClick = () => {
+    shortDonate()
+  }
+
+  const handleVolunteerClick = () => {
+    handleVolunteerRegistration()
+  }
+
   return (
     <section className='cta-circles container'>
       <div className='cta-grid'>
-        {CTA_ITEMS.map((item) => (
-          <div
-            key={item.id}
-            className={`cta-card ${item.hideOnSm ? 'd-none md:d-flex' : 'd-flex'} items-center gap-16`}
-          >
-            {item.label && (
-              <div
-                className='cta-label text-white semi upper'
-                style={{ backgroundColor: item.color }}
+        {CTA_ITEMS.map((item) => {
+          const isDonation = item.id === 'donation'
+          const isVolunteer = item.id === 'volunteer'
+          const isClickable = isDonation || isVolunteer
+          
+          const handleClick = isDonation ? handleDonationClick : isVolunteer ? handleVolunteerClick : undefined
+          
+          return (
+            <div
+              key={item.id}
+              className={`cta-card ${item.hideOnSm ? 'd-none md:d-flex' : 'd-flex'} items-center gap-16`}
+              onClick={handleClick}
+              style={isClickable ? { cursor: 'pointer' } : undefined}
+            >
+              {item.label && (
+                <div
+                  className='cta-label text-white semi upper'
+                  style={{ 
+                    backgroundColor: item.color,
+                    cursor: isClickable ? 'pointer' : 'default'
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
+              <div 
+                className='cta-circle shadow-lg overflow-hidden'
+                style={isClickable ? { cursor: 'pointer' } : undefined}
               >
-                {item.label}
+                <img src={item.image} alt={item.alt} />
               </div>
-            )}
-            <div className='cta-circle shadow-lg overflow-hidden'>
-              <img src={item.image} alt={item.alt} />
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </section>
   )

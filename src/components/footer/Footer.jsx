@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
 import logoImg from '../../assets/img/logos/logo_blue_text.webp'
+import DonationCta from '../donationCta/DonationCta';
+import Newsletter from '../newsletter/Newsletter';
 
 const Footer = () => {
   return (
+    <>
+    {/* <Newsletter />
+    <DonationCta /> */}
     <footer className="footer">
       <div className="footer-container container">
         <div className="footer-grid grid grid-12 gap-24">
@@ -49,7 +54,10 @@ const Footer = () => {
 
           {/* Second Column - Products/Locations */}
           <div className="footer-column footer-products col-12 md-6 lg-3">
-            <h4 className="footer-heading h4">Products</h4>
+
+            <Link to="/contact" className="footer-link">
+              <h4 className="footer-heading h4">Locations</h4>
+            </Link>
             <ul className="footer-list flex flex-col gap-12">
               <li className="footer-location-item">
                 <div className="footer-location-address">
@@ -131,10 +139,10 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-      </div>
-    </footer>
-  )
-}
+        </div>
+      </footer>
+    </>
+  );
+};
 
-export default Footer
-
+export default Footer;

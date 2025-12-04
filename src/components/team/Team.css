@@ -148,22 +148,6 @@
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.35) 85%);
 }
 
-.team-card--emerald .team-card__image-wrapper::after {
-  background: linear-gradient(180deg, rgba(56, 164, 255, 0.7) 0%, rgba(27, 159, 102, 0.8) 100%);
-}
-
-.team-card--sunset .team-card__image-wrapper::after {
-  background: linear-gradient(180deg, rgba(249, 167, 101, 0.7) 0%, rgba(227, 111, 58, 0.85) 95%);
-}
-
-.team-card--aqua .team-card__image-wrapper::after {
-  background: linear-gradient(180deg, rgba(109, 190, 255, 0.66) 0%, rgba(74, 220, 199, 0.9) 100%);
-}
-
-.team-card--amber .team-card__image-wrapper::after {
-  background: linear-gradient(180deg, rgba(161, 185, 207, 0.3) 0%, rgba(210, 160, 64, 0.65) 100%);
-}
-
 .team-card__body {
   padding: var(--space-24);
   display: flex;

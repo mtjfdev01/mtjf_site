@@ -56,6 +56,7 @@ const Home = () => {
       {showDonationForm && (
         <Suspense fallback={null}>
           <DonationForm
+            formId="home-donation-form"
             layout="vertical"
             showProjectSelect={true}
             projects={ALL_PROJECTS_DATA}

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CartContext = createContext();
 
@@ -16,6 +17,8 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Load cart from localStorage on component mount
   useEffect(() => {
@@ -132,6 +135,51 @@ export const CartProvider = ({ children }) => {
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
 
+  const shortDonate = () => {
+    const isOnHomePage = location.pathname === '/' || location.pathname === '/home';
+    
+    if (isOnHomePage) {
+      // If already on home page, focus on donation form
+      setTimeout(() => {
+        const donationForm = document.getElementById('home-donation-form') || 
+                            document.querySelector('.donation-form');
+        if (donationForm) {
+          donationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Focus on the first input field in the form
+          const firstInput = donationForm.querySelector('input, select, button');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }
+      }, 100);
+    } else {
+      // Navigate to home page, then focus on donation form
+      navigate('/');
+      setTimeout(() => {
+        const donationForm = document.getElementById('home-donation-form') || 
+                            document.querySelector('.donation-form');
+        if (donationForm) {
+          donationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Focus on the first input field in the form
+          const firstInput = donationForm.querySelector('input, select, button');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }
+      }, 300); // Slightly longer delay to allow navigation to complete
+    }
+  };
+
+  const handleVolunteerRegistration = () => {
+    const isOnVolunteerPage = location.pathname === '/volunteerRegistration';
+    
+    if (!isOnVolunteerPage) {
+      navigate('/volunteerRegistration', { replace: false });
+      // Scroll to top of page after navigation
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  };
+
   const value = {
     cartItems,
     isCartOpen,
@@ -143,7 +191,9 @@ export const CartProvider = ({ children }) => {
     clearCart,
     addCustomDonation,
     openCart,
-    closeCart
+    closeCart,
+    shortDonate,
+    handleVolunteerRegistration
   };
 
   return (

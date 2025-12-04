@@ -12,7 +12,7 @@ const DonationCta = lazy(() =>
   import('../components/donationCta/DonationCta')
 )
 const Footer = lazy(() => import('../components/footer/Footer'))
-
+const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const Projects = () => {
   const navigate = useNavigate()
   const [showContent, setShowContent] = useState(false)
@@ -94,7 +94,10 @@ const Projects = () => {
             <Blogs />
           </Suspense>
           <Suspense fallback={<Loading />}>
-            <DonationCta />
+            <Newsletter />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+              <DonationCta />
           </Suspense>
           <Suspense fallback={<Loading />}>
             <Footer />
