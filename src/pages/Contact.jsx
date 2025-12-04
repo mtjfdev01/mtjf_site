@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/contact us/hero contact.webp'
+import image1 from '../assets/img/hero/contact_us_hero.webp'
 
 const ContactSection = lazy(() =>
   import('../components/contact/ContactSection')
