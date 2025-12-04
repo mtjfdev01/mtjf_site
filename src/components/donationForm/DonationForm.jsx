@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDonation } from '../../contexts/DonationContext'
 import './DonationForm.css'
 
 const DEFAULT_DONATION_OPTIONS = {
@@ -12,7 +14,7 @@ const DonationForm = ({
   title = 'Donate',
   initialCurrency = 'PKR',
   donationOptions = {},
-  categoryOptions = ['General'],
+  categoryOptions = ['General', 'Sadqa', 'Zakat'],
   defaultCategory,
   showProjectSelect = false,
   projects = [],
@@ -21,6 +23,8 @@ const DonationForm = ({
   layout = 'vertical',
   className = ''
 }) => {
+  const navigate = useNavigate()
+  const { setDonationFormData } = useDonation()
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -37,6 +41,7 @@ const DonationForm = ({
     category: defaultCategory || categoryOptions[0] || 'General',
     projectId: defaultProjectId || projects[0]?.id || ''
   })
+  const [errorMessage, setErrorMessage] = useState('')
 
   const getDonationAmounts = (currency) =>
     mergedDonationOptions[currency] || mergedDonationOptions[initialCurrency]
@@ -51,7 +56,68 @@ const DonationForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(formData)
+    
+    // Clear previous error
+    setErrorMessage('')
+    
+    // Calculate final amount
+    const finalAmount = formData.customAmount || formData.amount
+    
+    // Validate amount is selected
+    if (!finalAmount || finalAmount.trim() === '') {
+      setErrorMessage('Please select or enter a donation amount')
+      setTimeout(() => {
+        const amountInput = document.querySelector('.donation-form-amounts') || 
+                          document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Validate amount is a valid number
+    const amountNumber = Number(finalAmount)
+    if (isNaN(amountNumber) || amountNumber <= 0) {
+      setErrorMessage('Please enter a valid donation amount')
+      setTimeout(() => {
+        const amountInput = document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.focus()
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Validate minimum amount (100 PKR)
+    if (amountNumber < 100) {
+      setErrorMessage('Minimum donation amount is 100 PKR')
+      setTimeout(() => {
+        const amountInput = document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.focus()
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Prepare donation data
+    const donationData = {
+      ...formData,
+      amount: finalAmount,
+      finalAmount: finalAmount
+    }
+    
+    // Store in context
+    setDonationFormData(donationData)
+    
+    // Call original onSubmit if provided
+    onSubmit?.(donationData)
+    
+    // Navigate to checkout
+    navigate('/checkout')
   }
 
   return (
@@ -63,6 +129,11 @@ const DonationForm = ({
         <h3 className="donation-form-title h2">{title}</h3>
 
         <form onSubmit={handleSubmit} className="donation-form-body">
+          {errorMessage && (
+            <div className="donation-form-error">
+              {errorMessage}
+            </div>
+          )}
           {/* First Row: Frequency, Currency, Project, Category */}
           <div className="donation-form-row">
             <div className="donation-form-group donation-form-frequency-group">
@@ -100,8 +171,8 @@ const DonationForm = ({
                 }
               >
                 <option value="PKR">PKR</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
+                {/* <option value="USD">USD</option>
+                <option value="EUR">EUR</option> */}
               </select>
             </div>
 

@@ -1,8 +1,8 @@
 import './CtaCircles.css'
 import { useCart } from '../../contexts/CartContext'
-import donateImg from '../../assets/img/donation_volunteer_cta/donation box.webp'
-import reliefImg from '../../assets/img/donation_volunteer_cta/poor man.webp'
-import volunteerImg from '../../assets/img/donation_volunteer_cta/unity hands.webp'
+import donateImg from '../../assets/img/donation_volunteer_cta/donation_box.webp'
+import reliefImg from '../../assets/img/donation_volunteer_cta/help.webp'
+import volunteerImg from '../../assets/img/donation_volunteer_cta/ration.webp'
 
 const CTA_ITEMS = [
   {

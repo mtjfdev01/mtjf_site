@@ -1,6 +1,7 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import image1 from '../assets/img/blogs/hero section for blogs.webp'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const Events = lazy(() => import('../components/events/Events'))
 const Blogs = lazy(() => import('../components/blogs/Blogs'))
@@ -11,36 +12,44 @@ const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 
 const BlogsPage = () => {
-  const [showContent, setShowContent] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 0)
-    return () => clearTimeout(timer)
-  }, [])
+  const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
+    rootMargin: '100px',
+    loadImmediately: true 
+  });
+  const [restRef, showRest] = useIntersectionObserver({ 
+    rootMargin: '200px'
+  });
 
   return (
     <>
-      <PageHeader  image={image1} />
+      <PageHeader image={image1} />
 
-      {showContent && (
-        <>
+      <div ref={firstSectionRef}>
+        {showFirstSection && (
           <Suspense fallback={null}>
             <Events />
           </Suspense>
-          {/* <Suspense fallback={null}>
-            <Blogs />
-          </Suspense> */}
-          <Suspense fallback={null}>
-            <Newsletter />
-          </Suspense>
-          <Suspense fallback={null}>
-            <DonationCta />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
-        </>
-      )}
+        )}
+      </div>
+
+      <div ref={restRef} style={{ minHeight: '50px' }}>
+        {showRest && (
+          <>
+            {/* <Suspense fallback={null}>
+              <Blogs />
+            </Suspense> */}
+            <Suspense fallback={null}>
+              <Newsletter />
+            </Suspense>
+            <Suspense fallback={null}>
+              <DonationCta />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+          </>
+        )}
+      </div>
     </>
   )
 }

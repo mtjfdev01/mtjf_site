@@ -42,17 +42,16 @@ const OurStory = () => {
 
         {/* Text content */}
         <div className="our-story-content">
-          <h2 className="heading-secondary text-right mb-16">Our Story123</h2>
-
-          <h2 className="h2 text-white mb-24">
-            Molana Tariq Jamil, a revered figure since the 1980s, has dedicated his life
-            to philanthropy with a mission to uplift those in need.
-          </h2>
+          <h2 className="heading-secondary text-right mb-16">Our Story</h2>
+          <p>At the heart of the Molana Tariq Jamil Foundation (MTJF) is a simple but powerful belief:<b>every human being deserves dignity, opportunity, and compassion, regardless of their background.</b></p>
+            <p></p>
+          
+          
+        
 
           <p className="text-base text-white opacity-80 mb-16">
-            Recognizing the deep-rooted need for support, he established the MTJ Foundation
-            as a beacon of hope for those in need. His lifelong commitment to helping others
-            is now embodied in the foundation, providing education, healthcare, and economic empowerment.
+           Established by Molana Tariq Jamil, whose voice has inspired millions toward kindness and unity, MTJF began with a mission to ease suffering and uplift vulnerable families throughout Pakistan. Over the years, what started as a modest effort has grown into a global humanitarian movement—providing education, healthcare, clean water, shelter, and life-changing support to those who need it most.
+           Since 2019, MTJF has touched 1 Million+ lives through sustainable, long-term programs that restore hope and build resilience. From constructing homes for flood survivors to ensuring clean drinking water in remote villages, our journey is driven by compassion and shaped by the belief that meaningful change begins with a single act of care.
           </p>
 
           {isExpanded && (

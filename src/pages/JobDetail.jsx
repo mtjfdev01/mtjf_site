@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import axiosInstance from '../utils/axios'
-import Footer from '../components/footer/Footer'
-import Newsletter from '../components/newsletter/Newsletter'
-import DonationCta from '../components/donationCta/DonationCta'
 import ApplyForm from '../components/career/ApplyForm'
 import logoBlueText from '../assets/img/logos/logo_blue_text.webp'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import LazyImage from '../components/common/LazyImage'
 import './JobDetail.css'
+
+const Footer = lazy(() => import('../components/footer/Footer'))
+const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
+const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 
 const JobDetail = () => {
   const { id } = useParams()
@@ -16,6 +19,10 @@ const JobDetail = () => {
   const [showApplyForm, setShowApplyForm] = useState(false)
   const [job, setJob] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  
+  const [restRef, showRest] = useIntersectionObserver({ 
+    rootMargin: '200px'
+  });
   
   // Get job data from navigation state (passed when clicking job card)
   const jobFromState = location.state?.job
@@ -153,7 +160,7 @@ const JobDetail = () => {
           </div>
           <div className="job-detail-header-right">
             <div className="job-detail-logo">
-              <img 
+              <LazyImage 
                 src={logoBlueText} 
                 alt="Molana Tariq Jamil Foundation Logo"
                 className="job-detail-logo-img"
@@ -233,9 +240,22 @@ const JobDetail = () => {
           />
         )}
       </div>
-      <Newsletter />
-      <DonationCta />
-      <Footer />
+
+      <div ref={restRef} style={{ minHeight: '50px' }}>
+        {showRest && (
+          <>
+            <Suspense fallback={null}>
+              <Newsletter />
+            </Suspense>
+            <Suspense fallback={null}>
+              <DonationCta />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+          </>
+        )}
+      </div>
     </div>
   )
 }

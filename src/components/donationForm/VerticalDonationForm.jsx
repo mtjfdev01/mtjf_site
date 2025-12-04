@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDonation } from '../../contexts/DonationContext'
 import './VerticalDonationForm.css'
 
 const DEFAULT_DONATION_OPTIONS = {
@@ -20,6 +22,9 @@ const VerticalDonationForm = ({
   onSubmit = (data) => console.log('Donation submitted:', data),
   className = ''
 }) => {
+  const navigate = useNavigate()
+  const { id: urlProjectId } = useParams() // Extract project_id from URL
+  const { setDonationFormData } = useDonation()
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -34,8 +39,19 @@ const VerticalDonationForm = ({
     amount: '',
     customAmount: '',
     category: defaultCategory || categoryOptions[0] || 'General',
-    projectId: defaultProjectId || projects[0]?.id || ''
+    projectId: urlProjectId || defaultProjectId || projects[0]?.id || ''
   })
+  const [errorMessage, setErrorMessage] = useState('')
+
+  // Update projectId when URL changes
+  useEffect(() => {
+    if (urlProjectId) {
+      setFormData((prev) => ({
+        ...prev,
+        projectId: urlProjectId
+      }))
+    }
+  }, [urlProjectId])
 
   const getDonationAmounts = (currency) =>
     mergedDonationOptions[currency] || mergedDonationOptions[initialCurrency]
@@ -50,7 +66,68 @@ const VerticalDonationForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(formData)
+    
+    // Clear previous error
+    setErrorMessage('')
+    
+    // Calculate final amount
+    const finalAmount = formData.customAmount || formData.amount
+    
+    // Validate amount is selected
+    if (!finalAmount || finalAmount.trim() === '') {
+      setErrorMessage('Please select or enter a donation amount')
+      setTimeout(() => {
+        const amountInput = document.querySelector('.vertical-donation-amounts') || 
+                          document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Validate amount is a valid number
+    const amountNumber = Number(finalAmount)
+    if (isNaN(amountNumber) || amountNumber <= 0) {
+      setErrorMessage('Please enter a valid donation amount')
+      setTimeout(() => {
+        const amountInput = document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.focus()
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Validate minimum amount (100 PKR)
+    if (amountNumber < 100) {
+      setErrorMessage('Minimum donation amount is 100 PKR')
+      setTimeout(() => {
+        const amountInput = document.querySelector('input[type="number"]')
+        if (amountInput) {
+          amountInput.focus()
+          amountInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+      return
+    }
+    
+    // Prepare donation data
+    const donationData = {
+      ...formData,
+      amount: finalAmount,
+      finalAmount: finalAmount
+    }
+    
+    // Store in context
+    setDonationFormData(donationData)
+    
+    // Call original onSubmit if provided
+    onSubmit?.(donationData)
+    
+    // Navigate to checkout
+    navigate('/checkout')
   }
 
   return (
@@ -59,6 +136,11 @@ const VerticalDonationForm = ({
         <h3 className="vertical-donation-title h2">{title}</h3>
 
         <form onSubmit={handleSubmit} className="vertical-donation-body">
+          {errorMessage && (
+            <div className="vertical-donation-error">
+              {errorMessage}
+            </div>
+          )}
           <div className="vertical-donation-group">
             {/* <label className="vertical-donation-label">Donation Frequency</label> */}
             <div className="vertical-donation-frequency">

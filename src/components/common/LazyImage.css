@@ -1,0 +1,10 @@
+.lazy-image-loading {
+  filter: blur(2px);
+  background-color: #f3f3f3;
+}
+
+.lazy-image-loaded {
+  filter: blur(0);
+  opacity: 1;
+}
+

@@ -9,11 +9,14 @@ const CoreValues = () => {
     { text: 'Inclusivity' },
     { text: 'Compassion' },
     { text: 'Unity' },
+    { text: 'Hope' },
     { text: 'Global Perspective' },
     { text: 'Empowerment' },
     { text: 'Love in Action' },
     { text: 'Mutual Respect' },
-    { text: 'Hope' },
+    { text: 'Empowerment' },
+    { text: 'Non-Discrimination' },
+    { text: 'Global Perspective' },
   ]
 
   return (
@@ -22,7 +25,8 @@ const CoreValues = () => {
       <div className="core-values-header">
         <div className="container">
           <h2 className="heading-secondary core-values-title">Our Core Values</h2>
-          <p>Discover, what MTJ focus most</p>
+          <h3>The Principles That Guide Us</h3>
+          <p>At MTJ Foundation, our work is grounded in values that shape every project, every decision, and every act of service</p>
         </div>
       </div>
 
