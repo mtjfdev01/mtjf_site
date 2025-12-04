@@ -1,6 +1,11 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
+<<<<<<< HEAD
 import image1 from '../assets/img/hero/contact_us_hero.webp'
+=======
+import image1 from '../assets/img/contact us/hero contact.webp'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+>>>>>>> a62d6b1a362633af4e25a5e87c6d0cf90388e362
 
 const ContactSection = lazy(() =>
   import('../components/contact/ContactSection')
@@ -23,12 +28,16 @@ const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 
 const Contact = () => {
-  const [showContent, setShowContent] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 0)
-    return () => clearTimeout(timer)
-  }, [])
+  const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
+    rootMargin: '100px',
+    loadImmediately: true 
+  });
+  const [secondSectionRef, showSecondSection] = useIntersectionObserver({ 
+    rootMargin: '100px'
+  });
+  const [restRef, showRest] = useIntersectionObserver({ 
+    rootMargin: '200px'
+  });
 
   const handleSubmit = (data) => {
     console.log(data)
@@ -38,37 +47,51 @@ const Contact = () => {
     <>
       <PageHeader title="Contact" image={image1} />
 
-      {showContent && (
-        <>
-          <Suspense fallback={null}>
-            <ContactSection onSubmit={handleSubmit} />
-          </Suspense>
-          <Suspense fallback={null}>
-            <InternationalOffices />
-          </Suspense>
-          <Suspense fallback={null}>
-            <NationalOffices />
-          </Suspense>
+      <div ref={firstSectionRef}>
+        {showFirstSection && (
+          <>
+            <Suspense fallback={null}>
+              <ContactSection onSubmit={handleSubmit} />
+            </Suspense>
+            <Suspense fallback={null}>
+              <InternationalOffices />
+            </Suspense>
+            <Suspense fallback={null}>
+              <NationalOffices />
+            </Suspense>
+          </>
+        )}
+      </div>
+
+      <div ref={secondSectionRef} style={{ minHeight: '50px' }}>
+        {showSecondSection && (
           <Suspense fallback={null}>
             <ContactMap />
           </Suspense>
-          <Suspense fallback={null}>
-            <Events />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Blogs />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Newsletter />
-          </Suspense>
-          <Suspense fallback={null}>
-            <DonationCta />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
-        </>
-      )}
+        )}
+      </div>
+
+      <div ref={restRef} style={{ minHeight: '50px' }}>
+        {showRest && (
+          <>
+            <Suspense fallback={null}>
+              <Events />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Blogs />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Newsletter />
+            </Suspense>
+            <Suspense fallback={null}>
+              <DonationCta />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+          </>
+        )}
+      </div>
     </>
   )
 }
