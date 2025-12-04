@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/contact us/hero contact.webp'
+// import image1 from '../assets/img/contact us/hero contact.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const CheckoutForm = lazy(() =>
@@ -20,7 +20,7 @@ const Checkout = () => {
 
   return (
     <>
-      <PageHeader title="Checkout" image={image1} />
+      {/* <PageHeader title="Checkout" image={image1} /> */}
 
       <div ref={formRef}>
         {showForm && (

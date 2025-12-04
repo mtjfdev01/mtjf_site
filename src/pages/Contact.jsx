@@ -1,11 +1,11 @@
 import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
-<<<<<<< HEAD
+
 import image1 from '../assets/img/hero/contact_us_hero.webp'
-=======
-import image1 from '../assets/img/contact us/hero contact.webp'
+
+// import image1 from '../assets/img/contact us/hero contact.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
->>>>>>> a62d6b1a362633af4e25a5e87c6d0cf90388e362
+
 
 const ContactSection = lazy(() =>
   import('../components/contact/ContactSection')

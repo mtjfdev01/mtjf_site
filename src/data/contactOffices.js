@@ -46,7 +46,7 @@ export const internationalOffices = [
 export const nationalOffices = [
   {
     id: 'head-office',
-    name: 'Head Office',
+    name: 'Tulamba Head-Office',
     phone: '021-111-786-853',
     hotline: '+92 300 244 0000',
     // email: 'info@mtjfoundation.org',
