@@ -48,14 +48,6 @@ const Home = () => {
         {showHeroContent && (
           <Suspense fallback={null}>
             <HeroContent />
-          </Suspense>
-        )}
-      </div>
-
-      {/* Donation Form - Load when near viewport */}
-      <div ref={donationFormRef} style={{ minHeight: '200px' }}>
-        {showDonationForm && (
-          <Suspense fallback={null}>
             <DonationForm
               formId="home-donation-form"
               layout="vertical"
@@ -65,6 +57,15 @@ const Home = () => {
           </Suspense>
         )}
       </div>
+
+      {/* Donation Form - Load when near viewport */}
+      {/* <div ref={donationFormRef} style={{ minHeight: '200px' }}>
+        {showDonationForm && (
+          <Suspense fallback={null}>
+
+          </Suspense>
+        )}
+      </div> */}
 
       {/* Rest of components - Load when near viewport */}
       <div ref={restRef} style={{ minHeight: '200px' }}>
