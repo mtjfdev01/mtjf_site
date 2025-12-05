@@ -11,21 +11,15 @@ const Mission = () => {
           {/* Text content - Left side */}
           <div className="mission-content">
             <h2 className="heading-secondary mission-title">Our Mission</h2>
-            
-            <h2 className="mission-heading h2 text-white mb-24">
-              Standing Strong for a Free and Dignified Pakistan
-            </h2>
+            <h3>What We Strive For</h3>
             
             <p className="mission-text text-base text-white mb-16">
-              The Molana Tariq Jamil Foundation is dedicated to serving humanity without discrimination, 
-              providing essential services like education, healthcare, and shelter regardless of color, 
-              religion, or creed.
+              <b>To serve humanity by providing education, healthcare, shelter, clean water, and livelihood opportunities—ensuring no one is left behind.</b>
             </p>
             
             <p className="mission-text text-base text-white mb-16">
-              We believe in empowerment, breaking the cycle of poverty through education and sustainable 
-              initiatives. Our non-profit, non-political, and non-sectarian approach makes us a beacon 
-              of hope, promoting unity, love, understanding, and empowerment globally.
+             We work to break cycles of poverty, empower families, and uplift underserved communities by building solutions that last.
+             From the classroom to the clinic, from livelihood training to emergency relief, our mission is rooted in service, dignity, and sustainable transformation.
             </p>
           </div>
           

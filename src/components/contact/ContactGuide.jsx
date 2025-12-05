@@ -9,9 +9,9 @@ const SOCIAL_LINKS = [
 ]
 
 const ContactGuide = ({
-  subtitle = 'Contact With Us',
-  title = 'Feel Free to write us a message',
-  description = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  subtitle = 'Contact  Us',
+  title = 'We’re Here for You',
+  description = 'Whether you’re a donor, volunteer, or supporter, we’re always ready to connect. Drop us a message — together we can make an even greater impact',
   socials = SOCIAL_LINKS
 }) => {
   return (

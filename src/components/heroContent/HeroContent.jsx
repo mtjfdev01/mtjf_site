@@ -9,8 +9,8 @@ const HeroContent = () => {
          {/* <h4>
          — <span className='text-white'>MTJ Foundation</span> —
          </h4> */}
-         <h2 className='heading-primary'>MTJ Foundation</h2>
-         <h3>Welcome to <br/>
+         <h2 className='heading-primary'>A Legacy of Compassion</h2>
+         <h3>A Future of Hope <br/>
           Molana Tariq Jamil <br/>
            Foundation.
          </h3>
@@ -19,10 +19,7 @@ const HeroContent = () => {
 
         <div className='section-center'>
          <p className='px-16'>
-         Molana Tariq Jamil, a revered figure since the 1980s, has dedicated his life to philanthropy 
-            with a mission to uplift those in need. Recognizing the deep-rooted need for support, he 
-            established the MTJ Foundation as a beacon of hope for those in need. His lifelong commitment 
-            to helping others is now embodied in the foundation, providing education <span>Read More</span>
+        For decades, Molana Tariq Jamil has stood as a voice of compassion, kindness, and unity. His vision, to ease suffering and uplift vulnerable families, led to the creation of the MTJ Foundation. Today, his mission lives on through our work: providing healthcare, education, clean water, and life-changing support to communities in need. Every contribution from donors like you helps turn this vision into reality and brings hope to thousands of lives.
         </p>
         </div>
          <div className='right_img'>
