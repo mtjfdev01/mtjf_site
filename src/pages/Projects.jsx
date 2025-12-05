@@ -33,8 +33,8 @@ const Projects = () => {
           {showProjects && (
             <>
               <div className="projects-page-header text-center mb-48">
-                <h1 className="heading-secondary mb-16">Projects</h1>
-                <h2 className="h1">PROJECTS WE WORKED ON</h2>
+                <h1 className="heading-secondary mb-16">Our Work</h1>
+                <h2 className="h1">Explore our programs and see how your contribution transforms futures</h2>
               </div>
 
               <div className="projects-page-grid grid grid-2 gap-24">

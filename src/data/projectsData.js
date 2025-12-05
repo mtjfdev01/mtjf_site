@@ -273,6 +273,7 @@ export const ALL_PROJECTS_DATA = [
   {
     id: 'health',
     title: 'Health',
+    h1: 'Health2',
     description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us to maintain a healthy lifestyle in order to be fit and fearless of diseases. Being healthy helps us to perform our daily activities without any hindrance.',
     image: image1,
     learnMorePath: '/projects/health',

@@ -111,7 +111,7 @@ const FEATURE_ITEMS = [
    {
     id: 'aaslab',
     title: 'AAS Lab & Diagnostics',
-    description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
+    description: 'Delivering affordable, reliable diagnostic services to ensure timely medical treatment.',
     icon: (
     <img src={AASLab} alt="AAS Lab Icon"  {...ICON_PROPS}/>
    )
