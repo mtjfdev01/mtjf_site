@@ -3,12 +3,30 @@ import '../../common/styles/base.css'
 import '../../common/styles/common.css'
 import './Team.css'
 
+import chairman from '../../assets/img/team/molana.webp'
+import viceChairman from '../../assets/img/team/yousaf.webp'
 import memberCEO from '../../assets/img/team/IhtishamUllahQureshi.png'
 import memberCFO from '../../assets/img/team/MuhammadRashidIqbal.png'
 import memberFundraising from '../../assets/img/team/MairajKhalid.png'
 import memberHR from '../../assets/img/team/MuhammadFarukh.png'
 
 const teamMembers = [
+   {
+    id: 'Chairman',
+    name: 'Molana Tariq Jamil',
+    role: 'Chairman',
+    image: chairman,
+    accent: 'emerald',
+    rounded: true,
+  },
+   {
+    id: 'Vice Chairman',
+    name: 'Molana Yousaf Jamil',
+    role: 'Vice Chairman',
+    image: viceChairman,
+    accent: 'emerald',
+    rounded: true,
+  },
   {
     id: 'ceo',
     name: 'Ihtisham Ullah Qureshi',
@@ -20,37 +38,30 @@ const teamMembers = [
   {
     id: 'cfo',
     name: 'Muhammad Rashid Iqbal',
-    role: 'CFO',
+    role: 'Chief Financial Officer',
     image: memberCFO,
     accent: 'sunset',
     rounded: true,
   },
   {
-    id: 'fundraising',
+    id: 'Fundraising',
     name: 'Mairaj Khalid',
-    role: 'Fundraising Manager',
+    role: 'Head of CRD ',
     image: memberFundraising,
     accent: 'aqua',
   },
   {
     id: 'hr',
     name: 'Muhammad Farukh',
-    role: 'HR Manager',
+    role: 'Head of HR',
     image: memberHR,
     accent: 'amber',
   },
   {
-    id: 'director1',
-    name: 'Director 1',
-    role: 'Director',
-    image: memberHR,
-    accent: 'amber',
-  },
-  {
-    id: 'director2',
-    name: 'Director 2',
-    role: 'Director',
-    image: memberHR,
+    id: 'Director of Programs',
+    name: 'Ikram Seher',
+    role: 'Director of Programs',
+    // image: memberHR,
     accent: 'amber',
   },
 ]
@@ -106,14 +117,12 @@ const Team = () => {
       <div className="container">
         <div className="team-heading-block p-32">
           <div className="team-heading-left">
-            <h2 className="heading-primary team-tag">Team</h2>
+            <h2 className="heading-primary team-tag">Our Team</h2>
 
             <div className="team-heading-row"> 
               <h2 className="team-title">
-                Meet Our The best
-                <br/>
-                Team Members
-              </h2>
+                The People Behind the Mission</h2>
+                <p>Behind every project are dedicated leaders, specialists, and volunteers who turn compassion into impact.</p>
             </div>
 
             <div className="team-controls">
