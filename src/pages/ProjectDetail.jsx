@@ -6,6 +6,7 @@ import './ProjectDetail.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
+import MediaContentSection from '../components/mediaContentSection/MediaContentSection'
 
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
@@ -125,19 +126,17 @@ const ProjectDetail = () => {
                 className="project-full-image"
               />
             </div>
-
-            <div className="project-full-image-text container">
-              {(project.additionalContent ||
-                [project.content.paragraph1, project.content.paragraph2]
-              ).map((text, index) => (
-                <p key={index} className="text-base project-full-image-paragraph">
-                  {text}
-                </p>
-              ))}
-            </div>
           </section>
         )}
       </div>
+
+      {/* Media Content Section for Sub-Projects */}
+      {project.subProjects && project.subProjects.length > 0 && (
+        <MediaContentSection 
+          subProjects={project.subProjects} 
+          defaultImage={project.mainImage}
+        />
+      )}
 
       <div ref={restRef} style={{ minHeight: '50px' }}>
         {showRest && (

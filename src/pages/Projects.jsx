@@ -15,6 +15,7 @@ const DonationCta = lazy(() =>
 )
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
+const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
 const Projects = () => {
   const navigate = useNavigate()
   const { shortDonate } = useCart()
@@ -96,6 +97,10 @@ const Projects = () => {
           )}
         </div>
       </section>
+
+      <Suspense fallback={null}>
+        <ProjectsTestimonial />
+      </Suspense>
 
       <div ref={restRef} style={{ minHeight: '50px' }}>
         {showRest && (
