@@ -21,6 +21,19 @@
   aspect-ratio: 1 / 1; */
 }
 
+.projects-page-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.projects-page-card-title {
+  font-size: var(--fs-24);
+  font-weight: 700;
+  margin: 0;
+}
+
 .projects-page-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
@@ -48,7 +61,7 @@
 .projects-page-overlay {
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: rgba(0, 0, 0, 0.9);
   opacity: 0;
   transition: opacity 0.3s var(--ease);
   z-index: 1;
@@ -72,6 +85,16 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.projects-page-subtitle {
+  font-size: var(--fs-12);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  opacity: 0.9;
+  margin-bottom: var(--space-8);
 }
 
 .projects-page-description {

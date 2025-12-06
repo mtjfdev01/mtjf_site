@@ -1,11 +1,6 @@
 import image1 from '../assets/img/projects/camp.webp'
 import image2 from '../assets/img/projects/convocation.webp'
 import image3 from '../assets/img/projects/group of boys.webp'
-import image4 from '../assets/img/projects/handpump.webp'
-import image5 from '../assets/img/projects/molana yousaf.webp'
-import image6 from '../assets/img/projects/marriage things.webp'
-import image7 from '../assets/img/projects/plant.webp'
-import image8 from '../assets/img/projects/rastion packs.webp'
 import {
   FaSchool,
   FaGraduationCap,
@@ -273,66 +268,111 @@ export const ALL_PROJECTS_DATA = [
   {
     id: 'health',
     title: 'Health',
-    h1: 'Health2',
-    description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us to maintain a healthy lifestyle in order to be fit and fearless of diseases. Being healthy helps us to perform our daily activities without any hindrance.',
+    subtitle: 'Ensuring Access to Dignified, Affordable Healthcare',
+    description: 'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
+    impactStatement: 'Every patient we serve moves one step closer to a healthier, dignified life, because healthcare should never be a privilege.',
     image: image1,
+    donateButtonText: 'Support Healthcare Services',
     learnMorePath: '/projects/health',
     donatePath: '/donate/health'
   },
   {
     id: 'education',
     title: 'Education',
-    description: 'Molana Tariq Jamil Foundation provides scholarships to individuals in need of financial assistance to further their education. These scholarships can range in amount and are awarded based on various criteria such as academic merit, financial need, or specific fields of study.',
-    image: image2,
+    subtitle: 'Opening Doors to Learning and Opportunity',
+    description: 'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
+    impactStatement: 'Education transforms lives and your support ensures no child is left behind.',
+    image: image1,
+    donateButtonText: 'Educate a Child',
     learnMorePath: '/projects/education',
     donatePath: '/donate/education'
   },
   {
-    id: 'disaster-management',
-    title: 'Disaster Management',
-    description: 'MTJ Foundation is working for relief the people affected by the flood by distribution Cooked food, Dry Foods, Medical Camps & distributing medicine.',
-    image: image3,
-    learnMorePath: '/projects/disaster-management',
-    donatePath: '/donate/disaster-management'
-  },
-  {
     id: 'clean-water',
     title: 'Clean Water',
-    description: 'Clean Water project is a welfare project initiated by MTJ Foundation to address the dire need for safe drinking water in deprived areas of the country.',
-    image: image4,
+    subtitle: 'Providing Safe Water for Healthier Communities',
+    description: 'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
+    impactStatement: 'Clean water reduces disease, restores dignity, and protects generations.',
+    image: image1,
+    donateButtonText: 'Sponsor a Water Project',
     learnMorePath: '/projects/clean-water',
     donatePath: '/donate/clean-water'
   },
   {
-    id: 'ecommerce-training',
-    title: 'E Commerce Training',
-    description: 'At the core of our mission, MTJ Foundation is dedicated to comprehensive livelihood support, committed to elevating the well-being of communities through sustainable economic empowerment initiatives.',
-    image: image5,
-    learnMorePath: '/projects/ecommerce-training',
-    donatePath: '/donate/ecommerce-training'
+    id: 'apna-ghar',
+    title: 'Apna Ghar',
+    subtitle: 'Safe Shelter for Orphans and Widows',
+    description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
+    impactStatement: 'Here, safety becomes healing, and broken lives begin again.',
+    image: image1,
+    donateButtonText: 'Support Apna Ghar',
+    learnMorePath: '/projects/apna-ghar',
+    donatePath: '/donate/apna-ghar'
   },
   {
-    id: 'marriage-gift',
-    title: 'Marriage Gift',
-    description: 'Molana Tariq Jamil Foundation is doing a truly remarkable and heartwarming favor to distribute wedding gifts to poor girls. In many parts of the world, poverty can be a significant barrier to celebrating life\'s important milestones, including weddings.',
-    image: image6,
-    learnMorePath: '/projects/marriage-gift',
-    donatePath: '/donate/marriage-gift'
+    id: 'disaster-relief',
+    title: 'Disaster Relief',
+    subtitle: 'Rapid Response When Crisis Strikes',
+    description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
+    impactStatement: 'Your support ensures no family faces disaster alone.',
+    image: image1,
+    donateButtonText: 'Help in Emergencies',
+    learnMorePath: '/projects/disaster-relief',
+    donatePath: '/donate/disaster-relief'
   },
   {
-    id: 'maskan',
-    title: 'Maskan',
-    description: 'MTJ Foundation\'s Maskan Program is a revolutionary initiative to provide shelter to the homeless. Our dream is that no one in Pakistan should be left to sleep under open sky.',
-    image: image7,
-    learnMorePath: '/projects/maskan',
-    donatePath: '/donate/maskan'
+    id: 'kasb-skill-development',
+    title: 'KASB Skill Development',
+    subtitle: 'Empowering Youth and Women Through Skills',
+    description: 'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
+    impactStatement: 'When someone gains a skill, they gain the power to change their own future.',
+    image: image1,
+    donateButtonText: 'Sponsor Skill Training',
+    learnMorePath: '/projects/kasb-skill-development',
+    donatePath: '/donate/kasb-skill-development'
   },
   {
-    id: 'monthly-ration',
-    title: 'Monthly Ration',
-    description: 'Pakistan has a high rate of poverty and low development. This leads to citizens of lower socioeconomic classes suffering due to the lack of resources available to them. It is hard for many families to afford basic necessities including food.',
-    image: image8,
-    learnMorePath: '/projects/monthly-ration',
-    donatePath: '/donate/monthly-ration'
+    id: 'seeds-of-change',
+    title: 'Seeds of Change',
+    subtitle: 'Protecting the Environment for Future Generations',
+    description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
+    impactStatement: 'Every tree planted brings us closer to a cleaner, safer world.',
+    image: image1,
+    donateButtonText: 'Plant a Tree',
+    learnMorePath: '/projects/seeds-of-change',
+    donatePath: '/donate/seeds-of-change'
+  },
+  {
+    id: 'qurbani-barai-mustehqeen',
+    title: 'Qurbani Barai Mustehqeen',
+    subtitle: 'Delivering Qurbani Meat to Families in Need',
+    description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
+    impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
+    image: image1,
+    donateButtonText: 'Book Your Qurbani',
+    learnMorePath: '/projects/qurbani-barai-mustehqeen',
+    donatePath: '/donate/qurbani-barai-mustehqeen'
+  },
+  {
+    id: 'aas-lab-diagnostics',
+    title: 'AAS Lab & Diagnostics',
+    subtitle: 'Accessible and Affordable Diagnostic Care for all',
+    description: 'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
+    impactStatement: 'A correct diagnosis can save a life and your support makes it possible.',
+    image: image1,
+    donateButtonText: 'Support Diagnostic Care',
+    learnMorePath: '/projects/aas-lab-diagnostics',
+    donatePath: '/donate/aas-lab-diagnostics'
+  },
+  {
+    id: 'community-services',
+    title: 'Community Services',
+    subtitle: 'Supporting Vulnerable Families With Essential Relief',
+    description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
+    impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
+    image: image1,
+    donateButtonText: 'Support a Family',
+    learnMorePath: '/projects/community-services',
+    donatePath: '/donate/community-services'
   }
 ]
