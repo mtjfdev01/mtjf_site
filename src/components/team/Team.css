@@ -1,5 +1,5 @@
 .team-section {
-  padding: var(--space-64) var(--space-24);
+  /* padding: var(--space-64) var(--space-24); */
   background-color: var(--color-white);
   overflow-x: hidden;
   width: 100%;
@@ -13,7 +13,7 @@
 }
 
 .team-heading-block {
-  margin-bottom: var(--space-32);
+  /* margin-bottom: var(--space-32); */
   display: flex;
   justify-content: center !important;
   align-items: flex-start;
@@ -36,46 +36,28 @@
   font-weight: 700;
 }
 
-.team-controls {
-  display: inline-flex;
-  gap: var(--space-12);
-  margin-top: var(--space-16);
+.team-wrapper {
+  position: relative;
 }
 
-.team-arrow {
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: transparent;
-  color: var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  transition: var(--transition);
-  cursor: pointer;
+/* Override slider-nav positioning to match Team button placement */
+.team-wrapper .slider-nav-prev {
+  left: -22px;
 }
 
-.team-arrow--next {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
+.team-wrapper .slider-nav-next {
+  right: -22px;
 }
 
-.team-arrow:hover:not(:disabled) {
-  transform: translateY(-2px);
-}
+@media (min-width: 768px) {
+  /* Position buttons relative to the centered 80vw slider */
+  .team-wrapper .slider-nav-prev {
+    left: calc((100% - 80vw) / 2 - 22px);
+  }
 
-.team-arrow:disabled,
-.team-arrow--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.team-arrow--disabled:hover {
-  transform: none;
+  .team-wrapper .slider-nav-next {
+    right: calc((100% - 80vw) / 2 - 22px);
+  }
 }
 
 .team-card-row {
@@ -94,7 +76,6 @@
   padding-top: var(--space-32);
   padding-left: var(--space-24);
   padding-right: var(--space-24);
-  padding-bottom: var(--space-16);
 }
 
 .team-card-row::-webkit-scrollbar {
@@ -241,6 +222,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+    max-width: 80vw;
+    margin: auto;
   }
 
   .team-card-row::-webkit-scrollbar {
@@ -283,10 +266,6 @@
 }
 
 @media (max-width: 575px) {
-  .team-controls {
-    width: 100%;
-    justify-content: flex-start;
-  }
 
   .team-card-row {
     gap: var(--space-12);

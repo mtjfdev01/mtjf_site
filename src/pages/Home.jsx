@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import Hero from "../components/hero/Hero";
 import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import BrandArea from "../components/brands/brands";
 
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
@@ -82,6 +83,9 @@ const Home = () => {
             </Suspense>
             <Suspense fallback={null}>
               <Stats />
+            </Suspense>
+            <Suspense fallback={null}>
+              <BrandArea />
             </Suspense>
             <Suspense fallback={null}>
               <Events />

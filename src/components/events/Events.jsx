@@ -39,11 +39,11 @@ const FEATURED_EVENT = {
 }
 
 const Events = () => {
+
   return (
     <section className="events-section container py-64">
       <div className="events-header mb-48">
         <h2 className="heading-secondary events-kicker mb-16">News & Events</h2>
-        <h2>News & Events</h2> 
       </div>
 
       <div className="events-grid grid grid-12 gap-24">
@@ -85,37 +85,55 @@ const Events = () => {
 
         {/* Right Column - Featured Card */}
         <div className="featured-event col-12 lg-6">
-          <Link
-            to={FEATURED_EVENT.link}
-            className="featured-card simple-featured"
-          >
-            <img 
-              src={FEATURED_EVENT.image} 
-              alt={FEATURED_EVENT.title}
-              className="featured-background-image"
-            />
-            <div className="featured-content flex flex-col h-100">
-              <h2 className="featured-category heading-primary mb-16">
-                {FEATURED_EVENT.category}
-              </h2>
-
-              <h3 className="mb-16">{FEATURED_EVENT.title}</h3>
-
-              <p className="text-sm mb-24 flex-1">
-                {FEATURED_EVENT.description}
-              </p>
-
-              <button
-                className="btn btn-join"
-                onClick={(e) => {
-                  e.preventDefault()
-                  window.location.href = FEATURED_EVENT.link
-                }}
-              >
-                Join With Us
-              </button>
+          <div className="featured-events-rows flex flex-col gap-24">
+            {/* First Row - Facebook Page Embed */}
+            <div className="featured-card-row facebook-embed-wrapper">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffoundation.mtj&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                width="100%"
+                height="500"
+                style={{ border: 'none', overflow: 'hidden', width: '100%', display: 'block' }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="MTJ Foundation Facebook Page"
+              ></iframe>
             </div>
-          </Link>
+
+            {/* Second Row */}
+            <Link
+              to={FEATURED_EVENT.link}
+              className="featured-card-row simple-featured"
+            >
+              <img 
+                src={FEATURED_EVENT.image} 
+                alt={FEATURED_EVENT.title}
+                className="featured-background-image"
+              />
+              <div className="featured-content flex flex-col h-100">
+                <h2 className="featured-category heading-primary mb-16">
+                  {FEATURED_EVENT.category}
+                </h2>
+
+                <h3 className="mb-16">{FEATURED_EVENT.title}</h3>
+
+                <p className="text-sm mb-24 flex-1">
+                  {FEATURED_EVENT.description}
+                </p>
+
+                <button
+                  className="btn btn-join"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    window.location.href = FEATURED_EVENT.link
+                  }}
+                >
+                  Join With Us
+                </button>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

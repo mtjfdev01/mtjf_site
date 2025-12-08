@@ -125,29 +125,6 @@ const Team = () => {
                 The People Behind the Mission</h2>
                 <p>Behind every project are dedicated leaders, specialists, and volunteers who turn compassion into impact.</p>
             </div>
-
-            <div className="team-controls slider-nav-container">
-              <button 
-                aria-label="Previous team members" 
-                className="slider-nav-btn slider-nav-prev"
-                onClick={() => scrollTo('prev')}
-                disabled={!canScrollPrev}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              <button 
-                aria-label="Next team members" 
-                className="slider-nav-btn slider-nav-next"
-                onClick={() => scrollTo('next')}
-                disabled={!canScrollNext}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
           </div>
 
           <div className="team-count-pill" aria-hidden="true">
@@ -157,8 +134,20 @@ const Team = () => {
           </div>
         </div>
 
-        <div className="team-card-row" ref={cardRowRef}>
-          {teamMembers.map((member) => {
+        <div className="team-wrapper relative">
+          <button 
+            aria-label="Previous team members" 
+            className="slider-nav-btn slider-nav-prev"
+            onClick={() => scrollTo('prev')}
+            disabled={!canScrollPrev}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <div className="team-card-row" ref={cardRowRef}>
+            {teamMembers.map((member) => {
             const cardClassNames = [
               'team-card',
               `team-card--${member.accent}`,
@@ -181,6 +170,18 @@ const Team = () => {
               </article>
             )
           })}
+          </div>
+
+          <button 
+            aria-label="Next team members" 
+            className="slider-nav-btn slider-nav-next"
+            onClick={() => scrollTo('next')}
+            disabled={!canScrollNext}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>

@@ -1,0 +1,134 @@
+/*--------------------------------------------------------------
+Brands Section - Modern marquee (CSS only, no <marquee>)
+---------------------------------------------------------------*/
+
+.brands-section {
+    --accent: #c79652;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #1a1729;
+    --muted: #666;
+    --border: #e8e8e8;
+    --gap: 40px;
+    --duration: 500s; /* overridden via inline style if needed */
+    padding: 40px 0;
+    background: var(--bg);
+  }
+  .brands-section .brands-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .brands-section .brands-container::before,
+  .brands-section .brands-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .brands-section .brands-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), rgba(248, 249, 250, 0));
+  }
+  .brands-section .brands-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), rgba(248, 249, 250, 0));
+  }
+  .brands-section .brands-container .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 16px 0;
+  }
+  .brands-section .brands-marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 8px 0;
+  }
+  .brands-section .brands-track {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    width: max-content;
+    animation: brands-scroll var(--duration) linear infinite;
+    will-change: transform;
+  }
+  .brands-section .brands-track:hover,
+  .brands-section .brands-track:has(.brand-item:hover) {
+    animation-play-state: paused;
+  }
+    
+  @keyframes brands-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); } /* we duplicate the list once */
+  }
+  
+  .brands-section .brand-item {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .brands-section .brand-item a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+  }
+  .brands-section .brand-item img {
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    /* filter: grayscale(100%); */
+    transition: filter 0.25s ease;
+    border-radius: 3px;
+  }
+  .brands-section .brand-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  }
+  .brands-section .brand-item:hover img { filter: grayscale(0%); }
+  
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .brands-section .brands-track {
+      animation: none;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .brands-section .brand-item { margin: 8px; }
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 1200px) { .brands-section { --gap: 32px; } }
+
+  @media (max-width: 992px)  {
+    .brands-section .brands-container .title {
+      font-size: 15px;
+    }
+    .brands-section { --gap: 28px; }
+    .brands-section .brand-item { width: 90px; height: 92px; }
+    .brands-section .brand-item img { width: 100%; max-height: 100%; }
+  }
+  
+  @media (max-width: 576px)  {
+    .brands-section { --gap: 20px; }
+  }

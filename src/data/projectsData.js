@@ -1185,15 +1185,15 @@ export const ALL_PROJECTS_DATA = [
     donatePath: '/donate/apna-ghar'
   },
   {
-    id: 'disaster-relief',
+    id: 'disaster-management',
     title: 'Disaster Relief',
     subtitle: 'Rapid Response When Crisis Strikes',
     description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
     impactStatement: 'Your support ensures no family faces disaster alone.',
     image: DisasterRelief,
     donateButtonText: 'Help in Emergencies',
-    learnMorePath: '/projects/disaster-relief',
-    donatePath: '/donate/disaster-relief'
+    learnMorePath: '/projects/disaster-management',
+    donatePath: '/donate/disaster-management'
   },
   {
     id: 'kasb-skill-development',

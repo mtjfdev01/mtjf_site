@@ -1,6 +1,6 @@
 .directors-section {
   /* background-color: var(--color-black); */
-  padding: var(--space-64) 0 var(--space-80);
+  padding: var(--space-64) 0 0;
   color: var(--color-white);
   /* border: 5px solid red; */
 }
@@ -130,7 +130,7 @@
 
 @media (max-width: 575px) {
   .directors-section {
-    padding: var(--space-48) 0 var(--space-64);
+    padding: var(--space-48) 0 0;
   }
 
   .directors-text-panel {

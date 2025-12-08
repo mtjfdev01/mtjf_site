@@ -215,7 +215,7 @@ const Projects = () => {
       <div className="projects-header flex justify-between items-center mb-32">
         <div>
           <h2 className="heading-secondary">Our Projects</h2>
-          <h3 className="projects-title">Where Your Support Meets Real Impact </h3>
+          <h3 className="projects-title">Where Your Support Meets Real Impact</h3>
         </div>
         <Link to="/projects" className="projects-link">
           Learn More &gt;

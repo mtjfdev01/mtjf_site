@@ -1,5 +1,6 @@
 import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
 import './index.css'
+import { FaLinkedinIn } from "react-icons/fa";
 
 const StickyBar = () => {
   return (
@@ -25,6 +26,10 @@ const StickyBar = () => {
           <a href="https://youtube.com/@foundation_mtj?si=NCJMYOSXihYOqMjK" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
             <FaYoutube />
           </a>
+          <a href="https://pk.linkedin.com/company/mtjf-00" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn />
+          </a>
+          
         </div>
       </div>
     </div>

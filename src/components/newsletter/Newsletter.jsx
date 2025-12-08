@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Newsletter.css'
+import axiosInstance from '../../utils/axios'
 
 const Newsletter = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ const Newsletter = ({ onSubmit }) => {
     lastName: '',
     email: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -16,19 +19,47 @@ const Newsletter = ({ onSubmit }) => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (onSubmit) {
-      onSubmit(formData)
-    } else {
-      console.log('Newsletter subscription:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Payload example:
+      // {
+      //   firstName: "John",
+      //   lastName: "Doe",
+      //   email: "john@example.com"
+      // }
+
+      const payload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email
+      }
+
+      const response = await axiosInstance.post('/website_news_letter', payload)
+      
+      setSubmitStatus('success')
+      onSubmit?.(formData, response.data)
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: ''
+      })
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error)
+      setSubmitStatus('error')
+      // Clear error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } finally {
+      setIsSubmitting(false)
     }
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: ''
-    })
   }
 
   return (
@@ -69,11 +100,27 @@ const Newsletter = ({ onSubmit }) => {
                 className="newsletter-input"
                 required
               />
-              <button type="submit" className="newsletter-button">
-                SIGN UP
+              <button 
+                type="submit" 
+                className="newsletter-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE'}
               </button>
             </div>
           </form>
+
+          {submitStatus === 'success' && (
+            <div className="newsletter-message newsletter-message--success">
+              Successfully subscribed! Check your email for confirmation.
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="newsletter-message newsletter-message--error">
+              Failed to subscribe. Please try again later.
+            </div>
+          )}
 
           <p className="newsletter-privacy">
             We respect your privacy.

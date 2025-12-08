@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './ContactForm.css'
+import axiosInstance from '../../utils/axios'
 
 const DEFAULT_FORM = {
   name: '',
@@ -11,16 +12,53 @@ const DEFAULT_FORM = {
 
 const ContactForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState(DEFAULT_FORM)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    onSubmit?.(formData)
-    setFormData(DEFAULT_FORM)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Payload example:
+      // {
+      //   name: "John Doe",
+      //   email: "john@example.com",
+      //   phone: "+1234567890",
+      //   subject: "Inquiry",
+      //   message: "Hello, I would like to know more about..."
+      // }
+
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        subject: formData.subject || null,
+        message: formData.message
+      }
+
+      const response = await axiosInstance.post('/website_message', payload)
+      
+      setSubmitStatus('success')
+      onSubmit?.(formData, response.data)
+      setFormData(DEFAULT_FORM)
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } catch (error) {
+      console.error('Error submitting contact form:', error)
+      setSubmitStatus('error')
+      // Clear error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -91,9 +129,25 @@ const ContactForm = ({ onSubmit }) => {
           />
         </label>
 
-        <button type="submit" className="contact-panel__submit">
-          Submit Message
+        <button 
+          type="submit" 
+          className="contact-panel__submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit Message'}
         </button>
+
+        {submitStatus === 'success' && (
+          <div className="contact-panel__message contact-panel__message--success">
+            Message sent successfully! We'll get back to you soon.
+          </div>
+        )}
+
+        {submitStatus === 'error' && (
+          <div className="contact-panel__message contact-panel__message--error">
+            Failed to send message. Please try again later.
+          </div>
+        )}
       </form>
     </section>
   )

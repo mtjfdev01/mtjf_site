@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './VolunteerForm.css'
+import axiosInstance from '../../utils/axios'
 
 const DEFAULT_FORM = {
   name: '',
@@ -88,13 +89,31 @@ const VolunteerForm = ({ onSubmit }) => {
     setSubmitStatus(null)
 
     try {
-      // Console log the form data
-      console.log('Volunteer Registration Data:', formData)
-      
-      // Simulate API call delay for better UX
-      await new Promise(resolve => setTimeout(resolve, 500))
+      // Payload example:
+      // {
+      //   name: "John Doe",
+      //   email: "john@example.com",
+      //   phone: "+1234567890",
+      //   category: "student",
+      //   availability: "both",
+      //   schedule: "weekends-only",
+      //   comments: "I would like to help with education programs" // optional
+      // }
+
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        category: formData.category,
+        availability: formData.availability,
+        schedule: formData.schedule,
+        comments: formData.comments || null
+      }
+
+      const response = await axiosInstance.post('/register_volunteer', payload)
       
       setSubmitStatus('success')
+      onSubmit?.(formData, response.data)
       setFormData(DEFAULT_FORM)
       
       // Clear success message after 5 seconds
@@ -102,8 +121,12 @@ const VolunteerForm = ({ onSubmit }) => {
         setSubmitStatus(null)
       }, 5000)
     } catch (error) {
+      console.error('Error submitting volunteer registration:', error)
       setSubmitStatus('error')
-      console.error('Form submission error:', error)
+      // Clear error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
     } finally {
       setIsSubmitting(false)
     }

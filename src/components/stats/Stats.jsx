@@ -88,7 +88,7 @@ const Stats = () => {
       <div className="stats-header text-center mb-48">
         <h1 className="heading-secondary mb-16">Since 2019 We Have:</h1>
         <h2 className="h1">
-         brought hope to 1 Million+ People, with your help
+         Brought Hope to 1 Million+ People, with your Help
         </h2>
       </div>
 
