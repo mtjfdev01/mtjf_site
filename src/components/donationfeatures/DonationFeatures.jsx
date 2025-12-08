@@ -143,26 +143,30 @@ const DonationFeatures = () => {
       <div className='left-column flex-1'>
         <h3 className='heading-secondary d-flex items-center gap-12 mb-8'>Make A Donation</h3>
         <h2>Changing Lives through these Initiatives</h2>
-        <div className="arrowsn d-flex gap-12 items-center mt-24">
+        <div className="slider-nav-container mt-24">
           <button
             type="button"
-            className="arrow-btn inline-flex items-center justify-center pointer"
+            className="slider-nav-btn slider-nav-prev"
             title="Previous"
             onClick={handlePrev}
             disabled={startIndex === 0}
             aria-label="View previous donation programs"
           >
-            &#x2190;
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
           <button
             type="button"
-            className="arrow-btn blue inline-flex items-center justify-center pointer"
+            className="slider-nav-btn slider-nav-next"
             title="Next"
             onClick={handleNext}
             disabled={startIndex >= maxStartIndex}
             aria-label="View next donation programs"
           >
-            &#x2192;
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
         </div>
       </div>

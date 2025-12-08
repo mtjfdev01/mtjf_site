@@ -83,3 +83,87 @@ body.banner-visible .banner_img {
         height: 100% !important;
     } 
   }
+
+/* Slider Navigation Buttons */
+.slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-300);
+  background: var(--color-white);
+  color: var(--color-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.slider-nav-btn:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.slider-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slider-nav-prev {
+  left: 0;
+}
+
+.slider-nav-next {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .slider-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Slider Navigation Container */
+.slider-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  position: relative;
+}
+
+/* Override absolute positioning when inside slider-nav-container */
+.slider-nav-container .slider-nav-btn {
+  position: static;
+  transform: none;
+}
+
+.slider-nav-container .slider-nav-prev,
+.slider-nav-container .slider-nav-next {
+  left: auto;
+  right: auto;
+}
+
+/* Slider Navigation Container */
+.slider-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  position: relative;
+}

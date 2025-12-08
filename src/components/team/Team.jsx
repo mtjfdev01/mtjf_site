@@ -4,7 +4,8 @@ import '../../common/styles/common.css'
 import './Team.css'
 
 import chairman from '../../assets/img/team/molana.webp'
-import viceChairman from '../../assets/img/team/yousaf.webp'
+import viceChairman from '../../assets/img/team/yousaf.webp' 
+
 import memberCEO from '../../assets/img/team/IhtishamUllahQureshi.png'
 import memberCFO from '../../assets/img/team/MuhammadRashidIqbal.png'
 import memberFundraising from '../../assets/img/team/MairajKhalid.png'
@@ -125,22 +126,26 @@ const Team = () => {
                 <p>Behind every project are dedicated leaders, specialists, and volunteers who turn compassion into impact.</p>
             </div>
 
-            <div className="team-controls">
+            <div className="team-controls slider-nav-container">
               <button 
                 aria-label="Previous team members" 
-                className={`team-arrow team-arrow--prev ${!canScrollPrev ? 'team-arrow--disabled' : ''}`}
+                className="slider-nav-btn slider-nav-prev"
                 onClick={() => scrollTo('prev')}
                 disabled={!canScrollPrev}
               >
-                <span aria-hidden="true">‹</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
               <button 
                 aria-label="Next team members" 
-                className={`team-arrow team-arrow--next ${!canScrollNext ? 'team-arrow--disabled' : ''}`}
+                className="slider-nav-btn slider-nav-next"
                 onClick={() => scrollTo('next')}
                 disabled={!canScrollNext}
               >
-                <span aria-hidden="true">›</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
             </div>
           </div>

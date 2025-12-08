@@ -92,6 +92,23 @@ const Projects = () => {
   const [scrollLeft, setScrollLeft] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
   const [touchScrollLeft, setTouchScrollLeft] = useState(0)
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(true)
+
+  // Check scroll position and update button states
+  const checkScrollPosition = () => {
+    if (!scrollContainerRef.current) return
+    
+    const container = scrollContainerRef.current
+    const { scrollLeft, scrollWidth, clientWidth } = container
+    
+    // Check if we can scroll left (not at the start)
+    setCanScrollPrev(scrollLeft > 0)
+    
+    // Check if we can scroll right (not at the end)
+    // Add a small threshold (1px) to account for rounding
+    setCanScrollNext(scrollLeft < scrollWidth - clientWidth - 1)
+  }
 
   // Mouse drag handlers
   const handleMouseDown = (e) => {
@@ -124,6 +141,7 @@ const Projects = () => {
     const x = e.pageX - scrollContainerRef.current.offsetLeft
     const walk = (x - startX) * 2
     scrollContainerRef.current.scrollLeft = scrollLeft - walk
+    checkScrollPosition()
   }
 
   // Touch swipe handlers
@@ -137,6 +155,7 @@ const Projects = () => {
     const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft
     const walk = (x - touchStart) * 2
     scrollContainerRef.current.scrollLeft = touchScrollLeft - walk
+    checkScrollPosition()
   }
 
   // Button navigation
@@ -158,7 +177,29 @@ const Projects = () => {
         behavior: 'smooth'
       })
     }
+    
+    // Check position after a short delay to allow smooth scroll to complete
+    setTimeout(checkScrollPosition, 300)
   }
+
+  // Initialize scroll position check
+  useEffect(() => {
+    checkScrollPosition()
+    
+    const container = scrollContainerRef.current
+    if (!container) return
+    
+    // Listen to scroll events
+    container.addEventListener('scroll', checkScrollPosition)
+    
+    // Check on resize
+    window.addEventListener('resize', checkScrollPosition)
+    
+    return () => {
+      container.removeEventListener('scroll', checkScrollPosition)
+      window.removeEventListener('resize', checkScrollPosition)
+    }
+  }, [])
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
@@ -183,11 +224,14 @@ const Projects = () => {
 
       <div className="projects-wrapper relative">
         <button
-          className="projects-nav-btn projects-nav-prev"
+          className="slider-nav-btn slider-nav-prev"
           onClick={() => scrollTo('prev')}
+          disabled={!canScrollPrev}
           aria-label="Previous projects"
         >
-          &#x2190;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
         
         <div
@@ -265,11 +309,14 @@ const Projects = () => {
         </div>
         
         <button
-          className="projects-nav-btn projects-nav-next"
+          className="slider-nav-btn slider-nav-next" 
           onClick={() => scrollTo('next')}
+          disabled={!canScrollNext}
           aria-label="Next projects"
         >
-          &#x2192;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
     </section>
