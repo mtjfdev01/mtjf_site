@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
-import image1 from '../assets/img/hero section for about/hero-about.webp'
+import image1 from '../assets/img/about/hero-image.webp'
 import viceChairmanImage from '../assets/img/about/yousaf_sb.webp'
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
