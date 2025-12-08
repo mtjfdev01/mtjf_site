@@ -198,8 +198,64 @@ export const PROJECTS_DETAIL_DATA = {
           }
         ],
         donateButtonText: 'View Detailed Quarterly Reports'
-      }
-    ]
+      },
+    ],
+    testimonials: {
+      id: 'education-program-impact',
+      title: 'Education Program Impact – Stories of Transformation',
+      subtitle: 'Watch Young Lives You Helped Change',
+      description: '',
+      videos: [
+        'https://www.youtube.com/watch?v=4A8q8Al7TMs&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=7',
+        'https://www.youtube.com/watch?v=gNt5XZyRGDk&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=25',
+        'https://www.youtube.com/watch?v=_rQhKds84rc&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=49'
+      ]
+    },
+    faqs:{
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About MTJ Foundation\'s Education Services',
+      description: '',
+      faqs: [
+        {
+          question: 'Who can enroll in MTJ Foundation schools and programs?',
+          answer: 'Children and young women from underserved communities, regardless of financial means, are welcome.'
+        },
+        {
+          question: 'Are education programs completely free?',
+          answer: 'Yes. Schools, scholarships, and college programs are offered free or highly subsidized through donor support.'
+        },
+        {
+          question: 'Where are your education services available?',
+          answer: 'Across Pakistan, including Faisalabad, Mian Channu, Khanewal, Shahkot, Lahore, Mansehra, Mailsi, and select North American branches.'
+        },
+        {
+          question: 'How do you select scholarship recipients?',
+          answer: 'Based on merit, financial need, and potential, ensuring holistic support for tuition, books, transport, accommodation, and mentorship.'
+        },
+        {
+          question: 'How are donations used in the Education Program?',
+          answer: '100% of contributions go directly to student tuition, school operations, scholarships, and educational resources.'
+        },
+        {
+          question: 'Can donors support a specific student or school?',
+          answer: 'Yes. Donors can sponsor individual students, classrooms, or micro-schools and receive follow-up updates on progress.'
+        },
+        {
+          question: 'How can I trust that the impact is real?',
+          answer: 'We maintain transparency through quarterly education reports, audits, and detailed program data, available online and at our offices.'
+        },
+        {
+          question: 'Can I give Zakat to support education?',
+          answer: 'Yes. MTJ Foundation accepts Zakat contributions for education, ensuring that underprivileged children and young women continue their learning.'
+        },
+        {
+          question: 'How else can I help?',
+          answer: 'Donate, sponsor scholarships, fund new schools, or share our mission with your network, every contribution transforms a life.'
+        }
+      ],
+      donateButtonText: 'Donate Now'
+    }
   },
   health: {
     id: 'health',
@@ -379,8 +435,65 @@ export const PROJECTS_DETAIL_DATA = {
           }
         ],
         donateButtonText: 'View Detailed Quarterly Reports'
-      }
-    ]
+      },
+    ],
+    testimonials: {
+      id: 'health-program-impact',
+      title: 'Health Program Impact – Stories of Hope',
+      subtitle: 'Watch Lives You Helped Change',
+      description: '',
+      videos: [
+        'https://www.youtube.com/watch?v=6bqunG0PeNQ&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=8',
+        'https://www.youtube.com/watch?v=jK4a0OeDwXI&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=14',
+        'https://www.youtube.com/watch?v=DAnXnVpICys&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=42',
+        'https://www.youtube.com/watch?v=r8Kz53e9yZY&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=48'
+      ]
+    },
+    faqs:       {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About MTJ Foundation\'s Health Services',
+      description: '',
+      faqs: [
+        {
+          question: 'Who can receive free healthcare through MTJ Foundation?',
+          answer: 'Anyone in need, regardless of income, background, or location. Our services are designed to help underserved families, widows, daily wage earners, and communities with limited access to healthcare.'
+        },
+        {
+          question: 'Are all services completely free?',
+          answer: 'Yes. All consultations, medicines, surgeries, and medical camps are offered at no cost to the patient. Donations from compassionate supporters make this possible.'
+        },
+        {
+          question: 'Where are the health services provided?',
+          answer: 'We operate through our Free OPD, partner hospitals, community-based medical camps, and diagnostic facilities across multiple regions of Pakistan, primarily in the Khanewal District.'
+        },
+        {
+          question: 'How do you select patients for free surgeries or medical aid?',
+          answer: 'Patients undergo medical assessment, financial verification, and specialist evaluation. Priority is given to individuals who cannot afford treatment even in government hospitals.'
+        },
+        {
+          question: 'How are donations used within the Health Program?',
+          answer: '100% of donations are allocated to direct patient care, including surgeries, medicines, diagnostics, medical staff, and community outreach—ensuring your contribution has immediate impact.'
+        },
+        {
+          question: 'Can donors support a specific treatment or patient?',
+          answer: 'Yes. Donors can sponsor surgeries, fund medical camps, or support OPD operations. On request, we also share follow-up updates for sponsored cases.'
+        },
+        {
+          question: 'How can I trust that the impact is real?',
+          answer: 'We maintain full transparency through quarterly health reports, financial audits, and detailed program data. You can review all impact reports directly on this page, or you can visit our head office for more details.'
+        },
+        {
+          question: 'How can I help?',
+          answer: 'You can donate, sponsor a medical camp, fund surgeries, or share our mission with others. Every act of kindness brings healing to someone who truly needs it.'
+        },
+        {
+          question: 'Can I give Zakat to support the Health Program?',
+          answer: 'Yes. MTJ Foundation accepts Zakat contributions, fully utilized to provide free healthcare, medicines, and life-saving treatments to those most in need.'
+        }
+      ],
+      donateButtonText: 'Donate Now — Help Save a Life'
+    },
   },
   'disaster-management': {
     id: 'disaster-management',
@@ -614,38 +727,38 @@ export const PROJECTS_DETAIL_DATA = {
         donateButtonText: 'Sponsor a Handpump or Filtration Plant'
       },
       {
-        id: 'faq-clean-water',
-        title: 'FAQ – Clean Water Projects',
-        subtitle: '',
-        description: '',
-        faqs: [
-          {
-            question: 'Why is clean water considered Sadaqah Jariyah?',
-            answer: 'Clean water continues to benefit families and communities for years, earning ongoing spiritual reward for the donor as long as it is used.'
-          },
-          {
-            question: 'How do you select communities for water projects?',
-            answer: 'We prioritize underserved areas where water scarcity is severe and families are at highest risk of waterborne diseases.'
-          },
-          {
-            question: 'Can donors sponsor specific water projects?',
-            answer: 'Yes! Donors can fund individual handpumps, community pumps, or filtration plants, directly transforming lives and creating Sadaqah Jariyah.'
-          },
-          {
-            question: 'How are water solutions maintained?',
-            answer: 'Local communities are trained to manage and maintain pumps and filtration plants, ensuring sustainable, long-term impact.'
-          }
-        ],
-        donateButtonText: 'Sponsor a Handpump or Filtration Plant'
-      },
-      {
         id: 'call-to-action',
         title: 'Call to Action',
         subtitle: '',
         description: 'Be the reason a child drinks safely today. Sponsor a Handpump or Filtration Plant and earn ongoing blessings through Sadaqah Jariyah. Your contribution transforms lives, restores dignity, and leaves a lasting legacy.',
         donateButtonText: 'Sponsor a Handpump or Filtration Plant'
       }
-    ]
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'FAQ – Clean Water Projects',
+      subtitle: '',
+      description: '',
+      faqs: [
+        {
+          question: 'Why is clean water considered Sadaqah Jariyah?',
+          answer: 'Clean water continues to benefit families and communities for years, earning ongoing spiritual reward for the donor as long as it is used.'
+        },
+        {
+          question: 'How do you select communities for water projects?',
+          answer: 'We prioritize underserved areas where water scarcity is severe and families are at highest risk of waterborne diseases.'
+        },
+        {
+          question: 'Can donors sponsor specific water projects?',
+          answer: 'Yes! Donors can fund individual handpumps, community pumps, or filtration plants, directly transforming lives and creating Sadaqah Jariyah.'
+        },
+        {
+          question: 'How are water solutions maintained?',
+          answer: 'Local communities are trained to manage and maintain pumps and filtration plants, ensuring sustainable, long-term impact.'
+        }
+      ],
+      donateButtonText: 'Sponsor a Handpump or Filtration Plant'
+    }
   },
   'ecommerce-training': {
     id: 'ecommerce-training',
@@ -867,7 +980,48 @@ export const PROJECTS_DETAIL_DATA = {
         ],
         donateButtonText: 'View Detailed Quarterly Reports'
       }
-    ]
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About MTJ Foundation\'s Skill Development Initiatives',
+      description: '',
+      faqs: [
+        {
+          question: 'Who can join the KASB Skill Development program?',
+          answer: 'Women who are the sole breadwinners or face limited employment opportunities, especially from underserved communities.'
+        },
+        {
+          question: 'Is there a cost to participate?',
+          answer: 'No. Training, tools, raw materials, and mentorship are provided completely free of charge.'
+        },
+        {
+          question: 'What skills are taught in the program?',
+          answer: 'Professional football stitching and community trainer modules, with plans to expand into other marketable skills.'
+        },
+        {
+          question: 'How do trainees earn?',
+          answer: 'After stitching footballs and submitting them for quality checks, women are paid fairly based on the number of footballs produced.'
+        },
+        {
+          question: 'How do footballs reach the market?',
+          answer: 'Finished footballs are exported globally through our partner, including supply to international sports events like FIFA.'
+        },
+        {
+          question: 'How can I support this initiative?',
+          answer: 'Donate to fund skill training, provide raw materials, or sponsor community trainers. Every contribution helps women achieve financial independence.'
+        },
+        {
+          question: 'Can I give Zakat to support KASB programs?',
+          answer: 'Yes. MTJ Foundation accepts Zakat contributions for skill development, directly enabling women to earn dignified livelihoods.'
+        },
+        {
+          question: 'How can I see the impact of my donation?',
+          answer: 'Through quarterly program reports, testimonials, and updates from trainees and trainers. Transparency is a core principle of MTJ Foundation.'
+        }
+      ],
+      donateButtonText: 'Donate Now — Empower Women with Skills'
+    }
   }   
 }
 
@@ -984,14 +1138,6 @@ export const PROJECTS_DETAIL_DATA = {
 //     donatePath: '/donate/community-services'
 //   }
 // ] 
-
-
-
-
-
-
-
-
 
 export const ALL_PROJECTS_DATA = [
   {

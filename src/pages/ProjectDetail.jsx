@@ -7,7 +7,8 @@ import VerticalDonationForm from '../components/donationForm/VerticalDonationFor
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 import MediaContentSection from '../components/mediaContentSection/MediaContentSection'
-
+import FAQs from '../components/faqs/FAQs'
+import ProjectsTestimonial from '../components/projectsTestimonial/ProjectsTestimonial'
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
@@ -135,6 +136,22 @@ const ProjectDetail = () => {
         <MediaContentSection 
           subProjects={project.subProjects} 
           defaultImage={project.mainImage}
+        />
+      )}
+      {/* Testimonials Section */}
+      {project?.testimonials && (
+        <ProjectsTestimonial
+          videos={project.testimonials.videos}
+          title={project.testimonials.title}
+          subtitle={project.testimonials.subtitle}
+        />
+      )}
+      {/* FAQs Section */}
+      {project?.faqs && (
+        <FAQs
+          title={project.faqs.title}
+          subtitle={project.faqs.subtitle}
+          faqs={project.faqs.faqs}
         />
       )}
 

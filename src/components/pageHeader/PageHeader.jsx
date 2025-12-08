@@ -10,9 +10,9 @@ const PageHeader = ({ title, image}) => {
             className="page-header-image"
           />
         </div>
-        <div className="page-header-overlay">
+        {/* <div className="page-header-overlay">
           <h3 className="page-header-title">{title}</h3>
-        </div>
+        </div> */}
       </div>
     </section>
   )

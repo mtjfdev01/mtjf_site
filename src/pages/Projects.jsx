@@ -40,7 +40,7 @@ const Projects = () => {
                 <h2 className="h1">Explore our programs and see how your contribution transforms futures</h2>
               </div>
 
-              <div className="projects-page-grid grid grid-2 gap-24">
+              <div className="projects-page-grid grid grid-2 gap-32"> 
                 {ALL_PROJECTS_DATA.map((project) => (
                   <div key={project.id} className="projects-page-item">
                     <h2 className="heading-secondary projects-page-card-title mb-16 text-center">{project.title}</h2>
@@ -99,7 +99,22 @@ const Projects = () => {
       </section>
 
       <Suspense fallback={null}>
-        <ProjectsTestimonial />
+        <ProjectsTestimonial 
+          videos={[
+            'https://www.youtube.com/watch?v=4A8q8Al7TMs&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=7',
+            'https://www.youtube.com/watch?v=6bqunG0PeNQ&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=8',
+            'https://www.youtube.com/watch?v=jK4a0OeDwXI&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=14',
+            'https://www.youtube.com/watch?v=gNt5XZyRGDk&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=25',
+            'https://www.youtube.com/watch?v=B1FnJc8YVjA&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=31',
+            'https://www.youtube.com/watch?v=v929F_VF1UM&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=37',
+            'https://www.youtube.com/watch?v=DAnXnVpICys&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=42',
+            'https://www.youtube.com/watch?v=r8Kz53e9yZY&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=48',
+            'https://www.youtube.com/watch?v=_rQhKds84rc&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=49',
+            'https://www.youtube.com/watch?v=7Z9YoYVrE9c&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=59',
+            'https://www.youtube.com/watch?v=yHAo1Y4i3Vw&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=65'
+          ]}
+          title="Why Our Programs Matter"
+        />
       </Suspense>
 
       <div ref={restRef} style={{ minHeight: '50px' }}>

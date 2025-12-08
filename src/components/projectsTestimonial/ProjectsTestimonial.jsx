@@ -3,26 +3,25 @@ import './ProjectsTestimonial.css'
 
 // Extract video IDs from YouTube URLs
 const extractVideoId = (url) => {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)
-  return match ? match[1] : null
+  if (!url || typeof url !== 'string') return null
+  // Support multiple YouTube URL formats
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+    /youtube\.com\/.*[?&]v=([^&\n?#]+)/
+  ]
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern)
+    if (match) return match[1]
+  }
+  return null
 }
 
-// Video URLs data
-const TESTIMONIAL_VIDEOS = [
-  'https://www.youtube.com/watch?v=4A8q8Al7TMs&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=7',
-  'https://www.youtube.com/watch?v=6bqunG0PeNQ&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=8',
-  'https://www.youtube.com/watch?v=jK4a0OeDwXI&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=14',
-  'https://www.youtube.com/watch?v=gNt5XZyRGDk&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=25',
-  'https://www.youtube.com/watch?v=B1FnJc8YVjA&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=31',
-  'https://www.youtube.com/watch?v=v929F_VF1UM&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=37',
-  'https://www.youtube.com/watch?v=DAnXnVpICys&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=42',
-  'https://www.youtube.com/watch?v=r8Kz53e9yZY&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=48',
-  'https://www.youtube.com/watch?v=_rQhKds84rc&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=49',
-  'https://www.youtube.com/watch?v=7Z9YoYVrE9c&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=59',
-  'https://www.youtube.com/watch?v=yHAo1Y4i3Vw&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=65'
-]
-
-const ProjectsTestimonial = () => {
+const ProjectsTestimonial = ({ 
+  videos = [], 
+  title = 'Why Our Programs Matter',
+  subtitle = null 
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(4)
   const [selectedVideoId, setSelectedVideoId] = useState(null)
@@ -46,6 +45,14 @@ const ProjectsTestimonial = () => {
     return () => window.removeEventListener('resize', updateCardsPerView)
   }, [])
 
+  // Reset currentIndex when cardsPerView or videos change
+  useEffect(() => {
+    const maxIndex = Math.max(0, videos.length - cardsPerView)
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(Math.max(0, maxIndex))
+    }
+  }, [cardsPerView, videos.length, currentIndex])
+
   useEffect(() => {
     // Prevent body scroll when modal is open
     if (selectedVideoId) {
@@ -68,7 +75,7 @@ const ProjectsTestimonial = () => {
     }
   }, [selectedVideoId])
 
-  const maxIndex = Math.max(0, TESTIMONIAL_VIDEOS.length - cardsPerView)
+  const maxIndex = Math.max(0, videos.length - cardsPerView)
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1))
@@ -93,10 +100,16 @@ const ProjectsTestimonial = () => {
     return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
   }
 
+  // Early return if no videos (after all hooks)
+  if (!videos || videos.length === 0) {
+    return null
+  }
+
   return (
     <section className="projects-testimonial-section container py-48">
       <div className="projects-testimonial-header text-center mb-48">
-        <h2 className="heading-secondary mb-16">Why Our Programs Matter</h2>
+        <h2 className="heading-secondary mb-16">{title}</h2>
+        {subtitle && <p className="projects-testimonial-subtitle">{subtitle}</p>}
       </div>
 
       <div className="projects-testimonial-wrapper relative">
@@ -116,10 +129,11 @@ const ProjectsTestimonial = () => {
             className="projects-testimonial-grid"
             style={{
               transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-              transition: 'transform 0.4s var(--ease)'
+              transition: 'transform 0.4s var(--ease)',
+              '--cards-per-view': cardsPerView
             }}
           >
-            {TESTIMONIAL_VIDEOS.map((url, index) => {
+            {videos.map((url, index) => {
               const videoId = extractVideoId(url)
               const thumbnailUrl = videoId 
                 ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
