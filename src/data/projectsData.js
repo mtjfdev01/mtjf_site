@@ -1,4 +1,8 @@
 import image1 from '../assets/img/projects/camp.webp'
+import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
+import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
+import kasb from '../assets/img/projects/projects-details/kasb/hero-section.webp'
+import community from '../assets/img/projects/projects-details/community/hero- section.webp'
 import image2 from '../assets/img/projects/convocation.webp'
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/project-image/health.webp'
@@ -73,7 +77,7 @@ export const PROJECTS_DETAIL_DATA = {
       paragraph2: 'Every child deserves the chance to learn, grow, and reach their potential, regardless of their circumstances.',
       paragraph3: 'In underserved areas across Pakistan, many children are forced to leave school due to poverty or lack of resources. Through your support, we provide free schools, scholarships, and Islamic education programs, giving children the tools to build a brighter tomorrow, and young women the confidence to lead.'
     },
-    mainImage: image1,
+    mainImage: edufooter,
     donateCategory: 'Education',
     donateButtonText: 'Support Education Programs',
     donationOptions: {
@@ -644,7 +648,7 @@ export const PROJECTS_DETAIL_DATA = {
   'clean-water': {
     id: 'clean-water',
     title: 'Clean Water for Every Family, A Lifeline of Sadaqah Jariyah',
-    headerImage: image1,
+    headerImage: cleanwater,
     stats: [
       { icon: FaTint, number: '850', label: 'Water Wells Installed' },
       { icon: FaFaucet, number: '1,200', label: 'Water Filtration Plants' },
@@ -871,7 +875,7 @@ export const PROJECTS_DETAIL_DATA = {
   'kasb-skill-development': {
     id: 'kasb-skill-development',
     title: 'KASB Skill Development – Skills That Build Futures',
-    headerImage: image1,
+    headerImage: kasb,
     stats: [
       { icon: FaUsers, number: '1,200', label: 'Participants Trained' },
       { icon: FaLaptopCode, number: '850', label: 'Training Programs Conducted' },
