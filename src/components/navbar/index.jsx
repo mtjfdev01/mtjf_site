@@ -208,7 +208,7 @@ const Navbar = () => {
             {/* button section */}
              <div>
             <button 
-              className='btn' 
+              className='btn btn--alert' 
               style={{margin:'10px'}}
               onClick={handleDonateClick}
               aria-label="Navigate to donation form"
