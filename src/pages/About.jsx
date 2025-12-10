@@ -7,8 +7,6 @@ import HeroContent from "../components/heroContent/HeroContent";
 
 const OurStory = lazy(() => import("../components/ourStory/OurStory"));
 const Mission = lazy(() => import("../components/mission/Mission"));
-const Vision = lazy(() => import("../components/vision/Vision"));
-
 const CoreValues = lazy(() =>
   import("../components/coreValues/CoreValues")
 );
@@ -57,9 +55,6 @@ const About = () => {
           <>
             <Suspense fallback={null}>
               <Mission />
-            </Suspense>
-            <Suspense fallback={null}>
-              <Vision />
             </Suspense>
             <Suspense fallback={null}>
               <CoreValues />
