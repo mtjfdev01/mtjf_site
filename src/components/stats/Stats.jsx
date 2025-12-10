@@ -17,7 +17,7 @@ const STATS_DATA = [
       ),
     statistic: '400,000 +',
     description: 'People helped during the 2022 and 2025 floods of Pakistan',
-    iconColor: '#5EC9C9'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'health',
@@ -26,7 +26,7 @@ const STATS_DATA = [
    ),
     statistic: '200,000 +',
     description: 'Free of cost tests and medicines provided',
-    iconColor: '#FFD700'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'homes',
@@ -35,7 +35,7 @@ const STATS_DATA = [
     ),
     statistic: '150,000+',
     description: 'Ration bags distributed',
-    iconColor: '#FFA500'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'water',
@@ -44,7 +44,7 @@ const STATS_DATA = [
     ),
     statistic: '300,000 +',
     description: 'with access to clean water',
-    iconColor: '#90EE90'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'education',
@@ -53,7 +53,7 @@ const STATS_DATA = [
     ),
     statistic: '300,000+',
     description: 'free-of-cost lab tests done',
-    iconColor: '#87CEEB'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'scholarship',
@@ -62,7 +62,7 @@ const STATS_DATA = [
     ),
     statistic: '6000+',
     description: 'Scholarships awarded',
-    iconColor: '#FF8C00'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'aid',
@@ -71,7 +71,7 @@ const STATS_DATA = [
   ),
     statistic: '200,000+',
     description: 'Aid packages distributed',
-    iconColor: '#FF6347'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   },
   {
     id: 'food',
@@ -80,7 +80,7 @@ const STATS_DATA = [
     ),
     statistic: '50,000+ ',
     description: 'Trees planted',
-    iconColor: '#20B2AA'
+    iconColor: 'rgba(83, 176, 72, 0.8)'
   }
 ]
 
