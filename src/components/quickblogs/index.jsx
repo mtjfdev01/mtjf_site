@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './Blogs.css'
+import './index.css'
 import blog1 from '../../assets/img/causes/poor boy.webp'
 import blog2 from '../../assets/img/causes/meet box.webp'
 
@@ -26,7 +26,7 @@ const BLOG_LIST = [
   }
 ]
 
-const Blogs = () => {
+const QuickBlogs = () => {
   return (
     <section className="blogs-section container py-64">
       <div className="blogs-header text-center mb-40">
@@ -86,5 +86,5 @@ const Blogs = () => {
   )
 }
 
-export default Blogs
+export default QuickBlogs
 

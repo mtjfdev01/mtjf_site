@@ -2,9 +2,11 @@ import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import image1 from '../assets/img/blogs/hero section for blogs.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import StorySection from '../components/story/StorySection'
 
 const Events = lazy(() => import('../components/events/Events'))
-const Blogs = lazy(() => import('../components/blogs/Blogs'))
+const Blogs = lazy(() => import('../components/quickblogs'))
+const BlogsDetails = lazy(() => import('../components/blogsDetails/BlogsDetails'))
 const DonationCta = lazy(() =>
   import('../components/donationCta/DonationCta')
 )
@@ -30,7 +32,9 @@ const BlogsPage = () => {
       <div ref={firstSectionRef}>
         {showFirstSection && (
           <Suspense fallback={null}>
-            <Events />
+            {/* <Events /> */}
+            <BlogsDetails />
+            <StorySection />
           </Suspense>
         )}
       </div>

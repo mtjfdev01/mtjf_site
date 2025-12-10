@@ -15,7 +15,7 @@ const CoreValues = lazy(() =>
 const Directors = lazy(() => import("../components/directors/Directors"));
 const Team = lazy(() => import("../components/team/Team"));
 const Events = lazy(() => import("../components/events/Events"));
-const Blogs = lazy(() => import("../components/blogs/Blogs"));
+const QuickBlogs = lazy(() => import("../components/quickblogs/index"));
 const DonationCta = lazy(() =>
   import("../components/donationCta/DonationCta")
 );
@@ -96,7 +96,7 @@ const About = () => {
               <Events />
             </Suspense>
             <Suspense fallback={null}>
-              <Blogs />
+              <QuickBlogs />
             </Suspense>
             <Suspense fallback={null}>
               <Newsletter />

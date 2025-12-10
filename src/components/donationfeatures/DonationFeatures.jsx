@@ -7,7 +7,7 @@ import CleanWater from '../../assets/img/projects/icons/clean_water.webp'
 import ApnaGhar from '../../assets/img/projects/icons/apnaghar.webp'
 import Qurbani from '../../assets/img/projects/icons/qurbani.webp'
 import KASB from '../../assets/img/projects/icons/kasb.webp'
-import Seeds from '../../assets/img/projects/icons/seeds.webp'
+import Seeds from '../../assets/img/projects/icons/seeds.png'
 import Community from '../../assets/img/projects/icons/community.webp'
 import AASLab from '../../assets/img/projects/icons/aaslab.webp'
  

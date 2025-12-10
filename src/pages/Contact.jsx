@@ -20,7 +20,7 @@ const NationalOffices = lazy(() =>
   import('../components/contant-us/NationalOffices')
 )
 const Events = lazy(() => import('../components/events/Events'))
-const Blogs = lazy(() => import('../components/blogs/Blogs'))
+const QuickBlogs = lazy(() => import('../components/quickblogs/index'))
 const DonationCta = lazy(() =>
   import('../components/donationCta/DonationCta')
 )
@@ -84,7 +84,7 @@ const Contact = () => {
               <Events />
             </Suspense>
             <Suspense fallback={null}>
-              <Blogs />
+              <QuickBlogs />
             </Suspense>
             <Suspense fallback={null}>
               <Newsletter />

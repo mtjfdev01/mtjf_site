@@ -108,6 +108,39 @@
   width: 100%;
 }
 
+.volunteer-guide-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.volunteer-guide-benefit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.volunteer-guide-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #2dcc70;
+  color: var(--color-white);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.volunteer-guide-benefit span {
+  color: var(--color-600);
+  font-size: var(--fs-16);
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .contact-card {
     padding: var(--space-32);

@@ -3,7 +3,7 @@ import Hero from "../components/hero/Hero";
 import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
-
+  import QuickBlogs from "../components/quickblogs";
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
 );
@@ -19,7 +19,6 @@ const CtaCircles = lazy(() =>
 const Projects = lazy(() => import("../components/projects/Projects"));
 const Stats = lazy(() => import("../components/stats/Stats"));
 const Events = lazy(() => import("../components/events/Events"));
-const Blogs = lazy(() => import("../components/blogs/Blogs"));
 const DonationCta = lazy(() =>
   import("../components/donationCta/DonationCta")
 );
@@ -91,7 +90,7 @@ const Home = () => {
               <Events />
             </Suspense>
             <Suspense fallback={null}>
-              <Blogs />
+              <QuickBlogs />
             </Suspense>
             <Suspense fallback={null}>
               <Newsletter />

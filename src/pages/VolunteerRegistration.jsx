@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import image1 from '../assets/img/hero section for about/hero-about.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import VolunteerForm from '../components/volunteer/VolunteerForm'
+import VolunteerSection from '../components/volunteer/VolunteerSection'
 
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
@@ -24,7 +24,7 @@ const VolunteerRegistration = () => {
       <PageHeader title="Volunteer Registration" image={image1} />
       
       <div ref={formRef}>
-        {showForm && <VolunteerForm />}
+        {showForm && <VolunteerSection />}
       </div>
 
       {/* Rest of components - load on more scroll */}
