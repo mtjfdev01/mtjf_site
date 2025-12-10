@@ -3,9 +3,12 @@ import PageHeader from "../components/pageHeader/PageHeader";
 import image1 from '../assets/img/about/hero-image.webp'
 import viceChairmanImage from '../assets/img/about/yousaf_sb.webp'
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import HeroContent from "../components/heroContent/HeroContent";
 
 const OurStory = lazy(() => import("../components/ourStory/OurStory"));
 const Mission = lazy(() => import("../components/mission/Mission"));
+const Vision = lazy(() => import("../components/vision/Vision"));
+
 const CoreValues = lazy(() =>
   import("../components/coreValues/CoreValues")
 );
@@ -20,13 +23,16 @@ const Footer = lazy(() => import("../components/footer/Footer"));
 const Newsletter = lazy(() => import("../components/newsletter/Newsletter"));
 
 const About = () => {
+  // First component after header - loads immediately
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
-    rootMargin: '100px',
+    rootMargin: '50px',
     loadImmediately: true 
   });
+  // Next component - loads on short scroll
   const [secondSectionRef, showSecondSection] = useIntersectionObserver({ 
     rootMargin: '100px'
   });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -34,26 +40,30 @@ const About = () => {
   return (
     <>
       <PageHeader title="About Us" image={image1} />
+      <HeroContent />
 
+      {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
+          <Suspense fallback={null}>
+            <OurStory />
+          </Suspense>
+        )}
+      </div>
+
+      {/* Next components - load on short scroll */}
+      <div ref={secondSectionRef} style={{ minHeight: '200px' }}>
+        {showSecondSection && (
           <>
-            <Suspense fallback={null}>
-              <OurStory />
-            </Suspense>
             <Suspense fallback={null}>
               <Mission />
             </Suspense>
             <Suspense fallback={null}>
+              <Vision />
+            </Suspense>
+            <Suspense fallback={null}>
               <CoreValues />
             </Suspense>
-          </>
-        )}
-      </div>
-
-      <div ref={secondSectionRef} style={{ minHeight: '50px' }}>
-        {showSecondSection && (
-          <>
             <Suspense fallback={null}>
               <Directors
                 directorRole="Chairman"
@@ -78,7 +88,8 @@ const About = () => {
         )}
       </div>
 
-      <div ref={restRef} style={{ minHeight: '50px' }}>
+      {/* Rest of components - load on more scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
             <Suspense fallback={null}>

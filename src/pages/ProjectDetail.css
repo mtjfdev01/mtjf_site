@@ -57,6 +57,7 @@
 .project-content-grid {
   display: grid;
   gap: var(--space-32);
+  align-items: center;
 }
 
 .project-content-left {

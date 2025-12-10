@@ -9,10 +9,12 @@ const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 
 const VolunteerRegistration = () => {
+  // First component after header - loads immediately
   const [formRef, showForm] = useIntersectionObserver({ 
-    rootMargin: '100px',
+    rootMargin: '50px',
     loadImmediately: true 
   });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -25,7 +27,8 @@ const VolunteerRegistration = () => {
         {showForm && <VolunteerForm />}
       </div>
 
-      <div ref={restRef} style={{ minHeight: '50px' }}>
+      {/* Rest of components - load on more scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
             <Suspense fallback={null}>

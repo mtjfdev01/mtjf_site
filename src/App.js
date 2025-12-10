@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { CartProvider } from './contexts/CartContext';
 import { DonationProvider } from './contexts/DonationContext';
@@ -23,6 +23,19 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 
 
 
+// Component to handle scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // or smooth:
+    // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
 
   useEffect(() => {
@@ -34,6 +47,7 @@ function App() {
     <Router>
       <CartProvider>
         <DonationProvider>
+          <ScrollToTop />
           <StickyBar />
           <Navbar />
           <Suspense fallback={null}>

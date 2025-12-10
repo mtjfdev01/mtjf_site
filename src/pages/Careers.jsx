@@ -15,10 +15,12 @@ const Footer = lazy(() => import("../components/footer/Footer"));
 const Newsletter = lazy(() => import("../components/newsletter/Newsletter"));
 
 const Careers = () => {
+  // First component after header - loads immediately
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
-    rootMargin: '100px',
+    rootMargin: '50px',
     loadImmediately: true 
   });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -27,25 +29,25 @@ const Careers = () => {
     <>
       <PageHeader title="Careers Page" image={image1} />
 
+      {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
+          <Suspense fallback={null}>
+            <Career />
+          </Suspense>
+        )}
+      </div>
+
+      {/* Next component - loads on short scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
+        {showRest && (
           <>
-            <Suspense fallback={null}>
-              <Career />
-            </Suspense>
             <Suspense fallback={null}>
               <JoinTeam />
             </Suspense>
             {/* <Suspense fallback={null}>
               <Pagination />
             </Suspense> */}
-          </>
-        )}
-      </div>
-
-      <div ref={restRef} style={{ minHeight: '50px' }}>
-        {showRest && (
-          <>
             <Suspense fallback={null}>
               <Events />
             </Suspense>

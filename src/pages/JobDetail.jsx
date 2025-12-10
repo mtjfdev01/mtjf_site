@@ -20,6 +20,12 @@ const JobDetail = () => {
   const [job, setJob] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   
+  // First component after header - loads immediately
+  const [contentRef, showContent] = useIntersectionObserver({ 
+    rootMargin: '50px',
+    loadImmediately: true 
+  });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -124,8 +130,12 @@ const JobDetail = () => {
         </div>
       )}
       <div className="job-detail-container container py-48">
-        {/* Header Section */}
-        <div className="job-detail-header">
+        {/* First component after header - loads immediately */}
+        <div ref={contentRef}>
+          {showContent && (
+            <>
+              {/* Header Section */}
+              <div className="job-detail-header">
           <div className="job-detail-header-left">
             <h1 className="job-detail-title">{job.title}</h1>
             <div className="job-detail-company-info">
@@ -229,6 +239,9 @@ const JobDetail = () => {
             </p>
           </section>
         </div>
+            </>
+          )}
+        </div>
 
         {/* Apply Form */}
         {showApplyForm && (
@@ -241,7 +254,8 @@ const JobDetail = () => {
         )}
       </div>
 
-      <div ref={restRef} style={{ minHeight: '50px' }}>
+      {/* Rest of components - load on more scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
             <Suspense fallback={null}>

@@ -6,9 +6,9 @@ import './ProjectDetail.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
-import MediaContentSection from '../components/mediaContentSection/MediaContentSection'
-import FAQs from '../components/faqs/FAQs'
-import ProjectsTestimonial from '../components/projectsTestimonial/ProjectsTestimonial'
+const MediaContentSection = lazy(() => import('../components/mediaContentSection/MediaContentSection'))
+const FAQs = lazy(() => import('../components/faqs/FAQs'))
+const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
@@ -18,13 +18,20 @@ const ProjectDetail = () => {
   const navigate = useNavigate()
   const project = PROJECTS_DETAIL_DATA[id]
 
+  // First component after header - loads immediately
   const [contentRef, showContent] = useIntersectionObserver({ 
-    rootMargin: '100px',
+    rootMargin: '50px',
     loadImmediately: true 
   });
+  // Next component - loads on short scroll
   const [imageRef, showImage] = useIntersectionObserver({ 
     rootMargin: '100px'
   });
+  // Next section - loads on short scroll
+  const [mediaRef, showMedia] = useIntersectionObserver({ 
+    rootMargin: '100px'
+  });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -87,13 +94,13 @@ const ProjectDetail = () => {
                   </div>
 
                   {/* Main Image */}
-                  <div className="project-main-image mb-32">
+                  {/* <div className="project-main-image mb-32">
                     <LazyImage
                       src={project.mainImage}
                       alt={project.title}
                       className="project-main-image-img"
                     />
-                  </div>
+                  </div> */}
 
                   <div className="project-content-text">
                     <p className="text-base">{project.content.paragraph3}</p>
@@ -116,8 +123,8 @@ const ProjectDetail = () => {
         )}
       </div>
 
-      {/* Full Width Image Section */}
-      <div ref={imageRef} style={{ minHeight: '50px' }}>
+      {/* Full Width Image Section - loads on short scroll */}
+      <div ref={imageRef} style={{ minHeight: '200px' }}>
         {showImage && (
           <section className="project-full-image-section">
             <div className="project-full-image-container">
@@ -131,31 +138,44 @@ const ProjectDetail = () => {
         )}
       </div>
 
-      {/* Media Content Section for Sub-Projects */}
-      {project.subProjects && project.subProjects.length > 0 && (
-        <MediaContentSection 
-          subProjects={project.subProjects} 
-          defaultImage={project.mainImage}
-        />
-      )}
-      {/* Testimonials Section */}
-      {project?.testimonials && (
-        <ProjectsTestimonial
-          videos={project.testimonials.videos}
-          title={project.testimonials.title}
-          subtitle={project.testimonials.subtitle}
-        />
-      )}
-      {/* FAQs Section */}
-      {project?.faqs && (
-        <FAQs
-          title={project.faqs.title}
-          subtitle={project.faqs.subtitle}
-          faqs={project.faqs.faqs}
-        />
-      )}
+      {/* Media Content Section for Sub-Projects - loads on short scroll */}
+      <div ref={mediaRef} style={{ minHeight: '200px' }}>
+        {showMedia && (
+          <>
+            {project.subProjects && project.subProjects.length > 0 && (
+              <Suspense fallback={null}>
+                <MediaContentSection 
+                  subProjects={project.subProjects} 
+                  defaultImage={project.mainImage}
+                />
+              </Suspense>
+            )}
+            {/* Testimonials Section */}
+            {project?.testimonials && (
+              <Suspense fallback={null}>
+                <ProjectsTestimonial
+                  videos={project.testimonials.videos}
+                  title={project.testimonials.title}
+                  subtitle={project.testimonials.subtitle}
+                />
+              </Suspense>
+            )}
+            {/* FAQs Section */}
+            {project?.faqs && (
+              <Suspense fallback={null}>
+                <FAQs
+                  title={project.faqs.title}
+                  subtitle={project.faqs.subtitle}
+                  faqs={project.faqs.faqs}
+                />
+              </Suspense>
+            )}
+          </>
+        )}
+      </div>
 
-      <div ref={restRef} style={{ minHeight: '50px' }}>
+      {/* Rest of components - load on more scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
             <Suspense fallback={null}>

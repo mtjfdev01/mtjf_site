@@ -1,5 +1,6 @@
 .banner_img {
-    max-height: 70vh;
+    height: 75vh;
+    /* max-height: 70vh; */
     opacity: 0;
     transform: scale(1.01);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -115,7 +116,7 @@ body.banner-visible .banner_img {
   opacity: 0.4;
   cursor: not-allowed;
 }
-
+ 
 .slider-nav-prev {
   left: 0;
 }

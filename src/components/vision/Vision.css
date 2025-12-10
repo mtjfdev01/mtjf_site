@@ -13,8 +13,9 @@
   width: 100%;
   background-color: var(--color-black);
   position: relative;
-  padding: var(--space-48) 0;
+  padding: var(--space-32) 0;
   overflow: visible;
+  padding-bottom: 0 !important;
 }
 
 .mission-container {
@@ -42,6 +43,10 @@
 .mission-title {
   color: var(--color-base-orange);
   margin-bottom: var(--space-16);
+}
+
+.mission-subtitle {
+margin: 0 !important;
 }
 
 .mission-title::before,

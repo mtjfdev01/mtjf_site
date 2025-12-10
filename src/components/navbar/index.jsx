@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 // import {useState, useEffect, useRef} from 'react' // Commented out: useEffect and useRef no longer needed 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './index.css' 
@@ -7,7 +7,16 @@ import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
 import logo from '../../assets/img/logos/only_logo.png'
 import StickyBar from '../stickybar';
 
-
+// Navigation items mapping
+const navItems = [
+  { name: "Home", path: "/home" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Blogs", path: "/blogs " },
+  { name: "Registration", path: "/volunteerRegistration " },
+  { name: "Careers", path: "/careers" },
+  { name: "Contact", path: "/contact" }
+];
 
 const Navbar = () => {
    const [activeLink, setActiveLink] = useState("Home");
@@ -17,6 +26,27 @@ const Navbar = () => {
    
    // Always use white background for all states
    const [isLightTheme, setIsLightTheme] = useState(false);
+
+   // Update active link based on current route
+   useEffect(() => {
+     const currentPath = location.pathname.trim();
+     
+     // Check each nav item to see if current path matches
+     const matchedItem = navItems.find(item => {
+       const itemPath = item.path.trim();
+       return currentPath === itemPath || 
+              currentPath === itemPath + ' ' || 
+              (currentPath === '/' && item.name === "Home") ||
+              (currentPath === '/home' && item.name === "Home");
+     });
+     
+     if (matchedItem) {
+       setActiveLink(matchedItem.name);
+     } else {
+       // Default to Home if no match found
+       setActiveLink("Home");
+     }
+   }, [location.pathname]);
 
    // COMMENTED OUT: Transparency/scroll detection code
    // Check if we're on home page
@@ -94,8 +124,10 @@ const Navbar = () => {
    //   };
    // }, [location.pathname]);
 
-  const handleClick = (linkName) => {
+  const handleClick = (linkName, path) => {
+    window.scrollTo(0, 0);
     setActiveLink(linkName);
+    navigate(path);
   };
 
   const handleDonateClick = () => {
@@ -156,20 +188,15 @@ const Navbar = () => {
             {/* <div className='ul-btn'> */}
              <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
               <ul className={`hvr flex gap-24 ${isLightTheme ? 'text-white' : 'text-dark'}`} >
-                 {[
-                { name: "Home", path: "/home" },
-                { name: "About", path: "/about" },
-                { name: "Projects", path: "/projects" },
-                { name: "Blogs", path: "/blogs " },
-                { name: "Registration", path: "/volunteerRegistration " },
-                { name: "Careers", path: "/careers" },
-                { name: "Contact", path: "/contact" }
-              ].map((item) => (
+                 {navItems.map((item) => (
                 <li key={item.name}>
                   <Link
-                    to={item.path}
+                    // to={item.path}
                     className={activeLink === item.name ? "active" : ""}
-                    onClick={() => handleClick(item.name)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick(item.name, item.path);
+                    }}
                   >
                     {item.name}
                   </Link>

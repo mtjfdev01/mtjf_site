@@ -3,35 +3,40 @@ import { Link, useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
 import './Projects.css'
 
-
+import community from '../../assets/img/projects/project-image/cleanwater.webp'
+import kasb from '../../assets/img/projects/project-image/kasbskill.webp'
+import Seeds from '../../assets/img/projects/project-image/seeds.webp'
+import qurbani from '../../assets/img/projects/project-image/qurbani.webp'
+import aas_lab from '../../assets/img/projects/project-image/aaslab.webp'
 import health from '../../assets/img/projects/health.webp'
 import education from '../../assets/img/projects/education.webp' 
 import marriage_gift from '../../assets/img/projects/marriage_gift.webp' 
 import water from '../../assets/img/projects/water.webp'
 import apna_ghr from '../../assets/img/projects/apna_ghr.webp'
+import disaster from '../../assets/img/projects/disaster.webp'
 
 
 const PROJECTS_DATA = [
   {
-    id: 'medicine',
-    category: 'Medicine',
+    id: 'health',
+    category: 'Health',
     categoryColor: '#FFB6C1',
-    title: 'A healthy life is a human right.”',
-    description: 'In many communities, basic healthcare is still out of reach. We step in with medical support that saves lives and restores dignity. This project matters because no one should lose their life due to lack of treatment, and your generosity keeps families whole.',
+    title: 'Ensuring Access to Dignified, Affordable Healthcare',
+    description: 'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
     image: health,
     progress: 47.56,
     progressColor: '#9B59B6',
     goal: 100000,
     pledged: 47789,
-    learnMorePath: '/projects/medicine',
-    donatePath: '/donate/medicine'
+    learnMorePath: '/projects/health',
+    donatePath: '/donate/health'
   },
   {
     id: 'education',
     category: 'Education',
     categoryColor: '#90EE90',
-    title: 'Because every child deserves a chance to rise.',
-    description: 'We educate children who have been denied opportunity their entire lives. With your support, a child who once struggled for a future can finally sit in a classroom, hold a book, and believe in tomorrow. This project matters because education is the first step out of poverty, and you can give that step.',
+    title: 'Opening Doors to Learning and Opportunity',
+    description: 'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
     image: education,
     progress: 47.58,
     progressColor: '#2ECC71',
@@ -41,46 +46,116 @@ const PROJECTS_DATA = [
     donatePath: '/donate/education'
   },
   {
-    id: 'charity',
-    category: 'Charity',
+    id: 'disaster-relief',
+    category: 'Disaster Relief',
     categoryColor: '#FFD700',
-    title: 'Tabahi Ke Baad Naye Hoslay',
-    description: 'Health is a blessing and is required to live life fully. It is very necessary for all of us.',
-    image: marriage_gift,
+    title: 'Rapid Response When Crisis Strikes',
+    description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
+    image: disaster,
     progress: 47.58,
     progressColor: '#F39C12',
     goal: 100000,
     pledged: 47580,
-    learnMorePath: '/projects/charity',
-    donatePath: '/donate/charity'
+    learnMorePath: '/projects/disaster-relief',
+    donatePath: '/donate/disaster-relief'
   },
   {
-    id: 'water',
+    id: 'clean-water',
     category: 'Clean Water',
     categoryColor: '#87CEEB',
-    title: 'Clean water changes everything.',
-    description: 'Women walk miles just to fetch unsafe water that makes their children sick. Your support helps us build sustainable water solutions that restore health, comfort, and hope. This project matters because clean water is the foundation of life and you can place that foundation in someone’s home.',
+    title: 'Providing Safe Water for Healthier Communities.',
+    description: 'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
     image: water,
     progress: 52.30,
     progressColor: '#3498DB',
     goal: 150000,
     pledged: 78450,
-    learnMorePath: '/projects/water',
-    donatePath: '/donate/water'
+    learnMorePath: '/projects/clean-water',
+    donatePath: '/donate/clean-water'
   },
   {
-    id: 'shelter',
-    category: 'Shelter',
+    id: 'apna-ghar',
+    category: 'apna-ghar',
     categoryColor: '#DDA0DD',
     title: 'A home where lost futures are rebuilt',
-    description: 'Apna Ghar gives vulnerable widows and orphans a safe place to sleep, learn, and simply be loved. This project matters because everyone deserves a family, warmth, and stability, and you make that possible.',
+    description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
     image: apna_ghr,
     progress: 38.25,
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-    learnMorePath: '/projects/shelter',
-    donatePath: '/donate/shelter'
+   learnMorePath: '/projects/disaster-relief',
+   donatePath: '/donate/disaster-relief'
+  },
+   {
+    id: 'kasb-skill-development',
+    category: 'kasb-skill-development',
+    categoryColor: '#DDA0DD',
+    title: 'Empowering Youth and Women Through Skills',
+    description: 'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
+    image: kasb,
+    progress: 38.25,
+    progressColor: '#9B59B6',
+    goal: 200000,
+    pledged: 76500,
+   learnMorePath: '/projects/kasb-skill-development',
+   donatePath: '/donate/kasb-skill-development'
+  },
+   {
+    id: 'seeds-of-change',
+    category: 'Seeds of Change',
+    categoryColor: '#DDA0DD',
+    title: 'seeds-of-changeseeds-of-change',
+    description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
+    image: Seeds,
+    progress: 38.25,
+    progressColor: '#9B59B6',
+    goal: 200000,
+    pledged: 76500,
+    learnMorePath: '/projects/seeds-of-change',
+    donatePath: '/donate/seeds-of-change'
+  },
+   {
+    id: 'qurbani-barai-mustehqeen',
+    category: 'Qurbani Barai Mustehqeen',
+    categoryColor: '#DDA0DD',
+    title: 'Delivering Qurbani Meat to Families in Need',
+    description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
+    image: qurbani,
+    progress: 38.25,
+    progressColor: '#9B59B6',
+    goal: 200000,
+    pledged: 76500,
+   learnMorePath: '/projects/qurbani-barai-mustehqeen',
+   donatePath: '/donate/qurbani-barai-mustehqeen'
+  },
+   {
+    id: 'aas-lab-diagnostics',
+    category: 'AAS Lab & Diagnostics',
+    categoryColor: '#DDA0DD',
+    title: 'Accessible and Affordable Diagnostic Care for all',
+    description: 'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
+    image: aas_lab,
+    progress: 38.25,
+    progressColor: '#9B59B6',
+    goal: 200000,
+    pledged: 76500,
+  learnMorePath: '/projects/aas-lab-diagnostics',
+  donatePath: '/donate/aas-lab-diagnostics'
+  },
+    {
+    id: 'community-services',
+    category: 'Community Services',
+    categoryColor: '#DDA0DD',
+    title: 'Supporting Vulnerable Families With Essential Relief',
+    description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
+    image: community,
+    progress: 38.25,
+    progressColor: '#9B59B6',
+    goal: 200000,
+    pledged: 76500,
+  learnMorePath: '/projects/community-services',
+  donatePath: '/donate/community-services'
   }
 ]
 

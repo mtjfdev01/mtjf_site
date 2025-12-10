@@ -1,5 +1,7 @@
 import './Stats.css'
 import floodIcon from '../../assets/img/projects/icons2/flood_ helped.webp';
+import logo_one from '../../assets/img/projects/icons2/logo_one.webp';
+
 import Medicine from '../../assets/img/projects/icons2/medicine.webp';
 import Home from '../../assets/img/projects/icons2/home.webp';
 import Water from '../../assets/img/projects/icons2/water.webp';
@@ -11,7 +13,7 @@ const STATS_DATA = [
   {
     id: 'floods',
     icon: (
-        <img src={floodIcon} alt="flood icon" />
+        <img src={logo_one} alt="flood icon" />
       ),
     statistic: '400,000 +',
     description: 'People helped during the 2022 and 2025 floods of Pakistan',

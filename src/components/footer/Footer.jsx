@@ -112,10 +112,10 @@ const Footer = () => {
                 <Link to="/projects" className="footer-link">Our Programs</Link>
               </li>
               <li>
-                <Link to="/get-involved" className="footer-link">Donate</Link>
+                {/* <Link to="/get-involved" className="footer-link">Donate</Link> */}
               </li>
               <li>
-                <Link to="/get-involved" className="footer-link">Volunteer</Link>
+                <Link to="/volunteerRegistration" className="footer-link">Volunteer</Link>
               </li>
               <li>
                 <Link to="/contact" className="footer-link">Contact Us</Link>

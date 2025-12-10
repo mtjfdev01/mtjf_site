@@ -1,6 +1,7 @@
 import './DonationCta.css'
-
-const DonationCta = () => {
+import { useCart } from '../../contexts/CartContext'
+const DonationCta = () => { 
+  const { shortDonate } = useCart()
   return (
     <section className="donation-cta">
       <div className="donation-cta-colored-section donation-cta-colored-section--left"></div>
@@ -17,8 +18,10 @@ const DonationCta = () => {
           <span className="donation-cta-icon">✦</span>
         </div>
         
-        <button className="donation-cta-btn cta_primary_btn">
-          Learn More
+        <button 
+        onClick={shortDonate}
+        className="donation-cta-btn cta_primary_btn">
+          Donate Now
         </button>
       </div>
       <div className="donation-cta-colored-section donation-cta-colored-section--right"></div>

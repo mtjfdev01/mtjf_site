@@ -91,12 +91,11 @@ export const PROJECTS_DETAIL_DATA = {
         title: 'Al Husnain School System',
         subtitle: 'Free Schools for Children in Underserved Communities',
         description: 'For many children, simply having a classroom and books is a dream. Al Husnain Schools ensure that children in underprivileged districts can access quality education, school supplies, and a safe space to learn.',
-        locations: [
-          { name: 'Shokat Mor', students: 40 },
-          { name: 'Muhallah Mistrian, Tulamba', students: 45 },
-          { name: 'Tawylan Wala Khoh', students: 42 },
-          { name: 'Chak 13/8 R', students: 38 },
-          { name: 'Chak 8/8 R, Rady Wala', students: 40 }
+        programs: [ 'Shokat Mor (40 Students)',
+          'Muhallah Mistrian, Tulamba (45 Students)',
+          'Tawylan Wala Khoh (42 Students)',
+          'Chak 13/8 R (38 Students)',
+          'Chak 8/8 R, Rady Wala (40 Students)'
         ],
         impact: '205 students currently enrolled across 5 schools, with over 10 micro-schools in operation. Our goal is to expand further, reaching more children in need.',
         donateButtonText: 'Sponsor a Child\'s Education'
@@ -129,14 +128,13 @@ export const PROJECTS_DETAIL_DATA = {
         programs: [
           'Dars-e-Nizami (Almiyyah Program): 6-year course',
           'Dars-e-Nizami (Almiyyah Program): 4-year course',
-          'Hifz-ul-Quran & Nazra Programs'
+          'Hifz-ul-Quran & Nazra Programs',
+          'Main Campus (Green Town Faislabad) Facalities Listed Below: ',
+          '1.5-acre campus with classrooms, library, hostel, mosque, and playfield',
+          'Library with 500+ books covering multiple subjects',
+          'Mosque capacity of 1,000+ worshippers',
+          'Dar-ul-Ifta issuing 120 verified fatwas annually'
         ],
-        mainCampus: {
-          description: '1.5-acre campus with classrooms, library, hostel, mosque, and playfield',
-          library: 'Library with 500+ books covering multiple subjects',
-          mosque: 'Mosque capacity of 1,000+ worshippers',
-          darulIfta: 'Dar-ul-Ifta issuing 120 verified fatwas annually'
-        },
         impact: '1,300 students enrolled, 170 graduates annually, highly proficient in Arabic and Islamic studies, ready to serve their communities.',
         donateButtonText: 'Support Islamic Education'
       },
@@ -673,12 +671,6 @@ export const PROJECTS_DETAIL_DATA = {
       EUR: [35, 70, 140, 280]
     },
     subProjects: [
-      {
-        id: 'our-clean-water-programs',
-        title: 'Our Clean Water Programs',
-        subtitle: '',
-        description: '',
-        programs: [
           {
             id: 'individual-handpumps',
             title: 'Individual Handpumps',
@@ -715,28 +707,26 @@ export const PROJECTS_DETAIL_DATA = {
             ],
             donateButtonText: 'Sponsor a Water Filtration Plant'
           }
-        ]
-      },
-      {
-        id: 'impact-highlights',
-        title: 'Impact Highlights',
-        subtitle: '',
-        description: '',
-        highlights: [
-          { label: 'Individual handpumps installed', value: '60+' },
-          { label: 'Community handpumps installed', value: '' },
-          { label: 'Water filtration plants operational', value: '3' },
-          { label: 'Families benefiting daily', value: '' }
-        ],
-        donateButtonText: 'Sponsor a Handpump or Filtration Plant'
-      },
-      {
-        id: 'call-to-action',
-        title: 'Call to Action',
-        subtitle: '',
-        description: 'Be the reason a child drinks safely today. Sponsor a Handpump or Filtration Plant and earn ongoing blessings through Sadaqah Jariyah. Your contribution transforms lives, restores dignity, and leaves a lasting legacy.',
-        donateButtonText: 'Sponsor a Handpump or Filtration Plant'
-      }
+      // {
+      //   id: 'impact-highlights',
+      //   title: 'Impact Highlights',
+      //   subtitle: '',
+      //   description: '',
+      //   highlights: [
+      //     { label: 'Individual handpumps installed', value: '60+' },
+      //     { label: 'Community handpumps installed', value: '' },
+      //     { label: 'Water filtration plants operational', value: '3' },
+      //     { label: 'Families benefiting daily', value: '' }
+      //   ],
+      //   donateButtonText: 'Sponsor a Handpump or Filtration Plant'
+      // },
+      // {
+      //   id: 'call-to-action',
+      //   title: 'Call to Action',
+      //   subtitle: '',
+      //   description: 'Be the reason a child drinks safely today. Sponsor a Handpump or Filtration Plant and earn ongoing blessings through Sadaqah Jariyah. Your contribution transforms lives, restores dignity, and leaves a lasting legacy.',
+      //   donateButtonText: 'Sponsor a Handpump or Filtration Plant'
+      // }
     ],
     faqs: {
       id: 'frequently-asked-questions',

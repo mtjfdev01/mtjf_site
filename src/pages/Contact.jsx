@@ -28,13 +28,16 @@ const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 
 const Contact = () => {
+  // First component after header - loads immediately
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
-    rootMargin: '100px',
+    rootMargin: '50px',
     loadImmediately: true 
   });
+  // Next component - loads on short scroll
   const [secondSectionRef, showSecondSection] = useIntersectionObserver({ 
     rootMargin: '100px'
   });
+  // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
@@ -47,31 +50,34 @@ const Contact = () => {
     <>
       <PageHeader title="Contact" image={image1} />
 
+      {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
+          <Suspense fallback={null}>
+            <ContactSection onSubmit={handleSubmit} />
+          </Suspense>
+        )}
+      </div>
+
+      {/* Next components - load on short scroll */}
+      <div ref={secondSectionRef} style={{ minHeight: '200px' }}>
+        {showSecondSection && (
           <>
-            <Suspense fallback={null}>
-              <ContactSection onSubmit={handleSubmit} />
-            </Suspense>
             <Suspense fallback={null}>
               <InternationalOffices />
             </Suspense>
             <Suspense fallback={null}>
               <NationalOffices />
             </Suspense>
+            <Suspense fallback={null}>
+              <ContactMap />
+            </Suspense>
           </>
         )}
       </div>
 
-      <div ref={secondSectionRef} style={{ minHeight: '50px' }}>
-        {showSecondSection && (
-          <Suspense fallback={null}>
-            <ContactMap />
-          </Suspense>
-        )}
-      </div>
-
-      <div ref={restRef} style={{ minHeight: '50px' }}>
+      {/* Rest of components - load on more scroll */}
+      <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
             <Suspense fallback={null}>

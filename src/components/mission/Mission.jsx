@@ -10,8 +10,9 @@ const Mission = () => {
           
           {/* Text content - Left side */}
           <div className="mission-content">
-            <h2 className="heading-secondary mission-title">Our Mission</h2>
-            <h3>What We Strive For</h3>
+            {/* Mission Section */}
+            <h2 className="heading-secondary mission-title">Our Mission</h2> 
+            <h3 className='mission-subtitle'>What We Strive For</h3>
             
             <p className="mission-text text-base text-white mb-16">
               <b>To serve humanity by providing education, healthcare, shelter, clean water, and livelihood opportunities—ensuring no one is left behind.</b>

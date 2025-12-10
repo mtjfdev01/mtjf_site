@@ -57,7 +57,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
         const imagePosition = isEven ? 'right' : 'left'
 
         return (
-          <div key={subProject.id || index} className="media-content-item">
+          <div key={subProject.id || index} className="media-content-item"> 
             <div className={`media-content-wrapper container ${imagePosition}`}>
               {/* Content Side */}
               <div className="media-content-text">
@@ -65,6 +65,9 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   <p className="media-content-subtitle">{subProject.subtitle}</p>
                 )}
                 <h2 className="media-content-heading">{subProject.title}</h2>
+                {subProject?.impact && (
+                  <h3 className='m-0'>{subProject.impact}</h3>
+                )}
                 {subProject.description && (
                   <p className="media-content-description">{subProject.description}</p>
                 )}

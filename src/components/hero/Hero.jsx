@@ -5,7 +5,7 @@ import '../hero/hero.css';
 const Hero = () => {
   return (
     <div className='banner_img'>
-      <img src={hero} alt="hero background" style={{width:"100%", maxHeight:'70vh'}} />
+      <img src={hero} alt="hero background" style={{width:"100%" , height:"100%"}} />
     </div>
   )
 }
