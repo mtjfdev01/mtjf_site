@@ -9,13 +9,13 @@ const Mission = () => {
         <div className="container mission-container relative">
           
         {/* Image box - Left side */}
-          <div className="mission-image-box">
+          {/* <div className="mission-image-box">
             <img 
               src={missionImg} 
               alt="MTJ Foundation distribution during Ramadan"
               className="mission-img"
             />
-          </div>
+          </div> */}
           {/* Text content - Right side */}
           <div className="mission-content">
             {/* Vision Section */}

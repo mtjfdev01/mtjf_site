@@ -25,13 +25,13 @@ const Mission = () => {
           </div>
           
           {/* Image box - Right side */}
-          <div className="mission-image-box">
+          {/* <div className="mission-image-box">
             <img 
               src={missionImg} 
               alt="MTJ Foundation distribution during Ramadan"
               className="mission-img"
             />
-          </div>
+          </div> */}
           
         </div>
       </div>

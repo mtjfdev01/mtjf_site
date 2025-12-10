@@ -100,7 +100,6 @@ body.banner-visible .banner_img {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
 }
