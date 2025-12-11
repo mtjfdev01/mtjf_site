@@ -6,7 +6,7 @@ import StorySection from '../components/story/StorySection'
 
 const Events = lazy(() => import('../components/events/Events'))
 const Blogs = lazy(() => import('../components/quickblogs'))
-const BlogsDetails = lazy(() => import('../components/blogsDetails/BlogsDetails'))
+const BlogsGrid = lazy(() => import('../components/blogsGrid/index'))
 const DonationCta = lazy(() =>
   import('../components/donationCta/DonationCta')
 )
@@ -33,7 +33,7 @@ const BlogsPage = () => {
         {showFirstSection && (
           <Suspense fallback={null}>
             {/* <Events /> */}
-            <BlogsDetails />
+            <BlogsGrid />
             <StorySection />
           </Suspense>
         )}

@@ -29,6 +29,7 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 100000,
     pledged: 47789,
+    donateButtonText: 'Support Healthcare Services',
     learnMorePath: '/projects/health',
     donatePath: '/donate/health'
   },
@@ -43,6 +44,7 @@ const PROJECTS_DATA = [
     progressColor: '#2ECC71',
     goal: 100000,
     pledged: 47580,
+    donateButtonText: 'Educate a Child',
     learnMorePath: '/projects/education',
     donatePath: '/donate/education'
   },
@@ -57,7 +59,8 @@ const PROJECTS_DATA = [
     progressColor: '#F39C12',
     goal: 100000,
     pledged: 47580,
-    learnMorePath: '/projects/disaster-relief',
+    donateButtonText: 'Help in Emergencies',
+    learnMorePath: '/projects/disaster-management',
     donatePath: '/donate/disaster-relief'
   },
   {
@@ -71,6 +74,7 @@ const PROJECTS_DATA = [
     progressColor: '#3498DB',
     goal: 150000,
     pledged: 78450,
+    donateButtonText: 'Sponsor a Water Project',
     learnMorePath: '/projects/clean-water',
     donatePath: '/donate/clean-water'
   },
@@ -85,8 +89,9 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-   learnMorePath: '/projects/disaster-relief',
-   donatePath: '/donate/disaster-relief'
+    donateButtonText: 'Support Apna Ghar',
+    learnMorePath: '/projects/apna-ghar',
+    donatePath: '/donate/disaster-relief'
   },
    {
     id: 'kasb-skill-development',
@@ -99,8 +104,9 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-   learnMorePath: '/projects/kasb-skill-development',
-   donatePath: '/donate/kasb-skill-development'
+    donateButtonText: 'Sponsor Skill Training',
+    learnMorePath: '/projects/kasb-skill-development',
+    donatePath: '/donate/kasb-skill-development'
   },
    {
     id: 'seeds-of-change',
@@ -113,6 +119,7 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
+    donateButtonText: 'Plant a Tree',
     learnMorePath: '/projects/seeds-of-change',
     donatePath: '/donate/seeds-of-change'
   },
@@ -127,8 +134,9 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-   learnMorePath: '/projects/qurbani-barai-mustehqeen',
-   donatePath: '/donate/qurbani-barai-mustehqeen'
+    donateButtonText: 'Book Your Qurbani',
+    learnMorePath: '/projects/qurbani-barai-mustehqeen',
+    donatePath: '/donate/qurbani-barai-mustehqeen'
   },
    {
     id: 'aas-lab-diagnostics',
@@ -141,8 +149,9 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-  learnMorePath: '/projects/aas-lab-diagnostics',
-  donatePath: '/donate/aas-lab-diagnostics'
+    donateButtonText: 'Support Diagnostic Care',
+    learnMorePath: '/projects/aas-lab-diagnostics',
+    donatePath: '/donate/aas-lab-diagnostics'
   },
     {
     id: 'community-services',
@@ -155,8 +164,9 @@ const PROJECTS_DATA = [
     progressColor: '#9B59B6',
     goal: 200000,
     pledged: 76500,
-  learnMorePath: '/projects/community-services',
-  donatePath: '/donate/community-services'
+    donateButtonText: 'Support a Family',
+    learnMorePath: '/projects/community-services',
+    donatePath: '/donate/community-services'
   }
 ]
 
@@ -349,7 +359,16 @@ const Projects = () => {
 
               <div className="project-content p-20">
                 <h3 className="h3 mb-12">{project.title}</h3>
-                <p className="text-sm muted mb-16">{project.description}</p>
+                <p className="text-sm muted mb-16">
+                  {project.description?.slice(0, 70)}...{' '}
+                  <Link 
+                    to={project.learnMorePath} 
+                    className="text-primary"
+                    style={{ textDecoration: 'underline' }}
+                  >
+                    Learn More
+                  </Link>
+                </p>
                 <div className="project-progress-bar-container">
                   <div
                     className="project-progress-bar"
@@ -375,7 +394,7 @@ const Projects = () => {
                       shortDonate()
                     }}
                   >
-                    Donate
+                    {project.donateButtonText}
                   </button>
                 </div>
 

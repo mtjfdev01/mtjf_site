@@ -1,8 +1,7 @@
-
-import "./BlogsDetails.css";
+import "./index.css";
 import { blogs } from "../../data/blogsData";
 
-const BlogsDetails = () => {
+const BlogsGrid = () => {
   return (
     <section className="blogs-section">
       <div className="blogs-grid">
@@ -25,4 +24,4 @@ const BlogsDetails = () => {
   );
 };
 
-export default BlogsDetails;
+export default BlogsGrid;

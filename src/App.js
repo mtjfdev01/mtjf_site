@@ -18,6 +18,7 @@ const Careers = lazy(() => import("./pages/Careers"));
 const JobDetail = lazy(() => import("./pages/JobDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogsPage = lazy(() => import("./pages/Blogs"));
+const BlogsDetails = lazy(() => import("./pages/BlogsDetails"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 
@@ -66,6 +67,8 @@ function App() {
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/blogs-details" element={<BlogsDetails />} />
+
             </Routes>
           </Suspense>
         </DonationProvider>

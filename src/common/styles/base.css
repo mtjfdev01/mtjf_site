@@ -304,7 +304,10 @@
   .mt-16{margin-top:var(--s-16)} .mr-16{margin-right:var(--s-16)} .mb-16{margin-bottom:var(--s-16)} .ml-16{margin-left:var(--s-16)}
   .mt-24{margin-top:var(--s-24)} .mr-24{margin-right:var(--s-24)} .mb-24{margin-bottom:var(--s-24)} .ml-24{margin-left:var(--s-24)}
   .mt-32{margin-top:var(--s-32)} .mr-32{margin-right:var(--s-32)} .mb-32{margin-bottom:var(--s-32)} .ml-32{margin-left:var(--s-32)}
-  
+  .mt-32{margin-top:var(--s-32)} .mr-32{margin-right:var(--s-32)} .mb-32{margin-bottom:var(--s-32)} .ml-32{margin-left:var(--s-32)}
+  .mt-40{margin-top:var(--s-40)} .mr-40{margin-right:var(--s-40)} .mb-40{margin-bottom:var(--s-40)} .ml-40{margin-left:var(--s-40)}
+  .mt-48{margin-top:var(--s-48)} .mr-48{margin-right:var(--s-48)} .mb-48{margin-bottom:var(--s-48)} .ml-48{margin-left:var(--s-48)}
+
   /* (Kebab aliases for margin bottom) */
   .m-b-8{ margin-bottom:var(--s-8) } .m-b-16{ margin-bottom:var(--s-16) }
   .m-b-24{ margin-bottom:var(--s-24) } .m-b-32{ margin-bottom:var(--s-32) }

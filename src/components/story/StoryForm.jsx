@@ -132,7 +132,8 @@ const StoryForm = ({ onSubmit }) => {
       <button 
         type="submit" 
         className="contact-panel__submit"
-        disabled={isSubmitting}
+        disabled
+        // disabled={isSubmitting}
         aria-busy={isSubmitting}
       >
         {isSubmitting ? 'Submitting...' : 'Submit Your Story'}

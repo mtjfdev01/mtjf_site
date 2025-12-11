@@ -9,7 +9,7 @@ const Hero = () => {
     <div className='banner_img d-none md:d-block'>
       <img src={hero} alt="hero background" style={{width:"100%" , height:"100%"}} />
     </div>
-    <div className='banner_img sm:d-block md:d-none'>
+    <div className='banner_img sm:d-block md:d-none mt-48'>
       <img src={hero_mob} alt="hero background" style={{width:"100%" , height:"100%"}} />
     </div>
     </>
