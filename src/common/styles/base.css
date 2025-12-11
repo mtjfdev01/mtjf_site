@@ -395,6 +395,7 @@
   .btn--alert {
     background: var(--color-danger) !important; 
     color: #fff;
+    font-size: 20px;
   }
   .btn--alert:hover {
     background: var(--color-danger-hover) !important;

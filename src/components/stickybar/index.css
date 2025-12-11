@@ -7,7 +7,8 @@
   display: flex;
   align-items: center;
   color: #fff;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
+  padding: 5px 0px;
 }
 
 .sticky_bar-content {
@@ -30,7 +31,7 @@
   gap: 8px;
   color: inherit;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .sticky_bar-link svg {
