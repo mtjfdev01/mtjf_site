@@ -14,6 +14,7 @@ import marriage_gift from '../../assets/img/projects/marriage_gift.webp'
 import water from '../../assets/img/projects/water.webp'
 import apna_ghr from '../../assets/img/projects/apna_ghr.webp'
 import disaster from '../../assets/img/projects/disaster.webp'
+import { useCart } from '../../contexts/CartContext'
 
 
 const PROJECTS_DATA = [
@@ -162,6 +163,7 @@ const PROJECTS_DATA = [
 const Projects = () => {
   const navigate = useNavigate()
   const scrollContainerRef = useRef(null)
+  const { shortDonate } = useCart()
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
@@ -370,7 +372,7 @@ const Projects = () => {
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      navigate(project.donatePath)
+                      shortDonate()
                     }}
                   >
                     Donate
