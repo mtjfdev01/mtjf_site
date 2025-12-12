@@ -17,8 +17,8 @@ const HeroContent = () => {
         </div>
 
 
-        <div className='section-center'>
-         <p className='px-16'>
+        <div className='section-center text-muted'>
+         <p className='px-16 text-muted'>
         For decades, Molana Tariq Jamil has stood as a voice of compassion, kindness, and unity. His vision, to ease suffering and uplift vulnerable families, led to the creation of the MTJ Foundation. Today, his mission lives on through our work: providing healthcare, education, clean water, and life-changing support to communities in need. Every contribution from donors like you helps turn this vision into reality and brings hope to thousands of lives.
         </p>
         </div>

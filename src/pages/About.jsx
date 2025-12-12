@@ -38,8 +38,6 @@ const About = () => {
   return (
     <>
       <PageHeader title="About Us" image={image1} />
-      <HeroContent />
-
       {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (

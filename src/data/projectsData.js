@@ -1016,122 +1016,131 @@ export const PROJECTS_DETAIL_DATA = {
       ],
       donateButtonText: 'Donate Now — Empower Women with Skills'
     }
-  }   
+  },
+  'apna-ghar': {
+    id: 'apna-ghar',
+    title: 'Apna Ghar – A Safe, Dignified, and Empowering Community for Widows & Orphans',
+    headerImage: image1,
+    stats: [
+      { icon: FaHome, number: '1,850', label: 'Houses Built' },
+      { icon: FaUsers, number: '9,250', label: 'People Housed' },
+      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+    ],
+    content: {
+      paragraph1: 'Across Pakistan, countless widows and their orphan children struggle with homelessness, insecurity, and social isolation. Apna Ghar is MTJ Foundation\'s compassionate, faith-driven response: a sustainable residential community designed to restore dignity, safety, and opportunity for families who have lost their guardianship and support.',
+      paragraph2: 'Here, every home built becomes the beginning of a new chapter for a mother and for every child who depends on her.',
+      paragraph3: ''
+    },
+    mainImage: image2,
+    donateCategory: 'Apna Ghar',
+    donateButtonText: 'Build a Home for a Widow & Her Children',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'what-is-apna-ghar',
+        title: 'What Is Apna Ghar?',
+        subtitle: 'A Purpose-Built Community Where Widows and Orphans Can Rebuild Their Lives',
+        description: 'Apna Ghar is MTJF\'s flagship initiative focused on uplifting widowed, abandoned, and divorced women along with their orphan children. The project offers permanent housing, skills, faith-based guidance, education support, and community belonging, all within a protected, sustainable environment. Phase I is under development in Tulamba Town, where MTJF is building 70 eco-friendly, solar-powered homes equipped with clean water access and community infrastructure that supports both mothers and their children. Apna Ghar is not just a housing scheme; it is a foundation for a stable childhood and a dignified motherhood.',
+        donateButtonText: 'Build a Home for a Widow & Her Children'
+      },
+      {
+        id: 'why-apna-ghar-matters',
+        title: 'Why Apna Ghar Matters',
+        subtitle: 'Because Losing a Husband or a Father Shouldn\'t Mean Losing Your Home',
+        description: 'Across Pakistan, widows and their children often face: Homelessness or unsafe living conditions. No reliable income. Social exclusion and isolation. Disrupted education for children. Lack of emotional and spiritual support. Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values, ensuring that no widow or orphan is left behind.',
+        donateButtonText: 'Help Provide Safety and Stability'
+      },
+      {
+        id: 'our-mission',
+        title: 'Our Mission',
+        subtitle: 'To Give Widows and Their Children a Life of Dignity, Security, and Opportunity',
+        description: 'Apna Ghar is committed to providing: Permanent, fully furnished homes to widows (18–50) with dependent children. Skill training & home-based business opportunities for mothers. Faith-based guidance, emotional counseling, and community support. A solar-powered, eco-friendly, green community designed for long-term sustainability. Educational support to help orphan children build a brighter future. Every family receives the foundation they need for stability, growth, and independence.',
+        donateButtonText: 'Build a Home for a Widow & Her Children'
+      },
+      {
+        id: 'what-were-building',
+        title: 'What We\'re Building',
+        subtitle: 'A Complete Ecosystem for Families Led by Widows',
+        description: 'Each family receives a safe, dignified home along with a nurturing community built to support both mothers and children: 1100 sq. ft. 2-bedroom home. Solar-powered electricity. Clean drinking water system. A mosque & Islamic learning hub. KASB Skill Training Center for livelihoods. Spaces to promote home-based businesses. Community center, parks & walking tracks. Rainwater harvesting and eco-friendly systems. Child-friendly environment supporting emotional well-being. Every component is designed to restore stability, nurture growth, and empower families.',
+        donateButtonText: 'Contribute to Building a Home'
+      },
+      {
+        id: 'eligibility-criteria',
+        title: 'Eligibility Criteria',
+        subtitle: 'Ensuring Support Reaches the Most Vulnerable Families',
+        description: 'A family qualifies if the mother is: A widow or divorced woman (18–50 years old). Caring for one or more orphan or dependent children. Without property ownership. Living in unsafe or impoverished conditions. A resident of Tulamba Town (Phase I). Committed to participating in skill development and micro-enterprise.',
+        donateButtonText: 'Build a Home for a Widow & Her Children'
+      },
+      {
+        id: 'impact-we-aim-to-create',
+        title: 'Impact We Aim to Create',
+        subtitle: 'Building a Future Where Widows and Orphans Thrive Together',
+        description: 'Through Apna Ghar, MTJF aims to: Provide 70 families of widows & orphans with safe, permanent housing. Ensure 100% solar energy and clean water access. Train over 80% of mothers in income-generating skills via KASB. Enroll all orphan children in quality education. Build a sustainable, replicable, faith-driven model community.',
+        donateButtonText: 'Be Part of This Change'
+      },
+      {
+        id: 'aligned-with-global-goals',
+        title: 'Aligned With Global Goals',
+        subtitle: 'Empowering Families While Protecting People & Planet',
+        description: 'Apna Ghar contributes to SDGs including: No Poverty. Gender Equality. Sustainable Cities & Communities. Affordable & Clean Energy. Climate Action. Clean Water & Sanitation. Decent Work & Economic Growth. Quality Education.',
+        donateButtonText: 'Build a Home for a Widow & Her Children'
+      },
+      {
+        id: 'stories-of-strength',
+        title: 'Stories of Strength',
+        subtitle: 'Because Every Widow Deserves Support — Every Orphan Deserves a Future',
+        description: 'Apna Ghar will share firsthand stories from mothers and children whose lives have been transformed through stable housing, education, safety, and emotional support. Real journeys. Real resilience. Real transformation.',
+        donateButtonText: 'Watch Their Stories'
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+      description: '',
+      faqs: [
+        {
+          question: 'Who is Apna Ghar designed for?',
+          answer: 'Widows and divorced women raising orphan or dependent children.'
+        },
+        {
+          question: 'Do families have to pay for their homes?',
+          answer: 'No — homes are provided free of cost to eligible families.'
+        },
+        {
+          question: 'Do children receive educational support?',
+          answer: 'Yes. MTJF ensures all children in Apna Ghar are enrolled in school.'
+        },
+        {
+          question: 'How do mothers earn a stable income?',
+          answer: 'Through KASB Skill Development, microenterprises, and home-based businesses.'
+        },
+        {
+          question: 'Can donors sponsor a full home?',
+          answer: 'Yes — donors may fund an entire house, solar system, skill center, or community facility.'
+        },
+        {
+          question: 'Is the project Zakat-eligible?',
+          answer: 'Absolutely — supporting widows and orphans is fully Zakat-eligible.'
+        },
+        {
+          question: 'How does MTJF ensure transparency?',
+          answer: 'Through verification visits, strict criteria, progress updates, and detailed reports.'
+        }
+      ],
+      donateButtonText: 'Donate Now — Support Widows & Orphans'
+    }
+  }
 }
-
-
-// export const ALL_PROJECTS_DATA = [
-//   {
-//     id: 'health',
-//     title: 'Health',
-//     subtitle: 'Ensuring Access to Dignified, Affordable Healthcare',
-//     description: 'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
-//     impactStatement: 'Every patient we serve moves one step closer to a healthier, dignified life, because healthcare should never be a privilege.',
-//     image: image1,
-//     donateButtonText: 'Support Healthcare Services',
-//     learnMorePath: '/projects/health',
-//     donatePath: '/donate/health'
-//   },
-//   {
-//     id: 'education',
-//     title: 'Education',
-//     subtitle: 'Opening Doors to Learning and Opportunity',
-//     description: 'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
-//     impactStatement: 'Education transforms lives and your support ensures no child is left behind.',
-//     image: image1,
-//     donateButtonText: 'Educate a Child',
-//     learnMorePath: '/projects/education',
-//     donatePath: '/donate/education'
-//   },
-//   {
-//     id: 'clean-water',
-//     title: 'Clean Water',
-//     subtitle: 'Providing Safe Water for Healthier Communities',
-//     description: 'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
-//     impactStatement: 'Clean water reduces disease, restores dignity, and protects generations.',
-//     image: image1,
-//     donateButtonText: 'Sponsor a Water Project',
-//     learnMorePath: '/projects/clean-water',
-//     donatePath: '/donate/clean-water'
-//   },
-//   {
-//     id: 'apna-ghar',
-//     title: 'Apna Ghar',
-//     subtitle: 'Safe Shelter for Orphans and Widows',
-//     description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
-//     impactStatement: 'Here, safety becomes healing, and broken lives begin again.',
-//     image: image1,
-//     donateButtonText: 'Support Apna Ghar',
-//     learnMorePath: '/projects/apna-ghar',
-//     donatePath: '/donate/apna-ghar'
-//   },
-//   {
-//     id: 'disaster-relief',
-//     title: 'Disaster Relief',
-//     subtitle: 'Rapid Response When Crisis Strikes',
-//     description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
-//     impactStatement: 'Your support ensures no family faces disaster alone.',
-//     image: image1,
-//     donateButtonText: 'Help in Emergencies',
-//     learnMorePath: '/projects/disaster-relief',
-//     donatePath: '/donate/disaster-relief'
-//   },
-//   {
-//     id: 'kasb-skill-development',
-//     title: 'KASB Skill Development',
-//     subtitle: 'Empowering Youth and Women Through Skills',
-//     description: 'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
-//     impactStatement: 'When someone gains a skill, they gain the power to change their own future.',
-//     image: image1,
-//     donateButtonText: 'Sponsor Skill Training',
-//     learnMorePath: '/projects/kasb-skill-development',
-//     donatePath: '/donate/kasb-skill-development'
-//   },
-//   {
-//     id: 'seeds-of-change',
-//     title: 'Seeds of Change',
-//     subtitle: 'Protecting the Environment for Future Generations',
-//     description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
-//     impactStatement: 'Every tree planted brings us closer to a cleaner, safer world.',
-//     image: image1,
-//     donateButtonText: 'Plant a Tree',
-//     learnMorePath: '/projects/seeds-of-change',
-//     donatePath: '/donate/seeds-of-change'
-//   },
-//   {
-//     id: 'qurbani-barai-mustehqeen',
-//     title: 'Qurbani Barai Mustehqeen',
-//     subtitle: 'Delivering Qurbani Meat to Families in Need',
-//     description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
-//     impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
-//     image: image1,
-//     donateButtonText: 'Book Your Qurbani',
-//     learnMorePath: '/projects/qurbani-barai-mustehqeen',
-//     donatePath: '/donate/qurbani-barai-mustehqeen'
-//   },
-//   {
-//     id: 'aas-lab-diagnostics',
-//     title: 'AAS Lab & Diagnostics',
-//     subtitle: 'Accessible and Affordable Diagnostic Care for all',
-//     description: 'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
-//     impactStatement: 'A correct diagnosis can save a life and your support makes it possible.',
-//     image: image1,
-//     donateButtonText: 'Support Diagnostic Care',
-//     learnMorePath: '/projects/aas-lab-diagnostics',
-//     donatePath: '/donate/aas-lab-diagnostics'
-//   },
-//   {
-//     id: 'community-services',
-//     title: 'Community Services',
-//     subtitle: 'Supporting Vulnerable Families With Essential Relief',
-//     description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
-//     impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
-//     image: image1,
-//     donateButtonText: 'Support a Family',
-//     learnMorePath: '/projects/community-services',
-//     donatePath: '/donate/community-services'
-//   }
-// ] 
 
 export const ALL_PROJECTS_DATA = [
   {

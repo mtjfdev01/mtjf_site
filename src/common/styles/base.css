@@ -527,3 +527,18 @@
   .text-capitalize {
     text-transform: capitalize;
   }
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+  .text-white {
+    color: var(--color-white) !important;
+  }
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+  .text-secondary {
+    color: var(--color-secondary) !important;
+  }
+  .text-accent {
+    color: var(--color-accent) !important;
+  }

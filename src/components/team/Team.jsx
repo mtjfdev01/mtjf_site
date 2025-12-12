@@ -111,11 +111,11 @@ const Team = () => {
             </div>
           </div>
 
-          <div className="team-count-pill" aria-hidden="true">
+          {/* <div className="team-count-pill" aria-hidden="true">
             <span className="team-card__count-dot"></span>
             <span className="team-card__count-value">100+</span>
             <span className="team-card__count-label">Team Member</span>
-          </div>
+          </div> */}
         </div>
 
         <div className="team-wrapper relative">

@@ -35,7 +35,7 @@
 .core-values-content {
   position: relative;
   min-height: 400px;
-  /* padding: var(--space-48) 0 var(--space-64); */
+  padding: var(--space-48) 0 var(--space-64);
   overflow: hidden;
   margin-top: var(--space-16);
   /* border: 5px solid black; */
@@ -129,7 +129,7 @@
   
   .core-values-content {
     min-height: auto;
-    padding: var(--space-32) 0 var(--space-48);
+    padding: var(--space-32) 0 var(--space-48); 
   }
   
   .core-values-grid {

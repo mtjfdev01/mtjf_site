@@ -49,13 +49,13 @@ const OurStory = () => {
           
         
 
-          <p className="text-base text-white opacity-80 mb-16">
+          <p className="text-base  opacity-80 mb-16">
            Established by Molana Tariq Jamil, whose voice has inspired millions toward kindness and unity, MTJF began with a mission to ease suffering and uplift vulnerable families throughout Pakistan. Over the years, what started as a modest effort has grown into a global humanitarian movement—providing education, healthcare, clean water, shelter, and life-changing support to those who need it most.
            Since 2019, MTJF has touched 1 Million+ lives through sustainable, long-term programs that restore hope and build resilience. From constructing homes for flood survivors to ensuring clean drinking water in remote villages, our journey is driven by compassion and shaped by the belief that meaningful change begins with a single act of care.
           </p>
 
           {isExpanded && (
-            <p className="text-base text-white opacity-80 mb-16">
+            <p className="text-base  opacity-80 mb-16">
               Today, MTJ Foundation continues to expand its reach with programs focused on sustainable livelihoods,
               community wellness, and education that empowers every generation to thrive with dignity.
             </p>

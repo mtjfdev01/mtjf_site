@@ -213,9 +213,31 @@
   .projects-section {
     padding: 0;
     padding-bottom: var(--space-32);
+    overflow: visible;
   }
-  .slider-nav-btn {
-    display: none;
+  .projects-section.container {
+    overflow: visible;
+    padding-left: var(--space-16);
+    padding-right: var(--space-16);
+  }
+  .projects-wrapper {
+    padding: 0;
+    overflow: visible;
+  }
+  
+  .projects-wrapper .slider-nav-btn {
+    display: flex !important;
+    visibility: visible !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  .projects-wrapper .slider-nav-prev {
+    left: 4px;
+  }
+  .projects-wrapper .slider-nav-next {
+    right: 4px;
   }
   .projects-header {
     flex-direction: column;
@@ -230,9 +252,9 @@
   }
 
   .project-card {
-    min-width: calc(100vw - 32px);
-    max-width: calc(100vw - 32px);
-    width: calc(100vw - 32px);
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
     padding: var(--space-20);
     box-sizing: border-box;
   }
