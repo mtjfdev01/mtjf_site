@@ -61,10 +61,11 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
             <div className={`media-content-wrapper container ${imagePosition}`}>
               {/* Content Side */}
               <div className="media-content-text">
+
+                <h2 className="media-content-heading">{subProject.title}</h2>
                 {subProject.subtitle && (
                   <p className="media-content-subtitle">{subProject.subtitle}</p>
                 )}
-                <h2 className="media-content-heading">{subProject.title}</h2>
                 {subProject?.impact && (
                   <h3 className='m-0'>{subProject.impact}</h3>
                 )}

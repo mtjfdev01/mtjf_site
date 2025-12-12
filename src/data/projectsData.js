@@ -1056,42 +1056,95 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'why-apna-ghar-matters',
         title: 'Why Apna Ghar Matters',
         subtitle: 'Because Losing a Husband or a Father Shouldn\'t Mean Losing Your Home',
-        description: 'Across Pakistan, widows and their children often face: Homelessness or unsafe living conditions. No reliable income. Social exclusion and isolation. Disrupted education for children. Lack of emotional and spiritual support. Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values, ensuring that no widow or orphan is left behind.',
+        description: 'Across Pakistan, widows and their children often face:',
+        services: [
+          'Homelessness or unsafe living conditions',
+          'No reliable income',
+          'Social exclusion and isolation',
+          'Disrupted education for children',
+          'Lack of emotional and spiritual support'
+        ],
+        impact: 'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values, ensuring that no widow or orphan is left behind.',
         donateButtonText: 'Help Provide Safety and Stability'
       },
       {
         id: 'our-mission',
         title: 'Our Mission',
         subtitle: 'To Give Widows and Their Children a Life of Dignity, Security, and Opportunity',
-        description: 'Apna Ghar is committed to providing: Permanent, fully furnished homes to widows (18–50) with dependent children. Skill training & home-based business opportunities for mothers. Faith-based guidance, emotional counseling, and community support. A solar-powered, eco-friendly, green community designed for long-term sustainability. Educational support to help orphan children build a brighter future. Every family receives the foundation they need for stability, growth, and independence.',
+        description: 'Apna Ghar is committed to providing:',
+        services: [
+          'Permanent, fully furnished homes to widows (18–50) with dependent children',
+          'Skill training & home-based business opportunities for mothers',
+          'Faith-based guidance, emotional counseling, and community support',
+          'A solar-powered, eco-friendly, green community designed for long-term sustainability',
+          'Educational support to help orphan children build a brighter future'
+        ],
+        impact: 'Every family receives the foundation they need for stability, growth, and independence.',
         donateButtonText: 'Build a Home for a Widow & Her Children'
       },
       {
         id: 'what-were-building',
         title: 'What We\'re Building',
         subtitle: 'A Complete Ecosystem for Families Led by Widows',
-        description: 'Each family receives a safe, dignified home along with a nurturing community built to support both mothers and children: 1100 sq. ft. 2-bedroom home. Solar-powered electricity. Clean drinking water system. A mosque & Islamic learning hub. KASB Skill Training Center for livelihoods. Spaces to promote home-based businesses. Community center, parks & walking tracks. Rainwater harvesting and eco-friendly systems. Child-friendly environment supporting emotional well-being. Every component is designed to restore stability, nurture growth, and empower families.',
+        description: 'Each family receives a safe, dignified home along with a nurturing community built to support both mothers and children:',
+        services: [
+          '1100 sq. ft. 2-bedroom home',
+          'Solar-powered electricity',
+          'Clean drinking water system',
+          'A mosque & Islamic learning hub',
+          'KASB Skill Training Center for livelihoods',
+          'Spaces to promote home-based businesses',
+          'Community center, parks & walking tracks',
+          'Rainwater harvesting and eco-friendly systems',
+          'Child-friendly environment supporting emotional well-being'
+        ],
+        impact: 'Every component is designed to restore stability, nurture growth, and empower families.',
         donateButtonText: 'Contribute to Building a Home'
       },
       {
         id: 'eligibility-criteria',
         title: 'Eligibility Criteria',
         subtitle: 'Ensuring Support Reaches the Most Vulnerable Families',
-        description: 'A family qualifies if the mother is: A widow or divorced woman (18–50 years old). Caring for one or more orphan or dependent children. Without property ownership. Living in unsafe or impoverished conditions. A resident of Tulamba Town (Phase I). Committed to participating in skill development and micro-enterprise.',
+        description: 'A family qualifies if the mother is:',
+        services: [
+          'A widow or divorced woman (18–50 years old)',
+          'Caring for one or more orphan or dependent children',
+          'Without property ownership',
+          'Living in unsafe or impoverished conditions',
+          'A resident of Tulamba Town (Phase I)',
+          'Committed to participating in skill development and micro-enterprise'
+        ],
         donateButtonText: 'Build a Home for a Widow & Her Children'
       },
       {
         id: 'impact-we-aim-to-create',
         title: 'Impact We Aim to Create',
         subtitle: 'Building a Future Where Widows and Orphans Thrive Together',
-        description: 'Through Apna Ghar, MTJF aims to: Provide 70 families of widows & orphans with safe, permanent housing. Ensure 100% solar energy and clean water access. Train over 80% of mothers in income-generating skills via KASB. Enroll all orphan children in quality education. Build a sustainable, replicable, faith-driven model community.',
+        description: 'Through Apna Ghar, MTJF aims to:',
+        services: [
+          'Provide 70 families of widows & orphans with safe, permanent housing',
+          'Ensure 100% solar energy and clean water access',
+          'Train over 80% of mothers in income-generating skills via KASB',
+          'Enroll all orphan children in quality education',
+          'Build a sustainable, replicable, faith-driven model community'
+        ],
         donateButtonText: 'Be Part of This Change'
       },
       {
         id: 'aligned-with-global-goals',
         title: 'Aligned With Global Goals',
         subtitle: 'Empowering Families While Protecting People & Planet',
-        description: 'Apna Ghar contributes to SDGs including: No Poverty. Gender Equality. Sustainable Cities & Communities. Affordable & Clean Energy. Climate Action. Clean Water & Sanitation. Decent Work & Economic Growth. Quality Education.',
+        description: 'Apna Ghar contributes to SDGs including:',
+        services: [
+          'No Poverty',
+          'Gender Equality',
+          'Sustainable Cities & Communities',
+          'Affordable & Clean Energy',
+          'Climate Action',
+          'Clean Water & Sanitation',
+          'Decent Work & Economic Growth',
+          'Quality Education'
+        ],
         donateButtonText: 'Build a Home for a Widow & Her Children'
       },
       {
