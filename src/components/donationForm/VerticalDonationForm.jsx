@@ -262,7 +262,7 @@ const VerticalDonationForm = ({
             />
           </div>
 
-          <button type="submit" className="vertical-donation-submit">
+          <button type="submit" className="vertical-donation-submit btn--alert">
             Donate
           </button>
         </form>

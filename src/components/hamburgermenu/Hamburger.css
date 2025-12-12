@@ -22,13 +22,23 @@
     top 320ms cubic-bezier(.2,.8,.2,1),
     transform 320ms cubic-bezier(.2,.8,.2,1),
     opacity 220ms ease;
+    background-color: var(--color-primary);
 }
 
 /* Different bar colors */
-.bar1 { top: 3px;  background: rgb(248, 181, 24); }
-.bar2 { top: 10px; background: rgb(48, 174, 227); }
-.bar3 { top: 17px; background: rgb(226, 32, 38); }
-.bar4 { top: 24px; background: rgb(83, 176, 72); }
+.bar1 { top: 3px;
+    /* background: rgb(248, 181, 24);  */
+  }
+.bar2 { top: 10px;
+   /* background: rgb(48, 174, 227); */
+   }
+.bar3 { top: 17px;
+   /* background: rgb(226, 32, 38);  */
+  }
+.bar4 { top: 24px;
+   /* background: rgb(83, 176, 72);  */
+  }
+
 
 /* When menu is open → form X */
 .hamburger.open .bar1 {

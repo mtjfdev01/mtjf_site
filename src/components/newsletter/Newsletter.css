@@ -61,7 +61,7 @@
 
 .newsletter-button {
   padding: 12px 32px;
-  background-color: var(--color-800);
+  background-color: var(--color-base-green); 
   color: var(--color-white);
   border: none;
   border-radius: var(--radius-sm);
@@ -73,10 +73,11 @@
   transition: var(--transition);
   font-family: var(--font-sans);
   white-space: nowrap;
+
 }
 
 .newsletter-button:hover {
-  background-color: var(--color-900);
+  background-color: var(--color-base-green-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

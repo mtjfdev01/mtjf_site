@@ -59,7 +59,7 @@ const ProjectDetail = () => {
         {showContent && (
           <>
             {/* Statistics Section */}
-            <section className="project-stats-section container py-48">
+            {/* <section className="project-stats-section container py-48">
               <div className="project-stats-grid grid grid-4 gap-24">
                 {project.stats.map((stat, index) => (
                   <div key={index} className="project-stat-card card text-center">
@@ -80,7 +80,7 @@ const ProjectDetail = () => {
                   </div>
                 ))}
               </div>
-            </section>
+            </section> */}
 
             {/* Main Content Section */}
             <section className="project-content-section container py-48">

@@ -24,33 +24,17 @@ const ICON_PROPS = {
 
 const FEATURE_ITEMS = [
   {
-    id: 'seeds',
-    title: 'Seeds of Change',
+    id: 'apnaghar',
+    title: 'APNA GHAR ( A Home of Orphans & Widows)',
     description:
-      'Planting trees and raising awareness to build a greener, climate-resilient Pakistan.',
+      'Offering vulnerable widows and children a safe, nurturing home to call their own.',
     icon: (
-      <img src={Seeds} alt="Seeds of Change Icon"  {...ICON_PROPS}/>
-    )
-  },
-  {
-    id: 'qurbani',
-    title: 'Qurbani Barai Mustehqeen',
-    description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
-    icon: (
-     <img src={Qurbani} alt="Qurbani Icon"  {...ICON_PROPS}/>
-)
-  },
-  {
-    id: 'shelter',
-    title: 'Disaster Relief',
-    description: 'Rapid shelter, blankets, and essentials after emergencies.',
-    icon: (
-      <img src={DisasterRelief} alt="Disaster Relief Icon"  {...ICON_PROPS}/>
+    <img src={ApnaGhar} alt="ApnaGhar Icon"  {...ICON_PROPS}/>
     )
   },
   {
     id: 'health',
-    title: 'Health',
+    title: 'HEALTH/AAS LAB',
     description:
       'Bringing essential healthcare to everyone, ensuring timely treatments for all.',
     icon: (
@@ -59,7 +43,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'education',
-    title: 'Education',
+    title: 'EDUCATION (Dream Schools, Al Hasanain College, Scholarships)',
     description:
       'Opening doors to brighter futures through accessible, quality learning for every child.',
     icon: (
@@ -67,8 +51,24 @@ const FEATURE_ITEMS = [
     )
   },
   {
+    id: 'community',
+    title: 'COMMUNITY SERVICES (Marriage Gift 200,000 PKR, Monthly Ration, Cash Assistance, Eid Gifts )',
+    description: 'Supporting families with essential aid to meet immediate needs with dignity.',
+    icon: (
+      <img src={Community} alt="Community Icon"  {...ICON_PROPS}/>
+    )
+  },
+  {
+    id: 'kasb',
+    title: 'KASB VOCATIONAL CENTRE (Training & Livelihood)',
+    description: 'Empowering youth and women with skills that create income and independence.',
+    icon: (
+      <img src={KASB} alt="KASB Icon"  {...ICON_PROPS}/>
+    )
+  },
+  {
     id: 'water',
-    title: 'Clean Water',
+    title: 'CLEAN WATER (Water Filteration Plants, Hand Pumps)',
     description:
       'Providing clean, safe drinking water to restore health, dignity, and daily ease.',
     icon: (
@@ -76,41 +76,33 @@ const FEATURE_ITEMS = [
 )
   },
   {
-    id: 'apnaghar',
-    title: 'Apna Ghar',
-    description:
-      'Offering vulnerable widows and children a safe, nurturing home to call their own.',
-    icon: (
-    <img src={ApnaGhar} alt="ApnaGhar Icon"  {...ICON_PROPS}/>
-    )
-  },
-  {
-    id: 'kasb',
-    title: 'KASB Skill Development',
-    description: 'Empowering youth and women with skills that create income and independence.',
-    icon: (
-      <img src={KASB} alt="KASB Icon"  {...ICON_PROPS}/>
-    )
-  },
-   {
-    id: 'community',
-    title: 'Community Services',
-    description: 'Supporting families with essential aid to meet immediate needs with dignity.',
-    icon: (
-      <img src={Community} alt="Community Icon"  {...ICON_PROPS}/>
-    )
-  },
-  {
     id: 'disaster',
-    title: 'Disaster Relief',
+    title: 'DISASTER Management',
     description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
     icon: (
     <img src={DisasterRelief} alt="Disaster Relief Icon"  {...ICON_PROPS}/>
    )
   },
-   {
+  {
+    id: 'seeds',
+    title: 'SEEDS OF CHANGE',
+    description:
+      'Planting trees and raising awareness to build a greener, climate-resilient Pakistan.',
+    icon: (
+      <img src={Seeds} alt="Seeds of Change Icon"  {...ICON_PROPS}/>
+    )
+  },
+  {
+    id: 'qurbani',
+    title: 'Qurbani Braye Mustehqeen',
+    description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
+    icon: (
+     <img src={Qurbani} alt="Qurbani Icon"  {...ICON_PROPS}/>
+)
+  },
+  {
     id: 'aaslab',
-    title: 'AAS Lab & Diagnostics',
+    title: 'HEALTH/AAS LAB',
     description: 'Delivering affordable, reliable diagnostic services to ensure timely medical treatment.',
     icon: (
     <img src={AASLab} alt="AAS Lab Icon"  {...ICON_PROPS}/>
@@ -179,7 +171,7 @@ const DonationFeatures = () => {
               <div className={`icon ${feature.id} d-flex items-center justify-center`}>
                 {feature.icon}
               </div>
-              <div>
+              <div className='text-left'>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>

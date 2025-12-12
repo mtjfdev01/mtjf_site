@@ -13,22 +13,6 @@ import memberHR from '../../assets/img/team/MuhammadFarukh.png'
 
 const teamMembers = [
    {
-    id: 'Chairman',
-    name: 'Molana Tariq Jamil',
-    role: 'Chairman',
-    image: chairman,
-    accent: 'emerald',
-    rounded: true,
-  },
-   {
-    id: 'Vice Chairman',
-    name: 'Molana Yousaf Jamil',
-    role: 'Vice Chairman',
-    image: viceChairman,
-    accent: 'emerald',
-    rounded: true,
-  },
-  {
     id: 'ceo',
     name: 'Ihtisham Ullah Qureshi',
     role: 'CEO',

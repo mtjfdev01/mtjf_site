@@ -9,8 +9,8 @@ const HeroContent = () => {
          {/* <h4>
          — <span className='text-white'>MTJ Foundation</span> —
          </h4> */}
-         <h2 className='heading-primary'>A Legacy of Compassion</h2>
-         <h3>A Future of Hope <br/>
+         <h2 className='heading-secondary clr-black'>A Legacy of Compassion</h2>
+         <h3 className='clr-black'>A Future of Hope <br/>
           Molana Tariq Jamil <br/>
            Foundation.
          </h3>

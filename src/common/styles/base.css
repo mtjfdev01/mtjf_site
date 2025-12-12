@@ -17,6 +17,14 @@
     --color-warning: #ffda79;
     --color-danger:  #C62828;
     --color-base-orange: #F98167;
+    --color-base-green: #53af47;
+    --color-base-green-light: #77af70;
+    --color-base-yellow: #f6b319;
+    --color-base-yellow-light: #d8b872;
+
+
+
+    
   
     /* Neutrals */
     --color-black: #0b0b0b;
@@ -74,6 +82,8 @@
     --space-88: 88px;
     --space-96: 96px;
     --space-100: 100px;
+    --space-104: 104px;
+    --space-110: 110px;
     --space-120: 120px;
     --space-150: 150px;
     --space-200: 200px;
@@ -510,3 +520,10 @@
   .opacity-50 { opacity: .5; }
   .rotate-90 { transform: rotate(90deg); }
   
+  .clr-black {
+    color: var(--color-black) !important;
+  }
+
+  .text-capitalize {
+    text-transform: capitalize;
+  }

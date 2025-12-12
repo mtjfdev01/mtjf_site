@@ -47,13 +47,14 @@ const Home = () => {
       <div ref={heroContentRef}>
         {showHeroContent && (
           <Suspense fallback={null}>
-            <HeroContent />
             <DonationForm
               formId="home-donation-form"
               layout="vertical"
               showProjectSelect={true}
               projects={ALL_PROJECTS_DATA}
             />
+            <HeroContent />
+
           </Suspense>
         )}
       </div>
@@ -86,12 +87,12 @@ const Home = () => {
             <Suspense fallback={null}>
               <BrandArea />
             </Suspense>
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
               <Events />
-            </Suspense>
-            <Suspense fallback={null}>
+            </Suspense> */}
+            {/* <Suspense fallback={null}>
               <QuickBlogs />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>

@@ -230,9 +230,11 @@
   }
 
   .project-card {
-    min-width: 310px;
-    max-width: 310px;
+    min-width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
     padding: var(--space-20);
+    box-sizing: border-box;
   }
 
   .project-image-container {
@@ -242,8 +244,10 @@
 
 @media (max-width: 480px) {
   .project-card {
-    min-width: 280px;
-    max-width: 280px;
+    min-width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+    box-sizing: border-box;
   }
 
   .project-image-container {

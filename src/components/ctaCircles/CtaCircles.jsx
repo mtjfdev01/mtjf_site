@@ -23,7 +23,7 @@ const CTA_ITEMS = [
   },
   {
     id: 'volunteer',
-    label: 'Become Volunteer',
+    label: 'Become  Volunteer',
     color: '#56C7C8',
     image: volunteerImg,
     alt: 'Hands stacked together to volunteer',

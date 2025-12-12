@@ -7,108 +7,85 @@ import logo3 from '../../assets/img/sgds/logo3.png'
 import logo4 from '../../assets/img/sgds/logo4.png'
 import logo5 from '../../assets/img/sgds/logo5.png'
 import logo6 from '../../assets/img/sgds/logo6.png'
-import logo7 from '../../assets/img/sgds/logo7.png'
-import logo8 from '../../assets/img/sgds/logo8.png'
-import logo9 from '../../assets/img/sgds/logo9.png'
+// import logo7 from '../../assets/img/sgds/logo7.png'
+// import logo8 from '../../assets/img/sgds/logo8.png'
+// import logo9 from '../../assets/img/sgds/logo9.png'
 import logo10 from '../../assets/img/sgds/logo10.png'
-import logo11 from '../../assets/img/sgds/logo11.png'
-import logo12 from '../../assets/img/sgds/logo12.png'
-import logo13 from '../../assets/img/sgds/logo13.png'
+// import logo11 from '../../assets/img/sgds/logo11.png'
+// import logo12 from '../../assets/img/sgds/logo12.png'
+// import logo13 from '../../assets/img/sgds/logo13.png'
 import logo14 from '../../assets/img/sgds/logo14.png'
-import logo15 from '../../assets/img/sgds/logo15.png'
-import logo16 from '../../assets/img/sgds/logo16.png'
+// import logo15 from '../../assets/img/sgds/logo15.png'
+// import logo16 from '../../assets/img/sgds/logo16.png'
 
 const brandsData = [
     {
         image:  logo20,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
     {
         image:  logo1,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
     // {
     //     image:  logo2,
-    //     link: 'https://www.mtjfoundation.org',
+    //     link: 'https://sdgs.un.org/goals',
     //     alt: 'MTJF Logo'
     // },
     // {
     //     image:  logo2,
-    //     link: 'https://www.mtjfoundation.org',
+    //     link: 'https://sdgs.un.org/goals',
     //     alt: 'MTJF Logo'
     // },
     { 
         image:  logo3,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
     {
         image:  logo4,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
     {
         image:  logo5,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
     {
         image:  logo6,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
-    {
-        image:  logo7,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
-    {
-        image:  logo8,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
-    {
-        image:  logo9,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
+    // {
+    //     image:  logo7,
+    //     link: 'https://sdgs.un.org/goals',
+    //     alt: 'MTJF Logo'
+    // },
+    // {
+    //     image:  logo8,
+    //     link: 'https://sdgs.un.org/goals',
+    //     alt: 'MTJF Logo'
+    // },
+    // {
+    //     image:  logo9,
+    //     link: 'https://sdgs.un.org/goals',
+    //     alt: 'MTJF Logo'
+    // },
     {
             image:  logo10,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
-    {
-        image:  logo11,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
-    {
-        image:  logo12,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
-    {
-        image:  logo13,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
+
     {
         image:  logo14,
-        link: 'https://www.mtjfoundation.org',
+        link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
-    {
-        image:  logo15,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    },
-    {
-        image:  logo16,
-        link: 'https://www.mtjfoundation.org',
-        alt: 'MTJF Logo'
-    }
+
 ];
 
 
@@ -138,9 +115,9 @@ const BrandArea = ({ className = '', speed = 70 }) => {
           >
             {marqueeItems.map((brand, i) => (
               <div className="brand-item" role="listitem" key={`brand-${i}`}>
-                {/* <a href={brand.link} target="_blank" rel="noopener noreferrer" title={brand.alt}> */}
+                <a href={brand.link} target="_blank" rel="noopener noreferrer" title={brand.alt}>
                   <img src={brand.image} alt={brand.alt} width="120" height="60" loading="lazy" />
-                {/* </a> */}
+                </a>
               </div>
             ))}
           </div>

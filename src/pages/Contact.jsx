@@ -80,12 +80,12 @@ const Contact = () => {
       <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
               <Events />
-            </Suspense>
-            <Suspense fallback={null}>
+            </Suspense> */}
+            {/* <Suspense fallback={null}>
               <QuickBlogs />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>

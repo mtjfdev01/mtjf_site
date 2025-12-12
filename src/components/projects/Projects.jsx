@@ -52,7 +52,7 @@ const PROJECTS_DATA = [
     id: 'disaster-relief',
     category: 'Disaster Relief',
     categoryColor: '#FFD700',
-    title: 'Rapid Response When Crisis Strikes',
+    title: 'Rapid Response When <br />Crisis Strikes',
     description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
     image: disaster,
     progress: 47.58,
@@ -82,7 +82,7 @@ const PROJECTS_DATA = [
     id: 'apna-ghar',
     category: 'apna-ghar',
     categoryColor: '#DDA0DD',
-    title: 'A home where lost futures are rebuilt',
+    title: 'A home where <br />lost futures <br /> are rebuilt',
     description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
     image: apna_ghr,
     progress: 38.25,
@@ -358,7 +358,7 @@ const Projects = () => {
               </div>
 
               <div className="project-content p-20">
-                <h3 className="h3 mb-12">{project.title}</h3>
+                <h3 className="h3 mb-12 text-capitalize" dangerouslySetInnerHTML={{ __html: project.title }}></h3>
                 <p className="text-sm muted mb-16">
                   {project.description?.slice(0, 70)}...{' '}
                   <Link 
@@ -379,10 +379,10 @@ const Projects = () => {
                   />
                 </div>
 
-                <div className="project-goal-info">
+                {/* <div className="project-goal-info">
                   Goal : {formatCurrency(project.pledged)} - Pledged :{' '}
                   {formatCurrency(project.goal)}
-                </div>
+                </div> */}
 
                 <div className="project-actions">
                   <button

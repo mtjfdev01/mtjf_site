@@ -1,5 +1,7 @@
 .vertical-donation-form {
   width: 100%;
+  scroll-margin-top: 120px;
+  margin-top: var(--space-32);
 }
 
 .vertical-donation-card {

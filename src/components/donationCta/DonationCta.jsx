@@ -20,7 +20,7 @@ const DonationCta = () => {
         
         <button 
         onClick={shortDonate}
-        className="donation-cta-btn cta_primary_btn">
+        className="donation-cta-btn cta_primary_btn btn--alert">
           Donate Now
         </button>
       </div>

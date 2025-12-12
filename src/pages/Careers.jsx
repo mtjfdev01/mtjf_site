@@ -48,12 +48,12 @@ const Careers = () => {
             {/* <Suspense fallback={null}>
               <Pagination />
             </Suspense> */}
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
               <Events />
-            </Suspense>
-            <Suspense fallback={null}>
+            </Suspense> */}
+            {/* <Suspense fallback={null}>
               <QuickBlogs />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>

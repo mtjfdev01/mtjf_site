@@ -81,11 +81,15 @@
 }
 
 .contact-social-twitter {
-  background: #1da1f2;
+  background: black !important;
+}
+
+.contact-social-twitter svg {
+  color: var(--color-white) !important;
 }
 
 .contact-social-instagram {
-  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+  background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7);
 }
 
 .contact-form-wrapper .donation-form-card {

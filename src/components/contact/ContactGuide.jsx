@@ -1,11 +1,12 @@
-import { FaWhatsapp, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 import './ContactSection.css'
 
 const SOCIAL_LINKS = [
-  { id: 'whatsapp', icon: <FaWhatsapp />, href: '#' },
-  { id: 'facebook', icon: <FaFacebookF />, href: '#' },
-  { id: 'twitter', icon: <FaTwitter />, href: '#' },
-  { id: 'instagram', icon: <FaInstagram />, href: '#' }
+  { id: 'whatsapp', icon: <FaWhatsapp />, href: 'https://whatsapp.com/channel/0029VaOdgROFi8xkOWfsOl32' },
+  { id: 'facebook', icon: <FaFacebookF />, href: 'https://www.facebook.com/foundation.mtj' },
+  { id: 'twitter', icon: <FaXTwitter />, href: '#' },
+  { id: 'instagram', icon: <FaInstagram />, href: 'https://www.instagram.com/mtjfoundation_pakistan/?hl=en' }
 ]
 
 const ContactGuide = ({
@@ -24,6 +25,8 @@ const ContactGuide = ({
           <a
             key={social.id}
             href={social.href}
+            target={social.href !== '#' ? "_blank" : undefined}
+            rel={social.href !== '#' ? "noopener noreferrer" : undefined}
             className={`contact-social contact-social-${social.id}`}
             aria-label={social.id}
           >

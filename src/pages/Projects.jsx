@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
 import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
@@ -51,52 +51,54 @@ const Projects = () => {
                 {ALL_PROJECTS_DATA.map((project) => (
                   <div key={project.id} className="projects-page-item">
                     <h2 className="heading-secondary projects-page-card-title mb-16 text-center">{project.title}</h2>
-                    <div
-                      className="projects-page-card card relative overflow-hidden"
-                    >
-                      <div className="projects-page-image-container relative w-100 h-100">
-                        <LazyImage
-                          src={project.image}
-                          alt={project.title}
-                          className="projects-page-image"
-                        />
-                        <div className="projects-page-overlay absolute w-100 h-100"></div>
-                      </div>
+                    <Link to={`/projects/${project.id}`}>
+                      <div
+                        className="projects-page-card card relative overflow-hidden"
+                      >
+                        <div className="projects-page-image-container relative w-100 h-100">
+                          <LazyImage
+                            src={project.image}
+                            alt={project.title}
+                            className="projects-page-image"
+                          />
+                          <div className="projects-page-overlay absolute w-100 h-100"></div>
+                        </div>
 
-                      <div className="projects-page-content absolute w-100 h-100 flex flex-col justify-end p-24">
-                        {project.subtitle && (
-                          <p className="text-sm text-white mb-8 projects-page-subtitle">
-                            {project.subtitle}
+                        <div className="projects-page-content absolute w-100 h-100 flex flex-col justify-end p-24">
+                          {project.subtitle && (
+                            <p className="text-sm text-white mb-8 projects-page-subtitle">
+                              {project.subtitle}
+                            </p>
+                          )}
+                          <p className="text-sm text-white mb-24 projects-page-description">
+                            {project.description}
                           </p>
-                        )}
-                        <p className="text-sm text-white mb-24 projects-page-description">
-                          {project.description}
-                        </p>
 
-                        <div className="projects-page-actions flex gap-12">
-                          <button
-                            type="button"
-                            className="projects-page-donate-btn"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              shortDonate()
-                            }}
-                          >
-                            {project.donateButtonText || 'Donate'}
-                          </button>
-                          <button
-                            type="button"
-                            className="projects-page-learn-btn"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              navigate(project.learnMorePath)
-                            }}
-                          >
-                            Learn More
-                          </button>
+                          <div className="projects-page-actions flex gap-12">
+                            <button
+                              type="button"
+                              className="projects-page-donate-btn"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                shortDonate()
+                              }}
+                            >
+                              {project.donateButtonText || 'Donate'}
+                            </button>
+                            <button
+                              type="button"
+                              className="projects-page-learn-btn"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                navigate(project.learnMorePath)
+                              }}
+                            >
+                              Learn More
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      </Link>
                   </div>
                 ))}
               </div>
@@ -133,12 +135,12 @@ const Projects = () => {
       <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
               <Events />
-            </Suspense>
-            <Suspense fallback={null}>
+            </Suspense> */}
+            {/* <Suspense fallback={null}>
               <QuickBlogs />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>

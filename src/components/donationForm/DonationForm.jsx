@@ -123,7 +123,7 @@ const DonationForm = ({
   return (
     <div
       id={formId}
-      className={`donation-form donation-form--${layout} ${className} mt-32`} 
+      className={`donation-form donation-form--${layout} ${className} mt-32 mb-32`} 
     >
       <div className="donation-form-card">
         <h3 className="donation-form-title h2">{title}</h3>
@@ -256,7 +256,7 @@ const DonationForm = ({
                 />
               </div>
 
-              <button type="submit" className="donation-form-submit">
+              <button type="submit" className="donation-form-submit btn--alert">
                 Donate
               </button>
             </div>
