@@ -1,0 +1,185 @@
+/* InitiativeDonationCard.css */
+
+.initiative-donation-card {
+  background-color: var(--color-white, #ffffff);
+  border: 1px solid #cfe6c2; /* Light green border */
+  border-radius: var(--radius-md, 10px);
+  padding: var(--space-24, 24px) var(--space-20, 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-16, 16px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.06));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* .initiative-card-icon {
+  margin-bottom: var(--space-8, 8px);
+} */
+
+.initiative-card-icon img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.initiative-card-title {
+  font-size: var(--fs-18, 18px);
+  font-weight: 700;
+  color: var(--color-900, #222);
+  margin: 0;
+}
+
+.initiative-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8, 8px);
+  margin-top: var(--space-8, 8px);
+  width: 100%;
+  justify-content: center;
+  max-width: 200px;
+}
+
+.initiative-quantity-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-300, #e1e1e1);
+  color: var(--color-white, #ffffff);
+  font-size: var(--fs-20, 20px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition, all 0.2s ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initiative-quantity-btn--minus {
+  background-color: var(--color-primary, #30aee3); /* Blue for minus */
+}
+
+.initiative-quantity-btn--plus {
+  background-color: var(--color-base-green, #4caf50); /* Green for plus */
+}
+
+.initiative-quantity-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  box-shadow: var(--shadow-sm);
+}
+
+.initiative-quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.initiative-quantity-input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid var(--color-300, #e1e1e1);
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--fs-16, 16px);
+  color: var(--color-900, #222);
+  -moz-appearance: textfield; /* Hide arrows in Firefox */
+}
+
+/* Hide arrows in Chrome, Safari, Edge */
+.initiative-quantity-input::-webkit-outer-spin-button,
+.initiative-quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.initiative-donation-type-field,
+.initiative-price-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 8px);
+  margin-top: var(--space-12, 12px);
+  text-align: left;
+}
+
+.initiative-field-label {
+  font-size: var(--fs-14, 14px);
+  font-weight: 600;
+  color: var(--color-900, #222);
+}
+
+.initiative-donation-type-select,
+.initiative-price-input {
+  width: 100%;
+  padding: var(--space-12, 12px) var(--space-16, 16px);
+  border: 1px solid var(--color-300, #e1e1e1);
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--color-white, #ffffff);
+  font-size: var(--fs-16, 16px);
+  color: var(--color-900, #222);
+  box-sizing: border-box;
+  height: 44px;
+}
+
+.initiative-price-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-300, #e1e1e1);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  background-color: var(--color-white, #ffffff);
+}
+
+.initiative-price-input-wrapper .initiative-price-input {
+  border: none;
+  flex: 1;
+  padding-right: 0;
+}
+
+.initiative-price-currency {
+  background-color: var(--color-900, #404040);
+  color: var(--color-white, #ffffff);
+  padding: var(--space-12, 12px) var(--space-16, 16px);
+  font-size: var(--fs-14, 14px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.initiative-add-other-amount-btn {
+  width: 100%;
+  padding: var(--space-12, 12px) var(--space-16, 16px);
+  background-color: var(--color-primary, #30aee3); /* Blue button */
+  color: var(--color-white, #ffffff);
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--fs-14, 14px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition, all 0.2s ease);
+  margin-top: var(--space-16, 16px);
+}
+
+.initiative-add-other-amount-btn:hover {
+  background-color: var(--color-primary-hover, #2896c2);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .initiative-donation-card {
+    padding: var(--space-16, 16px);
+  }
+  
+  /* .initiative-card-icon img {
+    width: 70px;
+    height: 50px;
+  } */
+  
+  .initiative-card-title {
+    font-size: var(--fs-16, 16px);
+  }
+}
+

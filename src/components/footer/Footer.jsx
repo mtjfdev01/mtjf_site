@@ -138,9 +138,9 @@ const Footer = () => {
                   <li>
                     <Link to="/volunteerRegistration" className="footer-link">Registration</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to="/contact" className="footer-link">Contact Us</Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 

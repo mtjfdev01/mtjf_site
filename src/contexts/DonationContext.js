@@ -12,18 +12,43 @@ export const useDonation = () => {
 
 export const DonationProvider = ({ children }) => {
   const [donationData, setDonationData] = useState(null);
+  const [projectDonations, setProjectDonations] = useState([]);
 
   const setDonationFormData = (data) => {
     setDonationData(data);
   };
 
+  const setProjectDonationData = (donations) => {
+    setProjectDonations(donations);
+  };
+
+  const updateProjectDonation = (projectDonation) => {
+    setProjectDonations(prev => {
+      const existingIndex = prev.findIndex(p => 
+        p.projectId === projectDonation.projectId && 
+        p.initiativeId === projectDonation.initiativeId
+      );
+      if (existingIndex >= 0) {
+        const updated = [...prev];
+        updated[existingIndex] = projectDonation;
+        return updated;
+      } else {
+        return [...prev, projectDonation];
+      }
+    });
+  };
+
   const clearDonationData = () => {
     setDonationData(null);
+    setProjectDonations([]);
   };
 
   const value = {
     donationData,
+    projectDonations,
     setDonationFormData,
+    setProjectDonationData,
+    updateProjectDonation,
     clearDonationData
   };
 

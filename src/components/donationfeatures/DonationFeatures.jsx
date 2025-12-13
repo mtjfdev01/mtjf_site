@@ -34,7 +34,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'health',
-    title: 'HEALTH/AAS LAB',
+    title: 'HEALTH',
     description:
       'Bringing essential healthcare to everyone, ensuring timely treatments for all.',
     icon: (
@@ -102,7 +102,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'aaslab',
-    title: 'HEALTH/AAS LAB',
+    title: 'AAS LAB',
     description: 'Delivering affordable, reliable diagnostic services to ensure timely medical treatment.',
     icon: (
     <img src={AASLab} alt="AAS Lab Icon"  {...ICON_PROPS}/>

@@ -433,7 +433,7 @@
     border: var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    padding: var(--space-16);
+    /* padding: var(--space-16); */
   }
   
   /*--------------------------------------

@@ -1056,7 +1056,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'why-apna-ghar-matters',
         title: 'Why Apna Ghar Matters',
         subtitle: 'Because Losing a Husband or a Father Shouldn\'t Mean Losing Your Home',
-        description: 'Across Pakistan, widows and their children often face:',
+        impact: 'Across Pakistan, widows and their children often face:',
         services: [
           'Homelessness or unsafe living conditions',
           'No reliable income',
@@ -1064,14 +1064,14 @@ export const PROJECTS_DETAIL_DATA = {
           'Disrupted education for children',
           'Lack of emotional and spiritual support'
         ],
-        impact: 'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values, ensuring that no widow or orphan is left behind.',
+        afterServicesText:'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values , ensuring that no widow or orphan is left behind.',
         donateButtonText: 'Help Provide Safety and Stability'
       },
       {
         id: 'our-mission',
         title: 'Our Mission',
         subtitle: 'To Give Widows and Their Children a Life of Dignity, Security, and Opportunity',
-        description: 'Apna Ghar is committed to providing:',
+        impact: 'Apna Ghar is committed to providing:',
         services: [
           'Permanent, fully furnished homes to widows (18–50) with dependent children',
           'Skill training & home-based business opportunities for mothers',
@@ -1079,7 +1079,7 @@ export const PROJECTS_DETAIL_DATA = {
           'A solar-powered, eco-friendly, green community designed for long-term sustainability',
           'Educational support to help orphan children build a brighter future'
         ],
-        impact: 'Every family receives the foundation they need for stability, growth, and independence.',
+        afterServicesText: "Every family receives the foundation they need for stability, growth, and independence.",
         donateButtonText: 'Build a Home for a Widow & Her Children'
       },
       {
@@ -1098,14 +1098,14 @@ export const PROJECTS_DETAIL_DATA = {
           'Rainwater harvesting and eco-friendly systems',
           'Child-friendly environment supporting emotional well-being'
         ],
-        impact: 'Every component is designed to restore stability, nurture growth, and empower families.',
+        afterServicesText: 'Every component is designed to restore stability, nurture growth, and empower families.',
         donateButtonText: 'Contribute to Building a Home'
       },
       {
         id: 'eligibility-criteria',
         title: 'Eligibility Criteria',
         subtitle: 'Ensuring Support Reaches the Most Vulnerable Families',
-        description: 'A family qualifies if the mother is:',
+        impact: 'A family qualifies if the mother is:',
         services: [
           'A widow or divorced woman (18–50 years old)',
           'Caring for one or more orphan or dependent children',
@@ -1120,7 +1120,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'impact-we-aim-to-create',
         title: 'Impact We Aim to Create',
         subtitle: 'Building a Future Where Widows and Orphans Thrive Together',
-        description: 'Through Apna Ghar, MTJF aims to:',
+        impact: 'Through Apna Ghar, MTJF aims to:',
         services: [
           'Provide 70 families of widows & orphans with safe, permanent housing',
           'Ensure 100% solar energy and clean water access',
@@ -1134,7 +1134,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'aligned-with-global-goals',
         title: 'Aligned With Global Goals',
         subtitle: 'Empowering Families While Protecting People & Planet',
-        description: 'Apna Ghar contributes to SDGs including:',
+        impact: 'Apna Ghar contributes to SDGs including:',
         services: [
           'No Poverty',
           'Gender Equality',

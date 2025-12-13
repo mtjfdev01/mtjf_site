@@ -5,6 +5,7 @@ import { DonationProvider } from './contexts/DonationContext';
 import Navbar from './components/navbar';
 import './App.css';
 import StickyBar from "./components/stickybar";
+import Donate from "./pages/Donate";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -21,6 +22,7 @@ const BlogsPage = lazy(() => import("./pages/Blogs"));
 const BlogsDetails = lazy(() => import("./pages/BlogsDetails"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 const Checkout = lazy(() => import("./pages/Checkout"));
+const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
 
 
 
@@ -68,7 +70,8 @@ function App() {
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/blogs-details" element={<BlogsDetails />} />
-
+              <Route path="/donate" element={<Donate />} />
+              <Route path="/donate/cards" element={<DonationCardsPage />} />
             </Routes>
           </Suspense>
         </DonationProvider>

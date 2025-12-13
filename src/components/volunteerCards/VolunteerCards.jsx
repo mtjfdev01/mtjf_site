@@ -29,7 +29,7 @@ function VolunteerCards() {
           <div className="volunteer-content">
             <h3>{card.title}</h3>
             <p>{card.text}</p>
-            <button className="volunteer-btn">Volunteer</button>
+            <div className="volunteer-btn" disabled>Volunteer</div>
           </div>
         </div>
       ))}

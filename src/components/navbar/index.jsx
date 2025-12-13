@@ -125,9 +125,16 @@ const Navbar = () => {
    // }, [location.pathname]);
 
   const handleClick = (linkName, path) => {
-    window.scrollTo(0, 0);
+    // Scroll to top on current page first
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setActiveLink(linkName);
-    navigate(path);
+    
+    // Wait for scroll to complete, then navigate
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        navigate(path);
+      });
+    });
   };
 
   const handleDonateClick = () => {

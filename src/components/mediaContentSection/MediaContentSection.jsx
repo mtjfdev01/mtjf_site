@@ -88,6 +88,11 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   </ul>
                 )}
 
+                {subProject.afterServicesText && (
+                  <p className="media-content-description">{subProject.afterServicesText}</p>
+                )}
+
+
                 {subProject.donateButtonText && (
                   <button
                     className="media-content-cta btn btn--primary"
@@ -117,4 +122,3 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
 }
 
 export default MediaContentSection
-
