@@ -8,8 +8,8 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 import { useCart } from '../contexts/CartContext'
 
-const Events = lazy(() => import('../components/events/Events'))
-  const QuickBlogs = lazy(() => import('../components/quickblogs'))
+// const Events = lazy(() => import('../components/events/Events'))
+//   const QuickBlogs = lazy(() => import('../components/quickblogs'))
 const DonationCta = lazy(() =>
   import('../components/donationCta/DonationCta')
 )

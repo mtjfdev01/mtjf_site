@@ -78,11 +78,11 @@ body.banner-visible .banner_img {
 
   @media screen and (max-width: 768px) {
     .banner_img {
-        height: 60vh;
+        height: auto;
     }
-    .banner_img img {
+    /* .banner_img img {
         height: 100% !important;
-    } 
+    }  */
   }
 
 /* Slider Navigation Buttons */

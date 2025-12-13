@@ -68,6 +68,7 @@
     height: 180px;
     padding: var(--space-20) var(--space-8);
     width: 15vw;
+    text-align:center;
   }
 
   .cta-circle {
