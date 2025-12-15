@@ -10,7 +10,7 @@ const Mission = () => {
           
           {/* Mission Column - Left */}
           <div className="mission-content">
-            <h2 className="heading-secondary mission-title">Our Mission</h2> 
+            <h2 className="heading-secondary">Our Mission</h2> 
             <h3 className='mission-subtitle'>What We Strive For</h3>
             
             <p className="mission-text text-base mb-16">
@@ -25,7 +25,7 @@ const Mission = () => {
           
           {/* Vision Column - Right */}
           <div className="mission-content">
-            <h2 className="heading-secondary mission-title">Our Vision</h2> 
+            <h2 className="heading-secondary">Our Vision</h2> 
             <h3 className='mission-subtitle'>The Future We Aim to Build</h3>
             
             <p className="mission-text text-base mb-16">

@@ -46,6 +46,13 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
     color: var(--text);
     margin: 0 0 16px 0;
   }
+  .brands-section .brands-container .brands-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .brands-section .brands-container .brands-header h2 {
+    text-align: center;
+  }
   .brands-section .brands-marquee {
     position: relative;
     overflow: hidden;

@@ -87,7 +87,7 @@ const ProjectDetail = () => {
               <div className="project-content-grid grid grid-12 gap-32">
                 {/* Left Content */}
                 <div className="project-content-left col-12 lg-8">
-                  <h2 className="h1 mb-24">{project.title}</h2>
+                  <h2>{project.title}</h2>
                   <div className="project-content-text">
                     <p className="text-base mb-24">{project.content.paragraph1}</p>
                     <p className="text-base mb-24">{project.content.paragraph2}</p>

@@ -24,7 +24,7 @@ const CoreValues = () => {
       {/* Header Section */}
       <div className="core-values-header">
         <div className="container">
-          <h2 className="heading-secondary core-values-title">Our Core Values</h2>
+          <h2 className="heading-secondary">Our Core Values</h2>
           <h3>The Principles That Guide Us</h3>
           <p>At MTJ Foundation, our work is grounded in values that shape every project, every decision, and every act of service</p>
         </div>

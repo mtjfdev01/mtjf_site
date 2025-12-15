@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
+import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import './Footer.css'
 import logoImg from '../../assets/img/logos/footer_logo.png'
@@ -21,8 +21,8 @@ const Footer = () => {
             </div>
             
             <div className="footer-section flex flex-col gap-12">
-              <h4 className="footer-heading h4">Contact Us:</h4>
-              <h5 className="footer-subheading h5">Head Office:</h5>
+              <h4 className="footer-heading h4">Contact Us</h4>
+              <h5 className="footer-subheading h5">Head Office</h5>
               <ul className="footer-contact-list flex flex-col gap-12">
                 <li>
                   <a href="https://maps.google.com" className="footer-link">
@@ -190,6 +190,15 @@ const Footer = () => {
                     aria-label="LinkedIn"
                   >
                     <FaLinkedinIn />
+                  </a>
+                  <a
+                    href="https://youtube.com/@foundation_mtj?si=2NdH5biwwMFf8Ayv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-icon footer-social-youtube"
+                    aria-label="YouTube"
+                  >
+                    <FaYoutube />
                   </a>
                 </div>
                 <div className="footer-app-stores">

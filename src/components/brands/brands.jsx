@@ -103,8 +103,9 @@ const BrandArea = ({ className = '', speed = 70 }) => {
       style={{ ['--duration']: `${durationSec}s` }}
     >
       <div className="brands-container">
-        <h2 className="title">Commitment to Global Goals</h2>
-
+        <div className="brands-header mx-auto">
+        <h2 className="heading-secondary" >Commitment to Global Goals</h2> 
+        </div> 
         <div className="brands-marquee" aria-label="Partner brands scrolling list pt-10">
           <div
             className="brands-track"

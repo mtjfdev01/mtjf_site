@@ -299,14 +299,15 @@ const Projects = () => {
 
   return (
     <section className="projects-section container py-48">
-      <div className="projects-header flex justify-between items-center mb-32">
-        <div>
+      <div className="projects-header flex justify-center items-center mb-32">
+        <div className="text-center">
           <h2 className="heading-secondary">Our Projects</h2>
-          <h3 className="projects-title">Where Your Support Meets Real Impact</h3>
-        </div>
-        <Link to="/projects" className="projects-link">
+          <h2 className="mt-0">Where Your Support Meets Real Impact</h2>
+          <Link to="/projects" className="projects-link">
           Learn More &gt;
         </Link>
+        </div>
+
       </div>
 
       <div className="projects-wrapper relative">

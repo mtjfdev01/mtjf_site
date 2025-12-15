@@ -58,7 +58,6 @@
 }
 
 .media-content-heading {
-  font-size: var(--fs-32);
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-900);

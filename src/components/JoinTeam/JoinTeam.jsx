@@ -8,10 +8,10 @@ const JoinTeam = ()=>{
           {/* Join Team Section */}
         <section className="join-team-section mb-64">
           <div className="join-team-content">
-            <p className="join-team-eyebrow">
-              <span></span>Join Team<span></span>
-            </p>
-            <h2 className="join-team-title">Why Join Our Team</h2>
+            <h2 className="heading-secondary">
+              Join Team
+            </h2>
+            <h2 className="mt-0">Why Join Our Team</h2>
             <p className="join-team-text">
             At Molana Tariq Jamil Foundation, we are dedicated to serving humanity and making a positive impact on society.
             As a non-profit organization, we are driven by our mission to promote peace, tolerance, and compassion through various charitable initiatives.

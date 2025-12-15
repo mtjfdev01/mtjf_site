@@ -29,8 +29,8 @@
 }
 
 .projects-page-card-title {
-  font-size: var(--fs-24);
-  font-weight: 700;
+  /* font-size: var(--fs-24); */
+  /* font-weighst: 700; */
   margin: auto;
 }
 

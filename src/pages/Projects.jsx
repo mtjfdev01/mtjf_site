@@ -43,8 +43,8 @@ const Projects = () => {
           {showProjects && (
             <>
               <div className="projects-page-header text-center mb-48">
-                <h1 className="heading-secondary mb-16">Our Work</h1>
-                <h2 className="h1">Explore our programs and see how your contribution transforms futures</h2>
+                <h2 className="heading-secondary">Our Work</h2>
+                <h2 className='mt-0'>Explore our programs and see how your contribution transforms futures</h2>
               </div>
 
               <div className="projects-page-grid grid grid-2 gap-32"> 
@@ -85,16 +85,14 @@ const Projects = () => {
                             >
                               {project.donateButtonText || 'Donate'}
                             </button>
-                            <button
-                              type="button"
-                              className="projects-page-learn-btn"
-                              onClick={(e) => {
-                                e.preventDefault()
-                                navigate(project.learnMorePath)
-                              }}
-                            >
-                              Learn More
-                            </button>
+                            <Link to={project.learnMorePath}>
+                              <button
+                                type="button"
+                                className="projects-page-learn-btn"
+                              >
+                                Learn More
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>

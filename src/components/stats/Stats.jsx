@@ -167,8 +167,8 @@ const Stats = () => {
   return (
     <section className="stats-section container py-64">
       <div className="stats-header text-center mb-48">
-        <h1 className="heading-secondary mb-16">Since 2019 We Have:</h1>
-        <h2 className="h1">
+        <h2 className="heading-secondary mb-16">Since 2019 We Have</h2>
+        <h2>
          Brought Hope to 1 Million+ People, with your Help
         </h2>
       </div>

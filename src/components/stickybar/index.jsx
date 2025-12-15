@@ -7,7 +7,7 @@ const StickyBar = () => {
     <div className="sticky_bar_container">
       <div className="sticky_bar-content container">
         <div className="sticky_bar-contact">
-          <a href="mailto:info@mtjfoundation.org" className="sticky_bar-link">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mtjfoundation.org" target="_blank" rel="noopener noreferrer" className="sticky_bar-link">
             <FaEnvelope />
             <span>info@mtjfoundation.org</span>
           </a>

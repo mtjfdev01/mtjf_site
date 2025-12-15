@@ -100,9 +100,9 @@ const Team = () => {
   return (
     <section className="team-section">
       <div className="container">
-        <div className="team-heading-block p-32">
+        <div className="team-heading-block text-center p-32">
           <div className="team-heading-left">
-            <h2 className="heading-primary team-tag">Our Team</h2>
+            <h2 className="heading-secondary">Our Team</h2>
 
             <div className="team-heading-row"> 
               <h2 className="team-title">

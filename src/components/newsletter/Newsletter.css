@@ -10,7 +10,7 @@
 }
 
 .newsletter-heading {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 2.5vw, 3rem);
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;

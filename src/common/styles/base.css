@@ -212,7 +212,7 @@
   
   /* Display / Visibility */
   .d-none { display: none !important; }
-  .d-block { display: block; }
+  .d-block { display: block !important; }
   .d-inline { display: inline; }
   .d-inline-block { display: inline-block; }
   .d-grid { display: grid; }
@@ -308,6 +308,7 @@
   .m-40{margin:var(--s-40)} .m-48{margin:var(--s-48)} .m-64{margin:var(--s-64)}
   
   .mx-auto{margin-left:auto;margin-right:auto}
+  .mt-0{margin-top:0}
   .mx-16{margin-left:var(--s-16); margin-right:var(--s-16)}
   .my-16{margin-top:var(--s-16); margin-bottom:var(--s-16)}
   .mt-8{margin-top:var(--s-8)} .mr-8{margin-right:var(--s-8)} .mb-8{margin-bottom:var(--s-8)} .ml-8{margin-left:var(--s-8)}

@@ -29,7 +29,7 @@ const FEATURE_ITEMS = [
     description:
       'Offering vulnerable widows and children a safe, nurturing home to call their own.',
     icon: (
-    <img src={ApnaGhar} alt="ApnaGhar Icon"  {...ICON_PROPS}/>
+    <img src={ApnaGhar} alt="Apna Ghar - A safe home for orphans and widows program icon"  {...ICON_PROPS}/>
     )
   },
   {
@@ -38,7 +38,7 @@ const FEATURE_ITEMS = [
     description:
       'Bringing essential healthcare to everyone, ensuring timely treatments for all.',
     icon: (
-     <img src={Health} alt='health Icon' {...ICON_PROPS} />
+     <img src={Health} alt="Health - Essential healthcare and medical treatment services program icon" {...ICON_PROPS} />
     )
   },
   {
@@ -47,7 +47,7 @@ const FEATURE_ITEMS = [
     description:
       'Opening doors to brighter futures through accessible, quality learning for every child.',
     icon: (
-     <img src={Education} alt="Education Icon"  {...ICON_PROPS}/>
+     <img src={Education} alt="Education - Dream Schools, Al Hasanain College, and Scholarships program icon"  {...ICON_PROPS}/>
     )
   },
   {
@@ -55,7 +55,7 @@ const FEATURE_ITEMS = [
     title: 'COMMUNITY SERVICES (Marriage Gift 200,000 PKR, Monthly Ration, Cash Assistance, Eid Gifts )',
     description: 'Supporting families with essential aid to meet immediate needs with dignity.',
     icon: (
-      <img src={Community} alt="Community Icon"  {...ICON_PROPS}/>
+      <img src={Community} alt="Community Services - Marriage gifts, monthly ration, cash assistance, and Eid gifts program icon"  {...ICON_PROPS}/>
     )
   },
   {
@@ -63,7 +63,7 @@ const FEATURE_ITEMS = [
     title: 'KASB VOCATIONAL CENTRE (Training & Livelihood)',
     description: 'Empowering youth and women with skills that create income and independence.',
     icon: (
-      <img src={KASB} alt="KASB Icon"  {...ICON_PROPS}/>
+      <img src={KASB} alt="KASB Vocational Centre - Training and livelihood skills program icon"  {...ICON_PROPS}/>
     )
   },
   {
@@ -72,7 +72,7 @@ const FEATURE_ITEMS = [
     description:
       'Providing clean, safe drinking water to restore health, dignity, and daily ease.',
     icon: (
-     <img src={CleanWater} alt="CleanWater Icon"  {...ICON_PROPS}/>
+     <img src={CleanWater} alt="Clean Water - Water filtration plants and hand pumps program icon" {...ICON_PROPS}/>
 )
   },
   {
@@ -80,7 +80,7 @@ const FEATURE_ITEMS = [
     title: 'DISASTER Management',
     description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
     icon: (
-    <img src={DisasterRelief} alt="Disaster Relief Icon"  {...ICON_PROPS}/>
+    <img src={DisasterRelief} alt="Disaster Management - Emergency response and relief services program icon"  {...ICON_PROPS}/>
    )
   },
   {
@@ -89,7 +89,7 @@ const FEATURE_ITEMS = [
     description:
       'Planting trees and raising awareness to build a greener, climate-resilient Pakistan.',
     icon: (
-      <img src={Seeds} alt="Seeds of Change Icon"  {...ICON_PROPS}/>
+      <img src={Seeds} alt="Seeds of Change - Environmental conservation and tree planting program icon"  {...ICON_PROPS}/>
     )
   },
   {
@@ -97,7 +97,7 @@ const FEATURE_ITEMS = [
     title: 'Qurbani Braye Mustehqeen',
     description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
     icon: (
-     <img src={Qurbani} alt="Qurbani Icon"  {...ICON_PROPS}/>
+     <img src={Qurbani} alt="Qurbani Braye Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
 )
   },
   {
@@ -105,7 +105,7 @@ const FEATURE_ITEMS = [
     title: 'AAS LAB',
     description: 'Delivering affordable, reliable diagnostic services to ensure timely medical treatment.',
     icon: (
-    <img src={AASLab} alt="AAS Lab Icon"  {...ICON_PROPS}/>
+    <img src={AASLab} alt="AAS Lab - Affordable diagnostic and medical testing services program icon"  {...ICON_PROPS}/>
    )
   }
 ]
@@ -133,7 +133,7 @@ const DonationFeatures = () => {
     <div className='donation_feature_container d-flex gap-32 items-start w-100 mt-16'>
       {/* LEFT COLUMN*/}
       <div className='left-column flex-1'>
-        <h3 className='heading-secondary d-flex items-center gap-12 mb-8'>Make A Donation</h3>
+        <h2 className='heading-secondary d-flex items-center gap-12 mb-8'>Make A Donation</h2>
         <h2>Changing Lives through these Initiatives</h2>
         <div className="slider-nav-container mt-24">
           <button
@@ -165,7 +165,7 @@ const DonationFeatures = () => {
 
       {/* RIGHT  COLUMN */}
       <div className='right-column'>
-        <div className='features d-grid grid-2 items-start'>
+        <div className='features d-grid grid-2 items-start' key={startIndex}>
           {visibleFeatures.map((feature) => (
             <div className='feature d-flex gap-12 items-start' key={feature.id}>
               <div className={`icon ${feature.id} d-flex items-center justify-center`}>

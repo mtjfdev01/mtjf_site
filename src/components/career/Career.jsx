@@ -71,11 +71,11 @@ const Career = () => {
         {/* Header */}
       <div className="careers-header mb-48">
         <div className="careers-heading">
-          <h1 className="heading-secondary">Career</h1>
+          <h2 className="heading-secondary">Career</h2>
         </div>
-        <p className="h2">
+        <h2 className='mt-0'>
           Current Openings
-        </p>
+        </h2>
       </div>
         {/* Filter Section */}
         <div className="careers-filters mb-48">
