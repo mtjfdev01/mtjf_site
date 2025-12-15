@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import axiosInstance from '../../utils/axios'
 import { ALL_PROJECTS_DATA } from '../../data/projectsData'
@@ -30,11 +30,20 @@ const postToPayfast = (data, formData) => {
 
 const CheckoutForm = () => {
   const navigate = useNavigate()
-  const { donationData, clearDonationData } = useDonation()
+  const location = useLocation()
+  const { donationData, projectDonations, clearDonationData, setProjectDonationData } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
+
+  // Get donation items from location state (passed from donation projects menu)
+  const donationItemsFromState = location.state?.donationItems || []
+  const totalAmountFromState = location.state?.totalAmount || 0
+  
+  // Determine which donation flow we're using
+  const isProjectDonationsFlow = donationItemsFromState.length > 0 || projectDonations.length > 0
+  const isOldDonationFormFlow = !!donationData
 
   // Initialize form with donation data if available
   useEffect(() => {
@@ -54,12 +63,39 @@ const CheckoutForm = () => {
     }
   }, [donationData])
 
-  // Redirect if no donation data
+  // Store donation items from location state into context if available
   useEffect(() => {
-    if (!donationData) {
+    if (donationItemsFromState.length > 0 && setProjectDonationData) {
+      setProjectDonationData(donationItemsFromState)
+    }
+  }, [donationItemsFromState, setProjectDonationData])
+
+  // Initialize donation type from project donations if available
+  useEffect(() => {
+    if (isProjectDonationsFlow && (donationItemsFromState.length > 0 || projectDonations.length > 0)) {
+      // Get donation type from first donation item
+      const firstDonation = donationItemsFromState[0] || projectDonations[0]
+      if (firstDonation?.donationType) {
+        const typeMap = {
+          'GENERAL': 'general',
+          'SADKA': 'sadqa',
+          'ZAKAT': 'zakat'
+        }
+        setFormData(prev => ({
+          ...prev,
+          donation_type: typeMap[firstDonation.donationType] || 'general'
+        }))
+      }
+    }
+  }, [isProjectDonationsFlow, donationItemsFromState, projectDonations])
+
+  // Redirect if no donation data (check both context and location state)
+  useEffect(() => {
+    const hasDonationData = isOldDonationFormFlow || isProjectDonationsFlow
+    if (!hasDonationData) {
       navigate('/home')
     }
-  }, [donationData, navigate])
+  }, [isOldDonationFormFlow, isProjectDonationsFlow, navigate])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -155,8 +191,23 @@ const CheckoutForm = () => {
       return
     }
 
-    // Calculate total amount from donation data
-    const totalAmount = donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
+    // Calculate total amount - support both flows
+    let totalAmount = 0
+    if (isProjectDonationsFlow) {
+      // Calculate from project donations
+      const donationsToUse = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+      totalAmount = donationsToUse.reduce((sum, donation) => {
+        return sum + (donation.totalAmount || 0)
+      }, 0)
+      
+      // Also check totalAmountFromState as fallback
+      if (totalAmount === 0 && totalAmountFromState > 0) {
+        totalAmount = totalAmountFromState
+      }
+    } else if (isOldDonationFormFlow) {
+      // Calculate from old donation form data
+      totalAmount = donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
+    }
 
     if (!totalAmount || Number(totalAmount) <= 0 || Number(totalAmount) < 100) {
       setFormMessage({ 
@@ -172,13 +223,25 @@ const CheckoutForm = () => {
     try {
       setIsLoading(true)
 
-      // Get project info from donation data
-      const project_id = donationData?.projectId || ''
-      // Look up project name from projects data if projectId exists
+      // Get project info - support both flows
+      let project_id = ''
       let project_name = ''
-      if (project_id) {
-        const project = ALL_PROJECTS_DATA.find(p => p.id === project_id)
-        project_name = project?.title || ''
+      
+      if (isProjectDonationsFlow) {
+        // For project donations flow, get project info from first donation
+        const donationsToUse = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+        if (donationsToUse.length > 0) {
+          const firstDonation = donationsToUse[0]
+          project_id = firstDonation.projectId || ''
+          project_name = firstDonation.projectTitle || ''
+        }
+      } else if (isOldDonationFormFlow) {
+        // For old donation form flow
+        project_id = donationData?.projectId || ''
+        if (project_id) {
+          const project = ALL_PROJECTS_DATA.find(p => p.id === project_id)
+          project_name = project?.title || ''
+        }
       }
 
       const payload = {
@@ -189,8 +252,12 @@ const CheckoutForm = () => {
         donation_frequency: paymentFrequency[currentPayment] || 'once',
         donation_source: 'website',
         amount: totalAmount,
-        currency: donationData?.currency || 'PKR',
-        status: 'pending'
+        currency: isOldDonationFormFlow ? (donationData?.currency || 'PKR') : 'PKR',
+        status: 'pending',
+        // Include donation items for project donations flow
+        ...(isProjectDonationsFlow && {
+          donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+        })
       }
 
       const response = await axiosInstance.post('/donations', payload)
@@ -232,7 +299,8 @@ const CheckoutForm = () => {
     }
   }
 
-  if (!donationData) {
+  // Don't render if no donation data from either flow
+  if (!isOldDonationFormFlow && !isProjectDonationsFlow) {
     return null
   }
 

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import DonationProjectsMenuCard from './DonationProjectsMenuCard'
 import DonationProjectsMenuForm from './DonationProjectsMenuForm'
 import InitiativeDonationCard from './InitiativeDonationCard'
+import DonationSidebar from './DonationSidebar'
 import './DonationProjectsMenu.css'
 
 import health from '../../../assets/img/projects/icons/health.png'
@@ -28,7 +29,7 @@ const DonationProjectsMenu = () => {
 
   const projectCards = [
     { 
-      id: 7, 
+      id: 'health', 
       title: "Health", 
       icon: health, 
       price: 5000, 
@@ -40,7 +41,7 @@ const DonationProjectsMenu = () => {
       ]
     },
     { 
-      id: 5, 
+      id: 'education', 
       title: "Education", 
       icon: education, 
       price: 3000, 
@@ -53,7 +54,7 @@ const DonationProjectsMenu = () => {
       ]
     },
     { 
-      id: 2, 
+      id: 'clean-water', 
       title: "Clean Water", 
       icon: cleanWater, 
       price: 2000, 
@@ -67,10 +68,10 @@ const DonationProjectsMenu = () => {
         { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 1500000, icon: cleanWater }
       ]
     },
-    { id: 4, title: "Apna Ghar", icon: apnaghar, price: 10000, new: false },
-    { id: 1, title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false },
+    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false },
+    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false },
     { 
-      id: 10, 
+      id: 'kasb-skill-development', 
       title: "KASB Skill Development", 
       icon: kasb, 
       price: 4000, 
@@ -80,7 +81,7 @@ const DonationProjectsMenu = () => {
       ]
     },
     { 
-      id: 8, 
+      id: 'seeds-of-change', 
       title: "Seeds of Change", 
       icon: seeds, 
       price: 2500, 
@@ -89,10 +90,10 @@ const DonationProjectsMenu = () => {
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    { id: 3, title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false },
-    { id: 9, title: "Aaslab", icon: aaslab, price: 3500, new: false },
+    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false },
+    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false },
     { 
-      id: 6, 
+      id: 'community-services', 
       title: "Community Service", 
       icon: community, 
       price: 3000, 
@@ -101,16 +102,6 @@ const DonationProjectsMenu = () => {
         { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community },
         { id: 'community-feed-individual', title: 'Feed an Individual', subtitle: 'Per Individual', price: 250, icon: community },
         { id: 'community-mosque-construction', title: 'Support the Construction of a Mosque', subtitle: 'Per Musala', price: 50000, icon: community }
-      ]
-    },
-    { 
-      id: 11, 
-      title: "Marriage Gift", 
-      icon: marriageGift, 
-      price: 150000, 
-      new: false,
-      initiatives: [
-        { id: 'marriage-gift-initiative', title: 'Marriage Gift', subtitle: 'Per Beneficiary', price: 150000, icon: marriageGift }
       ]
     },
   ]
@@ -154,6 +145,27 @@ const DonationProjectsMenu = () => {
     setMessage("")
   }
 
+  // Calculate total donation amount
+  const totalDonationAmount = useMemo(() => {
+    // Filter to only initiatives with actual amounts, and deduplicate by initiativeId
+    const uniqueInitiatives = selectedProjects.reduce((acc, project) => {
+      if (project.initiativeId && project.totalAmount && project.totalAmount > 0) {
+        // Use initiativeId + parentProjectId as unique key
+        const key = `${project.parentProjectId}-${project.initiativeId}`
+        // Only keep the latest entry for each unique initiative
+        if (!acc[key] || acc[key].totalAmount < project.totalAmount) {
+          acc[key] = project
+        }
+      }
+      return acc
+    }, {})
+    
+    // Sum up unique initiatives
+    return Object.values(uniqueInitiatives).reduce((total, project) => {
+      return total + (project.totalAmount || 0)
+    }, 0)
+  }, [selectedProjects])
+
   const handleSubmitDonation = async () => {
     // Prepare projects for navigation
     let projectsToNavigate = []
@@ -186,6 +198,36 @@ const DonationProjectsMenu = () => {
     }
 
     navigate('/donate/cards', { state: { selectedProjects: projectsToNavigate } })
+  }
+
+  const handleCompleteDonation = () => {
+    if (totalDonationAmount <= 0) {
+      setMessage("⚠ Please add at least one donation item.")
+      return
+    }
+
+    // Collect only initiatives with actual donation amounts
+    const donationsToCheckout = selectedProjects.filter(project => {
+      // Only include initiatives with totalAmount > 0
+      if (project.initiativeId && project.totalAmount) {
+        return project.totalAmount > 0
+      }
+      // Regular projects without initiatives should NOT be included
+      return false
+    })
+    
+    if (donationsToCheckout.length === 0) {
+      setMessage("⚠ Please add at least one donation item.")
+      return
+    }
+
+    // Navigate to checkout with donation data
+    navigate('/checkout', { 
+      state: { 
+        donationItems: donationsToCheckout, 
+        totalAmount: totalDonationAmount 
+      } 
+    })
   }
 
   return (
@@ -252,22 +294,20 @@ const DonationProjectsMenu = () => {
                   onUpdate={(donationData) => {
                     // Update selected projects with initiative donation data
                     setSelectedProjects(prev => {
-                      const existingIndex = prev.findIndex(p => 
-                        p.initiativeId === initiative.id && p.parentProjectId === expandedProject.id
+                      // Remove any existing entries for this initiative first
+                      const filtered = prev.filter(p => 
+                        !(p.initiativeId === initiative.id && p.parentProjectId === expandedProject.id)
                       )
                       
-                      if (existingIndex >= 0) {
-                        const updated = [...prev]
-                        updated[existingIndex] = {
-                          ...expandedProject,
-                          ...donationData
-                        }
-                        return updated
-                      } else {
-                        return [...prev, {
+                      // Only add if there's an actual donation (quantity > 0 or customAmount > 0)
+                      if (donationData.totalAmount > 0) {
+                        return [...filtered, {
                           ...expandedProject,
                           ...donationData
                         }]
+                      } else {
+                        // If no donation, just return filtered (removed the entry)
+                        return filtered
                       }
                     })
                   }}
@@ -277,6 +317,17 @@ const DonationProjectsMenu = () => {
           })()}
         </div>
       </div>
+      {totalDonationAmount > 0 && (
+        <DonationSidebar 
+          totalAmount={totalDonationAmount}
+          onCompleteDonation={handleCompleteDonation}
+          onClearCart={() => {
+            setSelectedProjects([])
+            setExpandedProjectId(null)
+            setMessage("")
+          }}
+        />
+      )}
     </div>
   )
 }

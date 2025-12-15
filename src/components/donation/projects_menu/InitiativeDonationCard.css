@@ -83,6 +83,7 @@
   border-radius: var(--radius-md, 8px);
   font-size: var(--fs-16, 16px);
   color: var(--color-900, #222);
+  appearance: textfield; /* Hide arrows in modern browsers */
   -moz-appearance: textfield; /* Hide arrows in Firefox */
 }
 

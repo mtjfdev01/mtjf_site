@@ -361,13 +361,12 @@ const Projects = () => {
                 <h3 className="h3 mb-12 text-capitalize" dangerouslySetInnerHTML={{ __html: project.title }}></h3>
                 <p className="text-sm muted mb-16">
                   {project.description?.slice(0, 70)}...{' '}
-                  <Link 
-                    to={project.learnMorePath} 
+                  <span 
                     className="text-primary"
-                    style={{ textDecoration: 'underline' }}
+                    style={{ textDecoration: 'underline', cursor: 'pointer' }}
                   >
                     Learn More
-                  </Link>
+                  </span>
                 </p>
                 <div className="project-progress-bar-container">
                   <div
