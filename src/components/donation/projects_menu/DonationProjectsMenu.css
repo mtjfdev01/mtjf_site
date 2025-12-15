@@ -33,6 +33,7 @@
   flex-direction: column;
   gap: var(--space-24, 24px);
   text-align: left;
+  justify-content: center;
 }
 
 .general-donation-card h2 {
