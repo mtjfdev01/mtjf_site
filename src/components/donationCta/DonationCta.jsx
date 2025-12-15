@@ -13,7 +13,7 @@ const DonationCta = () => {
         <div className="donation-cta-title-wrapper flex items-center justify-center gap-12">
           <span className="donation-cta-icon">✦</span>
           <h2 className="donation-cta-title">
-            Sadaqa/Donations/Zakat via Bank Transfer
+            sadqa/Donations/Zakat via Bank Transfer
           </h2>
           <span className="donation-cta-icon">✦</span>
         </div>

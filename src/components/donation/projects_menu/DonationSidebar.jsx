@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import './DonationSidebar.css'
 
-const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart }) => {
+const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart, showBackButton = false }) => {
   const navigate = useNavigate()
 
   const handleCompleteDonation = () => {
@@ -21,6 +21,10 @@ const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart }) => {
     }
   }
 
+  const handleBackToDonations = () => {
+    navigate('/donate')
+  }
+
   return (
     <div className="donation-sidebar">
       <div className="donation-sidebar-content">
@@ -30,22 +34,34 @@ const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart }) => {
             <span className="total-amount">{totalAmount.toLocaleString()}</span>
             <span className="total-currency">PKR</span>
           </div>
-          <button
-            className="donation-sidebar-clear-btn"
-            onClick={handleClearCart}
-            title="Clear all donations"
-            aria-label="Clear all donations"
-          >
-            <FaTrash />
-          </button>
+          {!showBackButton && (
+            <button
+              className="donation-sidebar-clear-btn"
+              onClick={handleClearCart}
+              title="Clear all donations"
+              aria-label="Clear all donations"
+            >
+              <FaTrash />
+            </button>
+          )}
         </div>
-        <button
-          className="donation-sidebar-button"
-          onClick={handleCompleteDonation}
-          disabled={totalAmount <= 0}
-        >
-          Complete Donation
-        </button>
+        {!showBackButton && (
+          <button
+            className="donation-sidebar-button"
+            onClick={handleCompleteDonation}
+            disabled={totalAmount <= 0}
+          >
+            Complete Donation
+          </button>
+        )}
+        {showBackButton && (
+          <button
+            className="donation-sidebar-button donation-sidebar-back-button"
+            onClick={handleBackToDonations}
+          >
+            Back to Donations Menu
+          </button>
+        )}
       </div>
     </div>
   )

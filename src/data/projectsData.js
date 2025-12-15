@@ -645,7 +645,7 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'clean-water': {
     id: 'clean-water',
-    title: 'Clean Water for Every Family, A Lifeline of Sadaqah Jariyah',
+    title: 'Clean Water for Every Family, A Lifeline of sadqah Jariyah',
     headerImage: cleanwater,
     stats: [
       { icon: FaTint, number: '850', label: 'Water Wells Installed' },
@@ -659,7 +659,7 @@ export const PROJECTS_DETAIL_DATA = {
     ],
     content: {
       paragraph1: 'Millions of people across Pakistan face daily struggles due to lack of clean drinking water. Unsafe water leads to waterborne diseases, child mortality, and enormous hardship, especially for women and children who often walk miles carrying heavy pots just to fetch water. MTJ Foundation is turning this struggle into hope.',
-      paragraph2: 'With over 60 handpumps installed and 3 major water filtration plants operational, we provide safe, sustainable water solutions that save lives, restore dignity, and create lasting change. Supporting these projects is not only a humanitarian act: it is Sadaqah Jariyah, an ongoing source of blessings that continues to benefit people for years to come.',
+      paragraph2: 'With over 60 handpumps installed and 3 major water filtration plants operational, we provide safe, sustainable water solutions that save lives, restore dignity, and create lasting change. Supporting these projects is not only a humanitarian act: it is sadqah Jariyah, an ongoing source of blessings that continues to benefit people for years to come.',
       paragraph3: ''
     },
     mainImage: image2,
@@ -674,12 +674,12 @@ export const PROJECTS_DETAIL_DATA = {
           {
             id: 'individual-handpumps',
             title: 'Individual Handpumps',
-            description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (Sadaqah Jariyah), benefiting generations.',
+            description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (sadqah Jariyah), benefiting generations.',
             benefits: [
               'Protects families from waterborne diseases such as cholera and hepatitis',
               'Reduces the daily burden on women and children',
               'Provides dignity, ease, and health to families',
-              'Serves as Sadaqah Jariyah, earning ongoing blessings'
+              'Serves as sadqah Jariyah, earning ongoing blessings'
             ],
             donateButtonText: 'Sponsor an Individual Handpump'
           },
@@ -691,14 +691,14 @@ export const PROJECTS_DETAIL_DATA = {
               'Serves multiple households efficiently',
               'Improves public health and reduces waterborne diseases',
               'Strengthens community ties and resilience',
-              'Acts as Sadaqah Jariyah, benefiting generations'
+              'Acts as sadqah Jariyah, benefiting generations'
             ],
             donateButtonText: 'Sponsor a Community Handpump'
           },
           {
             id: 'water-filtration-plants',
             title: 'Water Filtration Plants',
-            description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of Sadaqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
+            description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of sadqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
             benefits: [
               'Ensures consistent, safe drinking water for large populations',
               'Reduces disease prevalence and improves long-term health',
@@ -724,7 +724,7 @@ export const PROJECTS_DETAIL_DATA = {
       //   id: 'call-to-action',
       //   title: 'Call to Action',
       //   subtitle: '',
-      //   description: 'Be the reason a child drinks safely today. Sponsor a Handpump or Filtration Plant and earn ongoing blessings through Sadaqah Jariyah. Your contribution transforms lives, restores dignity, and leaves a lasting legacy.',
+      //   description: 'Be the reason a child drinks safely today. Sponsor a Handpump or Filtration Plant and earn ongoing blessings through sadqah Jariyah. Your contribution transforms lives, restores dignity, and leaves a lasting legacy.',
       //   donateButtonText: 'Sponsor a Handpump or Filtration Plant'
       // }
     ],
@@ -735,7 +735,7 @@ export const PROJECTS_DETAIL_DATA = {
       description: '',
       faqs: [
         {
-          question: 'Why is clean water considered Sadaqah Jariyah?',
+          question: 'Why is clean water considered sadqah Jariyah?',
           answer: 'Clean water continues to benefit families and communities for years, earning ongoing spiritual reward for the donor as long as it is used.'
         },
         {
@@ -744,7 +744,7 @@ export const PROJECTS_DETAIL_DATA = {
         },
         {
           question: 'Can donors sponsor specific water projects?',
-          answer: 'Yes! Donors can fund individual handpumps, community pumps, or filtration plants, directly transforming lives and creating Sadaqah Jariyah.'
+          answer: 'Yes! Donors can fund individual handpumps, community pumps, or filtration plants, directly transforming lives and creating sadqah Jariyah.'
         },
         {
           question: 'How are water solutions maintained?',

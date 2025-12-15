@@ -58,10 +58,13 @@ const CountryDropdown = ({ value, onChange }) => {
     onChange(e.target.value)
   }
 
+  // Default to Pakistan if no value is provided
+  const selectedValue = value || 'PK'
+
   return (
     <span className="donation_type_select checkout-panel__field">
       <select
-        value={value}
+        value={selectedValue}
         onChange={handleChange}
         className="checkout-panel__input checkout-panel__select"
       >

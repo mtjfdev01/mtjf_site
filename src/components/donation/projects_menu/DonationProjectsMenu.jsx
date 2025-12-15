@@ -21,7 +21,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
   const [amount, setAmount] = useState("")
-  const [donationType, setDonationType] = useState("sadaqa")
+  const [donationType, setDonationType] = useState("general")
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")
@@ -167,6 +167,47 @@ const DonationProjectsMenu = () => {
   }, [selectedProjects])
 
   const handleSubmitDonation = async () => {
+    // Check if this is a Quick Donate from the form (when amount is entered)
+    if (amount && amount.trim() !== '') {
+      const numericAmount = Number(String(amount).trim())
+      if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
+        setMessage("⚠ Please enter a valid donation amount.")
+        return
+      }
+      if (numericAmount < 100) {
+        setMessage("⚠ Minimum donation amount is Rs. 100")
+        return
+      }
+      
+      // Determine project_id: expandedProject?.id or "general"
+      const projectId = expandedProjectId || 'general'
+      const expandedProject = expandedProjectId ? projectCards.find(p => p.id === expandedProjectId) : null
+      
+      setMessage("")
+      
+      // Navigate to checkout with custom donation
+      navigate('/checkout', {
+        state: {
+          donationItems: [{
+            projectId: projectId,
+            initiativeId: null,
+            projectTitle: expandedProject?.title || 'General Donation',
+            initiativeTitle: null,
+            initiativeSubtitle: null,
+            projectIcon: expandedProject?.icon || null,
+            quantity: 1,
+            donationType: donationType.toUpperCase(),
+            basePrice: numericAmount,
+            customAmount: 0,
+            totalAmount: numericAmount
+          }],
+          totalAmount: numericAmount
+        }
+      })
+      return
+    }
+    
+    // Original logic for navigating to cards page
     // Prepare projects for navigation
     let projectsToNavigate = []
     
@@ -280,40 +321,56 @@ const DonationProjectsMenu = () => {
             const expandedProject = projectCards.find(p => p.id === expandedProjectId)
             if (!expandedProject || !expandedProject.initiatives) return null
             
-            return expandedProject.initiatives.map((initiative) => {
-              const initiativeData = {
-                ...initiative,
-                parentProjectId: expandedProject.id,
-                parentProjectTitle: expandedProject.title
-              }
-              
-              return (
-                <InitiativeDonationCard
-                  key={initiative.id}
-                  initiative={initiativeData}
-                  onUpdate={(donationData) => {
-                    // Update selected projects with initiative donation data
-                    setSelectedProjects(prev => {
-                      // Remove any existing entries for this initiative first
-                      const filtered = prev.filter(p => 
-                        !(p.initiativeId === initiative.id && p.parentProjectId === expandedProject.id)
-                      )
-                      
-                      // Only add if there's an actual donation (quantity > 0 or customAmount > 0)
-                      if (donationData.totalAmount > 0) {
-                        return [...filtered, {
-                          ...expandedProject,
-                          ...donationData
-                        }]
-                      } else {
-                        // If no donation, just return filtered (removed the entry)
-                        return filtered
-                      }
-                    })
-                  }}
-                />
-              )
-            })
+            return (
+              <>
+                {/* Custom Donation Form Card - First Card */}
+                <div className="general-donation-card form-card">
+                  <DonationProjectsMenuForm
+                    amount={amount}
+                    setAmount={setAmount}
+                    donationType={donationType}
+                    setDonationType={setDonationType}
+                    onQuickDonate={handleSubmitDonation}
+                    showMessage={message}
+                  />
+                </div>
+                
+                {expandedProject.initiatives.map((initiative) => {
+                  const initiativeData = {
+                    ...initiative,
+                    parentProjectId: expandedProject.id,
+                    parentProjectTitle: expandedProject.title
+                  }
+                  
+                  return (
+                    <InitiativeDonationCard
+                      key={initiative.id}
+                      initiative={initiativeData}
+                      onUpdate={(donationData) => {
+                        // Update selected projects with initiative donation data
+                        setSelectedProjects(prev => {
+                          // Remove any existing entries for this initiative first
+                          const filtered = prev.filter(p => 
+                            !(p.initiativeId === initiative.id && p.parentProjectId === expandedProject.id)
+                          )
+                          
+                          // Only add if there's an actual donation (quantity > 0 or customAmount > 0)
+                          if (donationData.totalAmount > 0) {
+                            return [...filtered, {
+                              ...expandedProject,
+                              ...donationData
+                            }]
+                          } else {
+                            // If no donation, just return filtered (removed the entry)
+                            return filtered
+                          }
+                        })
+                      }}
+                    />
+                  )
+                })}
+              </>
+            )
           })()}
         </div>
       </div>

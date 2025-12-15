@@ -25,8 +25,8 @@ export const blogs = [
   {
     id: 4,
     date: "June 15, 2018",
-    title: "How Sadaqah Jariyah Creates Eternal Blessings for Generations",
-    category: "Sadaqah",
+    title: "How sadqah Jariyah Creates Eternal Blessings for Generations",
+    category: "sadqah",
     image: ceo
   },
   {

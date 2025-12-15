@@ -27,13 +27,24 @@ const DonationProjectsMenuForm = ({
       </div>
 
       <div className="donation-type">
-        <label className={donationType === "sadaqa" ? "active" : ""}>
+      <label className={donationType === "general" ? "active" : ""}>
           <input
             type="radio"
             name="donation"
-            value="sadaqa"
-            checked={donationType === "sadaqa"}
-            onChange={() => setDonationType("sadaqa")}
+            value="general"
+            checked={donationType === "general"}
+            onChange={() => setDonationType("general")}
+          />
+          General
+        </label>
+        
+        <label className={donationType === "sadqa" ? "active" : ""}>
+          <input
+            type="radio"
+            name="donation"
+            value="sadqa"
+            checked={donationType === "sadqa"}
+            onChange={() => setDonationType("sadqa")}
           />
           Sadqa
         </label>
@@ -48,6 +59,8 @@ const DonationProjectsMenuForm = ({
           />
           Zakat
         </label>
+
+
       </div>
 
       <div className="form-actions">

@@ -106,6 +106,15 @@
   opacity: 0.6;
 }
 
+.donation-sidebar-back-button {
+  background-color: var(--color-600, #666);
+  margin-top: var(--space-12, 12px);
+}
+
+.donation-sidebar-back-button:hover {
+  background-color: var(--color-700, #555);
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .donation-sidebar {

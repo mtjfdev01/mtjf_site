@@ -21,7 +21,8 @@
   background-color: var(--color-white, #ffffff);
 }
 
-.amount-input-wrapper input {
+.amount-input-wrapper input,
+.donation-amount-input {
   flex: 1;
   padding: var(--space-12, 12px) var(--space-16, 16px);
   border: none;
@@ -33,6 +34,8 @@
   transition: var(--transition, all 0.2s ease);
   box-sizing: border-box;
   height: 44px;
+  pointer-events: auto;
+  cursor: text;
 }
 
 .amount-input-wrapper input:focus {
