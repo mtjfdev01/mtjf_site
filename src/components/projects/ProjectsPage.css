@@ -162,10 +162,20 @@
   }
 
   .projects-page-card {
-    min-height: 400px;
+    min-height: auto;
     max-width: 80vw;
     margin: 0 auto;
     aspect-ratio: auto;
+    height: auto;
+  }
+
+  .projects-page-image-container {
+    height: auto;
+  }
+
+  .projects-page-image {
+    height: auto;
+    max-height: 450px;
   }
 }
 
@@ -180,7 +190,19 @@
   }
 
   .projects-page-card {
-    min-height: 350px;
+    min-height: auto;
+    height: auto;
+  }
+
+  .projects-page-image-container {
+    height: auto;
+    min-height: auto;
+  }
+
+  .projects-page-image {
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
   }
 
   .projects-page-content {
@@ -205,7 +227,12 @@
 /* Small mobile (480px) */
 @media (max-width: 480px) {
   .projects-page-card {
-    min-height: 300px;
+    min-height: auto;
+    height: auto;
+  }
+
+  .projects-page-image {
+    max-height: 300px;
   }
 
   .projects-page-description {

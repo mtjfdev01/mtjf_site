@@ -108,7 +108,7 @@ const Footer = () => {
             </div>
 
             {/* Second Row - Quick Links and Blogs */}
-            <div className="footer-row footer-links-row grid grid-2 gap-24">
+            <div className="footer-row footer-links-row grid gap-24">
               {/* Third Column - Quick Links */}
               <div className="footer-column footer-quick-links">
                 <h4 className="footer-heading h4">Quick Links</h4>
