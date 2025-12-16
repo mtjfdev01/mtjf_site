@@ -114,6 +114,7 @@ const ITEMS_PER_SLIDE = 4
 
 const DonationFeatures = () => {
   const [startIndex, setStartIndex] = useState(0)
+  const [slideDirection, setSlideDirection] = useState('right')
   const totalFeatures = FEATURE_ITEMS.length
   const maxStartIndex = Math.max(totalFeatures - ITEMS_PER_SLIDE, 0)
   const visibleFeatures =
@@ -121,11 +122,13 @@ const DonationFeatures = () => {
 
   const handlePrev = () => {
     if (startIndex === 0) return
+    setSlideDirection('left')
     setStartIndex((prev) => Math.max(prev - ITEMS_PER_SLIDE, 0))
   }
 
   const handleNext = () => {
     if (startIndex >= maxStartIndex) return
+    setSlideDirection('right')
     setStartIndex((prev) => Math.min(prev + ITEMS_PER_SLIDE, maxStartIndex))
   }
 
@@ -165,7 +168,7 @@ const DonationFeatures = () => {
 
       {/* RIGHT  COLUMN */}
       <div className='right-column'>
-        <div className='features d-grid grid-2 items-start' key={startIndex}>
+        <div className={`features d-grid grid-2 items-start slide-${slideDirection}`} key={startIndex}>
           {visibleFeatures.map((feature) => (
             <div className='feature d-flex gap-12 items-start' key={feature.id}>
               <div className={`icon ${feature.id} d-flex items-center justify-center`}>

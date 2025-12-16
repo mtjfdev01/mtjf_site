@@ -1,0 +1,843 @@
+.ways-to-donate-section {
+  padding: var(--space-64) var(--space-16);
+  background-color: var(--color-white);
+  min-height: 80vh;
+}
+
+.ways-to-donate-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ways-to-donate-title {
+  font-size: var(--fs-32);
+  font-weight: 700;
+  color: var(--color-900);
+  text-align: center;
+  margin-bottom: var(--space-24);
+  line-height: 1.2;
+}
+
+.title-highlight {
+  color: var(--color-base-green);
+}
+
+.whatsapp-notice {
+  text-align: center;
+  margin-bottom: var(--space-32);
+  padding: var(--space-16);
+  background-color: var(--color-100);
+  border-radius: var(--radius-md);
+}
+
+.whatsapp-notice p {
+  font-size: var(--fs-16);
+  color: var(--color-700);
+  margin: 0;
+}
+
+.whatsapp-link {
+  color: var(--color-base-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.whatsapp-link:hover {
+  color: var(--color-base-green-light);
+  text-decoration: underline;
+}
+
+/* Main Tabs */
+.main-tabs-container {
+  display: flex;
+  gap: var(--space-12);
+  margin-bottom: var(--space-32);
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 2px solid var(--color-200);
+  padding-bottom: var(--space-8);
+}
+
+.main-tab {
+  padding: var(--space-12) var(--space-24);
+  font-size: var(--fs-16);
+  font-weight: 600;
+  border: none;
+  background-color: var(--color-base-green);
+  color: var(--color-white);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.main-tab:hover::before {
+  left: 100%;
+}
+
+.main-tab:hover {
+  background-color: var(--color-base-green-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.main-tab.active {
+  background-color: var(--color-300);
+  color: var(--color-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.main-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-base-green);
+}
+
+/* Sub Tabs */
+.sub-tabs-container {
+  display: flex;
+  gap: var(--space-8);
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.sub-tab {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--fs-14);
+  font-weight: 500;
+  border: none;
+  background-color: var(--color-base-green);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-tab:hover {
+  background-color: var(--color-base-green-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.sub-tab.active {
+  background-color: var(--color-700);
+  color: var(--color-white);
+}
+
+/* Categories */
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-bottom: var(--space-24);
+}
+
+.category-btn {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--fs-14);
+  font-weight: 500;
+  border: 1px solid var(--color-300);
+  background-color: var(--color-white);
+  color: var(--color-700);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-btn:hover {
+  border-color: var(--color-base-green);
+  color: var(--color-base-green);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-btn.active {
+  background-color: var(--color-base-green);
+  color: var(--color-white);
+  border-color: var(--color-base-green);
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  position: relative;
+  min-height: 400px;
+}
+
+.ways-to-donate-content {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content Box */
+.content-box {
+  display: flex;
+  gap: var(--space-24);
+  padding: var(--space-32);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  align-items: flex-start;
+}
+
+.content-box-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-100);
+  border-radius: var(--radius-md);
+  color: var(--color-base-green);
+}
+
+.content-box-text {
+  flex: 1;
+}
+
+.content-box-text p {
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  color: var(--color-700);
+  margin: 0;
+}
+
+.content-box-text h3 {
+  font-size: var(--fs-20);
+  font-weight: 600;
+  color: var(--color-900);
+  margin-bottom: var(--space-16);
+}
+
+.donate-link {
+  color: var(--color-base-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.donate-link:hover {
+  color: var(--color-base-green-light);
+  text-decoration: underline;
+}
+
+/* Bank Details Box */
+.bank-details-box {
+  display: flex;
+  gap: var(--space-24);
+  padding: var(--space-32);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  align-items: flex-start;
+}
+
+.bank-logo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bank-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-base-green));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-24);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+.bank-details {
+  flex: 1;
+}
+
+.bank-name {
+  font-size: var(--fs-20);
+  font-weight: 600;
+  color: var(--color-base-green);
+  margin-bottom: var(--space-16);
+}
+
+.bank-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bank-info p {
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  color: var(--color-700);
+  margin: 0;
+}
+
+.bank-info strong {
+  color: var(--color-900);
+  font-weight: 600;
+}
+
+/* Copyable Field Styles */
+.copyable-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  color: var(--color-700);
+  margin: 0;
+}
+
+.copyable-value {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-600);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.copy-btn:hover {
+  background-color: var(--color-100);
+  color: var(--color-base-green);
+}
+
+.copy-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.2s ease;
+}
+
+.copy-icon.copied {
+  color: var(--color-base-green);
+}
+
+.account-details .copyable-field {
+  font-size: var(--fs-14);
+  gap: var(--space-6);
+}
+
+.account-details .copyable-value {
+  font-size: var(--fs-14);
+}
+
+.account-details .copy-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.account-details .copy-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* International Accounts Grid */
+.international-accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+
+.account-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.account-section {
+  padding: var(--space-24);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.account-category {
+  font-size: var(--fs-18);
+  font-weight: 600;
+  color: var(--color-800);
+  margin-bottom: var(--space-16);
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.account-bank {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.account-bank-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-base-green));
+  color: var(--color-white);
+  font-size: var(--fs-14);
+  font-weight: 700;
+}
+
+/* When logo is an image */
+.account-bank-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-6);
+  background-color: var(--color-white);
+  border-radius: 50%;
+}
+
+.account-bank-logo.meezan {
+  background: var(--color-white);
+  padding: 0;
+}
+
+.account-bank-logo.meezan img {
+  padding: var(--space-4);
+  background-color: transparent;
+}
+
+.account-bank-name {
+  font-size: var(--fs-16);
+  font-weight: 600;
+  color: var(--color-base-green);
+}
+
+.account-details p {
+  font-size: var(--fs-14);
+  line-height: 1.6;
+  color: var(--color-700);
+  margin: 0;
+}
+
+.account-details strong {
+  color: var(--color-900);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .ways-to-donate-title {
+    font-size: var(--fs-28);
+  }
+
+  .international-accounts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ways-to-donate-section {
+    padding: var(--space-32) var(--space-12);
+  }
+
+  .ways-to-donate-title {
+    font-size: var(--fs-24);
+    margin-bottom: var(--space-24);
+    padding: 0 var(--space-8);
+  }
+
+  .whatsapp-notice {
+    margin-bottom: var(--space-24);
+    padding: var(--space-16);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .whatsapp-notice p {
+    font-size: var(--fs-14);
+    line-height: 1.6;
+  }
+
+  .main-tabs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+    margin-bottom: var(--space-24);
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .main-tab {
+    width: 100%;
+    padding: var(--space-14) var(--space-16);
+    font-size: var(--fs-14);
+    border-radius: var(--radius-md);
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-tab.active {
+    transform: none;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--color-base-green);
+  }
+
+  .main-tab.active::after {
+    display: none;
+  }
+
+  .sub-tabs-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8);
+    margin-bottom: var(--space-20);
+    overflow-x: auto;
+    padding-bottom: var(--space-8);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .sub-tabs-container::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .sub-tabs-container::-webkit-scrollbar-track {
+    background: var(--color-100);
+    border-radius: var(--radius-sm);
+  }
+
+  .sub-tabs-container::-webkit-scrollbar-thumb {
+    background: var(--color-300);
+    border-radius: var(--radius-sm);
+  }
+
+  .sub-tab {
+    flex-shrink: 0;
+    padding: var(--space-12) var(--space-16);
+    font-size: var(--fs-13);
+    min-width: fit-content;
+    white-space: nowrap;
+  }
+
+  .categories-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8);
+    margin-bottom: var(--space-20);
+    overflow-x: auto;
+    padding-bottom: var(--space-8);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .categories-container::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .categories-container::-webkit-scrollbar-track {
+    background: var(--color-100);
+    border-radius: var(--radius-sm);
+  }
+
+  .categories-container::-webkit-scrollbar-thumb {
+    background: var(--color-300);
+    border-radius: var(--radius-sm);
+  }
+
+  .category-btn {
+    flex-shrink: 0;
+    padding: var(--space-12) var(--space-16);
+    font-size: var(--fs-13);
+    min-width: fit-content;
+    white-space: nowrap;
+    min-height: 44px;
+  }
+
+  .content-box {
+    flex-direction: column;
+    padding: var(--space-20);
+    gap: var(--space-16);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .content-box-icon {
+    width: 56px;
+    height: 56px;
+    align-self: center;
+  }
+
+  .content-box-text p {
+    font-size: var(--fs-14);
+    text-align: center;
+  }
+
+  .bank-details-box {
+    flex-direction: column;
+    padding: var(--space-20);
+    gap: var(--space-16);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    align-items: center;
+  }
+
+  .bank-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .bank-logo-placeholder {
+    font-size: var(--fs-20);
+  }
+
+  .bank-details {
+    text-align: center;
+  }
+
+  .bank-name {
+    font-size: var(--fs-18);
+    text-align: center;
+  }
+
+  .bank-info {
+    gap: var(--space-10);
+  }
+
+  .bank-info p {
+    font-size: var(--fs-14);
+    text-align: center;
+  }
+
+  .content-wrapper {
+    min-height: 250px;
+  }
+
+  .donate-link {
+    display: inline-block;
+    margin-top: var(--space-8);
+    word-break: break-all;
+  }
+
+  .international-accounts-grid {
+    gap: var(--space-16);
+  }
+
+  .account-section {
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .account-category {
+    font-size: var(--fs-16);
+    text-align: center;
+  }
+
+  .account-bank {
+    justify-content: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .account-details {
+    gap: var(--space-10);
+  }
+
+  .account-details p {
+    font-size: var(--fs-13);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ways-to-donate-section {
+    padding: var(--space-24) var(--space-12);
+  }
+
+  .ways-to-donate-title {
+    font-size: var(--fs-22);
+    margin-bottom: var(--space-20);
+  }
+
+  .whatsapp-notice {
+    padding: var(--space-14);
+    margin-bottom: var(--space-20);
+  }
+
+  .whatsapp-notice p {
+    font-size: var(--fs-13);
+  }
+
+  .main-tabs-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .main-tab {
+    padding: var(--space-16);
+    font-size: var(--fs-15);
+    min-height: 52px;
+  }
+
+  .sub-tab {
+    padding: var(--space-10) var(--space-14);
+    font-size: var(--fs-12);
+  }
+
+  .category-btn {
+    padding: var(--space-10) var(--space-14);
+    font-size: var(--fs-12);
+    min-height: 40px;
+  }
+
+  .content-box {
+    padding: var(--space-18);
+    gap: var(--space-14);
+  }
+
+  .content-box-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .content-box-text p {
+    font-size: var(--fs-13);
+  }
+
+  .bank-details-box {
+    padding: var(--space-18);
+    gap: var(--space-14);
+  }
+
+  .bank-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bank-logo-placeholder {
+    font-size: var(--fs-18);
+  }
+
+  .bank-name {
+    font-size: var(--fs-16);
+  }
+
+  .bank-info p {
+    font-size: var(--fs-13);
+  }
+
+  .account-section {
+    padding: var(--space-18);
+  }
+
+  .account-category {
+    font-size: var(--fs-15);
+  }
+
+  .account-details p {
+    font-size: var(--fs-12);
+  }
+
+  .account-bank-logo {
+    width: 40px;
+    height: 40px;
+    font-size: var(--fs-12);
+  }
+
+  .account-bank-name {
+    font-size: var(--fs-14);
+  }
+
+  .content-wrapper {
+    min-height: 200px;
+  }
+
+  .donate-link {
+    word-break: break-all;
+    display: inline-block;
+    margin-top: var(--space-6);
+  }
+
+  .copyable-field {
+    font-size: var(--fs-13);
+    gap: var(--space-6);
+  }
+
+  .copyable-value {
+    font-size: var(--fs-12);
+  }
+
+  .copy-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .copy-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .account-details .copy-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .account-details .copy-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+

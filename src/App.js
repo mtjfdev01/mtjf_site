@@ -23,6 +23,7 @@ const BlogsDetails = lazy(() => import("./pages/BlogsDetails"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
+const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 
 
 
@@ -72,6 +73,7 @@ function App() {
               <Route path="/blogs-details" element={<BlogsDetails />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donate/cards" element={<DonationCardsPage />} />
+              <Route path="/ways-to-donate" element={<WaysToDonate />} />
             </Routes>
           </Suspense>
         </DonationProvider>
