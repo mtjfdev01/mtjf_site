@@ -248,6 +248,7 @@ const JobDetail = () => {
           <ApplyForm 
             key={showApplyForm ? 'apply-form' : null}
             jobTitle={job.title}
+            jobId={job.id || id}
             onClose={() => setShowApplyForm(false)}
             isVisible={showApplyForm}
           />

@@ -116,6 +116,11 @@
   padding: 18px 0;
   color: #1a1a1a;
   font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.apply-form__input--error {
+  color: #ef4444;
 }
 
 .apply-form__input::placeholder {
@@ -221,6 +226,61 @@
 .apply-form__submit:active {
   transform: translateY(0);
   box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+}
+
+.apply-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.apply-form__submit:disabled:hover {
+  transform: none;
+  background: #f59e0b;
+}
+
+/* Error Messages */
+.apply-form__error {
+  display: block;
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.apply-form__error--checkbox {
+  margin-top: 8px;
+  margin-left: 32px;
+}
+
+/* Status Messages */
+.apply-form__message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-16);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: var(--space-8);
+}
+
+.apply-form__message--success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.apply-form__message--error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.apply-form__message-icon {
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {

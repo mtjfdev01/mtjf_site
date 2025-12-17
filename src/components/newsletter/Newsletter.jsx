@@ -112,13 +112,13 @@ const Newsletter = ({ onSubmit }) => {
 
           {submitStatus === 'success' && (
             <div className="newsletter-message newsletter-message--success">
-              Successfully subscribed! Check your email for confirmation.
+              Successfully subscribed. We will keep you updated with our latest news and updates.
             </div>
           )}
 
           {submitStatus === 'error' && (
             <div className="newsletter-message newsletter-message--error">
-              Failed to subscribe. Please try again later.
+              Failed to subscribe. Please try again later or contact us at info@mtjfoundation.org
             </div>
           )}
 
