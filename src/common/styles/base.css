@@ -9,6 +9,7 @@
 :root {
     /* Brand colors (edit to match MTJ) */
     --color-primary: #30AEE3;   /* MTJ navy */
+    --color-primary-light: #82c9e7;
     --color-primary-hover: #2896c2;
     --color-secondary: #802b55; /* maroon/rose */
     --color-accent: #D8B861;    /* gold */

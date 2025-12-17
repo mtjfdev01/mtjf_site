@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
 import DonationProjectsMenuCard from './DonationProjectsMenuCard'
 import DonationProjectsMenuForm from './DonationProjectsMenuForm'
 import InitiativeDonationCard from './InitiativeDonationCard'
@@ -26,6 +27,7 @@ const DonationProjectsMenu = () => {
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState("General")
 
   const projectCards = [
     { 
@@ -34,6 +36,7 @@ const DonationProjectsMenu = () => {
       icon: health, 
       price: 5000, 
       new: false,
+      category: "General",
       initiatives: [
         { id: 'health-patient-care', title: 'Patient Care', subtitle: 'Initiative Per Patient', price: 15000, icon: health },
         { id: 'health-medical-support', title: 'Medical Support', subtitle: 'Initiative Per Beneficiary', price: 40000, icon: health },
@@ -46,6 +49,7 @@ const DonationProjectsMenu = () => {
       icon: education, 
       price: 3000, 
       new: false,
+      category: "General",
       initiatives: [
         { id: 'education-scholarship', title: 'Scholarship', subtitle: 'Per Student/Per Month', price: 15000, icon: education },
         { id: 'education-dream-school', title: 'Dream School', subtitle: 'Per School/Per Month', price: 35000, icon: education },
@@ -59,6 +63,7 @@ const DonationProjectsMenu = () => {
       icon: cleanWater, 
       price: 2000, 
       new: true,
+      category: "General",
       initiatives: [
         { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 60000, icon: cleanWater },
         { id: 'clean-water-afridev', title: 'Afridev Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater },
@@ -68,14 +73,15 @@ const DonationProjectsMenu = () => {
         { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 1500000, icon: cleanWater }
       ]
     },
-    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false },
-    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false },
+    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa" },
+    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false, category: "General" },
     { 
       id: 'kasb-skill-development', 
       title: "KASB Skill Development", 
       icon: kasb, 
       price: 4000, 
       new: false,
+      category: "Sadqa",
       initiatives: [
         { id: 'kasb-empowering-woman', title: 'Empowering a Woman', subtitle: 'Per Beneficiary', price: 100000, icon: kasb }
       ]
@@ -86,18 +92,20 @@ const DonationProjectsMenu = () => {
       icon: seeds, 
       price: 2500, 
       new: false,
+      category: "General",
       initiatives: [
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false },
-    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false },
+    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false, category: "Zakat" },
+    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false, category: "General" },
     { 
       id: 'community-services', 
       title: "Community Service", 
       icon: community, 
       price: 3000, 
       new: false,
+      category: "Sadqa",
       initiatives: [
         { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community },
         { id: 'community-feed-individual', title: 'Feed an Individual', subtitle: 'Per Individual', price: 250, icon: community },
@@ -145,6 +153,14 @@ const DonationProjectsMenu = () => {
     setMessage("")
   }
 
+  // Filter projects based on selected category
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === "General") {
+      return projectCards // Show all projects when General is selected
+    }
+    return projectCards.filter(project => project.category === selectedCategory)
+  }, [selectedCategory, projectCards])
+
   // Calculate total donation amount
   const totalDonationAmount = useMemo(() => {
     // Filter to only initiatives with actual amounts, and deduplicate by initiativeId
@@ -181,7 +197,7 @@ const DonationProjectsMenu = () => {
       
       // Determine project_id: expandedProject?.id or "general"
       const projectId = expandedProjectId || 'general'
-      const expandedProject = expandedProjectId ? projectCards.find(p => p.id === expandedProjectId) : null
+      const expandedProject = expandedProjectId ? filteredProjects.find(p => p.id === expandedProjectId) : null
       
       setMessage("")
       
@@ -213,7 +229,7 @@ const DonationProjectsMenu = () => {
     
     if (expandedProjectId) {
       // If a project is expanded, use its selected initiatives
-      const expandedProject = projectCards.find(p => p.id === expandedProjectId)
+      const expandedProject = filteredProjects.find(p => p.id === expandedProjectId)
       if (expandedProject && expandedProject.initiatives) {
         // Get selected initiatives from selectedProjects
         const selectedInitiatives = selectedProjects
@@ -275,6 +291,45 @@ const DonationProjectsMenu = () => {
     <div className="donation-page">
       <div className="donation-content">
         <h2 className="section-title">Support a Project</h2>
+        
+        {/* Back Button - Show when project is expanded */}
+        {expandedProjectId && (
+          <button
+            className="back-to-projects-btn"
+            onClick={() => {
+              setExpandedProjectId(null)
+              setSelectedProjects([])
+            }}
+          >
+            <FaArrowLeft />
+            <span>Projects Menu</span>
+          </button>
+        )}
+        
+        {/* Category Filter Buttons - Hide when project is expanded */}
+        {!expandedProjectId && (
+          <div className="category-filter">
+            <button
+              className={`category-filter-btn ${selectedCategory === "General" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("General")}
+            >
+              General
+            </button>
+            <button
+              className={`category-filter-btn ${selectedCategory === "Sadqa" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("Sadqa")}
+            >
+              Sadqa
+            </button>
+            <button
+              className={`category-filter-btn ${selectedCategory === "Zakat" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("Zakat")}
+            >
+              Zakat
+            </button>
+          </div>
+        )}
+
         <div className="grid-section">
           {/* Hide donation form when a project is expanded */}
           {!expandedProjectId && (
@@ -290,7 +345,7 @@ const DonationProjectsMenu = () => {
             </div>
           )}
 
-          {projectCards.map((card) => {
+          {filteredProjects.map((card) => {
             const isSelected = selectedProjects.some(p => p.id === card.id)
             const isExpanded = expandedProjectId === card.id
             const shouldShow = expandedProjectId === null || expandedProjectId === card.id
@@ -318,7 +373,7 @@ const DonationProjectsMenu = () => {
           
           {/* Show initiatives if a project is expanded */}
           {expandedProjectId && (() => {
-            const expandedProject = projectCards.find(p => p.id === expandedProjectId)
+            const expandedProject = filteredProjects.find(p => p.id === expandedProjectId)
             if (!expandedProject || !expandedProject.initiatives) return null
             
             return (

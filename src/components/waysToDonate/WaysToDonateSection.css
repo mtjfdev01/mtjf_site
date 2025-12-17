@@ -9,19 +9,6 @@
   margin: 0 auto;
 }
 
-.ways-to-donate-title {
-  font-size: var(--fs-32);
-  font-weight: 700;
-  color: var(--color-900);
-  text-align: center;
-  margin-bottom: var(--space-24);
-  line-height: 1.2;
-}
-
-.title-highlight {
-  color: var(--color-base-green);
-}
-
 .whatsapp-notice {
   text-align: center;
   margin-bottom: var(--space-32);
@@ -37,14 +24,14 @@
 }
 
 .whatsapp-link {
-  color: var(--color-base-green);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .whatsapp-link:hover {
-  color: var(--color-base-green-light);
+  color: var(--color-primary-light);
   text-decoration: underline;
 }
 
@@ -64,7 +51,7 @@
   font-size: var(--fs-16);
   font-weight: 600;
   border: none;
-  background-color: var(--color-base-green);
+  background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   cursor: pointer;
@@ -89,7 +76,7 @@
 }
 
 .main-tab:hover {
-  background-color: var(--color-base-green-light);
+  background-color: var(--color-primary-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -108,7 +95,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--color-base-green);
+  background-color: var(--color-primary);
 }
 
 /* Sub Tabs */
@@ -124,7 +111,7 @@
   font-size: var(--fs-14);
   font-weight: 500;
   border: none;
-  background-color: var(--color-base-green);
+  background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: var(--radius-md);
   cursor: pointer;
@@ -132,7 +119,7 @@
 }
 
 .sub-tab:hover {
-  background-color: var(--color-base-green-light);
+  background-color: var(--color-primary-light);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
@@ -163,16 +150,16 @@
 }
 
 .category-btn:hover {
-  border-color: var(--color-base-green);
-  color: var(--color-base-green);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
 
 .category-btn.active {
-  background-color: var(--color-base-green);
+  background-color: var(--color-primary);
   color: var(--color-white);
-  border-color: var(--color-base-green);
+  border-color: var(--color-primary);
 }
 
 /* Content Wrapper */
@@ -217,7 +204,7 @@
   justify-content: center;
   background-color: var(--color-100);
   border-radius: var(--radius-md);
-  color: var(--color-base-green);
+  color: var(--color-primary);
 }
 
 .content-box-text {
@@ -239,14 +226,14 @@
 }
 
 .donate-link {
-  color: var(--color-base-green);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .donate-link:hover {
-  color: var(--color-base-green-light);
+  color: var(--color-primary-light);
   text-decoration: underline;
 }
 
@@ -274,7 +261,7 @@
 .bank-logo-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-base-green));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary));
   color: var(--color-white);
   display: flex;
   align-items: center;
@@ -291,7 +278,7 @@
 .bank-name {
   font-size: var(--fs-20);
   font-weight: 600;
-  color: var(--color-base-green);
+  color: var(--color-primary);
   margin-bottom: var(--space-16);
 }
 
@@ -325,6 +312,26 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .copyable-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+
+  .copyable-field strong {
+    width: 100%;
+  }
+
+  .copyable-value {
+    width: 100%;
+  }
+
+  .copy-btn {
+    align-self: flex-start;
+  }
+}
+
 .copyable-value {
   flex: 1;
   min-width: 0;
@@ -336,8 +343,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
+  gap: var(--space-4);
+  min-width: auto;
   height: 32px;
+  padding: var(--space-4) var(--space-8);
   border: none;
   background-color: transparent;
   color: var(--color-600);
@@ -345,22 +354,31 @@
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   flex-shrink: 0;
-  padding: 0;
+  font-size: var(--fs-14);
+  font-weight: 500;
 }
 
 .copy-btn:hover {
   background-color: var(--color-100);
-  color: var(--color-base-green);
+  color: var(--color-primary);
 }
 
 .copy-icon {
   width: 16px;
   height: 16px;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .copy-icon.copied {
-  color: var(--color-base-green);
+  color: var(--color-primary);
+}
+
+.copy-text {
+  font-size: var(--fs-14);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .account-details .copyable-field {
@@ -373,13 +391,18 @@
 }
 
 .account-details .copy-btn {
-  width: 28px;
   height: 28px;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--fs-13);
 }
 
 .account-details .copy-icon {
   width: 14px;
   height: 14px;
+}
+
+.account-details .copy-text {
+  font-size: var(--fs-13);
 }
 
 /* International Accounts Grid */
@@ -432,7 +455,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-base-green));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary));
   color: var(--color-white);
   font-size: var(--fs-14);
   font-weight: 700;
@@ -461,7 +484,7 @@
 .account-bank-name {
   font-size: var(--fs-16);
   font-weight: 600;
-  color: var(--color-base-green);
+  color: var(--color-primary);
 }
 
 .account-details p {
@@ -478,9 +501,6 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .ways-to-donate-title {
-    font-size: var(--fs-28);
-  }
 
   .international-accounts-grid {
     grid-template-columns: 1fr;
@@ -490,12 +510,6 @@
 @media (max-width: 768px) {
   .ways-to-donate-section {
     padding: var(--space-32) var(--space-12);
-  }
-
-  .ways-to-donate-title {
-    font-size: var(--fs-24);
-    margin-bottom: var(--space-24);
-    padding: 0 var(--space-8);
   }
 
   .whatsapp-notice {
@@ -533,7 +547,7 @@
   .main-tab.active {
     transform: none;
     box-shadow: var(--shadow-md);
-    border: 2px solid var(--color-base-green);
+    border: 2px solid var(--color-primary);
   }
 
   .main-tab.active::after {
@@ -707,10 +721,6 @@
     padding: var(--space-24) var(--space-12);
   }
 
-  .ways-to-donate-title {
-    font-size: var(--fs-22);
-    margin-bottom: var(--space-20);
-  }
 
   .whatsapp-notice {
     padding: var(--space-14);
@@ -821,8 +831,9 @@
   }
 
   .copy-btn {
-    width: 28px;
     height: 28px;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--fs-13);
   }
 
   .copy-icon {
@@ -830,14 +841,23 @@
     height: 14px;
   }
 
+  .copy-text {
+    font-size: var(--fs-13);
+  }
+
   .account-details .copy-btn {
-    width: 24px;
     height: 24px;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--fs-12);
   }
 
   .account-details .copy-icon {
     width: 12px;
     height: 12px;
+  }
+
+  .account-details .copy-text {
+    font-size: var(--fs-12);
   }
 }
 
