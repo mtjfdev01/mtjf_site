@@ -41,12 +41,12 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
 
       {/* Hero Content - Load immediately */}
       <div ref={heroContentRef}>
         {showHeroContent && (
           <Suspense fallback={null}>
+                  <Hero />
             <DonationForm
               formId="home-donation-form"
               layout="vertical"
