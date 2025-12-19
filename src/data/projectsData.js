@@ -1,9 +1,22 @@
 import image1 from '../assets/img/projects/camp.webp'
+import healthhero from '../assets/img/projects/projects-details/Health/health_hero.webp'
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
 import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
 import kasb from '../assets/img/projects/projects-details/kasb/hero-section.webp'
 import community from '../assets/img/projects/projects-details/community/hero- section.webp'
 import image2 from '../assets/img/projects/convocation.webp'
+import healthfooter from '../assets/img/projects/projects-details/Health/health_footer.webp'
+import h_2 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_3 from '../assets/img/projects/projects-details/Health/health_free_opd.webp'
+import h_4 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_5 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_6 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_7 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_8 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_9 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_10 from '../assets/img/projects/projects-details/Health/h_2.webp'
+
+import education from '../assets/img/projects/education_hero.webp'
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/health.webp'
 import Education from '../assets/img/projects/education.webp'
@@ -61,7 +74,7 @@ export const PROJECTS_DETAIL_DATA = {
   education: {
     id: 'education',
     title: 'Education – Knowledge for Every Child, Opportunity for Every Dream',
-    headerImage: image2,
+    headerImage: education,
     stats: [
       { icon: FaSchool, number: '1,530', label: 'Schools Built/Renovated' },
       { icon: FaGraduationCap, number: '8,400', label: 'Scholarships Provided' },
@@ -262,7 +275,7 @@ export const PROJECTS_DETAIL_DATA = {
   health: {
     id: 'health',
     title: 'Health – Restoring Dignity, One Patient at a Time',
-    headerImage: image1,
+    headerImage: healthhero,
     stats: [
       { icon: FaHospital, number: '450', label: 'Health Centers Established' },
       { icon: FaProcedures, number: '12,000', label: 'Patients Treated' },
@@ -278,7 +291,7 @@ export const PROJECTS_DETAIL_DATA = {
       paragraph2: 'Every day, thousands of families in Pakistan face impossible choices: buy medicine or buy food? Visit a doctor or save money for rent?',
       paragraph3: 'For those living on the margins, even a minor illness can become life-threatening. Through your support, we bring quality, compassionate, and completely free healthcare to the doorsteps of the most vulnerable, so no mother loses hope, no father suffers in silence, and no child is denied the chance to grow up healthy.'
     },
-    mainImage: image2,
+    mainImage: healthfooter,
     donateCategory: 'Health',
     donateButtonText: 'Support Healthcare Services',
     donationOptions: {
@@ -291,6 +304,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'direct-medical-aid',
         title: 'Direct Medical Aid',
         subtitle: 'When Illness Strikes, We Step In: Immediately',
+        image: h_2,
         description: 'When a family has nowhere to go and no means to afford treatment, MTJ Foundation becomes their lifeline. From emergency interventions to life-saving procedures, we provide immediate medical support for those who cannot bear the cost.',
         services: [
           'Lifesaving treatments for critical patients',
@@ -305,6 +319,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'free-opd',
         title: 'Free OPD (Outpatient Department)',
         subtitle: 'Compassionate Care for Every Family',
+        image: h_3,
         description: 'For many in underserved communities, a simple doctor\'s visit is unaffordable. Our Free OPD ensures that every person: child, adult, or elderly, can receive medical attention with dignity.',
         services: [
           'Free consultations with qualified doctors',
@@ -319,6 +334,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'free-medicines',
         title: 'Free Medicines',
         subtitle: 'No One Should Suffer Because They Can\'t Afford Medicine',
+        image: h_4,
         description: 'In poverty-hit households, buying medicine often means sacrificing food or basic needs. We bridge this gap by providing completely free medications prescribed by our doctors.',
         services: [
           'Chronic illness medication (diabetes, BP, heart)',
@@ -333,6 +349,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'free-medical-camps',
         title: 'Free Medical Camps',
         subtitle: 'Reaching the Unreached: Healthcare Beyond Walls',
+        image: h_5,
         description: 'Our Free Medical Camps travel to remote villages, underserved areas, and communities with no access to healthcare. These camps become a place of healing, where hundreds receive treatment in a single day.',
         services: [
           'Basic checkups',
@@ -348,6 +365,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'surgeries-post-operative-care',
         title: 'Surgeries & Post-Operative Care',
         subtitle: 'Healing That Goes Beyond the Operating Room',
+        image: h_6,
         description: 'A surgery that costs thousands in private hospitals is completely out of reach for poor families. MTJ Foundation provides free surgical procedures, from minor operations to life-changing major surgeries.',
         services: [
           'Pre-operative assessments',
@@ -362,6 +380,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'health-program-impact',
         title: 'Health Program Impact – Stories of Hope',
         subtitle: 'Watch Lives You Helped Change',
+        image: h_7,
         description: 'See the real impact of your support through the stories of patients whose lives have been transformed.',
         videos: [
           'https://www.youtube.com/watch?v=6bqunG0PeNQ&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=8',
@@ -375,6 +394,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'quarterly-health-reports',
         title: 'Quarterly Health Reports (FY 2024–2025)',
         subtitle: 'Full Transparency. Real Impact.',
+        image: h_8,
         description: 'We believe in complete transparency. Every quarter, we publish detailed reports so donors can see the exact impact of their generosity.',
         reports: [
           'Q1: July–September 2024',
@@ -396,6 +416,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'your-support-saves-lives',
         title: 'Your Support Saves Lives',
         subtitle: 'Be Someone\'s Hope Today',
+        image: h_9,
         description: 'Every child healed… Every mother comforted… Every life saved… begins with a donor who cared.',
         donateButtonText: 'Donate to Health Services'
       },
@@ -403,6 +424,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'impact-metrics',
         title: 'Impact at a Glance',
         subtitle: 'Your Generosity Transformed Lives Across Pakistan',
+        image: h_10,
         description: 'Below are the key health outcomes made possible through your support. (All figures will be added once shared by the Health Department.)',
         metrics: [
           {

@@ -41,7 +41,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
   // Helper function to get image for sub-project
   const getSubProjectImage = (subProject) => {
     // Use default image for now, can be extended to use subProject.image if added later
-    return defaultImage
+    return subProject?.image
   }
 
   if (!subProjects || subProjects.length === 0) {

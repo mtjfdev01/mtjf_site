@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
-import image1 from "../assets/img/career/hero career.webp";
+import image1 from "../assets/img/career/hero_career.webp";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const Career = lazy(() => import("../components/career/Career"));
