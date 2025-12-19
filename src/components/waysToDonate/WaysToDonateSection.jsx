@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaCopy, FaCheck } from 'react-icons/fa'
 import { BiSolidDonateHeart } from 'react-icons/bi'
 import { FcDonate } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom'
 import './WaysToDonateSection.css'
 import meezanBankLogo from '../../assets/img/ways_to_donate/meezan-bank.webp'
 import mcbLogo from '../../assets/img/ways_to_donate/mcb.jpeg'
@@ -16,6 +17,7 @@ import hblLogo from '../../assets/img/ways_to_donate/hbl.png'
 import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
 
 const WaysToDonateSection = () => {
+  const navigate = useNavigate()
   const [activeMainTab, setActiveMainTab] = useState('online-banking')
   const [activeSubTab, setActiveSubTab] = useState('debit-credit')
   const [activeCategory, setActiveCategory] = useState('general-donation')
@@ -303,7 +305,7 @@ const WaysToDonateSection = () => {
               <div className="content-box-text">
                 <p>
                   You can make donations to MTJ Foundation using your debit or credit card from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
-                  <a href="/donate" className="donate-link">Donate Now mtjfoundation.org/donate</a>
+                  <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
                 </p>
               </div>
             </div>

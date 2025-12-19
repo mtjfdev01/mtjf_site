@@ -44,7 +44,7 @@ const STATS_DATA = [
      <img src={Water} alt="water icon" />
     ),
     statistic: '300,000+',
-    description: 'with access to clean water',
+    description: 'With access to clean water',
     iconColor: '#53af47'
   },
   {
@@ -53,7 +53,7 @@ const STATS_DATA = [
       <img src={Education} alt="education icon" />
     ),
     statistic: '300,000+',
-    description: 'free-of-cost lab tests done',
+    description: 'Free of cost lab tests done',
     iconColor: '#53af47'
   },
   {

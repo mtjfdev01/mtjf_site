@@ -64,23 +64,6 @@ const Navbar = () => {
     });
   };
 
-  const handleDonateClick = () => {
-    const isHomePage = location.pathname === '/' || location.pathname === '/home';
-    
-    if (!isHomePage) {
-      // Navigate to home page
-      navigate('/home');
-      
-      // Wait for navigation and page load, then scroll to donation form
-      setTimeout(() => {
-        scrollToDonationForm();
-      }, 100);
-    } else {
-      // Already on home page, just scroll to donation form
-      scrollToDonationForm();
-    }
-  };
-
   const scrollToDonationForm = () => {
     // Try multiple selectors to find the donation form
     const donationForm = document.querySelector('.donation-form') || 
@@ -145,7 +128,7 @@ const Navbar = () => {
              <div>
             <button 
               className='btn btn--alert' 
-              onClick={handleDonateClick}
+              onClick={() => navigate('/donate')}
               aria-label="Navigate to donation form"
             >
               Donate Now
