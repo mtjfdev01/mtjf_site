@@ -12,9 +12,9 @@
   width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  height: 50vh;
+  /* height: 50vh; */
   min-height: 400px;
-  background-color: var(--color-200);
+  /* background-color: var(--color-200); */
 }
 
 .page-header-image-wrapper {
