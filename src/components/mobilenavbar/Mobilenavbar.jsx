@@ -5,9 +5,9 @@ import './mobilenavbar.css'
 const links = [
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },
-                { name: "Projects", path: "/projects" },
+                { name: "Programs", path: "/projects" },
                 // { name: "blogs ", path: "/blogs " },
-                { name: "Registration", path: "/volunteerRegistration " },
+                { name: "Volunteer", path: "/volunteerRegistration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" }
 ];

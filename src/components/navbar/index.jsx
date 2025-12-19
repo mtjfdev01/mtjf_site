@@ -9,9 +9,9 @@ import logo from '../../assets/img/logos/only_logo.png'
 const navItems = [
   { name: "Home", path: "/home" },
   { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
+  { name: "Programs", path: "/projects" },
   // { name: "Blogs", path: "/blogs " },
-  { name: "Registration", path: "/volunteerRegistration " },
+  { name: "Volunteer", path: "/volunteerRegistration " },
   { name: "Careers", path: "/careers" },
   { name: "Contact", path: "/contact" }
 ];

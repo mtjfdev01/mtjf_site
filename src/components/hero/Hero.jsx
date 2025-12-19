@@ -7,9 +7,9 @@ import './hero.css'
 
 const HERO_IMAGES = [
   { desktop: hero, mobile: hero_mob },
-  { desktop: hero2, mobile: hero2 },
-  { desktop: contactHero, mobile: contactHero },
-  { desktop: hero, mobile: hero }
+  { desktop: hero, mobile: hero_mob },
+  { desktop: hero, mobile: hero_mob },
+  { desktop: hero, mobile: hero_mob }
 ]
 
 const Hero = () => {
