@@ -1,7 +1,7 @@
 import './DonationCta.css'
-import { useCart } from '../../contexts/CartContext'
-const DonationCta = () => { 
-  const { shortDonate } = useCart()
+import { useNavigate } from 'react-router-dom'
+const DonationCta = () => {
+  const navigate = useNavigate()  
   return (
     <section className="donation-cta">
       <div className="donation-cta-colored-section donation-cta-colored-section--left"></div>
@@ -19,7 +19,7 @@ const DonationCta = () => {
         </div>
         
         <button 
-        onClick={shortDonate}
+        onClick={() => navigate('/donate')}
         className="donation-cta-btn cta_primary_btn btn--alert">
           Donate Now
         </button>
