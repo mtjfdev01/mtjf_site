@@ -56,7 +56,7 @@ const Checkout = () => {
 
   return (
     <>
-      <PageHeader title="Checkout" image={image1} />
+      <PageHeader title="Checkout"  />
 
       <div ref={formRef}>
         {showForm && (
