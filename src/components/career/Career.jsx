@@ -121,11 +121,12 @@ const Career = () => {
         </div>
 
         {/* Job Listings Grid */}
-        <div className="careers-jobs-grid">
+        {/* <div className="careers-jobs-grid"> */}
           {isLoading ? (
-            <div className="careers-jobs-grid-empty">Loading jobs...</div>
+            <div className="careers-jobs-grid-empty text-center mb-48">Loading jobs...</div>
           ) : jobs.length > 0 ? (
-            jobs.map((job) => (
+            <div className="careers-jobs-grid">
+            {jobs.map((job) => (
               <div 
                 key={job.id} 
                 className="careers-job-card card"
@@ -171,12 +172,13 @@ const Career = () => {
                     </svg>
                   </div>
                 </div>
-              </div>
-            ))
+                </div>
+              ))}
+            </div>
           ) : (
-            <div className="careers-jobs-grid-empty">No jobs found</div>
+            <div className='text-center mb-48'>No jobs found...</div>
           )}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   )

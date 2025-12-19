@@ -25,7 +25,7 @@ const ICON_PROPS = {
 const FEATURE_ITEMS = [
   {
     id: 'apnaghar',
-    title: 'APNA GHAR ( A Home of Orphans & Widows)',
+    title: 'APNA GHAR',
     description:
       'Offering vulnerable widows and children a safe, nurturing home to call their own.',
     icon: (
@@ -43,7 +43,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'education',
-    title: 'EDUCATION (Dream Schools, Al Hasanain College, Scholarships)',
+    title: 'EDUCATION',
     description:
       'Opening doors to brighter futures through accessible, quality learning for every child.',
     icon: (
@@ -52,7 +52,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'community',
-    title: 'COMMUNITY SERVICES (Marriage Gift 200,000 PKR, Monthly Ration, Cash Assistance, Eid Gifts )',
+    title: 'COMMUNITY SERVICES',
     description: 'Supporting families with essential aid to meet immediate needs with dignity.',
     icon: (
       <img src={Community} alt="Community Services - Marriage gifts, monthly ration, cash assistance, and Eid gifts program icon"  {...ICON_PROPS}/>
@@ -60,7 +60,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'kasb',
-    title: 'KASB VOCATIONAL CENTRE (Training & Livelihood)',
+    title: 'KASB VOCATIONAL CENTRE',
     description: 'Empowering youth and women with skills that create income and independence.',
     icon: (
       <img src={KASB} alt="KASB Vocational Centre - Training and livelihood skills program icon"  {...ICON_PROPS}/>
@@ -68,7 +68,7 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'water',
-    title: 'CLEAN WATER (Water Filteration Plants, Hand Pumps)',
+    title: 'CLEAN WATER',
     description:
       'Providing clean, safe drinking water to restore health, dignity, and daily ease.',
     icon: (
@@ -94,10 +94,10 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'qurbani',
-    title: 'Qurbani Braye Mustehqeen',
+    title: 'Qurbani Barai Mustehqeen',
     description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
     icon: (
-     <img src={Qurbani} alt="Qurbani Braye Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
+     <img src={Qurbani} alt="Qurbani Barai Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
 )
   },
   {
