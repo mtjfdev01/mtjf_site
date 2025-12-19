@@ -8,19 +8,23 @@ import image2 from '../assets/img/projects/convocation.webp'
 import healthfooter from '../assets/img/projects/projects-details/Health/health_footer.webp'
 import h_2 from '../assets/img/projects/projects-details/Health/h_2.webp'
 import h_3 from '../assets/img/projects/projects-details/Health/health_free_opd.webp'
-import h_4 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_5 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_6 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_7 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_8 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_9 from '../assets/img/projects/projects-details/Health/h_2.webp'
-import h_10 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_4 from '../assets/img/projects/projects-details/Health/health_free_medicines.webp'
+import h_5 from '../assets/img/projects/projects-details/Health/health_free_medical_camps.webp'
+import h_6 from '../assets/img/projects/projects-details/Health/surgeries.webp'
+import h_7 from '../assets/img/projects/projects-details/Health/Health_health_program.webp'
+import h_8 from '../assets/img/projects/projects-details/Health/health_dircet_aid.webp'
+import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
+import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
 
 import education from '../assets/img/projects/education_hero.webp'
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/health.webp'
 import Education from '../assets/img/projects/education.webp'
 import CleanWater from '../assets/img/projects/water.webp'
+import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
+import communityhandpump from '../assets/img/projects/projects-details/cleanwater/community.webp'
+import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
+
 import ApnaGhar from '../assets/img/projects/project-image/apnaghar.webp'
 import DisasterRelief from '../assets/img/projects/disaster.webp'
 import KasbSkill from '../assets/img/projects/project-image/kasbskill.webp'
@@ -696,6 +700,7 @@ export const PROJECTS_DETAIL_DATA = {
           {
             id: 'individual-handpumps',
             title: 'Individual Handpumps',
+            image: individualhandpump,
             description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (sadqah Jariyah), benefiting generations.',
             benefits: [
               'Protects families from waterborne diseases such as cholera and hepatitis',
@@ -708,6 +713,7 @@ export const PROJECTS_DETAIL_DATA = {
           {
             id: 'community-handpumps',
             title: 'Community Handpumps',
+            image: communityhandpump,
             description: 'In villages and neighborhoods where water scarcity affects multiple households, MTJ Foundation installs community handpumps. These shared water points ensure equitable access for all, strengthen social bonds, and promote hygiene and public health. Supporting a community handpump is a long-term, impactful charity, serving numerous families for years and generating continuous spiritual reward for donors.',
             benefits: [
               'Serves multiple households efficiently',
@@ -720,6 +726,7 @@ export const PROJECTS_DETAIL_DATA = {
           {
             id: 'water-filtration-plants',
             title: 'Water Filtration Plants',
+            image: waterfiltrationplant,
             description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of sadqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
             benefits: [
               'Ensures consistent, safe drinking water for large populations',
