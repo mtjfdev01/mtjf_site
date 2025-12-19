@@ -21,7 +21,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
-  const [amount, setAmount] = useState("")
+  const [amount, setAmount] = useState("") 
   const [donationType, setDonationType] = useState("general")
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
@@ -161,7 +161,7 @@ const DonationProjectsMenu = () => {
     return projectCards.filter(project => project.category === selectedCategory)
   }, [selectedCategory, projectCards])
 
-  // Calculate total donation amount
+  // Calculate total donation amount   
   const totalDonationAmount = useMemo(() => {
     // Filter to only initiatives with actual amounts, and deduplicate by initiativeId
     const uniqueInitiatives = selectedProjects.reduce((acc, project) => {

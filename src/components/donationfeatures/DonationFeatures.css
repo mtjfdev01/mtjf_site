@@ -72,7 +72,7 @@
       }
     }
 
-.icon{
+.feature_icon{
       width:60px;
       height:60px;
       border-radius:10px;
@@ -82,7 +82,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-.feature:hover .icon {
+.feature:hover .feature_icon {
       transform: scale(1.05);
       box-shadow: 0 0 0 6px rgba(0,0,0,0.03) inset, 0 4px 12px rgba(0,0,0,0.1);
     }
@@ -229,7 +229,7 @@
     gap: 12px;
   }
 
-  .icon {
+  .feature_icon {
     width: 44px;
     height: 44px;
     border-radius: 10px;

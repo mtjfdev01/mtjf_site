@@ -171,7 +171,7 @@ const DonationFeatures = () => {
         <div className={`features d-grid grid-2 items-start slide-${slideDirection}`} key={startIndex}>
           {visibleFeatures.map((feature) => (
             <div className='feature d-flex gap-12 items-start' key={feature.id}>
-              <div className={`icon ${feature.id} d-flex items-center justify-center`}>
+              <div className={`feature_icon ${feature.id} d-flex items-center justify-center`}>
                 {feature.icon}
               </div>
               <div className='text-left'>
