@@ -140,7 +140,7 @@ const Career = () => {
                       <h3 className="careers-job-title">{job.title}</h3>
                       <div className="careers-job-details">
                         {job.details && job.details.length > 0 ? job.details.map((detail, index) => {
-                          const lowerDetail = detail.toLowerCase()
+                          const lowerDetail = detail?.toLowerCase()
                           const isLocation = LOCATION_KEYWORDS.some(keyword => lowerDetail.includes(keyword))
                           return (
                             <div key={index} className="careers-job-detail">

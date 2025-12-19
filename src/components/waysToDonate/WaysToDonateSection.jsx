@@ -4,6 +4,16 @@ import { BiSolidDonateHeart } from 'react-icons/bi'
 import { FcDonate } from "react-icons/fc";
 import './WaysToDonateSection.css'
 import meezanBankLogo from '../../assets/img/ways_to_donate/meezan-bank.webp'
+import mcbLogo from '../../assets/img/ways_to_donate/mcb.jpeg'
+import aitmadLogo from '../../assets/img/ways_to_donate/aitmad.png'
+import mobilinkLogo from '../../assets/img/ways_to_donate/mobilink_bank.jpg'
+import faysalLogo from '../../assets/img/ways_to_donate/faysal_bank.png'
+import bopLogo from '../../assets/img/ways_to_donate/bop.png'
+import alBarakaLogo from '../../assets/img/ways_to_donate/al_baraka.png'
+import bankIslamiLogo from '../../assets/img/ways_to_donate/bank_islami.png'
+import uBankLogo from '../../assets/img/ways_to_donate/u_bank.png'
+import hblLogo from '../../assets/img/ways_to_donate/hbl.png'
+import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
 
 const WaysToDonateSection = () => {
   const [activeMainTab, setActiveMainTab] = useState('online-banking')
@@ -69,18 +79,192 @@ const WaysToDonateSection = () => {
   ]
 
   const donationCategories = [
-    'General Donation',
-    'Zakat',
-    'Tameer E Watan',
-    'Orphan Care',
-    'Disaster Management',
-    'Health',
-    'Education',
-    'Community Services',
-    'Bano Qabil',
-    'WASH',
-    'Donate to Palestine',
-    'Alkhidmat Islamic Microfinance'
+    { id: 'general-donation', label: 'General Donation' },
+    { id: 'zakat', label: 'Zakat' },
+    { id: 'sadaqah', label: 'Sadaqah' },
+    { id: 'tameer-e-watan', label: 'Tameer E Watan' },
+    { id: 'orphan-care', label: 'Orphan Care' },
+    { id: 'disaster-management', label: 'Disaster Management' },
+    { id: 'health', label: 'Health' },
+    { id: 'education', label: 'Education' },
+    { id: 'community-services', label: 'Community Services' },
+    { id: 'bano-qabil', label: 'Bano Qabil' },
+    { id: 'wash', label: 'WASH' },
+    { id: 'donate-to-palestine', label: 'Donate to Palestine' },
+  ]
+
+  // Banks data array with categories
+  const banksData = [
+    {
+      id: 'meezan-1',
+      bankName: 'Meezan Bank Limited',
+      accountNumber: '12710104410786',
+      iban: 'PK02MEZN0012710104410786',
+      category: 'general-donation',
+      logo: meezanBankLogo,
+      branch: 'Lahore',
+      swiftCode: 'MEZNPKKA'
+    },
+    {
+      id: 'meezan-2',
+      bankName: 'Meezan Bank Limited',
+      accountNumber: '12710105404686',
+      iban: 'PK43MEZN0012710105404686',
+      category: 'general-donation',
+      logo: meezanBankLogo,
+      branch: 'Lahore',
+      swiftCode: 'MEZNPKKA'
+    },
+    {
+      id: 'meezan-3',
+      bankName: 'Meezan Bank Limited',
+      accountNumber: '04070105756121',
+      iban: 'PK56MEZN0004070105756121',
+      category: 'zakat',
+      logo: meezanBankLogo,
+      branch: 'Lahore',
+      swiftCode: 'MEZNPKKA'
+    },
+    {
+      id: 'mcb-islamic',
+      bankName: 'MCB Islamic',
+      accountNumber: '2061004025950001',
+      iban: 'PK35MCIB2061004025950001',
+      category: 'general-donation',
+      logo: mcbLogo,
+      branch: 'Lahore',
+      swiftCode: 'MCIBPKKA'
+    },
+    {
+      id: 'nbp-aitmad',
+      bankName: 'NBP Aitmad',
+      accountNumber: '09434322501821',
+      iban: 'PK39NBPA0943004322501821',
+      category: 'general-donation',
+      logo: aitmadLogo,
+      branch: 'Lahore',
+      swiftCode: 'NBPAPKKA'
+    },
+    {
+      id: 'mobilink',
+      bankName: 'Mobilink Microfinance Bank Limited',
+      accountNumber: '135089303',
+      iban: 'PK30JCMA0000000135089303',
+      category: 'general-donation',
+      logo: mobilinkLogo,
+      branch: 'Lahore',
+      swiftCode: 'JCMAPKKA'
+    },
+    {
+      id: 'faysal-1',
+      bankName: 'Faysal Bank Limited',
+      accountNumber: '3369387000002235',
+      iban: 'PK19FAYS3369387000002235',
+      category: 'general-donation',
+      logo: faysalLogo,
+      branch: 'Lahore',
+      swiftCode: 'FAYSPKKA'
+    },
+    {
+      id: 'faysal-2',
+      bankName: 'Faysal Bank Limited',
+      accountNumber: '3369301000003097',
+      iban: 'PK15FAYS3369301000003097',
+      category: 'general-donation',
+      logo: faysalLogo,
+      branch: 'Lahore',
+      swiftCode: 'FAYSPKKA'
+    },
+    {
+      id: 'faysal-zakat',
+      bankName: 'Faysal Bank Limited (Zakat)',
+      accountNumber: '3369301000003783',
+      iban: 'PK20FAYS3369301000003783',
+      category: 'zakat',
+      logo: faysalLogo,
+      branch: 'Lahore',
+      swiftCode: 'FAYSPKKA'
+    },
+    {
+      id: 'faysal-sadaqah',
+      bankName: 'Faysal Bank Limited (Sadaqah)',
+      accountNumber: '3369301000003939',
+      iban: 'PK76FAYS3369301000003939',
+      category: 'sadaqah',
+      logo: faysalLogo,
+      branch: 'Lahore',
+      swiftCode: 'FAYSPKKA'
+    },
+    {
+      id: 'faysal-education',
+      bankName: 'Faysal Bank Limited (Al-Hasnain College)',
+      accountNumber: '3369301000004086',
+      iban: 'PK84FAYS3369301000004086',
+      category: 'education',
+      logo: faysalLogo,
+      branch: 'Lahore',
+      swiftCode: 'FAYSPKKA'
+    },
+    {
+      id: 'bop-taqwa',
+      bankName: 'The Bank of Punjab (Taqwa)',
+      accountNumber: '5310275199100018',
+      iban: 'PK13BPUN5310275199100018',
+      category: 'general-donation',
+      logo: bopLogo,
+      branch: 'Allama Iqbal Town, Lahore',
+      swiftCode: 'BPUNPKKA'
+    },
+    {
+      id: 'al-baraka',
+      bankName: 'Al-Baraka Bank',
+      accountNumber: '0120610164018',
+      iban: 'PK28AIIN0000120610164018',
+      category: 'general-donation',
+      logo: alBarakaLogo,
+      branch: 'Lahore',
+      swiftCode: 'AIINPKKA'
+    },
+    {
+      id: 'bank-islami',
+      bankName: 'Bank Islamic Pakistan',
+      accountNumber: '202300707000190',
+      iban: 'PK91BKIP0202300707000190',
+      category: 'general-donation',
+      logo: bankIslamiLogo,
+      branch: 'Lahore',
+      swiftCode: 'BKIPPKKA'
+    },
+    {
+      id: 'u-bank',
+      bankName: 'U Microfinance Bank Limited',
+      accountNumber: '810600028957221',
+      iban: 'PK41UMBL0810600028957221',
+      category: 'general-donation',
+      logo: uBankLogo,
+      branch: 'Lahore',
+      swiftCode: 'UMBLPKKA'
+    },
+    {
+      id: 'hbl',
+      bankName: 'HBL',
+      accountNumber: '16447900705252',
+      iban: 'PK98HABB0016447900705252',
+      category: 'general-donation',
+      logo: hblLogo,
+      branch: 'Lahore',
+      swiftCode: 'HABBPKKA'
+    },
+    {
+      id: 'telenor',
+      bankName: 'Telenor Microfinance Bank',
+      accountNumber: '2201605264',
+      iban: 'PK37TMFB9999002201605264',
+      category: 'general-donation',
+      logo: telenorLogo,
+      branch: 'Lahore',
+      swiftCode: 'TMFBPKKA'
+    }
   ]
 
   const handleMainTabChange = (tabId) => {
@@ -90,6 +274,9 @@ const WaysToDonateSection = () => {
       setActiveSubTab('debit-credit')
     } else if (tabId === 'international-accounts') {
       setActiveSubTab('usd')
+    } else if (tabId === 'bank-transfer') {
+      // Reset to general-donation to show all banks by default
+      setActiveCategory('general-donation')
     }
   }
 
@@ -124,34 +311,62 @@ const WaysToDonateSection = () => {
         )
 
       case 'bank-transfer':
+        // Show all banks for all categories (filtering disabled for now)
+        // TODO: Implement category-based filtering later
+        const filteredBanks = banksData
+
         return (
           <div className="ways-to-donate-content">
             <div className="categories-container">
-              {donationCategories.map((category, index) => (
+              {donationCategories.map((category) => (
                 <button
-                  key={index}
-                  className={`category-btn ${activeCategory === category.toLowerCase().replace(/\s+/g, '-') ? 'active' : ''}`}
-                  onClick={() => setActiveCategory(category.toLowerCase().replace(/\s+/g, '-'))}
+                  key={category.id}
+                  className={`category-btn ${activeCategory === category.id ? 'active' : ''}`}
+                  onClick={() => setActiveCategory(category.id)}
                 >
-                  {category}
+                  {category.label}
                 </button>
               ))}
             </div>
-            <div className="bank-details-box">
-              <div className="bank-logo">
-                <div className="bank-logo-placeholder">BOP</div>
+            {filteredBanks.length > 0 ? (
+              <div className="banks-grid">
+                {filteredBanks.map((bank) => (
+                  <div key={bank.id} className="bank-details-box">
+                    <div className="bank-header">
+                      <div className="bank-logo">
+                        {bank.logo ? (
+                          <img src={bank.logo} alt={bank.bankName} className="bank-logo-img" />
+                        ) : (
+                          <div className="bank-logo-placeholder">
+                            {bank.bankName.substring(0, 3).toUpperCase()}
+                          </div>
+                        )}
+                      </div>
+                      <h3 className="bank-name">{bank.bankName}</h3>
+                    </div>
+                    <div className="bank-info">
+                      <p><strong>Account Title:</strong> MTJ Foundation Pakistan</p>
+                      <CopyableField 
+                        label="Account no. (PKR):" 
+                        value={bank.accountNumber} 
+                        itemId={`${bank.id}-account`} 
+                      />
+                      <CopyableField 
+                        label="IBAN:" 
+                        value={bank.iban} 
+                        itemId={`${bank.id}-iban`} 
+                      />
+                      {/* {bank.branch && <p><strong>Branch:</strong> {bank.branch}</p>} */}
+                      {/* {bank.swiftCode && <p><strong>SWIFT code:</strong> {bank.swiftCode}</p>} */}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="bank-details">
-                <h3 className="bank-name">Bank of Punjab (Taqwa Islamic Banking)</h3>
-                <div className="bank-info">
-                  <p><strong>Account Title:</strong> MTJ Foundation Pakistan</p>
-                  <CopyableField label="Account no. (PKR):" value="5310067845100016" itemId="bop-account" />
-                  <CopyableField label="IBAN:" value="PK19BPUN5310067845100016" itemId="bop-iban" />
-                  <p><strong>Branch:</strong> Allama Iqbal Town, Lahore</p>
-                  <p><strong>SWIFT code:</strong> BPUNPKKA</p>
-                </div>
+            ) : (
+              <div className="no-banks-message">
+                <p>No banks available for this category.</p>
               </div>
-            </div>
+            )}
           </div>
         )
 

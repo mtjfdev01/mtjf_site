@@ -26,17 +26,17 @@ const Footer = () => {
               <ul className="footer-contact-list flex flex-col gap-12">
                 <li>
                   <a href="https://maps.google.com" className="footer-link">
-                    Makhdoom Pur Road, Tulamba, District Khanewal.
+                    Makhdoom Pur Road, Tulamba, District Khanewal
                   </a>
                 </li>
                 <li>
                   <a href="tel:061111786853" className="footer-link">
-                    061 111 786 853
+                    061-111-786-853
                   </a>
                 </li>
                 <li>
                   <a href="tel:03032440000" className="footer-link">
-                    0303-2440000
+                    +92 303 2440000
                   </a>
                 </li>
                 <li>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <li className="footer-location-item">
                 <div className="footer-location-city">Karachi</div>
                   <div className="footer-location-address">
-                    Shahrah-e-Faisal Office # 503, 5th Floor, Al Tijarah Centre.
+                    Office No. 1, 190-1/A, Khayyam Chambers Nursery Market, Block 2, P.E.C.H.S, Main Shahrah-e-Faisal, Karachi
                   </div>
                   <div className="footer-location-contacts">
                     <a href="tel:021111786853" className="footer-link">021-111-786-853</a>
@@ -76,33 +76,34 @@ const Footer = () => {
                 <li className="footer-location-item">
                   <div className="footer-location-city">Multan</div>
                   <div className="footer-location-address">
-                    House #89 Block C, Model Town Multan
+                    House #89, Block C, Model Town Phase-2, Multan
                   </div>
                   <div className="footer-location-contacts">
                     <a href="tel:061111786853" className="footer-link">061-111-786-853</a>
-                    <a href="tel:03004422543" className="footer-link">0300-4422543</a>
-                  </div>
-                </li>
-                
-                <li className="footer-location-item">
-                  <div className="footer-location-city">Lahore</div>
-                  <div className="footer-location-address">
-                    Office # 59-B, Faisal Town, Opposite Moon Market.
-                  </div>
-                  <div className="footer-location-contacts">
-                    <a href="tel:03004425557" className="footer-link">0300-4425557</a>
+                    <a href="tel:03032440000" className="footer-link">0303-2440000</a>
                   </div>
                 </li>
                 
                 <li className="footer-location-item">
                   <div className="footer-location-city">Faisalabad</div>
                   <div className="footer-location-address">
-                    Jamia al Hasanain, Green Town
+                    Jamia Al Hasnain, Green Town, Faisalabad
                   </div>
                   <div className="footer-location-contacts">
                     <a href="tel:041111786853" className="footer-link">041-111-786-853</a>
                     <a href="tel:03004463903" className="footer-link">0300-4463903</a>
                   </div>  
+                </li>
+                
+                <li className="footer-location-item">
+                  <div className="footer-location-city">Lahore</div>
+                  <div className="footer-location-address">
+                    Office #59-B, Faisal Town, Opposite Moon Market, Lahore
+                  </div>
+                  <div className="footer-location-contacts">
+                    <a href="tel:042111786853" className="footer-link">042-111-786-853</a>
+                    <a href="tel:03004425557" className="footer-link">0300-4425557</a>
+                  </div>
                 </li>
               </ul>
             </div>

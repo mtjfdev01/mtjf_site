@@ -49,7 +49,7 @@ const PROJECTS_DATA = [
     donatePath: '/donate/education'
   },
   {
-    id: 'disaster-relief',
+    id: 'disaster-management', 
     category: 'Disaster Relief',
     categoryColor: '#FFD700',
     title: 'Rapid Response When <br />Crisis Strikes',
@@ -61,7 +61,7 @@ const PROJECTS_DATA = [
     pledged: 47580,
     donateButtonText: 'Help in Emergencies',
     learnMorePath: '/projects/disaster-management',
-    donatePath: '/donate/disaster-relief'
+    donatePath: '/donate/disaster-management'
   },
   {
     id: 'clean-water',
@@ -109,7 +109,7 @@ const PROJECTS_DATA = [
     donatePath: '/donate/kasb-skill-development'
   },
    {
-    id: 'seeds-of-change',
+    id: 'seeds-of-change', 
     category: 'Seeds of Change',
     categoryColor: '#DDA0DD',
     title: 'seeds-of-changeseeds-of-change',
