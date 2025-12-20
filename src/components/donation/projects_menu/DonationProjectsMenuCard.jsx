@@ -18,7 +18,7 @@ const DonationProjectsMenuCard = ({ card, selected, onSelect }) => {
 
   return (
     <div
-      className={`project-card ${selected ? "selected" : ""}`}
+      className={`project-menu-card ${selected ? "selected" : ""}`}
       onClick={handleClick}
       role="button"
       tabIndex={0}

@@ -137,7 +137,7 @@ const Footer = () => {
 
               {/* Rightmost Column - Blogs */}
               <div className="footer-column footer-blogs">
-                <h4 className="footer-heading h4">Blogs</h4>
+                {/* <h4 className="footer-heading h4">Blogs</h4> */}
                 <ul className="footer-list flex flex-col gap-12">
                   <li>
                     <Link to="/blogs" className="footer-link">Blogs</Link>

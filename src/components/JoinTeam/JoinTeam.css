@@ -261,6 +261,7 @@
   }
 
   .join-cta-icon {
+    display: none;
     width: 80px;
     height: 140px;
     margin: 0 auto;

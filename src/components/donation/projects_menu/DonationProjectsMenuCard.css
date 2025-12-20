@@ -1,4 +1,4 @@
-.project-card {
+.project-menu-card {
   position: relative;
   background: white;
   border: 2px solid #cfe6c2;
@@ -12,22 +12,22 @@
   z-index: 1;
 }
 
-.project-card:hover {
+.project-menu-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-.project-card .icon {
+.project-menu-card .icon {
   font-size: 40px;
   margin-bottom: 12px;
 }
 
-.project-card img {
+.project-menu-card img {
   padding: 0;
   margin: 0 auto;
 }
 
-.project-card h3 {
+.project-menu-card h3 {
   margin-top: 6px;
   font-size: 15px;
   color: #333;
@@ -40,7 +40,7 @@
   font-weight: 400;
 }
 
-.project-card.selected {
+.project-menu-card.selected {
   border-color: var(--color-900, #1a1a1a);
   border-width: 2px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
