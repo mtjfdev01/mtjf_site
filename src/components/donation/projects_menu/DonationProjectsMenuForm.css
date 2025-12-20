@@ -90,6 +90,16 @@
   border-color: var(--color-primary, #30aee3);
 }
 
+/* Mobile Layout: General and Sadqa on first line, Zakat on second line */
+ @media (max-width: 768px) {
+  .donation-type {
+    flex-wrap: wrap;
+  }
+  .donation-type label{
+    justify-content: center;
+  }
+} 
+
 /* Form Actions */
 .form-actions {
   margin-top: var(--space-12, 12px);

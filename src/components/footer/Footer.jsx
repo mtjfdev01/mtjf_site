@@ -114,6 +114,9 @@ const Footer = () => {
               <div className="footer-column footer-quick-links">
                 <h4 className="footer-heading h4">Quick Links</h4>
                 <ul className="footer-list flex flex-col gap-12">
+                <li>
+                    <Link to="/home" className="footer-link">Home</Link>
+                  </li>
                   <li>
                     <Link to="/about" className="footer-link">About Us</Link>
                   </li>
@@ -122,6 +125,9 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link to="/volunteerRegistration" className="footer-link">Volunteer</Link>
+                  </li>
+                  <li>
+                    <Link to="/careers" className="footer-link">Careers</Link>
                   </li>
                   <li>
                     <Link to="/contact" className="footer-link">Contact Us</Link>

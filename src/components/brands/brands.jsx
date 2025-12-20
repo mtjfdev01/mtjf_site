@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import './index.css'; // <-- import the global CSS
 
-import logo20 from '../../assets/img/sgds/logo20.png'
+// import logo20 from '../../assets/img/sgds/logo20.png'
 import logo1 from '../../assets/img/sgds/logo1.png'
 import logo3 from '../../assets/img/sgds/logo3.png'
 import logo4 from '../../assets/img/sgds/logo4.png'
-import logo5 from '../../assets/img/sgds/logo5.png'
+// import logo5 from '../../assets/img/sgds/logo5.png'
 import logo6 from '../../assets/img/sgds/logo6.png'
 // import logo7 from '../../assets/img/sgds/logo7.png'
 // import logo8 from '../../assets/img/sgds/logo8.png'
@@ -19,11 +19,11 @@ import logo14 from '../../assets/img/sgds/logo14.png'
 // import logo16 from '../../assets/img/sgds/logo16.png'
 
 const brandsData = [
-    {
-        image:  logo20,
-        link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
-    },
+    // {
+    //     image:  logo20,
+    //     link: 'https://sdgs.un.org/goals',
+    //     alt: 'MTJF Logo'
+    // },
     {
         image:  logo1,
         link: 'https://sdgs.un.org/goals',
@@ -49,11 +49,11 @@ const brandsData = [
         link: 'https://sdgs.un.org/goals',
         alt: 'MTJF Logo'
     },
-    {
-        image:  logo5,
-        link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
-    },
+    // {
+    //     image:  logo5,
+    //     link: 'https://sdgs.un.org/goals',
+    //     alt: 'MTJF Logo'
+    // },
     {
         image:  logo6,
         link: 'https://sdgs.un.org/goals',

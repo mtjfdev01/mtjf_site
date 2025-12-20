@@ -49,7 +49,7 @@ const DonationProjectsMenuForm = ({
           Sadqa
         </label>
 
-        <label className={donationType === "zakat" ? "active" : ""}>
+        <label className={`zakat-label text-center ${donationType === "zakat" ? "active" : ""}`}>
           <input
             type="radio"
             name="donation"

@@ -54,7 +54,8 @@ const JoinTeam = ()=>{
             </p>
            
           </div>
-          <button className="join-cta-btn">Join Now</button>
+          {/* <button></button> */}
+          <div></div>
         </section>
         </>
     )
