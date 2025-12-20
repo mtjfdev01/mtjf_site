@@ -68,7 +68,7 @@ const InitiativeDonationCard = ({ initiative, onUpdate }) => {
           type="button"
           className="initiative-quantity-btn initiative-quantity-btn--minus"
           onClick={() => handleQuantityChange(-1)}
-          disabled={quantity === 0}
+          disabled={true}
         >
           −
         </button>
