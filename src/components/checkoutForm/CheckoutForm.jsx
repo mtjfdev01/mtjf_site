@@ -22,12 +22,6 @@ const paymentFrequency = {
   payfast: 'once'
 }
 
-// PayFast handler (placeholder for future implementation)
-const postToPayfast = (data, formData) => {
-  // TODO: Implement PayFast integration
-  console.log('PayFast data:', data, formData)
-}
-
 const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -100,6 +94,91 @@ const CheckoutForm = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  // PayFast handler function
+  const postToPayfast = (payfastResponse, formData) => {
+    try {
+      // Validate required fields from response
+      if (!payfastResponse) {
+        console.error('PayFast response is missing')
+        setFormMessage({ type: 'error', text: 'Invalid payment response. Please try again.' })
+        setIsLoading(false)
+        return
+      }
+
+      const { MERCHANT_ID, ACCESS_TOKEN, BASKET_ID, TXNAMT } = payfastResponse
+
+      // Validate required fields
+      if (!MERCHANT_ID || !ACCESS_TOKEN || !BASKET_ID || !TXNAMT) {
+        console.error('Missing required PayFast fields:', { MERCHANT_ID, ACCESS_TOKEN, BASKET_ID, TXNAMT })
+        setFormMessage({ type: 'error', text: 'Missing payment information. Please try again.' })
+        setIsLoading(false)
+        return
+      }
+
+      // ORDER_DATE best in "YYYY-MM-DD HH:mm:ss"
+      const now = new Date()
+      const ORDER_DATE = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`
+
+      // SIGNATURE is just a random string per docs (not a hash)
+      const SIGNATURE = Math.random().toString(36).slice(2, 10)
+
+      const fields = {
+        MERCHANT_ID,
+        MERCHANT_NAME: 'MTJ Foundation',
+        TOKEN: ACCESS_TOKEN,                 // from GetAccessToken
+        PROCCODE: '00',
+        TXNAMT,              // must match token call
+        CUSTOMER_MOBILE_NO: formData.donor_phone,
+        CUSTOMER_EMAIL_ADDRESS: formData.donor_email,
+        SIGNATURE,
+        VERSION: SIGNATURE,
+        TXNDESC: (process.env.REACT_APP_TXNDESC || 'Donation'),
+        SUCCESS_URL: 'https://www.mtjfoundation.org/thanks', 
+        FAILURE_URL: (process.env.REACT_APP_FAILURE_URL || 'https://www.mtjfoundation.org/donate'), //return back to home page if payment fails
+        CHECKOUT_URL: (`https://mtjf-erp-backend.up.railway.app/donations/public/payfast/ipn`), // backend api url to handle payfast response to update donation status
+        BASKET_ID,        // must match token call
+        ORDER_DATE,
+        CURRENCY_CODE: (process.env.REACT_APP_CURRENCY_CODE || 'PKR'),
+        TRAN_TYPE: "ECOMM_PURCHASE",
+      }
+
+      // console.log("PayFast fields:", fields)
+      
+      // Build and submit a real HTML form (POST navigation)
+      const form = document.createElement('form')
+      form.method = 'POST' 
+      form.action = 'https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction'
+      form.target = '_blank' // Open in new tab
+
+      Object.entries(fields).forEach(([k, v]) => {
+        if (v == null || v === '') return
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = k
+        input.value = String(v)
+        form.appendChild(input)
+      })
+
+      document.body.appendChild(form)
+      
+      // Submit form and remove it after a short delay
+      form.submit()
+      
+      // Remove form from DOM after submission
+      setTimeout(() => {
+        if (form.parentNode) {
+          form.parentNode.removeChild(form)
+        }
+      }, 1000)
+      
+      setIsLoading(false)
+    } catch (error) {
+      console.error('Error in postToPayfast:', error)
+      setFormMessage({ type: 'error', text: 'Failed to initialize payment. Please try again.' })
+      setIsLoading(false)
+    }
   }
 
   const handleSubmit = async (e, paymentMethod = null) => {
@@ -263,8 +342,14 @@ const CheckoutForm = () => {
       const response = await axiosInstance.post('/donations', payload)
 
       if (currentPayment === 'payfast') {
+        // Debug: Log the response to see its structure
+        console.log('PayFast response:', response.data)
+        console.log('PayFast response.data:', response.data?.data)
+        
         // Call postToPayfast with the response data from the server
-        postToPayfast(response.data.data, formData)
+        // Try different possible response structures
+        const payfastData = response.data?.data || response.data
+        postToPayfast(payfastData, formData)
       } else {
         if (response?.data?.success && response?.data?.data?.paymentUrl) {
           try {
@@ -408,6 +493,35 @@ const CheckoutForm = () => {
         <h5 className="checkout-panel__title-2">Donate Via :</h5>
 
         <div className="row">
+
+                    {/* PayFast payment option */}
+                    <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'payfast')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <i className="fas fa-credit-card"></i>
+                </div>
+                <div className="payment-content">
+                  <h6>Credit, Debit Card, Jazz Cash</h6>
+                  <p>Payfast's (Faisal Bank Islami) Secure online payment gateway</p>
+                </div>
+                {isLoading && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+
           {/* blinq payment option */}
           <div className="col-md-6">
             <div className="input-item">
@@ -435,33 +549,6 @@ const CheckoutForm = () => {
               </div>
             </div>
           </div>
-
-          {/* PayFast payment option (prepared for future) */}
-          {/* <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'payfast')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <i className="fas fa-credit-card"></i>
-                </div>
-                <div className="payment-content">
-                  <h6>Credit, Debit Card, Jazz Cash, Easy Pesa, U Pesa</h6>
-                  <p>Payfast's (Faisal Bank Islami) Secure online payment gateway</p>
-                </div>
-                {isLoading && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div> */}
         </div>
       </form>
     </section>
