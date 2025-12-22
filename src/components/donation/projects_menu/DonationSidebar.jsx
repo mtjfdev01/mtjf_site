@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
+import { useDonation } from '../../../contexts/DonationContext'
 import './DonationSidebar.css'
 
-const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart, showBackButton = false }) => {
+const DonationSidebar = ({ onCompleteDonation, showBackButton = false }) => {
   const navigate = useNavigate()
+  const { projectDonations, donationData, clearDonationData } = useDonation()
+
+  // Calculate total amount from context - support both projectDonations and donationData
+  const totalAmount = useMemo(() => {
+    // First check projectDonations (new flow)
+    if (projectDonations.length > 0) {
+      return projectDonations.reduce((total, donation) => {
+        return total + (donation.totalAmount || 0)
+      }, 0)
+    }
+    
+    // Fallback to donationData (old form flow)
+    if (donationData) {
+      return donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
+    }
+    
+    return 0
+  }, [projectDonations, donationData])
 
   const handleCompleteDonation = () => {
     if (onCompleteDonation) {
@@ -16,8 +35,8 @@ const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart, showBac
 
   const handleClearCart = () => {
     const confirmed = window.confirm('Are you sure you want to remove your donations?')
-    if (confirmed && onClearCart) {
-      onClearCart()
+    if (confirmed) {
+      clearDonationData()
     }
   }
 
@@ -34,7 +53,7 @@ const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart, showBac
             <span className="total-amount">{totalAmount.toLocaleString()}</span>
             <span className="total-currency">PKR</span>
           </div>
-          {!showBackButton && (
+          {/* {!showBackButton && ( */}
             <button
               className="donation-sidebar-clear-btn"
               onClick={handleClearCart}
@@ -43,7 +62,7 @@ const DonationSidebar = ({ totalAmount, onCompleteDonation, onClearCart, showBac
             >
               <FaTrash />
             </button>
-          )}
+          {/* )} */}
         </div>
         {!showBackButton && (
           <button

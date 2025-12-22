@@ -13,6 +13,9 @@ export const useDonation = () => {
 export const DonationProvider = ({ children }) => {
   const [donationData, setDonationData] = useState(null);
   const [projectDonations, setProjectDonations] = useState([]);
+  // State for DonationProjectsMenuForm
+  const [amount, setAmount] = useState("");
+  const [donationType, setDonationType] = useState("general");
 
   const setDonationFormData = (data) => {
     setDonationData(data);
@@ -24,6 +27,15 @@ export const DonationProvider = ({ children }) => {
 
   const updateProjectDonation = (projectDonation) => {
     setProjectDonations(prev => {
+      // If totalAmount is 0, remove the donation
+      if (projectDonation.totalAmount <= 0) {
+        return prev.filter(p => 
+          !(p.projectId === projectDonation.projectId && 
+            p.initiativeId === projectDonation.initiativeId)
+        );
+      }
+      
+      // Otherwise, update or add the donation
       const existingIndex = prev.findIndex(p => 
         p.projectId === projectDonation.projectId && 
         p.initiativeId === projectDonation.initiativeId
@@ -41,15 +53,21 @@ export const DonationProvider = ({ children }) => {
   const clearDonationData = () => {
     setDonationData(null);
     setProjectDonations([]);
+    setAmount("");
+    setDonationType("general");
   };
 
   const value = {
     donationData,
     projectDonations,
+    amount,
+    donationType,
     setDonationFormData,
     setProjectDonationData,
     updateProjectDonation,
-    clearDonationData
+    clearDonationData,
+    setAmount,
+    setDonationType
   };
 
   return (

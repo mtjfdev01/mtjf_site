@@ -1,14 +1,12 @@
 import React from 'react'
+import { useDonation } from '../../../contexts/DonationContext'
 import './DonationProjectsMenuForm.css'
 
 const DonationProjectsMenuForm = ({
-  amount,
-  setAmount,
-  donationType,
-  setDonationType,
   onQuickDonate,
   showMessage,
 }) => {
+  const { amount, donationType, setAmount, setDonationType } = useDonation()
   return (
     <>
       <div className="amount-section">

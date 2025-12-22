@@ -1,13 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDonation } from '../../../contexts/DonationContext'
 import './InitiativeDonationCard.css'
 
-const InitiativeDonationCard = ({ initiative, onUpdate }) => {
+const InitiativeDonationCard = ({ initiative }) => {
+  const { projectDonations, updateProjectDonation } = useDonation()
   const [quantity, setQuantity] = useState(0)
   const [donationType, setDonationType] = useState('GENERAL')
   const [customAmount, setCustomAmount] = useState('')
 
   const basePrice = initiative.price || 0
   const totalPrice = quantity * basePrice + (parseFloat(customAmount) || 0)
+
+  // Restore state from context on mount
+  useEffect(() => {
+    const existingDonation = projectDonations.find(
+      p => p.projectId === initiative.parentProjectId && 
+           p.initiativeId === initiative.id
+    )
+    
+    if (existingDonation) {
+      setQuantity(existingDonation.quantity || 0)
+      setDonationType(existingDonation.donationType || 'GENERAL')
+      setCustomAmount(existingDonation.customAmount ? existingDonation.customAmount.toString() : '')
+    }
+  }, [projectDonations, initiative.parentProjectId, initiative.id])
 
   // Donation type options - can be customized per initiative
   const donationTypeOptions = initiative.donationTypeOptions || [
@@ -38,21 +54,23 @@ const InitiativeDonationCard = ({ initiative, onUpdate }) => {
 
   const updateDonationData = (qty, type, custom) => {
     const amount = (qty * basePrice) + (parseFloat(custom) || 0)
-    if (onUpdate) {
-      onUpdate({
-        projectId: initiative.parentProjectId,
-        initiativeId: initiative.id,
-        projectTitle: initiative.parentProjectTitle || '',
-        initiativeTitle: initiative.title,
-        initiativeSubtitle: initiative.subtitle || null,
-        projectIcon: initiative.icon,
-        quantity: qty,
-        donationType: type,
-        basePrice: basePrice,
-        customAmount: parseFloat(custom) || 0,
-        totalAmount: amount
-      })
+    
+    const donationData = {
+      projectId: initiative.parentProjectId,
+      initiativeId: initiative.id,
+      projectTitle: initiative.parentProjectTitle || '',
+      initiativeTitle: initiative.title,
+      initiativeSubtitle: initiative.subtitle || null,
+      projectIcon: initiative.icon,
+      quantity: qty,
+      donationType: type,
+      basePrice: basePrice,
+      customAmount: parseFloat(custom) || 0,
+      totalAmount: amount
     }
+
+    // Update context directly - context will handle removal if totalAmount is 0
+    updateProjectDonation(donationData)
   }
 
   return (
@@ -68,7 +86,7 @@ const InitiativeDonationCard = ({ initiative, onUpdate }) => {
           type="button"
           className="initiative-quantity-btn initiative-quantity-btn--minus"
           onClick={() => handleQuantityChange(-1)}
-          disabled={true}
+          disabled={quantity === 0}
         >
           −
         </button>

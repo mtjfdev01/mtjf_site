@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
+import { useDonation } from '../../../contexts/DonationContext'
 import DonationProjectsMenuCard from './DonationProjectsMenuCard'
 import DonationProjectsMenuForm from './DonationProjectsMenuForm'
 import InitiativeDonationCard from './InitiativeDonationCard'
@@ -21,8 +22,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
-  const [amount, setAmount] = useState("") 
-  const [donationType, setDonationType] = useState("general")
+  const { projectDonations, amount, donationType, setAmount, setDonationType, clearDonationData } = useDonation()
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")
@@ -161,29 +161,16 @@ const DonationProjectsMenu = () => {
     return projectCards.filter(project => project.category === selectedCategory)
   }, [selectedCategory, projectCards])
 
-  // Calculate total donation amount   
+  // Calculate total donation amount from context
   const totalDonationAmount = useMemo(() => {
-    // Filter to only initiatives with actual amounts, and deduplicate by initiativeId
-    const uniqueInitiatives = selectedProjects.reduce((acc, project) => {
-      if (project.initiativeId && project.totalAmount && project.totalAmount > 0) {
-        // Use initiativeId + parentProjectId as unique key
-        const key = `${project.parentProjectId}-${project.initiativeId}`
-        // Only keep the latest entry for each unique initiative
-        if (!acc[key] || acc[key].totalAmount < project.totalAmount) {
-          acc[key] = project
-        }
-      }
-      return acc
-    }, {})
-    
-    // Sum up unique initiatives
-    return Object.values(uniqueInitiatives).reduce((total, project) => {
-      return total + (project.totalAmount || 0)
+    return projectDonations.reduce((total, donation) => {
+      return total + (donation.totalAmount || 0)
     }, 0)
-  }, [selectedProjects])
+  }, [projectDonations])
 
   const handleSubmitDonation = async () => {
     // Check if this is a Quick Donate from the form (when amount is entered)
+    // Use amount from context
     if (amount && amount.trim() !== '') {
       const numericAmount = Number(String(amount).trim())
       if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
@@ -202,6 +189,7 @@ const DonationProjectsMenu = () => {
       setMessage("")
       
       // Navigate to checkout with custom donation
+      // Use donationType from context
       navigate('/checkout', {
         state: {
           donationItems: [{
@@ -263,14 +251,9 @@ const DonationProjectsMenu = () => {
       return
     }
 
-    // Collect only initiatives with actual donation amounts
-    const donationsToCheckout = selectedProjects.filter(project => {
-      // Only include initiatives with totalAmount > 0
-      if (project.initiativeId && project.totalAmount) {
-        return project.totalAmount > 0
-      }
-      // Regular projects without initiatives should NOT be included
-      return false
+    // Use projectDonations from context
+    const donationsToCheckout = projectDonations.filter(donation => {
+      return donation.totalAmount > 0
     })
     
     if (donationsToCheckout.length === 0) {
@@ -298,7 +281,7 @@ const DonationProjectsMenu = () => {
             className="back-to-projects-btn"
             onClick={() => {
               setExpandedProjectId(null)
-              setSelectedProjects([])
+              // clearDonationData()
             }}
           >
             <FaArrowLeft />
@@ -335,10 +318,6 @@ const DonationProjectsMenu = () => {
           {!expandedProjectId && (
             <div className="general-donation-card form-card">
               <DonationProjectsMenuForm
-                amount={amount}
-                setAmount={setAmount}
-                donationType={donationType}
-                setDonationType={setDonationType}
                 onQuickDonate={handleSubmitDonation}
                 showMessage={message}
               />
@@ -381,10 +360,6 @@ const DonationProjectsMenu = () => {
                 {/* Custom Donation Form Card - First Card */}
                 <div className="general-donation-card form-card">
                   <DonationProjectsMenuForm
-                    amount={amount}
-                    setAmount={setAmount}
-                    donationType={donationType}
-                    setDonationType={setDonationType}
                     onQuickDonate={handleSubmitDonation}
                     showMessage={message}
                   />
@@ -401,26 +376,6 @@ const DonationProjectsMenu = () => {
                     <InitiativeDonationCard
                       key={initiative.id}
                       initiative={initiativeData}
-                      onUpdate={(donationData) => {
-                        // Update selected projects with initiative donation data
-                        setSelectedProjects(prev => {
-                          // Remove any existing entries for this initiative first
-                          const filtered = prev.filter(p => 
-                            !(p.initiativeId === initiative.id && p.parentProjectId === expandedProject.id)
-                          )
-                          
-                          // Only add if there's an actual donation (quantity > 0 or customAmount > 0)
-                          if (donationData.totalAmount > 0) {
-                            return [...filtered, {
-                              ...expandedProject,
-                              ...donationData
-                            }]
-                          } else {
-                            // If no donation, just return filtered (removed the entry)
-                            return filtered
-                          }
-                        })
-                      }}
                     />
                   )
                 })}
@@ -431,13 +386,7 @@ const DonationProjectsMenu = () => {
       </div>
       {totalDonationAmount > 0 && (
         <DonationSidebar 
-          totalAmount={totalDonationAmount}
           onCompleteDonation={handleCompleteDonation}
-          onClearCart={() => {
-            setSelectedProjects([])
-            setExpandedProjectId(null)
-            setMessage("")
-          }}
         />
       )}
     </div>

@@ -2,7 +2,8 @@ import React, { Suspense, lazy, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDonation } from '../contexts/DonationContext'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/projects/apna_ghr.webp'
+// import image1 from '../assets/img/projects/apna_ghr.webp'
+import CheckoutImage from '../assets/img/checkout/checkout.jpg'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const CheckoutForm = lazy(() =>
@@ -56,7 +57,7 @@ const Checkout = () => {
 
   return (
     <>
-      <PageHeader title="Checkout"  />
+      <PageHeader title="Checkout"  image={CheckoutImage}/>
 
       <div ref={formRef}>
         {showForm && (
@@ -70,7 +71,6 @@ const Checkout = () => {
       {totalAmount > 0 && (
         <Suspense fallback={null}>
           <DonationSidebar 
-            totalAmount={totalAmount}
             showBackButton={true}
           />
         </Suspense>
