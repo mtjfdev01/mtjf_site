@@ -510,7 +510,7 @@ const CheckoutForm = () => {
                 </div>
                 <div className="payment-content">
                   <h6>Credit, Debit Card, Jazz Cash</h6>
-                  <p>Payfast's (Faisal Bank Islami) Secure online payment gateway</p>
+                  <p>Payfast's (Faysal Bank) Secure online payment gateway</p>
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
@@ -537,7 +537,7 @@ const CheckoutForm = () => {
                   <i className="fas fa-university"></i>
                 </div>
                 <div className="payment-content">
-                  <h6>Credit, Debit Card, Jazz Cash, Easy Pesa</h6>
+                  <h6>Credit, Debit Card, Jazz Cash, EasyPaisa</h6>
                   <p>Blinq's Secure online payment gateway</p>
                   <div className="payment-selection-options"></div>
                 </div>
