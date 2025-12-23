@@ -78,7 +78,7 @@ const Career = () => {
         </h2>
       </div>
         {/* Filter Section */}
-        <div className="careers-filters mb-48">
+        {/* <div className="careers-filters mb-48">
           <div className="careers-filter-selects">
             <select
               className="careers-filter-select"
@@ -97,7 +97,7 @@ const Career = () => {
               value={filters.type}
               onChange={(e) => handleFilterChange('type', e.target.value)}
             >
-              <option value="">type</option>
+              <option value="">Type</option>
               <option value="full-time">Full Time</option>
               <option value="part-time">Part Time</option>
               <option value="contract">Contract</option>
@@ -116,9 +116,9 @@ const Career = () => {
             </select>
           </div>
           <button className="careers-apply-btn btn" onClick={handleApplyFilters}>
-            Apply
+            Filter Jobs
           </button>
-        </div>
+        </div> */}
 
         {/* Job Listings Grid */}
         {/* <div className="careers-jobs-grid"> */}

@@ -213,6 +213,7 @@
   gap: 20px;
   flex: 1;
   height: 100%;
+  flex-wrap: wrap;
 }
 
 .careers-job-info {
@@ -360,6 +361,9 @@
 
   .careers-title {
     font-size: var(--fs-28);
+  }
+  .careers-jobs-grid{
+    padding: 0;
   }
 }
 

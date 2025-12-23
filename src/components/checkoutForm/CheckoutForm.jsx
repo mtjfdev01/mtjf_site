@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import axiosInstance from '../../utils/axios'
@@ -25,11 +25,29 @@ const paymentFrequency = {
 const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { donationData, projectDonations, clearDonationData, setProjectDonationData } = useDonation()
+  const { donationData, projectDonations, clearDonationData, setProjectDonationData, setDonationFormData } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
+  const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
+  const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
+  const hasFetchedFailedTransaction = useRef(false)
+
+  // Get donationID from query parameters
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const donationID = searchParams.get('donationId')
+    if (donationID && donationID !== donationIdFromQuery) {
+      // Reset the fetch flag when donationId changes
+      hasFetchedFailedTransaction.current = false
+      setDonationIdFromQuery(donationID)
+    } else if (!donationID) {
+      // Reset when donationId is removed from URL
+      hasFetchedFailedTransaction.current = false
+      setDonationIdFromQuery(null)
+    }
+  }, [location.search, donationIdFromQuery])
 
   // Get donation items from location state (passed from donation projects menu)
   const donationItemsFromState = location.state?.donationItems || []
@@ -38,10 +56,11 @@ const CheckoutForm = () => {
   // Determine which donation flow we're using
   const isProjectDonationsFlow = donationItemsFromState.length > 0 || projectDonations.length > 0
   const isOldDonationFormFlow = !!donationData
+  const isFailedTransactionFlow = !!donationIdFromQuery
 
-  // Initialize form with donation data if available
+  // Initialize form with donation data if available (skip if failed transaction flow)
   useEffect(() => {
-    if (donationData) {
+    if (donationData && !isFailedTransactionFlow) {
       // Set donation_type from donationData category if available
       if (donationData.category) {
         const categoryMap = {
@@ -55,7 +74,7 @@ const CheckoutForm = () => {
         }))
       }
     }
-  }, [donationData])
+  }, [donationData, isFailedTransactionFlow])
 
   // Store donation items from location state into context if available
   useEffect(() => {
@@ -83,13 +102,117 @@ const CheckoutForm = () => {
     }
   }, [isProjectDonationsFlow, donationItemsFromState, projectDonations])
 
-  // Redirect if no donation data (check both context and location state)
+  // Handle failed transaction flow - fetch and populate form data
   useEffect(() => {
-    const hasDonationData = isOldDonationFormFlow || isProjectDonationsFlow
-    if (!hasDonationData) {
-      navigate('/home')
+    // Prevent multiple calls - only fetch once per donationId
+    if (!donationIdFromQuery || hasFetchedFailedTransaction.current) return
+
+    const fetchFailedTransaction = async () => {
+      try {
+        hasFetchedFailedTransaction.current = true
+        setIsLoadingFailedTransaction(true)
+        
+        // First, reset donation data as requested
+        clearDonationData()
+
+        // Fetch failed transaction data
+        const response = await axiosInstance.get(`/donations/public/failed-transaction/${donationIdFromQuery}`)
+        console.log("failed transaction response", response)
+        
+        if (response.data && response.data.success) {
+          const failedTransaction = response.data.data
+          const donor = failedTransaction.donor || {}
+          
+          console.log("Failed transaction data:", failedTransaction)
+          console.log("Donor data:", donor)
+          
+          // Extract donation amount from transaction
+          const donationAmount = failedTransaction.amount || 0
+          console.log("Donation amount:", donationAmount)
+          
+          // FIRST: Set donation amount in context to make form visible
+          if (donationAmount > 0) {
+            const donationFormDataToSet = {
+              amount: donationAmount.toString(),
+              finalAmount: donationAmount.toString(),
+              currency: failedTransaction.currency || 'PKR',
+              category: failedTransaction.donation_type === 'zakat' ? 'Zakat' : 
+                       failedTransaction.donation_type === 'sadqa' ? 'Sadqa' : 'General',
+              projectId: failedTransaction.project_id || '',
+              donation_type: failedTransaction.donation_type || 'general'
+            }
+            console.log("Setting donation form data:", donationFormDataToSet)
+            setDonationFormData(donationFormDataToSet)
+            
+            // THEN: Pre-populate form with donor and transaction data after a small delay
+            // to ensure donation data is set first
+            setTimeout(() => {
+              const formDataToSet = {
+                donor_name: donor.name || '',
+                donor_email: donor.email || '',
+                donor_phone: donor.phone || '',
+                donation_type: failedTransaction.donation_type || 'general',
+                country: failedTransaction.country || donor.country || '',
+                city: failedTransaction.city || donor.city || '',
+                address: donor.address || ''
+              }
+              console.log("Setting form data:", formDataToSet)
+              setFormData(prev => ({
+                ...prev,
+                ...formDataToSet
+              }))
+            }, 100)
+          } else {
+            // If no amount, still set form data
+            const formDataToSet = {
+              donor_name: donor.name || '',
+              donor_email: donor.email || '',
+              donor_phone: donor.phone || '',
+              donation_type: failedTransaction.donation_type || 'general',
+              country: failedTransaction.country || donor.country || '',
+              city: failedTransaction.city || donor.city || '',
+              address: donor.address || ''
+            }
+            console.log("Setting form data (no amount):", formDataToSet)
+            setFormData(prev => ({
+              ...prev,
+              ...formDataToSet
+            }))
+          }
+
+          setFormMessage({ 
+            type: 'info', 
+            text: 'Your previous donation attempt was not completed. Please complete the payment below.' 
+          })
+        } else {
+          setFormMessage({ 
+            type: 'error', 
+            text: 'Failed to load donation information. Please try again.' 
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching failed transaction:', error)
+        setFormMessage({ 
+          type: 'error', 
+          text: error?.response?.data?.message || 'Failed to load donation information. Please try again.' 
+        })
+        hasFetchedFailedTransaction.current = false // Reset on error so user can retry
+      } finally {
+        setIsLoadingFailedTransaction(false)
+      }
     }
-  }, [isOldDonationFormFlow, isProjectDonationsFlow, navigate])
+
+    fetchFailedTransaction()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [donationIdFromQuery]) // Only depend on donationIdFromQuery
+
+  // REMOVED: Redirect check - always show checkout page
+  // useEffect(() => {
+  //   const hasDonationData = isOldDonationFormFlow || isProjectDonationsFlow || isFailedTransactionFlow
+  //   if (!hasDonationData) {
+  //     navigate('/home')
+  //   }
+  // }, [isOldDonationFormFlow, isProjectDonationsFlow, isFailedTransactionFlow, navigate])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -270,7 +393,7 @@ const CheckoutForm = () => {
       return
     }
 
-    // Calculate total amount - support both flows
+    // Calculate total amount - support all flows including failed transaction
     let totalAmount = 0
     if (isProjectDonationsFlow) {
       // Calculate from project donations
@@ -283,8 +406,8 @@ const CheckoutForm = () => {
       if (totalAmount === 0 && totalAmountFromState > 0) {
         totalAmount = totalAmountFromState
       }
-    } else if (isOldDonationFormFlow) {
-      // Calculate from old donation form data
+    } else if (isOldDonationFormFlow || isFailedTransactionFlow) {
+      // Calculate from old donation form data or failed transaction
       totalAmount = donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
     }
 
@@ -331,15 +454,25 @@ const CheckoutForm = () => {
         donation_frequency: paymentFrequency[currentPayment] || 'once',
         donation_source: 'website',
         amount: totalAmount,
-        currency: isOldDonationFormFlow ? (donationData?.currency || 'PKR') : 'PKR',
+        currency: (isOldDonationFormFlow || isFailedTransactionFlow) ? (donationData?.currency || 'PKR') : 'PKR',
         status: 'pending',
         // Include donation items for project donations flow
         ...(isProjectDonationsFlow && {
           donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+        }),
+        // Include donationID if this is a retry of failed transaction
+        ...(isFailedTransactionFlow && donationIdFromQuery && {
+          previous_donation_id: donationIdFromQuery
         })
       }
 
-      const response = await axiosInstance.post('/donations', payload)
+      // Use PUT to update existing donation if it's a failed transaction retry, otherwise POST
+      let response
+      if (isFailedTransactionFlow && donationIdFromQuery) {
+        response = await axiosInstance.put(`/donations/${donationIdFromQuery}`, payload)
+      } else {
+        response = await axiosInstance.post('/donations', payload)
+      }
 
       if (currentPayment === 'payfast') {
         // Debug: Log the response to see its structure
@@ -384,10 +517,22 @@ const CheckoutForm = () => {
     }
   }
 
-  // Don't render if no donation data from either flow
-  if (!isOldDonationFormFlow && !isProjectDonationsFlow) {
-    return null
+  // REMOVED: Render check - always show checkout form
+  // Show loading state while fetching failed transaction
+  if (isLoadingFailedTransaction) {
+    return (
+      <section className="checkout-panel">
+        <div className="checkout-panel__message checkout-panel__message--info">
+          Loading your donation information...
+        </div>
+      </section>
+    )
   }
+
+  // Always render the form - no conditions
+  // if (!isOldDonationFormFlow && !isProjectDonationsFlow && !isFailedTransactionFlow) {
+  //   return null
+  // }
 
   return (
     <section className="checkout-panel">

@@ -6,7 +6,8 @@ import logoBlueText from '../assets/img/logos/logo_blue_text.webp'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 import './JobDetail.css'
-
+import PageHeader from '../components/pageHeader/PageHeader'
+import JobDetailImage from '../assets/img/career/hero_career.webp'
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
@@ -123,6 +124,7 @@ const JobDetail = () => {
 
   return (
     <div className="job-detail-page">
+      <PageHeader title={job.title} image={JobDetailImage}/>
       {showCopiedMessage && (
         <div className="job-detail-toast">
           <span className="job-detail-toast-icon">✓</span>
@@ -209,7 +211,7 @@ const JobDetail = () => {
 
           {/* Qualifications */}
           <section className="job-detail-section">
-            <h2 className="job-detail-section-title">Qualifications</h2>
+            <h2 className="job-detail-section-title">Qualifications  Experience & Skills</h2>
             <ul className="job-detail-list">
               {job.qualifications.map((qualification, index) => (
                 <li key={index} className="job-detail-list-item">
@@ -233,7 +235,7 @@ const JobDetail = () => {
 
           {/* Company Information */}
           <section className="job-detail-section">
-            <h2 className="job-detail-section-title">Company Information</h2>
+            <h2 className="job-detail-section-title">Molana Tariq Jamil Foundation</h2>
             <p className="job-detail-section-text">
               Molana Tariq Jamil Foundation is a non-profit organization dedicated to serving communities and making a positive impact. We are committed to creating opportunities for growth and development while maintaining the highest standards of excellence in all our endeavors.
             </p>

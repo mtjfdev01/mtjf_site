@@ -10,7 +10,7 @@ import KASB from '../../assets/img/projects/icons/kasb.png'
 import Seeds from '../../assets/img/projects/icons/seeds.png'
 import Community from '../../assets/img/projects/icons/community.png'
 import AASLab from '../../assets/img/projects/icons/aaslab.png'
- 
+import { Link } from 'react-router-dom'
 
 const ICON_PROPS = {
   width: 60,
@@ -24,7 +24,7 @@ const ICON_PROPS = {
 
 const FEATURE_ITEMS = [
   {
-    id: 'apnaghar',
+    id: 'apna-ghar',
     title: 'APNA GHAR',
     description:
       'Offering vulnerable widows and children a safe, nurturing home to call their own.',
@@ -51,7 +51,7 @@ const FEATURE_ITEMS = [
     )
   },
   {
-    id: 'community',
+    id: 'community-services',
     title: 'COMMUNITY SERVICES',
     description: 'Supporting families with essential aid to meet immediate needs with dignity.',
     icon: (
@@ -59,7 +59,7 @@ const FEATURE_ITEMS = [
     )
   },
   {
-    id: 'kasb',
+    id: 'kasb-skill-development',
     title: 'KASB VOCATIONAL CENTRE',
     description: 'Empowering youth and women with skills that create income and independence.',
     icon: (
@@ -67,7 +67,7 @@ const FEATURE_ITEMS = [
     )
   },
   {
-    id: 'water',
+    id: 'clean-water',
     title: 'CLEAN WATER',
     description:
       'Providing clean, safe drinking water to restore health, dignity, and daily ease.',
@@ -76,7 +76,7 @@ const FEATURE_ITEMS = [
 )
   },
   {
-    id: 'disaster',
+    id: 'disaster-management',
     title: 'DISASTER Management',
     description: 'Responding swiftly with food, shelter, and care when crises strike globally.',
     icon: (
@@ -84,7 +84,7 @@ const FEATURE_ITEMS = [
    )
   },
   {
-    id: 'seeds',
+    id: 'seeds-of-change',
     title: 'SEEDS OF CHANGE',
     description:
       'Planting trees and raising awareness to build a greener, climate-resilient Pakistan.',
@@ -93,7 +93,7 @@ const FEATURE_ITEMS = [
     )
   },
   {
-    id: 'qurbani',
+    id: 'qurbani-barai-mustehqeen',
     title: 'Qurbani Barai Mustehqeen',
     description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
     icon: (
@@ -101,7 +101,7 @@ const FEATURE_ITEMS = [
 )
   },
   {
-    id: 'aaslab',
+    id: 'aas-lab-diagnostics',
     title: 'AAS LAB',
     description: 'Delivering affordable, reliable diagnostic services to ensure timely medical treatment.',
     icon: (
@@ -170,6 +170,7 @@ const DonationFeatures = () => {
       <div className='right-column'>
         <div className={`features d-grid grid-2 items-start slide-${slideDirection}`} key={startIndex}>
           {visibleFeatures.map((feature) => (
+            <Link to={`/projects/${feature.id}`} key={feature.id}>
             <div className='feature d-flex gap-12 items-start' key={feature.id}>
               <div className={`feature_icon ${feature.id} d-flex items-center justify-center`}>
                 {feature.icon}
@@ -179,6 +180,7 @@ const DonationFeatures = () => {
                 <p>{feature.description}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

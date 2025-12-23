@@ -9,10 +9,11 @@
 }
 
 .section-title {
-  margin: 0 0 20px 0;
+  margin: auto;
   color: #444;
   font-size: 24px;
   font-weight: 700;
+  text-align: center;
 }
 
 /* Back to Projects Button */

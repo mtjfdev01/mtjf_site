@@ -73,8 +73,8 @@ const DonationProjectsMenu = () => {
         { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 1500000, icon: cleanWater }
       ]
     },
-    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa" },
-    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false, category: "General" },
+    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa", initiatives: [] },
+    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false, category: "General", initiatives: []     },
     { 
       id: 'kasb-skill-development', 
       title: "KASB Skill Development", 
@@ -97,8 +97,8 @@ const DonationProjectsMenu = () => {
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false, category: "Zakat" },
-    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false, category: "General" },
+    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false, category: "Zakat", initiatives:[] },
+    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false, category: "General", initiatives:[] },
     { 
       id: 'community-services', 
       title: "Community Service", 
@@ -123,7 +123,7 @@ const DonationProjectsMenu = () => {
     console.log('handleSelectProject called with card:', card)
     
     // If project has initiatives, expand it and hide others
-    if (card.initiatives && card.initiatives.length > 0) {
+    // if (card.initiatives && card.initiatives.length > 0) {
       if (expandedProjectId === card.id) {
         // If already expanded, collapse it
         setExpandedProjectId(null)
@@ -133,23 +133,23 @@ const DonationProjectsMenu = () => {
         setExpandedProjectId(card.id)
         setSelectedProjects([card])
       }
-    } else {
-      // Regular project without initiatives - toggle selection
-      setExpandedProjectId(null)
-      setSelectedProjects(prev => {
-        console.log('Previous selectedProjects:', prev)
-        const exists = prev.find(p => p.id === card.id)
-        if (exists) {
-          const filtered = prev.filter(p => p.id !== card.id)
-          console.log('Removed card, new state:', filtered)
-          return filtered
-        } else {
-          const added = [...prev, card]
-          console.log('Added card, new state:', added)
-          return added
-        }
-      })
-    }
+    // } else {
+    //   // Regular project without initiatives - toggle selection
+    //   setExpandedProjectId(null)
+    //   setSelectedProjects(prev => {
+    //     console.log('Previous selectedProjects:', prev)
+    //     const exists = prev.find(p => p.id === card.id)
+    //     if (exists) {
+    //       const filtered = prev.filter(p => p.id !== card.id)
+    //       console.log('Removed card, new state:', filtered)
+    //       return filtered
+    //     } else {
+    //       const added = [...prev, card]
+    //       console.log('Added card, new state:', added)
+    //       return added
+    //     }
+    //   })
+    // }
     setMessage("")
   }
 
@@ -353,8 +353,18 @@ const DonationProjectsMenu = () => {
           {/* Show initiatives if a project is expanded */}
           {expandedProjectId && (() => {
             const expandedProject = filteredProjects.find(p => p.id === expandedProjectId)
+            if (expandedProject && expandedProject?.initiatives.length === 0) return (
+              <>
+                <div className="general-donation-card form-card">
+                  <DonationProjectsMenuForm
+                    onQuickDonate={handleSubmitDonation}
+                    showMessage={message}
+                  />
+                </div>
+              </>
+            )
             if (!expandedProject || !expandedProject.initiatives) return null
-            
+
             return (
               <>
                 {/* Custom Donation Form Card - First Card */}
