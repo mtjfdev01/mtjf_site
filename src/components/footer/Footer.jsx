@@ -174,7 +174,9 @@ const Footer = () => {
                     <FaFacebookF />
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/foundationmtj"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="footer-social-icon footer-social-twitter"
                     aria-label="Twitter"
                   >
