@@ -319,3 +319,72 @@
   }
 }
 
+/* Email Contact Section */
+.job-detail-email-contact {
+  margin-top: var(--space-48);
+  margin-bottom: var(--space-48);
+  padding: var(--space-24);
+  background: #f9fafb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.job-detail-email-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.job-detail-email-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.job-detail-email-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.job-detail-email-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.job-detail-email-copy {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.job-detail-email-copy:hover {
+  background: rgba(42, 177, 225, 0.1);
+  transform: scale(1.1);
+}
+
+.job-detail-email-copy:active {
+  transform: scale(0.95);
+}
+
+.job-detail-email-copy svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-primary);
+}
+

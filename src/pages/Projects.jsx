@@ -44,7 +44,7 @@ const Projects = () => {
             <>
               <div className="projects-page-header text-center mb-48">
                 <h2 className="heading-secondary">Our Work</h2>
-                <h2 className='mt-0'>Explore our programs and see how your contribution transforms futures</h2>
+                <h2 className='mt-0'style={{maxWidth: '90vw', margin: '0 auto'}}>Explore our programs and see how your contribution transforms futures</h2>
               </div>
 
               <div className="projects-page-grid grid grid-2 gap-32"> 
@@ -64,15 +64,15 @@ const Projects = () => {
                           <div className="projects-page-overlay absolute w-100 h-100"></div>
                         </div>
 
-                        <div className="projects-page-content absolute w-100 h-100 flex flex-col justify-end p-24">
-                          {project.subtitle && (
-                            <p className="text-sm text-white mb-8 projects-page-subtitle">
-                              {project.subtitle}
-                            </p>
-                          )}
-                          <p className="text-sm text-white mb-24 projects-page-description">
-                            {project.description}
+                      <div className="projects-page-content absolute w-100 h-100 flex flex-col justify-end p-24">
+                        {project.subtitle && (
+                          <p className="text-sm text-white mb-8 projects-page-subtitle">
+                            {project.subtitle}
                           </p>
+                        )}
+                        <p className="text-sm text-white mb-24 projects-page-description">
+                          {project.description}
+                        </p>
 
                           <div className="projects-page-actions flex gap-12">
                             <button
@@ -85,14 +85,14 @@ const Projects = () => {
                             >
                               {project.donateButtonText || 'Donate'}
                             </button>
-                            <Link to={project.learnMorePath}>
+                            {/* <Link to={project.learnMorePath}> */}
                               <button
                                 type="button"
                                 className="projects-page-learn-btn"
                               >
                                 Learn More
                               </button>
-                            </Link>
+                            {/* </Link> */}
                           </div>
                         </div>
                       </div>

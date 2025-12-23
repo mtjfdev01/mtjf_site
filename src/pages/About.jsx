@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
 import image1 from '../assets/img/about/hero-image.webp'
+import test from '../assets/img/about/test.webp'
+
 import viceChairmanImage from '../assets/img/about/yousaf_sb.webp'
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import HeroContent from "../components/heroContent/HeroContent";
@@ -37,7 +39,7 @@ const About = () => {
 
   return (
     <>
-      <PageHeader title="About Us" image={image1} />
+      <PageHeader title="About Us" image={test} />
       {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
