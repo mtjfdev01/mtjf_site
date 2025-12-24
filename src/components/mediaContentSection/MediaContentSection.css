@@ -149,6 +149,13 @@
 }
 
 @media (max-width: 768px) {
+  .media-content-list-item {
+    align-items: center;
+  }
+  .media-content-list-icon {
+    width: 12px;
+    height: 12px;
+  }
   .media-content-section {
     padding: var(--space-32) 0;
   }

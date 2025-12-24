@@ -18,7 +18,7 @@ const OurStory = () => {
         {/* Orbit visual */}
         <div className="our-story-visual center">
           <div className="orbit">
-            <span className="orbit-ring ring-1" />
+            {/* <span className="orbit-ring ring-1" />
             <span className="orbit-ring ring-2" />
             <span className="orbit-ring ring-3" />
 
@@ -36,7 +36,7 @@ const OurStory = () => {
 
             <figure className="orbit-avatar avatar-right shadow-lg"> 
               <img src={rightImg} alt="Volunteer 3" /> 
-            </figure>
+            </figure> */}
           </div>
         </div>
 
