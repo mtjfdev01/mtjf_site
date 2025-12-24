@@ -2,6 +2,8 @@ import React, { Suspense, lazy } from "react";
 import PageHeader from "../components/pageHeader/PageHeader";
 import image1 from '../assets/img/about/hero-image.webp'
 import viceChairmanImage from '../assets/img/about/yousaf_sb.webp'
+import viceChairmanImageMobile from '../assets/img/about/yousaf_sb_sm.jpg'
+import chairmanImage from '../assets/img/directors/molana_sahib_sm.jpg'
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import HeroContent from "../components/heroContent/HeroContent";
 
@@ -60,11 +62,13 @@ const About = () => {
             <Suspense fallback={null}>
               <Directors
                 directorRole="Chairman"
+                mobileImageUrl={chairmanImage}
                />
             </Suspense>
             <Suspense fallback={null}>
               <Directors
                 imageUrl={viceChairmanImage}
+                mobileImageUrl={viceChairmanImageMobile}
                 directorName="Molana Yousaf Jamil"
                 directorRole="Vice Chairman"
                 directorTexts={[

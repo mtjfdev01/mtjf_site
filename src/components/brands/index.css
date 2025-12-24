@@ -95,7 +95,7 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 12px;
+    /* padding: 12px; */
   }
   .brands-section .brand-item img {
     max-width: 150px;

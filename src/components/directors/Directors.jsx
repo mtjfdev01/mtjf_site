@@ -12,13 +12,17 @@ const defaultTexts = [
 
 const Directors = ({
   imageUrl = directorImage,
+  mobileImageUrl,
   directorName = 'Molana Tariq Jamil',
   directorRole = "Chairman",
   directorTexts = defaultTexts
 }) => {
+  // Use mobile image if provided, otherwise fallback to desktop image
+  const mobileImage = mobileImageUrl || imageUrl
+  
   return (
     <section className="directors-section">
-      <div className=" directors-wrapper">
+      <div className="directors-wrapper">
         <div className="directors-heading-block text-center">
           <h2 className="heading-primary directors-heading-title">
             {directorRole}
@@ -27,10 +31,18 @@ const Directors = ({
 
         <div className="directors-panel">
           <figure className="directors-image-panel">
+            {/* Desktop Image */}
             <img
               src={imageUrl}
-              alt="Molana Tariq Jamil delivering a message"
-              className="directors-image"
+              alt={`${directorName} - ${directorRole} delivering a message`}
+              className="directors-image directors-image-desktop d-none md:d-block"
+            />
+            
+            {/* Mobile Image */}
+            <img
+              src={mobileImage}
+              alt={`${directorName} - ${directorRole} delivering a message`}
+              className="directors-image directors-image-mobile d-block md:d-none"
             />
 
             <figcaption className="directors-label">

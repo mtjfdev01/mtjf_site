@@ -129,6 +129,9 @@
 }
 
 @media (max-width: 575px) {
+  .directors-image-panel {
+    min-height: auto;
+  }
   .directors-section {
     padding: var(--space-48) 0 0;
   }

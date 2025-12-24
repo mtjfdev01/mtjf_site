@@ -22,68 +22,68 @@ const brandsData = [
     // {
     //     image:  logo20,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     {
         image:  logo1,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
     // {
     //     image:  logo2,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     // {
     //     image:  logo2,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     { 
         image:  logo3,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
     {
         image:  logo4,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
     // {
     //     image:  logo5,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     {
         image:  logo6,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
     // {
     //     image:  logo7,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     // {
     //     image:  logo8,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     // {
     //     image:  logo9,
     //     link: 'https://sdgs.un.org/goals',
-    //     alt: 'MTJF Logo'
+    //     alt: 'SDG Logo'
     // },
     {
             image:  logo10,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
 
     {
         image:  logo14,
         link: 'https://sdgs.un.org/goals',
-        alt: 'MTJF Logo'
+        alt: 'SDG Logo'
     },
 
 ];

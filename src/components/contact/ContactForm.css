@@ -129,7 +129,7 @@
 
 @media (max-width: 640px) {
   .contact-panel {
-    padding: 32px 24px;
+    padding: 32px 0;
   }
 
   .contact-panel__grid {

@@ -3,7 +3,6 @@ import healthhero from '../assets/img/projects/projects-details/Health/health_he
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
 import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
 import kasb from '../assets/img/projects/projects-details/kasb/hero-section.webp'
-import community from '../assets/img/projects/projects-details/community/hero- section.webp'
 import image2 from '../assets/img/projects/convocation.webp'
 import healthfooter from '../assets/img/projects/projects-details/Health/health_footer.webp'
 import h_2 from '../assets/img/projects/projects-details/Health/h_2.webp'
@@ -20,14 +19,52 @@ import education from '../assets/img/projects/education_hero.webp'
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/health.webp'
 import Education from '../assets/img/projects/education.webp'
+import alhusnainschool from '../assets/img/projects/projects-details/education/education_system.webp'
+import alhasanaincollegewomen from '../assets/img/projects/projects-details/education/education_college.webp'
+import scholarship from '../assets/img/projects/projects-details/education/education_scholarship.webp'
+import alhasanainmadaris from '../assets/img/projects/projects-details/education/education_madarsa.webp'
+import educationprogram from '../assets/img/projects/projects-details/education/education_support.webp'
+import quarterlyeducation from '../assets/img/projects/projects-details/education/education_report.webp'
+import supportbuildsfutures from '../assets/img/projects/projects-details/education/education_support.webp'
+import impactglance from '../assets/img/projects/projects-details/education/education_transform.webp'
+
+
 import CleanWater from '../assets/img/projects/water.webp'
 import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
 import communityhandpump from '../assets/img/projects/projects-details/cleanwater/community.webp'
 import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
 
 import ApnaGhar from '../assets/img/projects/project-image/apnaghar.webp'
+import apna_ghar from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar.webp'
+import apna_ghar_matters from '../assets/img/projects/projects-details/Apna Ghar/matter.webp'
+import apna_ghar_mission from '../assets/img/projects/projects-details/Apna Ghar/detail.webp'
+import apna_ghar_building from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar.webp'
+import apna_ghar_eligibility from '../assets/img/projects/projects-details/Apna Ghar/criteria.webp'
+import apna_ghar_goal from '../assets/img/projects/projects-details/Apna Ghar/sdgs.webp'
+import apna_ghar_impact from '../assets/img/projects/projects-details/Apna Ghar/impact.webp'
+import apna_ghar_story from '../assets/img/projects/projects-details/Apna Ghar/story.webp'
+
+
 import DisasterRelief from '../assets/img/projects/disaster.webp'
+import gaza_relief from '../assets/img/projects/projects-details/Disaster/disaster_gaza.webp'
+import turkey_morocco_earthquakes from '../assets/img/projects/projects-details/Disaster/disaster_moroco.webp'
+import pakistan_floods from '../assets/img/projects/projects-details/Disaster/disaster_flood.webp'
+import pakistan_floods_2025 from '../assets/img/projects/projects-details/Disaster/disaster_flood_2025.webp'
+import accountability_transparency from '../assets/img/projects/projects-details/Disaster/disaster_audit.webp'
+import voices_from_field from '../assets/img/projects/projects-details/Disaster/disaster_voices.webp'
+import call_to_action from '../assets/img/projects/projects-details/Disaster/disaster_call.webp'
+
+
+
 import KasbSkill from '../assets/img/projects/project-image/kasbskill.webp'
+import training from '../assets/img/projects/projects-details/kasb/kasb.webp' 
+import trainerProgram from '../assets/img/projects/projects-details/kasb/kasb_trainer.webp'
+import kasbprogramimpact from '../assets/img/projects/projects-details/kasb/kasb_donate.webp'
+import kasbprogramreport from '../assets/img/projects/projects-details/kasb/kasb_report.webp'
+import supportcreatesopportunity from '../assets/img/projects/projects-details/kasb/kasb.webp'
+import impactmetrics from '../assets/img/projects/projects-details/kasb/kasb.webp'
+import kasb_football from '../assets/img/projects/projects-details/kasb/kasb_football.webp'
+
 import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
@@ -115,7 +152,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Chak 8/8 R, Rady Wala (40 Students)'
         ],
         impact: '205 students currently enrolled across 5 schools, with over 10 micro-schools in operation. Our goal is to expand further, reaching more children in need.',
-        donateButtonText: 'Sponsor a Child\'s Education'
+        donateButtonText: 'Sponsor a Child\'s Education',
+        image: alhusnainschool
       },
       {
         id: 'al-hasanain-college-women',
@@ -127,7 +165,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Courses in Science, Commerce, and Humanities',
           'Leadership and personal development programs'
         ],
-        donateButtonText: 'Empower a Young Woman'
+        donateButtonText: 'Empower a Young Woman',
+        image: alhasanaincollegewomen
       },
       {
         id: 'educational-scholarship-programs',
@@ -135,7 +174,8 @@ export const PROJECTS_DETAIL_DATA = {
         subtitle: 'Breaking Barriers, Creating Opportunities',
         description: 'Talented students should never miss out on education due to financial limitations. Our scholarship program covers tuition, transport, books, accommodation, and mentorship, ensuring every student has a holistic academic journey.',
         impact: '300+ scholarships awarded, 90% retention rate, Beneficiaries placed in top schools and colleges',
-        donateButtonText: 'Fund a Scholarship'
+        donateButtonText: 'Fund a Scholarship',
+        image: scholarship
       },
       {
         id: 'al-hasanain-madaris-system',
@@ -153,7 +193,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Dar-ul-Ifta issuing 120 verified fatwas annually'
         ],
         impact: '1,300 students enrolled, 170 graduates annually, highly proficient in Arabic and Islamic studies, ready to serve their communities.',
-        donateButtonText: 'Support Islamic Education'
+        donateButtonText: 'Support Islamic Education',
+        image: alhasanainmadaris
       },
       {
         id: 'education-program-impact',
@@ -165,7 +206,8 @@ export const PROJECTS_DETAIL_DATA = {
           'https://www.youtube.com/watch?v=gNt5XZyRGDk&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=25',
           'https://www.youtube.com/watch?v=_rQhKds84rc&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=49'
         ],
-        donateButtonText: 'Support Education Programs'
+        donateButtonText: 'Support Education Programs',
+        image: educationprogram
       },
       {
         id: 'quarterly-education-reports',
@@ -180,14 +222,16 @@ export const PROJECTS_DETAIL_DATA = {
           'Geographic coverage',
           'Cost transparency'
         ],
-        donateButtonText: 'Download All Reports'
+        donateButtonText: 'Download All Reports',
+        image: quarterlyeducation
       },
       {
         id: 'your-support-builds-futures',
         title: 'Your Support Builds Futures',
         subtitle: 'Be a Beacon of Hope Today',
         description: 'Every child taught… Every young woman empowered… Every student supported… begins with a donor who cared.',
-        donateButtonText: 'Donate to Education Programs'
+        donateButtonText: 'Donate to Education Programs',
+        image: supportbuildsfutures
       },
       {
         id: 'impact-metrics',
@@ -216,7 +260,8 @@ export const PROJECTS_DETAIL_DATA = {
             impact: 'Education reaches remote villages, bringing hope to children who had no access to schooling.'
           }
         ],
-        donateButtonText: 'View Detailed Quarterly Reports'
+        donateButtonText: 'View Detailed Quarterly Reports',
+        image: impactglance
       },
     ],
     testimonials: {
@@ -564,7 +609,8 @@ export const PROJECTS_DETAIL_DATA = {
         ],
         impact: 'Through this holistic support, MTJF addressed both immediate survival needs and long-term sustenance, helping families regain stability, dignity, and hope. Beyond the material aid, our presence reassured communities that they were not forgotten, restoring a sense of humanity amid the chaos of conflict.',
         testimonial: '"Receiving food, water, and tents from MTJ Foundation made us feel seen and protected. Our children can sleep safely tonight because someone cared." — Ayesha, mother of 3, Gaza',
-        donateButtonText: 'Support Gaza Relief'
+        donateButtonText: 'Support Gaza Relief',
+        image: gaza_relief
       },
       {
         id: 'turkey-morocco-earthquakes',
@@ -578,7 +624,8 @@ export const PROJECTS_DETAIL_DATA = {
         ],
         impact: 'Our teams coordinated closely with local authorities and NGOs to identify the most vulnerable households, ensuring aid reached children, elderly, and those with disabilities first. The timely intervention significantly reduced casualties, prevented secondary health crises, and offered families a sense of stability during the most frightening moments of their lives.',
         testimonial: '"We had nowhere to go, no food, no water. The MTJ Foundation team arrived with tents, meals, and medicine—they brought us life when everything was lost." — Ahmed, survivor, Turkey',
-        donateButtonText: 'Support Earthquake Relief'
+        donateButtonText: 'Support Earthquake Relief',
+        image: turkey_morocco_earthquakes
       },
       {
         id: 'pakistan-floods-2022',
@@ -593,7 +640,8 @@ export const PROJECTS_DETAIL_DATA = {
         ],
         impact: 'Through these efforts, MTJF reached over 50,000 individuals across the most affected regions, combining emergency relief with long-term recovery planning. The team\'s approach emphasized not just survival but resilience, ensuring families had the tools to rebuild and recover after the waters receded.',
         testimonial: '"The MTJ Foundation team saved our family. We had no food, no home, but their tents, meals, and medicine gave us hope and strength to start again." — Karim, farmer, Sindh',
-        donateButtonText: 'Support Flood Relief'
+        donateButtonText: 'Support Flood Relief',
+        image: pakistan_floods
       },
       {
         id: 'pakistan-floods-2025',
@@ -634,7 +682,8 @@ export const PROJECTS_DETAIL_DATA = {
             ]
           }
         ],
-        donateButtonText: 'Support 2025 Flood Relief'
+        donateButtonText: 'Support 2025 Flood Relief',
+        image: pakistan_floods_2025
       },
       {
         id: 'accountability-transparency',
@@ -647,25 +696,28 @@ export const PROJECTS_DETAIL_DATA = {
           'Field verification and centralized MEAL (Monitoring, Evaluation, Accountability & Learning) oversight',
           'Every rupee treated as Amanat (Trust)'
         ],
-        donateButtonText: 'Donate for Disaster Relief'
+        donateButtonText: 'Donate for Disaster Relief',
+        image: accountability_transparency
       },
       {
         id: 'voices-from-field',
         title: 'Voices from the Field',
         subtitle: '',
         description: '',
-        testimonials: [
+        points: [
           '"When floods destroyed our home, we thought we were forgotten. But the tents and meals from MTJ Foundation gave us comfort and faith." — Fatima Bibi, Widow, Alipur',
           '"Our children were hungry for days. The Foundation reached us when no one else could. May Allah bless those who made it possible." — Muhammad Karim, Farmer, Dir'
         ],
-        donateButtonText: 'Donate for Disaster Relief'
+        donateButtonText: 'Donate for Disaster Relief',
+        image: voices_from_field
       },
       {
         id: 'call-to-action',
         title: 'Call to Action',
         subtitle: '',
         description: 'Through your support, MTJF can continue providing life-saving relief, shelter, and hope to families affected by disasters across Pakistan and beyond. Every donation embodies the teaching: "And they give food, in spite of love for it, to the needy, the orphan, and the captive, [saying], \'We feed you only for the Countenance of Allah.\'" (Surah Al-Insan 76:8–9)',
-        donateButtonText: 'Donate for Disaster Relief'
+        donateButtonText: 'Donate for Disaster Relief',
+        image: call_to_action
       }
     ]
   },
@@ -936,7 +988,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Families achieve financial stability and improved living standards.',
           'Trainees contribute to the global sports industry, fostering pride and purpose.'
         ],
-        donateButtonText: 'Empower a Woman Through Skill Training'
+        donateButtonText: 'Empower a Woman Through Skill Training',
+        image: kasb
       },
       {
         id: 'community-trainer-program',
@@ -949,14 +1002,16 @@ export const PROJECTS_DETAIL_DATA = {
           'Communities become more self-reliant and economically empowered',
           'Women develop leadership and mentoring capabilities'
         ],
-        donateButtonText: 'Support Community Trainers'
+        donateButtonText: 'Support Community Trainers',
+        image: trainerProgram
       },
       {
         id: 'kasb-program-impact',
         title: 'KASB Program Impact – Stories of Change',
         subtitle: 'Witness Lives Transformed Through Skill Development',
         description: 'Watch our CEO on-site explain the KASB initiative and hear directly from the women whose lives have been transformed through this program. The video highlights their work, confidence, and the financial independence they\'ve gained through skill development.',
-        donateButtonText: 'Watch the Transformation'
+        donateButtonText: 'Watch the Transformation',
+        image: kasbprogramimpact
       },
       {
         id: 'quarterly-kasb-reports',
@@ -970,14 +1025,16 @@ export const PROJECTS_DETAIL_DATA = {
           'Household income uplift',
           'Program expansion and geographic coverage'
         ],
-        donateButtonText: 'Download All Reports'
+        donateButtonText: 'Download All Reports',
+        image: kasbprogramreport
       },
       {
         id: 'your-support-creates-opportunity',
         title: 'Your Support Creates Opportunity',
         subtitle: 'Be a Catalyst for Change',
         description: 'Every skill taught… Every woman empowered… Every livelihood transformed… begins with a donor who cared.',
-        donateButtonText: 'Donate to KASB Skill Development'
+        donateButtonText: 'Donate to KASB Skill Development',
+        image: kasb_football
       },
       {
         id: 'impact-metrics',
@@ -1001,7 +1058,8 @@ export const PROJECTS_DETAIL_DATA = {
             impact: 'Trainees actively contribute to global supply chains, with products used even in FIFA events.'
           }
         ],
-        donateButtonText: 'View Detailed Quarterly Reports'
+          donateButtonText: 'View Detailed Quarterly Reports',
+        image: impactmetrics
       }
     ],
     faqs: {
@@ -1049,7 +1107,7 @@ export const PROJECTS_DETAIL_DATA = {
   'apna-ghar': {
     id: 'apna-ghar',
     title: 'Apna Ghar – A Safe, Dignified, and Empowering Community for Widows & Orphans',
-    headerImage: image1,
+    headerImage: apna_ghar,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
       { icon: FaUsers, number: '9,250', label: 'People Housed' },
@@ -1079,7 +1137,8 @@ export const PROJECTS_DETAIL_DATA = {
         title: 'What Is Apna Ghar?',
         subtitle: 'A Purpose-Built Community Where Widows and Orphans Can Rebuild Their Lives',
         description: 'Apna Ghar is MTJF\'s flagship initiative focused on uplifting widowed, abandoned, and divorced women along with their orphan children. The project offers permanent housing, skills, faith-based guidance, education support, and community belonging, all within a protected, sustainable environment. Phase I is under development in Tulamba Town, where MTJF is building 70 eco-friendly, solar-powered homes equipped with clean water access and community infrastructure that supports both mothers and their children. Apna Ghar is not just a housing scheme; it is a foundation for a stable childhood and a dignified motherhood.',
-        donateButtonText: 'Build a Home for a Widow & Her Children'
+        donateButtonText: 'Build a Home for a Widow & Her Children',
+        image: apna_ghar
       },
       {
         id: 'why-apna-ghar-matters',
@@ -1094,7 +1153,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Lack of emotional and spiritual support'
         ],
         afterServicesText:'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values , ensuring that no widow or orphan is left behind.',
-        donateButtonText: 'Help Provide Safety and Stability'
+        donateButtonText: 'Help Provide Safety and Stability',
+        image: apna_ghar_matters
       },
       {
         id: 'our-mission',
@@ -1109,7 +1169,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Educational support to help orphan children build a brighter future'
         ],
         afterServicesText: "Every family receives the foundation they need for stability, growth, and independence.",
-        donateButtonText: 'Build a Home for a Widow & Her Children'
+        donateButtonText: 'Build a Home for a Widow & Her Children',
+        image: apna_ghar_mission
       },
       {
         id: 'what-were-building',
@@ -1128,7 +1189,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Child-friendly environment supporting emotional well-being'
         ],
         afterServicesText: 'Every component is designed to restore stability, nurture growth, and empower families.',
-        donateButtonText: 'Contribute to Building a Home'
+        donateButtonText: 'Contribute to Building a Home',
+        image: apna_ghar_building
       },
       {
         id: 'eligibility-criteria',
@@ -1143,7 +1205,8 @@ export const PROJECTS_DETAIL_DATA = {
           'A resident of Tulamba Town (Phase I)',
           'Committed to participating in skill development and micro-enterprise'
         ],
-        donateButtonText: 'Build a Home for a Widow & Her Children'
+        donateButtonText: 'Build a Home for a Widow & Her Children',
+        image: apna_ghar_eligibility
       },
       {
         id: 'impact-we-aim-to-create',
@@ -1157,7 +1220,8 @@ export const PROJECTS_DETAIL_DATA = {
           'Enroll all orphan children in quality education',
           'Build a sustainable, replicable, faith-driven model community'
         ],
-        donateButtonText: 'Be Part of This Change'
+        donateButtonText: 'Be Part of This Change',
+        image: apna_ghar_impact
       },
       {
         id: 'aligned-with-global-goals',
@@ -1174,14 +1238,16 @@ export const PROJECTS_DETAIL_DATA = {
           'Decent Work & Economic Growth',
           'Quality Education'
         ],
-        donateButtonText: 'Build a Home for a Widow & Her Children'
+        donateButtonText: 'Build a Home for a Widow & Her Children',
+        image: apna_ghar_goal
       },
       {
         id: 'stories-of-strength',
         title: 'Stories of Strength',
         subtitle: 'Because Every Widow Deserves Support — Every Orphan Deserves a Future',
         description: 'Apna Ghar will share firsthand stories from mothers and children whose lives have been transformed through stable housing, education, safety, and emotional support. Real journeys. Real resilience. Real transformation.',
-        donateButtonText: 'Watch Their Stories'
+        donateButtonText: 'Watch Their Stories',
+        image: apna_ghar_story
       }
     ],
     faqs: {
