@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import PageHeader from '../components/pageHeader/PageHeader'
-import image1 from '../assets/img/projects/apna_ghr.webp'
-
+import DonateImage from '../assets/img/donate/donate.png'
+import DonateLgImage from '../assets/img/donate/donate_xs.png'
 const WaysToDonateSection = lazy(() => import('../components/waysToDonate/WaysToDonateSection'))
 const Footer = lazy(() => import('../components/footer/Footer'))
 
@@ -18,8 +18,12 @@ const WaysToDonate = () => {
 
   return (
     <>
-      <PageHeader title="Ways To Donate" image={image1} />
-      
+    <div className='d-none md:d-block'>
+      <PageHeader title={'Main Donation Page'} image={DonateLgImage}/>
+    </div>
+    <div className='md:d-none'>
+    <PageHeader title={'Main Donation Page'} image={DonateImage}/>
+    </div>      
       <div ref={sectionRef}>
         {showSection && (
           <Suspense fallback={null}>
