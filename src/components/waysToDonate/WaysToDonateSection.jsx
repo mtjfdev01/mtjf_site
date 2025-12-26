@@ -65,7 +65,7 @@ const WaysToDonateSection = () => {
     { id: 'online-banking', label: 'Online Banking' },
     { id: 'bank-transfer', label: 'Bank Transfer' },
     { id: 'home-collection', label: 'Home Collection' },
-    { id: 'international-accounts', label: 'International Accounts' }
+    // { id: 'international-accounts', label: 'International Accounts' }
   ]
 
   const onlineBankingSubTabs = [
