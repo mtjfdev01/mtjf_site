@@ -2,7 +2,7 @@ import React from 'react'
 import './DonationProjectsMenuCard.css'
 
 const DonationProjectsMenuCard = ({ card, selected, onSelect }) => {
-  console.log('DonationProjectsMenuCard rendered:', { card, selected, hasOnSelect: !!onSelect })
+  // console.log('DonationProjectsMenuCard rendered:', { card, selected, hasOnSelect: !!onSelect })
   
   const handleClick = (e) => {
     console.log('Card clicked!', card)

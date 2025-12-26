@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import axiosInstance from '../../utils/axios'
@@ -25,7 +25,7 @@ const paymentFrequency = {
 const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { donationData, projectDonations, clearDonationData, setProjectDonationData, setDonationFormData } = useDonation()
+  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -33,6 +33,9 @@ const CheckoutForm = () => {
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
   const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
   const hasFetchedFailedTransaction = useRef(false)
+  const hasSetDonationItems = useRef(false)
+  const previousDonationItemsRef = useRef(null)
+  const previousDonationTypeRef = useRef(null)
 
   // Get donationID from query parameters
   useEffect(() => {
@@ -77,30 +80,60 @@ const CheckoutForm = () => {
   }, [donationData, isFailedTransactionFlow])
 
   // Store donation items from location state into context if available
+  // Use ref to track if we've already set the data to prevent infinite loops
   useEffect(() => {
-    if (donationItemsFromState.length > 0 && setProjectDonationData) {
+    // Check if donationItemsFromState has actually changed
+    const itemsChanged = JSON.stringify(previousDonationItemsRef.current) !== JSON.stringify(donationItemsFromState)
+    
+    if (donationItemsFromState.length > 0 && setProjectDonationData && (itemsChanged || !hasSetDonationItems.current)) {
       setProjectDonationData(donationItemsFromState)
+      hasSetDonationItems.current = true
+      previousDonationItemsRef.current = donationItemsFromState
+    }
+    
+    // Reset when donationItemsFromState is empty (new navigation without state)
+    if (donationItemsFromState.length === 0) {
+      hasSetDonationItems.current = false
+      previousDonationItemsRef.current = null
     }
   }, [donationItemsFromState, setProjectDonationData])
 
   // Initialize donation type from project donations if available
+  // Memoize the donation type to prevent unnecessary recalculations
+  const firstDonationType = useMemo(() => {
+    const donationTypeSource = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+    return donationTypeSource.length > 0 ? donationTypeSource[0]?.donationType : null
+  }, [donationItemsFromState, projectDonations])
+  
   useEffect(() => {
-    if (isProjectDonationsFlow && (donationItemsFromState.length > 0 || projectDonations.length > 0)) {
-      // Get donation type from first donation item
-      const firstDonation = donationItemsFromState[0] || projectDonations[0]
-      if (firstDonation?.donationType) {
-        const typeMap = {
-          'GENERAL': 'general',
-          'SADKA': 'sadqa',
-          'ZAKAT': 'zakat'
-        }
-        setFormData(prev => ({
-          ...prev,
-          donation_type: typeMap[firstDonation.donationType] || 'general'
-        }))
+    if (isProjectDonationsFlow && firstDonationType) {
+      const typeMap = {
+        'GENERAL': 'general',
+        'SADKA': 'sadqa',
+        'ZAKAT': 'zakat'
       }
+    const newDonationType = typeMap[firstDonationType] || 'general'
+      
+      // Only update if the donation type has actually changed
+      // Use a ref to track the last donation type we set to prevent infinite loops
+      if (previousDonationTypeRef.current !== newDonationType) {
+        setFormData(prev => {
+          // Double-check: if current value already matches, don't update
+          if (prev.donation_type === newDonationType) {
+            return prev
+          }
+          return {
+            ...prev,
+            donation_type: newDonationType
+          }
+        })
+        previousDonationTypeRef.current = newDonationType
+      }
+    } else if (!isProjectDonationsFlow) {
+      // Reset ref when not in project donations flow
+      previousDonationTypeRef.current = null
     }
-  }, [isProjectDonationsFlow, donationItemsFromState, projectDonations])
+  }, [isProjectDonationsFlow, firstDonationType])
 
   // Handle failed transaction flow - fetch and populate form data
   useEffect(() => {
@@ -393,22 +426,11 @@ const CheckoutForm = () => {
       return
     }
 
-    // Calculate total amount - support all flows including failed transaction
-    let totalAmount = 0
-    if (isProjectDonationsFlow) {
-      // Calculate from project donations
-      const donationsToUse = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
-      totalAmount = donationsToUse.reduce((sum, donation) => {
-        return sum + (donation.totalAmount || 0)
-      }, 0)
-      
-      // Also check totalAmountFromState as fallback
-      if (totalAmount === 0 && totalAmountFromState > 0) {
-        totalAmount = totalAmountFromState
-      }
-    } else if (isOldDonationFormFlow || isFailedTransactionFlow) {
-      // Calculate from old donation form data or failed transaction
-      totalAmount = donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
+    // Use amount from context (already calculated from all sources)
+    // Fallback to totalAmountFromState if amount is 0 and we have state
+    let totalAmount = amount || 0
+    if (totalAmount === 0 && totalAmountFromState > 0) {
+      totalAmount = totalAmountFromState
     }
 
     if (!totalAmount || Number(totalAmount) <= 0 || Number(totalAmount) < 100) {

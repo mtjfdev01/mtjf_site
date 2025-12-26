@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FcDonate } from 'react-icons/fc'
 import './index.css' 
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
@@ -127,11 +128,24 @@ const Navbar = () => {
             {/* button section */}
              <div>
             <button 
-              className='btn btn--alert' 
+              className='btn btn--alert btn-donate-animated' 
               onClick={() => navigate('/donate')}
               aria-label="Navigate to donation form"
             >
-              Donate Now
+              {/* Animated background particles */}
+              {/* <span className="particle particle-1"></span>
+              <span className="particle particle-2"></span> */}
+              <span className="particle particle-3"></span>
+              <span className="particle particle-4"></span>
+              
+              {/* Glowing border */}
+              <span className="glow-border"></span>
+              
+              {/* Button content */}
+              <span className="btn-donate-content">
+                <FcDonate className="btn-donate-icon" size={20} />
+                <span>Donate Now</span>
+              </span>
             </button>
             </div>
             <div className='md:d-none'>

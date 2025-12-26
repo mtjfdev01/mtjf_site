@@ -15,35 +15,10 @@ const DonationSidebar = lazy(() => import('../components/donation/projects_menu/
 
 const Checkout = () => {
   const location = useLocation()
-  const { donationData, projectDonations } = useDonation()
+  const { amount } = useDonation() 
   
-  // Get donation items from location state (passed from donation projects menu)
-  const donationItemsFromState = location.state?.donationItems || []
-  const totalAmountFromState = location.state?.totalAmount || 0
-  
-  // Calculate total amount - support both flows
-  const totalAmount = useMemo(() => {
-    // Check if we have donation items from state
-    if (donationItemsFromState.length > 0) {
-      return donationItemsFromState.reduce((sum, donation) => {
-        return sum + (donation.totalAmount || 0)
-      }, 0) || totalAmountFromState
-    }
-    
-    // Check if we have project donations from context
-    if (projectDonations.length > 0) {
-      return projectDonations.reduce((sum, donation) => {
-        return sum + (donation.totalAmount || 0)
-      }, 0)
-    }
-    
-    // Check old donation form flow
-    if (donationData) {
-      return donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
-    }
-    
-    return totalAmountFromState
-  }, [donationItemsFromState, projectDonations, donationData, totalAmountFromState])
+  // Use total amount from context (already calculated from all sources)
+  const totalAmount = amount || 0
 
   // First component after header - loads immediately
   const [formRef, showForm] = useIntersectionObserver({ 

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
 import './DonationForm.css'
 
@@ -24,7 +25,7 @@ const DonationForm = ({
   className = ''
 }) => {
   const navigate = useNavigate()
-  const { setDonationFormData } = useDonation()
+  const { setDonationFormData } = useDonation() 
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -256,8 +257,20 @@ const DonationForm = ({
                 />
               </div>
 
-              <button type="submit" className="donation-form-submit btn--alert">
-                Donate
+              <button type="submit" className="donation-form-submit btn--alert btn-donate-animated">
+                {/* Animated background particles */}
+
+                <span className="particle particle-3"></span>
+                <span className="particle particle-4"></span>
+                
+                {/* Glowing border */}
+                <span className="glow-border"></span>
+                
+                {/* Button content */}
+                <span className="btn-donate-content text-center">
+                  <FcDonate className="btn-donate-icon" size={20} />
+                  <span>Donate</span>
+                </span>
               </button>
             </div>
           </div>

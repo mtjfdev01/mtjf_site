@@ -382,7 +382,7 @@ const WaysToDonateSection = () => {
                   Our team can visit your location to collect your donation. Please contact us to schedule a home collection.
                 </p>
                 <p>
-                  <strong>Contact:</strong> +923000776016
+                  <strong>Contact:</strong> +92 303 2440000
                 </p>
               </div>
             </div>
@@ -484,7 +484,7 @@ const WaysToDonateSection = () => {
         <div className="whatsapp-notice">
           <p>
             To get donation receipt please share your transaction slip to our following WhatsApp number:{' '}
-            <a href="https://wa.me/923000776016" className="whatsapp-link">+923000776016</a>
+            <a href="https://wa.me/+92 303 2440000" className="whatsapp-link">+92 303 2440000</a>
           </p>
         </div>
 

@@ -11,7 +11,7 @@ const Footer = lazy(() => import('../../footer/Footer'))
 const DonationCardsPage = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { updateProjectDonation, projectDonations, setProjectDonationData } = useDonation()
+  const { updateProjectDonation, projectDonations, setProjectDonationData, amount } = useDonation()
   
   const selectedProjects = location.state?.selectedProjects || []
   const [donations, setDonations] = useState([])
@@ -78,7 +78,8 @@ const DonationCardsPage = () => {
     })
   }
 
-  const totalAmount = donations.reduce((sum, donation) => sum + donation.totalAmount, 0)
+  // Use amount from context (already calculated from all projectDonations)
+  const totalAmount = amount || 0
 
   const handleDonate = () => {
     if (totalAmount <= 0) {

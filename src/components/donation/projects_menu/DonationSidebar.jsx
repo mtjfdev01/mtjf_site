@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { useDonation } from '../../../contexts/DonationContext'
@@ -6,24 +6,10 @@ import './DonationSidebar.css'
 
 const DonationSidebar = ({ onCompleteDonation, showBackButton = false }) => {
   const navigate = useNavigate()
-  const { projectDonations, donationData, clearDonationData } = useDonation()
+  const { amount, clearDonationData } = useDonation()
 
-  // Calculate total amount from context - support both projectDonations and donationData
-  const totalAmount = useMemo(() => {
-    // First check projectDonations (new flow)
-    if (projectDonations.length > 0) {
-      return projectDonations.reduce((total, donation) => {
-        return total + (donation.totalAmount || 0)
-      }, 0)
-    }
-    
-    // Fallback to donationData (old form flow)
-    if (donationData) {
-      return donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0
-    }
-    
-    return 0
-  }, [projectDonations, donationData])
+  // Use total amount from context (already calculated from all sources)
+  const totalAmount = amount || 0
 
   const handleCompleteDonation = () => {
     if (onCompleteDonation) {

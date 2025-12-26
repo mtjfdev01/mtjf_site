@@ -22,7 +22,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
-  const { projectDonations, amount, donationType, setAmount, setDonationType, clearDonationData } = useDonation()
+  const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation } = useDonation()
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")
@@ -120,7 +120,7 @@ const DonationProjectsMenu = () => {
   }
 
   const handleSelectProject = (card) => {
-    console.log('handleSelectProject called with card:', card)
+    // console.log('handleSelectProject called with card:', card)
     
     // If project has initiatives, expand it and hide others
     // if (card.initiatives && card.initiatives.length > 0) {
@@ -161,18 +161,14 @@ const DonationProjectsMenu = () => {
     return projectCards.filter(project => project.category === selectedCategory)
   }, [selectedCategory, projectCards])
 
-  // Calculate total donation amount from context
-  const totalDonationAmount = useMemo(() => {
-    return projectDonations.reduce((total, donation) => {
-      return total + (donation.totalAmount || 0)
-    }, 0)
-  }, [projectDonations])
+  // Use total donation amount from context (already calculated from all sources)
+  // No need to calculate separately - context handles it
 
-  const handleSubmitDonation = async () => {
-    // Check if this is a Quick Donate from the form (when amount is entered)
-    // Use amount from context
-    if (amount && amount.trim() !== '') {
-      const numericAmount = Number(String(amount).trim())
+  const handleSubmitDonation = async (quickDonateAmountValue) => {
+    // Check if this is a Quick Donate from the form (when amount is passed)
+    // Use the amount passed from the form (local state)
+    if (quickDonateAmountValue && quickDonateAmountValue.toString().trim() !== '') {
+      const numericAmount = Number(String(quickDonateAmountValue).trim())
       if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
         setMessage("⚠ Please enter a valid donation amount.")
         return
@@ -188,26 +184,27 @@ const DonationProjectsMenu = () => {
       
       setMessage("")
       
-      // Navigate to checkout with custom donation
-      // Use donationType from context
-      navigate('/checkout', {
-        state: {
-          donationItems: [{
-            projectId: projectId,
-            initiativeId: null,
-            projectTitle: expandedProject?.title || 'General Donation',
-            initiativeTitle: null,
-            initiativeSubtitle: null,
-            projectIcon: expandedProject?.icon || null,
-            quantity: 1,
-            donationType: donationType.toUpperCase(),
-            basePrice: numericAmount,
-            customAmount: 0,
-            totalAmount: numericAmount
-          }],
-          totalAmount: numericAmount
-        }
-      })
+      // Create a unique quick donate item and add to projectDonations
+      // This ensures it doesn't conflict with initiative card donations
+      const quickDonateItem = {
+        projectId: projectId,
+        initiativeId: `quick-donate-${Date.now()}`, // Unique ID to avoid conflicts
+        projectTitle: expandedProject?.title || 'General Donation',
+        initiativeTitle: null,
+        initiativeSubtitle: null,
+        projectIcon: expandedProject?.icon || null,
+        quantity: 1,
+        donationType: donationType.toUpperCase(),
+        basePrice: numericAmount,
+        customAmount: 0,
+        totalAmount: numericAmount
+      }
+      
+      // Add to projectDonations in context (this will update the total amount)
+      updateProjectDonation(quickDonateItem)
+      
+      // Navigate to checkout with the donation item
+      navigate('/checkout')
       return
     }
     
@@ -329,7 +326,7 @@ const DonationProjectsMenu = () => {
             const isExpanded = expandedProjectId === card.id
             const shouldShow = expandedProjectId === null || expandedProjectId === card.id
             
-            console.log('Rendering card:', card.title, 'selected:', isSelected, 'expanded:', isExpanded, 'shouldShow:', shouldShow)
+            // console.log('Rendering card:', card.title, 'selected:', isSelected, 'expanded:', isExpanded, 'shouldShow:', shouldShow)
             
             // Hide project card when it's expanded (only show initiatives)
             if (isExpanded) {

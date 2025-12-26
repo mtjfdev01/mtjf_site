@@ -2,3 +2,28 @@ figma_url =  https://www.figma.com/design/8rSUrNvvHPqreO1tlJ4v3H/MTJ---Charity?n
 
 old_figma = '89	'
 
+
+
+
+host smtp.gmail.com port 587 secure false user support@mtjfoundation.org 
+pass pbeauufjajxfymxs rejectUnauthorized true
+
+host smtp.gmail.com port 587 secure false user support@mtjfoundation.org
+ pass pbeauufjajxfymxs rejectUnauthorized true
+
+
+project-card 
+donation-content
+
+Uncaught ChunkLoadError: Loading chunk 2934 failed.
+(error: https://www.mtjfoundation.org/static/js/2934.e8925058.chunk.js)
+    at n.f.j (jsonp chunk loading:27:18)
+    at ensure chunk:6:25
+    at Array.reduce (<anonymous>)
+    at n.e (ensure chunk:5:56)
+    at Checkout.jsx:10:3
+    at M (react.production.js:267:12)
+    at rl (react-dom-client.production.js:3256:25)
+    at ou (react-dom-client.production.js:7421:19)
+    at ss (react-dom-client.production.js:11305:14)
+    at cs (react-dom-client.production.js:11302:5)Understand this error

@@ -6,6 +6,7 @@ import Navbar from './components/navbar';
 import './App.css';
 import StickyBar from "./components/stickybar";
 import Donate from "./pages/Donate";
+import AnimatedButton from './components/waysToDonate/AnimatedButton';
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -73,11 +74,13 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/blogs-details" element={<BlogsDetails />} />
               <Route path="/donate" element={<Donate />} />
+              <Route path="/donation" element={<Donate />} />
               <Route path="/donate/cards" element={<DonationCardsPage />} />
               <Route path="/ways-to-donate" element={<WaysToDonate />} />
               <Route path="/thanks" element={<Thanks />} />
             </Routes>
           </Suspense>
+          <AnimatedButton />
         </DonationProvider>
       </CartProvider>
     </Router>

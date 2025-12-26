@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
 
 const DonationContext = createContext();
 
@@ -12,20 +12,47 @@ export const useDonation = () => {
 
 export const DonationProvider = ({ children }) => {
   const [donationData, setDonationData] = useState(null);
-  const [projectDonations, setProjectDonations] = useState([]);
-  // State for DonationProjectsMenuForm
-  const [amount, setAmount] = useState("");
+  const [projectDonations, setProjectDonations] = useState([]); 
   const [donationType, setDonationType] = useState("general");
 
-  const setDonationFormData = (data) => {
+  // Calculate total amount from all donation sources
+  // This amount is automatically updated when updateProjectDonation is called
+  // because it depends on projectDonations which gets updated
+  const amount = useMemo(() => {
+    let total = 0;
+
+    // Add donationData amount (old form flow)
+    if (donationData) {
+      const donationAmount = donationData?.finalAmount || donationData?.amount || donationData?.customAmount || 0;
+      const parsedAmount = typeof donationAmount === 'number' ? donationAmount : parseFloat(donationAmount) || 0;
+      total += parsedAmount;
+    }
+
+    // Add projectDonations total (new flow)
+    // This is automatically recalculated when updateProjectDonation updates projectDonations
+    if (projectDonations.length > 0) {
+      const projectTotal = projectDonations.reduce((sum, donation) => {
+        const donationAmount = donation?.totalAmount || 0;
+        const parsedAmount = typeof donationAmount === 'number' ? donationAmount : parseFloat(donationAmount) || 0;
+        return sum + parsedAmount;
+      }, 0);
+      total += projectTotal;
+    }
+
+    // Amount is calculated from donationData and projectDonations only
+    // Quick donate form uses local state and adds to projectDonations when clicked
+    return total;
+  }, [donationData, projectDonations]);
+
+  const setDonationFormData = useCallback((data) => {
     setDonationData(data);
-  };
+  }, []);
 
-  const setProjectDonationData = (donations) => {
+  const setProjectDonationData = useCallback((donations) => {
     setProjectDonations(donations);
-  };
+  }, []);
 
-  const updateProjectDonation = (projectDonation) => {
+  const updateProjectDonation = useCallback((projectDonation) => {
     setProjectDonations(prev => {
       // If totalAmount is 0, remove the donation
       if (projectDonation.totalAmount <= 0) {
@@ -48,27 +75,25 @@ export const DonationProvider = ({ children }) => {
         return [...prev, projectDonation];
       }
     });
-  };
+  }, []);
 
-  const clearDonationData = () => {
+  const clearDonationData = useCallback(() => { 
     setDonationData(null);
     setProjectDonations([]);
-    setAmount("");
     setDonationType("general");
-  };
+  }, []);
 
-  const value = {
+  const value = useMemo(() => ({
     donationData,
     projectDonations,
-    amount,
+    amount, // Total calculated amount from all sources (donationData + projectDonations)
     donationType,
     setDonationFormData,
     setProjectDonationData,
     updateProjectDonation,
     clearDonationData,
-    setAmount,
     setDonationType
-  };
+  }), [donationData, projectDonations, amount, donationType, setDonationFormData, setProjectDonationData, updateProjectDonation, clearDonationData]);
 
   return (
     <DonationContext.Provider value={value}>

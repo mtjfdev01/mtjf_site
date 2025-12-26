@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDonation } from '../../../contexts/DonationContext'
 import './DonationProjectsMenuForm.css'
 
@@ -6,7 +6,17 @@ const DonationProjectsMenuForm = ({
   onQuickDonate,
   showMessage,
 }) => {
-  const { amount, donationType, setAmount, setDonationType } = useDonation()
+  const { donationType, setDonationType } = useDonation()
+  // Use local state for input field - don't update context until button is clicked
+  const [localAmount, setLocalAmount] = useState('')
+
+  const handleQuickDonate = () => {
+    // Pass the local amount to the parent handler
+    onQuickDonate(localAmount)
+    // Clear the input after submission
+    setLocalAmount('')
+  }
+
   return (
     <>
       <div className="amount-section">
@@ -15,8 +25,8 @@ const DonationProjectsMenuForm = ({
             type="number"
             min="0"
             placeholder="Amount (Rs.)"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={localAmount}
+            onChange={(e) => setLocalAmount(e.target.value)}
             aria-label="Donation amount in rupees"
             className="donation-amount-input"
           />
@@ -62,7 +72,7 @@ const DonationProjectsMenuForm = ({
       </div>
 
       <div className="form-actions">
-        <button className="quick-donate-btn" onClick={onQuickDonate}>
+        <button className="quick-donate-btn" onClick={handleQuickDonate}>
           Quick Donate
         </button>
       </div>

@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
 import './VerticalDonationForm.css'
 
@@ -262,8 +263,21 @@ const VerticalDonationForm = ({
             />
           </div>
 
-          <button type="submit" className="vertical-donation-submit btn--alert">
-            Donate
+          <button type="submit" className="vertical-donation-submit btn-donate-animated">
+            {/* Animated background particles */}
+              {/* <span className="particle particle-1"></span>
+              <span className="particle particle-2"></span> */}
+            <span className="particle particle-3"></span>
+            <span className="particle particle-4"></span>
+            
+            {/* Glowing border */}
+            <span className="glow-border"></span>
+            
+            {/* Button content */}
+            <span className="btn-donate-content">
+              <FcDonate className="btn-donate-icon" size={20} />
+              <span>Donate</span>
+            </span>
           </button>
         </form>
       </div>
