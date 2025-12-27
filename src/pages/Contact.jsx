@@ -53,51 +53,15 @@ const Contact = () => {
       {/* First component after header - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
-          <Suspense fallback={null}>
             <ContactSection onSubmit={handleSubmit} />
-          </Suspense>
         )}
       </div>
-
-      {/* Next components - load on short scroll */}
-      <div ref={secondSectionRef} style={{ minHeight: '200px' }}>
-        {showSecondSection && (
-          <>
-            <Suspense fallback={null}>
-              <InternationalOffices />
-            </Suspense>
-            <Suspense fallback={null}>
               <NationalOffices />
-            </Suspense>
-            <Suspense fallback={null}>
+              <InternationalOffices />
               <ContactMap />
-            </Suspense>
-          </>
-        )}
-      </div>
-
-      {/* Rest of components - load on more scroll */}
-      <div ref={restRef} style={{ minHeight: '200px' }}>
-        {showRest && (
-          <>
-            {/* <Suspense fallback={null}>
-              <Events />
-            </Suspense> */}
-            {/* <Suspense fallback={null}>
-              <QuickBlogs />
-            </Suspense> */}
-            <Suspense fallback={null}>
               <Newsletter />
-            </Suspense>
-            <Suspense fallback={null}>
               <DonationCta />
-            </Suspense>
-            <Suspense fallback={null}>
               <Footer />
-            </Suspense>
-          </>
-        )}
-      </div>
     </>
   )
 }

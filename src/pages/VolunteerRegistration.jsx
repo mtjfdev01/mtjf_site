@@ -23,29 +23,11 @@ const VolunteerRegistration = () => {
   return (
     <>
       <PageHeader title="Volunteer Registration" image={image1} />
-      
-      <div ref={formRef}>
       <VolunteerCards />
         {showForm && <VolunteerSection />}
-
-      </div>
-
-      {/* Rest of components - load on more scroll */}
-      <div ref={restRef} style={{ minHeight: '200px' }}>
-        {showRest && (
-          <>
-            <Suspense fallback={null}>
               <Newsletter />
-            </Suspense>
-            <Suspense fallback={null}>
               <DonationCta />
-            </Suspense>
-            <Suspense fallback={null}>
               <Footer />
-            </Suspense>
-          </>
-        )}
-      </div>
     </>
   )
 };

@@ -56,11 +56,12 @@ const Projects = () => {
                         className="projects-page-card card relative overflow-hidden"
                       >
                         <div className="projects-page-image-container relative w-100 h-100">
-                          <LazyImage
+                          {/* <LazyImage
                             src={project.image}
                             alt={project.title}
                             className="projects-page-image"
-                          />
+                          /> */}
+                          <img src={project.image} alt={project.title} className="projects-page-image" />
                           <div className="projects-page-overlay absolute w-100 h-100"></div>
                         </div>
 

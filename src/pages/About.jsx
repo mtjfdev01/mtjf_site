@@ -40,32 +40,14 @@ const About = () => {
   return (
     <>
       <PageHeader title="About Us" image={image1} />
-      {/* First component after header - loads immediately */}
-      <div ref={firstSectionRef}>
-        {showFirstSection && (
-          <Suspense fallback={null}>
             <OurStory />
-          </Suspense>
-        )}
-      </div>
 
-      {/* Next components - load on short scroll */}
-      <div ref={secondSectionRef} style={{ minHeight: '200px' }}>
-        {showSecondSection && (
-          <>
-            <Suspense fallback={null}>
               <Mission />
-            </Suspense>
-            <Suspense fallback={null}>
               <CoreValues />
-            </Suspense>
-            <Suspense fallback={null}>
               <Directors
                 directorRole="Chairman"
                 mobileImageUrl={chairmanImage}
                />
-            </Suspense>
-            <Suspense fallback={null}>
               <Directors
                 imageUrl={viceChairmanImage}
                 mobileImageUrl={viceChairmanImageMobile}
@@ -77,18 +59,7 @@ const About = () => {
                   "His vision inspires our teams to lead with humility, fostering a culture rooted in faith, integrity, and inclusive progress.",
                 ]}
               />
-            </Suspense>
-            <Suspense fallback={null}>
               <Team />
-            </Suspense>
-          </>
-        )}
-      </div>
-
-      {/* Rest of components - load on more scroll */}
-      <div ref={restRef} style={{ minHeight: '200px' }}>
-        {showRest && (
-          <>
             {/* <Suspense fallback={null}>
               <Events />
             </Suspense> */}
@@ -105,9 +76,6 @@ const About = () => {
               <Footer />
             </Suspense>
           </>
-        )}
-      </div>
-    </>
   );
 };
 

@@ -10,16 +10,16 @@ import lahore from '../assets/img/contact us/lahore.webp';
 
 
 export const internationalOffices = [
-  {
-    id: 'usa',
-    name: 'USA',
-    phone: '+1 (631) 786 8853',
-    hotline: '+92 300 244 0000',
-    // email: 'info@mtjfoundation.org',
-    address: 'Mahboob Nagar Road Tularosa, District Khairpur',
-    image: usaImg,
-    region: 'North America',
-  },
+  // {
+  //   id: 'usa',
+  //   name: 'USA',
+  //   phone: '+1 (631) 786 8853',
+  //   hotline: '+92 300 244 0000',
+  //   // email: 'info@mtjfoundation.org',
+  //   address: 'Mahboob Nagar Road Tularosa, District Khairpur',
+  //   image: usaImg,
+  //   region: 'North America',
+  // },
   {
     id: 'canada',
     name: 'Canada',
@@ -30,16 +30,16 @@ export const internationalOffices = [
     image: canadaImg,
     region: 'North America',
   },
-  {
-    id: 'uk',
-    name: 'UK',
-    phone: '+44 (203) 786 8853',
-    hotline: '+92 300 244 0000',
-    // email: 'info@mtjfoundation.org',
-    address: 'House #3B/Block C, Model Town',
-    image: ukImg,
-    region: 'Europe',
-  },
+  // {
+  //   id: 'uk',
+  //   name: 'UK',
+  //   phone: '+44 (203) 786 8853',
+  //   hotline: '+92 300 244 0000',
+  //   // email: 'info@mtjfoundation.org',
+  //   address: 'House #3B/Block C, Model Town',
+  //   image: ukImg,
+  //   region: 'Europe',
+  // },
  
 ];
 

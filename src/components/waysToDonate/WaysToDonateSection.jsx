@@ -22,6 +22,8 @@ const WaysToDonateSection = () => {
   const [activeSubTab, setActiveSubTab] = useState('debit-credit')
   const [activeCategory, setActiveCategory] = useState('general-donation')
   const [copiedItem, setCopiedItem] = useState(null)
+  const [activeSubTabLabel, setActiveSubTabLabel] = useState('Debit/Credit Card')
+  
 
   const copyToClipboard = async (text, itemId) => {
     try {
@@ -292,7 +294,11 @@ const WaysToDonateSection = () => {
                 <button
                   key={tab.id}
                   className={`sub-tab ${activeSubTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setActiveSubTab(tab.id)}
+                  onClick={() => {
+                    setActiveSubTab(tab.id)
+                    setActiveSubTabLabel(tab.label)
+
+                  }}
                 >
                   {tab.label}
                 </button>
@@ -304,7 +310,7 @@ const WaysToDonateSection = () => {
               </div>
               <div className="content-box-text">
                 <p>
-                  You can make donations to MTJ Foundation using your debit or credit card from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
+                  You can make donations to MTJ Foundation using your {activeSubTabLabel}  from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
                   <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
                 </p>
               </div>

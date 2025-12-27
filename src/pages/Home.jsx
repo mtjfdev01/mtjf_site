@@ -41,12 +41,6 @@ const Home = () => {
 
   return (
     <>
-
-      {/* Hero Content - Load immediately */}
-      <div ref={heroContentRef}>
-        {showHeroContent && (
-          <Suspense fallback={null}>
-                  <Hero />
             <DonationForm
               formId="home-donation-form"
               layout="vertical"
@@ -54,10 +48,6 @@ const Home = () => {
               projects={ALL_PROJECTS_DATA}
             />
             <HeroContent />
-
-          </Suspense>
-        )}
-      </div>
 
       {/* Donation Form - Load when near viewport */}
       {/* <div ref={donationFormRef} style={{ minHeight: '200px' }}>
@@ -70,43 +60,15 @@ const Home = () => {
 
       {/* Rest of components - Load when near viewport */}
       <div ref={restRef} style={{ minHeight: '200px' }}>
-        {showRest && (
-          <>
-            <Suspense fallback={null}>
+          
               <DonationFeatures />
-            </Suspense>
-            <Suspense fallback={null}>
               <CtaCircles />
-            </Suspense>
-            <Suspense fallback={null}>
               <Projects />
-            </Suspense>
-            <Suspense fallback={null}>
               <Stats />
-            </Suspense>
-            <Suspense fallback={null}>
               <BrandArea />
-            </Suspense>
-            {/* <Suspense fallback={null}>
-              <Events />
-            </Suspense> */}
-            {/* <Suspense fallback={null}>
-              <QuickBlogs />
-            </Suspense> */}
-            <Suspense fallback={null}>
               <Newsletter />
-            </Suspense>
-            <Suspense fallback={null}>
               <DonationCta />
-            </Suspense>
-            <Suspense fallback={null}>
               <Footer />
-            </Suspense>
-            {/* <Suspense fallback={null}>
-              <Partners />
-            </Suspense> */}
-          </>
-        )}
       </div>
     </>
   );
