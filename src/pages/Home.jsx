@@ -41,7 +41,8 @@ const Home = () => {
 
   return (
     <>
-            <DonationForm
+          <Hero />    
+          <DonationForm
               formId="home-donation-form"
               layout="vertical"
               showProjectSelect={true}
