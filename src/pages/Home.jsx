@@ -4,6 +4,8 @@ import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
+import StickyQuickDonationForm from "../components/donation/StickyQuickDonationForm";
+// import HeroWithTypingTest from "../components/hero/HeroWithTyping.test";
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
 );
@@ -41,6 +43,8 @@ const Home = () => {
 
   return (
     <>
+    {/* <StickyQuickDonationForm /> */}
+    {/* <HeroWithTypingTest /> */}
           <Hero />    
           <DonationForm
               formId="home-donation-form"
@@ -49,19 +53,8 @@ const Home = () => {
               projects={ALL_PROJECTS_DATA}
             />
             <HeroContent />
-
-      {/* Donation Form - Load when near viewport */}
-      {/* <div ref={donationFormRef} style={{ minHeight: '200px' }}>
-        {showDonationForm && (
-          <Suspense fallback={null}>
-
-          </Suspense>
-        )}
-      </div> */}
-
       {/* Rest of components - Load when near viewport */}
       <div ref={restRef} style={{ minHeight: '200px' }}>
-          
               <DonationFeatures />
               <CtaCircles />
               <Projects />

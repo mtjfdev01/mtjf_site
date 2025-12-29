@@ -15,7 +15,7 @@ const teamMembers = [
    {
     id: 'ceo',
     name: 'Ihtisham Ullah Qureshi',
-    role: 'CEO',
+    role: 'Chief Executive Officer',
     image: memberCEO,
     accent: 'emerald',
     rounded: true,
@@ -31,21 +31,21 @@ const teamMembers = [
   {
     id: 'Fundraising',
     name: 'Mairaj Khalid',
-    role: 'Head of CRD ',
+    role: 'Country Head-CRD ',
     image: memberFundraising,
     accent: 'aqua',
   },
   {
     id: 'hr',
     name: 'Muhammad Farukh',
-    role: 'Head of HR',
+    role: 'HR Manager',
     image: memberHR,
     accent: 'amber',
   },
   {
     id: 'Director of Programs',
     name: 'Ikram Seher',
-    role: 'Director of Programs',
+    role: 'MEAL Manager',
     // image: memberHR,
     accent: 'amber',
   },

@@ -7,7 +7,7 @@ import './App.css';
 import StickyBar from "./components/stickybar";
 import Donate from "./pages/Donate";
 import AnimatedButton from './components/waysToDonate/AnimatedButton';
-
+import { Winter } from "./pages/Winter";
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -78,6 +78,7 @@ function App() {
               <Route path="/donate/cards" element={<DonationCardsPage />} />
               <Route path="/ways-to-donate" element={<WaysToDonate />} />
               <Route path="/thanks" element={<Thanks />} />
+              <Route path="/winter-packages" element={<Winter />} />
             </Routes>
           </Suspense>
           <AnimatedButton />

@@ -676,7 +676,7 @@ const CheckoutForm = () => {
                   <i className="fas fa-credit-card"></i>
                 </div>
                 <div className="payment-content">
-                  <h6>Credit, Debit Card, Jazz Cash</h6>
+                  <h6>Credit, Debit Card</h6>
                   <p>Payfast's (Faysal Bank) Secure online payment gateway</p>
                 </div>
                 {isLoading && (

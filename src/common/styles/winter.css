@@ -1,0 +1,9 @@
+.winter_hero {
+    margin-top: var(--space-104);
+}
+
+@media screen and (max-width: 768px) {
+    .winter_hero {
+        margin-top: 35vw;
+    }
+}

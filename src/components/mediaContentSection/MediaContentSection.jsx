@@ -6,7 +6,10 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
   // Function to focus the donation form
   const handleDonateClick = () => {
     setTimeout(() => {
-      const donationForm = document.querySelector('.vertical-donation-form')
+      let donationForm = document.querySelector('.vertical-donation-form')
+      if (!donationForm) {
+        donationForm = document.querySelector('.donation-form')
+      }
       if (donationForm) {
         donationForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
         // Focus on the first input field in the form
