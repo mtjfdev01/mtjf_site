@@ -8,6 +8,7 @@ import StickyBar from "./components/stickybar";
 import Donate from "./pages/Donate";
 import AnimatedButton from './components/waysToDonate/AnimatedButton';
 import { Winter } from "./pages/Winter";
+import StickyQuickDonationForm from "./components/donation/StickyQuickDonationForm";
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -27,7 +28,7 @@ const DonationCardsPage = lazy(() => import("./components/donation/projects_menu
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const Thanks = lazy(() => import("./components/thanks"));
 
-
+ 
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -56,6 +57,7 @@ function App() {
           <ScrollToTop />
           <StickyBar />
           <Navbar />
+          <StickyQuickDonationForm />
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Home />} />

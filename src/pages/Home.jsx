@@ -4,7 +4,6 @@ import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
-import StickyQuickDonationForm from "../components/donation/StickyQuickDonationForm";
 // import HeroWithTypingTest from "../components/hero/HeroWithTyping.test";
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
@@ -43,7 +42,6 @@ const Home = () => {
 
   return (
     <>
-    <StickyQuickDonationForm />
           <Hero />    
           <DonationForm
               formId="home-donation-form"

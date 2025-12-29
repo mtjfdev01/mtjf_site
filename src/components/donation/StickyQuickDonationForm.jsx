@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import './StickyQuickDonationForm.css'
 
@@ -17,11 +17,19 @@ import community from '../../assets/img/projects/icons/community.png'
 
 const StickyQuickDonationForm = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const { donationType, setDonationType, updateProjectDonation } = useDonation()
   const [localAmount, setLocalAmount] = useState('')
   const [selectedProjectId, setSelectedProjectId] = useState('general')
   const [message, setMessage] = useState('')
   const [isExpanded, setIsExpanded] = useState(false)
+  const [shouldShow, setShouldShow] = useState(true)
+
+  // Pages where StickyQuickDonationForm should not be shown
+  const hiddenPages = ['/donate', '/donation', '/checkout']
+  const shouldHideOnPage = hiddenPages.some(page => 
+    location.pathname === page || location.pathname.startsWith(page + '/')
+  )
 
   // Project list - same as DonationProjectsMenu
   const projectCards = [
@@ -88,6 +96,99 @@ const StickyQuickDonationForm = () => {
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded)
+  }
+
+  // Check if donation forms are visible on screen
+  useEffect(() => {
+    const checkDonationForms = () => {
+      const donationForms = document.querySelectorAll('.donation-form, .vertical-donation-form')
+      
+      if (donationForms.length === 0) {
+        setShouldShow(true)
+        return
+      }
+
+      // Check if any donation form is visible in viewport
+      let isFormVisible = false
+      
+      donationForms.forEach((form) => {
+        const rect = form.getBoundingClientRect()
+        const isInViewport = (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        )
+        
+        // Also check if form is partially visible
+        const isPartiallyVisible = (
+          rect.top < window.innerHeight &&
+          rect.bottom > 0 &&
+          rect.left < window.innerWidth &&
+          rect.right > 0
+        )
+        
+        if (isInViewport || isPartiallyVisible) {
+          isFormVisible = true
+        }
+      })
+
+      setShouldShow(!isFormVisible)
+    }
+
+    // Initial check
+    checkDonationForms()
+
+    // Use Intersection Observer for better performance
+    const donationForms = document.querySelectorAll('.donation-form, .vertical-donation-form')
+    
+    if (donationForms.length === 0) {
+      setShouldShow(true)
+      return
+    }
+
+    const observers = []
+    
+    donationForms.forEach((form) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setShouldShow(false)
+            } else {
+              // Check all forms again when one leaves viewport
+              checkDonationForms()
+            }
+          })
+        },
+        {
+          threshold: 0.1, // Trigger when 10% of form is visible
+          rootMargin: '0px'
+        }
+      )
+      
+      observer.observe(form)
+      observers.push(observer)
+    })
+
+    // Also listen to scroll events as fallback
+    const handleScroll = () => {
+      checkDonationForms()
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect())
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
+  // Don't render if on hidden pages or donation forms are visible
+  if (shouldHideOnPage || !shouldShow) {
+    return null
   }
 
   return (
