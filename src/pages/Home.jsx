@@ -43,8 +43,7 @@ const Home = () => {
 
   return (
     <>
-    {/* <StickyQuickDonationForm /> */}
-    {/* <HeroWithTypingTest /> */}
+    <StickyQuickDonationForm />
           <Hero />    
           <DonationForm
               formId="home-donation-form"

@@ -61,8 +61,6 @@
 .sticky-project-section {
   flex: 0 0 150px;
   min-width: 150px;
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
-  overflow: hidden;
 }
 
 .sticky-project-select {
@@ -95,8 +93,6 @@
 .sticky-amount-section {
   flex: 0 0 140px;
   min-width: 140px;
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
-  overflow: hidden;
 }
 
 .sticky-amount-input-wrapper {
@@ -148,8 +144,6 @@
   justify-content: flex-start;
   gap: var(--space-6, 6px);
   flex: 0 0 auto;
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
-  overflow: hidden;
 }
 
 .sticky-donation-type label {
@@ -195,8 +189,6 @@
   flex: 0 0 auto;
   display: flex;
   gap: var(--space-10, 10px);
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
-  overflow: hidden;
 }
 
 .sticky-quick-donate-btn {
@@ -324,12 +316,7 @@
   .sticky-amount-section:not(.expanded),
   .sticky-donation-type:not(.expanded),
   .sticky-form-actions:not(.expanded) {
-    opacity: 0;
-    max-height: 0;
-    margin: 0;
-    overflow: hidden;
-    flex: 0 0 100%;
-    min-width: 0;
+    display: none;
   }
 
   /* Show form elements when expanded */
@@ -337,10 +324,29 @@
   .sticky-amount-section.expanded,
   .sticky-donation-type.expanded,
   .sticky-form-actions.expanded {
-    opacity: 1;
-    max-height: 200px;
-    margin: 0;
+    display: block;
+    margin: var(--space-8, 8px) 0 0 0;
     flex: 1 1 100%;
+    animation: slideDown 0.3s ease;
+  }
+
+  .sticky-donation-type.expanded {
+    display: flex;
+  }
+
+  .sticky-form-actions.expanded {
+    display: flex;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .sticky-project-section.expanded,
