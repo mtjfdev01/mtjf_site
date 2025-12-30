@@ -6,37 +6,43 @@ import mediaImg from '../../assets/img/blogs_details/shahroz.webp'
 
 const BlogDetailSection = ({
   title = 'MTJ Foundation Advances Community Health Through Diabetes Awareness Session',
-//   location = 'Tulamba, Punjab, Pakistan',
   date = 'May 9, 2025',
+  category = '',
+  image = null,
+  excerpt = '',
 }) => {
   return (
     <article className="bd-page">
       {/* Shared page header (hero) */}
-      <PageHeader image={heroImg} title={title} />
+      <PageHeader image={image || heroImg} title={title} />
 
       {/* Black intro band with bullets + location + title + lead */}
       <section className="bd-header container">
         <h1 className="bd-header__title">{title}</h1>
         <div className="bd-meta">
+          {category && (
+            <div className="bd-meta__item">
+              <span className="bd-meta__icon">📂</span>
+              <span className="bd-meta__label">Category:</span>
+              <span className="bd-meta__value">{category}</span>
+            </div>
+          )}
           <div className="bd-meta__item">
             <span className="bd-meta__icon">📅</span>
             <span className="bd-meta__label">Date:</span>
             <span className="bd-meta__value">{date}</span>
           </div>
-          {/* <div className="bd-meta__item">
-            <span className="bd-meta__icon">📍</span>
-            <span className="bd-meta__label">Location:</span>
-            <span className="bd-meta__value">{location}</span>
-          </div> */}
         </div>
       </section>
 
       {/* Main intro text */}
-      <section className="bd-intro-text container">
-        <p className="bd-intro-text__lead">
-          The Molana Tariq Jamil (MTJ) Foundation's Health Department recently conducted a <strong>Diabetes Awareness and Lifestyle Management Session</strong> for 30 registered beneficiaries, as part of its ongoing efforts to promote preventive healthcare and reduce the burden of non-communicable diseases among vulnerable communities. The session was facilitated by <strong>Dr. Asif Imam</strong>, Senior Medical Officer at RHC Tulamba, and focused on equipping patients with practical, non-pharmacological tools to manage Type 2 Diabetes—emphasizing nutrition, physical activity, regular blood sugar monitoring, and lifestyle discipline. The event was attended by 30 diabetic patients (11 males, 19 females), all of whom are registered under MTJ Foundation's healthcare support system. The Foundation's <strong>Chief Executive Officer, Mr. Ihtsham Ullah Qureshi</strong> also participated as a special guest, demonstrating organizational commitment to community health initiatives.
-        </p>
-      </section>
+      {excerpt && (
+        <section className="bd-intro-text container">
+          <p className="bd-intro-text__lead">
+            {excerpt}
+          </p>
+        </section>
+      )}
 
       {/* Split image banner with jagged bottom */}
       <section className="bd-banner">

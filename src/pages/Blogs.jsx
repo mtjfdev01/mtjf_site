@@ -43,9 +43,9 @@ const BlogsPage = () => {
       <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
-            {/* <Suspense fallback={null}>
+            <Suspense fallback={null}>
               <Blogs />
-            </Suspense> */}
+            </Suspense>
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>

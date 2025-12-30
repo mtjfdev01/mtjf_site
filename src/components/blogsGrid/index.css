@@ -22,6 +22,14 @@
   flex-direction: column;
 }
 
+.blog-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .blog-image-wrapper {
   position: relative;
 }

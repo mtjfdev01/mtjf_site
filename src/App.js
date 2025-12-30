@@ -72,9 +72,9 @@ function App() {
               <Route path="/careers/:id" element={<JobDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/blogs/:id" element={<BlogsDetails />} />
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/blogs-details" element={<BlogsDetails />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donation" element={<Donate />} />
               <Route path="/donate/cards" element={<DonationCardsPage />} />

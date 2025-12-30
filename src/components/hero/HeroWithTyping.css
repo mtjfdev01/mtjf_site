@@ -76,6 +76,9 @@
   color: var(--color-primary);
   line-height: 1.2;
   min-height: 1.2em;
+  font-family: 'Segoe UI', 'Arial', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
 }
 
 @media (min-width: 768px) {
@@ -169,7 +172,7 @@
   }
 
   .hero-typing-text {
-    font-size: var(--fs-28);
+    font-size: var(--fs-20);
   }
 
   .hero-typing-image-section {

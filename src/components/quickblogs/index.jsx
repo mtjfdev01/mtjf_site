@@ -1,32 +1,11 @@
 import { Link } from 'react-router-dom'
 import './index.css'
-import blog1 from '../../assets/img/causes/poor boy.webp'
-import blog2 from '../../assets/img/causes/meet box.webp'
-
-const FEATURED_BLOG = {
-  id: 'qurbani-meaning',
-  category: 'Qurbani',
-  title: 'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
-  excerpt:
-    'Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to honour the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani.',
-  image: blog2,
-  link: '/blogs/qurbani-meaning'
-}
-
-const BLOG_LIST = [
-  {
-    id: 'waqf-qurbani',
-    category: 'Food',
-    badge: '96% of people in Gaza are facing high levels of food insecurity',
-    title: 'What Waqf Qurbani Means with MTJ Foundation',
-    excerpt:
-      'As the sacred days of Dhul al-Hijjah approach, we’re reminded of the story that lies at the heart of Qurbani — a story of unwavering faith and sacrifice.',
-    image: blog1,
-    link: '/blogs/waqf-qurbani'
-  }
-]
+import { getFeaturedBlog, getRegularBlogs } from '../../data/blogsData'
 
 const QuickBlogs = () => {
+  const featuredBlog = getFeaturedBlog()
+  const regularBlogs = getRegularBlogs().slice(0, 2) // Show first 2 regular blogs
+
   return (
     <section className="blogs-section container py-64">
       <div className="blogs-header text-center mb-40">
@@ -41,7 +20,7 @@ const QuickBlogs = () => {
 
       <div className="blogs-grid grid grid-12 gap-24">
         <div className="blogs-list col-12 lg-4 flex flex-col gap-24">
-          {BLOG_LIST.map((blog) => (
+          {regularBlogs.map((blog) => (
             <Link
               key={blog.id}
               to={blog.link}
@@ -51,7 +30,9 @@ const QuickBlogs = () => {
                 <img src={blog.image} alt={blog.title} />
               </div>
               <div className="blog-card-content">
-                {/* <p className="blog-badge text-sm bold mb-12">{blog.badge}</p> */}
+                {blog.badge && (
+                  <p className="blog-badge text-sm bold mb-12">{blog.badge}</p>
+                )}
                 <div className="blog-category text-sm mb-8 heading-primary"> 
                   {blog.category}
                 </div>
@@ -64,20 +45,20 @@ const QuickBlogs = () => {
 
         <div className="featured-blog col-12 lg-8">
           <Link
-            to={FEATURED_BLOG.link}
+            to={featuredBlog.link}
             className="featured-blog-card simple-featured-blog"
           >
             <img 
-              src={FEATURED_BLOG.image} 
-              alt={FEATURED_BLOG.title}
+              src={featuredBlog.image} 
+              alt={featuredBlog.title}
               className="featured-blog-background-image"
             />
             <div className="featured-blog-content flex flex-col h-100 justify-end">
               <div className="blog-category heading-secondary mb-12">
-                {FEATURED_BLOG.category}
+                {featuredBlog.category}
               </div>
-              <h3 className="h2 mb-16">{FEATURED_BLOG.title}</h3>
-              <p className="text-sm">{FEATURED_BLOG.excerpt}</p>
+              <h3 className="h2 mb-16">{featuredBlog.title}</h3>
+              <p className="text-sm">{featuredBlog.excerpt}</p>
             </div>
           </Link>
         </div>

@@ -16,6 +16,7 @@ import DonationForm from "../components/donationForm/DonationForm"
 import { ALL_PROJECTS_DATA } from "../data/projectsData"
 import MediaContentSection from "../components/mediaContentSection/MediaContentSection"
 import FAQs from "../components/faqs/FAQs"
+import Footer from "../components/footer/Footer"
 
 const winterSubProjects = [
   {
@@ -135,12 +136,13 @@ export const Winter = () => {
         imageUrl={heroWinter}
         imageAlt="Winter Hero image"
         staticText="Winter Shouldn’t Hurt"
-        typingText="For many families, winter is a season of fear."
+        typingText="وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى  — “Help one another in goodness.” (Qur’an 5:2)"
         subtitle="Freezing nights, empty hands, and no protection from the cold. Through your support, we are collecting winter donations to ensure no one is left alone to suffer this winter."
         textPosition="left"
         backgroundColor="#f5f5f5"
         imageWidth="100%"
         imageHeight="100%"
+        typingSpeed={200}
       /> 
      <DonationForm 
               formId="vertical-donation-form"
@@ -165,6 +167,7 @@ export const Winter = () => {
               subtitle={winterFaqs.subtitle}
               faqs={winterFaqs.faqs}
             />
+            <Footer />
       </div>
     )
 }
