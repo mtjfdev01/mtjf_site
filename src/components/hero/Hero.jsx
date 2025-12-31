@@ -20,7 +20,7 @@ const Hero = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length)
-    }, 50000)
+    }, 3000)
 
     return () => {
       if (intervalRef.current) {
