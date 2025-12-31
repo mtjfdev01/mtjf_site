@@ -1,0 +1,49 @@
+import React from 'react'
+import './Tabs.css'
+
+const EligibilityTab = () => {
+  return (
+    <div className="eligibility-tab">
+      <h2 className="h3 mb-24">Zakat Eligibility Criteria</h2>
+      
+      {/* Zakat Eligibility Criteria */}
+      <div className="form-group mb-32">
+        {/* <label className="form-label mb-12">
+          <strong>Zakat Eligibility Criteria</strong>
+        </label> */}
+        <div className="info-box bg-muted p-16 rounded mb-16">
+          <p className="text-sm mb-12">
+            <strong>Zakat is only applicable if you have:</strong>
+          </p>
+          <p className="text-sm mb-8">
+            Nisab is the minimum amount of net capital that a Muslim must possess in order to be eligible to pay Zakat, which is prescribed as the equivalent of <strong>87.48 grams/ 7.5 tola of gold</strong> or <strong>612.36 grams/ 52.5 tola of silver</strong>. If your savings and assets exceed this value for a full lunar year, you must pay 2.5% Zakat, calculated using the current market value of gold or silver in your local currency.
+          </p>
+          <p className="text-sm mb-0">
+            <strong>Nisab Threshold:</strong>
+          </p>
+          <ul className="text-sm mt-8" style={{ paddingLeft: '20px', marginBottom: '0' }}>
+            <li>87.48 grams/ 7.5 tola of gold, or</li>
+            <li>612.36 grams/ 52.5 tola of silver, or</li>
+            <li>Equivalent cash value to one of these prices</li>
+          </ul>
+        </div>
+        <div className="info-box bg-primary text-white p-16 rounded">
+          <p className="text-sm mb-0">
+            <strong>Note:</strong> Home, normal clothing, and tools for personal usage (not for business purposes) are typically not zakatable. Only wealth above basic needs and above the Nisab threshold is subject to Zakat.
+          </p>
+        </div>
+      </div>
+      
+      <div className="info-box bg-primary text-white p-16 rounded">
+        <p className="text-sm mb-0">
+          <strong>Note:</strong> Your eligibility will be automatically calculated based on 
+          your inputs in all tabs. Make sure to complete the Cash, Gold, and Silver tabs 
+          to get an accurate result.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default EligibilityTab
+
