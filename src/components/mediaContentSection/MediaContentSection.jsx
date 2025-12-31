@@ -116,6 +116,15 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   />
                 </div>
               )}
+
+              {/* Bottom Paragraph - appears below both image and text */}
+              {(subProject.bottomText || subProject.footerText || subProject.conclusion || subProject.summary) && (
+                <div className="media-content-bottom-text">
+                  <p className="media-content-bottom-paragraph">
+                    {subProject.bottomText || subProject.footerText || subProject.conclusion || subProject.summary}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )

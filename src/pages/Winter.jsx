@@ -15,7 +15,7 @@ import Footer from "../components/footer/Footer"
 
 const winterSubProjects = [
   {
-    id: 'al-husnain-school-system',
+    id: 'al-husnain-school-system', 
     title: 'WINTER PACKS DISTRIBUTION',
     subtitle: 'PROTECTION THAT GOES BEYOND WARMTH',
     description: 'To help families survive the winter season with dignity and safety, MTJ Foundation is providing essential winter support to vulnerable and flood-affected families. This initiative ensures timely relief for those facing life-threatening cold conditions. Winter Pack Includes.',
