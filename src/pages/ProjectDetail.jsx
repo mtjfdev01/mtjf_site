@@ -53,8 +53,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="project-detail-page">
-      <PageHeader title={project.title} image={project.headerImage} />
-
+      <div className='d-none md:d-block'>
+      <PageHeader title={project.title} image={project.headerImage}/>
+    </div>
+    <div className='md:d-none'>
+    <PageHeader title={project.title} image={project?.headerImageMob || project?.headerImage}/>
+    </div>
       <div ref={contentRef}>
         {showContent && (
           <>

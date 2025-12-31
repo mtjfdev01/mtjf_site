@@ -35,7 +35,10 @@ import communityhandpump from '../assets/img/projects/projects-details/cleanwate
 import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
 
 import ApnaGhar from '../assets/img/projects/project-image/apnaghar.webp'
-import apna_ghar from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar.webp'
+import apna_ghar from '../assets/img/projects/projects-details/Apna Ghar/hero.webp'
+import apna_ghar_media from '../assets/img/projects/projects-details/Apna Ghar/media.webp'
+import apna_ghar_hero_mob from '../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
+
 import apna_ghar_matters from '../assets/img/projects/projects-details/Apna Ghar/matter.webp'
 import apna_ghar_mission from '../assets/img/projects/projects-details/Apna Ghar/detail.webp'
 import apna_ghar_building from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar.webp'
@@ -57,11 +60,9 @@ import call_to_action from '../assets/img/projects/projects-details/Disaster/dis
 
 
 import KasbSkill from '../assets/img/projects/project-image/kasbskill.webp'
-import training from '../assets/img/projects/projects-details/kasb/kasb.webp' 
 import trainerProgram from '../assets/img/projects/projects-details/kasb/kasb_trainer.webp'
 import kasbprogramimpact from '../assets/img/projects/projects-details/kasb/kasb_donate.webp'
 import kasbprogramreport from '../assets/img/projects/projects-details/kasb/kasb_report.webp'
-import supportcreatesopportunity from '../assets/img/projects/projects-details/kasb/kasb.webp'
 import impactmetrics from '../assets/img/projects/projects-details/kasb/kasb.webp'
 import kasb_football from '../assets/img/projects/projects-details/kasb/kasb_football.webp'
 
@@ -1107,7 +1108,8 @@ export const PROJECTS_DETAIL_DATA = {
   'apna-ghar': {
     id: 'apna-ghar',
     title: 'Apna Ghar – A Safe, Dignified, and Empowering Community for Widows & Orphans',
-    headerImage: apna_ghar,
+    headerImage: apna_ghar, 
+    headerImageMob: apna_ghar_hero_mob,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
       { icon: FaUsers, number: '9,250', label: 'People Housed' },
@@ -1138,7 +1140,7 @@ export const PROJECTS_DETAIL_DATA = {
         subtitle: 'A Purpose-Built Community Where Widows and Orphans Can Rebuild Their Lives',
         description: 'Apna Ghar is MTJF\'s flagship initiative focused on uplifting widowed, abandoned, and divorced women along with their orphan children. The project offers permanent housing, skills, faith-based guidance, education support, and community belonging, all within a protected, sustainable environment. Phase I is under development in Tulamba Town, where MTJF is building 70 eco-friendly, solar-powered homes equipped with clean water access and community infrastructure that supports both mothers and their children. Apna Ghar is not just a housing scheme; it is a foundation for a stable childhood and a dignified motherhood.',
         donateButtonText: 'Build a Home for a Widow & Her Children',
-        image: apna_ghar
+        image: apna_ghar_media 
       },
       {
         id: 'why-apna-ghar-matters',

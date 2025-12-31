@@ -95,15 +95,6 @@ const ResultSection = ({ calculations }) => {
         </div>
       )}
       
-      {/* Step 3: Status */}
-      <div className="result-step mb-24">
-        <h3 className="h4 mb-12">Step 3: Zakat Status</h3>
-        <div className={`status-box ${status.bgColor} p-16 rounded mb-16`}>
-          <h4 className={`h4 mb-8 ${status.color}`}>{status.title}</h4>
-          <p className="text-sm">{status.message}</p>
-        </div>
-      </div>
-      
       {/* Step 4: Zakat Due */}
       {eligibilityStatus === 'due' && zakatDue > 0 && (
         <div className="result-step">

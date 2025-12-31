@@ -7,16 +7,15 @@ const SilverTab = ({
   silverUnit,
   setSilverUnit,
   silverPrice,
-  setSilverPrice,
-  silverPriceUnit,
-  setSilverPriceUnit
+  setSilverPrice
 }) => {
   const weightInGrams = silverUnit === 'tola' 
     ? (parseFloat(silverWeight) || 0) * 11.664 
     : (parseFloat(silverWeight) || 0)
   
   const price = parseFloat(silverPrice) || 0
-  const pricePerGram = silverPriceUnit === 'tola' ? price / 11.664 : price
+  // Use the same unit as weight unit for price
+  const pricePerGram = silverUnit === 'tola' ? price / 11.664 : price
   const silverValue = weightInGrams * pricePerGram
   
   return (
@@ -32,31 +31,9 @@ const SilverTab = ({
       
       <div className="form-group mb-24">
         <label className="form-label mb-12">
-          <strong>Silver Type (Optional)</strong>
-        </label>
-        <select className="select" defaultValue="">
-          <option value="">Select type (optional)</option>
-          <option value="jewelry">Jewelry</option>
-          <option value="bars">Bars</option>
-          <option value="coins">Coins</option>
-        </select>
-      </div>
-      
-      <div className="form-group mb-24">
-        <label className="form-label mb-12">
           <strong>Unit</strong>
         </label>
         <div className="radio-group">
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="silverUnit"
-              value="grams"
-              checked={silverUnit === 'grams'}
-              onChange={(e) => setSilverUnit(e.target.value)}
-            />
-            <span>Grams (Recommended)</span>
-          </label>
           <label className="radio-option">
             <input
               type="radio"
@@ -66,6 +43,16 @@ const SilverTab = ({
               onChange={(e) => setSilverUnit(e.target.value)}
             />
             <span>Tola</span>
+          </label>
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="silverUnit"
+              value="grams"
+              checked={silverUnit === 'grams'}
+              onChange={(e) => setSilverUnit(e.target.value)}
+            />
+            <span>Grams</span>
           </label>
         </div>
       </div>
@@ -92,47 +79,19 @@ const SilverTab = ({
       
       <div className="form-group mb-24">
         <label className="form-label mb-12">
-          <strong>Price Unit</strong>
-        </label>
-        <div className="radio-group">
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="silverPriceUnit"
-              value="gram"
-              checked={silverPriceUnit === 'gram'}
-              onChange={(e) => setSilverPriceUnit(e.target.value)}
-            />
-            <span>Per Gram</span>
-          </label>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="silverPriceUnit"
-              value="tola"
-              checked={silverPriceUnit === 'tola'}
-              onChange={(e) => setSilverPriceUnit(e.target.value)}
-            />
-            <span>Per Tola</span>
-          </label>
-        </div>
-      </div>
-      
-      <div className="form-group mb-24">
-        <label className="form-label mb-12">
-          <strong>Price ({silverPriceUnit === 'tola' ? 'Per Tola' : 'Per Gram'}) (Rs.)</strong>
+          <strong>Price ({silverUnit === 'tola' ? 'Per Tola' : 'Per Gram'}) (Rs.)</strong>
         </label>
         <input
           type="number"
           className="input"
-          placeholder={`Enter today's silver price ${silverPriceUnit === 'tola' ? 'per tola' : 'per gram'}`}
+          placeholder={`Enter today's silver price ${silverUnit === 'tola' ? 'per tola' : 'per gram'}`}
           value={silverPrice}
           onChange={(e) => setSilverPrice(e.target.value)}
           min="0"
           step="0.01"
         />
         <p className="text-sm muted mt-8">
-          Enter the current market price of silver {silverPriceUnit === 'tola' ? 'per tola' : 'per gram'}. 
+          Enter the current market price of silver {silverUnit === 'tola' ? 'per tola' : 'per gram'}. 
           (Future: Live rate API integration)
         </p>
       </div>
@@ -140,8 +99,8 @@ const SilverTab = ({
       {silverWeight && silverPrice && (
         <div className="summary-box mt-24">
           <p className="text-sm">Weight: <strong>{weightInGrams.toFixed(2)} grams</strong></p>
-          <p className="text-sm mt-8">Price {silverPriceUnit === 'tola' ? 'per tola' : 'per gram'}: <strong>Rs. {parseFloat(silverPrice).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
-          {silverPriceUnit === 'tola' && (
+          <p className="text-sm mt-8">Price {silverUnit === 'tola' ? 'per tola' : 'per gram'}: <strong>Rs. {parseFloat(silverPrice).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
+          {silverUnit === 'tola' && (
             <p className="text-sm muted mt-4">Price per gram: <strong>Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
           )}
           <p className="text-sm bold mt-8">Silver Value: <span className="text-primary">Rs. {silverValue.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>

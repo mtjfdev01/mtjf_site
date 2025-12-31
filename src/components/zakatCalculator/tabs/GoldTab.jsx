@@ -7,16 +7,15 @@ const GoldTab = ({
   goldUnit,
   setGoldUnit,
   goldPrice,
-  setGoldPrice,
-  goldPriceUnit,
-  setGoldPriceUnit
+  setGoldPrice
 }) => {
   const weightInGrams = goldUnit === 'tola' 
     ? (parseFloat(goldWeight) || 0) * 11.664 
     : (parseFloat(goldWeight) || 0)
   
   const price = parseFloat(goldPrice) || 0
-  const pricePerGram = goldPriceUnit === 'tola' ? price / 11.664 : price
+  // Use the same unit as weight unit for price
+  const pricePerGram = goldUnit === 'tola' ? price / 11.664 : price
   const goldValue = weightInGrams * pricePerGram
   
   return (
@@ -32,31 +31,9 @@ const GoldTab = ({
       
       <div className="form-group mb-24">
         <label className="form-label mb-12">
-          <strong>Gold Type (Optional)</strong>
-        </label>
-        <select className="select" defaultValue="">
-          <option value="">Select type (optional)</option>
-          <option value="jewelry">Jewelry</option>
-          <option value="bars">Bars</option>
-          <option value="coins">Coins</option>
-        </select>
-      </div>
-      
-      <div className="form-group mb-24">
-        <label className="form-label mb-12">
           <strong>Unit</strong>
         </label>
         <div className="radio-group">
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="goldUnit"
-              value="grams"
-              checked={goldUnit === 'grams'}
-              onChange={(e) => setGoldUnit(e.target.value)}
-            />
-            <span>Grams (Recommended)</span>
-          </label>
           <label className="radio-option">
             <input
               type="radio"
@@ -66,6 +43,16 @@ const GoldTab = ({
               onChange={(e) => setGoldUnit(e.target.value)}
             />
             <span>Tola</span>
+          </label>
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="goldUnit"
+              value="grams"
+              checked={goldUnit === 'grams'}
+              onChange={(e) => setGoldUnit(e.target.value)}
+            />
+            <span>Grams</span>
           </label>
         </div>
       </div>
@@ -92,47 +79,19 @@ const GoldTab = ({
       
       <div className="form-group mb-24">
         <label className="form-label mb-12">
-          <strong>Price Unit</strong>
-        </label>
-        <div className="radio-group">
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="goldPriceUnit"
-              value="gram"
-              checked={goldPriceUnit === 'gram'}
-              onChange={(e) => setGoldPriceUnit(e.target.value)}
-            />
-            <span>Per Gram</span>
-          </label>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="goldPriceUnit"
-              value="tola"
-              checked={goldPriceUnit === 'tola'}
-              onChange={(e) => setGoldPriceUnit(e.target.value)}
-            />
-            <span>Per Tola</span>
-          </label>
-        </div>
-      </div>
-      
-      <div className="form-group mb-24">
-        <label className="form-label mb-12">
-          <strong>Price ({goldPriceUnit === 'tola' ? 'Per Tola' : 'Per Gram'}) (Rs.)</strong>
+          <strong>Price ({goldUnit === 'tola' ? 'Per Tola' : 'Per Gram'}) (Rs.)</strong>
         </label>
         <input
           type="number"
           className="input"
-          placeholder={`Enter today's gold price ${goldPriceUnit === 'tola' ? 'per tola' : 'per gram'}`}
+          placeholder={`Enter today's gold price ${goldUnit === 'tola' ? 'per tola' : 'per gram'}`}
           value={goldPrice}
           onChange={(e) => setGoldPrice(e.target.value)}
           min="0"
           step="0.01"
         />
         <p className="text-sm muted mt-8">
-          Enter the current market price of gold {goldPriceUnit === 'tola' ? 'per tola' : 'per gram'}. 
+          Enter the current market price of gold {goldUnit === 'tola' ? 'per tola' : 'per gram'}. 
           (Future: Live rate API integration)
         </p>
       </div>
@@ -140,8 +99,8 @@ const GoldTab = ({
       {goldWeight && goldPrice && (
         <div className="summary-box mt-24">
           <p className="text-sm">Weight: <strong>{weightInGrams.toFixed(2)} grams</strong></p>
-          <p className="text-sm mt-8">Price {goldPriceUnit === 'tola' ? 'per tola' : 'per gram'}: <strong>Rs. {parseFloat(goldPrice).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
-          {goldPriceUnit === 'tola' && (
+          <p className="text-sm mt-8">Price {goldUnit === 'tola' ? 'per tola' : 'per gram'}: <strong>Rs. {parseFloat(goldPrice).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
+          {goldUnit === 'tola' && (
             <p className="text-sm muted mt-4">Price per gram: <strong>Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
           )}
           <p className="text-sm bold mt-8">Gold Value: <span className="text-primary">Rs. {goldValue.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>

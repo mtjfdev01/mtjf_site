@@ -4,8 +4,6 @@ import './Tabs.css'
 const EligibilityTab = () => {
   return (
     <div className="eligibility-tab">
-      <h2 className="h3 mb-24">Zakat Eligibility Criteria</h2>
-      
       {/* Zakat Eligibility Criteria */}
       <div className="form-group mb-32">
         {/* <label className="form-label mb-12">

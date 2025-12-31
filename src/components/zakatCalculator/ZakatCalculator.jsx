@@ -26,15 +26,13 @@ const ZakatCalculator = () => {
   
   // Gold state
   const [goldWeight, setGoldWeight] = useState('')
-  const [goldUnit, setGoldUnit] = useState('grams')
+  const [goldUnit, setGoldUnit] = useState('tola')
   const [goldPrice, setGoldPrice] = useState('')
-  const [goldPriceUnit, setGoldPriceUnit] = useState('gram') // 'gram' or 'tola'
   
   // Silver state
   const [silverWeight, setSilverWeight] = useState('')
-  const [silverUnit, setSilverUnit] = useState('grams')
+  const [silverUnit, setSilverUnit] = useState('tola')
   const [silverPrice, setSilverPrice] = useState('')
-  const [silverPriceUnit, setSilverPriceUnit] = useState('gram') // 'gram' or 'tola'
   
   // Nisab method - no longer needed as it's auto-determined, but keeping for backward compatibility
   const [nisabMethod, setNisabMethod] = useState('gold')
@@ -48,16 +46,12 @@ const ZakatCalculator = () => {
         if (prices.goldPrice || prices.gold_price || prices.gold) {
           const goldPriceValue = prices.goldPrice || prices.gold_price || prices.gold
           setGoldPrice(goldPriceValue.toString())
-          // Assume prices are per gram by default
-          setGoldPriceUnit('gram')
         }
         
         // Update silver price if available
         if (prices.silverPrice || prices.silver_price || prices.silver) {
           const silverPriceValue = prices.silverPrice || prices.silver_price || prices.silver
           setSilverPrice(silverPriceValue.toString())
-          // Assume prices are per gram by default
-          setSilverPriceUnit('gram')
         }
       }
     }
@@ -89,23 +83,27 @@ const ZakatCalculator = () => {
     const netCash = Math.max(cashTotal - debtTotal, 0)
     
     // Calculate Gold Value
+    // Price unit matches weight unit (tola or grams)
     let goldValue = 0
     if (goldWeight && goldPrice) {
       const weight = parseFloat(goldWeight) || 0
       const price = parseFloat(goldPrice) || 0
-      // Convert tola to grams if needed (1 tola = 11.664 grams)
-      const weightInGrams = goldUnit === 'tola' ? weight * 11.664 : weight
-      goldValue = weightInGrams * price
+      // If unit is tola, price is per tola, so value = weight * price
+      // If unit is grams, price is per gram, so value = weight * price
+      // Both cases: value = weight * price (since price matches weight unit)
+      goldValue = weight * price
     }
     
     // Calculate Silver Value
+    // Price unit matches weight unit (tola or grams)
     let silverValue = 0
     if (silverWeight && silverPrice) {
       const weight = parseFloat(silverWeight) || 0
       const price = parseFloat(silverPrice) || 0
-      // Convert tola to grams if needed
-      const weightInGrams = silverUnit === 'tola' ? weight * 11.664 : weight
-      silverValue = weightInGrams * price
+      // If unit is tola, price is per tola, so value = weight * price
+      // If unit is grams, price is per gram, so value = weight * price
+      // Both cases: value = weight * price (since price matches weight unit)
+      silverValue = weight * price
     }
     
     // Calculate Assets Value
@@ -129,13 +127,15 @@ const ZakatCalculator = () => {
     
     if (goldPrice) {
       const price = parseFloat(goldPrice) || 0
-      const pricePerGram = goldPriceUnit === 'tola' ? price / 11.664 : price
+      // Price unit matches weight unit, so convert to per gram if needed
+      const pricePerGram = goldUnit === 'tola' ? price / 11.664 : price
       // Use gold-based method (87.48g)
       nisabValue = GOLD_NISAB_GRAMS * pricePerGram
       usedNisabMethod = 'gold'
     } else if (silverPrice) {
       const price = parseFloat(silverPrice) || 0
-      const pricePerGram = silverPriceUnit === 'tola' ? price / 11.664 : price
+      // Price unit matches weight unit, so convert to per gram if needed
+      const pricePerGram = silverUnit === 'tola' ? price / 11.664 : price
       // Use silver-based method (612.36g)
       nisabValue = SILVER_NISAB_GRAMS * pricePerGram
       usedNisabMethod = 'silver'
@@ -192,11 +192,9 @@ const ZakatCalculator = () => {
     goldWeight,
     goldUnit,
     goldPrice,
-    goldPriceUnit,
     silverWeight,
     silverUnit,
-    silverPrice,
-    silverPriceUnit
+    silverPrice
   ])
   
   const tabs = [
@@ -263,8 +261,6 @@ const ZakatCalculator = () => {
                 setGoldUnit={setGoldUnit}
                 goldPrice={goldPrice}
                 setGoldPrice={setGoldPrice}
-                goldPriceUnit={goldPriceUnit}
-                setGoldPriceUnit={setGoldPriceUnit}
               />
             )}
             
@@ -276,8 +272,6 @@ const ZakatCalculator = () => {
                 setSilverUnit={setSilverUnit}
                 silverPrice={silverPrice}
                 setSilverPrice={setSilverPrice}
-                silverPriceUnit={silverPriceUnit}
-                setSilverPriceUnit={setSilverPriceUnit}
               />
             )}
           </div>
