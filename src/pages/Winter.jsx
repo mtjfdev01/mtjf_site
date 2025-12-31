@@ -1,19 +1,14 @@
 import HeroWithTyping from "../components/hero/HeroWithTyping"
-import heroWinter from "../assets/img/projects/winter/winter_hero.jpg"
 import winter_1 from "../assets/img/campaigns/winter_mtjf.webp"
 import winter_2 from "../assets/img/campaigns/winter_mtjf_2.webp"
-import winter_3 from "../assets/img/campaigns/winter_mtjf_3.webp"
-import winter_4 from "../assets/img/campaigns/winter_mtjf_4.webp"
-import winter_5 from "../assets/img/campaigns/winter_mtjf_5.webp"
 import winter_6 from "../assets/img/campaigns/winter_mtjf_6.webp"
 import winter_7 from "../assets/img/campaigns/winter_mtjf_7.webp"
 import winter_8 from "../assets/img/campaigns/winter_mtjf_8.webp"
-import winter_9 from "../assets/img/campaigns/winter_mtjf_9.webp"
 import winter_10 from "../assets/img/campaigns/winter_mtjf_10.webp"
+import winter_right from '../assets/img/hero/winter_right.webp'
 
 import "../common/styles/winter.css"
 import DonationForm from "../components/donationForm/DonationForm"
-import { ALL_PROJECTS_DATA } from "../data/projectsData"
 import MediaContentSection from "../components/mediaContentSection/MediaContentSection"
 import FAQs from "../components/faqs/FAQs"
 import Footer from "../components/footer/Footer"
@@ -131,9 +126,9 @@ const winterFaqs = {
 
 export const Winter = () => { 
     return (
-    <div className="winter_hero"> 
+    <div className="winter_hero">  
       <HeroWithTyping 
-        imageUrl={heroWinter}
+        imageUrl={winter_right}
         imageAlt="Winter Hero image"
         staticText="Winter Shouldn’t Hurt"
         typingText="وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى  — “Help one another in goodness.” (Qur’an 5:2)"

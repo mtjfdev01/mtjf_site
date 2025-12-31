@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react'
 import hero from '../../assets/img/hero/hero.webp'
 import hero2 from '../../assets/img/hero/hero_2.webp'
 import hero_mob from '../../assets/img/hero/hero_mob.webp'
+import winter_hero from '../../assets/img/hero/winter.webp'
+import winter_mob from '../../assets/img/hero/winter_mob.webp'
+
 import contactHero from '../../assets/img/hero/contact_us_hero.webp'
 import './hero.css'
 
 const HERO_IMAGES = [
-  { desktop: hero, mobile: hero_mob },
-  { desktop: hero, mobile: hero_mob },
+  { desktop: hero, mobile: hero_mob }, 
+  { desktop: winter_hero, mobile: winter_mob },
   { desktop: hero, mobile: hero_mob },
   { desktop: hero, mobile: hero_mob }
 ]
