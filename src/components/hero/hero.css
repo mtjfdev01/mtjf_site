@@ -2,9 +2,20 @@
     height: 100vh;
 }
 
-.hero-carousel-wrapper .banner_img {
-  opacity: 1 !important;
-  transform: scale(1) !important;
+/* Smooth fade and slide animation for image changes */
+.banner_img {
+  animation: fadeInSlide 0.8s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 .hero-nav-container {
