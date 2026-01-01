@@ -52,6 +52,14 @@ const ResultSection = ({ calculations }) => {
         <h2 className="h3 mb-16">Zakat Calculation</h2>
       </div>
       
+      {/* Zakat Status */}
+      {nisabValue > 0 && (
+        <div className={`status-box ${status.bgColor} p-16 rounded mb-24`}>
+          <h3 className={`h4 mb-8 ${status.color}`}>{status.title}</h3>
+          <p className="text-sm mb-0">{status.message}</p>
+        </div>
+      )}
+      
       {/* Step 1: Net Zakatable Wealth */}
       <div className="result-step mb-24">
         <h3 className="h4 mb-12">Step 1: Net Zakatable Wealth</h3>
@@ -95,10 +103,37 @@ const ResultSection = ({ calculations }) => {
         </div>
       )}
       
-      {/* Step 4: Zakat Due */}
-      {eligibilityStatus === 'due' && zakatDue > 0 && (
+      {/* Step 3: Zakat Status */}
+      {nisabValue > 0 && eligibilityStatus !== 'checking' && (
+        <div className="result-step mb-24">
+          <h3 className="h4 mb-12">Step 3: Zakat Status</h3>
+          <div className={`status-indicator ${eligibilityStatus === 'due' ? 'status-due' : 'status-below'}`}>
+            {eligibilityStatus === 'due' ? (
+              <div>
+                <p className="text-lg bold text-success mb-8">✓ Zakat is Due</p>
+                <p className="text-sm">
+                  Your net wealth (Rs. {netWealth.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}) 
+                  exceeds the Nisab threshold (Rs. {nisabValue.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}).
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-lg bold text-warning mb-8">⚠ Below Nisab</p>
+                <p className="text-sm">
+                  Your net wealth (Rs. {netWealth.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}) 
+                  is below the Nisab threshold (Rs. {nisabValue.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}). 
+                  No Zakat is due.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      
+      {/* Step 4: Payable Zakat Amount */}
+      {eligibilityStatus === 'due' && (
         <div className="result-step">
-          <h3 className="h4 mb-12">Step 4: Zakat Due</h3>
+          <h3 className="h4 mb-12">Step 4: Payable Zakat Amount</h3>
           
           {/* Zakat Breakdown */}
           <div className="zakat-breakdown mb-24">
