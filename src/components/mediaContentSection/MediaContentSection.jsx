@@ -61,7 +61,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
 
         return (
           <div key={subProject.id || index} className="media-content-item"> 
-            <div className={`media-content-wrapper container ${imagePosition}`}>
+            <div className={`media-content-wrapper container ${image ? imagePosition : 'no-image'}`}>
               {/* Content Side */}
               <div className="media-content-text">
 
@@ -72,10 +72,21 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 {subProject?.impact && (
                   <h3 className='m-0'>{subProject.impact}</h3>
                 )}
-                {subProject.description && (
-                  <p className="media-content-description">{subProject.description}</p>
-                )}
-                
+                {subProject.description && (<>
+                  {subProject?.descriptionBold && <b>{subProject?.descriptionBold || ''}</b>}
+                  <p className="media-content-description"> {subProject.description} </p>
+                  </>
+                )} 
+              {subProject.description2 && (<>
+                {subProject?.description2Bold && <b>{subProject?.description2Bold || ''}</b>}
+                  <p className="media-content-description"> {subProject.description2} </p>
+                </>
+                )} 
+                {subProject.description3 && (<>
+                  {subProject?.description3Bold && <b>{subProject?.description3Bold || ''}</b>}
+                  <p className="media-content-description"> {subProject.description3} </p>
+                </>
+                )} 
                 {listItems && listItems.length > 0 && (
                   <ul className="media-content-list">
                     {listItems.map((item, itemIndex) => {
@@ -118,6 +129,17 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
               )}
 
               {/* Bottom Paragraph - appears below both image and text */}
+              {/* BottomText Bold */}
+              {(subProject?.bottomTextBold) && (
+               <p><b>{subProject?.bottomTextBold || ''}</b></p>
+              )}
+
+              {/* Bottom Text Sub Title */}
+              {(subProject?.bottomTextSubTitle) && (
+                  <p>
+                    {subProject?.bottomTextSubTitle || ''}
+                  </p>
+              )}
               {(subProject.bottomText || subProject.footerText || subProject.conclusion || subProject.summary) && (
                 <div className="media-content-bottom-text">
                   <p className="media-content-bottom-paragraph">

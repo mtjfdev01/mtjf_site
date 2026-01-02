@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+/* When no image, use single column layout */
+.media-content-wrapper.no-image {
+  grid-template-columns: 1fr;
+}
+
 .media-content-text {
   display: flex;
   flex-direction: column;
@@ -42,6 +47,11 @@
 }
 
 .media-content-wrapper.left .media-content-image {
+  grid-column: 1;
+}
+
+/* When no image, text section spans full width */
+.media-content-wrapper.no-image .media-content-text {
   grid-column: 1;
 }
 
@@ -147,8 +157,10 @@
   .media-content-wrapper.right .media-content-text,
   .media-content-wrapper.right .media-content-image,
   .media-content-wrapper.left .media-content-text,
-  .media-content-wrapper.left .media-content-image {
-    order: unset;
+  .media-content-wrapper.left .media-content-image,
+  .media-content-wrapper.no-image .media-content-text {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .media-content-bottom-text {

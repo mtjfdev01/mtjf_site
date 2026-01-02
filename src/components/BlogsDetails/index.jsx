@@ -3,14 +3,18 @@ import './index.css'
 import PageHeader from '../pageHeader/PageHeader'
 import heroImg from '../../assets/img/blogs_details/hero.webp'
 import mediaImg from '../../assets/img/blogs_details/shahroz.webp'
-
-const BlogDetailSection = ({
-  title = 'MTJ Foundation Advances Community Health Through Diabetes Awareness Session',
-  date = 'May 9, 2025',
-  category = '',
-  image = null,
-  excerpt = '',
+import MediaContentSection from '../mediaContentSection/MediaContentSection'
+import FAQs from '../faqs/FAQs'
+const BlogDetailSection = ({   
+  title,
+  date,
+  category,
+  image,
+  excerpt,
+  subProjects,
+  faqs,
 }) => {
+  console.log("subProjects1234", subProjects)
   return (
     <article className="bd-page">
       {/* Shared page header (hero) */}
@@ -45,44 +49,21 @@ const BlogDetailSection = ({
       )}
 
       {/* Split image banner with jagged bottom */}
-      <section className="bd-banner">
+      {/* <section className="bd-banner">
         <div className="bd-banner__slices">
           <div className="bd-banner__slice" style={{ backgroundImage: `url(${mediaImg})` }} />
         </div>
-      </section>
+      </section> */}
 
-      {/* Stats and results section */}
-      <section className="bd-stats container">
-        <p><strong>73% of participants</strong> showed improved blood sugar levels within weeks of the session.</p>
-        <p><strong>50%of patients</strong> reported being able to maintain normal blood sugar levels without medication through diet and exercise alone.</p>
-        <p><strong>23% successfully managed their diabetes</strong> through a combination of dietary compliance and prescribed medication.</p>
-         <p>
-          Personalized consultations were conducted, and in several cases, medications were discontinued in favor of monitored lifestyle-based approaches.
-        </p>
-      </section>
-
-      {/* Content block */}
-      <section className="bd-content container">
-       
-        <p className="bd-section-title"><strong>Post-Session Support:</strong></p>
-        <p>
-          Several cases, medications were discontinued in favor of monitored lifestyle-based approaches.
-        </p>
-        <div className="bd-supports">
-          <div className="bd-support-item">
-            <strong>Daily Morning Calls:</strong> <span>Conducted by trained staff to monitor exercise, diet adherence, and blood sugar levels.</span>
-          </div>
-          <div className="bd-support-item">
-            <strong>WhatsApp Groups:</strong> <span>Created to facilitate peer support, share educational materials, and maintain engagement.</span>
-          </div>
-          <div className="bd-support-item">
-            <strong>Dedicated Focal Person:</strong> <span>Assigned to provide individual follow-up, counseling, and data collection</span>
-          </div>
-        </div>
-        <p className="bd-closing">
-          This structured approach reflects MTJ Foundation's model of combining education with ongoing support to reinforce<br /> behavioural change and ensure long-term health outcomes.
-        </p>
-      </section>
+      <MediaContentSection
+        subProjects={subProjects || []} 
+        defaultImage={image || heroImg}
+      />
+      <FAQs 
+        title="FAQs"
+        subtitle="FAQs"
+        faqs={faqs || []}
+      />
     </article>
   )
 }

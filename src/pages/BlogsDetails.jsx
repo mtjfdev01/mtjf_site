@@ -12,7 +12,7 @@ const BlogsDetails = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const blog = getBlogById(id)
-  
+  console.log("blog subPros", blog?.subProjects)
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ rootMargin: '50px', loadImmediately: true })
   const [restRef, showRest] = useIntersectionObserver({ rootMargin: '200px' })
 
@@ -35,11 +35,13 @@ const BlogsDetails = () => {
         {showFirstSection && (
           <Suspense fallback={null}>
             <BlogDetailSection 
-              title={blog.title}
-              date={blog.date}
-              category={blog.category}
-              image={blog.image}
-              excerpt={blog.excerpt}
+              title={blog?.title}
+              date={blog?.date}
+              category={blog?.category}
+              image={blog?.image}
+              excerpt={blog?.excerpt}
+              subProjects={blog?.subProjects}
+              faqs={blog?.faqs || []}
             />
           </Suspense>
         )}
