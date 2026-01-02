@@ -1289,8 +1289,407 @@ export const PROJECTS_DETAIL_DATA = {
       ],
       donateButtonText: 'Donate Now — Support Widows & Orphans'
     }
+  },
+  'aas-lab-diagnostics': {
+    id: 'aas-lab-diagnostics',
+    title: 'Objective: Basic Healthcare for the Underprivileged',
+    headerImage: healthhero, 
+    headerImageMob: apna_ghar_hero_mob,
+    stats: [
+      { icon: FaHome, number: '1,850', label: 'Houses Built' },
+      { icon: FaUsers, number: '9,250', label: 'People Housed' },
+      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+    ],
+    content: {
+      paragraph1: `The primary goal is to provide essential healthcare to the economically disadvantaged
+population.
+At ASS LAB, your well-being blossoms under the warmth of genuine
+care. Our skilled hands and attentive ears ease anxieties, while
+expertise ensures accurate diagnoses.
+`,
+      paragraph2: `ASS LAB cares beyond results. Educational resources, emotional support, and follow-up
+nurture your recovery. Choose us, and let hope bloom with every test.
+`,
+      paragraph3: `AAS LAB is the
+best labs in mian channu which offering best CT Scan service, Best ColorDoppler
+ultrasound services and Best of its kind.
+`
+    },
+    mainImage: healthfooter,
+    donateCategory: 'Apna Ghar',
+    donateButtonText: 'Build a Home for a Widow & Her Children',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'AAS Lab and Diagnostic Centre',
+        title: 'AAS Lab and Diagnostic Centre',
+        subtitle: 'Your Comprehensive Healthcare Partner',
+        description: `At AAS Lab, we're dedicated to giving our patients the best possible medical treatment. A wide range of clinical and specialist services are available at our state-of-the-art facility to
+accommodate your various healthcare needs.
+Excellence in Diagnosis
+As the top diagnostic facility in Pakistan, we place a high value on precision and effectiveness. For a variety of tests, our cutting-edge equipment and knowledgeable staff guarantee
+accurate findings. From standard blood tests to intricate imaging investigations, we provide:
+Phlebotomy: Our skilled phlebotomists take blood draws carefully and precisely.
+Ultrasound: We deliver precise diagnoses by using state-of-the-art ultrasound equipment to provide detailed pictures of interior organs.
+X-ray and OPG: Our state-of-the-art X-ray machinery produces sharp pictures to help with joint and bone disease diagnosis.
+CT Scans: For exceptionally clear visualization of interior organs and structures, we provide complete CT scan services.
+Patient-First Medical Care
+We are aware that going to a medical facility might be unsettling. Our patient-centered methodology fosters a cozy and friendly atmosphere. Throughout your visit, our devoted
+team will provide you with individualised attention and assistance.`,
+        donateButtonText: '',
+        image: AASLab
+      },
+      {
+        id: 'AAS Lab offers',
+        title: 'AAS Lab offers',
+        subtitle: '',
+        impact: '',
+        services: [
+          '100+ diagnostic tests',
+          'State-of-the-art machines and equipment',
+          'Highly qualified medical professionals',
+          'Minimal Rates for General Public',
+          ' 100% free of cost tests for eligible patients',
+          'Convenient Home Sampling',
+          'Efficient Online Reporting',
+          'Emergency Testing Services',
+          'Inclusive Dental X-ray Services'
+        ],
+        afterServicesText:'',
+        donateButtonText: '',
+        image: AASLab
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+      description: '',
+      faqs: [
+        {
+          question: 'Who is Apna Ghar designed for?',
+          answer: 'Widows and divorced women raising orphan or dependent children.'
+        },
+        {
+          question: 'Do families have to pay for their homes?',
+          answer: 'No — homes are provided free of cost to eligible families.'
+        },
+        {
+          question: 'Do children receive educational support?',
+          answer: 'Yes. MTJF ensures all children in Apna Ghar are enrolled in school.'
+        },
+        {
+          question: 'How do mothers earn a stable income?',
+          answer: 'Through KASB Skill Development, microenterprises, and home-based businesses.'
+        },
+        {
+          question: 'Can donors sponsor a full home?',
+          answer: 'Yes — donors may fund an entire house, solar system, skill center, or community facility.'
+        },
+        {
+          question: 'Is the project Zakat-eligible?',
+          answer: 'Absolutely — supporting widows and orphans is fully Zakat-eligible.'
+        },
+        {
+          question: 'How does MTJF ensure transparency?',
+          answer: 'Through verification visits, strict criteria, progress updates, and detailed reports.'
+        }
+      ],
+      donateButtonText: 'Donate Now — Support Widows & Orphans'
+    }
+  },
+   'seeds-of-change': {
+    id: 'seeds-of-change',
+    title: 'Make Pakistan Green Again',
+    headerImage: SeedsOfChange, 
+    headerImageMob: apna_ghar_hero_mob,
+    stats: [
+      { icon: FaHome, number: '1,850', label: 'Houses Built' },
+      { icon: FaUsers, number: '9,250', label: 'People Housed' },
+      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+    ],
+    content: {
+      paragraph1: `From delivering aid in times of crisis to advancing education and healthcare, we're dedicated to creating lasting change. Join us in the fight against climate change.`,
+      paragraph2: '',
+      paragraph3: ''
+    },
+    mainImage: healthfooter,
+    donateCategory: 'Apna Ghar',
+    donateButtonText: 'Build a Home for a Widow & Her Children',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'Get to know Our Green Initiative',
+        title: 'Get to know Our Green Initiative',
+        subtitle: '',
+        description: `Seeds of Change" is a nationwide plantation drive aimed at restoring Pakistan's natural beauty and addressing environmental challenges. Every tree planted contributes to a healthier, greener future for our country.`,
+        donateButtonText: '',
+        image: SeedsOfChange 
+      },
+      {
+        id: 'The Time to act is NOW!',
+        title: 'The Time to act is NOW!',
+        subtitle: '',
+         description:`Together, we can make a significant impact, from reducing our carbon footprint to planting trees that will nurture future generations.`,
+        impact: '',
+        services: [],
+        afterServicesText:'',
+        donateButtonText: '',
+        image: SeedsOfChange
+      },
+      {
+        id: 'Our Gallery',
+        title: 'Our Gallery',
+        subtitle: '',
+         description:`Explore the heart of our mission through images that capture the essence of our work. From impactful community initiatives to moments of change, each photo tells a story of hope, resilience, and progress. Dive in and witness the difference we're making together.`,
+        impact: '',
+        services: [
+        ],
+        afterServicesText: "Every family receives the foundation they need for stability, growth, and independence.",
+        donateButtonText: '',
+        image: SeedsOfChange
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+      description: '',
+      faqs: [
+        {
+          question: 'What kind of projects does your organization focus on?',
+          answer: 'We focus on a wide range of initiatives, including disaster relief, education, healthcare, environmental sustainability, and community development. Our goal is to address immediate needs while fostering long-term positive change.'
+        },
+        {
+          question: 'How can I get involved with your organization?',
+          answer: 'You can get involved by volunteering, donating, or participating in our events and campaigns. Visit our "Get Involved" section to learn more about how you can contribute to our mission.'
+        },
+        {
+          question: 'Where does my donation go?',
+          answer: 'Your donation directly supports our projects and initiatives, ensuring that funds are allocated where they are needed most. We prioritize transparency and regularly update our donors on how their contributions are making a difference.'
+        },
+        {
+          question: 'Do you work in specific regions or countries?',
+          answer: 'While our work is global, we focus on areas with the greatest need. We have ongoing projects in various regions, and our efforts are tailored to the unique challenges and opportunities in each location. A significant part of our mission includes reforestation and tree plantation initiatives, helping to combat climate change and promote environmental sustainability.'
+        }
+      ],
+      donateButtonText: 'Donate Now — Support Widows & Orphans'
+    }
+  },
+   'qurbani-barai-mustehqeen': {
+    id: 'qurbani-barai-mustehqeen',
+    title: 'qurbani-barai-mustehqeen',
+    headerImage: Qurbani, 
+    headerImageMob: apna_ghar_hero_mob,
+    stats: [
+      { icon: FaHome, number: '1,850', label: 'Houses Built' },
+      { icon: FaUsers, number: '9,250', label: 'People Housed' },
+      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+    ],
+    content: {
+      paragraph1: `Your contribution will bring joy and nourishment to those who deserve it the most. The Qurbani will be done in Pakistan, and the meat will be distributed to those who do not have access to it. Let's come together and spread the spirit of generosity and compassion this Eid.`,
+      paragraph2: '',
+      paragraph3: ''
+    },
+    mainImage: Qurbani,
+    donateCategory: 'Apna Ghar',
+    donateButtonText: 'Build a Home for a Widow & Her Children',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'qurbani-barai-mustehqeen',
+        title: 'The Holy Prophet (S.A.W) said:',
+        subtitle: '',
+        description: `There is nothing dearer to Allah during the days of Qurbani than the sacrificing of animals. The sacrificed animal shall come on the Day of Qiyamah with its horns, hair, and hooves (to be weighed on a person’s good deeds). The sacrifice is accepted by Allah before the blood reaches the ground. Therefore sacrifice with an open and happy heart.” -Tirmidhi`,
+        donateButtonText: '',
+        image: Qurbani
+      },
+      {
+        id: '',
+        title: '',
+        subtitle: '',
+         description:``,
+        impact: '',
+        services: [],
+        afterServicesText:'',
+        donateButtonText: '',
+        image: ""
+      },
+      {
+        id: '',
+        title: '',
+        subtitle: '',
+         description:``,
+        impact: '',
+        services: [
+        ],
+        afterServicesText: "",
+        donateButtonText: '',
+        image: ''
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+      description: '',
+      faqs: [
+        {
+          question: 'How will the sacrificial meat be distributed?',
+          answer: 'The sacrificial meat will be given to those in need. The value of skins, furs, and other parts will be utilized by MTJ Foundation for charitable purposes in accordance with Shariah principles.'
+        },
+        {
+          question: 'What expenses are covered by my donation?',
+          answer: 'Your donation covers the costs of the animal’s transportation, food, slaughter, and other necessary expenses related to the sacrifice.'
+        },
+        {
+          question: 'What happens if there are extra funds from my donation?',
+          answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals'
+        },
+        {
+          question: 'Will I receive any of the sacrificial meat?',
+          answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals.'
+        },
+          {
+          question: 'How can I check the status of my Qurbani on Eid day?',
+          answer: 'To check the status of your Qurbani on Eid day, please contact us using the provided number. You will also receive updates via SMS.'
+        }
+      ],
+      donateButtonText: ''
+    }
+  },
+'community-services': {
+    id: 'community-services',
+    title: 'Marriage gift',
+    headerImage: image1, 
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHome, number: '1,850', label: 'Houses Built' },
+      { icon: FaUsers, number: '9,250', label: 'People Housed' },
+      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+    ],
+    content: {
+      paragraph1: `In numerous parts of the world, financial constraints can pose significant hurdles to marriage, depriving families, especially young girls, of the joyous occasion. For impoverished girls, this predicament can limit their opportunities for a stable future and can negatively affect their married life.`,
+      paragraph2: `The Foundation's distribution of wedding gifts is not merely a gesture for their special day but a means of providing vital support for a brighter future. These gifts, tailored to local needs and customs, encompass necessities like clothing, double beds, dressing tables, and household items, ensuring that women entering marriage receive the sustenance required for a comfortable and secure life ahead.`,
+      paragraph3: ''
+    },
+    mainImage: image1,
+    donateCategory: 'Apna Ghar',
+    donateButtonText: 'Build a Home for a Widow & Her Children',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'Financial assistance',
+        title: 'Financial assistance',
+        subtitle: '',
+        description: `Molana Tariq Jamil Foundation extends a compassionate hand through its financial assistance program, recognizing the diverse and immediate needs of individuals facing challenging circumstances. Our approach involves providing direct cash assistance to those in need, empowering them with the autonomy to address their specific requirements. Whether it be covering essential expenses, medical bills, or unforeseen emergencies, the Foundation’s financial assistance program is designed to offer immediate relief and foster a sense of empowerment.`,
+        donateButtonText: '',
+        image: image1
+      },
+      {
+        id: 'Ration',
+        title: 'Ration',
+        subtitle: '',
+        description:`The MTJ Foundation is steadfast in its mission to tackle food insecurity in Pakistan. Our initiative focuses on providing crucial food supplies to highly vulnerable families, with a special emphasis during the month of Ramadan and continuing on a monthly basis. The primary goal is to enhance nutrition and fulfill essential needs, a task made more challenging due to the prevalent issues of poverty and inflation. This sustained effort ensures that individuals have reliable access to necessary sustenance throughout the year.`,
+        impact: '',
+        services: [],
+        afterServicesText:'MTJ Foundation serves over 500 vulnerable families monthly, offering a lifeline of food staples to prevent hunger and improve overall nutrition. It’s our pledge to address food insecurity head-on, providing continual support to those in need.',
+        donateButtonText: '',
+        image: image1
+      },
+      {
+        id: 'EID GIFT',
+        title: 'EID GIFT',
+        subtitle: '',
+         description:`Molana Tariq Jamil Foundation joyously engages in the spirit of celebration by distributing Eid gifts, fostering a sense of togetherness and spreading happiness within the community. The act of sharing these gifts goes beyond mere material offerings; it symbolizes the Foundation’s commitment to inclusivity and ensuring that everyone, regardless of their economic circumstances, feels the warmth of celebration.`,
+        impact: '',
+        services: [
+        ],
+        afterServicesText: `Additionally, on the occasion of Eid ul Azha, the Foundation extends its generosity by distributing meat among the less privileged, making it possible for them to enjoy the festivities and savor the traditional joy of enjoying meat during this occasion. These Eid gifts represent the Foundation’s dedication to creating a community where the spirit of Eid is shared by all, fostering a sense of unity and compassion.`,
+        donateButtonText: '',
+        image: image1
+      },
+       {
+        id: 'Livlihood:',
+        title: 'Livlihood:',
+        subtitle: '',
+         description:`At the core of our mission, MTJ Foundation is dedicated to comprehensive livelihood support, committed to elevating the well-being of communities. Through a range of initiatives, from vocational training to income-generating projects, we empower individuals, fostering economic independence and creating sustainable opportunities.`,
+        impact: '',
+        services: [
+        ],
+        afterServicesText: `Our commitment goes beyond the initial support. We believe in the sustained success of our beneficiaries. Therefore, we implement robust monitoring and evaluation mechanisms to ensure that individuals, once provided with assets and skills, receive ongoing guidance and support allows us to address any challenges they may encounter, providing timely assistance to ensure the sustained success of their livelihood initiatives. By maintaining a close connection with our beneficiaries, we aim to foster an environment of continuous growth, learning, and prosperity within the communities we serve.`,
+        donateButtonText: '',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+      description: '',
+      faqs: [
+        {
+          question: '',
+          answer: ''
+        },
+        {
+          question: '',
+          answer: ''
+        },
+        {
+          question: '',
+          answer: ''
+        },
+        {
+          question: '',
+          answer: ''
+        },
+          {
+          question: '',
+          answer: ''
+        }
+      ],
+      donateButtonText: ''
+    }
   }
 }
+
 
 export const ALL_PROJECTS_DATA = [
   {
