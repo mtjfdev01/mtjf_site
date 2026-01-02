@@ -1374,37 +1374,37 @@ team will provide you with individualised attention and assistance.`,
       title: 'Frequently Asked Questions',
       subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
       description: '',
-      faqs: [
-        {
-          question: 'Who is Apna Ghar designed for?',
-          answer: 'Widows and divorced women raising orphan or dependent children.'
-        },
-        {
-          question: 'Do families have to pay for their homes?',
-          answer: 'No — homes are provided free of cost to eligible families.'
-        },
-        {
-          question: 'Do children receive educational support?',
-          answer: 'Yes. MTJF ensures all children in Apna Ghar are enrolled in school.'
-        },
-        {
-          question: 'How do mothers earn a stable income?',
-          answer: 'Through KASB Skill Development, microenterprises, and home-based businesses.'
-        },
-        {
-          question: 'Can donors sponsor a full home?',
-          answer: 'Yes — donors may fund an entire house, solar system, skill center, or community facility.'
-        },
-        {
-          question: 'Is the project Zakat-eligible?',
-          answer: 'Absolutely — supporting widows and orphans is fully Zakat-eligible.'
-        },
-        {
-          question: 'How does MTJF ensure transparency?',
-          answer: 'Through verification visits, strict criteria, progress updates, and detailed reports.'
-        }
-      ],
-      donateButtonText: 'Donate Now — Support Widows & Orphans'
+      // faqs: [
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   }
+      // ],
+      donateButtonText: ''
     }
   },
    'seeds-of-change': {
@@ -1663,28 +1663,28 @@ team will provide you with individualised attention and assistance.`,
       title: 'Frequently Asked Questions',
       subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
       description: '',
-      faqs: [
-        {
-          question: '',
-          answer: ''
-        },
-        {
-          question: '',
-          answer: ''
-        },
-        {
-          question: '',
-          answer: ''
-        },
-        {
-          question: '',
-          answer: ''
-        },
-          {
-          question: '',
-          answer: ''
-        }
-      ],
+      // faqs: [
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //   {
+      //     question: '',
+      //     answer: ''
+      //   },
+      //     {
+      //     question: '',
+      //     answer: ''
+      //   }
+      // ],
       donateButtonText: ''
     }
   }
