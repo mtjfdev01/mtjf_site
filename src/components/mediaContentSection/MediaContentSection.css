@@ -83,6 +83,7 @@
   line-height: 1.8;
   color: var(--color-600);
   margin: 0;
+  text-align: justify !important;
 }
 
 .media-content-bottom-paragraph {

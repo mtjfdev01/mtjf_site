@@ -259,7 +259,7 @@ export const blogs = [
   },
   {
     id:'education',
-    title:'',
+    title:'Why Education is the Key to Breaking the Cycle of Poverty',
     image: h_2,
     description:'',
     description2:'',
@@ -268,15 +268,280 @@ export const blogs = [
     subProjects:[
       {
         id:'',
+        title:'Why Education is the Key to Breaking the Cycle of Poverty',
+        // subtitle:'The Power of Education: Transforming Lives One Child at a Time',
+        image: h_2,
+        descriptionBold:'The Power of Education: Transforming Lives One Child at a Time',
+        description:'In a small village, a little girl named Amina watches other children walk to school, her heart full of longing. Poverty has kept her from classrooms and books, tying her future to the same struggles her family has faced for generations. Yet, within her, a dream persists—because education is more than learning; it is a lifeline to opportunity. Amina represents millions of children whose dreams are paused, waiting for someone to press play.',
+
+        description2:'Amina’s story echoes across Pakistan, where over 22.8 million children are out of school, the second-highest number globally. Poverty, cultural barriers, and a lack of schools rob children of their right to education. Without learning, they grow into adults without choices—locked into low-paying jobs and hardship, continuing the cycle of poverty. The cost of missed education is generational, as children without schooling are more likely to raise families trapped in poverty.',
+        description2Bold:'The Harsh Reality: When Poverty Steals Potential',
+        bottomText:'',
+        // donateButtonText:'Donate Now'
+      },
+      {
+        id:'',
         title:'',
         image: h_2,
-        description:'',
+        description:'Amina’s story is one of longing and resilience—a child whose dreams are put on hold by the chains of poverty. But in the teachings of Islam, we are reminded that knowledge is the greatest key to breaking those chains. The first word revealed in the Quran was “Iqra” (Read), a divine command highlighting the importance of learning. Prophet Muhammad (ﷺ) said, “Seeking knowledge is an obligation upon every Muslim” (Sunan Ibn Majah). Education is more than books and lessons—it is a means to empower the soul, uplift communities, and create change that lasts beyond a lifetime.',
+        descriptionBold:'The Islamic Perspective: Education as a Duty and a Legacy of Hope',
         description2:'',
-        bottomText:'',
-        donateButtonText:'Donate Now'
+        description2Bold:'A Continuous Charity That Never Ends',
+        description2:`In Islam, the power of knowledge extends beyond the individual. It becomes an act of Sadaqah Jariyah (continuous charity)—one that multiplies in reward long after we are gone. The Prophet Muhammad (ﷺ) said, “When a man dies, his deeds come to an end except for three things: Sadaqah Jariyah, knowledge from which benefit is gained, or a righteous child who prays for him” (Sahih Muslim). Supporting a child's education is not just a donation—it is a seed that grows into a legacy, bearing fruit for generations. `,
+        description3Bold:'The Ripple Effect of Your Support',
+        description3:`Imagine the impact when a child like Amina is given the chance to learn. With knowledge, she becomes a teacher, a healer, or a leader—someone who shapes the future of her community. When a woman gains an education, she passes that knowledge to her children, breaking the cycle of poverty for generations to come.`,
+        bottomText:'Your support has the power to transform lives, not just for today, but forever. Together, we can ensure that children like Amina don’t just dream—they achieve. With every classroom built, every book provided, and every teacher supported, we move closer to a world where education becomes a beacon of hope and a lasting charity that benefits all of humanity.',
+        // donateButtonText:'Donate Now'
+      },
+      {
+        id:'',
+        title:'',
+        // image: h_2,
+        description:'But what if Amina could go to school? Education is the most powerful tool to break generational poverty. Here’s how:',
+        descriptionBold:'How Education Breaks the Cycle',
+        services:[
+          '💙 Breaking Barriers to Employment: Educated individuals earn 10 times more, creating financial stability and uplifting their families.',
+          '💙 Healthier Families: Literate parents make informed decisions, reducing child mortality and improving family well-being.',
+          '💙 Empowering Women: Girls who complete school marry later, earn more, and uplift their entire communities.'
+        ],
+      },
+      {
+        id:'',
+        title:'MTJ Foundation: Turning Dreams into Reality',
+        // image: h_2,
+        description:'MTJ Foundation believes in education as a path out of poverty. That’s why we invest in initiatives that rewrite stories like Amina’s:',
+        // descriptionBold:'How Education Breaks the Cycle',
+        services:[
+          '📚 3,000+ Scholarships: Giving students the opportunity to complete their education.',
+
+          '🏫 Al-Hasnain School: Providing quality education at affordable rates to reduce barriers to learning.',
+          '💼 Vocational Training for Women: Empowering women with skills for financial independence.',
+        ],
+      },
+      {
+        id:'',
+        title:'How You Can Be Part of the Change',
+        // image: h_2,
+        description:'Every child deserves the chance to dream, to learn, and to build a brighter future. But for millions like Amina, those dreams remain out of reach. With your support, we can change that. Together, we can turn dreams into reality and break the cycle of poverty through the power of education.',
+        // descriptionBold:'How Education Breaks the Cycle',
+        description2Bold:'Here’s how you can make a difference:',
+
+        services:[
+          '💙 Sponsor a Child: Cover tuition, books, and uniforms to keep a child in school. A small act today can change their entire future.',
+          '💙 Support School Development: Help build classrooms and expand learning spaces, ensuring that every child has a seat to learn and grow.',
+          '💙 Fund Vocational Programs: Empower women with skills that enable them to support their families and uplift entire communities.',
+        ],
+        bottomText:`Your contribution is more than charity—it’s an investment in the future. When you educate one child, you empower an entire generation. When you support one woman, you strengthen an entire community. Together, let’s build a world where every child, like Amina, can not only dream—but thrive.`
       }
     ]
-  }
+  },
+  {
+    id:'qurbani',
+    title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
+    image: h_2,
+    description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
+                  honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
+                  sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens
+                  our faith, revives our sense of empathy, and uplifts entire communities. At MTJ Foundation, we
+                  believe in making this act of worship meaningful by ensuring it reaches those who need it the
+                  most.
+                  In this detailed guide, we’ll explore the meaning of Qurbani, its significance, the rules that
+                  govern it, who must perform it, and how your donation can make a lasting impact — both
+    spiritually and socially.`,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+      {
+        id:'',
+        title:'What is Qurbani?',
+        image: h_2,
+        description:`Qurbani, meaning "sacrifice" in Arabic, refers to the ritual slaughter of an animal during the
+days of Eid-ul-Adha. This act commemorates the willingness of Prophet Ibrahim (AS) to sacrifice
+his beloved son, Ismail (AS), as a demonstration of unwavering submission to Allah (SWT). Just
+as he was about to follow through, Allah replaced Ismail with a lamb, signifying that the
+sacrifice was accepted. `,
+        description2:`This act of sacrifice has remained a powerful expression of obedience and spiritual devotion for
+generations. It reflects the values of faith, sacrifice, and commitment to divine command. For
+Muslims today, Qurbani is an opportunity to revive this legacy and fulfill a significant Sunnah.`,
+        bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
+can partake in the joy of Eid. For many families living in poverty, this is the only time of year
+they have access to meat, making the gesture not just symbolic but deeply impactful.`,
+        donateButtonText:'Donate Now'
+      },
+      {
+        id:'',
+        title:'The Meaning Behind the Word Qurbani',
+        // image: h_2,
+        description:`In Arabic, “Qurbani” is derived from the word “Qurban,” which means a way or means of
+gaining closeness to Allah. It highlights the core purpose of this act — to get closer to our
+Creator through the sacrifice of something valuable. Prophet Ibrahim’s readiness to give up his
+son symbolizes the ultimate submission to God’s will, a lesson in selflessness that transcends
+generations.`,
+        description2:`This meaning transforms the act of Qurbani from a simple animal slaughter into a sacred
+expression of devotion, bringing immense spiritual rewards to those who perform it with
+sincerity and care.`,
+      },
+      {
+        id:'',
+        title:'Why Do Muslims Perform Qurbani?',
+        // image: h_2,
+        description:`Qurbani is more than just the slaughter of an animal — it is a means of drawing nearer to Allah
+(SWT), showing gratitude for one’s blessings, and supporting the less fortunate.`,
+        description2:`According to the Hanafi school of thought, Qurbani is obligatory (wajib) for every Muslim who
+meets specific financial and personal criteria. For followers of other schools of thought, while
+not obligatory, it is considered highly recommended (Sunnah Mu’akkadah).`,
+
+        description3Bold:'Performing Qurbani allows Muslims to:',
+        services:[
+          'Reaffirm their submission to the will of Allah (SWT)',
+          'Follow in the footsteps of Prophet Ibrahim (AS)',
+          'Share the blessings of Eid with those who are struggling',
+          'Reflect on personal sacrifice and spiritual discipline',
+          'Fulfill a charitable obligation that uplifts communities',
+        ],
+        bottomText:`Qurbani is also an act that fosters empathy and awareness. When we sacrifice an animal for
+those who have little, we develop a deeper appreciation for our blessings. We recognize the
+struggle of those who live in poverty and hunger daily. This empathy strengthens the ummah
+and brings us closer together in the true spirit of Eid.`,
+        donateButtonText:'Donate Now'
+      },
+      {
+        id:'The Story Behind Qurbani',
+        description: `The story of Qurbani traces back to Prophet Ibrahim (AS) who, in a divine dream, saw himself
+sacrificing his son, Ismail (AS). Understanding this dream as a command from Allah, he prepared
+to fulfill it despite the emotional difficulty. When he shared the dream with his son, Ismail (AS)
+responded with unwavering faith and agreed to be sacrificed.`,
+description2:`As Ibrahim (AS) was about to carry out the command, Allah (SWT) intervened, replacing Ismail
+with a lamb. This event became an eternal symbol of submission, sacrifice, and faith — values
+that continue to inspire Muslims to this day.`,
+description3:`It reminds us that true faith requires trust in Allah’s wisdom, even when the path is difficult. This
+level of submission and reliance — or tawakkul — is something every Muslim should strive for.`,
+      },
+      {
+        id:'',
+        title:'How to perform Qurbani',
+        image: h_2,
+        description:`The Nisab is currently measured as either 87.48 grams of gold or 612.36 grams of silver. For
+instance, as of May 2025, the value of silver was approximately $640.40, while gold was over
+$9,000. Anyone whose savings or assets exceed this amount is required to give Qurbani.`,
+        description2:`It's important to note that if multiple members of a family meet this criterion, each must
+perform their own Qurbani. So in a household, both husband and wife may be required to offer
+a separate Qurbani.`,
+        description3Bold:'Types of Animals Eligible for Qurbani',
+        description3:`The animals eligible for Qurbani include:`,
+        services:[
+          'Sheep/Goat (minimum age: 1 year) – 1 Qurbani share',
+           'Cow/Buffalo (minimum age: 2 years) – 7 Qurbani shares',
+           'Camel (minimum age: 5 years) – 7 Qurbani shares',
+          'Animals must be healthy and free of disease or defects. Some disqualifying conditions include:',
+           'Missing over half their teeth',
+           'Being blind or one-eyed',
+           'Having a severely lame leg',
+           'Being underweight or physically weak',
+           'Inability to walk to the site of slaughter'
+        ],
+        bottomText:'These health and age requirements ensure that the animals selected are suitable and respected as per Islamic principles.'
+      },
+      {
+        id:'',
+        title: 'How is Qurbani Performed?',
+        description:"The Qurbani must be performed according to strict Islamic guidelines:",
+        services:[
+           'A sharp knife must be used to minimize suffering',
+          'The animal should not see the knife being sharpened',
+          'No other animal should be present during the slaughter',
+          'The phrase "Bismillahi Allahu Akbar" must be recited before the cut',
+          'The animal should not be skinned until it has completely cooled',
+        ],
+        afterServicesText:`
+        The entire process should be handled with the utmost compassion and care. It reflects the
+        mercy that Islam advocates not just toward humans, but toward all living beings. The goal is to
+        complete the ritual respectfully, keeping the sanctity of the act at its core.`,
+      },
+      {
+        id:'',
+        title:'When Should Qurbani Be Performed?',
+        description:`Qurbani should be carried out between the 10th and 12th days of Dhul Hijjah. Donations to us
+can be made up until the end of the (9th Dhul Hijjah). However, early donations are highly
+recommended to ensure timely sacrifice.`,
+description2Bold:`How is Qurbani Meat Distributed?`,
+description2:'Traditionally, the meat from Qurbani is divided into three parts:',
+services:[
+ 'One-third for the donor and their household',
+ 'One-third for friends and relatives',
+ 'One-third for the poor and needy',
+],
+afterServicesText:`At MTJ Foundation, we ensure that all Qurbani meat is distributed to the most vulnerable
+families in disaster-affected and underserved communities across Pakistan. For many of these
+families, this is their only access to meat in the entire year.`
+
+      },
+      {
+        id:'',
+        title:'',
+        description:"Our distribution process uses a fair and transparent scoring system that prioritizes:",
+        services:[
+           'Female-headed households',
+           'Families with disabled or elderly members',
+           'Pregnant or breastfeeding mothers',
+           'Households with young children',
+           'Low-income families in remote areas',
+
+        ]
+      },
+      {
+        id:'',
+        title:'What If You Missed Qurbani in the Past?',
+        description:`If Qurbani was obligatory for you in past years and you missed it, you can still fulfill this
+obligation by donating the equivalent number of shares in the current year.
+This act is known as compensatory Qurbani and serves as a means to rectify missed
+opportunities for worship.`,
+description2Bold:'Can I Give More Than One Qurbani?',
+description2:`Absolutely. The Prophet Muhammad (PBUH) gave multiple Qurbanis — one on behalf of himself
+and one on behalf of his Ummah. Many Muslims also choose to offer Qurbani for deceased
+parents or other loved ones. You can give as many shares as you like, especially to maximize
+reward in the blessed days of Dhul Hijjah.
+This also offers a chance to honor the memory of your loved ones while contributing to a noble
+cause.`,
+description3Bold:`Pre-Qurbani Etiquette:`,
+description3:`Hair and Nails According to the Hanbali madhab and supported by many scholars, individuals
+intending to give Qurbani should avoid cutting their hair and nails from the 1st of Dhul Hijjah
+until their sacrifice is performed. This act symbolizes humility and submission.`,
+      },
+      {
+        id:'',
+        title:'Why Choose MTJ Foundation for Your Qurbani?',
+        services:
+        [
+          'Transparency & Trust: Every donation is tracked from payment to distribution.',
+`Shariah Compliance: We ensure that each Qurbani is carried out according to Islamic
+guidelines. `,
+`  Serving the Most Needy: We work in disaster-hit, flood-affected, and impoverished
+areas.`,
+
+`Hygiene & Dignity: All meat is packed and distributed with proper hygiene and respect
+for the beneficiaries. `,
+`Community-Centric: Your donation not only provides food but also strengthens our
+collective sense of solidarity.`
+        ],
+        afterServicesText: `By choosing MTJ Foundation, you're not just donating — you're uplifting lives, spreading smiles,
+and fulfilling a divine command with full sincerity.`
+      },
+      {
+        id:'',
+        title:`Final Thoughts`,
+        description:`Qurbani is a profound reminder of our relationship with Allah (SWT). It calls us to reflect on the
+values of obedience, compassion, and community. As we honor the legacy of Prophet Ibrahim
+(AS), we must also recognize our responsibility to share what we have with those who have less.`,
+description2:`This Dhul Hijjah, let your Qurbani be more than a ritual. Let it be a source of joy for someone in
+need — a family that will remember your sacrifice every time they gather around a warm meal
+on Eid.`,
+bottomText:`Donate your Qurbani through MTJ Foundation and be the reason someone smiles this Eid.`
+      }
+    ]
+  },
+
 ];
 
 // Helper function to get featured blog
