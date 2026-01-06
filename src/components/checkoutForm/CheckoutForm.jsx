@@ -255,6 +255,7 @@ const CheckoutForm = () => {
   // PayFast handler function
   const postToPayfast = (payfastResponse, formData) => {
     try {
+      console.log("PayFast response: **********************", payfastResponse);
       // Validate required fields from response
       if (!payfastResponse) {
         console.error('PayFast response is missing')
@@ -306,7 +307,7 @@ const CheckoutForm = () => {
       const form = document.createElement('form')
       form.method = 'POST' 
       form.action = 'https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction'
-      form.target = '_blank' // Open in new tab
+      form.target = '_self' // Open in same window
 
       Object.entries(fields).forEach(([k, v]) => {
         if (v == null || v === '') return
@@ -510,7 +511,7 @@ const CheckoutForm = () => {
           try {
             setIsLoading(false)
             // Try to open in new window
-            const paymentWindow = window.open('', '_blank')
+            const paymentWindow = window.open('', '_self')
             if (paymentWindow) {
               paymentWindow.location.href = response.data.data.paymentUrl
               paymentWindow.focus()
