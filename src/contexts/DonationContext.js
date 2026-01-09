@@ -14,6 +14,7 @@ export const DonationProvider = ({ children }) => {
   const [donationData, setDonationData] = useState(null);
   const [projectDonations, setProjectDonations] = useState([]); 
   const [donationType, setDonationType] = useState("general");
+  const [ref, setRef] = useState(null);
 
   // Calculate total amount from all donation sources
   // This amount is automatically updated when updateProjectDonation is called
@@ -81,6 +82,7 @@ export const DonationProvider = ({ children }) => {
     setDonationData(null);
     setProjectDonations([]);
     setDonationType("general");
+    // Note: We don't clear ref here as it should persist across donation flows
   }, []);
 
   const value = useMemo(() => ({
@@ -88,12 +90,14 @@ export const DonationProvider = ({ children }) => {
     projectDonations,
     amount, // Total calculated amount from all sources (donationData + projectDonations)
     donationType,
+    ref,
     setDonationFormData,
     setProjectDonationData,
     updateProjectDonation,
     clearDonationData,
-    setDonationType
-  }), [donationData, projectDonations, amount, donationType, setDonationFormData, setProjectDonationData, updateProjectDonation, clearDonationData]);
+    setDonationType,
+    setRef
+  }), [donationData, projectDonations, amount, donationType, ref, setDonationFormData, setProjectDonationData, updateProjectDonation, clearDonationData]);
 
   return (
     <DonationContext.Provider value={value}>

@@ -35,9 +35,9 @@ const ProjectDonationCard = ({ project, onUpdate }) => {
       projectTitle: project.title,
       initiativeTitle: project.subtitle ? null : project.title,
       initiativeSubtitle: project.subtitle || null,
-      projectIcon: project.icon,
+      // projectIcon: project.icon,
       quantity: qty,
-      donationType: type,
+      // donationType: type,
       basePrice: basePrice,
       customAmount: parseFloat(custom) || 0,
       totalAmount: amount

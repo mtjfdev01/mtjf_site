@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useMemo, useEffect } from 'react'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useDonation } from '../../../contexts/DonationContext'
 import DonationProjectsMenuCard from './DonationProjectsMenuCard'
@@ -22,7 +22,9 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
-  const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation } = useDonation()
+  const location = useLocation()
+  const { projectId } = useParams()
+  const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation, setRef } = useDonation()
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")
@@ -113,6 +115,22 @@ const DonationProjectsMenu = () => {
       ]
     },
   ]
+
+  // Set expandedProjectId from URL parameter on mount
+  useEffect(() => {
+    if (projectId) {
+      setExpandedProjectId(projectId)
+    }
+  }, [projectId])
+
+  // Extract and store ref query parameter
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const refParam = searchParams.get('ref')
+    if (refParam) {
+      setRef(refParam)
+    }
+  }, [location.search, setRef])
 
   const numericAmount = (val) => {
     const n = Number(String(val).trim())
@@ -277,7 +295,7 @@ const DonationProjectsMenu = () => {
           <button
             className="back-to-projects-btn"
             onClick={() => {
-              setExpandedProjectId(null)
+              setExpandedProjectId(null) 
               // clearDonationData()
             }}
           >

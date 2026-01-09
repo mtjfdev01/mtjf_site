@@ -25,7 +25,7 @@ const paymentFrequency = {
 const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData } = useDonation()
+  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -486,6 +486,10 @@ const CheckoutForm = () => {
         // Include donationID if this is a retry of failed transaction
         ...(isFailedTransactionFlow && donationIdFromQuery && {
           previous_donation_id: donationIdFromQuery
+        }),
+        // Include ref if available (agency performance tracking)
+        ...(ref && {
+          ref: ref
         })
       }
 
@@ -501,7 +505,6 @@ const CheckoutForm = () => {
         // Debug: Log the response to see its structure
         console.log('PayFast response:', response.data)
         console.log('PayFast response.data:', response.data?.data)
-        
         // Call postToPayfast with the response data from the server
         // Try different possible response structures
         const payfastData = response.data?.data || response.data

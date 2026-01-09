@@ -61,9 +61,9 @@ const InitiativeDonationCard = ({ initiative }) => {
       projectTitle: initiative.parentProjectTitle || '',
       initiativeTitle: initiative.title,
       initiativeSubtitle: initiative.subtitle || null,
-      projectIcon: initiative.icon,
+      // projectIcon: initiative.icon,
       quantity: qty,
-      donationType: type,
+      // donationType: type,
       basePrice: basePrice,
       customAmount: parseFloat(custom) || 0,
       totalAmount: amount
