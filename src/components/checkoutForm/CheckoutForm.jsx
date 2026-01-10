@@ -664,9 +664,36 @@ const CheckoutForm = () => {
         <h5 className="checkout-panel__title-2">Donate Via :</h5>
 
         <div className="row">
-
-                    {/* PayFast payment option */}
-                    <div className="col-md-6">
+                  {/* blinq payment option */}
+                  <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'blinq')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <i className="fas fa-university"></i>
+                </div>
+                <div className="payment-content">
+                  <h6>Credit, Debit Card, Jazz Cash, EasyPaisa</h6>
+                  <p>Blinq's Secure online payment gateway</p>
+                  <div className="payment-selection-options"></div>
+                </div>
+                {isLoading && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          
+              {/* PayFast payment option */}
+              <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -693,33 +720,6 @@ const CheckoutForm = () => {
           </div>
 
 
-          {/* blinq payment option */}
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'blinq')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <i className="fas fa-university"></i>
-                </div>
-                <div className="payment-content">
-                  <h6>Credit, Debit Card, Jazz Cash, EasyPaisa</h6>
-                  <p>Blinq's Secure online payment gateway</p>
-                  <div className="payment-selection-options"></div>
-                </div>
-                {isLoading && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
       </form>
     </section>
