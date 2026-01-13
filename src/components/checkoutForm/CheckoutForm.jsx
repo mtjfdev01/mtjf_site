@@ -255,7 +255,6 @@ const CheckoutForm = () => {
   // PayFast handler function
   const postToPayfast = (payfastResponse, formData) => {
     try {
-      console.log("PayFast response: **********************", payfastResponse);
       // Validate required fields from response
       if (!payfastResponse) {
         console.error('PayFast response is missing')
@@ -301,7 +300,6 @@ const CheckoutForm = () => {
         TRAN_TYPE: "ECOMM_PURCHASE",
       }
 
-      // console.log("PayFast fields:", fields)
       
       // Build and submit a real HTML form (POST navigation)
       const form = document.createElement('form')
@@ -503,8 +501,6 @@ const CheckoutForm = () => {
 
       if (currentPayment === 'payfast') {
         // Debug: Log the response to see its structure
-        console.log('PayFast response:', response.data)
-        console.log('PayFast response.data:', response.data?.data)
         // Call postToPayfast with the response data from the server
         // Try different possible response structures
         const payfastData = response.data?.data || response.data

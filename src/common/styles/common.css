@@ -1,6 +1,5 @@
 .banner_img {
-    /* height: 75vh; */
-    /* max-height: 70vh; */
+  margin-top: 110px;
     opacity: 0;
     transform: scale(1.01);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
