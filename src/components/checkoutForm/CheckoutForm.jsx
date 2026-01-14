@@ -5,6 +5,7 @@ import axiosInstance from '../../utils/axios'
 import { ALL_PROJECTS_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
+import { CiCreditCard2 } from "react-icons/ci";
 
 const DEFAULT_FORM = {
   donor_name: '',
@@ -672,7 +673,9 @@ const CheckoutForm = () => {
                 }}
               >
                 <div className="payment-icon">
-                  <i className="fas fa-university"></i>
+                  {/* <i className="fas fa-university"></i> */}
+                  <CiCreditCard2 />
+
                 </div>
                 <div className="payment-content">
                   <h6>Pay with Bank Account (One Link)</h6>
@@ -699,7 +702,7 @@ const CheckoutForm = () => {
                 }}
               >
                 <div className="payment-icon">
-                  <i className="fas fa-credit-card"></i>
+                  <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
                   <h6>Pay with Credit/Debit Card</h6>
