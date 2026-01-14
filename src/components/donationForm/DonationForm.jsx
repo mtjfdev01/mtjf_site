@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
@@ -20,6 +20,7 @@ const DonationForm = ({
   showProjectSelect = false,
   projects = [],
   defaultProjectId,
+  defaultProjectName,
   onSubmit = (data) => console.log('Donation submitted:', data),
   layout = 'vertical',
   className = ''
@@ -40,9 +41,27 @@ const DonationForm = ({
     amount: '',
     customAmount: '',
     category: defaultCategory || categoryOptions[0] || 'General',
-    projectId: defaultProjectId || projects[0]?.id || ''
+    projectId: defaultProjectId || projects[0]?.id || '',
+    projectName: defaultProjectName || projects[0]?.title || projects[0]?.name || ''
   })
   const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    if (!showProjectSelect) return
+
+    const hasCurrent = !!formData.projectId && projects.some((p) => p.id === formData.projectId)
+    if (hasCurrent) return
+
+    const nextId = defaultProjectId || projects[0]?.id || ''
+    const nextProject = projects.find((p) => p.id === nextId)
+    const nextName = defaultProjectName || nextProject?.title || nextProject?.name || ''
+
+    setFormData((prev) => ({
+      ...prev,
+      projectId: nextId,
+      projectName: nextName
+    }))
+  }, [showProjectSelect, projects, defaultProjectId, defaultProjectName, formData.projectId])
 
   const getDonationAmounts = (currency) =>
     mergedDonationOptions[currency] || mergedDonationOptions[initialCurrency]
@@ -56,9 +75,8 @@ const DonationForm = ({
   }
 
   const handleSubmit = (e) => {
+
     e.preventDefault()
-    
-    // Clear previous error
     setErrorMessage('')
     
     // Calculate final amount
@@ -183,12 +201,16 @@ const DonationForm = ({
                 <select
                   className="donation-form-input"
                   value={formData.projectId}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    const selectedId = e.target.value
+                    const selectedProject = projects.find((p) => p.id === selectedId)
                     setFormData((prev) => ({
                       ...prev,
-                      projectId: e.target.value
+                      projectId: selectedId,
+                      projectName: selectedProject?.title || selectedProject?.name || ''
                     }))
                   }
+                }
                 >
                   {projects.map((project) => (
                     <option key={project.id} value={project.id}>

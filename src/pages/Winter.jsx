@@ -151,7 +151,6 @@ export const Winter = () => {
               }}
               categoryOptions={['General', 'Sadqa', 'Zakat']}
               defaultCategory="General"
-              defaultProjectId="winter"
             />
             <MediaContentSection
             subProjects={winterSubProjects}
