@@ -493,12 +493,8 @@ const CheckoutForm = () => {
       }
 
       // Use PUT to update existing donation if it's a failed transaction retry, otherwise POST
-      let response
-      if (isFailedTransactionFlow && donationIdFromQuery) {
-        response = await axiosInstance.put(`/donations/${donationIdFromQuery}`, payload)
-      } else {
-        response = await axiosInstance.post('/donations', payload)
-      }
+      const response = await axiosInstance.post('/donations', payload)
+      
 
       if (currentPayment === 'payfast') {
         // Debug: Log the response to see its structure
