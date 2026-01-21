@@ -12,6 +12,7 @@ const DEFAULT_FORM = {
   donor_email: '',
   donor_phone: '',
   donation_type: 'general',
+  donation_frequency: 'once',
   country: '',
   city: '',
   address: ''
@@ -20,7 +21,8 @@ const DEFAULT_FORM = {
 // Payment frequency mapping
 const paymentFrequency = {
   blinq: 'once',
-  payfast: 'once'
+  payfast: 'once',
+  meezan: 'once'
 }
 
 const CheckoutForm = () => {
@@ -473,7 +475,8 @@ const CheckoutForm = () => {
         project_name,
         ...formData,
         donation_method: currentPayment,
-        donation_frequency: paymentFrequency[currentPayment] || 'once',
+        // editable in UI, fallback to method default if missing
+        donation_frequency: formData.donation_frequency || paymentFrequency[currentPayment] || 'once',
         donation_source: 'website',
         amount: totalAmount,
         currency: (isOldDonationFormFlow || isFailedTransactionFlow) ? (donationData?.currency || 'PKR') : 'PKR',
@@ -492,6 +495,12 @@ const CheckoutForm = () => {
         })
       }
 
+      // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
+      if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
+        console.log('payload', payload)
+        setIsLoading(false)
+        return
+      }
       // Use PUT to update existing donation if it's a failed transaction retry, otherwise POST
       const response = await axiosInstance.post('/donations', payload)
       
@@ -640,8 +649,22 @@ const CheckoutForm = () => {
               />
             </div>
           </div>
+        {/* Donation Frequency (editable) */}
+        <div className="checkout-panel__field">
+          <label className="donation-form-label">Donation Frequency</label>
+          <select
+            className="checkout-panel__input checkout-panel__select"
+            value={formData.donation_frequency}
+            onChange={(e) => setFormData((prev) => ({ ...prev, donation_frequency: e.target.value }))}
+          >
+            <option value="once">Give Once only</option>
+            <option value="monthly">Give Monthly</option>
+          </select>
+        </div>
 
-          <div className="input-item input-item-textarea ltn__custom-icon checkout-panel__field checkout-panel__field--textarea">
+
+        </div>
+        <div className="input-item input-item-textarea ltn__custom-icon checkout-panel__field checkout-panel__field--textarea">
             <textarea
               name="address"
               placeholder="Enter address"
@@ -651,14 +674,12 @@ const CheckoutForm = () => {
               rows="4"
             />
           </div>
-        </div>
-
         {/* Payment Method Section */}
         <h5 className="checkout-panel__title-2">Donate Via :</h5>
 
         <div className="row">
                   {/* blinq payment option */}
-                  <div className="col-md-6">
+          {/* <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -669,9 +690,7 @@ const CheckoutForm = () => {
                 }}
               >
                 <div className="payment-icon">
-                  {/* <i className="fas fa-university"></i> */}
                   <CiCreditCard2 />
-
                 </div>
                 <div className="payment-content">
                   <h6>Pay with Bank Account (One Link)</h6>
@@ -684,7 +703,7 @@ const CheckoutForm = () => {
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
           
               {/* PayFast payment option */}
               <div className="col-md-6">
@@ -702,6 +721,32 @@ const CheckoutForm = () => {
                 </div>
                 <div className="payment-content">
                   <h6>Pay with Credit/Debit Card</h6>
+                </div>
+                {isLoading && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          
+              {/* Meezan payment option */}
+              <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'meezan')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay with Meezan Bank</h6>
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
