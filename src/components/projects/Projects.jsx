@@ -27,8 +27,8 @@ const PROJECTS_DATA = [
     image: health,
     progress: 47.56,
     progressColor: '#9B59B6',
-    goal: 100000,
-    pledged: 47789,
+    goal: 1000000,
+    pledged: 477890,
     donateButtonText: 'Support Healthcare Services',
     learnMorePath: '/projects/health',
     donatePath: '/donate/health'
@@ -43,7 +43,7 @@ const PROJECTS_DATA = [
     progress: 47.58,
     progressColor: '#2ECC71',
     goal: 100000,
-    pledged: 47580,
+    pledged: 875080,
     donateButtonText: 'Educate a Child',
     learnMorePath: '/projects/education',
     donatePath: '/donate/education'
@@ -57,8 +57,8 @@ const PROJECTS_DATA = [
     image: disaster,
     progress: 47.58,
     progressColor: '#F39C12',
-    goal: 100000,
-    pledged: 47580,
+    goal: 1000000,
+    pledged: 775800,
     donateButtonText: 'Help in Emergencies',
     learnMorePath: '/projects/disaster-management',
     donatePath: '/donate/disaster-management'
@@ -72,8 +72,8 @@ const PROJECTS_DATA = [
     image: water,
     progress: 52.30,
     progressColor: '#3498DB',
-    goal: 150000,
-    pledged: 78450,
+    goal: 1500000,
+    pledged: 278450,
     donateButtonText: 'Sponsor a Water Project',
     learnMorePath: '/projects/clean-water',
     donatePath: '/donate/clean-water'
@@ -87,8 +87,8 @@ const PROJECTS_DATA = [
     image: apna_ghr,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 7000000,
+    pledged: 1076500,
     donateButtonText: 'Support Apna Ghar',
     learnMorePath: '/projects/apna-ghar',
     donatePath: '/donate/disaster-relief'
@@ -102,8 +102,8 @@ const PROJECTS_DATA = [
     image: kasb,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 2000000,
+    pledged: 176500,
     donateButtonText: 'Sponsor Skill Training',
     learnMorePath: '/projects/kasb-skill-development',
     donatePath: '/donate/kasb-skill-development'
@@ -117,8 +117,8 @@ const PROJECTS_DATA = [
     image: Seeds,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 2000000,
+    pledged: 712500,
     donateButtonText: 'Plant a Tree',
     learnMorePath: '/projects/seeds-of-change',
     donatePath: '/donate/seeds-of-change'
@@ -132,8 +132,8 @@ const PROJECTS_DATA = [
     image: qurbani,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 100000,
+    pledged: 222500,
     donateButtonText: 'Book Your Qurbani',
     learnMorePath: '/projects/qurbani-barai-mustehqeen',
     donatePath: '/donate/qurbani-barai-mustehqeen'
@@ -147,8 +147,8 @@ const PROJECTS_DATA = [
     image: aas_lab,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 3000000,
+    pledged: 976500,
     donateButtonText: 'Support Diagnostic Care',
     learnMorePath: '/projects/aas-lab-diagnostics',
     donatePath: '/donate/aas-lab-diagnostics'
@@ -162,8 +162,8 @@ const PROJECTS_DATA = [
     image: community,
     progress: 38.25,
     progressColor: '#9B59B6',
-    goal: 200000,
-    pledged: 76500,
+    goal: 2000000,
+    pledged: 1341500,
     donateButtonText: 'Support a Family',
     learnMorePath: '/projects/community-services',
     donatePath: '/donate/community-services'
@@ -291,7 +291,7 @@ const Projects = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'PKR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(amount)
@@ -379,10 +379,10 @@ const Projects = () => {
                   />
                 </div>
 
-                {/* <div className="project-goal-info">
-                  Goal : {formatCurrency(project.pledged)} - Pledged :{' '}
-                  {formatCurrency(project.goal)}
-                </div> */}
+                <div className="project-goal-info">
+                  Goal : {formatCurrency(project.goal)} - Pledged :{' '}
+                  {formatCurrency(project.pledged)}
+                </div>
 
                 <div className="project-actions">
                   <button

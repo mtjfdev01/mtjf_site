@@ -128,7 +128,7 @@ const ProjectDetail = () => {
       </div>
 
       {/* Full Width Image Section - loads on short scroll */}
-      <div ref={imageRef} style={{ minHeight: '200px' }}>
+      {project?.mainImage && <div ref={imageRef} style={{ minHeight: '200px' }}>
         {showImage && (
           <section className="project-full-image-section">
             <div className="project-full-image-container">
@@ -140,7 +140,7 @@ const ProjectDetail = () => {
             </div>
           </section>
         )}
-      </div>
+      </div> }
 
       {/* Media Content Section for Sub-Projects - loads on short scroll */}
       <div ref={mediaRef} style={{ minHeight: '200px' }}>

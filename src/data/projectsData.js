@@ -1125,7 +1125,6 @@ export const PROJECTS_DETAIL_DATA = {
       paragraph2: 'Here, every home built becomes the beginning of a new chapter for a mother and for every child who depends on her.',
       paragraph3: ''
     },
-    mainImage: image2,
     donateCategory: 'Apna Ghar',
     donateButtonText: 'Build a Home for a Widow & Her Children',
     donationOptions: {

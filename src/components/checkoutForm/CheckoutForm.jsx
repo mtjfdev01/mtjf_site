@@ -720,7 +720,7 @@ const CheckoutForm = () => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay with Credit/Debit Card</h6>
+                  <h6>Pay Securely with Credit/Debit Card (1st)</h6>
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
@@ -746,7 +746,7 @@ const CheckoutForm = () => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay with Meezan Bank</h6>
+                  <h6>Pay Securely with Credit/Debit Card (2nd)</h6>
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
@@ -756,8 +756,6 @@ const CheckoutForm = () => {
               </div>
             </div>
           </div>
-
-
         </div>
       </form>
     </section>
