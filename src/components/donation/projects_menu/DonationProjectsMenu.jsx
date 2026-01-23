@@ -40,7 +40,7 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "General",
       initiatives: [
-        { id: 'health-patient-care', title: 'Patient Care', subtitle: 'Initiative Per Patient', price: 15000, icon: health },
+        { id: 'health-patient-care', title: 'Patient Care', subtitle: 'Initiative Per Patient', price: 10000, icon: health },
         { id: 'health-medical-support', title: 'Medical Support', subtitle: 'Initiative Per Beneficiary', price: 40000, icon: health },
         { id: 'health-rehabilitation-pwds', title: 'Rehabilitation of PWDs', subtitle: 'Per Beneficiary', price: 20000, icon: health }
       ]
@@ -67,12 +67,12 @@ const DonationProjectsMenu = () => {
       new: true,
       category: "General",
       initiatives: [
-        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 60000, icon: cleanWater },
+        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 80000, icon: cleanWater },
         { id: 'clean-water-afridev', title: 'Afridev Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater },
-        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant', subtitle: 'Per Unit', price: 1500000, icon: cleanWater },
-        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Per Unit', price: 2500000, icon: cleanWater },
-        { id: 'clean-water-solar-pump', title: 'Solar Submersible Pump', subtitle: 'Per Unit', price: 750000, icon: cleanWater },
-        { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 1500000, icon: cleanWater }
+        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater },
+        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Filtration Plant Per Unit (2.5 Million)', price: 2500000, icon: cleanWater },
+        { id: 'clean-water-solar-pump', title: 'Solar Submersible Pump', subtitle: 'Per Unit', price: 250000, icon: cleanWater },
+        { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 500000, icon: cleanWater }
       ]
     },
     { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa", initiatives: [] },
@@ -110,8 +110,7 @@ const DonationProjectsMenu = () => {
       category: "Sadqa",
       initiatives: [
         { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community },
-        { id: 'community-feed-individual', title: 'Feed an Individual', subtitle: 'Per Individual', price: 250, icon: community },
-        { id: 'community-mosque-construction', title: 'Support the Construction of a Mosque', subtitle: 'Per Musala', price: 50000, icon: community }
+        { id: 'marriage-gift-distribution', title: 'Marriage Gift', subtitle: 'Per Benificiary', price: 150000, icon: community },
       ]
     },
   ]
