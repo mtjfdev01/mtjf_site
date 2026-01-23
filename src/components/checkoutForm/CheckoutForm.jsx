@@ -732,7 +732,7 @@ const CheckoutForm = () => {
           </div>
           
               {/* Meezan payment option */}
-          {/* <div className="col-md-6">
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -755,7 +755,7 @@ const CheckoutForm = () => {
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </form>
     </section>
