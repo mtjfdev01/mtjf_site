@@ -40,9 +40,18 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "General",
       initiatives: [
-        { id: 'health-patient-care', title: 'Patient Care', subtitle: 'Initiative Per Patient', price: 10000, icon: health },
-        { id: 'health-medical-support', title: 'Medical Support', subtitle: 'Initiative Per Beneficiary', price: 40000, icon: health },
-        { id: 'health-rehabilitation-pwds', title: 'Rehabilitation of PWDs', subtitle: 'Per Beneficiary', price: 20000, icon: health }
+        { id: 'health-patient-care', title: 'Patient Care', subtitle: 'Initiative Per Patient', price: 10000, icon: health,
+          description:'The per patient cost includes consultancy fees, diagnostic tests, and the cost of medicines',
+          duration: 'One time'
+         },
+        { id: 'health-medical-support', title: 'Medical Support', subtitle: 'Initiative Per Beneficiary', price: 40000, icon: health,
+          description: 'Medical Support Initiative provides direct financial assistance — with payments made straight to partner hospitals — for deserving patients who cannot afford essential surgical procedures. This program supports a broad range of surgeries, including gynecological, orthopedic, and other critical medical interventions, ensuring that vulnerable individuals receive timely, safe, and life-enhancing treatment.',
+          duration: 'One time'
+        },
+        { id: 'health-rehabilitation-pwds', title: 'Rehabilitation of PWDs', subtitle: 'Per Beneficiary', price: 20000, icon: health,
+          description: 'This initiative focuses on restoring independence and mobility for individuals with physical disabilities or mobility impairments. By providing wheelchairs, crutches, walkers, and other mobility aids, we aim to remove the barriers that limit their access to education, healthcare, employment, and social participation.',
+          duration: 'One time'
+        }
       ]
     },
     { 
@@ -53,10 +62,22 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "General",
       initiatives: [
-        { id: 'education-scholarship', title: 'Scholarship', subtitle: 'Per Student/Per Month', price: 15000, icon: education },
-        { id: 'education-dream-school', title: 'Dream School', subtitle: 'Per School/Per Month', price: 35000, icon: education },
-        { id: 'education-hafiz', title: 'For Hafiz', subtitle: 'Per Student/Per Month', price: 5000, icon: education },
-        { id: 'education-alim', title: 'For Alim', subtitle: 'Per Student/Per Month', price: 18000, icon: education }
+        { id: 'education-scholarship', title: 'Scholarship', subtitle: 'Per Student/Per Month', price: 15000, icon: education,
+          description: 'The monthly scholarship for deserving students encompasses various expenses, including tuition fees, accommodation, food, and stationery costs. This comprehensive support aims to alleviate the financial burden on students and ensure their continued access to education.',
+          duration: 'Minimum 2-years'
+        },
+        { id: 'education-dream-school', title: 'Dream School', subtitle: 'Per School/Per Month', price: 35000, icon: education,
+          description: 'Dream Schools is a flagship educational initiative designed to bring out-of-school and deserving children back into the learning environment. Each Dream School accommodates 40 students and provides a complete package of support including free books, uniforms, school bags, and shoes, ensuring that no child is deprived of education due to financial barriers.',
+          duration: '4-Years Session'
+        },
+        { id: 'education-hafiz', title: 'For Hafiz', subtitle: 'Per Student/Per Month', price: 5000, icon: education,
+          description: 'The monthly expenses for a Hafiz include various components such as the teacher\'s salary, operational expenses, and other essential costs associated with their education and well-being.',
+          duration: '2-Years Session'
+        },
+        { id: 'education-alim', title: 'For Alim', subtitle: 'Per Student/Per Month', price: 18000, icon: education,
+          description: 'The monthly expenses for an Alim student typically encompass fees, boarding and lodging costs, as well as food expenses. These components collectively contribute to their educational and living requirements.',
+          duration: '6-Years'
+        }
       ]
     },
     { 
@@ -67,12 +88,30 @@ const DonationProjectsMenu = () => {
       new: true,
       category: "General",
       initiatives: [
-        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 80000, icon: cleanWater },
-        { id: 'clean-water-afridev', title: 'Afridev Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater },
-        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater },
-        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Filtration Plant Per Unit (2.5 Million)', price: 2500000, icon: cleanWater },
-        { id: 'clean-water-solar-pump', title: 'Solar Submersible Pump', subtitle: 'Per Unit', price: 250000, icon: cleanWater },
-        { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 500000, icon: cleanWater }
+        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 80000, icon: cleanWater,
+          description: 'Projects involving hand pumps cater to varying depths of water levels to ensure access to clean water across different regions',
+          duration: 'One time'
+        },
+        { id: 'clean-water-afridev', title: 'Afridev Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater,
+          description: 'The Afridev Community Hand Pump is highly recommended for areas with low water levels, as it is specifically designed to efficiently extract water from shallow depths.',
+          duration: 'One time'
+        },
+        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater,
+          description: 'This initiative will be carried out with active community participation and contributions. It encompasses all expenses related to the RO filtration plant, excluding civil construction work.',
+          duration: 'One time'
+        },
+        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Filtration Plant Per Unit (2.5 Million)', price: 2500000, icon: cleanWater,
+          description: 'This initiative will be implemented without community participation or contributions. It covers all expenses related to the Solarized RO filtration plant (fully automated), including solar system, equipment, machinery, and civil construction work.',
+          duration: 'One time'
+        },
+        { id: 'clean-water-solar-pump', title: 'Solar Submersible Pump', subtitle: 'Per Unit', price: 250000, icon: cleanWater,
+          description: 'For plains areas, the project entails borehole drilling, installation of a submersible pump, utilization of 4 solar panels, and provision of water tanks.',
+          duration: 'One time'
+        },
+        { id: 'clean-water-solar-turbine', title: 'Solar Submersible Pump / Turbine', subtitle: 'Per Unit', price: 500000, icon: cleanWater,
+          description: 'For desert areas, the initiative comprises borehole drilling, installation of a submersible pump/turbine, construction of room, incorporation of 8 solar panels, and provision of water tanks.',
+          duration: 'One time'
+        }
       ]
     },
     { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa", initiatives: [] },
@@ -85,7 +124,10 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "Sadqa",
       initiatives: [
-        { id: 'kasb-empowering-woman', title: 'Empowering a Woman', subtitle: 'Per Beneficiary', price: 100000, icon: kasb }
+        { id: 'kasb-empowering-woman', title: 'Empowering a Woman', subtitle: 'Per Beneficiary', price: 100000, icon: kasb,
+          description: 'This initiative is particularly recommended for woman-headed families to promote sustainable livelihoods.',
+          duration: 'One time'
+        }
       ]
     },
     { 
@@ -109,8 +151,14 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "Sadqa",
       initiatives: [
-        { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community },
-        { id: 'marriage-gift-distribution', title: 'Marriage Gift', subtitle: 'Per Benificiary', price: 150000, icon: community },
+        { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community,
+          description: 'The monthly ration for deserving families includes essential food items necessary for their sustenance. This support helps alleviate food insecurity and ensures that these families have access to nutritious meals on a regular basis.',
+          duration: '1-Year'
+        },
+        { id: 'marriage-gift-distribution', title: 'Marriage Gift', subtitle: 'Per Benificiary', price: 150000, icon: community,
+          description: 'This initiative is aimed at deserving girls whose families are unable to make arrangements for their marriage, providing them with essential support for their marital journey.',
+          duration: 'One time'
+        },
       ]
     },
   ]

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDonation } from '../../../contexts/DonationContext'
+import { FaTimes } from 'react-icons/fa'
 import './InitiativeDonationCard.css'
 
 const InitiativeDonationCard = ({ initiative }) => {
@@ -7,6 +8,7 @@ const InitiativeDonationCard = ({ initiative }) => {
   const [quantity, setQuantity] = useState(0)
   const [donationType, setDonationType] = useState('GENERAL')
   const [customAmount, setCustomAmount] = useState('')
+  const [showOverlay, setShowOverlay] = useState(false)
 
   const basePrice = initiative.price || 0
   const totalPrice = quantity * basePrice + (parseFloat(customAmount) || 0)
@@ -126,10 +128,20 @@ const InitiativeDonationCard = ({ initiative }) => {
       </div>
 
       <div className="initiative-price-field">
-        <label className="initiative-field-label">{initiative.subtitle 
+        <label className="initiative-field-label">
+          {initiative.subtitle 
             ? `RS ${basePrice.toLocaleString()} ${initiative.subtitle}`
             : `RS ${basePrice.toLocaleString()} Per Item`
-          }</label> 
+          }
+          {initiative.description && (
+            <span 
+              className="initiative-read-more"
+              onClick={() => setShowOverlay(true)}
+            >
+              read more
+            </span>
+          )}
+        </label> 
         <div className="initiative-price-input-wrapper">
           <input
             type="text"
@@ -140,6 +152,26 @@ const InitiativeDonationCard = ({ initiative }) => {
           <span className="initiative-price-currency">PKR</span>
         </div>
       </div>
+
+      {showOverlay && initiative.description && (
+        <div className="initiative-overlay" onClick={() => setShowOverlay(false)}>
+          <div className="initiative-overlay-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="initiative-overlay-close"
+              onClick={() => setShowOverlay(false)}
+              aria-label="Close"
+            >
+              <FaTimes />
+            </button>
+            {initiative.duration && (
+              <div className="initiative-overlay-duration">
+                <strong>Duration:</strong> {initiative.duration}
+              </div>
+            )}
+            <p className="initiative-overlay-description">{initiative.description}</p>
+          </div>
+        </div>
+      )}
 
       {/* <button
         type="button"

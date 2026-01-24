@@ -13,6 +13,7 @@
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.06));
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* .initiative-card-icon {
@@ -108,6 +109,23 @@
   font-size: var(--fs-14, 14px);
   font-weight: 600;
   color: var(--color-900, #222);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8, 8px);
+  flex-wrap: wrap;
+}
+
+.initiative-read-more {
+  font-size: var(--fs-12, 12px);
+  font-weight: 400;
+  color: var(--color-primary, #30aee3);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: var(--transition, all 0.2s ease);
+}
+
+.initiative-read-more:hover {
+  color: var(--color-primary-hover, #2896c2);
 }
 
 .initiative-donation-type-select,
@@ -168,6 +186,93 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Overlay styles */
+.initiative-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: var(--radius-md, 10px);
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.initiative-overlay-content {
+  background-color: var(--color-white, #ffffff);
+  border-radius: var(--radius-md, 10px);
+  padding: var(--space-24, 24px);
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(0,0,0,0.18));
+  transform: scale(0.9);
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: scale(1);
+  }
+}
+
+.initiative-overlay-close {
+  position: absolute;
+  top: var(--space-12, 12px);
+  right: var(--space-12, 12px);
+  background: none;
+  border: none;
+  font-size: var(--fs-20, 20px);
+  color: var(--color-600, #575757);
+  cursor: pointer;
+  padding: var(--space-8, 8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 6px);
+  transition: var(--transition, all 0.2s ease);
+  width: 32px;
+  height: 32px;
+}
+
+.initiative-overlay-close:hover {
+  background-color: var(--color-100, #f2f2f2);
+  color: var(--color-900, #1a1a1a);
+}
+
+.initiative-overlay-duration {
+  font-size: var(--fs-14, 14px);
+  color: var(--color-600, #575757);
+  margin-bottom: var(--space-16, 16px);
+  padding-bottom: var(--space-12, 12px);
+  border-bottom: 1px solid var(--color-200, #e6e6e6);
+}
+
+.initiative-overlay-duration strong {
+  color: var(--color-900, #222);
+  font-weight: 600;
+}
+
+.initiative-overlay-description {
+  font-size: var(--fs-16, 16px);
+  line-height: 1.6;
+  color: var(--color-900, #222);
+  margin: 0;
+  padding-right: var(--space-32, 32px);
+}
+
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .initiative-donation-card {
@@ -181,6 +286,16 @@
   
   .initiative-card-title {
     font-size: var(--fs-16, 16px);
+  }
+
+  .initiative-overlay-content {
+    padding: var(--space-20, 20px);
+    width: 95%;
+  }
+
+  .initiative-overlay-description {
+    font-size: var(--fs-14, 14px);
+    padding-right: var(--space-24, 24px);
   }
 }
 
