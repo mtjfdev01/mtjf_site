@@ -138,7 +138,7 @@ const InitiativeDonationCard = ({ initiative }) => {
               className="initiative-read-more"
               onClick={() => setShowOverlay(true)}
             >
-              read more
+              View Details
             </span>
           )}
         </label> 

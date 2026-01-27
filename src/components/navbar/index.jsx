@@ -14,7 +14,8 @@ const navItems = [
   // { name: "Blogs", path: "/blogs " },
   { name: "Volunteer", path: "/volunteerRegistration " },
   { name: "Careers", path: "/careers" },
-  { name: "Contact", path: "/contact" }
+  { name: "Contact", path: "/contact" },
+  // { name: "Media", path: "/media", submenu: [{ name: "Downloads", path: "/media/downloads" }] },
 ];
 
 const Navbar = () => {
@@ -109,17 +110,35 @@ const Navbar = () => {
              <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
               <ul className={`hvr flex gap-24 ${isLightTheme ? 'text-white' : 'text-dark'}`} >
                  {navItems.map((item) => (
-                <li key={item.name}>
+                <li key={item.name} className={`nav-item ${item.submenu ? 'nav-item-has-sub' : ''}`}>
                   <Link
-                    // to={item.path}
                     className={activeLink === item.name ? "active" : ""}
                     onClick={(e) => {
                       e.preventDefault();
                       handleClick(item.name, item.path);
                     }}
+                    to={item.path}
                   >
                     {item.name}
                   </Link>
+                  {item.submenu && (
+                    <ul className="nav-submenu">
+                      {item.submenu.map((subItem) => (
+                        <li key={subItem.name}>
+                          <Link
+                            to={subItem.path}
+                            className={activeLink === subItem.name ? "active" : ""}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleClick(subItem.name, subItem.path);
+                            }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
                 </ul>

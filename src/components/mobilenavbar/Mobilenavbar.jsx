@@ -7,6 +7,7 @@ const links = [
                 { name: "About", path: "/about" },
                 { name: "Programs", path: "/projects" },
                 // { name: "blogs ", path: "/blogs " },
+                // { name: "Media", path: "/media", submenu: [{ name: "Downloads", path: "/media/downloads" }] },
                 { name: "Volunteer", path: "/volunteerRegistration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" }
@@ -16,30 +17,30 @@ const links = [
 const Mobilenavbar = () => {
      const [visible, setVisible] = useState(false);
      const [activeLink, setActiveLink] = useState("Home");
+     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
 
-     const handleClick = (linkName) => {
-     setActiveLink(linkName);
-     const burger = document.querySelector(".hamburger.open");
-    if (burger) burger.click();
-   };
+     const handleLinkClick = (linkName, path) => {
+       setActiveLink(linkName);
+       const burger = document.querySelector(".hamburger.open");
+       if (burger) burger.click();
+     };
+
+     const handleSubmenuToggle = (itemName) => {
+       setExpandedSubmenu((prev) => (prev === itemName ? null : itemName));
+     };
+
   useEffect(() => {
-    // handler for custom event dispatched by Hamburger
     const onToggle = (e) => {
       if (e && e.detail && typeof e.detail.isOpen === "boolean") {
         setVisible(e.detail.isOpen);
+        if (!e.detail.isOpen) setExpandedSubmenu(null);
       }
     };
 
-    // listen for the event on window
     window.addEventListener("mobile-menu-toggle", onToggle);
-
-    // cleanup
-    return () => {
-      window.removeEventListener("mobile-menu-toggle", onToggle);
-    };
+    return () => window.removeEventListener("mobile-menu-toggle", onToggle);
   }, []);
 
-  // If you prefer not to render the DOM at all when hidden, return null
   if (!visible) return null;
 
   return (
@@ -47,13 +48,41 @@ const Mobilenavbar = () => {
        <ul className='text-white'>
         {links.map((item) => (
           <li key={item.name}>
-            <Link
-              to={item.path}
-              className={activeLink === item.name ? "active" : ""}
-              onClick={() => handleClick(item.name)}
-            >
-              {item.name}
-            </Link>
+            {item.submenu ? (
+              <>
+                <button
+                  type="button"
+                  className={`mbl-nav-trigger ${activeLink === item.name ? "active" : ""}`}
+                  onClick={() => handleSubmenuToggle(item.name)}
+                  aria-expanded={expandedSubmenu === item.name}
+                >
+                  {item.name}
+                </button>
+                {expandedSubmenu === item.name && (
+                  <ul className="mbl-submenu">
+                    {item.submenu.map((subItem) => (
+                      <li key={subItem.name}>
+                        <Link
+                          to={subItem.path}
+                          className={activeLink === subItem.name ? "active" : ""}
+                          onClick={() => handleLinkClick(subItem.name)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            ) : (
+              <Link
+                to={item.path}
+                className={activeLink === item.name ? "active" : ""}
+                onClick={() => handleLinkClick(item.name)}
+              >
+                {item.name}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

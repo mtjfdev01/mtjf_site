@@ -47,8 +47,19 @@ const Footer = () => {
                 <li>
                   <span className="footer-label">Feedback:</span>{' '}
                   <a href="tel:03036660221" className="footer-link">
-                    0303-6660221
+                    0303-6660221 
                   </a>
+                </li>
+                <li>
+                  <span className='footer-label'>National Taxation Number:</span>{' '}
+                  <a className="footer-link"> 123456789</a>
+                </li>
+                <li>
+                  <span className='footer-label'>Registration Number:</span>{' '}
+                  <a className="footer-link"> 123456789</a>
+                </li>
+                <li>
+                  <span className='footer-label'>© Copyright 1990-2026 MTJ Foundation</span>{' '}
                 </li>
               </ul>
             </div>

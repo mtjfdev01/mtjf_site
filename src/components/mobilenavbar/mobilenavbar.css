@@ -41,13 +41,59 @@
 }
 
 .mbl a:hover {
-   color: white; 
-}
-.active {
-  color: rgb(48, 174, 227); /* same as your hover color */
+   color: white;
 }
 
-.active::after {
+.mbl-nav-trigger {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  padding-bottom: 3px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.mbl-nav-trigger::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: rgb(48, 174, 227);
+  transition: width 0.5s ease;
+  border-radius: 2px;
+}
+
+.mbl-nav-trigger:hover {
+  color: white;
+}
+
+.mbl-nav-trigger:hover::after {
+  width: 100%;
+}
+
+.mbl-submenu {
+  list-style: none;
+  padding: 0;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.mbl-submenu li {
+  margin: 12px 0;
+}
+
+.active {
+  color: rgb(48, 174, 227);
+}
+
+.mbl a.active::after,
+.mbl .mbl-nav-trigger.active::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -55,4 +101,5 @@
   width: 100%;
   height: 2px;
   border-radius: 2px;
+  background-color: rgb(48, 174, 227);
 }

@@ -122,7 +122,7 @@ const DonationProjectsMenu = () => {
       icon: kasb, 
       price: 4000, 
       new: false,
-      category: "Sadqa",
+      category: "General",
       initiatives: [
         { id: 'kasb-empowering-woman', title: 'Empowering a Woman', subtitle: 'Per Beneficiary', price: 100000, icon: kasb,
           description: 'This initiative is particularly recommended for woman-headed families to promote sustainable livelihoods.',
@@ -149,7 +149,7 @@ const DonationProjectsMenu = () => {
       icon: community, 
       price: 3000, 
       new: false,
-      category: "Sadqa",
+      category: "General",
       initiatives: [
         { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community,
           description: 'The monthly ration for deserving families includes essential food items necessary for their sustenance. This support helps alleviate food insecurity and ensures that these families have access to nutritious meals on a regular basis.',
