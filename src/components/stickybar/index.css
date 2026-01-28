@@ -264,7 +264,7 @@
 
   .sticky_bar-link,
   .sticky_bar-social a {
-    font-size: 0.8rem;
+    font-size: 13px;
   }
 
   /* Make Donate Globally more compact or show abbreviated text */
@@ -281,9 +281,8 @@
 
   /* Smaller touch targets but still accessible */
   .sticky_bar-link,
-  .sticky_bar-social a,
-  .sticky_bar-international-link {
+  .sticky_bar-social a {
     min-width: 40px;
-    /* min-height: 40px; */
+    min-height: 40px;
   }
 }
