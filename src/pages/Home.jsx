@@ -57,6 +57,8 @@ const Home = () => {
               <Projects />
               <Stats />
               <BrandArea />
+              <QuickBlogs />
+              <Events />
               <Newsletter />
               <DonationCta />
               <Footer />

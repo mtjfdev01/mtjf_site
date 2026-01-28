@@ -1,20 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 import './Stats.css'
-import floodIcon from '../../assets/img/projects/icons2/flood_ helped.webp';
 import logo_one from '../../assets/img/projects/icons2/logo_one.webp';
-
-import Medicine from '../../assets/img/projects/icons2/medicine.webp';
 import Home from '../../assets/img/projects/icons2/home.webp';
 import Water from '../../assets/img/projects/icons2/water.webp';
 import Scholarship from '../../assets/img/projects/icons2/scholarship.webp';
 import AidPackages from '../../assets/img/projects/icons2/aid_packages.webp';
 import Food from '../../assets/img/projects/icons2/food.webp';
 import Education from '../../assets/img/projects/icons2/education.webp';
+import Tree from '../../assets/img/projects/icons2/tree.webp';
+import Medicine from '../../assets/img/projects/icons2/medicine.webp';
+
 const STATS_DATA = [
   {
     id: 'floods',
     icon: (
-        <img src={logo_one} alt="flood icon" />
+        // <img src={logo_one} alt="flood icon" /> 
+        <img src={Education} alt="education icon" />
       ),
     statistic: '400,000+',
     description: 'People helped during the 2022 and 2025 floods of Pakistan',
@@ -23,7 +24,7 @@ const STATS_DATA = [
   {
     id: 'health',
     icon: (
-      <img src={Medicine} alt="Medicine icon" />
+        <img src={Medicine} alt="Ration Icon" />
    ),
     statistic: '200,000+',
     description: 'Free of cost tests and medicines provided',
@@ -32,7 +33,7 @@ const STATS_DATA = [
   {
     id: 'homes',
     icon: (
-      <img src={Home} alt="home icon" />
+      <img src={Food} alt="Ration Icon" />
     ),
     statistic: '150,000+',
     description: 'Ration bags distributed',
@@ -50,10 +51,10 @@ const STATS_DATA = [
   {
     id: 'education',
     icon: (
-      <img src={Education} alt="education icon" />
-    ),
+        <img src={logo_one} alt="flood icon" /> 
+      ),
     statistic: '300,000+',
-    description: 'Free of cost lab tests done',
+    description: 'Students educated',
     iconColor: '#53af47'
   },
   {
@@ -77,7 +78,7 @@ const STATS_DATA = [
   {
     id: 'food',
     icon: (
-      <img src={Food} alt="food icon" /> 
+      <img src={Tree} alt="food icon" /> 
     ),
     statistic: '50,000+ ',
     description: 'Trees planted',

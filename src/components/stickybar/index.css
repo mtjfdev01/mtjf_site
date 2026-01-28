@@ -7,8 +7,9 @@
   display: flex;
   align-items: center;
   color: #fff;
-  /* font-size: 0.9rem; */
-  padding: 5px 0px;
+  /* padding: 5px 0px; */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sticky_bar-content {
@@ -17,12 +18,15 @@
   justify-content: space-between;
   width: 100%;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .sticky_bar-contact {
   display: flex;
   align-items: center;
   gap: 24px;
+  position: relative;
+  overflow: hidden;
 }
 
 .sticky_bar-link {
@@ -32,10 +36,28 @@
   color: inherit;
   text-decoration: none;
   font-size: 1rem;
+  /* min-height: 44px;  */
+  min-width: 44px; /* Touch target size for accessibility */
+  padding: 4px 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+
+.sticky_bar-link:hover {
+  opacity: 0.85;
+}
+
+.sticky_bar-link:active {
+  transform: scale(0.95);
 }
 
 .sticky_bar-link svg {
   font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.sticky_bar-link span {
+  transition: opacity 0.3s ease, max-width 0.3s ease;
 }
 
 .sticky_bar-social {
@@ -48,6 +70,50 @@
   color: #fff;
   display: inline-flex;
   font-size: 1rem;
+  min-width: 44px; /* Touch target size */
+  /* min-height: 44px;  */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+
+.sticky_bar-social a:hover {
+  opacity: 0.85;
+}
+
+.sticky_bar-social a:active {
+  transform: scale(0.95);
+}
+
+.sticky_bar-international {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sticky_bar-international-link { 
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 1px 12px; /* Increased padding for better touch target */
+  /* min-height: 44px;  */
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: var(--transition, all 0.2s ease);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sticky_bar-international-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sticky_bar-international-link:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 768px) {
@@ -57,28 +123,167 @@
     align-items: center;
     gap: 12px;
     text-align: left;
+    flex-wrap: nowrap;
   }
 
   .sticky_bar-contact {
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+    width: auto;
+    min-width: fit-content;
   }
 
   .sticky_bar-social {
     display: none;
   }
+
+  .sticky_bar-link,
+  .sticky_bar-social a,
+  .sticky_bar-international-link {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile: Show both icons, toggle between email text and phone text */
+  .sticky_bar-email-link,
+  .sticky_bar-phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Both icons always visible on mobile */
+  .sticky_bar-email-link svg,
+  .sticky_bar-phone-link svg {
+    display: inline-block !important;
+    flex-shrink: 0;
+  }
+
+  /* Email text - slides out when phone is shown */
+  .sticky_bar-email-text {
+    display: inline-block;
+    max-width: none; /* allow full email when email toggle is on */
+    overflow: visible;
+    white-space: nowrap;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease,
+                max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Phone number - slides in when phone is shown */
+  .sticky_bar-phone-number {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease 0.1s,
+                max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-20px);
+    opacity: 0;
+    margin-left: 0;
+  }
+
+  /* When phone is shown: hide email text, show phone number */
+  .sticky_bar-contact.show-phone .sticky_bar-email-text {
+    max-width: 0;
+    transform: translateX(-20px);
+    opacity: 0;
+    margin-right: 0;
+  }
+
+  .sticky_bar-contact.show-phone .sticky_bar-phone-number {
+    max-width: 200px;
+    transform: translateX(0);
+    opacity: 1;
+    margin-left: 8px;
+  }
 }
 
 @media (max-width: 576px) {
+  .sticky_bar-content {
+    gap: 8px;
+  }
+
   .sticky_bar-contact {
-    flex: 1;
-    gap: 4px;
+    gap: 8px;
   }
 
   .sticky_bar-social {
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .sticky_bar-contact.show-phone .sticky_bar-phone-number {
+    max-width: 150px;
+  }
+
+  .sticky_bar-link,
+  .sticky_bar-social a,
+  .sticky_bar-international-link {
+    font-size: 0.85rem;
+  }
+
+  /* Reduce padding on very small screens */
+  .sticky_bar-link {
+    padding: 4px 6px;
+  }
+
+  .sticky_bar-social a {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Donate Globally button: reduce padding or hide text on very small screens */
+  .sticky_bar-international-link {
+    padding: 2px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices (phones in portrait, < 430px) */
+@media (max-width: 430px) {
+  .sticky_bar-content {
+    gap: 6px;
+  }
+
+  .sticky_bar-contact {
+    gap: 6px;
+  }
+
+  .sticky_bar-social {
+    gap: 6px;
+  }
+
+  .sticky_bar-contact.show-phone .sticky_bar-phone-number {
+    max-width: 120px;
+  }
+
+  .sticky_bar-link,
+  .sticky_bar-social a {
+    font-size: 0.8rem;
+  }
+
+  /* Make Donate Globally more compact or show abbreviated text */
+  .sticky_bar-international-link {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+  }
+
+  /* Ensure phone number doesn't overflow */
+  .sticky_bar-phone-number.is-visible {
+    max-width: 150px;
+    font-size: 0.8rem;
+  }
+
+  /* Smaller touch targets but still accessible */
+  .sticky_bar-link,
+  .sticky_bar-social a,
+  .sticky_bar-international-link {
+    min-width: 40px;
+    /* min-height: 40px; */
   }
 }

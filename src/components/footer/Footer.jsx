@@ -52,14 +52,17 @@ const Footer = () => {
                 </li>
                 <li>
                   <span className='footer-label'>National Taxation Number:</span>{' '}
-                  <a className="footer-link"> 123456789</a>
+                  <a className="footer-link"> &nbsp;  6703846-7</a>
                 </li>
                 <li>
                   <span className='footer-label'>Registration Number:</span>{' '}
-                  <a className="footer-link"> 123456789</a>
+                  <a className="footer-link"> 4156, </a>
+                  <br />
+                  <a className="footer-link"> PB-7207081426668106</a>
+
                 </li>
                 <li>
-                  <span className='footer-label'>© Copyright 1990-2026 MTJ Foundation</span>{' '}
+                  <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>{' '}
                 </li>
               </ul>
             </div>
@@ -243,6 +246,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        </div>
+        <div className="footer-copyright">
+          <span className='footer-label'>© Copyright 2026 MTJ Foundation</span>
         </div>
       </footer>
     </>

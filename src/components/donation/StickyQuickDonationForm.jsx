@@ -98,91 +98,63 @@ const StickyQuickDonationForm = () => {
     setIsExpanded(!isExpanded)
   }
 
-  // Check if donation forms are visible on screen
+  // Hide sticky form when footer / donation sections are visible
   useEffect(() => {
-    const checkDonationForms = () => {
-      const donationForms = document.querySelectorAll('.donation-form, .vertical-donation-form')
-      
-      if (donationForms.length === 0) {
-        setShouldShow(true)
-        return
+    const selectors = [
+      '.footer',
+      '#home-donation-form',
+      '#project-detail-donation-form',
+      '.donation-form',
+      '.vertical-donation-form'
+    ]
+
+    const observed = new WeakSet()
+    const intersecting = new Set()
+
+    const update = () => {
+      setShouldShow(intersecting.size === 0)
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const el = entry.target
+          if (entry.isIntersecting) intersecting.add(el)
+          else intersecting.delete(el)
+        }
+        update()
+      },
+      {
+        threshold: 0.01,
+        rootMargin: '0px'
       }
+    )
 
-      // Check if any donation form is visible in viewport
-      let isFormVisible = false
-      
-      donationForms.forEach((form) => {
-        const rect = form.getBoundingClientRect()
-        const isInViewport = (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        )
-        
-        // Also check if form is partially visible
-        const isPartiallyVisible = (
-          rect.top < window.innerHeight &&
-          rect.bottom > 0 &&
-          rect.left < window.innerWidth &&
-          rect.right > 0
-        )
-        
-        if (isInViewport || isPartiallyVisible) {
-          isFormVisible = true
-        }
-      })
-
-      setShouldShow(!isFormVisible)
+    const observeAll = () => {
+      for (const sel of selectors) {
+        const nodes = document.querySelectorAll(sel)
+        nodes.forEach((node) => {
+          if (observed.has(node)) return
+          observed.add(node)
+          io.observe(node)
+        })
+      }
     }
 
-    // Initial check
-    checkDonationForms()
+    observeAll()
+    update()
 
-    // Use Intersection Observer for better performance
-    const donationForms = document.querySelectorAll('.donation-form, .vertical-donation-form')
-    
-    if (donationForms.length === 0) {
-      setShouldShow(true)
-      return
-    }
-
-    const observers = []
-    
-    donationForms.forEach((form) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setShouldShow(false)
-            } else {
-              // Check all forms again when one leaves viewport
-              checkDonationForms()
-            }
-          })
-        },
-        {
-          threshold: 0.1, // Trigger when 10% of form is visible
-          rootMargin: '0px'
-        }
-      )
-      
-      observer.observe(form)
-      observers.push(observer)
+    // Handles lazy-loaded sections that mount after this component
+    const mo = new MutationObserver(() => {
+      observeAll()
     })
-
-    // Also listen to scroll events as fallback
-    const handleScroll = () => {
-      checkDonationForms()
+    if (document.body) {
+      mo.observe(document.body, { childList: true, subtree: true })
     }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll, { passive: true })
 
     return () => {
-      observers.forEach((observer) => observer.disconnect())
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      mo.disconnect()
+      io.disconnect()
     }
   }, [])
 

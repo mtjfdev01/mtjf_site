@@ -1,6 +1,6 @@
 .nav-container{
     width: 85%;
-    top: 34px;
+    top: 32px;
     left: 50%;
     padding: 8px 16px;
     transform: translateX(-50%);
@@ -152,7 +152,7 @@
 
 @media (max-width: 768px) {
   .nav-container {
-    top: 60px;                
+    top: 27px;                
     left: 0;               
     transform: none;      
     width: 100%;         
