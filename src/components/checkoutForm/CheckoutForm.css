@@ -1,6 +1,7 @@
 .checkout-panel {
   max-width: 760px;
   margin: 0 auto;
+  margin-top: 120px;
 }
 
 .checkout-panel__form {
@@ -186,4 +187,3 @@
     grid-column: 1;
   }
 }
-

@@ -45,7 +45,7 @@ const StickyBar = () => {
 
   return (
     <div className="sticky_bar_container">
-      <div className="sticky_bar-content container">
+      <div className={`sticky_bar-content ${!isMobile ? 'container' : ''}`}>
         <div className={`sticky_bar-contact ${showPhoneNumber ? 'show-phone' : ''}`}>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mtjfoundation.org" target="_blank" rel="noopener noreferrer" className="sticky_bar-link sticky_bar-email-link" onClick={handleEmailClick}>
             <FaEnvelope />
