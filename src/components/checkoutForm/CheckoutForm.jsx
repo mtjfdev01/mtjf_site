@@ -1,11 +1,63 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useDonation } from '../../contexts/DonationContext'
 import axiosInstance from '../../utils/axios'
 import { ALL_PROJECTS_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import { CiCreditCard2 } from "react-icons/ci";
+
+const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
+const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null
+
+/**
+ * Inner form for Stripe Embedded payment: PaymentElement + confirmPayment.
+ * Must be rendered inside <Elements options={{ clientSecret }}>.
+ */
+function StripeEmbedPaymentForm({ clientSecret, returnUrl, onClose }) {
+  const stripe = useStripe()
+  const elements = useElements()
+  const [isConfirming, setIsConfirming] = useState(false)
+  const [error, setError] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!stripe || !elements || !clientSecret) return
+    setError(null)
+    // Required: call elements.submit() before confirmPayment (prior to any async work)
+    await elements.submit()
+    setIsConfirming(true)
+    const { error: confirmError } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url: returnUrl,
+        receipt_email: undefined,
+      },
+    })
+    setIsConfirming(false)
+    if (confirmError) {
+      setError(confirmError.message || 'Payment failed.')
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="stripe-embed-form">
+      <PaymentElement />
+      {error && <div className="stripe-embed-form__error">{error}</div>}
+      <div className="stripe-embed-form__actions">
+        <button type="button" className="stripe-embed-form__btn stripe-embed-form__btn--secondary" onClick={onClose}>
+          Cancel
+        </button>
+        <button type="submit" className="stripe-embed-form__btn stripe-embed-form__btn--primary" disabled={!stripe || isConfirming}>
+          {isConfirming ? 'Processing…' : 'Pay now'}
+        </button>
+      </div>
+    </form>
+  )
+}
 
 const DEFAULT_FORM = {
   donor_name: '',
@@ -15,14 +67,17 @@ const DEFAULT_FORM = {
   donation_frequency: 'once',
   country: '',
   city: '',
-  address: ''
+  address: '',
+  notification_subscription: true
 }
 
-// Payment frequency mapping
+// Payment frequency mapping (Stripe supports recurring; form value used when 'monthly')
 const paymentFrequency = {
   blinq: 'once',
   payfast: 'once',
-  meezan: 'once'
+  meezan: 'once',
+  stripe: 'once',
+  stripe_embed: 'once'
 }
 
 const CheckoutForm = () => {
@@ -35,6 +90,7 @@ const CheckoutForm = () => {
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
   const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
+  const [stripeEmbedClientSecret, setStripeEmbedClientSecret] = useState(null)
   const hasFetchedFailedTransaction = useRef(false)
   const hasSetDonationItems = useRef(false)
   const previousDonationItemsRef = useRef(null)
@@ -492,7 +548,12 @@ const CheckoutForm = () => {
         // Include ref if available (agency performance tracking)
         ...(ref && {
           ref: ref
-        })
+        }),
+        // Stripe / Stripe Embed: recurring true when "Give Monthly" is selected
+        ...((currentPayment === 'stripe' || currentPayment === 'stripe_embed') && {
+          recurring: formData.donation_frequency === 'monthly'
+        }),
+        notification_subscription: formData.notification_subscription !== false
       }
 
       // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
@@ -506,16 +567,22 @@ const CheckoutForm = () => {
       
 
       if (currentPayment === 'payfast') {
-        // Debug: Log the response to see its structure
-        // Call postToPayfast with the response data from the server
-        // Try different possible response structures
         const payfastData = response.data?.data || response.data
         postToPayfast(payfastData, formData)
+      } else if (currentPayment === 'stripe_embed') {
+        const data = response.data?.data || response.data
+        const clientSecret = data?.clientSecret
+        if (clientSecret) {
+          setIsLoading(false)
+          setStripeEmbedClientSecret(clientSecret)
+        } else {
+          setIsLoading(false)
+          setFormMessage({ type: 'error', text: 'Failed to start Stripe payment. Please try again.' })
+        }
       } else {
         if (response?.data?.success && response?.data?.data?.paymentUrl) {
           try {
             setIsLoading(false)
-            // Try to open in new window
             const paymentWindow = window.open('', '_self')
             if (paymentWindow) {
               paymentWindow.location.href = response.data.data.paymentUrl
@@ -562,8 +629,27 @@ const CheckoutForm = () => {
   //   return null
   // }
 
+  const stripeEmbedReturnUrl = `${window.location.origin}/thanks`
+
   return (
     <section className="checkout-panel">
+      {stripeEmbedClientSecret && stripePromise && (
+        <div className="stripe-embed-overlay" role="dialog" aria-modal="true" aria-labelledby="stripe-embed-title">
+          <div className="stripe-embed-modal">
+            <div className="stripe-embed-modal__header">
+              <h2 id="stripe-embed-title" className="stripe-embed-modal__title">Complete payment</h2>
+              <button type="button" className="stripe-embed-modal__close" onClick={() => setStripeEmbedClientSecret(null)} aria-label="Close">×</button>
+            </div>
+            <Elements stripe={stripePromise} options={{ clientSecret: stripeEmbedClientSecret }}>
+              <StripeEmbedPaymentForm
+                clientSecret={stripeEmbedClientSecret}
+                returnUrl={stripeEmbedReturnUrl}
+                onClose={() => setStripeEmbedClientSecret(null)}
+              />
+            </Elements>
+          </div>
+        </div>
+      )}
       <form className="checkout-panel__form">
         {formMessage.text && (
           <div className={`checkout-panel__message checkout-panel__message--${formMessage.type}`}>
@@ -674,6 +760,19 @@ const CheckoutForm = () => {
               rows="4"
             />
           </div>
+        {/* Notification / campaign subscription */}
+        <div className="checkout-panel__field checkout-panel__field--checkbox">
+          <label className="checkout-panel__checkbox-label">
+            <input
+              type="checkbox"
+              name="notification_subscription"
+              checked={formData.notification_subscription}
+              onChange={(e) => setFormData((prev) => ({ ...prev, notification_subscription: e.target.checked }))}
+              className="checkout-panel__checkbox"
+            />
+            <span>Subscribe to email and WhatsApp for notifications and campaign updates</span>
+          </label>
+        </div>
         {/* Payment Method Section */}
         <h5 className="checkout-panel__title-2">Donate Via :</h5>
 
@@ -694,6 +793,9 @@ const CheckoutForm = () => {
                 </div>
                 <div className="payment-content">
                   <h6>Pay with Bank Account (One Link)</h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
                   <div className="payment-selection-options"></div>
                 </div>
                 {isLoading && (
@@ -721,6 +823,9 @@ const CheckoutForm = () => {
                 </div>
                 <div className="payment-content">
                   <h6>Pay Securely with Credit/Debit Card (1st)</h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
@@ -747,6 +852,9 @@ const CheckoutForm = () => {
                 </div>
                 <div className="payment-content">
                   <h6>Pay Securely with Credit/Debit Card (2nd)</h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
                 </div>
                 {isLoading && (
                   <div className="payment-loading">
@@ -756,6 +864,64 @@ const CheckoutForm = () => {
               </div>
             </div>
           </div>
+
+              {/* Stripe payment option (recurring when "Give Monthly" selected) */}
+          {/* <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'stripe')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay with Stripe (Card)</h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
+                </div>
+                {isLoading && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div> */}
+
+              {/* Stripe Embedded: payment form on page (no redirect) */}
+          {/* <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'stripe_embed')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay with Stripe </h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
+                </div>
+                {isLoading && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div> */}
         </div>
       </form>
     </section>

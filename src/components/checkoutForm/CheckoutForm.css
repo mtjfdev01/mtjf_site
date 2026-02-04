@@ -38,7 +38,6 @@
   font-size: 16px;
   font-weight: 500;
   padding: 18px 0;
-  color: #1a1a1a;
   font-family: inherit;
 }
 
@@ -75,6 +74,33 @@
 
 .donation_type_select {
   display: block;
+}
+
+/* Notification subscription checkbox */
+.checkout-panel__field--checkbox {
+  padding: 14px 24px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkout-panel__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.checkout-panel__checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #2dcc70;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* Payment Options */
@@ -130,6 +156,22 @@
   color: #666;
 }
 
+.payment-option-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.payment-option-badge--info {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
 .payment-selection-options {
   margin-top: 8px;
 }
@@ -151,6 +193,112 @@
 
 .payment-option {
   position: relative;
+}
+
+/* Stripe Embedded overlay and modal */
+.stripe-embed-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.stripe-embed-modal {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.stripe-embed-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.stripe-embed-modal__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.stripe-embed-modal__close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  margin: -4px;
+}
+
+.stripe-embed-modal__close:hover {
+  color: #1a1a1a;
+}
+
+.stripe-embed-form {
+  padding: 24px;
+}
+
+.stripe-embed-form .StripeElement,
+.stripe-embed-form iframe {
+  margin-bottom: 16px;
+}
+
+.stripe-embed-form__error {
+  color: #c33;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.stripe-embed-form__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.stripe-embed-form__btn {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.stripe-embed-form__btn--secondary {
+  background: #f3f3f3;
+  color: #1a1a1a;
+}
+
+.stripe-embed-form__btn--secondary:hover {
+  background: #e8e8e8;
+}
+
+.stripe-embed-form__btn--primary {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.stripe-embed-form__btn--primary:hover:not(:disabled) {
+  background: #333;
+}
+
+.stripe-embed-form__btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Form Message Styles */
