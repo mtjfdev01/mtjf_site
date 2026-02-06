@@ -1690,7 +1690,7 @@ team will provide you with individualised attention and assistance.`,
   },
   'ramzan-zakat': {
     id: 'ramzan-zakat',
-    title: 'Your Zakat: Your Responsibility.',
+    title: 'Your Zakat: Your Responsibility',
     headerImage: ZakatCalculator,
     headerImageMob: ZakatCalculator,
     stats: [
@@ -1713,7 +1713,7 @@ team will provide you with individualised attention and assistance.`,
     subProjects: [
       {
         id: 'your-zakat-your-responsibility',
-        title: 'Your Zakat: Your Responsibility.',
+        title: 'Your Zakat: Your Responsibility',
         subtitle: 'Ramadan is not just a month of fasting.',
         description: `
 It is a month where hearts soften, hands open, and wealth finds its true purpose.
@@ -1724,11 +1724,12 @@ services:[
 'Have I fulfilled the right of Allah and the right of His creation?'
 ],
         donateButtonText: 'Give Your Zakat This Ramadan',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator
       },
       {
         id: 'why-your-zakat-matters',
-        title: 'Why Your Zakat Matters',
+        title: 'Why Your Zakat Matters?',
         subtitle: 'Zakat is not charity. It is an obligation. A duty. A trust.',
         description: `Allah reminds us again and again that our wealth is not truly ours. It is a test, and within it lies the right of those who struggle silently.
 
@@ -1740,6 +1741,7 @@ And it becomes a source of relief for someone who has been waiting for help, oft
           reference: 'Surah At-Tawbah 9:103'
         },
         donateButtonText: 'Fulfill Your Zakat Obligation',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator
       },
       {
@@ -1754,11 +1756,12 @@ And when you give it sincerely, Allah promises something greater in return.`,
           reference: 'Surah Al-Baqarah 2:261'
         },
         donateButtonText: 'Pay Zakat',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator
       },
       {
         id: 'how-your-zakat-helps-people',
-        title: 'How Your Zakat Helps People',
+        title: 'How Your Zakat Helps People?',
         subtitle: 'Zakat restores dignity.',
         description: `
 Through your Zakat, lives move from desperation to stability, from waiting to rebuilding, from surviving to hoping again.
@@ -1766,6 +1769,7 @@ Through your Zakat, lives move from desperation to stability, from waiting to re
 This is not a one-time impact.
 This is relief that reaches hearts, homes, and futures.`,
         donateButtonText: 'Make Your Zakat Count',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator,
         impact:'',
         services:[
@@ -1794,6 +1798,7 @@ Will you share what I have given you?`,
 
 This Ramadan, answer that call.`,
         donateButtonText: 'Give Zakat for the Sake of Allah',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator
       },
       {
@@ -1809,6 +1814,7 @@ It is about fulfilling a trust.
 
 This Ramadan, Let Your Zakat Speak for You`,
         donateButtonText: 'Give Your Zakat Now',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator
       }
     ],

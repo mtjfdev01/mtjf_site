@@ -1,10 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
 import './MediaContentSection.css'
 
 const MediaContentSection = ({ subProjects, defaultImage }) => {
-  // Function to focus the donation form
-  const handleDonateClick = () => {
+  const navigate = useNavigate()
+
+  // Function to handle donate button click
+  const handleDonateClick = (donationUrl) => {
+    // If donationUrl exists, navigate to that page
+    if (donationUrl) {
+      navigate(donationUrl)
+      return
+    }
+    
+    // Otherwise, scroll to the donation form on the page
     setTimeout(() => {
       let donationForm = document.querySelector('.vertical-donation-form')
       if (!donationForm) {
@@ -117,7 +127,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 {subProject.donateButtonText && (
                   <button
                     className="media-content-cta btn btn--primary"
-                    onClick={handleDonateClick}
+                    onClick={() => handleDonateClick(subProject.donationUrl)}
                   >
                     {subProject.donateButtonText}
                   </button>
