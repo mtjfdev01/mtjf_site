@@ -106,6 +106,13 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   <p className="media-content-description">{subProject.afterServicesText}</p>
                 )}
 
+                {/* Quran Ayat / Hadith Section */}
+                {subProject.quranAyat && (
+                  <div className="media-content-quran-ayat">
+                    <p className="media-content-quran-ayat__text">{subProject.quranAyat.text}</p>
+                    <span className="media-content-quran-ayat__reference">{subProject.quranAyat.reference}</span>
+                  </div>
+                )}
 
                 {subProject.donateButtonText && (
                   <button

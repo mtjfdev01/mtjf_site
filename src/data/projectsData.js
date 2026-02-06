@@ -1714,85 +1714,83 @@ team will provide you with individualised attention and assistance.`,
       {
         id: 'your-zakat-your-responsibility',
         title: 'Your Zakat: Your Responsibility.',
-        subtitle: '',
-        description: `Ramadan is not just a month of fasting.
+        subtitle: 'Ramadan is not just a month of fasting.',
+        description: `
 It is a month where hearts soften, hands open, and wealth finds its true purpose.
 
 Allah gives us this month so we pause and ask ourselves a simple question:
-Have I fulfilled the right of Allah and the right of His creation?`,
+`,
+services:[
+'Have I fulfilled the right of Allah and the right of His creation?'
+],
         donateButtonText: 'Give Your Zakat This Ramadan',
         image: ZakatCalculator
       },
       {
         id: 'why-your-zakat-matters',
         title: 'Why Your Zakat Matters',
-        subtitle: '',
-        description: `Zakat is not charity.
-It is an obligation. A duty. A trust.
-
-Allah reminds us again and again that our wealth is not truly ours. It is a test, and within it lies the right of those who struggle silently.
-
-The Quran says:
-
-"Take from their wealth charity by which you purify them and cause them increase."
-(Surah At-Tawbah 9:103)
+        subtitle: 'Zakat is not charity. It is an obligation. A duty. A trust.',
+        description: `Allah reminds us again and again that our wealth is not truly ours. It is a test, and within it lies the right of those who struggle silently.
 
 Zakat purifies what we earn.
 It cleanses the heart from greed.
 And it becomes a source of relief for someone who has been waiting for help, often for years.`,
+        quranAyat: {
+          text: 'Take from their wealth charity by which you purify them and cause them increase.',
+          reference: 'Surah At-Tawbah 9:103'
+        },
         donateButtonText: 'Fulfill Your Zakat Obligation',
         image: ZakatCalculator
       },
       {
         id: 'who-is-zakat-farz-upon',
         title: 'Who Is Zakat Farz Upon?',
-        subtitle: '',
-        description: `Zakat becomes obligatory upon every sane, adult Muslim who owns wealth above the nisab threshold for one lunar year.
+        subtitle: 'Zakat becomes obligatory upon every sane, adult Muslim who owns wealth above the nisab threshold for one lunar year.',
+        description: `If Allah has given you stability, savings, gold, business income, or assets beyond your basic needs, then Zakat is not optional. It is a responsibility placed on you with wisdom and mercy.
 
-If Allah has given you stability, savings, gold, business income, or assets beyond your basic needs, then Zakat is not optional. It is a responsibility placed on you with wisdom and mercy.
-
-And when you give it sincerely, Allah promises something greater in return.
-
-"The example of those who spend their wealth in the cause of Allah is that of a grain that sprouts into seven ears, each bearing one hundred grains. And Allah multiplies ˹the reward even more˺ to whoever He wills."
-(Surah Al-Baqarah 2:261)`,
+And when you give it sincerely, Allah promises something greater in return.`,
+        quranAyat: {
+          text: 'The example of those who spend their wealth in the cause of Allah is that of a grain that sprouts into seven ears, each bearing one hundred grains. And Allah multiplies the reward even more to whoever He wills.',
+          reference: 'Surah Al-Baqarah 2:261'
+        },
         donateButtonText: 'Pay Zakat',
         image: ZakatCalculator
       },
       {
         id: 'how-your-zakat-helps-people',
         title: 'How Your Zakat Helps People',
-        subtitle: '',
-        description: `Zakat restores dignity.
-
-It helps a mother feed her children without asking.
-It helps a family survive Ramadan without fear of hunger.
-It helps someone stand on their own feet instead of living in dependence.
-
+        subtitle: 'Zakat restores dignity.',
+        description: `
 Through your Zakat, lives move from desperation to stability, from waiting to rebuilding, from surviving to hoping again.
 
 This is not a one-time impact.
 This is relief that reaches hearts, homes, and futures.`,
         donateButtonText: 'Make Your Zakat Count',
-        image: ZakatCalculator
+        image: ZakatCalculator,
+        impact:'',
+        services:[
+
+          'It helps a mother feed her children without asking.',
+          'It helps a family survive Ramadan without fear of hunger.',
+          'It helps someone stand on their own feet instead of living in dependence.'
+        ]
       },
       {
         id: 'message-from-molana-tariq-jamil',
         title: 'A Message From Molana Tariq Jamil',
-        subtitle: '',
-        description: `This month reminds us that Allah has placed us in different positions in life, not by chance, but by purpose.
-
-Some are tested through patience.
-Some are tested through wealth.
-
-And those who are able are being asked a simple question by Allah:
-Will you share what I have given you?
-
-The Prophet ﷺ said:
-
-"Charity does not decrease wealth."
-(Sahih Muslim)
-
-When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine.
+        subtitle: 'This month reminds us that Allah has placed us in different positions in life, not by chance, but by purpose.',
+        description: ``,
+        services: [
+          'Some are tested through patience.',
+          'Some are tested through wealth.',
+        ],
+        afterServicesText: `And those who are able are being asked a simple question by Allah:
+Will you share what I have given you?`,
+        quranAyat: {
+          text: 'Charity does not decrease wealth.',
+          reference: 'Sahih Muslim'
+        },
+        bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine.
 
 This Ramadan, answer that call.`,
         donateButtonText: 'Give Zakat for the Sake of Allah',
@@ -1814,35 +1812,35 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: ZakatCalculator
       }
     ],
-    faqs: {
-      id: 'frequently-asked-questions',
-      title: 'Frequently Asked Questions',
-      subtitle: 'Everything You Need to Know About Zakat',
-      description: '',
-      faqs: [
-        {
-          question: 'What is Zakat?',
-          answer: 'Zakat is an obligatory form of charity in Islam, requiring Muslims who meet the nisab threshold to give 2.5% of their qualifying wealth annually to those in need.'
-        },
-        {
-          question: 'Who is eligible to receive Zakat?',
-          answer: 'Zakat can be given to eight categories of recipients as mentioned in the Quran: the poor, the needy, Zakat administrators, those whose hearts are to be reconciled, freeing captives, those in debt, in the cause of Allah, and travelers in need.'
-        },
-        {
-          question: 'Is my Zakat distributed according to Shariah?',
-          answer: 'Yes. MTJ Foundation ensures all Zakat is handled with strict adherence to Shariah principles, reaching only those who are eligible and deserving.'
-        },
-        {
-          question: 'Can I specify where my Zakat goes?',
-          answer: 'Yes, donors can designate their Zakat for specific causes such as education, healthcare, or food assistance, as long as it reaches eligible recipients.'
-        },
-        {
-          question: 'When should I pay my Zakat?',
-          answer: 'Zakat is due once a lunar year has passed on wealth above the nisab threshold. Many Muslims choose to pay during Ramadan for increased blessings.'
-        }
-      ],
-      donateButtonText: 'Give Your Zakat Now'
-    }
+    // faqs: {
+    //   id: 'frequently-asked-questions',
+    //   title: 'Frequently Asked Questions',
+    //   subtitle: 'Everything You Need to Know About Zakat',
+    //   description: '',
+    //   faqs: [
+    //     {
+    //       question: 'What is Zakat?',
+    //       answer: 'Zakat is an obligatory form of charity in Islam, requiring Muslims who meet the nisab threshold to give 2.5% of their qualifying wealth annually to those in need.'
+    //     },
+    //     {
+    //       question: 'Who is eligible to receive Zakat?',
+    //       answer: 'Zakat can be given to eight categories of recipients as mentioned in the Quran: the poor, the needy, Zakat administrators, those whose hearts are to be reconciled, freeing captives, those in debt, in the cause of Allah, and travelers in need.'
+    //     },
+    //     {
+    //       question: 'Is my Zakat distributed according to Shariah?',
+    //       answer: 'Yes. MTJ Foundation ensures all Zakat is handled with strict adherence to Shariah principles, reaching only those who are eligible and deserving.'
+    //     },
+    //     {
+    //       question: 'Can I specify where my Zakat goes?',
+    //       answer: 'Yes, donors can designate their Zakat for specific causes such as education, healthcare, or food assistance, as long as it reaches eligible recipients.'
+    //     },
+    //     {
+    //       question: 'When should I pay my Zakat?',
+    //       answer: 'Zakat is due once a lunar year has passed on wealth above the nisab threshold. Many Muslims choose to pay during Ramadan for increased blessings.'
+    //     }
+    //   ],
+    //   donateButtonText: 'Give Your Zakat Now'
+    // }
   }
 }
 

@@ -131,6 +131,62 @@
   align-self: flex-start;
 }
 
+/* Quran Ayat / Hadith Styling */
+.media-content-quran-ayat {
+  text-align: center;
+  padding: var(--space-24) var(--space-32);
+  margin: var(--space-24) 0;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb, 45, 106, 79), 0.05) 0%, rgba(var(--color-primary-rgb, 45, 106, 79), 0.02) 100%);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+  border-right: 4px solid var(--color-primary);
+}
+
+.media-content-quran-ayat__text {
+  font-size: var(--fs-18);
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--color-800);
+  margin: 0 0 var(--space-12) 0;
+  font-weight: 500;
+}
+
+.media-content-quran-ayat__text::before {
+  content: '"';
+  font-size: var(--fs-24);
+  color: var(--color-primary);
+  margin-right: 4px;
+}
+
+.media-content-quran-ayat__text::after {
+  content: '"';
+  font-size: var(--fs-24);
+  color: var(--color-primary);
+  margin-left: 4px;
+}
+
+.media-content-quran-ayat__reference {
+  font-size: var(--fs-14);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .media-content-quran-ayat {
+    padding: var(--space-20) var(--space-16);
+  }
+
+  .media-content-quran-ayat__text {
+    font-size: var(--fs-16);
+  }
+
+  .media-content-quran-ayat__reference {
+    font-size: var(--fs-13);
+  }
+}
+
 .media-content-image {
   width: 100%;
   max-height: 500px;
