@@ -1703,6 +1703,11 @@ team will provide you with individualised attention and assistance.`,
       { icon: FaCalendarAlt, number: '12', label: 'Years of Service' },
       { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
     ],
+    content: {
+      paragraph1: `Ramadan is not just a month of fasting. It is a month where hearts soften, hands open, and wealth finds its true purpose.`,
+      paragraph2: `Allah gives us this month so we pause and ask ourselves a simple question: Have I fulfilled the right of Allah and the right of His creation?`,
+      paragraph3: ''
+    },
     donateCategory: 'Zakat',
     donateButtonText: 'Give Your Zakat This Ramadan',
     donationOptions: {
