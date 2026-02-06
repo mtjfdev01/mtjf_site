@@ -1823,6 +1823,15 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: ZakatCalculator
       }
     ],
+    testimonials:
+      {
+        id:'zakat',
+        title:'Zakat Appeal',
+        videos:[
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+        ]
+      }
+
     // faqs: {
     //   id: 'frequently-asked-questions',
     //   title: 'Frequently Asked Questions',
