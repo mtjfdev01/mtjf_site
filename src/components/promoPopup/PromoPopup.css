@@ -1,0 +1,236 @@
+/* Promo Popup Overlay */
+.promo-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.promo-popup-overlay--closing {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Popup Container */
+.promo-popup {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  animation: scaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease;
+}
+
+.promo-popup:hover {
+  transform: scale(1.01);
+}
+
+.promo-popup--closing {
+  animation: scaleOut 0.25s ease-out forwards;
+}
+
+/* Banner Style Variants - Desktop Sizes */
+.promo-popup--standard {
+  width: 800px;
+  aspect-ratio: 4 / 3;
+}
+
+.promo-popup--wide {
+  width: 900px;
+  aspect-ratio: 16 / 9;
+}
+
+.promo-popup--balanced {
+  width: 850px;
+  aspect-ratio: 850 / 550;
+}
+
+/* Image Wrapper */
+.promo-popup__image-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.promo-popup__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Close Button */
+.promo-popup__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.promo-popup__close:hover {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.promo-popup__close:active {
+  transform: scale(0.95);
+}
+
+.promo-popup__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* CTA Hint */
+.promo-popup__cta {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.promo-popup:hover .promo-popup__cta {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Responsive - Tablet */
+@media (max-width: 991px) {
+  .promo-popup--standard {
+    width: 600px;
+  }
+
+  .promo-popup--wide {
+    width: 700px;
+  }
+
+  .promo-popup--balanced {
+    width: 650px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 600px) {
+  .promo-popup-overlay {
+    padding: 12px;
+    align-items: center;
+  }
+
+  /* Mobile - switch to portrait aspect ratios */
+  .promo-popup--standard,
+  .promo-popup--wide,
+  .promo-popup--balanced {
+    width: 100%;
+    max-width: 430px;
+    aspect-ratio: 430 / 600; /* Portrait: 430x600 */
+  }
+
+  .promo-popup {
+    border-radius: 12px;
+  }
+
+  .promo-popup__close {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .promo-popup__close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .promo-popup__cta {
+    bottom: 12px;
+    padding: 6px 16px;
+    font-size: 13px;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 420px) {
+  .promo-popup--standard,
+  .promo-popup--wide,
+  .promo-popup--balanced {
+    max-width: 390px;
+    aspect-ratio: 390 / 520; /* Compact mobile: 390x520 */
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 380px) {
+  .promo-popup--standard,
+  .promo-popup--wide,
+  .promo-popup--balanced {
+    max-width: 100%;
+    aspect-ratio: 9 / 12;
+  }
+}

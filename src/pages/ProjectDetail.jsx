@@ -27,9 +27,10 @@ const ProjectDetail = () => {
   const [imageRef, showImage] = useIntersectionObserver({ 
     rootMargin: '100px'
   });
-  // Next section - loads on short scroll
+  // Next section - loads on short scroll (or immediately if no content)
   const [mediaRef, showMedia] = useIntersectionObserver({ 
-    rootMargin: '100px'
+    rootMargin: '100px',
+    loadImmediately: !project?.content
   });
   // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
@@ -87,7 +88,9 @@ const ProjectDetail = () => {
             </section> */}
 
             {/* Main Content Section */}
-            <section className="project-content-section container py-48">
+            {/* show if title exists and content exists */}
+            {project?.title  &&  project?.content &&    (
+            <section key={project.id} className="project-content-section container py-48">
               <div className="project-content-grid grid grid-12 gap-32">
                 {/* Left Content */}
                 <div className="project-content-left col-12 lg-8">
@@ -123,6 +126,8 @@ const ProjectDetail = () => {
                 </div>
               </div>
             </section>
+            ) 
+          }
           </>
         )}
       </div>
