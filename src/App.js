@@ -68,6 +68,7 @@ function App() {
             mobileImage={ramzanZakatMobPopup}
             bannerStyle="standard"
             storageKey="ramzan_zakat_promo_popup_shown"
+            showOnce={false}
             delay={3000}
             altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
           />

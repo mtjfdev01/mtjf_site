@@ -11,9 +11,9 @@ import './hero.css'
 
 const HERO_IMAGES = [
   { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup }, 
-  { desktop: hero, mobile: hero_mob }, 
-  { desktop: winter_hero, mobile: winter_mob },
-  { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
+  // { desktop: hero, mobile: hero_mob }, 
+  // { desktop: winter_hero, mobile: winter_mob },
+  // { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
 ]
 
 const Hero = () => {
