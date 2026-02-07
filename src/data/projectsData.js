@@ -1,5 +1,6 @@
 import image1 from '../assets/img/projects/camp.webp' 
 import ZakatCalculator from '../assets/img/zakat/zakat_hero.webp'
+import ZakatMob from '../assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import healthhero from '../assets/img/projects/projects-details/Health/health_hero.webp'
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
 import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
@@ -1693,7 +1694,7 @@ team will provide you with individualised attention and assistance.`,
     id: 'ramzan-zakat',
     title: 'Your Zakat: Your Responsibility',
     headerImage: ZakatCalculator,
-    headerImageMob: ZakatCalculator,
+    headerImageMob: ZakatMob,
     stats: [
       { icon: FaHandHoldingHeart, number: '50,000+', label: 'Families Supported' },
       { icon: FaUsers, number: '200,000+', label: 'Lives Impacted' },
