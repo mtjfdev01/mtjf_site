@@ -10,6 +10,8 @@ import AnimatedButton from './components/waysToDonate/AnimatedButton';
 import { Winter } from "./pages/Winter";
 import StickyQuickDonationForm from "./components/donation/StickyQuickDonationForm";
 import PromoPopup from './components/promoPopup';
+import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
+import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -59,16 +61,16 @@ function App() {
       <CartProvider>
         <DonationProvider>
           <ScrollToTop />
-          {/* <PromoPopup
+          <PromoPopup
             routes={['/', '/home']}
-            redirectUrl="/zakat-calculator"
-            desktopImage="/images/promo/zakat-popup-desktop.webp"
-            mobileImage="/images/promo/zakat-popup-mobile.webp"
+            redirectUrl="/projects/ramzan-zakat"
+            desktopImage={ramzanZakatWebPopup} 
+            mobileImage={ramzanZakatMobPopup}
             bannerStyle="standard"
-            storageKey="zakat_promo_popup_shown"
+            storageKey="ramzan_zakat_promo_popup_shown"
             delay={3000}
-            altText="Calculate and Pay Your Zakat - MTJ Foundation"
-          /> */}
+            altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
+          />
           <StickyBar />
           <Navbar />
           <StickyQuickDonationForm />

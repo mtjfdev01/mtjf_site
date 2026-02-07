@@ -70,6 +70,7 @@ import kasb_football from '../assets/img/projects/projects-details/kasb/kasb_foo
 import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
+import communityIcon from '../assets/img/projects/icons/community.png'
 import {
   FaSchool,
   FaGraduationCap,
@@ -1861,6 +1862,1281 @@ This Ramadan, Let Your Zakat Speak for You`,
     //   ],
     //   donateButtonText: 'Give Your Zakat Now'
     // }
+  },
+  'fitrana': {
+    id: 'fitrana',
+    title: 'Fitrana – Fulfill Your Obligation Before Eid',
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
+      { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
+      { icon: FaGlobeAsia, number: '40+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '50,000+', label: 'Fitrana Distributed' },
+      { icon: FaHome, number: '8,000+', label: 'Households Covered' },
+      { icon: FaChild, number: '20,000+', label: 'Children Fed' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: 'Fitrana (Sadaqat al-Fitr) is a compulsory charity given before Eid ul-Fitr prayer. It purifies the fasting person from any indecent act or speech and helps the poor and needy celebrate Eid with dignity.',
+      paragraph2: 'The Prophet ﷺ prescribed Zakat al-Fitr as a purification for the fasting person from idle talk and obscenity, and as food for the poor.',
+      paragraph3: 'Through MTJ Foundation, your Fitrana reaches the most deserving families across Pakistan, ensuring they can enjoy Eid with food on their table.'
+    },
+    mainImage: image1,
+    donateCategory: 'Fitrana',
+    donateButtonText: 'Pay Your Fitrana',
+    showInitiative: true,
+    initiatives: [
+      {
+        id: 'fitrana-per-person',
+        title: 'Fitrana',
+        subtitle: 'Per Person',
+        price: 450,
+        icon: communityIcon,
+        description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
+        duration: 'Before Eid Prayer'
+      },
+    ],
+    donationOptions: {
+      PKR: [450, 2250, 4500, 9000],
+      USD: [5, 25, 50, 100],
+      EUR: [5, 23, 45, 90]
+    },
+    subProjects: [
+      {
+        id: 'what-is-fitrana',
+        title: 'What is Fitrana?',
+        subtitle: '',
+        description: `Fitrana (Sadaqat al-Fitr) is a compulsory act of charity that every Muslim must fulfill before the Eid ul-Fitr prayer. It is a means of purifying the fast from any shortcomings and ensuring the poor can also celebrate Eid with joy and dignity.
+
+It is obligatory upon every Muslim who has food in excess of their needs for the day of Eid, for themselves and each dependent under their care.`,
+        quranAyat: {
+          text: 'The Messenger of Allah ﷺ ordained Zakat al-Fitr as a purification for the fasting person from idle talk and obscenity, and as food for the poor.',
+          reference: 'Abu Dawud'
+        },
+        donateButtonText: 'Pay Your Fitrana Now',
+        donationUrl: '/donate/fitrana',
+        image: image1
+      },
+      {
+        id: 'who-must-pay-fitrana',
+        title: 'Who Must Pay Fitrana?',
+        subtitle: '',
+        description: `Fitrana is obligatory upon every Muslim who possesses wealth above the nisab threshold on the day of Eid. It must be paid on behalf of every member of the household, including:`,
+        services: [
+          'Yourself',
+          'Your spouse',
+          'Your children (including newborns)',
+          'Dependents living under your care'
+        ],
+        afterServicesText: 'It should be paid before the Eid prayer so that it reaches those in need in time for the celebration.',
+        donateButtonText: 'Pay Fitrana for Your Family',
+        donationUrl: '/donate/fitrana',
+        image: image1
+      },
+      {
+        id: 'how-fitrana-helps',
+        title: 'How Your Fitrana Helps',
+        subtitle: '',
+        description: `Your Fitrana ensures that families who cannot afford a meal on Eid day are able to celebrate with food, dignity, and happiness.
+
+Through MTJ Foundation, Fitrana is distributed to the most deserving families across Pakistan, prioritizing widows, orphans, daily wage earners, and those affected by poverty and displacement.`,
+        donateButtonText: 'Give Fitrana Today',
+        donationUrl: '/donate/fitrana',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Fitrana',
+      description: '',
+      faqs: [
+        {
+          question: 'What is the amount of Fitrana?',
+          answer: 'The amount of Fitrana is based on the price of staple food (wheat, barley, dates, or raisins). MTJ Foundation calculates it according to the current market rate.'
+        },
+        {
+          question: 'When should Fitrana be paid?',
+          answer: 'Fitrana must be paid before the Eid ul-Fitr prayer. It is best to pay it a few days before Eid so it reaches the deserving in time.'
+        },
+        {
+          question: 'Who is eligible to receive Fitrana?',
+          answer: 'Fitrana can be given to the poor and needy who do not have enough food for the day of Eid.'
+        },
+        {
+          question: 'Can I pay Fitrana for my entire family?',
+          answer: 'Yes. The head of the household is responsible for paying Fitrana for every dependent, including children and elderly members.'
+        },
+        {
+          question: 'Is Fitrana distributed according to Shariah?',
+          answer: 'Yes. MTJ Foundation ensures all Fitrana is collected and distributed in strict accordance with Shariah principles.'
+        }
+      ],
+      donateButtonText: 'Pay Your Fitrana Now'
+    }
+  },
+  'food-pack': {
+    id: 'food-pack',
+    title: 'Food Pack – Feed a Family This Ramadan',
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaBoxOpen, number: '85,000+', label: 'Ration Packages Distributed' },
+      { icon: FaUsers, number: '425,000+', label: 'People Fed' },
+      { icon: FaHome, number: '450+', label: 'Villages Covered' },
+      { icon: FaLeaf, number: '2,100+', label: 'Tons Food Distributed' },
+      { icon: FaPeopleCarry, number: '85,000+', label: 'Families Supported' },
+      { icon: FaCalendarAlt, number: '12', label: 'Months of Support' },
+      { icon: FaGlobeAsia, number: '50+', label: 'Districts Reached' },
+      { icon: FaHandHoldingHeart, number: '95%', label: 'Satisfaction Rate' }
+    ],
+    content: {
+      paragraph1: 'In Ramadan, no family should go hungry. MTJ Foundation provides complete food packs to families who struggle to put food on the table, ensuring they can observe their fasts and break them with dignity.',
+      paragraph2: 'Each food pack contains essential items like flour, rice, lentils, cooking oil, sugar, tea, and spices — enough to sustain a family throughout the holy month.',
+      paragraph3: 'Your generosity ensures that the most vulnerable families — widows, orphans, daily wage earners — can focus on worship without worrying about their next meal.'
+    },
+    mainImage: image1,
+    donateCategory: 'Food Pack',
+    donateButtonText: 'Sponsor a Food Pack',
+    showInitiative: true,
+    initiatives: {
+      id: 'food-pack-family',
+      title: 'Food Pack',
+      subtitle: 'Per Family',
+      price: 8500,
+      icon: communityIcon,
+      description: 'A complete Ramadan food pack containing flour, rice, lentils, cooking oil, sugar, tea, dates, and spices — enough to sustain a family for the entire month of Ramadan.',
+      duration: '1 Month'
+    },
+    donationOptions: {
+      PKR: [8500, 17000, 25500, 51000],
+      USD: [85, 170, 255, 510],
+      EUR: [80, 160, 240, 480]
+    },
+    subProjects: [
+      {
+        id: 'why-food-packs-matter',
+        title: 'Why Food Packs Matter',
+        subtitle: '',
+        description: `Millions of families across Pakistan live below the poverty line. During Ramadan, the challenge intensifies — rising food prices and limited income make it nearly impossible for many to afford even basic meals.
+
+MTJ Foundation's food pack initiative ensures that no family has to choose between fasting and feeding their children. Each pack is carefully assembled to provide nutritious, essential items for the entire month.`,
+        donateButtonText: 'Sponsor a Food Pack',
+        donationUrl: '/donate/food-pack',
+        image: image1
+      },
+      {
+        id: 'what-is-included',
+        title: 'What\'s Included in a Food Pack?',
+        subtitle: '',
+        description: 'Each food pack is carefully curated to meet the nutritional needs of a family throughout Ramadan:',
+        services: [
+          'Flour (Atta) — 20 kg',
+          'Rice — 5 kg',
+          'Lentils (Daal) — 3 kg',
+          'Cooking Oil — 3 liters',
+          'Sugar — 3 kg',
+          'Tea — 200g',
+          'Dates — 1 kg',
+          'Spices & Salt'
+        ],
+        donateButtonText: 'Feed a Family Today',
+        donationUrl: '/donate/food-pack',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Food Packs',
+      description: '',
+      faqs: [
+        {
+          question: 'How many people does one food pack feed?',
+          answer: 'Each food pack is designed to sustain a family of 5-7 members for the entire month of Ramadan.'
+        },
+        {
+          question: 'Where are food packs distributed?',
+          answer: 'Food packs are distributed across underserved communities in Pakistan, prioritizing areas with the highest poverty rates.'
+        },
+        {
+          question: 'Can I sponsor multiple food packs?',
+          answer: 'Yes! You can sponsor as many food packs as you wish. Simply increase the quantity on the donation card.'
+        }
+      ],
+      donateButtonText: 'Sponsor a Food Pack'
+    }
+  },
+  'kaffara': {
+    id: 'kaffara',
+    title: 'Kaffara – Compensation for Missed Fasts',
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '10,000+', label: 'Kaffara Fulfilled' },
+      { icon: FaUsers, number: '50,000+', label: 'People Fed' },
+      { icon: FaGlobeAsia, number: '30+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '20,000+', label: 'Meals Provided' },
+      { icon: FaHome, number: '5,000+', label: 'Households Served' },
+      { icon: FaChild, number: '15,000+', label: 'Children Fed' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: 'Kaffara is the compensation a Muslim must pay when they deliberately miss or break a fast during Ramadan without a valid reason. It requires feeding 60 poor people for each missed fast.',
+      paragraph2: 'Through MTJ Foundation, your Kaffara is distributed to the most deserving families across Pakistan, ensuring full compliance with Shariah requirements.',
+      paragraph3: 'Fulfill your obligation with ease and trust — every Kaffara payment is handled with care, transparency, and strict adherence to Islamic principles.'
+    },
+    mainImage: image1,
+    donateCategory: 'Kaffara',
+    donateButtonText: 'Pay Your Kaffara',
+    showInitiative: true,
+    initiatives: {
+      id: 'kaffara-per-fast',
+      title: 'Kaffara',
+      subtitle: 'Per Missed Fast (Feeds 60 People)',
+      price: 27000,
+      icon: communityIcon,
+      description: 'Kaffara requires feeding 60 poor people for each deliberately missed or broken fast during Ramadan. This amount covers two meals for 60 individuals in compliance with Shariah.',
+      duration: 'One time'
+    },
+    donationOptions: {
+      PKR: [27000, 54000, 81000, 162000],
+      USD: [270, 540, 810, 1620],
+      EUR: [250, 500, 750, 1500]
+    },
+    subProjects: [
+      {
+        id: 'what-is-kaffara',
+        title: 'What is Kaffara?',
+        subtitle: '',
+        description: `Kaffara is the expiation required when a Muslim deliberately breaks or misses a fast during Ramadan without a valid exemption. Unlike Fidya, which compensates for fasts missed due to illness or old age, Kaffara applies when a fast is intentionally broken.
+
+The obligation is to feed 60 poor people for each missed fast. This is a serious act of repentance and compensation prescribed by Islamic law.`,
+        quranAyat: {
+          text: 'And upon those who are able [to fast, but with hardship] — a ransom [as substitute] of feeding a poor person [each day].',
+          reference: 'Surah Al-Baqarah 2:184'
+        },
+        donateButtonText: 'Pay Your Kaffara',
+        donationUrl: '/donate/kaffara',
+        image: image1
+      },
+      {
+        id: 'when-is-kaffara-required',
+        title: 'When is Kaffara Required?',
+        subtitle: '',
+        description: 'Kaffara becomes obligatory when a person:',
+        services: [
+          'Deliberately breaks a fast during Ramadan without valid reason',
+          'Intentionally eats or drinks during fasting hours',
+          'Breaks a fast that was being observed as an obligation'
+        ],
+        afterServicesText: 'If you have missed fasts due to illness, travel, or old age, you may only need to pay Fidya instead. Consult a scholar if unsure.',
+        donateButtonText: 'Fulfill Your Kaffara',
+        donationUrl: '/donate/kaffara',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Kaffara',
+      description: '',
+      faqs: [
+        {
+          question: 'What is the difference between Kaffara and Fidya?',
+          answer: 'Fidya is for those who cannot fast due to illness, old age, or permanent conditions and requires feeding one person per missed fast. Kaffara is for deliberately broken fasts and requires feeding 60 people per fast.'
+        },
+        {
+          question: 'How much is Kaffara?',
+          answer: 'Kaffara requires feeding 60 poor people for each deliberately missed fast. MTJ Foundation calculates the amount based on current food costs.'
+        },
+        {
+          question: 'Is Kaffara distributed according to Shariah?',
+          answer: 'Yes. MTJ Foundation ensures all Kaffara is handled with strict adherence to Shariah principles, reaching only eligible recipients.'
+        }
+      ],
+      donateButtonText: 'Pay Your Kaffara'
+    }
+  },
+  'eid-gift': {
+    id: 'eid-gift',
+    title: 'Eid Gift – Spread Joy This Eid',
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaGift, number: '25,000+', label: 'Gifts Distributed' },
+      { icon: FaUsers, number: '100,000+', label: 'Lives Touched' },
+      { icon: FaChild, number: '30,000+', label: 'Children Celebrated' },
+      { icon: FaHome, number: '200+', label: 'Villages Covered' },
+      { icon: FaSmile, number: '95%', label: 'Satisfaction Rate' },
+      { icon: FaGlobeAsia, number: '40+', label: 'Districts Reached' },
+      { icon: FaHandHoldingHeart, number: '15,000+', label: 'Families Supported' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' }
+    ],
+    content: {
+      paragraph1: 'Eid is a time of joy, celebration, and togetherness. But for many families, it passes like any other day — without new clothes, sweets, or the happiness that children deserve.',
+      paragraph2: 'MTJ Foundation\'s Eid Gift initiative ensures that children and families in underserved communities can celebrate Eid with dignity, new clothes, and gifts that bring smiles to their faces.',
+      paragraph3: 'Your contribution can turn a child\'s ordinary day into the most special day of the year.'
+    },
+    mainImage: image1,
+    donateCategory: 'Eid Gift',
+    donateButtonText: 'Send an Eid Gift',
+    showInitiative: true,
+    initiatives: {
+      id: 'eid-gift-per-child',
+      title: 'Eid Gift',
+      subtitle: 'Per Child',
+      price: 3500,
+      icon: communityIcon,
+      description: 'An Eid gift package for a child includes new clothes, shoes, sweets, and a small toy — everything a child needs to celebrate Eid with joy and dignity.',
+      duration: 'One time'
+    },
+    donationOptions: {
+      PKR: [3500, 7000, 17500, 35000],
+      USD: [35, 70, 175, 350],
+      EUR: [32, 65, 160, 320]
+    },
+    subProjects: [
+      {
+        id: 'why-eid-gifts-matter',
+        title: 'Why Eid Gifts Matter',
+        subtitle: '',
+        description: `For children growing up in poverty, Eid often passes without celebration. While other children wear new clothes and share sweets, they watch from the sidelines.
+
+An Eid gift is more than a present — it is a message that someone cares, that they are not forgotten, and that they too deserve to celebrate.`,
+        donateButtonText: 'Send an Eid Gift',
+        donationUrl: '/donate/eid-gift',
+        image: image1
+      },
+      {
+        id: 'what-is-included-eid-gift',
+        title: `What's Included?`,
+        subtitle: '',
+        description: 'Each Eid gift package is carefully prepared to bring joy to a child:',
+        services: [
+          'New clothes (age-appropriate)',
+          'New shoes',
+          'Sweets and treats',
+          'A small toy or gift item'
+        ],
+        afterServicesText: 'Every gift is distributed before Eid day so children wake up to a celebration they will remember.',
+        donateButtonText: 'Gift a Child This Eid',
+        donationUrl: '/donate/eid-gift',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Eid Gifts',
+      description: '',
+      faqs: [
+        {
+          question: 'Who receives the Eid gifts?',
+          answer: 'Children and families from underserved communities who cannot afford new clothes or celebrations for Eid.'
+        },
+        {
+          question: 'When are gifts distributed?',
+          answer: 'Gifts are distributed a few days before Eid so children can celebrate on Eid day.'
+        },
+        {
+          question: 'Can I sponsor multiple gifts?',
+          answer: 'Yes! You can sponsor as many Eid gifts as you wish by increasing the quantity.'
+        }
+      ],
+      donateButtonText: 'Send an Eid Gift'
+    }
+  },
+  'iftar': {
+    id: 'iftar',
+    title: `Iftar – Break Someone's Fast This Ramadan`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaUtensils, number: '500,000+', label: 'Meals Served' },
+      { icon: FaUsers, number: '300,000+', label: 'People Fed' },
+      { icon: FaGlobeAsia, number: '45+', label: 'Districts Covered' },
+      { icon: FaHandHoldingHeart, number: '50,000+', label: 'Daily Iftars' },
+      { icon: FaHome, number: '350+', label: 'Villages Reached' },
+      { icon: FaCalendarAlt, number: '30', label: 'Days of Iftar' },
+      { icon: FaPeopleCarry, number: '1,000+', label: 'Volunteers' },
+      { icon: FaShieldAlt, number: '100%', label: 'Transparency' }
+    ],
+    content: {
+      paragraph1: `The Prophet ﷺ said: "Whoever provides Iftar for a fasting person will earn the same reward as the fasting person, without the fasting person's reward being diminished in any way." (Tirmidhi)`,
+      paragraph2: `MTJ Foundation organizes daily Iftar meals across Pakistan throughout Ramadan, ensuring that those who fast — laborers, travelers, the poor — can break their fast with a wholesome meal.`,
+      paragraph3: `Your contribution doesn't just fill a plate. It earns you the reward of every fast broken through your generosity.`
+    },
+    mainImage: image1,
+    donateCategory: 'Iftar',
+    donateButtonText: 'Sponsor an Iftar',
+    showInitiative: true,
+    initiatives: {
+      id: 'iftar-per-person',
+      title: 'Iftar',
+      subtitle: 'Per Person',
+      price: 350,
+      icon: communityIcon,
+      description: 'Sponsor a complete Iftar meal for a fasting person. Each meal includes dates, water, a main dish, and dessert — providing nourishment and comfort at the time of breaking the fast.',
+      duration: 'Per Day'
+    },
+    donationOptions: {
+      PKR: [350, 3500, 10500, 21000],
+      USD: [4, 35, 105, 210],
+      EUR: [4, 32, 100, 200]
+    },
+    subProjects: [
+      {
+        id: 'reward-of-iftar',
+        title: 'The Reward of Providing Iftar',
+        subtitle: '',
+        description: `Providing Iftar to a fasting person is one of the most beloved acts during Ramadan. The Prophet ﷺ specifically encouraged this act of generosity, promising equal reward to the one who provides as the one who fasts.
+
+Imagine the reward of feeding hundreds of fasting people every single day of Ramadan — laborers returning from work, travelers far from home, families who have nothing to break their fast with.`,
+        quranAyat: {
+          text: `Whoever provides Iftar for a fasting person will earn the same reward as the fasting person, without the fasting person's reward being diminished in any way.`,
+          reference: 'Tirmidhi'
+        },
+        donateButtonText: 'Sponsor Iftar Meals',
+        donationUrl: '/donate/iftar',
+        image: image1
+      },
+      {
+        id: 'how-iftar-is-distributed',
+        title: 'How Iftar is Distributed',
+        subtitle: '',
+        description: 'MTJ Foundation organizes Iftar across multiple locations:',
+        services: [
+          'Community Iftar camps in underserved areas',
+          'Masjid-based Iftar distribution',
+          'Roadside Iftar for laborers and travelers',
+          'Home delivery for elderly and disabled individuals'
+        ],
+        afterServicesText: 'Every meal is prepared with hygiene and care, ensuring quality food reaches those who need it most.',
+        donateButtonText: 'Feed a Fasting Person',
+        donationUrl: '/donate/iftar',
+        image: image1
+      },
+      {
+        id: 'dua-before-iftar',
+        title: `Dua Before Breaking the Fast`,
+        subtitle: ``,
+        description: `The moment just before breaking the fast is one of the most powerful times for Dua. The Prophet ﷺ said that the Dua of a fasting person at the time of Iftar is not rejected.
+
+The following dua is recited at the time of breaking the fast:`,
+        arabicText: `اَللّٰهُمَّ اِنِّيْ لَكَ صُمْتُ وَبِكَ اٰمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلٰى رِزْقِكَ اَفْطَرْتُ`,
+        quranAyat: {
+          text: `Allahumma inni laka sumtu wa bika aamantu wa alayka tawakkaltu wa ala rizqika aftartu`,
+          reference: `Abu Dawud`
+        },
+        afterServicesText: `Translation: "O Allah, I fasted for You, I believe in You, I put my trust in You, and I break my fast with Your provision."
+
+This dua expresses complete reliance on Allah — acknowledging that the fast was for Him alone, and the sustenance that breaks it is from Him alone.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-after-iftar',
+        title: `Dua After Breaking the Fast`,
+        subtitle: ``,
+        description: `After breaking the fast, the following dua was recited by the Prophet ﷺ:`,
+        arabicText: `ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ`,
+        quranAyat: {
+          text: `Dhahaba al-zama wa abtallatil-urooq wa thabatal-ajru insha Allah`,
+          reference: `Abu Dawud, Al-Daraqutni`
+        },
+        afterServicesText: `Translation: "The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills."
+
+This beautiful dua acknowledges the physical relief of breaking the fast while affirming that the true reward lies with Allah.`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Iftar Sponsorship',
+      description: '',
+      faqs: [
+        {
+          question: 'What does one Iftar meal include?',
+          answer: 'Each Iftar meal includes dates, water, a main course (rice/roti with curry), and a dessert or fruit.'
+        },
+        {
+          question: 'Where are Iftar meals distributed?',
+          answer: 'Iftar meals are distributed at community camps, masjids, roadsides, and delivered to homes of the elderly and disabled across Pakistan.'
+        },
+        {
+          question: 'Can I sponsor Iftar for an entire Ramadan?',
+          answer: 'Yes! You can sponsor Iftar for 1 person for 30 days, or feed 30 people in one day — the choice is yours.'
+        }
+      ],
+      donateButtonText: 'Sponsor Iftar'
+    }
+  },
+  'sponsor-a-fasting-person': {
+    id: 'sponsor-a-fasting-person',
+    title: 'Sponsor a Fasting Person – Support Their Entire Ramadan',
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '20,000+', label: 'Persons Sponsored' },
+      { icon: FaUsers, number: '100,000+', label: 'Lives Touched' },
+      { icon: FaUtensils, number: '600,000+', label: 'Meals Provided' },
+      { icon: FaGlobeAsia, number: '35+', label: 'Districts Covered' },
+      { icon: FaHome, number: '8,000+', label: 'Households Reached' },
+      { icon: FaCalendarAlt, number: '30', label: 'Days Covered' },
+      { icon: FaBoxOpen, number: '40,000+', label: 'Ration + Iftar Packs' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: 'Sponsoring a fasting person for the entire month of Ramadan is one of the most comprehensive acts of charity you can perform. It ensures that a person in need has both Sehri and Iftar every single day.',
+      paragraph2: 'The Prophet ﷺ said: "Whoever provides Iftar for a fasting person will earn the same reward as the fasting person." Imagine earning that reward for all 30 days of Ramadan.',
+      paragraph3: 'Through MTJ Foundation, your sponsorship covers food, meals, and essential supplies for one person throughout the blessed month — giving them peace, nourishment, and the ability to focus on worship.'
+    },
+    mainImage: image1,
+    donateCategory: 'Sponsor a Fasting Person',
+    donateButtonText: 'Sponsor a Fasting Person',
+    showInitiative: true,
+    initiatives: {
+      id: 'sponsor-fasting-person',
+      title: 'Sponsor a Fasting Person',
+      subtitle: 'Full Ramadan (30 Days)',
+      price: 15000,
+      icon: communityIcon,
+      description: 'Sponsor one fasting person for the entire month of Ramadan. This covers Sehri and Iftar meals, along with essential food supplies for 30 days — ensuring they can fast with peace and dignity.',
+      duration: '30 Days'
+    },
+    donationOptions: {
+      PKR: [15000, 30000, 75000, 150000],
+      USD: [150, 300, 750, 1500],
+      EUR: [140, 280, 700, 1400]
+    },
+    subProjects: [
+      {
+        id: 'what-sponsorship-covers',
+        title: 'What Does Your Sponsorship Cover?',
+        subtitle: '',
+        description: 'When you sponsor a fasting person, your contribution covers their complete Ramadan needs:',
+        services: [
+          'Daily Sehri (pre-dawn meal)',
+          'Daily Iftar (meal at sunset)',
+          'Essential food supplies for the month',
+          'Dates, water, and nutritional supplements'
+        ],
+        afterServicesText: 'Your sponsorship allows someone to observe Ramadan without the burden of hunger or worry about their next meal.',
+        quranAyat: {
+          text: `Whoever provides Iftar for a fasting person will earn the same reward as the fasting person, without the fasting person's reward being diminished in any way.`,
+          reference: 'Tirmidhi'
+        },
+        donateButtonText: 'Sponsor Now',
+        donationUrl: '/donate/sponsor-a-fasting-person',
+        image: image1
+      },
+      {
+        id: 'impact-of-sponsorship',
+        title: 'The Impact of Your Sponsorship',
+        subtitle: '',
+        description: `When you sponsor a fasting person, you are not just providing food — you are giving them the freedom to worship without worry, the dignity to fast without hunger, and the peace that comes from knowing someone cares.
+
+Many of those who benefit are daily wage workers, widows, elderly, and orphans who have no reliable source of food during Ramadan.`,
+        donateButtonText: 'Be Their Ramadan Support',
+        donationUrl: '/donate/sponsor-a-fasting-person',
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything You Need to Know About Sponsorship',
+      description: '',
+      faqs: [
+        {
+          question: 'How much does it cost to sponsor one fasting person?',
+          answer: 'Sponsoring one fasting person for the entire month of Ramadan costs RS 15,000, covering daily Sehri, Iftar, and essential food supplies.'
+        },
+        {
+          question: 'Can I sponsor multiple people?',
+          answer: 'Yes! You can sponsor as many fasting persons as you wish by increasing the quantity.'
+        },
+        {
+          question: 'Who are the beneficiaries?',
+          answer: 'Daily wage workers, widows, elderly, orphans, and families living below the poverty line across Pakistan.'
+        },
+        {
+          question: 'Is this Zakat-eligible?',
+          answer: 'This initiative is primarily Sadqa-based. Please consult a scholar for Zakat eligibility based on your specific circumstances.'
+        }
+      ],
+      donateButtonText: 'Sponsor a Fasting Person'
+    }
+  },
+  'fidyah': {
+    id: 'fidyah',
+    title: `Fidyah – Compensation for Those Unable to Fast`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '15,000+', label: 'Fidyah Fulfilled' },
+      { icon: FaUsers, number: '75,000+', label: 'People Fed' },
+      { icon: FaGlobeAsia, number: '30+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '30,000+', label: 'Meals Provided' },
+      { icon: FaHome, number: '6,000+', label: 'Households Served' },
+      { icon: FaChild, number: '10,000+', label: 'Children Fed' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: `Fidyah is a religious compensation paid by Muslims who are unable to fast during Ramadan due to chronic illness, old age, pregnancy, or any permanent condition that prevents them from fasting.`,
+      paragraph2: `For each missed fast, a person must feed one poor person. This is not a penalty — it is a merciful provision from Allah for those who genuinely cannot fast.`,
+      paragraph3: `Through MTJ Foundation, your Fidyah reaches the most deserving families across Pakistan, ensuring full compliance with Shariah and bringing relief to those in need.`
+    },
+    mainImage: image1,
+    donateCategory: 'Fidyah',
+    donateButtonText: `Pay Your Fidyah`,
+    showInitiative: true,
+    initiatives: {
+      id: 'fidyah-per-fast',
+      title: `Fidyah`,
+      subtitle: `Per Missed Fast (Feeds 1 Person)`,
+      price: 450,
+      icon: communityIcon,
+      description: `Fidyah requires feeding one poor person for each fast that cannot be kept due to illness, old age, or a permanent condition. This amount covers two meals for one person in compliance with Shariah.`,
+      duration: `One time per missed fast`
+    },
+    donationOptions: {
+      PKR: [450, 6750, 13500, 27000],
+      USD: [5, 68, 135, 270],
+      EUR: [5, 63, 125, 250]
+    },
+    subProjects: [
+      {
+        id: 'what-is-fidyah',
+        title: `What is Fidyah?`,
+        subtitle: ``,
+        description: `Fidyah is the compensation a Muslim pays when they are permanently unable to fast during Ramadan. Unlike Kaffara (which is for deliberately broken fasts), Fidyah applies to those who have a valid, ongoing reason for not fasting.
+
+It is a merciful provision from Allah — recognizing that some people simply cannot fast, and offering them a way to still fulfill their obligation through charity.`,
+        quranAyat: {
+          text: `And upon those who are able [to fast, but with hardship] — a ransom [as substitute] of feeding a poor person [each day].`,
+          reference: `Surah Al-Baqarah 2:184`
+        },
+        donateButtonText: `Pay Your Fidyah`,
+        donationUrl: `/donate/fidyah`,
+        image: image1
+      },
+      {
+        id: 'who-should-pay-fidyah',
+        title: `Who Should Pay Fidyah?`,
+        subtitle: ``,
+        description: `Fidyah is applicable for those who cannot fast due to:`,
+        services: [
+          `Chronic or long-term illness that prevents fasting`,
+          `Old age and physical weakness`,
+          `Pregnancy or breastfeeding (in some scholarly opinions)`,
+          `Any permanent medical condition that makes fasting harmful`
+        ],
+        afterServicesText: `If your condition is temporary and you can make up the fasts later, Fidyah is not required — you should instead fast the missed days after Ramadan. Consult a scholar if you are unsure.`,
+        donateButtonText: `Fulfill Your Fidyah`,
+        donationUrl: `/donate/fidyah`,
+        image: image1
+      },
+      {
+        id: 'fidyah-vs-kaffara',
+        title: `Fidyah vs Kaffara — What is the Difference?`,
+        subtitle: ``,
+        description: `Many people confuse Fidyah and Kaffara, but they serve different purposes:`,
+        services: [
+          `Fidyah: For those who CANNOT fast due to illness, old age, or permanent conditions — feeds 1 person per missed fast`,
+          `Kaffara: For those who DELIBERATELY break a fast without valid reason — feeds 60 people per missed fast`
+        ],
+        afterServicesText: `Both are acts of compensation and charity, but the obligation and amount differ significantly. If you are unsure which applies to you, consult a knowledgeable scholar.`,
+        donateButtonText: `Calculate Your Fidyah`,
+        donationUrl: `/donate/fidyah`,
+        image: image1
+      }
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: `Frequently Asked Questions`,
+      subtitle: `Everything You Need to Know About Fidyah`,
+      description: ``,
+      faqs: [
+        {
+          question: `What is the difference between Fidyah and Kaffara?`,
+          answer: `Fidyah is for those who cannot fast due to permanent illness, old age, or medical conditions — it requires feeding 1 person per missed fast. Kaffara is for deliberately broken fasts and requires feeding 60 people per fast.`
+        },
+        {
+          question: `How much is Fidyah per fast?`,
+          answer: `Fidyah requires feeding one poor person for each missed fast. MTJ Foundation calculates the amount based on current food costs in Pakistan.`
+        },
+        {
+          question: `Can I pay Fidyah for the entire month at once?`,
+          answer: `Yes. You can pay Fidyah for all 30 days of Ramadan in advance. Simply multiply the per-fast amount by the number of missed fasts.`
+        },
+        {
+          question: `Is Fidyah distributed according to Shariah?`,
+          answer: `Yes. MTJ Foundation ensures all Fidyah is handled with strict adherence to Shariah principles, reaching only eligible recipients.`
+        },
+        {
+          question: `What if my condition improves and I can fast again?`,
+          answer: `If your condition was temporary and you recover, you should make up the missed fasts. Fidyah is for permanent conditions only. Consult a scholar for your specific situation.`
+        }
+      ],
+      donateButtonText: `Pay Your Fidyah`
+    }
+  },
+  'first-ashra-rehmat': {
+    id: 'first-ashra-rehmat',
+    title: `First Ashra – Rehmat (Mercy)`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '10', label: 'Days of Mercy' },
+      { icon: FaUsers, number: 'Day 1-10', label: 'Ramadan Duration' },
+      { icon: FaGlobeAsia, number: '1.8B+', label: 'Muslims Worldwide' },
+      { icon: FaShieldAlt, number: '100%', label: 'Blessings from Allah' },
+      { icon: FaCalendarAlt, number: '1st', label: 'Ashra of Ramadan' },
+      { icon: FaBookOpen, number: 'Quran', label: 'Month of Revelation' },
+      { icon: FaSeedling, number: 'Taqwa', label: 'Goal of Fasting' },
+      { icon: FaComments, number: 'Dua', label: 'Key Worship' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Give Your Zakat This Ramadan`,
+    donationOptions: {
+      PKR: [5000, 10000, 25000, 50000],
+      USD: [50, 100, 250, 500],
+      EUR: [45, 90, 230, 460]
+    },
+    subProjects: [
+      {
+        id: 'meaning-of-first-ashra',
+        title: `The First Ashra – Days of Mercy (Rehmat)`,
+        subtitle: ``,
+        description: `The first ten days of Ramadan are known as the Days of Mercy (Rehmat). During these blessed days, the doors of Allah's mercy are wide open, and His compassion descends upon those who seek it with sincerity.
+
+This is the time to turn to Allah with a humble heart, seek His forgiveness, and immerse yourself in worship, charity, and kindness.`,
+        quranAyat: {
+          text: `My mercy encompasses all things.`,
+          reference: `Surah Al-A'raf 7:156`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-for-first-ashra',
+        title: `Dua for the First Ashra`,
+        subtitle: ``,
+        description: `The recommended supplication for the first ten days of Ramadan:`,
+        quranAyat: {
+          text: `O My Lord, forgive and have mercy, and You are the Best of those who show mercy.`,
+          reference: `Surah Al-Mu'minun 23:118`
+        },
+        afterServicesText: `Recite this dua frequently during the first 10 days, especially after prayers and during the time of breaking your fast.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'how-to-maximize-first-ashra',
+        title: `How to Maximize the First Ashra`,
+        subtitle: ``,
+        description: `The first Ashra is your opportunity to build momentum for the entire month. Here are ways to make the most of these blessed days:`,
+        services: [
+          `Increase your daily Quran recitation`,
+          `Perform extra voluntary prayers (Nawafil)`,
+          `Give charity and feed the fasting`,
+          `Make sincere Tawbah (repentance)`,
+          `Be kind to family, neighbors, and those in need`,
+          `Make abundant Dhikr and Istighfar`
+        ],
+        afterServicesText: `The mercy of Allah is limitless — and these first ten days are specifically designated for seeking that mercy. Do not let them pass without taking full advantage.`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
+  },
+  'second-ashra-maghfirat': {
+    id: 'second-ashra-maghfirat',
+    title: `Second Ashra – Maghfirat (Forgiveness)`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '10', label: 'Days of Forgiveness' },
+      { icon: FaUsers, number: 'Day 11-20', label: 'Ramadan Duration' },
+      { icon: FaGlobeAsia, number: '1.8B+', label: 'Muslims Worldwide' },
+      { icon: FaShieldAlt, number: '100%', label: 'Blessings from Allah' },
+      { icon: FaCalendarAlt, number: '2nd', label: 'Ashra of Ramadan' },
+      { icon: FaBookOpen, number: 'Quran', label: 'Month of Revelation' },
+      { icon: FaSeedling, number: 'Taqwa', label: 'Goal of Fasting' },
+      { icon: FaComments, number: 'Istighfar', label: 'Key Worship' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Give Your Zakat This Ramadan`,
+    donationOptions: {
+      PKR: [5000, 10000, 25000, 50000],
+      USD: [50, 100, 250, 500],
+      EUR: [45, 90, 230, 460]
+    },
+    subProjects: [
+      {
+        id: 'meaning-of-second-ashra',
+        title: `The Second Ashra – Days of Forgiveness (Maghfirat)`,
+        subtitle: ``,
+        description: `The second ten days of Ramadan (Day 11-20) are the Days of Forgiveness (Maghfirat). This is the time when Allah forgives those who sincerely repent and turn back to Him.
+
+No matter how many sins a person has committed, these days remind us that Allah's forgiveness is greater than any transgression. All He asks is that we return to Him with a sincere heart.`,
+        quranAyat: {
+          text: `Say, O My servants who have transgressed against themselves, do not despair of the mercy of Allah. Indeed, Allah forgives all sins. Indeed, it is He who is the Forgiving, the Merciful.`,
+          reference: `Surah Az-Zumar 39:53`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-for-second-ashra',
+        title: `Dua for the Second Ashra`,
+        subtitle: ``,
+        description: `The recommended supplication for the second ten days of Ramadan:`,
+        quranAyat: {
+          text: `I seek forgiveness from Allah, my Lord, from every sin, and I turn to Him in repentance.`,
+          reference: `Hadith — Istighfar`
+        },
+        afterServicesText: `Recite Istighfar (Astaghfirullah) as much as possible during these days. The Prophet ﷺ himself used to seek forgiveness more than 70 times a day — and he was already forgiven.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'how-to-maximize-second-ashra',
+        title: `How to Maximize the Second Ashra`,
+        subtitle: ``,
+        description: `The middle ten days are your window to seek Allah's forgiveness for everything — past, present, and future. Here is how to make the most of them:`,
+        services: [
+          `Make sincere Tawbah for all past sins`,
+          `Increase Istighfar (seeking forgiveness) throughout the day`,
+          `Pray Tahajjud (night prayer) regularly`,
+          `Forgive others — so that Allah may forgive you`,
+          `Give Sadqa and charity generously`,
+          `Read and reflect upon the Quran with contemplation`
+        ],
+        afterServicesText: `The Prophet ﷺ said: "Whoever fasts during Ramadan with faith and seeking reward, all his previous sins will be forgiven." (Bukhari & Muslim)`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
+  },
+  'third-ashra-nijaat': {
+    id: 'third-ashra-nijaat',
+    title: `Third Ashra – Nijaat (Salvation from Hellfire)`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '10', label: 'Days of Salvation' },
+      { icon: FaUsers, number: 'Day 21-30', label: 'Ramadan Duration' },
+      { icon: FaGlobeAsia, number: '1.8B+', label: 'Muslims Worldwide' },
+      { icon: FaShieldAlt, number: '100%', label: 'Blessings from Allah' },
+      { icon: FaCalendarAlt, number: '3rd', label: 'Ashra of Ramadan' },
+      { icon: FaBookOpen, number: 'Laylatul Qadr', label: 'Night of Power' },
+      { icon: FaSeedling, number: 'Itikaf', label: 'Seclusion in Worship' },
+      { icon: FaComments, number: 'Dua', label: 'Key Worship' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Give Your Zakat This Ramadan`,
+    donationOptions: {
+      PKR: [5000, 10000, 25000, 50000],
+      USD: [50, 100, 250, 500],
+      EUR: [45, 90, 230, 460]
+    },
+    subProjects: [
+      {
+        id: 'meaning-of-third-ashra',
+        title: `The Third Ashra – Days of Salvation (Nijaat)`,
+        subtitle: ``,
+        description: `The last ten days of Ramadan (Day 21-30) are the most sacred days of the entire month. These are the Days of Salvation (Nijaat) — when Allah frees His servants from the Hellfire.
+
+It is during these final nights that Laylatul Qadr (the Night of Power) occurs — a single night that is better than a thousand months. The Prophet ﷺ would intensify his worship during these last ten days, spending entire nights in prayer.`,
+        quranAyat: {
+          text: `Indeed, We sent it down during the Night of Decree. And what can make you know what is the Night of Decree? The Night of Decree is better than a thousand months.`,
+          reference: `Surah Al-Qadr 97:1-3`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-for-third-ashra',
+        title: `Dua for the Third Ashra & Laylatul Qadr`,
+        subtitle: ``,
+        description: `Aisha (RA) asked the Prophet ﷺ: "If I find Laylatul Qadr, what should I say?" He replied:`,
+        quranAyat: {
+          text: `Allahumma innaka Afuwwun, tuhibbul afwa, fa'fu anni — O Allah, You are the Pardoner, You love to pardon, so pardon me.`,
+          reference: `Tirmidhi`
+        },
+        afterServicesText: `This dua should be recited abundantly during the last ten nights, especially on the odd nights (21st, 23rd, 25th, 27th, 29th) when Laylatul Qadr is most likely to occur.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'laylatul-qadr',
+        title: `Laylatul Qadr – The Night of Power`,
+        subtitle: ``,
+        description: `Laylatul Qadr is the most blessed night of the entire year. A single night of worship on this night is equivalent to worshipping for over 83 years. The Prophet ﷺ told us to seek it in the odd nights of the last ten days of Ramadan.`,
+        services: [
+          `Pray Tahajjud and Qiyam al-Layl throughout the night`,
+          `Recite and reflect upon the Quran`,
+          `Make abundant Dua — especially the dua taught by the Prophet ﷺ`,
+          `Give charity — rewards are multiplied on this night`,
+          `Perform Itikaf (seclusion in the masjid) if possible`,
+          `Seek forgiveness with complete sincerity`
+        ],
+        afterServicesText: `The Prophet ﷺ said: "Whoever stands in prayer on Laylatul Qadr out of faith and seeking reward, all his previous sins will be forgiven." (Bukhari & Muslim)`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'how-to-maximize-third-ashra',
+        title: `How to Maximize the Last Ten Days`,
+        subtitle: ``,
+        description: `These are the most important days of Ramadan. The Prophet ﷺ would tighten his belt (meaning he would exert himself in worship), pray through the night, and wake his family for prayer during these final days.`,
+        services: [
+          `Spend as much time as possible in worship`,
+          `Perform Itikaf if you are able`,
+          `Increase charity and Zakat giving`,
+          `Stay awake on the odd nights seeking Laylatul Qadr`,
+          `Complete your Quran recitation`,
+          `Make a comprehensive list of Duas and pray with conviction`
+        ],
+        afterServicesText: `Do not let these last days pass in laziness. The difference between a forgiven Ramadan and a wasted one often lies in the effort of the final ten nights.`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
+  },
+  'eid-ul-fitr': {
+    id: 'eid-ul-fitr',
+    title: `Eid ul Fitr – The Festival of Breaking the Fast`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '1.8B+', label: 'Muslims Celebrate' },
+      { icon: FaCalendarAlt, number: '1st', label: 'Shawwal' },
+      { icon: FaUsers, number: '2', label: 'Rakats of Eid Prayer' },
+      { icon: FaGlobeAsia, number: 'Worldwide', label: 'Celebration' },
+      { icon: FaGift, number: 'Fitrana', label: 'Obligation Before Eid' },
+      { icon: FaBookOpen, number: 'Sunnah', label: 'Acts of Eid' },
+      { icon: FaSmile, number: 'Joy', label: 'Spirit of Eid' },
+      { icon: FaComments, number: 'Takbeer', label: 'Key Worship' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Give Your Zakat`,
+    donationOptions: {
+      PKR: [5000, 10000, 25000, 50000],
+      USD: [50, 100, 250, 500],
+      EUR: [45, 90, 230, 460]
+    },
+    subProjects: [
+      {
+        id: 'what-is-eid-ul-fitr',
+        title: `What is Eid ul Fitr?`,
+        subtitle: ``,
+        description: `Eid ul Fitr is one of the two major Islamic festivals, celebrated on the 1st of Shawwal — the day after Ramadan ends. It is a day of gratitude, joy, and community, marking the completion of a month of fasting, prayer, and charity.
+
+On this day, Muslims gather for a special congregational prayer, exchange greetings, wear their best clothes, give gifts, and share meals with family and friends. It is also obligatory to pay Fitrana (Sadaqat al-Fitr) before the Eid prayer so that the poor can also celebrate.`,
+        quranAyat: {
+          text: `And that you complete the prescribed period, and that you glorify Allah for having guided you, so that you may be grateful.`,
+          reference: `Surah Al-Baqarah 2:185`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'eid-ul-fitr-ka-tariqa',
+        title: `Eid ul Fitr ka Tariqa – How to Perform Eid Prayer`,
+        subtitle: ``,
+        description: `Eid ul Fitr namaz is a 2-rakat congregational prayer performed without Adhan or Iqamah, featuring 6 additional Takbeers (3 in each rakat). According to the Hanafi school, you make the intention, perform 3 extra Takbeers in the first rakat after Sana, and 3 in the second before Ruku, all while raising hands.`,
+        services: [
+          `Structure: Two rakats performed in congregation`,
+          `Timing: After sunrise, usually in an open field or large hall`
+        ],
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'eid-prayer-first-rakat',
+        title: `First Rakat`,
+        subtitle: ``,
+        description: ``,
+        services: [
+          `Say Takbiratul Ihram ("Allahu Akbar") and fold hands`,
+          `Recite Sana ("Subhanaka Allahumma...")`,
+          `Raise hands and say "Allahu Akbar" three times, lowering hands to sides each time, then fold them after the third`,
+          `The Imam recites Surah Al-Fatihah and another Surah`,
+          `Complete the rakat with Ruku and Sujud normally`
+        ],
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'eid-prayer-second-rakat',
+        title: `Second Rakat`,
+        subtitle: ``,
+        description: ``,
+        services: [
+          `Imam recites Surah Al-Fatihah and a Surah`,
+          `Before Ruku, raise hands and say "Allahu Akbar" three times, dropping hands to the sides`,
+          `Say "Allahu Akbar" a fourth time to go into Ruku`,
+          `Complete the Rakat and prayer as usual`
+        ],
+        afterServicesText: `Post-Prayer: The Imam delivers a Khutbah (sermon), which is Sunnah to listen to. It is highly recommended to follow the Imam closely throughout the prayer.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'sunnahs-of-eid-ul-fitr',
+        title: `Sunnahs of Eid ul Fitr`,
+        subtitle: ``,
+        description: `The Prophet ﷺ established several Sunnahs for the day of Eid ul Fitr that Muslims are encouraged to follow:`,
+        services: [
+          `Eat something sweet (preferably dates) before going to Eid prayer`,
+          `Take a bath (Ghusl) and wear your best clothes`,
+          `Apply perfume (Attar)`,
+          `Pay Fitrana before the Eid prayer`,
+          `Go to the Eid prayer ground by one route and return by another`,
+          `Recite Takbeer on the way to the prayer ground`,
+          `Greet everyone with "Eid Mubarak" and embrace`,
+          `Visit family and friends and share meals`
+        ],
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'takbeer-of-eid',
+        title: `Takbeer of Eid`,
+        subtitle: ``,
+        description: `The Takbeer of Eid is recited from the night before Eid until the Eid prayer:`,
+        quranAyat: {
+          text: `Allahu Akbar, Allahu Akbar, La Ilaha Illallahu Wallahu Akbar, Allahu Akbar, Wa Lillahil Hamd`,
+          reference: `Takbeeraat of Eid`
+        },
+        afterServicesText: `Recite this Takbeer aloud on the way to the Eid prayer, in your homes, and in the markets — filling the atmosphere with the remembrance of Allah on this blessed day.`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
+  },
+  'sehar': {
+    id: 'sehar',
+    title: `Sehar (Suhoor) – The Blessed Pre-Dawn Meal`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaCalendarAlt, number: '30', label: 'Days of Suhoor' },
+      { icon: FaUsers, number: '1.8B+', label: 'Muslims Worldwide' },
+      { icon: FaBookOpen, number: 'Sunnah', label: 'Highly Recommended' },
+      { icon: FaHandHoldingHeart, number: 'Barakah', label: 'Blessings in Suhoor' },
+      { icon: FaUtensils, number: 'Meal', label: 'Before Fajr' },
+      { icon: FaShieldAlt, number: 'Strength', label: 'For the Fast' },
+      { icon: FaComments, number: 'Dua', label: 'At Suhoor Time' },
+      { icon: FaSeedling, number: 'Niyyah', label: 'Intention to Fast' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Sponsor Suhoor Meals`,
+    donationOptions: {
+      PKR: [5000, 10000, 25000, 50000],
+      USD: [50, 100, 250, 500],
+      EUR: [45, 90, 230, 460]
+    },
+    subProjects: [
+      {
+        id: 'what-is-sehar',
+        title: `What is Sehar (Suhoor)?`,
+        subtitle: ``,
+        description: `Sehar (also called Suhoor or Sahri) is the pre-dawn meal eaten before the Fajr Adhan during Ramadan. It is a highly emphasized Sunnah of the Prophet ﷺ and carries great blessings.
+
+The Prophet ﷺ encouraged Muslims to eat Suhoor, even if it is just a sip of water, because it provides strength for the day of fasting and distinguishes the Muslim fast from the fasting of other religions.`,
+        quranAyat: {
+          text: `Eat Suhoor, for indeed in Suhoor there is barakah (blessing).`,
+          reference: `Sahih Bukhari & Muslim`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-for-sehar',
+        title: `Dua for Sehar (Suhoor) – Niyyah for Fasting`,
+        subtitle: ``,
+        description: `Before beginning the fast, it is recommended to make the intention (Niyyah) for fasting. The intention can be made in the heart, but the following dua is commonly recited:`,
+        arabicText: `وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ`,
+        quranAyat: {
+          text: `Wa bisawmi ghadin nawaytu min shahri Ramadan`,
+          reference: `Niyyah for Fasting`
+        },
+        afterServicesText: `Translation: "I intend to keep the fast for tomorrow in the month of Ramadan."
+
+The Niyyah should be made before Fajr. It can be made at any time during the night — even while eating Suhoor. The intention in the heart is sufficient, but reciting the dua is preferred.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'sunnahs-of-suhoor',
+        title: `Sunnahs & Etiquettes of Suhoor`,
+        subtitle: ``,
+        description: `The Prophet ﷺ emphasized Suhoor and practiced several Sunnahs related to it:`,
+        services: [
+          `Eat Suhoor — do not skip it, even if it is just a sip of water or a date`,
+          `Delay Suhoor — eat as close to Fajr time as possible`,
+          `Eat dates — the Prophet ﷺ said: "The best Suhoor for the believer is dates"`,
+          `Drink plenty of water to stay hydrated during the fast`,
+          `Make the Niyyah (intention) to fast`,
+          `Stop eating and drinking when the Fajr Adhan begins`,
+          `Make Dua — the time of Suhoor is a blessed time for supplication`
+        ],
+        quranAyat: {
+          text: `The people will remain upon goodness as long as they hasten to break their fast and delay their Suhoor.`,
+          reference: `Musnad Ahmad`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'virtues-of-suhoor',
+        title: `Virtues of Suhoor`,
+        subtitle: ``,
+        description: `Suhoor is not just a meal — it is an act of worship that carries immense reward and blessings:`,
+        services: [
+          `It is a Sunnah of the Prophet ﷺ — following his example brings reward`,
+          `It contains Barakah (blessings) as mentioned in the Hadith`,
+          `It strengthens the body for worship and fasting`,
+          `It distinguishes our fast from the fasting of Ahl al-Kitab`,
+          `The angels send blessings upon those who eat Suhoor`,
+          `The time of Suhoor is the last third of the night — when Duas are accepted`
+        ],
+        quranAyat: {
+          text: `Allah and His angels send blessings upon those who eat Suhoor.`,
+          reference: `Musnad Ahmad, Sahih Ibn Hibban`
+        },
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
+  },
+  'iftar-dua': {
+    id: 'iftar-dua',
+    title: `Iftar – Breaking the Fast & Its Duas`,
+    headerImage: image1,
+    headerImageMob: image1,
+    stats: [
+      { icon: FaCalendarAlt, number: '30', label: 'Days of Iftar' },
+      { icon: FaUsers, number: '1.8B+', label: 'Muslims Worldwide' },
+      { icon: FaBookOpen, number: 'Sunnah', label: 'Break Fast with Dates' },
+      { icon: FaHandHoldingHeart, number: 'Reward', label: 'For Feeding Others' },
+      { icon: FaUtensils, number: 'Meal', label: 'At Maghrib' },
+      { icon: FaShieldAlt, number: 'Accepted', label: 'Dua at Iftar' },
+      { icon: FaComments, number: 'Dua', label: 'Key Worship' },
+      { icon: FaSeedling, number: 'Gratitude', label: 'To Allah' }
+    ],
+    donateCategory: `Zakat`,
+    donateButtonText: `Sponsor Iftar Meals`,
+    donationOptions: {
+      PKR: [350, 3500, 10500, 21000],
+      USD: [4, 35, 105, 210],
+      EUR: [4, 32, 100, 200]
+    },
+    subProjects: [
+      {
+        id: 'what-is-iftar',
+        title: `What is Iftar?`,
+        subtitle: ``,
+        description: `Iftar is the meal eaten at sunset to break the fast during Ramadan. It is one of the most beloved moments of the day for a fasting person — a time of relief, gratitude, and closeness to Allah.
+
+The Prophet ﷺ encouraged hastening to break the fast as soon as Maghrib time enters, and he would break his fast with fresh dates, or dry dates, or water if dates were not available.`,
+        quranAyat: {
+          text: `The people will remain upon goodness as long as they hasten to break their fast.`,
+          reference: `Sahih Bukhari & Muslim`
+        },
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-before-iftar',
+        title: `Dua Before Breaking the Fast`,
+        subtitle: ``,
+        description: `The moment just before breaking the fast is one of the most powerful times for Dua. The Prophet ﷺ said that the Dua of a fasting person at the time of Iftar is not rejected.
+
+The following dua is recited at the time of breaking the fast:`,
+        arabicText: `اَللّٰهُمَّ اِنِّيْ لَكَ صُمْتُ وَبِكَ اٰمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلٰى رِزْقِكَ اَفْطَرْتُ`,
+        quranAyat: {
+          text: `Allahumma inni laka sumtu wa bika aamantu wa alayka tawakkaltu wa ala rizqika aftartu`,
+          reference: `Abu Dawud`
+        },
+        afterServicesText: `Translation: "O Allah, I fasted for You, I believe in You, I put my trust in You, and I break my fast with Your provision."
+
+This dua expresses complete reliance on Allah — acknowledging that the fast was for Him alone, and the sustenance that breaks it is from Him alone.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-after-iftar',
+        title: `Dua After Breaking the Fast`,
+        subtitle: ``,
+        description: `After breaking the fast, the following dua was recited by the Prophet ﷺ:`,
+        arabicText: `ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ`,
+        quranAyat: {
+          text: `Dhahaba al-zama wa abtallatil-urooq wa thabatal-ajru insha Allah`,
+          reference: `Abu Dawud, Al-Daraqutni`
+        },
+        afterServicesText: `Translation: "The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills."
+
+This beautiful dua acknowledges the physical relief of breaking the fast while affirming that the true reward lies with Allah.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'sunnahs-of-iftar',
+        title: `Sunnahs & Etiquettes of Iftar`,
+        subtitle: ``,
+        description: `The Prophet ﷺ practiced several Sunnahs related to breaking the fast:`,
+        services: [
+          `Hasten to break the fast — do not delay once Maghrib time enters`,
+          `Break the fast with fresh dates (Rutab) if available`,
+          `If no fresh dates, then with dry dates (Tamr)`,
+          `If no dates at all, then with water`,
+          `Make Dua before breaking the fast — it is a time of accepted supplication`,
+          `Recite the Dua of Iftar`,
+          `Feed others — the Prophet ﷺ said whoever provides Iftar earns the same reward as the fasting person`,
+          `Share your Iftar with neighbors, family, and the needy`
+        ],
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'dua-at-iftar-accepted',
+        title: `Why Dua at Iftar Time is Special`,
+        subtitle: ``,
+        description: `The Prophet ﷺ specifically highlighted that the Dua made at the time of Iftar holds a special status:`,
+        quranAyat: {
+          text: `Three supplications are not rejected: the supplication of a fasting person at the time of breaking the fast, the supplication of a just ruler, and the supplication of the oppressed.`,
+          reference: `Tirmidhi, Ibn Majah`
+        },
+        afterServicesText: `This is why scholars advise preparing your most important Duas before Iftar time — write them down, memorize them, and pour your heart out to Allah in those precious moments before you take your first bite. Do not waste this golden window with idle talk.`,
+        donateButtonText: ``,
+        image: image1
+      },
+      {
+        id: 'reward-of-feeding-fasting-person',
+        title: `The Reward of Feeding a Fasting Person`,
+        subtitle: ``,
+        description: `One of the greatest acts of charity during Ramadan is to provide Iftar to someone who is fasting. The reward for this is immense:`,
+        quranAyat: {
+          text: `Whoever provides Iftar for a fasting person will earn the same reward as the fasting person, without the fasting person's reward being diminished in any way.`,
+          reference: `Tirmidhi`
+        },
+        afterServicesText: `Even providing a single date or a glass of water to break someone's fast earns this reward. Imagine the reward of feeding hundreds or thousands throughout Ramadan.`,
+        donateButtonText: ``,
+        image: image1
+      }
+    ]
   }
 }
 

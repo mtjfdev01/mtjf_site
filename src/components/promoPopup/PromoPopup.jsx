@@ -18,7 +18,7 @@ import './PromoPopup.css'
  */
 const PromoPopup = ({
   routes = ['/', '/home'],
-  redirectUrl = '/zakat-calculator',
+  redirectUrl = '/ramzan-zakat',
   desktopImage,
   mobileImage,
   bannerStyle = 'standard',
@@ -160,7 +160,7 @@ const PromoPopup = ({
           />
         </picture>
         
-        <span className="promo-popup__cta">Click to learn more</span>
+        {/* <span className="promo-popup__cta">Click to learn more</span> */}
       </div>
     </div>
   )

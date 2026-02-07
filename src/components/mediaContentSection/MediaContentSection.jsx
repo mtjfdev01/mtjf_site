@@ -116,6 +116,11 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   <p className="media-content-description">{subProject.afterServicesText}</p>
                 )}
 
+                {/* Arabic Text */}
+                {subProject.arabicText && (
+                  <p className="media-content-arabic-text">{subProject.arabicText}</p>
+                )}
+
                 {/* Quran Ayat / Hadith Section */}
                 {subProject.quranAyat && (
                   <div className="media-content-quran-ayat">

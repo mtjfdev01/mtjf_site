@@ -4,6 +4,7 @@ import PageHeader from '../components/pageHeader/PageHeader'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
+import InitiativeDonationCard from '../components/donation/projects_menu/InitiativeDonationCard'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 const MediaContentSection = lazy(() => import('../components/mediaContentSection/MediaContentSection'))
@@ -114,15 +115,40 @@ const ProjectDetail = () => {
                   </div>
                 </div>
 
-                {/* Right Sidebar - Donate Form */}
+                {/* Right Sidebar - Donate Form or Initiative Cards */}
                 <div className="project-donate-sidebar col-12 lg-4">
-                  <VerticalDonationForm
-                    formId="project-detail-donation-form"
-                    donationOptions={project.donationOptions}
-                    categoryOptions={categoryOptions}
-                    defaultCategory={project.donateCategory}
-                    onSubmit={handleDonationSubmit}
-                  />
+                  {project.showInitiative && project.initiatives ? (
+                    <div className="project-initiative-cards">
+                      {Array.isArray(project.initiatives) ? (
+                        project.initiatives.map((initiative) => (
+                          <InitiativeDonationCard
+                            key={initiative.id}
+                            initiative={{
+                              ...initiative,
+                              parentProjectId: project.id,
+                              parentProjectTitle: project.title
+                            }}
+                          />
+                        ))
+                      ) : (
+                        <InitiativeDonationCard
+                          initiative={{
+                            ...project.initiatives,
+                            parentProjectId: project.id,
+                            parentProjectTitle: project.title
+                          }}
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <VerticalDonationForm
+                      formId="project-detail-donation-form"
+                      donationOptions={project.donationOptions}
+                      categoryOptions={categoryOptions}
+                      defaultCategory={project.donateCategory}
+                      onSubmit={handleDonationSubmit}
+                    />
+                  )}
                 </div>
               </div>
             </section>
