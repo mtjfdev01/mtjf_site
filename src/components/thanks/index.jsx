@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import PageHeader from '../pageHeader/PageHeader'
 import image from '../../assets/img/thanks/thanks.webp'
-import Footer from '../footer/Footer'
+import Footer from '../footer/Footer' 
 import axiosInstance from '../../utils/axios'
 
 const Thanks = () => {
@@ -19,11 +19,12 @@ const Thanks = () => {
     } else {
       setLoading(false)
       setError('Donation ID not found in URL')
-    }
+    } 
   }, [donationId])
 
   const verifyDonationStatus = async () => {
     try {
+      if(donationId){
       setLoading(true)
       setError('')
       
@@ -39,6 +40,7 @@ const Thanks = () => {
         setError(response.data.message || 'Failed to verify donation status')
         setDonationStatus(urlStatus || 'pending')
       }
+    }
     } catch (err) {
       console.error('Error verifying donation status:', err)
       setError(err.response?.data?.message || 'Failed to verify donation status')
@@ -88,7 +90,7 @@ const Thanks = () => {
         // title="Thanks"
         image={image}
       />
-      
+      {donationId && (
       <div style={{
         minHeight: '60vh',
         display: 'flex',
@@ -182,7 +184,7 @@ const Thanks = () => {
           </div>
         )}
       </div>
-
+      )}
       <Footer />
     </>
   )
