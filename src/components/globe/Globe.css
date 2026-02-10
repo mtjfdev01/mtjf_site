@@ -111,14 +111,14 @@
 
   .globe-canvas-wrapper,
   .webgl-error-fallback {
-    height: 400px;
+    height: 500px;
   }
 }
 
 @media (max-width: 480px) {
   .globe-canvas-wrapper,
   .webgl-error-fallback {
-    height: 320px;
+    height: 400px;
   }
 
   .globe-section-title {
