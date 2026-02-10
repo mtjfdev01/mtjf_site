@@ -12,6 +12,7 @@ import StickyQuickDonationForm from "./components/donation/StickyQuickDonationFo
 import PromoPopup from './components/promoPopup';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
+import GlobeSection from "./components/globe/GlobeSection";
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -102,6 +103,8 @@ function App() {
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
               <Route path="/media" element={<DownloadsPage />} />
               <Route path="/media/downloads" element={<DownloadsPage />} />
+              <Route path="/globe" element={<GlobeSection />} />
+              
             </Routes>
           </Suspense>
           <AnimatedButton />
