@@ -110,9 +110,23 @@ const ProjectDetail = () => {
                     />
                   </div> */}
 
-                  <div className="project-content-text">
-                    <p className="text-base">{project.content.paragraph3}</p>
-                  </div>
+                  {project.content.paragraph3 && (
+                    <div className="project-content-text">
+                      <p className="text-base">{project.content.paragraph3}</p>
+                    </div>
+                  )}
+
+                  {/* Single video embed inside content */}
+                  {project.content.testimonials?.videos?.[0] && (
+                    <div className="project-content-video">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${project.content.testimonials.videos[0].match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1]}`}
+                        title="Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Right Sidebar - Donate Form or Initiative Cards */}
@@ -187,13 +201,15 @@ const ProjectDetail = () => {
             )}
             {/* Testimonials Section */}
             {project?.testimonials && (
-              <Suspense fallback={null}>
-                <ProjectsTestimonial
-                  videos={project.testimonials.videos}
-                  title={project.testimonials.title}
-                  subtitle={project.testimonials.subtitle}
-                />
-              </Suspense>
+              <div className={project.testimonials.mobileOnly ? 'testimonials-mobile-only' : ''}>
+                <Suspense fallback={null}>
+                  <ProjectsTestimonial
+                    videos={project.testimonials.videos}
+                    title={project.testimonials.title}
+                    subtitle={project.testimonials.subtitle}
+                  />
+                </Suspense>
+              </div>
             )}
             {/* FAQs Section */}
             {project?.faqs && (

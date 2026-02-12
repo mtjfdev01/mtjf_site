@@ -71,6 +71,41 @@
   line-height: 1.8;
 }
 
+/* Single video embed */
+.project-content-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 280px;
+  margin-top: var(--space-32);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .project-content-video {
+    display: none;
+  }
+}
+
+/* Testimonials: mobile-only variant */
+.testimonials-mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .testimonials-mobile-only {
+    display: block;
+  }
+}
+
+.project-content-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .project-main-image {
   width: 100%;
   margin: var(--space-32) 0;
