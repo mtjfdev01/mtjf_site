@@ -82,7 +82,7 @@ const PROJECTS_DATA = [
     id: 'apna-ghar',
     category: 'apna-ghar',
     categoryColor: '#DDA0DD',
-    title: 'A home where <br />lost futures <br /> are rebuilt',
+    title: 'A home where lost futures are rebuilt',
     description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
     image: apna_ghr,
     progress: 38.25,
@@ -112,7 +112,7 @@ const PROJECTS_DATA = [
     id: 'seeds-of-change', 
     category: 'Seeds of Change',
     categoryColor: '#DDA0DD',
-    title: 'seeds-of-changeseeds-of-change',
+    title: 'seeds-of-change',
     description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
     image: Seeds,
     progress: 38.25,
@@ -361,7 +361,7 @@ const Projects = () => {
               <div className="project-content p-20">
                 <h3 className="h3 mb-12 text-capitalize" dangerouslySetInnerHTML={{ __html: project.title }}></h3>
                 <p className="text-sm muted mb-16">
-                  {project.description?.slice(0, 70)}...{' '}
+                  {project.description?.slice(0, 60)}...{' '}
                   <span 
                     className="text-primary"
                     style={{ textDecoration: 'underline', cursor: 'pointer' }}

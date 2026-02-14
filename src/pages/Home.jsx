@@ -4,6 +4,8 @@ import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
+import ProjectsTestimonial from "../components/projectsTestimonial/ProjectsTestimonial";
+import { home_testimonials } from "../utils/variables";
 // import HeroWithTypingTest from "../components/hero/HeroWithTyping.test";
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
@@ -57,7 +59,12 @@ const Home = () => {
               <Projects />
               <Stats />
               <BrandArea />
-              {/* <QuickBlogs />
+              <ProjectsTestimonial
+                videos={home_testimonials.videos}
+                title={home_testimonials.title}
+                subtitle={home_testimonials?.subtitle}
+              />
+              {/* <QuickBlogs /> 
               <Events /> */}
               <Newsletter />
               <DonationCta />

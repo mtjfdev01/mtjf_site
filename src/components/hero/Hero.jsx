@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import hero from '../../assets/img/hero/hero.webp'
 import hero_mob from '../../assets/img/hero/hero_mob.webp'
 import winter_hero from '../../assets/img/hero/winter.webp'
@@ -10,7 +11,7 @@ import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popu
 import './hero.css'
 
 const HERO_IMAGES = [
-  { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup }, 
+  { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup, link: '/projects/ramzan-zakat' }, 
   // { desktop: hero, mobile: hero_mob }, 
   // { desktop: winter_hero, mobile: winter_mob },
   // { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
@@ -44,12 +45,25 @@ const Hero = () => {
 
   return (
     <>
-      <div className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
-        <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"100%"}} />
-      </div>
-      <div className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
-        <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
-      </div>
+      {currentImage.link ? (
+        <>
+          <Link to={currentImage.link} className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
+            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"100%"}} />
+          </Link>
+          <Link to={currentImage.link} className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
+            <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
+          </Link>
+        </>
+      ) : (
+        <>
+          <div className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
+            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"100%"}} />
+          </div>
+          <div className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
+            <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
+          </div>
+        </>
+      )}
 
       <div className="hero-nav-container">
         <button
