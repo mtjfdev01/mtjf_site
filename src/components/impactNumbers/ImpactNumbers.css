@@ -1,0 +1,50 @@
+.impact-numbers-section {
+  background-color: var(--color-white);
+}
+
+.impact-numbers-header {
+  margin-bottom: var(--space-48);
+}
+
+.impact-numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-48);
+}
+
+.impact-number-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.impact-number-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.impact-number-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .impact-numbers-header h2 {
+    font-size: var(--fs-24);
+  }
+
+  .impact-numbers-grid {
+    gap: var(--space-16);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .impact-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-12);
+  }
+}

@@ -84,9 +84,6 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
     display: flex !important;
     align-items: center;
     justify-content: center;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   .brands-section .brand-item a {

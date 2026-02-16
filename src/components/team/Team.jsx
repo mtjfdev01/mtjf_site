@@ -3,13 +3,11 @@ import '../../common/styles/base.css'
 import '../../common/styles/common.css'
 import './Team.css'
 
-import chairman from '../../assets/img/team/molana.webp'
-import viceChairman from '../../assets/img/team/yousaf.webp' 
-
 import memberCEO from '../../assets/img/team/IhtishamUllahQureshi.png'
 import memberCFO from '../../assets/img/team/MuhammadRashidIqbal.png'
 import memberFundraising from '../../assets/img/team/MairajKhalid.png'
 import memberHR from '../../assets/img/team/MuhammadFarukh.png'
+import memberMeal from '../../assets/img/team/IkramSeher.webp'
 
 const teamMembers = [
    {
@@ -46,7 +44,7 @@ const teamMembers = [
     id: 'Director of Programs',
     name: 'Ikram Seher',
     role: 'MEAL Manager',
-    // image: memberHR,
+    // image: memberMeal,
     accent: 'amber',
   },
 ]

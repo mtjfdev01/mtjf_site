@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
+import BrandArea from '../brands/brands'
 import './MediaContentSection.css'
 
 const MediaContentSection = ({ subProjects, defaultImage }) => {
@@ -71,7 +72,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
 
         return (
           <div key={subProject.id || index} className="media-content-item"> 
-            <div className={`media-content-wrapper container ${image ? imagePosition : 'no-image'}`}>
+            <div className={`media-content-wrapper container ${(image || subProject.video) ? imagePosition : 'no-image'}`}>
               {/* Content Side */}
               <div className="media-content-text">
 
@@ -139,8 +140,20 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 )}
               </div>
 
-              {/* Image Side */}
-              {image && (
+              {/* Video or Image Side */}
+              {subProject.video ? (
+                <div className="media-content-image">
+                  <div className="media-content-video-wrapper">
+                    <iframe
+                      src={subProject.video.replace('watch?v=', 'embed/').split('&')[0]}
+                      title={subProject.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              ) : image ? (
                 <div className="media-content-image">
                   <LazyImage
                     src={image}
@@ -148,7 +161,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                     className="media-content-image-img"
                   />
                 </div>
-              )}
+              ) : null}
 
               {/* Bottom Paragraph - appears below both image and text */}
               {/* BottomText Bold */}
@@ -170,6 +183,19 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 </div>
               )}
             </div>
+
+            {/* Carousel Images */}
+            {subProject.carosellImages && subProject.carosellImages.length > 0 && (
+              <BrandArea
+                brands={subProject.carosellImages.map((img, i) => ({
+                  image: img,
+                  link: '',
+                  alt: `${subProject.title} image ${i + 1}`
+                }))}
+                title=""
+                speed={30}
+              />
+            )}
           </div>
         )
       })}

@@ -89,9 +89,11 @@ const brandsData = [
 ];
 
 
-const BrandArea = ({ className = '', speed = 70 }) => {
+const BrandArea = ({ className = '', speed = 70, brands, title = 'Commitment to Global Goals' }) => {
+  const data = brands && brands.length > 0 ? brands : brandsData;
+
   // Duplicate once for seamless loop
-  const marqueeItems = useMemo(() => [...brandsData, ...brandsData], []);
+  const marqueeItems = useMemo(() => [...data, ...data], [data]);
 
   // Ensure a sensible duration (don’t let 500s look “frozen”)
   const durationSec = Math.max(1, Number(speed) || 20);
@@ -103,10 +105,12 @@ const BrandArea = ({ className = '', speed = 70 }) => {
       style={{ ['--duration']: `${durationSec}s` }}
     >
       <div className="brands-container">
-        <div className="brands-header mx-auto">
-        <h2 className="heading-secondary" >Commitment to Global Goals</h2> 
-        </div> 
-        <div className="brands-marquee" aria-label="Partner brands scrolling list pt-10">
+        {title && (
+          <div className="brands-header mx-auto">
+            <h2 className="heading-secondary">{title}</h2> 
+          </div>
+        )}
+        <div className="brands-marquee" aria-label="Partner brands scrolling list">
           <div
             className="brands-track"
             role="list"
@@ -116,9 +120,13 @@ const BrandArea = ({ className = '', speed = 70 }) => {
           >
             {marqueeItems.map((brand, i) => (
               <div className="brand-item" role="listitem" key={`brand-${i}`}>
-                <a href={brand.link} target="_blank" rel="noopener noreferrer" title={brand.alt}>
+                {brand.link ? (
+                  <a href={brand.link} target="_blank" rel="noopener noreferrer" title={brand.alt}>
+                    <img src={brand.image} alt={brand.alt} width="120" height="60" loading="lazy" />
+                  </a>
+                ) : (
                   <img src={brand.image} alt={brand.alt} width="120" height="60" loading="lazy" />
-                </a>
+                )}
               </div>
             ))}
           </div>

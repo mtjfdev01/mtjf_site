@@ -92,7 +92,7 @@ const GoldTab = ({
         />
         <p className="text-sm muted mt-8">
           Enter the current market price of gold {goldUnit === 'tola' ? 'per tola' : 'per gram'}. 
-          (Future: Live rate API integration)
+          {/* (Future: Live rate API integration) */}
         </p>
       </div>
       

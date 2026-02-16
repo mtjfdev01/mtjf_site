@@ -20,7 +20,7 @@ const CtaCircles = lazy(() =>
   import("../components/ctaCircles/CtaCircles")
 );
 const Projects = lazy(() => import("../components/projects/Projects"));
-const Stats = lazy(() => import("../components/stats/Stats"));
+const ImpactNumbers = lazy(() => import("../components/impactNumbers/ImpactNumbers"));
 const Events = lazy(() => import("../components/events/Events"));
 const DonationCta = lazy(() =>
   import("../components/donationCta/DonationCta")
@@ -57,7 +57,7 @@ const Home = () => {
               <DonationFeatures />
               <CtaCircles />
               <Projects />
-              <Stats />
+              <ImpactNumbers />
               <BrandArea />
               <ProjectsTestimonial
                 videos={home_testimonials.videos}

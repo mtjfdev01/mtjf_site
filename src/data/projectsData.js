@@ -1,5 +1,14 @@
 import image1 from '../assets/img/projects/camp.webp' 
 import ZakatCalculator from '../assets/img/zakat/zakat_hero.webp'
+import impactNum1 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -01.webp'
+import impactNum2 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -02.webp'
+import impactNum3 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -03.webp'
+import impactNum4 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -04.webp'
+import impactNum5 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -05.webp'
+import impactNum6 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -06.webp'
+import impactNum7 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -07.webp'
+import impactNum8 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -08.webp'
+import impactNum9 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -09.webp'
 import ZakatMob from '../assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import healthhero from '../assets/img/projects/projects-details/Health/health_hero.webp'
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
@@ -1795,29 +1804,41 @@ This is relief that reaches hearts, homes, and futures.`,
           'It helps a mother feed her children without asking.',
           'It helps a family survive Ramadan without fear of hunger.',
           'It helps someone stand on their own feet instead of living in dependence.'
-        ]
+        ],
+        carosellImages: [
+          impactNum1,
+          impactNum2,
+          impactNum3,
+          impactNum4,
+          impactNum5,
+          impactNum6,
+          impactNum7,
+          impactNum9,
+          impactNum8,
+      ],
       },
       {
         id: 'message-from-molana-tariq-jamil',
-        title: 'A Message From Molana Tariq Jamil',
-        subtitle: 'This month reminds us that Allah has placed us in different positions in life, not by chance, but by purpose.',
-        description: ``,
-        services: [
-          'Some are tested through patience.',
-          'Some are tested through wealth.',
-        ],
-        afterServicesText: `And those who are able are being asked a simple question by Allah:
-Will you share what I have given you?`,
+        title: 'A Message from Molana Yousaf Jamil',
+        description: `Zakat is a trust from Allah. What we have is not only for us. Somewhere, a mother is worried
+        about feeding her children. Somewhere, a father is doing his best and turning to Allah for help.
+        When you give Zakat, you ease someone’s burden. You let them know they are not alone.
+        Through your Zakat, a worry is lifted, a prayer is answered, and a life slowly moves toward ease.`,
         quranAyat: {
           text: 'Charity does not decrease wealth.',
           reference: 'Sahih Muslim'
         },
-        bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine.
-
-This Ramadan, answer that call.`,
-        donateButtonText: 'Give Zakat for the Sake of Allah',
+        bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine. This Ramadan, answer that call.`,
+        donateButtonText: 'Give Zakat for the Sake of Allah', 
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator
+        image: ZakatCalculator,
+        video: 'https://www.youtube.com/watch?v=RaDA7oiNqLs',
+
+        carosellVideos: [
+         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+        ]
       },
       {
         id: 'give-with-trust-this-ramadan',
