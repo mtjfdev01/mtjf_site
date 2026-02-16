@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
@@ -40,9 +40,16 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="container py-48 text-center">
-        <h1>Project Not Found</h1>
-        <p>The project you're looking for doesn't exist.</p>
+      <div className="container py-48 text-center mt-48">
+        <br /><br />
+        <br /><br />
+        <br />
+        <h1>We are working on details for this Program.</h1>
+        
+        <p>The program's detailed content will be  updated soon.</p>
+        <Link to="/projects" className="btn">
+          Go to Programs & Projects
+        </Link>
       </div>
     )
   }

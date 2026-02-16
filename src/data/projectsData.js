@@ -18,6 +18,8 @@ import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
 
 import education from '../assets/img/projects/education_hero.webp'
+import ramzanRation from '../assets/img/projects/rastion packs.webp'
+
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/health.webp'
 import Education from '../assets/img/projects/education.webp'
@@ -3262,5 +3264,16 @@ export const ALL_PROJECTS_DATA = [
     donateButtonText: 'Support a Family',
     learnMorePath: '/projects/community-services',
     donatePath: '/donate/community-services'
+  },
+  {
+    id: 'ramzan-ration',
+    title: 'Ramzan Ration',
+    subtitle: 'Providing Ramzan Ration to Families in Need',
+    description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
+    impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
+    image: ramzanRation,
+    donateButtonText: 'Support a Family',
+    learnMorePath: '/projects/ramzan-ration',
+    donatePath: '/donate/ramzan-ration'
   }
 ]
