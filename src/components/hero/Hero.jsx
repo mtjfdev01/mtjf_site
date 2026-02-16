@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import hero from '../../assets/img/hero/hero.webp'
-import hero_mob from '../../assets/img/hero/hero_mob.webp'
-import winter_hero from '../../assets/img/hero/winter.webp'
-import winter_mob from '../../assets/img/hero/winter_mob.webp'
-import apna_ghar_hero from '../../assets/img/projects/projects-details/Apna Ghar/hero.webp'
-import apna_ghar_hero_mob from '../../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
+// import hero from '../../assets/img/hero/hero.webp'
+// import hero_mob from '../../assets/img/hero/hero_mob.webp'
+// import winter_hero from '../../assets/img/hero/winter.webp'
+// import winter_mob from '../../assets/img/hero/winter_mob.webp'
+// import apna_ghar_hero from '../../assets/img/projects/projects-details/Apna Ghar/hero.webp'
+// import apna_ghar_hero_mob from '../../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
 import zakat_hero from '../../assets/img/zakat/zakat_hero.webp'
-import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popup.webp'
+import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popup.webp' 
 import './hero.css'
 
 const HERO_IMAGES = [
@@ -48,7 +48,7 @@ const Hero = () => {
       {currentImage.link ? (
         <>
           <Link to={currentImage.link} className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
-            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"100%"}} />
+            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </Link>
           <Link to={currentImage.link} className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
             <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
@@ -57,7 +57,7 @@ const Hero = () => {
       ) : (
         <>
           <div className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
-            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"100%"}} />
+            <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </div>
           <div className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
             <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
