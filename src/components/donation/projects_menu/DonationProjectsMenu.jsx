@@ -151,9 +151,13 @@ const DonationProjectsMenu = () => {
       new: false,
       category: "General",
       initiatives: [
-        { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 9600, icon: community,
+        { id: 'community-feed-family', title: 'Feed a Family for whole month', subtitle: 'Per Family', price: 8500, icon: community,
           description: 'The monthly ration for deserving families includes essential food items necessary for their sustenance. This support helps alleviate food insecurity and ensures that these families have access to nutritious meals on a regular basis.',
           duration: '1-Year'
+        },
+        { id: 'community-ramzan-ration', title: 'Ramzan Ration', subtitle: 'Per Family', price: 9600, icon: community,
+          description: 'The monthly ration for deserving families includes essential food items necessary for their sustenance. This support helps alleviate food insecurity and ensures that these families have access to nutritious meals on a regular basis.',
+          duration: 'One time'
         },
         { id: 'marriage-gift-distribution', title: 'Marriage Gift', subtitle: 'Per Benificiary', price: 150000, icon: community,
           description: 'This initiative is aimed at deserving girls whose families are unable to make arrangements for their marriage, providing them with essential support for their marital journey.',
