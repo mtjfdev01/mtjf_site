@@ -6,6 +6,7 @@ import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
 import ProjectsTestimonial from "../components/projectsTestimonial/ProjectsTestimonial";
 import { home_testimonials } from "../utils/variables";
+import Stats from "../components/stats/Stats";
 // import HeroWithTypingTest from "../components/hero/HeroWithTyping.test";
 const HeroContent = lazy(() =>
   import("../components/heroContent/HeroContent")
@@ -20,7 +21,6 @@ const CtaCircles = lazy(() =>
   import("../components/ctaCircles/CtaCircles")
 );
 const Projects = lazy(() => import("../components/projects/Projects"));
-const ImpactNumbers = lazy(() => import("../components/impactNumbers/ImpactNumbers"));
 const Events = lazy(() => import("../components/events/Events"));
 const DonationCta = lazy(() =>
   import("../components/donationCta/DonationCta")
@@ -57,7 +57,8 @@ const Home = () => {
               <DonationFeatures />
               <CtaCircles />
               <Projects />
-              <ImpactNumbers />
+              {/* <ImpactNumbers /> */}
+              <Stats />
               <BrandArea />
               <ProjectsTestimonial
                 videos={home_testimonials.videos}
