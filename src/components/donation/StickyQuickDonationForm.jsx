@@ -43,7 +43,7 @@ const StickyQuickDonationForm = () => {
     { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, category: "Zakat" },
     { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, category: "General" },
     { id: 'community-services', title: "Community Service", icon: community, category: "Sadqa" },
-    // { id: 'ramzan-ration', title: "Ramzan Ration", icon: community, category: "General" },
+    { id: 'ramzan-ration', title: "Ramzan Ration", icon: community, category: "General" },
   ]
 
   const handleQuickDonate = () => {
