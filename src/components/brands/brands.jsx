@@ -89,7 +89,7 @@ const brandsData = [
 ];
 
 
-const BrandArea = ({ className = '', speed = 70, brands, title = 'Commitment to Global Goals' }) => {
+const BrandArea = ({ className = '', speed = 70, brands, title = 'Commitment to Global Goals', itemWidth, mobWidth }) => {
   const data = brands && brands.length > 0 ? brands : brandsData;
 
   // Duplicate once for seamless loop
@@ -102,7 +102,7 @@ const BrandArea = ({ className = '', speed = 70, brands, title = 'Commitment to 
     <section
       className={`brands-section ${className}`}
       // drive the CSS var that the animation uses
-      style={{ ['--duration']: `${durationSec}s` }}
+      style={{ ['--duration']: `${durationSec}s`, ...(itemWidth ? { ['--item-width']: `${itemWidth}px` } : {}), ...(mobWidth ? { ['--item-mob-width']: `${mobWidth}px` } : {}) }}
     >
       <div className="brands-container">
         {title && (

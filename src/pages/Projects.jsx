@@ -48,7 +48,7 @@ const Projects = () => {
               </div>
 
               <div className="projects-page-grid grid grid-2 gap-32"> 
-                {ALL_PROJECTS_DATA.map((project) => (
+                {ALL_PROJECTS_DATA.slice(0, 10).map((project) => (
                   <div key={project.id} className="projects-page-item">
                     <h2 className="heading-secondary projects-page-card-title mb-16 text-center">{project.title}</h2>
                     <Link to={`/projects/${project.id}`}>

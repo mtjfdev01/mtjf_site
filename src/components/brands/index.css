@@ -79,8 +79,8 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
   
   .brands-section .brand-item {
     flex: 0 0 auto;
-    width: 150px;
-    height: 150px;
+    width: var(--item-width, 150px);
+    height: var(--item-width, 150px);
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -95,8 +95,8 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
     /* padding: 12px; */
   }
   .brands-section .brand-item img {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: var(--item-width, 150px);
+    max-height: var(--item-width, 150px);
     width: auto;
     height: auto;
     object-fit: contain;
@@ -129,8 +129,8 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
       font-size: 15px;
     }
     .brands-section { --gap: 28px; }
-    .brands-section .brand-item { width: 90px; height: 92px; }
-    .brands-section .brand-item img { width: 100%; max-height: 100%; }
+    .brands-section .brand-item { width: var(--item-mob-width, 90px); height: var(--item-mob-width, 92px); }
+    .brands-section .brand-item img { width: 100%; max-height: 100%; max-width: var(--item-mob-width, 90px); }
   }
   
   @media (max-width: 576px)  {

@@ -9,6 +9,18 @@ import impactNum6 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260
 import impactNum7 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -07.webp'
 import impactNum8 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -08.webp'
 import impactNum9 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -09.webp'
+import zakatSlider1 from '../assets/img/ramazan_zakat_slider/carosel (1).webp'
+import zakatSlider2 from '../assets/img/ramazan_zakat_slider/carosel (2).webp'
+import zakatSlider3 from '../assets/img/ramazan_zakat_slider/carosel (3).webp'
+import zakatSlider4 from '../assets/img/ramazan_zakat_slider/carosel (4).webp'
+import zakatSlider5 from '../assets/img/ramazan_zakat_slider/carosel (5).webp'
+import zakatSlider6 from '../assets/img/ramazan_zakat_slider/carosel (6).webp'
+import zakatSlider7 from '../assets/img/ramazan_zakat_slider/carosel (7).webp'
+import zakatSlider8 from '../assets/img/ramazan_zakat_slider/carosel (8).webp'
+import zakatSlider9 from '../assets/img/ramazan_zakat_slider/carosel (9).webp'
+import zakatSlider10 from '../assets/img/ramazan_zakat_slider/carosel (10).webp'
+import zakatSlider11 from '../assets/img/ramazan_zakat_slider/carosel (11).webp'
+import zakatSlider12 from '../assets/img/ramazan_zakat_slider/carosel (12).webp'
 import ZakatMob from '../assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import healthhero from '../assets/img/projects/projects-details/Health/health_hero.webp'
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
@@ -1769,7 +1781,23 @@ And it becomes a source of relief for someone who has been waiting for help, oft
         },
         donateButtonText: 'Fulfill Your Zakat Obligation',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator
+        image: ZakatCalculator,
+        carosellImages: [
+            zakatSlider1,
+            zakatSlider2,
+            zakatSlider3,
+            zakatSlider4,
+            zakatSlider5,
+            zakatSlider6,
+            zakatSlider7,
+            zakatSlider8,
+            zakatSlider9,
+            zakatSlider10,
+            zakatSlider11,
+            zakatSlider12,
+        ],
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
       },
       {
         id: 'who-is-zakat-farz-upon',

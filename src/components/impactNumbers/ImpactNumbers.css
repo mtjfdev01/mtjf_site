@@ -10,10 +10,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-48);
+  justify-items: center;
 }
 
 .impact-number-card {
-  border-radius: var(--radius-lg);
+  /* border-radius: var(--radius-lg); */
   overflow: hidden;
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
@@ -24,10 +25,10 @@
 }
 
 .impact-number-img {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Tablet */
@@ -46,5 +47,10 @@
   .impact-numbers-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-12);
+  }
+  .impact-numbers-grid > *:last-child {
+    grid-column: 1 / -1;   /* span both columns */
+    max-width: 200px;
+    justify-self: center;  /* center inside */
   }
 }

@@ -194,6 +194,8 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 }))}
                 title=""
                 speed={30}
+                itemWidth={subProject.carosellItemWidth}
+                mobWidth={subProject.carosellMobWidth}
               />
             )}
           </div>
