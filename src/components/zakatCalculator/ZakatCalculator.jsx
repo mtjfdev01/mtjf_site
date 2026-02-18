@@ -244,8 +244,7 @@ const ZakatCalculator = () => {
       <div className="zakat-header text-center mb-48">
         <h1 className="heading-secondary mb-16">Zakat Calculator</h1>
         <p className="text-lg muted max-w-md mx-auto">
-          Calculate your Zakat obligation according to Islamic principles. 
-          Zakat is 2.5% of your net zakatable wealth when it reaches Nisab and completes one lunar year.
+        Calculate your Zakat with Clarity using our Zakat Calculator
         </p>
       </div>
       

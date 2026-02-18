@@ -1,5 +1,12 @@
 import image1 from '../assets/img/projects/camp.webp' 
 import ZakatCalculator from '../assets/img/zakat/zakat_hero.webp'
+import ZakatResponsibilityImage from '../assets/img/zakat/Your zakat your responsibility.webp'
+
+import ZakatWhyMattersImage from '../assets/img/zakat/Why your zakat matters.webp'
+import ZakatHowHelpsImage from '../assets/img/zakat/How your zakat helps people.webp'
+import GiveWithTrustThisRamadan from '../assets/img/zakat/Give with trust this Ramadan.webp'
+import ZakatFarz from '../assets/img/zakat/Who is zakat farz upon.webp'
+
 import impactNum1 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -01.webp'
 import impactNum2 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -02.webp'
 import impactNum3 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -03.webp'
@@ -1764,7 +1771,7 @@ services:[
 ],
         donateButtonText: 'Give Your Zakat This Ramadan',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator
+        image: ZakatResponsibilityImage
       },
       {
         id: 'why-your-zakat-matters',
@@ -1781,7 +1788,7 @@ And it becomes a source of relief for someone who has been waiting for help, oft
         },
         donateButtonText: 'Fulfill Your Zakat Obligation',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator,
+        image: ZakatWhyMattersImage,
         carosellImages: [
             zakatSlider1,
             zakatSlider2,
@@ -1812,7 +1819,7 @@ And when you give it sincerely, Allah promises something greater in return.`,
         },
         donateButtonText: 'Pay Zakat',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator
+        image: ZakatFarz
       },
       {
         id: 'how-your-zakat-helps-people',
@@ -1825,7 +1832,7 @@ This is not a one-time impact.
 This is relief that reaches hearts, homes, and futures.`,
         donateButtonText: 'Make Your Zakat Count',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator,
+        image: ZakatHowHelpsImage,
         impact:'',
         services:[
 
@@ -1882,7 +1889,7 @@ It is about fulfilling a trust.
 This Ramadan, Let Your Zakat Speak for You`,
         donateButtonText: 'Give Your Zakat Now',
         // donationUrl: '/zakat-calculator',
-        image: ZakatCalculator
+        image: GiveWithTrustThisRamadan
       }
     ],
     testimonials:

@@ -3,7 +3,7 @@
 }
 
 .faqs-header {
-  margin-bottom: var(--space-48);
+  /* margin-bottom: var(--space-48); */
 }
 
 .faqs-subtitle {
@@ -121,7 +121,7 @@
   }
 
   .faqs-header {
-    margin-bottom: var(--space-32);
+    /* margin-bottom: var(--space-32); */
   }
 
   .faqs-question {

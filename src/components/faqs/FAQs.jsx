@@ -15,7 +15,7 @@ const FAQs = ({ title, subtitle, faqs = [] }) => {
   return (
     <section className="faqs-section container py-48">
       {(title || subtitle) && (
-        <div className="faqs-header text-center mb-48">
+        <div className="faqs-header text-center">
           {title && <h2 className="heading-secondary mb-16">{title}</h2>}
           {subtitle && <p className="faqs-subtitle">{subtitle}</p>}
         </div>
