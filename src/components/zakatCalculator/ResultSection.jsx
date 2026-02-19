@@ -139,7 +139,7 @@ const ResultSection = ({ calculations }) => {
         <div className="result-step">
           <div className="result-section__below-threshold status-box bg-warning p-16 rounded">
             <p className="text-sm mb-0">
-              <strong>Amount is less than threshold.</strong> Your net wealth (Rs. {formatRs(netWealth)}) is below the Nisab threshold (Rs. {formatRs(zakatThreshold)}). No Zakat is due.
+              <span style={{ color: '#e53e3e', fontWeight: 700 }}>Amount is less than threshold.</span> Your net wealth (Rs. {formatRs(netWealth)}) is below the Nisab threshold (Rs. {formatRs(zakatThreshold)}). No Zakat is due.
             </p>
           </div>
         </div>
