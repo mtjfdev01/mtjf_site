@@ -27,12 +27,21 @@ const ZakatCalculator = () => {
   // Gold state
   const [goldWeight, setGoldWeight] = useState('')
   const [goldUnit, setGoldUnit] = useState('tola')
-  const [goldPrice, setGoldPrice] = useState('')
+  const [goldKaratPrices] = useState({
+    24: 509500,
+    22: 467041.67,
+    21: 445812.5,
+    18: 382125
+  })
+  const [goldPrice, setGoldPrice] = useState('509500')
+  const [goldKarat, setGoldKarat] = useState(24)
+  const [useCustomGoldPrice, setUseCustomGoldPrice] = useState(false)
   
   // Silver state
   const [silverWeight, setSilverWeight] = useState('')
   const [silverUnit, setSilverUnit] = useState('tola')
-  const [silverPrice, setSilverPrice] = useState('')
+  const [silverPrice, setSilverPrice] = useState('7698')
+  const [useCustomSilverPrice, setUseCustomSilverPrice] = useState(false)
   
   // Nisab method - no longer needed as it's auto-determined, but keeping for backward compatibility
   const [nisabMethod, setNisabMethod] = useState('gold')
@@ -60,7 +69,6 @@ const ZakatCalculator = () => {
         if (prices.goldPrice || prices.gold_price || prices.gold) {
           const goldPriceValue = prices.goldPrice || prices.gold_price || prices.gold
           const goldPriceNum = parseFloat(goldPriceValue)
-          setGoldPrice(goldPriceValue.toString())
           setFetchedGoldPrice(goldPriceNum)
           
           // Calculate Gold Nisab amount (price per tola * 7.5 tola)
@@ -73,7 +81,6 @@ const ZakatCalculator = () => {
         if (prices.silverPrice || prices.silver_price || prices.silver) {
           const silverPriceValue = prices.silverPrice || prices.silver_price || prices.silver
           const silverPriceNum = parseFloat(silverPriceValue)
-          setSilverPrice(silverPriceValue.toString())
           setFetchedSilverPrice(silverPriceNum)
           
           // Calculate Silver Nisab amount (price per tola * 52.5 tola)
@@ -86,6 +93,21 @@ const ZakatCalculator = () => {
     
     loadPrices()
   }, [])
+
+  useEffect(() => {
+    if (!useCustomGoldPrice) {
+      const karatPrice = goldKaratPrices[goldKarat]
+      const displayPrice = goldUnit === 'grams' ? karatPrice / 11.664 : karatPrice
+      setGoldPrice(displayPrice.toFixed(2))
+    }
+  }, [goldKarat, useCustomGoldPrice, goldUnit, goldKaratPrices])
+
+  useEffect(() => {
+    if (!useCustomSilverPrice && fetchedSilverPrice) {
+      const displayPrice = silverUnit === 'grams' ? fetchedSilverPrice / 11.664 : fetchedSilverPrice
+      setSilverPrice(displayPrice.toFixed(2))
+    }
+  }, [useCustomSilverPrice, fetchedSilverPrice, silverUnit])
   
   // Calculations
   const calculations = useMemo(() => {
@@ -235,17 +257,21 @@ const ZakatCalculator = () => {
     { id: 'eligibility', label: 'Eligibility', icon: '✓' },
     { id: 'cash', label: 'Cash', icon: '💰' },
     { id: 'assets', label: 'Assets', icon: '🏢' },
-    { id: 'gold', label: 'Gold', icon: '🥇' },
-    { id: 'silver', label: 'Silver', icon: '🥈' }
+    { id: 'gold', label: 'Gold', icon: '🟡' },
+    { id: 'silver', label: 'Silver', icon: '⚪' }
   ]
   
   return (
     <div className="zakat-calculator-page container py-48">
       <div className="zakat-header text-center mb-48">
-        <h1 className="heading-secondary mb-16">Zakat Calculator</h1>
-        <p className="text-lg muted max-w-md mx-auto">
-        Calculate your Zakat with Clarity using our Zakat Calculator
+        <h1 className="heading-secondary mb-16">Calculate your Zakat with Clarity using our Zakat Calculator</h1>
+        <p className="text-lg muted w-full mx-auto">
+        Ramadan is a time of reflection, generosity, and fulfilling our obligations. Zakat is one of the most important pillars of Islam, and paying it correctly ensures that your wealth benefits those who need it most. Our online Zakat Calculator helps you determine the exact amount of Zakat due on your wealth, savings, gold, silver, business assets, and other eligible assets.
         </p>
+        <p className="text-lg muted w-full mx-auto">
+        Enter your assets, savings, and liabilities, and our calculator will automatically calculate the Zakat amount. Once done, you can donate online to support verified beneficiaries across Pakistan.
+        </p>
+
       </div>
       
       <div className="zakat-calculator-wrapper">
@@ -299,6 +325,10 @@ const ZakatCalculator = () => {
                 setGoldUnit={setGoldUnit}
                 goldPrice={goldPrice}
                 setGoldPrice={setGoldPrice}
+                goldKarat={goldKarat}
+                setGoldKarat={setGoldKarat}
+                useCustomGoldPrice={useCustomGoldPrice}
+                setUseCustomGoldPrice={setUseCustomGoldPrice}
               />
             )}
             
@@ -310,6 +340,8 @@ const ZakatCalculator = () => {
                 setSilverUnit={setSilverUnit}
                 silverPrice={silverPrice}
                 setSilverPrice={setSilverPrice}
+                useCustomSilverPrice={useCustomSilverPrice}
+                setUseCustomSilverPrice={setUseCustomSilverPrice}
               />
             )}
           </div>
