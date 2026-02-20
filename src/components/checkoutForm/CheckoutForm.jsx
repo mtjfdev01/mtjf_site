@@ -86,7 +86,7 @@ const CheckoutForm = () => {
   const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(null)
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
   const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
@@ -318,7 +318,7 @@ const CheckoutForm = () => {
       if (!payfastResponse) {
         console.error('PayFast response is missing')
         setFormMessage({ type: 'error', text: 'Invalid payment response. Please try again.' })
-        setIsLoading(false)
+        setIsLoading(null)
         return
       }
 
@@ -328,7 +328,7 @@ const CheckoutForm = () => {
       if (!MERCHANT_ID || !ACCESS_TOKEN || !BASKET_ID || !TXNAMT) {
         console.error('Missing required PayFast fields:', { MERCHANT_ID, ACCESS_TOKEN, BASKET_ID, TXNAMT })
         setFormMessage({ type: 'error', text: 'Missing payment information. Please try again.' })
-        setIsLoading(false)
+        setIsLoading(null)
         return
       }
 
@@ -387,11 +387,11 @@ const CheckoutForm = () => {
         }
       }, 1000)
       
-      setIsLoading(false)
+      setIsLoading(null)
     } catch (error) {
       console.error('Error in postToPayfast:', error)
       setFormMessage({ type: 'error', text: 'Failed to initialize payment. Please try again.' })
-      setIsLoading(false)
+      setIsLoading(null)
     }
   }
 
@@ -503,7 +503,7 @@ const CheckoutForm = () => {
     setFormMessage({ type: '', text: '' })
 
     try {
-      setIsLoading(true)
+      setIsLoading(currentPayment)
 
       // Get project info - support both flows
       let project_id = ''
@@ -559,7 +559,7 @@ const CheckoutForm = () => {
       // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)
-        setIsLoading(false)
+        setIsLoading(null)
         return
       }
       // Use PUT to update existing donation if it's a failed transaction retry, otherwise POST
@@ -573,36 +573,36 @@ const CheckoutForm = () => {
         const data = response.data?.data || response.data
         const clientSecret = data?.clientSecret
         if (clientSecret) {
-          setIsLoading(false)
+          setIsLoading(null)
           setStripeEmbedClientSecret(clientSecret)
         } else {
-          setIsLoading(false)
+          setIsLoading(null)
           setFormMessage({ type: 'error', text: 'Failed to start Stripe payment. Please try again.' })
         }
       } else {
         if (response?.data?.success && response?.data?.data?.paymentUrl) {
           try {
-            setIsLoading(false)
+            setIsLoading(null)
             const paymentWindow = window.open('', '_self')
             if (paymentWindow) {
               paymentWindow.location.href = response.data.data.paymentUrl
               paymentWindow.focus()
             } else {
-              setIsLoading(false)
+              setIsLoading(null)
               window.location.href = response.data.data.paymentUrl
             }
           } catch (error) {
             console.error('Error opening payment URL:', error)
-            setIsLoading(false)
+            setIsLoading(null)
             window.location.href = response.data.data.paymentUrl
           }
         } else {
-          setIsLoading(false)
+          setIsLoading(null)
           setFormMessage({ type: 'error', text: 'Failed to open invoice url' })
         }
       }
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(null)
       setFormMessage({ 
         type: 'error', 
         text: error?.response?.data?.message || error?.message || 'An error occurred. Please try again.' 
@@ -827,7 +827,7 @@ const CheckoutForm = () => {
                     <span className="payment-option-badge">Recurring</span>
                   )}
                 </div>
-                {isLoading && (
+                {isLoading === 'payfast' && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
@@ -856,7 +856,7 @@ const CheckoutForm = () => {
                     <span className="payment-option-badge">Recurring</span>
                   )}
                 </div>
-                {isLoading && (
+                {isLoading === 'meezan' && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
