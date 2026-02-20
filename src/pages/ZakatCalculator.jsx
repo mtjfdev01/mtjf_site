@@ -3,7 +3,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import ZakatCalculatorComponent from '../components/zakatCalculator/ZakatCalculator'
 import '../common/styles/common.css'
 import '../common/styles/base.css'
-import image1 from '../assets/img/zakat/zakat_hero.webp'
+import image1 from '../assets/img/zakat/Zakat Calculator.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
 const Footer = lazy(() => import('../components/footer/Footer'))
 const FAQs = lazy(() => import('../components/faqs/FAQs'))

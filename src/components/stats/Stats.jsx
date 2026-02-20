@@ -8,7 +8,8 @@ import Food from '../../assets/img/projects/icons2/food.webp';
 import Education from '../../assets/img/projects/icons2/education.webp';
 import Tree from '../../assets/img/projects/icons2/tree.webp';
 import Medicine from '../../assets/img/projects/icons2/medicine.webp';
-
+import DreamSchool from '../../assets/img/projects/icons2/Dream School.svg';
+import MarriageGift from '../../assets/img/projects/icons2/Marriage Gift.svg';
 const STATS_DATA = [
   {
     id: 'floods',
@@ -35,7 +36,7 @@ const STATS_DATA = [
       <img src={Food} alt="Homes Icon" />
     ),
     statistic: '200,000+', 
-    description: 'Ration bags distributed',
+    description: 'Ration Bags Distributed',
     iconColor: '#e02228'
   },
   {
@@ -53,14 +54,14 @@ const STATS_DATA = [
       <img src={Scholarship} alt="scholarship icon" />
     ),
     statistic: '7000+',
-    description: 'Scholarships awarded',
+    description: 'Scholarships Awarded',
     iconColor: '#e02228'
   },
   {
     id: 'floods',
     icon: (
         // <img src={logo_one} alt="flood icon" /> 
-        <img src={Education} alt="Homes Icon" />
+        <img src={Education} alt="Education Icon" />
       ),
     statistic: '735',
     description: 'Homes Built',
@@ -70,7 +71,7 @@ const STATS_DATA = [
   {
     id: 'aid',
     icon: (
-      <img src={AidPackages} alt="aid icon" />
+      <img src={MarriageGift} alt="Marriage Gift Icon" />
   ),
     statistic: '651',
     description: 'Marriage Gifts',
@@ -79,7 +80,7 @@ const STATS_DATA = [
   {
     id: 'food',
     icon: (
-      <img src={Tree} alt="food icon" /> 
+      <img src={DreamSchool} alt="Dream School Icon" /> 
     ),
     statistic: '9',
     description: 'Dreams Schools',
@@ -88,7 +89,7 @@ const STATS_DATA = [
   {
     id: 'water',
     icon: (
-     <img src={Water} alt="water icon" />
+     <img src={Water} alt="Water Filteration Plants Icon" />
     ),
     statistic: '12',
     description: 'Water Filteration Plants',
@@ -180,7 +181,7 @@ const Stats = () => {
       <div className="stats-header text-center mb-48">
         <h2 className="heading-secondary mb-16">Since 2019 We Have</h2>
         <h2>
-         Brought Hope to 2 Million+  &nbsp;  People, with your Help
+         Brought Hope to 2.5 Million+  &nbsp;  People, with your Help
         </h2>
       </div>
 

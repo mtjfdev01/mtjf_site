@@ -100,7 +100,7 @@ function App() {
               <Route path="/ways-to-donate" element={<WaysToDonate />} />
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
-              <Route path="/213123" element={<ZakatCalculator />} />
+              <Route path="/zakat-calculator" element={<ZakatCalculator />} />
               <Route path="/media" element={<DownloadsPage />} />
               <Route path="/media/downloads" element={<DownloadsPage />} />
               <Route path="/globe" element={<GlobeSection />} />

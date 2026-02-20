@@ -7,7 +7,10 @@ import GoldTab from './tabs/GoldTab'
 import SilverTab from './tabs/SilverTab'
 import ResultSection from './ResultSection'
 import { fetchGoldSilverPrices } from '../../services/zakatService'
+import goldBarImage from '../../assets/img/zakat/Gold icon.svg'
 
+import silverBarImage from '../../assets/img/zakat/Silver icon.svg'
+import cashIcon from '../../assets/img/zakat/Cash icon.svg'
 const ZakatCalculator = () => {
   const [activeTab, setActiveTab] = useState('eligibility')
   
@@ -255,10 +258,10 @@ const ZakatCalculator = () => {
   
   const tabs = [
     { id: 'eligibility', label: 'Eligibility', icon: '✓' },
-    { id: 'cash', label: 'Cash', icon: '💰' },
+    { id: 'cash', label: 'Cash', icon: cashIcon, isImage: true },
     { id: 'assets', label: 'Assets', icon: '🏢' },
-    { id: 'gold', label: 'Gold', icon: '🟡' },
-    { id: 'silver', label: 'Silver', icon: '⚪' }
+    { id: 'gold', label: 'Gold', icon: goldBarImage, isImage: true },
+    { id: 'silver', label: 'Silver', icon: silverBarImage, isImage: true }
   ]
   
   return (
@@ -277,18 +280,30 @@ const ZakatCalculator = () => {
       <div className="zakat-calculator-wrapper">
         <div className="zakat-main-content">
           {/* Tabs Navigation */}
-          <div className="zakat-tabs-nav">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={`zakat-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                <span className="zakat-tab-icon">{tab.icon}</span>
-                <span className="zakat-tab-label">{tab.label}</span>
-              </button>
-            ))}
-          </div>
+        <div className="zakat-tabs-nav">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`zakat-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <span className="zakat-tab-icon">
+                {tab.isImage ? (
+                  <img
+                    src={tab.icon}
+                    alt={tab.label}
+                    className="zakat-tab-icon-img"
+                  />
+                ) : (
+                  tab.icon
+                )}
+              </span>
+
+              <span className="zakat-tab-label">{tab.label}</span>
+            </button>
+          ))}
+        </div>
+
           
           {/* Tab Content */}
           <div className="zakat-tab-content">
