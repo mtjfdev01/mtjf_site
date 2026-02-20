@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import './ResultSection.css'
@@ -6,6 +6,7 @@ import './ResultSection.css'
 const ResultSection = ({ calculations }) => {
   const navigate = useNavigate()
   const { clearDonationData, setDonationFormData } = useDonation()
+  const [isDonating, setIsDonating] = useState(false)
   const {
     netCash,
     assetsTotal,
@@ -26,17 +27,23 @@ const ResultSection = ({ calculations }) => {
   const zakatThreshold = nisabValue
   const exceedsThreshold = zakatThreshold > 0 && netWealth > zakatThreshold
 
-  const handleProceedToDonate = () => {
-    const amount = Math.round(zakatDue * 100) / 100
-    clearDonationData()
-    setDonationFormData({
-      amount: amount.toString(),
-      finalAmount: amount.toString(),
-      currency: 'PKR',
-      category: 'Zakat',
-      donation_type: 'zakat'
-    })
-    navigate('/checkout')
+  const handleProceedToDonate = async () => {
+    if (isDonating) return
+    setIsDonating(true)
+    try {
+      const amount = Math.round(zakatDue * 100) / 100
+      clearDonationData()
+      setDonationFormData({
+        amount: amount.toString(),
+        finalAmount: amount.toString(),
+        currency: 'PKR',
+        category: 'Zakat',
+        donation_type: 'zakat'
+      })
+      navigate('/checkout')
+    } catch {
+      setIsDonating(false)
+    }
   }
   
   const formatRs = (n) => n.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -87,8 +94,20 @@ const ResultSection = ({ calculations }) => {
               <p className="text-sm muted mb-8">Total Zakat Amount (2.5%)</p>
               <h2 className="h2 text-primary mb-8">Rs. {formatRs(zakatDue)}</h2>
               <p className="text-sm muted mb-0">Calculated as 2.5% of your net zakatable wealth</p>
-              <button type="button" className="result-section__donate-btn" onClick={handleProceedToDonate}>
-                Proceed to Donate this Zakat
+              <button
+                type="button"
+                className={`result-section__donate-btn${isDonating ? ' result-section__donate-btn--loading' : ''}`}
+                onClick={handleProceedToDonate}
+                disabled={isDonating}
+              >
+                {isDonating ? (
+                  <>
+                    <span className="result-section__spinner" aria-hidden="true" />
+                    Processing...
+                  </>
+                ) : (
+                  'Proceed to Donate this Zakat'
+                )}
               </button>
             </div>
           </div>
