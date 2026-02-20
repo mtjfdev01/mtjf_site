@@ -46,47 +46,8 @@ const ResultSection = ({ calculations }) => {
       <div className="result-header">
         <h2 className="h3 mb-16">Zakat Calculation</h2>
       </div>
-      
-      {/* Net wealth summary */}
-      <div className="result-step mb-24">
-        <h3 className="h4 mb-12">Net Zakatable Wealth</h3>
-        <div className="calculation-breakdown">
-          <div className="calc-row">
-            <span>Net Cash:</span>
-            <strong>Rs. {formatRs(netCash)}</strong>
-          </div>
-          <div className="calc-row">
-            <span>Assets Value:</span>
-            <strong>Rs. {formatRs(assetsTotal || 0)}</strong>
-          </div>
-          <div className="calc-row">
-            <span>Gold Value:</span>
-            <strong>Rs. {formatRs(goldValue)}</strong>
-          </div>
-          <div className="calc-row">
-            <span>Silver Value:</span>
-            <strong>Rs. {formatRs(silverValue)}</strong>
-          </div>
-          <div className="calc-row calc-total">
-            <span>Net Total:</span>
-            <strong className="text-primary">Rs. {formatRs(netWealth)}</strong>
-          </div>
-        </div>
-      </div>
-      
-      {/* Threshold */}
-      {zakatThreshold > 0 && (
-        <div className="result-step mb-24">
-          <h3 className="h4 mb-12">Nisab Threshold ({usedNisabMethod === 'gold' ? 'Gold-based' : 'Silver-based'})</h3>
-          <div className="calc-row">
-            <span>Threshold:</span>
-            <strong className="text-primary">Rs. {formatRs(zakatThreshold)}</strong>
-          </div>
-        </div>
-      )}
-      
-      {/* Exceeds threshold: show Zakat amount + Proceed to Donate */}
-      {exceedsThreshold && (
+            {/* Exceeds threshold: show Zakat amount + Proceed to Donate */}
+            {exceedsThreshold && (
         <div className="result-step">
           <h3 className="h4 mb-12">Payable Zakat Amount (2.5%)</h3>
           <div className="zakat-breakdown mb-24">
@@ -133,6 +94,45 @@ const ResultSection = ({ calculations }) => {
           </div>
         </div>
       )}
+      {/* Net wealth summary */}
+      <div className="result-step mb-24">
+        <h3 className="h4 mb-12">Net Zakatable Wealth</h3>
+        <div className="calculation-breakdown">
+          <div className="calc-row">
+            <span>Net Cash:</span>
+            <strong>Rs. {formatRs(netCash)}</strong>
+          </div>
+          <div className="calc-row">
+            <span>Assets Value:</span>
+            <strong>Rs. {formatRs(assetsTotal || 0)}</strong>
+          </div>
+          <div className="calc-row">
+            <span>Gold Value:</span>
+            <strong>Rs. {formatRs(goldValue)}</strong>
+          </div>
+          <div className="calc-row">
+            <span>Silver Value:</span>
+            <strong>Rs. {formatRs(silverValue)}</strong>
+          </div>
+          <div className="calc-row calc-total">
+            <span>Net Total:</span>
+            <strong className="text-primary">Rs. {formatRs(netWealth)}</strong>
+          </div>
+        </div>
+      </div>
+      
+      {/* Threshold */}
+      {zakatThreshold > 0 && (
+        <div className="result-step mb-24">
+          <h3 className="h4 mb-12">Nisab Threshold ({usedNisabMethod === 'gold' ? 'Gold-based' : 'Silver-based'})</h3>
+          <div className="calc-row">
+            <span>Threshold:</span>
+            <strong className="text-primary">Rs. {formatRs(zakatThreshold)}</strong>
+          </div>
+        </div>
+      )}
+      
+
       
       {/* Below threshold: single message */}
       {zakatThreshold > 0 && !exceedsThreshold && (
