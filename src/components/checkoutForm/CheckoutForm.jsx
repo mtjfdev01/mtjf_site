@@ -490,6 +490,7 @@ const CheckoutForm = () => {
     if (totalAmount === 0 && totalAmountFromState > 0) {
       totalAmount = totalAmountFromState
     }
+    totalAmount = Math.round(Number(totalAmount))
 
     if (!totalAmount || Number(totalAmount) <= 0 || Number(totalAmount) < 100) {
       setFormMessage({ 
