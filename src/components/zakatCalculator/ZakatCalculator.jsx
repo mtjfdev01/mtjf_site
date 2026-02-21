@@ -201,22 +201,20 @@ const ZakatCalculator = () => {
     // Zakat is only due if net wealth EXCEEDS (not just equals) the Nisab threshold
     let eligibilityStatus = 'checking'
     if (nisabValue > 0) {
-      if (netWealth <= nisabValue) {
+      if (netWealth < nisabValue) {
         eligibilityStatus = 'below-nisab'
-      } else if (netWealth > nisabValue) {
+      } else if (netWealth >= nisabValue) {
         eligibilityStatus = 'due'
       }
     }
     
-    // Calculate Zakat Due - ONLY if wealth exceeds Nisab threshold
     let zakatDue = 0
     let zakatCash = 0
     let zakatAssets = 0
     let zakatGold = 0
     let zakatSilver = 0
     
-    // Only calculate Zakat if net wealth EXCEEDS the Nisab threshold
-    if (eligibilityStatus === 'due' && netWealth > nisabValue && nisabValue > 0) {
+    if (eligibilityStatus === 'due' && netWealth >= nisabValue && nisabValue > 0) {
       zakatDue = netWealth * ZAKAT_RATE
       // Calculate zakat for each category proportionally
       if (netWealth > 0) {
