@@ -40,7 +40,7 @@ const Navbar = () => {
       const isExactMatch =
         currentPath === itemPath || currentPath === itemPath + ' ';
       const isProjectDetail =
-        item.name === 'Projects' &&
+        item.path.trim() === '/projects' &&
         currentPath.startsWith('/projects/');
       return isHome || isExactMatch || isProjectDetail;
     });
@@ -95,20 +95,18 @@ const Navbar = () => {
   return (
     <>
     <div className={`nav-container rounded fixed ${isLightTheme ? 'nav-light-theme' : 'nav-dark-theme'}`}>
-        <div className='flex justify-between  items-center'>
+        <div className='nav-row-1'>
             {/* logo section */}
-            <div className='flex items-center logo_section '>
+            <div className='flex items-center logo_section'>
                 <div className='logo'>
                   <Link to="/home">
-                <img src={logo} alt='logo' />
-                </Link>
+                    <img src={logo} alt='logo' />
+                  </Link>
                 </div>
-                {/* <div className='logo-heading'><h1>Molana Tariq Jamil <br /> Foundation</h1></div> */}
             </div>
-            {/* menu section */}
-            {/* <div className='ul-btn'> */}
-             <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
-              <ul className={`hvr flex gap-24 ${isLightTheme ? 'text-white' : 'text-dark'}`} >
+            {/* menu section - desktop only */}
+            <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
+              <ul className={`hvr flex gap-24 ${isLightTheme ? 'text-white' : 'text-dark'}`}>
                  {navItems.map((item) => (
                 <li key={item.name} className={`nav-item ${item.submenu ? 'nav-item-has-sub' : ''}`}>
                   <Link
@@ -141,37 +139,53 @@ const Navbar = () => {
                   )}
                 </li>
               ))}
-                </ul>
-             </div>
+              </ul>
+            </div>
 
-            {/* button section */}
-             <div>
-            <button 
-              className='btn btn--alert btn-donate-animated' 
-              onClick={() => navigate('/donate')}
-              aria-label="Navigate to donation form"
-            >
-              {/* Animated background particles */}
-              {/* <span className="particle particle-1"></span>
-              <span className="particle particle-2"></span> */}
-              <span className="particle particle-3"></span>
-              <span className="particle particle-4"></span>
-              
-              {/* Glowing border */}
-              <span className="glow-border"></span>
-              
-              {/* Button content */}
-              <span className="btn-donate-content">
-                <FcDonate className="btn-donate-icon" size={20} />
-                <span>Donate Now</span>
-              </span>
-            </button>
+            {/* button section - desktop */}
+            <div className='nav-btn-group d-none md:d-flex'>
+              <button 
+                className='btn btn-zakat-nav' 
+                onClick={() => navigate('/zakat-calculator')}
+                aria-label="Navigate to zakat calculator"
+              >
+                <span className="btn-donate-content">
+                  <span>Give Your Zakat</span>
+                </span>
+              </button>
+              <button 
+                className='btn btn--alert btn-donate-animated' 
+                onClick={() => navigate('/donate')}
+                aria-label="Navigate to donation form"
+              >
+                <span className="btn-donate-content">
+                  <FcDonate className="btn-donate-icon" size={20} />
+                  <span>Donate Now</span>
+                </span>
+              </button>
             </div>
             <div className='md:d-none'>
-             <Hamburger/>
+              <Hamburger/>
             </div>
-           </div>
-          </div>
+        </div>
+        {/* Row 2 - mobile only buttons */}
+        <div className='nav-row-2 md:d-none'>
+          <button 
+            className='btn btn-zakat-nav nav-row-2__btn' 
+            onClick={() => navigate('/zakat-calculator')}
+            aria-label="Navigate to zakat calculator"
+          >
+            Give Your Zakat
+          </button>
+          <button 
+            className='btn btn--alert btn-donate-animated nav-row-2__btn' 
+            onClick={() => navigate('/donate')}
+            aria-label="Navigate to donation form"
+          >
+            Donate Now
+          </button>
+        </div>
+      </div>
            <div>
             <Mobilenavbar/>
            </div>

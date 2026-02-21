@@ -88,7 +88,8 @@
   margin: 12px 0;
 }
 
-.active {
+.mbl a.active,
+.mbl .mbl-nav-trigger.active {
   color: rgb(48, 174, 227);
 }
 

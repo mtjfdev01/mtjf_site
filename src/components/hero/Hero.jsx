@@ -50,17 +50,19 @@ const Hero = () => {
           <Link to={currentImage.link} className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
             <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </Link>
-          <Link to={currentImage.link} className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
-            <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
-          </Link>
+          <div className='banner_img--mobile sm:d-block md:d-none' key={`mobile-${currentIndex}`}>
+            <Link to={currentImage.link} className='banner_img'>
+              <img src={currentImage.mobile} alt="hero background" style={{width:"100%"}} />  
+            </Link>
+          </div>
         </>
       ) : (
         <>
           <div className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
             <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </div>
-          <div className='banner_img sm:d-block md:d-none mt-48' key={`mobile-${currentIndex}`}>
-            <img src={currentImage.mobile} alt="hero background" style={{width:"100%" , height:"100%"}} />
+          <div className='banner_img--mobile sm:d-block md:d-none' key={`mobile-${currentIndex}`} >
+            <img src={currentImage.mobile} alt="hero background" style={{width:"100%"}} />
           </div>
         </>
       )}

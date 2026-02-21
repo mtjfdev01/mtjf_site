@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './mobilenavbar.css'
 
 const links = [
@@ -18,6 +18,23 @@ const Mobilenavbar = () => {
      const [visible, setVisible] = useState(false);
      const [activeLink, setActiveLink] = useState("Home");
      const [expandedSubmenu, setExpandedSubmenu] = useState(null);
+     const location = useLocation();
+
+     useEffect(() => {
+       const currentPath = location.pathname.trim();
+       const matchedItem = links.find(item => {
+         const itemPath = item.path.trim();
+         const isHome =
+           (currentPath === '/' || currentPath === '/home') &&
+           item.name === 'Home';
+         const isExactMatch = currentPath === itemPath;
+         const isProjectSubRoute =
+           itemPath === '/projects' &&
+           currentPath.startsWith('/projects/');
+         return isHome || isExactMatch || isProjectSubRoute;
+       });
+       setActiveLink(matchedItem ? matchedItem.name : "Home");
+     }, [location.pathname]);
 
      const handleLinkClick = (linkName, path) => {
        setActiveLink(linkName);

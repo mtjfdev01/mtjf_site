@@ -417,151 +417,31 @@
   }
   .btn--alert:disabled { opacity: .6; cursor: not-allowed; }
 
-  /* Animated Donate Button with Gradient and Particles */
+  /* Donate Button */
   .btn-donate-animated {
     position: relative;
-    overflow: visible;
-    background: linear-gradient(135deg, #C62828 0%, #E53935 50%, #B71C1C 100%) !important;
-    background-size: 200% 200% !important;
     border: none !important;
     color: #fff !important;
     padding: 0 !important;
-    animation: gradient-shift 5s ease infinite;
-    isolation: isolate;
-  }
-
-  .btn-donate-animated:hover {
-    background: linear-gradient(135deg, #C62828 0%, #E53935 50%, #B71C1C 100%) !important;
-    background-size: 200% 200% !important;
-    color: #fff !important;
-    border: none !important;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  /* Glowing border effect */
-  .btn-donate-animated .glow-border {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #C62828, #E53935, #B71C1C, #C62828);
-    background-size: 400% 400%;
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0.6;
-    filter: blur(8px);
-    animation: gradient-shift 3s ease infinite, border-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes border-pulse {
-    0%, 100% {
-      opacity: 0.4;
-      filter: blur(8px);
-    }
-    50% {
-      opacity: 0.8;
-      filter: blur(12px);
-    }
-  }
-
-  .btn-donate-animated:hover .glow-border {
-    opacity: 1;
-    filter: blur(15px);
   }
 
   /* Button content */
   .btn-donate-content {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 12px 24px;
-    z-index: 3;
     white-space: nowrap;
   }
 
   .btn-donate-icon {
     color: #ffffff;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     transition: transform 0.3s ease;
   }
 
   .btn-donate-animated:hover .btn-donate-icon {
     transform: scale(1.1);
-  }
-
-  /* Floating particles */
-  .btn-donate-animated .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    animation: particle-float 4s ease-in-out infinite;
-  }
-
-  .btn-donate-animated .particle-1 {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 3s;
-  }
-
-  .btn-donate-animated .particle-2 {
-    top: 60%;
-    right: 15%;
-    animation-delay: 1s;
-    animation-duration: 4s;
-  }
-
-  .btn-donate-animated .particle-3 {
-    bottom: 25%;
-    left: 20%;
-    animation-delay: 2s;
-    animation-duration: 3.5s;
-  }
-
-  .btn-donate-animated .particle-4 {
-    top: 30%;
-    right: 25%;
-    animation-delay: 1.5s;
-    animation-duration: 4.5s;
-  }
-
-  @keyframes particle-float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.6;
-    }
-    25% {
-      transform: translate(10px, -15px) scale(1.2);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-5px, -25px) scale(0.8);
-      opacity: 0.8;
-    }
-    75% {
-      transform: translate(-10px, -10px) scale(1.1);
-      opacity: 0.9;
-    }
-  }
-
-  .btn-donate-animated:hover .particle {
-    animation-duration: 2s;
-    opacity: 1;
   }
   .input, .select, .textarea {
     width: 100%;

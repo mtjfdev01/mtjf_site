@@ -38,6 +38,10 @@
   transform: none;
 }
 
+.banner_img--mobile {
+  margin-top: 150px;
+}
+
 @media (max-width: 768px) {
   .hero-nav-container {
     padding: 0 var(--space-12);

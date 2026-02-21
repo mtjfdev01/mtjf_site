@@ -99,12 +99,6 @@
 }
 }
 
-/* Small mobile (480px) */
-@media (max-width: 480px) {
-  /* .page-header-container {
-    min-height: 250px;
-  } */
-}
 
 @media (min-width: 400px) and (max-width: 580px) {
   .page-header {

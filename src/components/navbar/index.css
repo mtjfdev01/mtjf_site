@@ -10,14 +10,20 @@
     min-height: 66px;
     height: 66px;
     display: flex;
-    align-items: center;
-    /* Default transparent background - will be overridden by theme classes */
+    flex-direction: column;
+    justify-content: center;
     background-color: transparent;
   }
 
-.nav-container > .flex {
+.nav-row-1 {
     width: 100%;
-    min-height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-row-2 {
+    display: none;
 }
 
   /* Light theme - for hero/banner sections (desktop/tablet only) */
@@ -82,7 +88,7 @@
   width: 100%;
 }
 /* Active link highlight */
-.active {
+.hvr li a.active {
   color: var(--color-primary);
   padding-bottom: 2px;
   border-bottom: 2px solid var(--color-primary);
@@ -150,18 +156,51 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
+.nav-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-zakat-nav {
+  background-color: #2cade3 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.btn-zakat-nav:hover {
+  background-color: #1e9ad0 !important;
+}
+
 @media (max-width: 768px) {
   .nav-container {
     top: 35px;                
     left: 0;               
     transform: none;      
     width: 100%;         
-    border-radius: 0;    
+    border-radius: 0 !important;
     z-index: 20;
     background-color: white;
-    min-height: 72px;
-    height: 72px;
-    border-radius: 0% !important;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    padding: 6px 12px;
+  }
+
+  .nav-row-2 {
+    display: flex;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-row-2__btn {
+    flex: 1;
+    border-radius: 0 !important;
+    padding: 10px 0 !important;
+    font-size: 13px !important;
+    font-weight: 600;
+    text-align: center;
   }
 }
 
