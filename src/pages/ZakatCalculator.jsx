@@ -87,8 +87,12 @@ const ZakatCalculator = () => {
       answer: 'MTJ Foundation ensures that all Zakat donations are used strictly in accordance with Shariah guidelines. Zakat is distributed transparently to eligible recipients such as the poor, needy, and other Quran-specified categories, supporting essential needs like food, healthcare, clean water, and shelter. This ensures your Zakat is not only impactful but also fully compliant with Islamic law.'
     }
   ]
+  const scrollToEligibility = () => {
+    document.querySelector('.test_target')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (<>
-  <PageHeader image={image1} />
+  <PageHeader image={image1} onClick={scrollToEligibility} />
     <div ref={firstSectionRef}>
       {showFirstSection && (<>
         <ZakatCalculatorComponent />

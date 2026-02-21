@@ -271,7 +271,7 @@ const ZakatCalculator = () => {
         <p className="text-lg muted w-full mx-auto">
         Ramadan is a time of reflection, generosity, and fulfilling our obligations. Zakat is one of the most important pillars of Islam, and paying it correctly ensures that your wealth benefits those who need it most. Our online Zakat Calculator helps you determine the exact amount of Zakat due on your wealth, savings, gold, silver, business assets, and other eligible assets.
         </p>
-        <p className="text-lg muted w-full mx-auto">
+        <p className="text-lg muted w-full mx-auto test_target">
         Enter your assets, savings, and liabilities, and our calculator will automatically calculate the Zakat amount. Once done, you can donate online to support verified beneficiaries across Pakistan.
         </p>
 

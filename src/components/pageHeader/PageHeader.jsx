@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './PageHeader.css'
 
-const PageHeader = ({ title, image, url }) => {
+const PageHeader = ({ title, image, url, onClick }) => {
   const img = (
     <img
       src={image}
@@ -13,7 +13,11 @@ const PageHeader = ({ title, image, url }) => {
   return (
     <section className="page-header">
       <div className="page-header-container">
-        <div className="page-header-image-wrapper">
+        <div
+          className="page-header-image-wrapper"
+          onClick={onClick}
+          style={onClick ? { cursor: 'pointer' } : undefined}
+        >
           {url ? <Link to={url}>{img}</Link> : img}
         </div>
       </div>

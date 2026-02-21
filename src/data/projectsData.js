@@ -1725,7 +1725,7 @@ team will provide you with individualised attention and assistance.`,
     title: 'Your Zakat: Your Responsibility',
     headerImage: ZakatCalculator,
     headerImageMob: ZakatMob,
-    url:'/zakat-calculator',
+    // url:'/zakat-calculator',
     stats: [
       { icon: FaHandHoldingHeart, number: '50,000+', label: 'Families Supported' },
       { icon: FaUsers, number: '200,000+', label: 'Lives Impacted' },
