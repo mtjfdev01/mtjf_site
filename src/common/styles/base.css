@@ -433,6 +433,7 @@
     gap: 8px;
     padding: 12px 24px;
     white-space: nowrap;
+    font-size: 20px;
   }
 
   .btn-donate-icon {
