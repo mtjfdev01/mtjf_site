@@ -100,13 +100,13 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
     width: auto;
     height: auto;
     object-fit: contain;
+    object-position: center;
     /* filter: grayscale(100%); */
     transition: filter 0.25s ease;
     border-radius: 3px;
   }
   .brands-section .brand-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px) scale(1.04);
   }
   .brands-section .brand-item:hover img { filter: grayscale(0%); }
   

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
 import BrandArea from '../brands/brands'
 import './MediaContentSection.css'
+
+const ProjectsTestimonial = lazy(() => import('../projectsTestimonial/ProjectsTestimonial'))
 
 const MediaContentSection = ({ subProjects, defaultImage }) => {
   const navigate = useNavigate()
@@ -197,6 +199,19 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 itemWidth={subProject.carosellItemWidth}
                 mobWidth={subProject.carosellMobWidth}
               />
+            )}
+
+            {/* Testimonials Section */}
+            {subProject?.testimonials && (
+              <div className={subProject.testimonials.mobileOnly ? 'testimonials-mobile-only' : ''}>
+                <Suspense fallback={null}>
+                  <ProjectsTestimonial
+                    videos={subProject.testimonials.videos}
+                    title={subProject.testimonials.title}
+                    subtitle={subProject.testimonials.subtitle}
+                  />
+                </Suspense>
+              </div>
             )}
           </div>
         )
