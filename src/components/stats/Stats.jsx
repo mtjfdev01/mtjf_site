@@ -8,8 +8,8 @@ import Food from '../../assets/img/projects/icons2/food.webp';
 import Education from '../../assets/img/projects/icons2/education.webp';
 import Tree from '../../assets/img/projects/icons2/tree.webp';
 import Medicine from '../../assets/img/projects/icons2/medicine.webp';
-import DreamSchool from '../../assets/img/projects/icons2/Dream School.svg';
-import MarriageGift from '../../assets/img/projects/icons2/Marriage Gift.svg';
+import DreamSchool from '../../assets/img/projects/icons2/Dream School.webp';
+import MarriageGift from '../../assets/img/projects/icons2/Marrigae Gift.webp';
 const STATS_DATA = [
   {
     id: 'floods',

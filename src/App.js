@@ -26,6 +26,7 @@ const JobDetail = lazy(() => import("./pages/JobDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogsPage = lazy(() => import("./pages/Blogs"));
 const BlogsDetails = lazy(() => import("./pages/BlogsDetails"));
+const BlogsDetailsV2 = lazy(() => import("./pages/BlogsDetailsV2"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
@@ -92,6 +93,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/blogs/:id" element={<BlogsDetails />} />
+              <Route path="/blogs/details-v2" element={<BlogsDetailsV2 />} />
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
