@@ -103,10 +103,10 @@
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 8px;
+  margin-top: 15px;
   list-style: none;
   padding: 0;
-  min-width: 150px;
+  min-width: 200px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -114,6 +114,7 @@
   background: rgba(255, 255, 255, 0.98);
   border-radius: var(--radius-sm, 6px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  width: auto;
 }
 
 .nav-container.nav-dark-theme .nav-submenu {

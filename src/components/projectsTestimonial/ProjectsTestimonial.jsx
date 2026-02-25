@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './ProjectsTestimonial.css'
 
 // Extract video IDs from YouTube URLs
@@ -25,14 +25,14 @@ const ProjectsTestimonial = ({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(4)
   const [selectedVideoId, setSelectedVideoId] = useState(null)
+  const [translateOffset, setTranslateOffset] = useState(0)
+  const gridRef = useRef(null)
 
   useEffect(() => {
     const updateCardsPerView = () => {
       const width = window.innerWidth
-      if (width < 480) {
+      if (width < 768) {
         setCardsPerView(1)
-      } else if (width < 768) {
-        setCardsPerView(2)
       } else if (width < 992) {
         setCardsPerView(3)
       } else {
@@ -74,6 +74,31 @@ const ProjectsTestimonial = ({
       document.body.style.overflow = 'unset'
     }
   }, [selectedVideoId])
+
+  useEffect(() => {
+    const calculateOffset = () => {
+      const grid = gridRef.current
+      if (!grid) {
+        setTranslateOffset(0)
+        return
+      }
+
+      const firstCard = grid.querySelector('.projects-testimonial-card')
+      if (!firstCard) {
+        setTranslateOffset(0)
+        return
+      }
+
+      const gridStyles = window.getComputedStyle(grid)
+      const gap = parseFloat(gridStyles.columnGap || gridStyles.gap || '0')
+      const cardWidth = firstCard.getBoundingClientRect().width
+      setTranslateOffset(currentIndex * (cardWidth + gap))
+    }
+
+    calculateOffset()
+    window.addEventListener('resize', calculateOffset)
+    return () => window.removeEventListener('resize', calculateOffset)
+  }, [currentIndex, cardsPerView, videos.length])
 
   const maxIndex = Math.max(0, videos.length - cardsPerView)
 
@@ -126,9 +151,10 @@ const ProjectsTestimonial = ({
 
         <div className="projects-testimonial-container">
           <div 
+            ref={gridRef}
             className="projects-testimonial-grid"
             style={{
-              transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+              transform: `translateX(-${translateOffset}px)`,
               transition: 'transform 0.4s var(--ease)',
               '--cards-per-view': cardsPerView
             }}

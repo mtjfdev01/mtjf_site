@@ -1,0 +1,7 @@
+.media-coverage-page {
+  width: 100%;
+}
+
+.media-coverage-page .media-content-section {
+  padding-top: var(--space-24);
+}

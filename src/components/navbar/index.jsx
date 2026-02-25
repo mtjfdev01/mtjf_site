@@ -15,6 +15,7 @@ const navItems = [
   { name: "Volunteer", path: "/volunteerRegistration " },
   { name: "Careers", path: "/careers" },
   { name: "Contact", path: "/contact" },
+  { name: "Ramadan 2026", path: "", submenu:[{name:'Zakat', path:'/projects/ramzan-zakat'},{name:'Zakat Calculator', path:'/zakat-calculator'}] },
   // { name: "Media", path: "/media", submenu: [{ name: "Downloads", path: "/media/downloads" }] },
 ];
 
@@ -178,7 +179,7 @@ const Navbar = () => {
             Give Your Zakat
           </button>
           <button 
-            className='btn btn--alert btn-donate-animated nav-row-2__btn' 
+            className='btn btn--alert btn-donate-animated nav-row-2__btn'  
             onClick={() => navigate('/donate')}
             aria-label="Navigate to donation form"
           >

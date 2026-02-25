@@ -250,8 +250,13 @@ const Projects = () => {
     if (!scrollContainerRef.current) return
     
     const container = scrollContainerRef.current
-    const cardWidth = 380 + 24 // card width + gap
-    const scrollAmount = cardWidth * 1.5 // scroll 1.5 cards at a time
+    const firstCard = container.querySelector('.project-card')
+    const grid = container.querySelector('.projects-grid')
+    const gridStyles = grid ? window.getComputedStyle(grid) : null
+    const gap = gridStyles ? parseFloat(gridStyles.columnGap || gridStyles.gap || '0') : 0
+    const scrollAmount = firstCard
+      ? firstCard.getBoundingClientRect().width + gap
+      : container.clientWidth
     
     if (direction === 'prev') {
       container.scrollBy({

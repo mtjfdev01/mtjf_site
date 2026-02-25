@@ -1788,7 +1788,7 @@ And it becomes a source of relief for someone who has been waiting for help, oft
           reference: 'Surah At-Tawbah 9:103'
         },
         donateButtonText: 'Fulfill Your Zakat Obligation',
-        // donationUrl: '/zakat-calculator',
+        donationUrl: '/zakat-calculator',
         image: ZakatWhyMattersImage,
         carosellImages: [
             zakatSlider1,
@@ -1819,7 +1819,7 @@ And when you give it sincerely, Allah promises something greater in return.`,
           reference: 'Surah Al-Baqarah 2:261'
         },
         donateButtonText: 'Pay Zakat',
-        // donationUrl: '/zakat-calculator',
+        donationUrl: '/zakat-calculator',
         image: ZakatFarz
       },
       {
@@ -1832,7 +1832,7 @@ Through your Zakat, lives move from desperation to stability, from waiting to re
 This is not a one-time impact.
 This is relief that reaches hearts, homes, and futures.`,
         donateButtonText: 'Make Your Zakat Count',
-        // donationUrl: '/zakat-calculator',
+        donationUrl: '/zakat-calculator',
         image: ZakatHowHelpsImage,
         impact:'',
         services:[
@@ -1866,7 +1866,7 @@ This is relief that reaches hearts, homes, and futures.`,
         },
         bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine. This Ramadan, answer that call.`,
         donateButtonText: 'Give Zakat for the Sake of Allah', 
-        // donationUrl: '/zakat-calculator',
+        donationUrl: '/zakat-calculator',
         image: ZakatCalculator,
         video: 'https://www.youtube.com/watch?v=RaDA7oiNqLs',
 
@@ -1889,7 +1889,7 @@ It is about fulfilling a trust.
 
 This Ramadan, Let Your Zakat Speak for You`,
         donateButtonText: 'Give Your Zakat Now',
-        // donationUrl: '/zakat-calculator',
+        donationUrl: '/zakat-calculator',
         image: GiveWithTrustThisRamadan,
         testimonials: {
           id: 'health-program-impact',

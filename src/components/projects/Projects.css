@@ -225,6 +225,14 @@
     padding: 0;
     overflow: visible;
   }
+  .projects-scroll-container {
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+  }
+  .project-card {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
   
   .projects-wrapper .slider-nav-btn {
     display: flex !important;

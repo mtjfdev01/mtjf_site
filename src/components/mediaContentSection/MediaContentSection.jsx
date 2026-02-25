@@ -10,7 +10,12 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
   const navigate = useNavigate()
 
   // Function to handle donate button click
-  const handleDonateClick = (donationUrl) => {
+  const handleDonateClick = (donationUrl, openInNewTab = false) => {
+    if (donationUrl && openInNewTab) {
+      window.open(donationUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+
     // If donationUrl exists, navigate to that page
     if (donationUrl) {
       navigate(donationUrl)
@@ -135,7 +140,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 {subProject.donateButtonText && (
                   <button
                     className="media-content-cta btn btn--primary"
-                    onClick={() => handleDonateClick(subProject.donationUrl)}
+                    onClick={() => handleDonateClick(subProject.donationUrl, subProject.openInNewTab)}
                   >
                     {subProject.donateButtonText}
                   </button>

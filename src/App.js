@@ -33,6 +33,7 @@ const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
 const DownloadsPage = lazy(() => import("./pages/Downloads"));
+const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList"));
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
  
@@ -103,6 +104,7 @@ function App() {
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
               <Route path="/media" element={<DownloadsPage />} />
               <Route path="/media/downloads" element={<DownloadsPage />} />
+              <Route path="/media/coverage" element={<MediaCoverageCardsList />} />
               <Route path="/globe" element={<GlobeSection />} />
               
             </Routes>
