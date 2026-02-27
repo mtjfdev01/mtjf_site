@@ -10,6 +10,7 @@ import AnimatedButton from './components/waysToDonate/AnimatedButton';
 import { Winter } from "./pages/Winter";
 import StickyQuickDonationForm from "./components/donation/StickyQuickDonationForm";
 import PromoPopup from './components/promoPopup';
+import PublicNoticePopup from './components/publicNoticePopup';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
@@ -74,6 +75,12 @@ function App() {
             showOnce={false}
             delay={3000}
             altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
+          />
+          <PublicNoticePopup
+            routes={['/donate', '/ways-to-donate', '/zakat-calculator', '//projects/ramzan-zakat']}
+            storageKey="mtj_public_notice_popup_shown"
+            showOnce={false}
+            delay={2000}
           />
           <StickyBar />
           <Navbar />

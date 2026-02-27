@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import './Stats.css'
-import logo_one from '../../assets/img/projects/icons2/logo_one.webp';
 import Water from '../../assets/img/projects/icons2/water.webp';
 import Scholarship from '../../assets/img/projects/icons2/scholarship.webp';
-import AidPackages from '../../assets/img/projects/icons2/aid_packages.webp';
 import Food from '../../assets/img/projects/icons2/food.webp';
 import Education from '../../assets/img/projects/icons2/education.webp';
-import Tree from '../../assets/img/projects/icons2/tree.webp';
 import Medicine from '../../assets/img/projects/icons2/medicine.webp';
 import DreamSchool from '../../assets/img/projects/icons2/Dream School.webp';
 import MarriageGift from '../../assets/img/projects/icons2/Marrigae Gift.webp';

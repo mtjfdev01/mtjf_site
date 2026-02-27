@@ -134,6 +134,10 @@
   margin-bottom: var(--space-56);
 }
 
+.blog-v2-table {
+  margin-bottom: var(--space-56);
+}
+
 .blog-v2-table__el {
   width: 100%;
   border-collapse: collapse;

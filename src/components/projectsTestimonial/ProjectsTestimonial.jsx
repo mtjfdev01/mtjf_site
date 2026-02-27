@@ -101,6 +101,7 @@ const ProjectsTestimonial = ({
   }, [currentIndex, cardsPerView, videos.length])
 
   const maxIndex = Math.max(0, videos.length - cardsPerView)
+  const isScrollable = videos.length > cardsPerView
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1))
@@ -137,24 +138,26 @@ const ProjectsTestimonial = ({
         {subtitle && <p className="projects-testimonial-subtitle">{subtitle}</p>}
       </div>
 
-      <div className="projects-testimonial-wrapper relative">
-        <button
-          className="projects-testimonial-nav-btn projects-testimonial-nav-prev"
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-          aria-label="Previous videos"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
+      <div className={`projects-testimonial-wrapper relative ${!isScrollable ? 'projects-testimonial-wrapper--no-nav' : ''}`}>
+        {isScrollable && (
+          <button
+            className="projects-testimonial-nav-btn projects-testimonial-nav-prev"
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            aria-label="Previous videos"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
 
         <div className="projects-testimonial-container">
           <div 
             ref={gridRef}
-            className="projects-testimonial-grid"
+            className={`projects-testimonial-grid ${!isScrollable ? 'projects-testimonial-grid--centered' : ''}`}
             style={{
-              transform: `translateX(-${translateOffset}px)`,
+              transform: isScrollable ? `translateX(-${translateOffset}px)` : 'translateX(0)',
               transition: 'transform 0.4s var(--ease)',
               '--cards-per-view': cardsPerView
             }}
@@ -208,16 +211,18 @@ const ProjectsTestimonial = ({
           </div>
         </div>
 
-        <button
-          className="projects-testimonial-nav-btn projects-testimonial-nav-next"
-          onClick={handleNext}
-          disabled={currentIndex >= maxIndex}
-          aria-label="Next videos"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
+        {isScrollable && (
+          <button
+            className="projects-testimonial-nav-btn projects-testimonial-nav-next"
+            onClick={handleNext}
+            disabled={currentIndex >= maxIndex}
+            aria-label="Next videos"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* Video Modal */}
