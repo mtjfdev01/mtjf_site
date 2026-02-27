@@ -77,7 +77,7 @@ function App() {
             altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
           />
           <PublicNoticePopup
-            routes={['/donate', '/ways-to-donate', '/zakat-calculator', '//projects/ramzan-zakat']}
+            routes={['/donate', '/ways-to-donate', '/zakat-calculator', '/projects/ramzan-zakat']}
             storageKey="mtj_public_notice_popup_shown"
             showOnce={false}
             delay={2000}
