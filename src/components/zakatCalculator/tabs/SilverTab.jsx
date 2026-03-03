@@ -33,7 +33,7 @@ const SilverTab = ({
 
       {/* Unit & Prices in one row */}
       <div style={{ display: 'flex', gap: 'var(--space-16)', alignItems: 'flex-end', flexWrap: 'wrap' }} className="mb-24">
-        <div style={{ marginBottom: -20 }}>
+        {/* <div style={{ marginBottom: -20 }}>
           <label className="form-label mb-12">
             <strong>Unit</strong>
           </label>
@@ -47,7 +47,7 @@ const SilverTab = ({
               <span>Grams</span>
             </label>
           </div>
-        </div>
+        </div> */}
         <div style={{ minWidth: '160px', marginBottom: -20 }}>
           <label className="form-label mb-12">
             <strong>Per Tola</strong>

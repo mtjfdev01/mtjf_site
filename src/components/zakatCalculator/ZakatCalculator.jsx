@@ -107,10 +107,9 @@ const ZakatCalculator = () => {
 
   useEffect(() => {
     if (!useCustomSilverPrice && fetchedSilverPrice) {
-      const displayPrice = silverUnit === 'grams' ? fetchedSilverPrice / 11.664 : fetchedSilverPrice
-      setSilverPrice(displayPrice.toFixed(2))
+    setSilverPrice(fetchedSilverPrice.toFixed(2))
     }
-  }, [useCustomSilverPrice, fetchedSilverPrice, silverUnit])
+}, [useCustomSilverPrice, fetchedSilverPrice])
   
   // Calculations
   const calculations = useMemo(() => {
