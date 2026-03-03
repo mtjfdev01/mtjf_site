@@ -1,30 +1,32 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import PageHeader from '../pageHeader/PageHeader'
 import './BlogDetailsV2.css'
-
-import headerImage from '../../assets/img/blogs/hero_blogs.webp'
-import introImage from '../../assets/img/blogs/power of clean water.webp'
-import sectionTwoImage from '../../assets/img/blogs/poor child.webp'
-import slideOne from '../../assets/img/blogs/handpump.webp'
-import slideTwo from '../../assets/img/blogs/poor man.webp'
-import slideThree from '../../assets/img/blogs/image blog 3.webp'
 import Footer from '../footer/Footer'
-
-const sliderImages = [slideOne, slideTwo, slideThree, introImage, sectionTwoImage]
+import { getBlogById } from '../../data/blogsData'
 
 const BlogDetailsV2 = () => {
+  const { id, slug } = useParams()
+  const navigate = useNavigate()
+  const blog = useMemo(() => getBlogById(id || slug), [id, slug])
+  const subProjects = blog?.subProjects && Array.isArray(blog.subProjects) ? blog.subProjects : []
+  const firstSection = subProjects[0] || null
+  const secondSection = subProjects[1] || null
+  const bullets = (secondSection?.services && Array.isArray(secondSection.services))
+    ? secondSection.services
+    : (firstSection?.services && Array.isArray(firstSection.services))
+      ? firstSection.services
+      : []
+  const sliderImages = useMemo(() => {
+    const imgs = []
+    if (blog?.image) imgs.push(blog.image)
+    subProjects.forEach(s => { if (s?.image) imgs.push(s.image) })
+    return imgs
+  }, [blog, subProjects])
   const [currentSlide, setCurrentSlide] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(3)
 
-  const tableRows = useMemo(
-    () => [
-      { metric: 'Families Reached', value: '12,500' },
-      { metric: 'Women Beneficiaries', value: '6,800' },
-      { metric: 'Children Supported', value: '8,200' },
-      { metric: 'Districts Covered', value: '19' }
-    ],
-    []
-  )
+  const tableRows = useMemo(() => [], [])
 
   useEffect(() => {
     const updateCardsPerView = () => {
@@ -43,7 +45,7 @@ const BlogDetailsV2 = () => {
     return () => window.removeEventListener('resize', updateCardsPerView)
   }, [])
 
-  const maxSlideIndex = Math.max(0, sliderImages.length - cardsPerView)
+  const maxSlideIndex = Math.max(0, (sliderImages?.length || 0) - cardsPerView)
 
   useEffect(() => {
     if (currentSlide > maxSlideIndex) {
@@ -60,33 +62,39 @@ const BlogDetailsV2 = () => {
   }
 
   useEffect(() => {
-    if (sliderImages.length <= cardsPerView) return undefined
+    if (!sliderImages || sliderImages.length <= cardsPerView) return undefined
     const intervalId = window.setInterval(() => {
       setCurrentSlide((prev) => (prev >= maxSlideIndex ? 0 : prev + 1))
     }, 3500)
     return () => window.clearInterval(intervalId)
   }, [cardsPerView, maxSlideIndex])
 
+  if (!blog) {
+    return (
+      <article className="blog-v2-page container py-48 text-center">
+        <h1>Blog Not Found</h1>
+        <p>The blog you are looking for doesn&apos;t exist or has been moved.</p>
+        <button type="button" className="btn" onClick={() => navigate('/blogs')}>Go to Blogs</button>
+      </article>
+    )
+  }
+
   return (
     <article className="blog-v2-page">
-      <PageHeader title="Blog Details V2" image={headerImage} />
+      <PageHeader title={blog?.title || 'Blog'} image={blog?.image} />
 
       <section className="blog-v2-intro container py-48">
         <div className="blog-v2-split blog-v2-split--60-40">
           <div className="blog-v2-text">
-            <h2 className="heading-secondary">A New Story of Community Impact</h2>
-            <p>
-              This layout is designed as a clean editorial detail page where the narrative remains
-              the focus. The left side gives enough room for text flow while the right side
-              supports the story with visuals and context.
-            </p>
-            <p>
-              The 60/40 ratio keeps readability strong on desktop and can naturally stack on
-              smaller viewports. You can bind this section to dynamic blog content later.
-            </p>
+            <h2 className="heading-secondary">{firstSection?.title || blog?.title}</h2>
+            {blog?.excerpt ? <p>{blog.excerpt}</p> : null}
+            {firstSection?.description ? <p>{firstSection.description}</p> : null}
+            {firstSection?.description2 ? <p>{firstSection.description2}</p> : null}
           </div>
           <div className="blog-v2-image-wrap">
-            <img src={introImage} alt="Blog visual" className="blog-v2-image" />
+            {firstSection?.image ? (
+              <img src={firstSection.image} alt="Blog visual" className="blog-v2-image" />
+            ) : null}
           </div>
         </div>
       </section>
@@ -109,7 +117,7 @@ const BlogDetailsV2 = () => {
                 '--cards-per-view': cardsPerView
               }}
             >
-              {sliderImages.map((image, index) => (
+              {(sliderImages || []).map((image, index) => (
                 <div key={`${index}-${image}`} className="blog-v2-slider__item">
                   <div className="blog-v2-slider__item-inner">
                     <img
@@ -137,55 +145,55 @@ const BlogDetailsV2 = () => {
       <section className="blog-v2-secondary container py-48">
         <div className="blog-v2-split blog-v2-split--60-40">
           <div className="blog-v2-text">
-            <h2 className="heading-secondary">What Changed on Ground</h2>
-            <p>
-              The second mixed section keeps the same text-image rhythm and introduces an optional
-              bottom block for summary-style messaging.
-            </p>
-            <h3 className="blog-v2-bottom-heading">Bottom Heading</h3>
+            <h2 className="heading-secondary">{secondSection?.title || 'Details'}</h2>
+            {secondSection?.description ? <p>{secondSection.description}</p> : null}
+            {secondSection?.description2 ? <p>{secondSection.description2}</p> : null}
+            {secondSection?.description3 ? <p>{secondSection.description3}</p> : null}
+            {secondSection?.bottomText ? <h3 className="blog-v2-bottom-heading">{secondSection.bottomText}</h3> : null}
           </div>
           <div className="blog-v2-image-wrap">
-            <img src={sectionTwoImage} alt="Secondary visual" className="blog-v2-image" />
+            {secondSection?.image ? (
+              <img src={secondSection.image} alt="Secondary visual" className="blog-v2-image" />
+            ) : null}
           </div>
         </div>
-        <p className="blog-v2-bottom-paragraph">
-          This bottom paragraph is useful for concluding the section with one clear takeaway
-          before moving to the thematic points and data table.
-        </p>
+        {secondSection?.bottomText ? (
+          <p className="blog-v2-bottom-paragraph">{secondSection.bottomText}</p>
+        ) : null}
       </section>
 
-      <section className="blog-v2-highlights container py-48">
-        {/* <p className="heading-primary blog-v2-primary">Highlights</p> */}
-        <h2 className="heading-secondary">Key Learning and Action Points</h2>
-        <ul className="blog-v2-bullets">
-          <li>Strengthen local partnerships for long-term continuity.</li>
-          <li>Prioritize women-led outreach for faster household-level impact.</li>
-          <li>Publish periodic updates to increase donor trust and transparency.</li>
-          <li>Use measurable goals to track program outcomes month by month.</li>
-        </ul>
-      </section>
+      {bullets && bullets.length > 0 ? (
+        <section className="blog-v2-highlights container py-48">
+          <h2 className="heading-secondary">Key Points</h2>
+          <ul className="blog-v2-bullets">
+            {bullets.map((b, i) => <li key={`bullet-${i}`}>{b}</li>)}
+          </ul>
+        </section>
+      ) : null}
 
-      <section className="blog-v2-table container py-48">
-        <h2 className="heading-secondary">Program Figures (Optional Table)</h2>
-        <div className="blog-v2-table-wrap">
-          <table className="blog-v2-table__el">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableRows.map((row) => (
-                <tr key={row.metric}>
-                  <td>{row.metric}</td>
-                  <td>{row.value}</td>
+      {tableRows.length > 0 ? (
+        <section className="blog-v2-table container py-48">
+          <h2 className="heading-secondary">Program Figures</h2>
+          <div className="blog-v2-table-wrap">
+            <table className="blog-v2-table__el">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Value</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+              </thead>
+              <tbody>
+                {tableRows.map((row) => (
+                  <tr key={row.metric}>
+                    <td>{row.metric}</td>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
       <Footer />
     </article>
   )

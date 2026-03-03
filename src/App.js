@@ -35,7 +35,9 @@ const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
 const DownloadsPage = lazy(() => import("./pages/Downloads"));
+const MediaPage = lazy(() => import("./pages/MediaPage"));
 const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList"));
+const NewsPage = lazy(() => import("./pages/News"));
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
  
@@ -99,8 +101,8 @@ function App() {
               <Route path="/careers/:id" element={<JobDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/blogs/:id" element={<BlogsDetails />} />
-              <Route path="/blogs/details-v2" element={<BlogsDetailsV2 />} />
+              <Route path="/blogs/:id" element={<BlogsDetailsV2/>} />
+              <Route path="/blogs/details-v2" element={<BlogsDetails/>} />
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
@@ -111,9 +113,11 @@ function App() {
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
-              <Route path="/media" element={<DownloadsPage />} />
+              <Route path="/media1" element={<DownloadsPage />} />
               <Route path="/media/downloads" element={<DownloadsPage />} />
+              <Route path="/media" element={<MediaPage />} />
               <Route path="/media/coverage" element={<MediaCoverageCardsList />} />
+              <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />
               
             </Routes>

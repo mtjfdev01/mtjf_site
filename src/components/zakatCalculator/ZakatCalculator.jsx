@@ -46,7 +46,7 @@ const ZakatCalculator = () => {
   const [silverPrice, setSilverPrice] = useState('7698')
   const [useCustomSilverPrice, setUseCustomSilverPrice] = useState(false)
   
-  // Nisab method - no longer needed as it's auto-determined, but keeping for backward compatibility
+  // Nisab base threshold selection (gold or silver)
   const [nisabMethod, setNisabMethod] = useState('gold')
   
   // State for fetched prices and calculated Nisab amounts
@@ -165,36 +165,26 @@ const ZakatCalculator = () => {
     // Net Zakatable Wealth
     const netWealth = netCash + assetsTotal + goldValue + silverValue
     
-    // Calculate Nisab Value - Use fetched prices from API (preferred) or user-entered prices
-    // Priority: Gold-based (tola) > Silver-based (tola)
+    // Calculate Nisab Value based on user-selected base threshold (gold or silver)
     let nisabValue = 0
-    let usedNisabMethod = null
-    
-    // Use fetched prices from API if available, otherwise use user-entered prices
-    if (fetchedGoldPrice && goldNisabAmount) {
-      // Use the pre-calculated gold Nisab amount from API
-      nisabValue = goldNisabAmount
-      usedNisabMethod = 'gold'
-    } else if (fetchedSilverPrice && silverNisabAmount) {
-      // Use the pre-calculated silver Nisab amount from API
-      nisabValue = silverNisabAmount
-      usedNisabMethod = 'silver'
-    } else if (goldPrice) {
-      // Fallback to user-entered gold price
-      const price = parseFloat(goldPrice) || 0
-      // Price unit matches weight unit, so convert to per gram if needed
-      const pricePerGram = goldUnit === 'tola' ? price / 11.664 : price
-      // Use gold-based method (87.48g)
-      nisabValue = GOLD_NISAB_GRAMS * pricePerGram
-      usedNisabMethod = 'gold'
-    } else if (silverPrice) {
-      // Fallback to user-entered silver price
-      const price = parseFloat(silverPrice) || 0
-      // Price unit matches weight unit, so convert to per gram if needed
-      const pricePerGram = silverUnit === 'tola' ? price / 11.664 : price
-      // Use silver-based method (612.36g)
-      nisabValue = SILVER_NISAB_GRAMS * pricePerGram
-      usedNisabMethod = 'silver'
+    let usedNisabMethod = nisabMethod
+
+    if (nisabMethod === 'gold') {
+      if (goldNisabAmount) {
+        nisabValue = goldNisabAmount
+      } else if (goldPrice) {
+        const price = parseFloat(goldPrice) || 0
+        const pricePerGram = goldUnit === 'tola' ? price / TOLA_TO_GRAMS : price
+        nisabValue = GOLD_NISAB_GRAMS * pricePerGram
+      }
+    } else {
+      if (silverNisabAmount) {
+        nisabValue = silverNisabAmount
+      } else if (silverPrice) {
+        const price = parseFloat(silverPrice) || 0
+        const pricePerGram = silverUnit === 'tola' ? price / TOLA_TO_GRAMS : price
+        nisabValue = SILVER_NISAB_GRAMS * pricePerGram
+      }
     }
     
     // Eligibility Check
@@ -251,8 +241,25 @@ const ZakatCalculator = () => {
     goldPrice,
     silverWeight,
     silverUnit,
-    silverPrice
+    silverPrice,
+    nisabMethod,
+    fetchedGoldPrice,
+    fetchedSilverPrice,
+    goldNisabAmount,
+    silverNisabAmount
   ])
+
+  const approxGoldPerTola = useMemo(() => {
+    if (fetchedGoldPrice) return fetchedGoldPrice
+    const parsed = parseFloat(goldPrice) || 0
+    return goldUnit === 'grams' ? parsed * TOLA_TO_GRAMS : parsed
+  }, [fetchedGoldPrice, goldPrice, goldUnit])
+
+  const approxSilverPerTola = useMemo(() => {
+    if (fetchedSilverPrice) return fetchedSilverPrice
+    const parsed = parseFloat(silverPrice) || 0
+    return silverUnit === 'grams' ? parsed * TOLA_TO_GRAMS : parsed
+  }, [fetchedSilverPrice, silverPrice, silverUnit])
   
   const tabs = [
     { id: 'eligibility', label: 'Eligibility', icon: '✓' },
@@ -272,6 +279,35 @@ const ZakatCalculator = () => {
         <p className="text-lg muted w-full mx-auto test_target">
         Enter your assets, savings, and liabilities, and our calculator will automatically calculate the Zakat amount. Once done, you can donate online to support verified beneficiaries across Pakistan.
         </p>
+        <div className="zakat-nisab-selector mt-24">
+          <h3 className="zakat-nisab-selector__title">Nisab Threshold</h3>
+          <div className="zakat-nisab-selector__options">
+            <label className="zakat-nisab-option">
+              <input
+                type="radio"
+                name="nisab-method"
+                value="gold"
+                checked={nisabMethod === 'gold'}
+                onChange={(e) => setNisabMethod(e.target.value)}
+              />
+              <span>
+                Value of Gold <strong>(approximately Rs. {Math.round(approxGoldPerTola).toLocaleString('en-PK')}/Tola)</strong>
+              </span>
+            </label>
+            <label className="zakat-nisab-option">
+              <input
+                type="radio"
+                name="nisab-method"
+                value="silver"
+                checked={nisabMethod === 'silver'}
+                onChange={(e) => setNisabMethod(e.target.value)}
+              />
+              <span>
+                Value of Silver <strong>(approximately Rs. {Math.round(approxSilverPerTola).toLocaleString('en-PK')}/Tola)</strong>
+              </span>
+            </label>
+          </div>
+        </div>
 
       </div>
       
