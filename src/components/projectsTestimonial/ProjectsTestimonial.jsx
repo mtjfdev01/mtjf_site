@@ -4,6 +4,8 @@ import './ProjectsTestimonial.css'
 // Extract video IDs from YouTube URLs
 const extractVideoId = (url) => {
   if (!url || typeof url !== 'string') return null
+  const cleanedUrl = url.trim()
+  if (!cleanedUrl) return null
   // Support multiple YouTube URL formats
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
@@ -11,8 +13,11 @@ const extractVideoId = (url) => {
   ]
   
   for (const pattern of patterns) {
-    const match = url.match(pattern)
-    if (match) return match[1]
+    const match = cleanedUrl.match(pattern)
+    if (match && match[1]) {
+      const normalized = match[1].trim().match(/[a-zA-Z0-9_-]{11}/)
+      if (normalized) return normalized[0]
+    }
   }
   return null
 }
@@ -181,6 +186,13 @@ const ProjectsTestimonial = ({
                         alt={`Testimonial video ${index + 1}`}
                         className="projects-testimonial-thumbnail"
                         loading="lazy"
+                        onError={(e) => {
+                          const img = e.currentTarget
+                          if (!img.dataset.fallbackApplied) {
+                            img.dataset.fallbackApplied = 'true'
+                            img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                          }
+                        }}
                       />
                     ) : (
                       <div className="projects-testimonial-placeholder">

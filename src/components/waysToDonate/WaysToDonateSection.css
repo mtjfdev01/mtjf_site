@@ -225,6 +225,25 @@
   margin-bottom: var(--space-16);
 }
 
+.online-banking-content-box {
+  flex-wrap: wrap;
+}
+
+.online-banking-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-16);
+}
+
+.online-banking-image {
+  width: min(100%, 420px);
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-200);
+}
+
 .donate-link {
   color: var(--color-primary);
   text-decoration: none;
@@ -673,6 +692,14 @@
     width: 56px;
     height: 56px;
     align-self: center;
+  }
+
+  .online-banking-image-wrap {
+    margin: 0 auto;
+  }
+
+  .online-banking-image {
+    width: min(100%, 320px);
   }
 
   .content-box-text p {

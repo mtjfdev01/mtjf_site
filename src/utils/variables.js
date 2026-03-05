@@ -9,7 +9,7 @@ export const home_testimonials = {
     'https://www.youtube.com/watch?v=ijEknzzlico',
     'https://www.youtube.com/watch?v=TLbnXO99naQ',
     'https://www.youtube.com/watch?v=rf9Xby6s5C4',
-    'https://www.youtube.com/watch?v=jK4a0OeDwXI&t=43s',
+    'https://www.youtube.com/watch?v=jK4a0OeDwXI&t',
     'https://www.youtube.com/watch?v=gNt5XZyRGDk',
     'https://www.youtube.com/watch?v=6bqunG0PeNQ',
     'https://www.youtube.com/watch?v=DAnXnVpICys',

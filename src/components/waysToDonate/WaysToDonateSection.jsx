@@ -15,6 +15,8 @@ import bankIslamiLogo from '../../assets/img/ways_to_donate/bank_islami.png'
 import uBankLogo from '../../assets/img/ways_to_donate/u_bank.png'
 import hblLogo from '../../assets/img/ways_to_donate/hbl.png'
 import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
+import easypaisaImage from '../../assets/img/ways_to_donate/easypesa.webp'
+import alflah from '../../assets/img/ways_to_donate/alflah.jpg'
 
 const WaysToDonateSection = () => {
   const navigate = useNavigate()
@@ -92,7 +94,7 @@ const WaysToDonateSection = () => {
     { id: 'health', label: 'Health' },
     { id: 'education', label: 'Education' },
     { id: 'community-services', label: 'Community Services' },
-    { id: 'bano-qabil', label: 'Bano Qabil' },
+    // { id: 'bano-qabil', label: 'Bano Qabil' },
     { id: 'wash', label: 'WASH' },
     { id: 'donate-to-palestine', label: 'Donate to Palestine' },
   ]
@@ -126,6 +128,16 @@ const WaysToDonateSection = () => {
       iban: 'PK56MEZN0004070105756121',
       category: 'zakat',
       logo: meezanBankLogo,
+      branch: 'Lahore',
+      swiftCode: 'MEZNPKKA'
+    },
+    {
+      id: 'meezan-4',
+      bankName: 'Bank Alfalah Limited',
+      accountNumber: '5774-5002836731',
+      iban: 'PK14ALFH5774005002836731',
+      category: 'zakat',
+      logo: alflah,
       branch: 'Lahore',
       swiftCode: 'MEZNPKKA'
     },
@@ -304,7 +316,7 @@ const WaysToDonateSection = () => {
                 </button>
               ))}
             </div>
-            <div className="content-box">
+            <div className="content-box online-banking-content-box">
               <div className="content-box-icon">
                 <FcDonate size={48} />
               </div>
@@ -314,6 +326,15 @@ const WaysToDonateSection = () => {
                   <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
                 </p>
               </div>
+              {activeSubTab === 'easypaisa' && (
+                <div className="online-banking-image-wrap">
+                  <img
+                    src={easypaisaImage}
+                    alt="EasyPaisa donation method"
+                    className="online-banking-image"
+                  />
+                </div>
+              )}
             </div>
           </div>
         )
