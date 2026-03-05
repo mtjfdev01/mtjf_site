@@ -3335,8 +3335,8 @@ export const ALL_PROJECTS_DATA = [
   },
   {
     id: 'ramzan-ration',
-    title: 'Ramzan Ration',
-    subtitle: 'Providing Ramzan Ration to Families in Need',
+    title: 'Ramadan Ration',
+    subtitle: 'Providing Ramadan Ration to Families in Need',
     description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
     impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
     image: ramzanRation,

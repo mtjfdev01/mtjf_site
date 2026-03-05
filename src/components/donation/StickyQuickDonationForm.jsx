@@ -33,6 +33,7 @@ const StickyQuickDonationForm = () => {
 
   // Project list - same as DonationProjectsMenu
   const projectCards = [
+    { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
     { id: 'health', title: "Health", icon: health, category: "General" },
     { id: 'education', title: "Education", icon: education, category: "General" },
     { id: 'clean-water', title: "Clean Water", icon: cleanWater, category: "General" },
@@ -43,7 +44,6 @@ const StickyQuickDonationForm = () => {
     { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, category: "Zakat" },
     { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, category: "General" },
     { id: 'community-services', title: "Community Service", icon: community, category: "Sadqa" },
-    { id: 'ramzan-ration', title: "Ramzan Ration", icon: community, category: "General" },
   ]
 
   const handleQuickDonate = () => {

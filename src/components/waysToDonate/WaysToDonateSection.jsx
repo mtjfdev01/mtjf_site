@@ -73,8 +73,8 @@ const WaysToDonateSection = () => {
   ]
 
   const onlineBankingSubTabs = [
-    { id: 'debit-credit', label: 'Pay by Debit/Credit Card' },
-    { id: 'jazzcash', label: 'JazzCash' },
+    { id: 'debit-credit', label: 'Debit/Credit Card' },
+    // { id: 'jazzcash', label: 'JazzCash' },
     { id: 'easypaisa', label: 'EasyPaisa' }
   ]
 
@@ -86,9 +86,9 @@ const WaysToDonateSection = () => {
 
   const donationCategories = [
     { id: 'general-donation', label: 'General Donation' },
-    { id: 'zakat', label: 'Zakat' },
-    { id: 'sadaqah', label: 'Sadaqah' },
-    { id: 'tameer-e-watan', label: 'Tameer E Watan' },
+    // { id: 'zakat', label: 'Zakat' },
+    // { id: 'sadaqah', label: 'Sadaqah' },
+    // { id: 'tameer-e-watan', label: 'Tameer E Watan' },
     { id: 'orphan-care', label: 'Orphan Care' },
     { id: 'disaster-management', label: 'Disaster Management' },
     { id: 'health', label: 'Health' },
@@ -317,15 +317,18 @@ const WaysToDonateSection = () => {
               ))}
             </div>
             <div className="content-box online-banking-content-box">
+              {activeSubTab === 'debit-credit' && (
+                <>  
               <div className="content-box-icon">
                 <FcDonate size={48} />
               </div>
-              <div className="content-box-text">
-                <p>
-                  You can make donations to MTJ Foundation using your {activeSubTabLabel}  from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
-                  <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
-                </p>
-              </div>
+                <div className="content-box-text">
+                  <p>
+                    You can make donations to MTJ Foundation using your {activeSubTabLabel}  from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
+                    <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
+                  </p>
+                </div>
+                </>)}
               {activeSubTab === 'easypaisa' && (
                 <div className="online-banking-image-wrap">
                   <img
@@ -409,7 +412,8 @@ const WaysToDonateSection = () => {
                   Our team can visit your location to collect your donation. Please contact us to schedule a home collection.
                 </p>
                 <p>
-                  <strong>Contact:</strong> +92 303 2440000
+                  <strong>Contact:</strong>{' '}
+                  <a href="tel:+923032440000" className="whatsapp-link">+92 303 2440000</a>
                 </p>
               </div>
             </div>
