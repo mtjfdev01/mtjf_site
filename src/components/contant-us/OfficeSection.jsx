@@ -85,10 +85,12 @@ const OfficeSection = ({ badge, title, description, offices }) => {
                           <span>{office.hotline}</span>
                         </li>
                       )}
-                      {/* <li>
+                      {office.email && (
+                      <li>
                         <FiMail />
                         <span>{office.email}</span>
-                      </li> */}
+                      </li>
+                      )}
                       <li>
                         <FiMapPin />
                         <span>{office.address}</span>
