@@ -6,6 +6,8 @@ import ZakatWhyMattersImage from '../assets/img/zakat/Why your zakat matters.web
 import ZakatHowHelpsImage from '../assets/img/zakat/How your zakat helps people.webp'
 import GiveWithTrustThisRamadan from '../assets/img/zakat/Give with trust this Ramadan.webp'
 import ZakatFarz from '../assets/img/zakat/Who is zakat farz upon.webp'
+import ZakatBottomBanner from '../assets/img/zakat/zakat_bottom_banner.webp'
+import ZakatBottomBannerMobile from '../assets/img/zakat/zakat_bottom_banner_mobile.webp'
 
 import impactNum1 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -01.webp'
 import impactNum2 from '../assets/img/impact_numbers/MTJF Impact Numbers 300x260 -02.webp'
@@ -1820,7 +1822,9 @@ And when you give it sincerely, Allah promises something greater in return.`,
         },
         donateButtonText: 'Pay Zakat',
         donationUrl: '/zakat-calculator',
-        image: ZakatFarz
+        image: ZakatFarz,
+        bottom_banner_img: ZakatBottomBanner,
+        bottom_banner_mobile_img: ZakatBottomBannerMobile
       },
       {
         id: 'how-your-zakat-helps-people',

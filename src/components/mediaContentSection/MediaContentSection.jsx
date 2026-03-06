@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
 import BrandArea from '../brands/brands'
 import './MediaContentSection.css'
-
+import PageHeader from '../pageHeader/PageHeader'
 const ProjectsTestimonial = lazy(() => import('../projectsTestimonial/ProjectsTestimonial'))
 
 const MediaContentSection = ({ subProjects, defaultImage }) => {
@@ -218,6 +218,19 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 </Suspense>
               </div>
             )}
+
+              {/* Banner Image  if there is botton_banner_img and bottom_banner_mobile_img  use PageHeader Component */}
+              {subProject.bottom_banner_img && subProject.bottom_banner_mobile_img && (<>
+                <div className='banner_img d-none md:d-block'>
+                  <PageHeader
+                  title={subProject.title}
+                  image={subProject.bottom_banner_img}
+                />
+                </div>
+                <div className='banner_img--mobile sm:d-block md:d-none'>
+                  <img src={subProject.bottom_banner_mobile_img} alt={subProject.title} />
+                </div>
+                </>)}
           </div>
         )
       })}
