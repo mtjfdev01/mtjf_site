@@ -14,10 +14,11 @@ const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 
-const ProjectDetail = () => {
+const ProjectDetail = ({ forcedProjectId }) => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const project = PROJECTS_DETAIL_DATA[id]
+  const resolvedProjectId = forcedProjectId || id
+  const project = PROJECTS_DETAIL_DATA[resolvedProjectId]
 
   // First component after header - loads immediately
   const [contentRef, showContent] = useIntersectionObserver({ 

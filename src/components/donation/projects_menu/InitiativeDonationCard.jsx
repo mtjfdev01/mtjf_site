@@ -9,8 +9,16 @@ const InitiativeDonationCard = ({ initiative }) => {
   const [donationType, setDonationType] = useState('GENERAL')
   const [customAmount, setCustomAmount] = useState('')
   const [showOverlay, setShowOverlay] = useState(false)
+  const pricingOptions = Array.isArray(initiative.pricingOptions) && initiative.pricingOptions.length > 0
+    ? initiative.pricingOptions
+    : null
+  const defaultPricingOptionId = initiative.defaultPricingOptionId || pricingOptions?.[0]?.id || null
+  const [selectedPricingOptionId, setSelectedPricingOptionId] = useState(defaultPricingOptionId)
 
-  const basePrice = initiative.price || 0
+  const selectedPricingOption = pricingOptions
+    ? pricingOptions.find((option) => option.id === selectedPricingOptionId) || pricingOptions[0]
+    : null
+  const basePrice = selectedPricingOption?.price ?? initiative.price ?? 0
   const totalPrice = quantity * basePrice + (parseFloat(customAmount) || 0)
 
   // Restore state from context on mount
@@ -24,8 +32,11 @@ const InitiativeDonationCard = ({ initiative }) => {
       setQuantity(existingDonation.quantity || 0)
       setDonationType(existingDonation.donationType || 'GENERAL')
       setCustomAmount(existingDonation.customAmount ? existingDonation.customAmount.toString() : '')
+      if (pricingOptions) {
+        setSelectedPricingOptionId(existingDonation.selectedPricingOptionId || defaultPricingOptionId)
+      }
     }
-  }, [projectDonations, initiative.parentProjectId, initiative.id])
+  }, [projectDonations, initiative.parentProjectId, initiative.id, pricingOptions, defaultPricingOptionId])
 
   // Donation type options - can be customized per initiative
   const donationTypeOptions = initiative.donationTypeOptions || [
@@ -54,19 +65,25 @@ const InitiativeDonationCard = ({ initiative }) => {
     }
   }
 
-  const updateDonationData = (qty, type, custom) => {
-    const amount = (qty * basePrice) + (parseFloat(custom) || 0)
+  const updateDonationData = (qty, type, custom, pricingOptionId = selectedPricingOptionId) => {
+    const selectedOptionForPayload = pricingOptions
+      ? pricingOptions.find((option) => option.id === pricingOptionId) || pricingOptions[0]
+      : null
+    const itemPrice = selectedOptionForPayload?.price ?? initiative.price ?? 0
+    const amount = (qty * itemPrice) + (parseFloat(custom) || 0)
     
     const donationData = {
       projectId: initiative.parentProjectId,
       initiativeId: initiative.id,
       projectTitle: initiative.parentProjectTitle || '',
       initiativeTitle: initiative.title,
-      initiativeSubtitle: initiative.subtitle || null,
+      initiativeSubtitle: selectedOptionForPayload?.subtitle || initiative.subtitle || null,
       // projectIcon: initiative.icon,
       quantity: qty,
-      // donationType: type,
-      basePrice: basePrice,
+      donationType: type,
+      basePrice: itemPrice,
+      selectedPricingOptionId: selectedOptionForPayload?.id || null,
+      selectedPricingOptionLabel: selectedOptionForPayload?.label || null,
       customAmount: parseFloat(custom) || 0,
       totalAmount: amount
     }
@@ -77,11 +94,36 @@ const InitiativeDonationCard = ({ initiative }) => {
 
   return (
     <div className="initiative-donation-card">
-      <div className="initiative-card-icon">
+      {/* <div className="initiative-card-icon">
         <img src={initiative.icon} alt={initiative.title} />
-      </div>
+      </div> */}
       
-      <h3 className="initiative-card-title">{initiative.title}</h3>
+      {/* <h3 className="initiative-card-title">{initiative.title}</h3> */}
+
+      {pricingOptions && (
+        <div className="initiative-pricing-options" role="radiogroup" aria-label={`${initiative.title} options`}>
+          {pricingOptions.map((option) => {
+            const isActive = selectedPricingOption?.id === option.id
+            return (
+              <button
+                key={option.id}
+                type="button"
+                className={`initiative-pricing-option ${isActive ? 'active' : ''}`}
+                onClick={() => {
+                  setSelectedPricingOptionId(option.id)
+                  updateDonationData(quantity, donationType, customAmount, option.id)
+                }}
+                aria-pressed={isActive}
+              >
+                <span className="initiative-pricing-option-title">{option.label}</span>
+                <span className="initiative-pricing-option-amount">
+                  PKR {option.price.toLocaleString()} {option.subtitle || initiative.subtitle || 'Per Item'}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      )}
 
       <div className="initiative-quantity-selector">
         <button
@@ -129,8 +171,8 @@ const InitiativeDonationCard = ({ initiative }) => {
 
       <div className="initiative-price-field">
         <label className="initiative-field-label">
-          {initiative.subtitle 
-            ? `RS ${basePrice.toLocaleString()} ${initiative.subtitle}`
+          {(selectedPricingOption?.subtitle || initiative.subtitle)
+            ? `RS ${basePrice.toLocaleString()} ${selectedPricingOption?.subtitle || initiative.subtitle}`
             : `RS ${basePrice.toLocaleString()} Per Item`
           }
           {initiative.description && (

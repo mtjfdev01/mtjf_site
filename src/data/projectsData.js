@@ -46,6 +46,9 @@ import h_7 from '../assets/img/projects/projects-details/Health/Health_health_pr
 import h_8 from '../assets/img/projects/projects-details/Health/health_dircet_aid.webp'
 import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
+import fitrana_hero from '../assets/img/projects/projects-details/fitrana/fitrana.jpg'
+import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.jpg'
+import fitrana_matters from '../assets/img/projects/projects-details/fitrana/fitrana_sub_project.jpg'
 
 import education from '../assets/img/projects/education_hero.webp'
 import ramzanRation from '../assets/img/projects/rastion packs.webp'
@@ -1950,9 +1953,9 @@ This Ramadan, Let Your Zakat Speak for You`,
   },
   'fitrana': {
     id: 'fitrana',
-    title: 'Fitrana – Fulfill Your Obligation Before Eid',
-    headerImage: image1,
-    headerImageMob: image1,
+    title: 'Fitrana (Zakat al-Fitr) – Meaning, Amount & How to Donate',
+    headerImage: fitrana_hero,
+    headerImageMob: fitrana_hero,
     stats: [
       { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
       { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
@@ -1964,11 +1967,10 @@ This Ramadan, Let Your Zakat Speak for You`,
       { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
     ],
     content: {
-      paragraph1: 'Fitrana (Sadaqat al-Fitr) is a compulsory charity given before Eid ul-Fitr prayer. It purifies the fasting person from any indecent act or speech and helps the poor and needy celebrate Eid with dignity.',
-      paragraph2: 'The Prophet ﷺ prescribed Zakat al-Fitr as a purification for the fasting person from idle talk and obscenity, and as food for the poor.',
-      paragraph3: 'Through MTJ Foundation, your Fitrana reaches the most deserving families across Pakistan, ensuring they can enjoy Eid with food on their table.'
+      paragraph1: 'Fitrana, also known as Zakat al-Fitr, is a compulsory charity given at the end of Ramadan before the Eid-ul-Fitr prayer. It is an obligation on every eligible Muslim and is meant to purify our fasts while ensuring that those in need can also celebrate Eid with dignity.',
+      paragraph2: 'By giving Fitrana through Molana Tariq Jamil Foundation, you help provide food and essential support to families who may otherwise struggle during this blessed time.',
     },
-    mainImage: image1,
+    // mainImage: image1,
     donateCategory: 'Fitrana',
     donateButtonText: 'Pay Your Fitrana',
     showInitiative: true,
@@ -1978,6 +1980,13 @@ This Ramadan, Let Your Zakat Speak for You`,
         title: 'Fitrana',
         subtitle: 'Per Person',
         price: 450,
+        defaultPricingOptionId: 'wheat',
+        pricingOptions: [
+          { id: 'dates', label: 'Dates', price: 4500, subtitle: 'Per Person' },
+          { id: 'barley', label: 'Barley', price: 1200, subtitle: 'Per Person' },
+          { id: 'raisins', label: 'Raisins', price: 6000, subtitle: 'Per Person' },
+          { id: 'wheat', label: 'Wheat', price: 600, subtitle: 'Per Person' }
+        ],
         icon: communityIcon,
         description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
         duration: 'Before Eid Prayer'
@@ -1991,75 +2000,116 @@ This Ramadan, Let Your Zakat Speak for You`,
     subProjects: [
       {
         id: 'what-is-fitrana',
-        title: 'What is Fitrana?',
+        title: 'What is Fitrana in Islam?',
         subtitle: '',
-        description: `Fitrana (Sadaqat al-Fitr) is a compulsory act of charity that every Muslim must fulfill before the Eid ul-Fitr prayer. It is a means of purifying the fast from any shortcomings and ensuring the poor can also celebrate Eid with joy and dignity.
-
-It is obligatory upon every Muslim who has food in excess of their needs for the day of Eid, for themselves and each dependent under their care.`,
+        description: 'Fitrana (Zakat al-Fitr) is a form of charity that must be given before Eid-ul-Fitr. It is required for every Muslim who possesses more than their basic daily needs.',
+        services: [
+          'To purify the fasts of the person observing Ramadan',
+          'To provide food and relief for the poor so they may also celebrate Eid'
+        ],
         quranAyat: {
-          text: 'The Messenger of Allah ﷺ ordained Zakat al-Fitr as a purification for the fasting person from idle talk and obscenity, and as food for the poor.',
-          reference: 'Abu Dawud'
+          text: 'The Messenger of Allah (peace be upon him) ordained Zakat al-Fitr to purify the fasting person from indecent words or actions and to provide food for the needy.',
+          reference: 'Abu Dawud & Ibn Majah'
         },
         donateButtonText: 'Pay Your Fitrana Now',
         donationUrl: '/donate/fitrana',
-        image: image1
+        image: fitrana_matters
+      },
+      {
+        id: 'why-fitrana-important',
+        title: 'Why is Fitrana Important?',
+        subtitle: '',
+        description: 'Fitrana holds deep spiritual and social importance in Islam. It strengthens compassion and unity within the community.',
+        services: [
+          'Purify any shortcomings in our fasts',
+          'Support families facing financial hardship',
+          'Ensure that no one goes hungry on Eid',
+          'Share the blessings of Ramadan with those in need'
+        ],
+        afterServicesText: 'Your Fitrana can make sure that struggling families have food and dignity on Eid day.',
+        donateButtonText: 'Give Fitrana Today',
+        donationUrl: '/donate/fitrana',
+        image: fitrana_matters
+      },
+      {
+        id: 'how-much-fitrana-per-person',
+        title: 'How Much is Fitrana Per Person?',
+        subtitle: '',
+        description: 'Traditionally, the amount of Fitrana is one saa of staple food, commonly wheat, barley, dates, or raisins during the time of the Prophet (PBUH). Today, this amount is calculated based on the cost of staple foods such as wheat or flour.',
+        services: [
+          'Fitrana must be paid for each member of the household',
+          'It applies to children and dependents as well'
+        ],
+        donateButtonText: 'Calculate & Pay Fitrana',
+        donationUrl: '/donate/fitrana',
+        image: fitrana_matters
       },
       {
         id: 'who-must-pay-fitrana',
         title: 'Who Must Pay Fitrana?',
         subtitle: '',
-        description: `Fitrana is obligatory upon every Muslim who possesses wealth above the nisab threshold on the day of Eid. It must be paid on behalf of every member of the household, including:`,
+        description: 'Fitrana is obligatory on every Muslim who possesses wealth or food beyond their basic needs. The head of the household should pay for:',
         services: [
-          'Yourself',
-          'Your spouse',
-          'Your children (including newborns)',
-          'Dependents living under your care'
+          'Themselves',
+          'Their spouse',
+          'Their children',
+          'Any dependents under their care'
         ],
-        afterServicesText: 'It should be paid before the Eid prayer so that it reaches those in need in time for the celebration.',
         donateButtonText: 'Pay Fitrana for Your Family',
         donationUrl: '/donate/fitrana',
-        image: image1
+        image: fitrana_matters
+      },
+      {
+        id: 'when-should-fitrana-be-paid',
+        title: 'When Should Fitrana Be Paid?',
+        subtitle: '',
+        description: 'Fitrana must be paid before the Eid-ul-Fitr prayer. It is recommended to give Fitrana during the last days of Ramadan so it can reach those in need in time for Eid.',
+        afterServicesText: 'If it is given after the Eid prayer, it will be counted as Sadaqah (voluntary charity) rather than Fitrana.',
+        donateButtonText: 'Pay Before Eid Prayer',
+        donationUrl: '/donate/fitrana',
+        image: fitrana_matters
       },
       {
         id: 'how-fitrana-helps',
-        title: 'How Your Fitrana Helps',
+        title: 'How Your Fitrana Helps Families in Need',
         subtitle: '',
-        description: `Your Fitrana ensures that families who cannot afford a meal on Eid day are able to celebrate with food, dignity, and happiness.
-
-Through MTJ Foundation, Fitrana is distributed to the most deserving families across Pakistan, prioritizing widows, orphans, daily wage earners, and those affected by poverty and displacement.`,
+        description: 'When you give Fitrana through Molana Tariq Jamil Foundation, your contribution supports vulnerable households with meaningful relief during Ramadan and Eid.',
+        services: [
+          'Provide food to families struggling with poverty',
+          'Support vulnerable communities across Pakistan',
+          'Ensure families can celebrate Eid with dignity',
+          'Deliver essential relief during the blessed days of Ramadan'
+        ],
+        afterServicesText: 'We ensure that Fitrana is distributed responsibly and according to Islamic principles to those who are eligible to receive it.',
         donateButtonText: 'Give Fitrana Today',
         donationUrl: '/donate/fitrana',
-        image: image1
+        image: fitrana_matters
       }
     ],
     faqs: {
       id: 'frequently-asked-questions',
-      title: 'Frequently Asked Questions',
-      subtitle: 'Everything You Need to Know About Fitrana',
+      title: 'Fitrana FAQs\s',
+      // subtitle: 'Everything You Need to Know About Fitrana',
       description: '',
       faqs: [
         {
-          question: 'What is the amount of Fitrana?',
-          answer: 'The amount of Fitrana is based on the price of staple food (wheat, barley, dates, or raisins). MTJ Foundation calculates it according to the current market rate.'
+          question: 'Can I give Fitrana before Eid?',
+          answer: 'Yes. In fact, it is recommended to give Fitrana during Ramadan so it can reach those in need before Eid.'
         },
         {
-          question: 'When should Fitrana be paid?',
-          answer: 'Fitrana must be paid before the Eid ul-Fitr prayer. It is best to pay it a few days before Eid so it reaches the deserving in time.'
+          question: 'Do children have to pay Fitrana?',
+          answer: 'Children do not pay it themselves, but the head of the household must give Fitrana on their behalf.'
         },
         {
-          question: 'Who is eligible to receive Fitrana?',
-          answer: 'Fitrana can be given to the poor and needy who do not have enough food for the day of Eid.'
+          question: 'Who can receive Fitrana?',
+          answer: 'Fitrana is given to people who are eligible to receive Zakat, including the poor and those who cannot meet their basic needs.'
         },
         {
-          question: 'Can I pay Fitrana for my entire family?',
-          answer: 'Yes. The head of the household is responsible for paying Fitrana for every dependent, including children and elderly members.'
-        },
-        {
-          question: 'Is Fitrana distributed according to Shariah?',
-          answer: 'Yes. MTJ Foundation ensures all Fitrana is collected and distributed in strict accordance with Shariah principles.'
+          question: 'What happens if I give Fitrana after Eid prayer?',
+          answer: 'If Fitrana is given after the Eid prayer, it will be counted as Sadaqah instead of Fitrana.'
         }
       ],
-      donateButtonText: 'Pay Your Fitrana Now'
+      donateButtonText: 'Donate Your Fitrana Today'
     }
   },
   'food-pack': {
