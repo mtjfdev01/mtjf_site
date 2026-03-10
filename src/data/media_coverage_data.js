@@ -1,7 +1,7 @@
-import mediaCoverImage1 from '../assets/img/projects/camp.webp'
-import mediaCoverImage2 from '../assets/img/projects/convocation.webp'
-import mediaCoverImage3 from '../assets/img/projects/group of boys.webp'
-import mediaHeaderImage from '../assets/img/projects/education_hero.webp'
+import mediaCoverImage1 from '../assets/img/media_coverage/relief_operations_for_flood.jpg'
+import mediaCoverImage2 from '../assets/img/media_coverage/yousuf_cricketer.jpg'
+import mediaCoverImage3 from '../assets/img/media_coverage/breast_cancer.png'
+import mediaHeaderImage from '../assets/img/media_coverage/hero_media_coverage.png'
 
 export const MEDIA_COVERAGE_PAGE_DATA = {
   id: 'media-coverage',
@@ -75,45 +75,6 @@ MTJ Foundation`
     content: {
       description:
         'لاہور (نیوزرپورٹر) نامور سابق ٹیسٹ کرکٹر محمد یوسف نے مولانا طارق جمیل فاؤنڈیشن کے ہیڈ آفس کا خصوصی دورہ کیا جہاں انہیں ایم ٹی جے فاؤنڈیشن کے جاری فلاحی منصوبوں اور عوامی خدمات کے بارے میں تفصیلی بریفنگ دی گئی۔ اس موقع پر ایم ٹی جے فاؤنڈیشن کے سی ای او احتشام اللہ قریشی کی جانب سے ایم ٹی جے فاؤنڈیشن کے 10 سے زائد جاری فلاحی منصوبوں سے آگاہ کیا گیا جن میں صحت، تعلیم، کمیونٹی سروسز، سٹیٹ آف دی آرٹ آس لیب اینڈ ڈائیگناسٹک سینٹر، بیوہ ماؤں اور یتیم بچوں کیلئے اپنا گھر، ڈیزاسٹر مینجمنٹ سمیت مختلف اہم منصوبے شامل ہیں۔ محمد یوسف نے ایم ٹی جے فاؤنڈیشن کے کسب ووکیشنل سنٹر کا بھی دورہ کیا جہاں خواتین کو بین الاقوامی معیار کے فٹبالز بنانے کی تربیت دیکر ہنرمند بنایا جا رہا ہے تاکہ وہ باعزت روزگار حاصل کر سکیں اور اپنے خاندان کی کفالت کر سکیں۔ انہوں نے بیوہ ماؤں اور یتیم بچوں کیلئے زیر تعمیر اپنا گھر پراجیکٹ اور جدید سہولیات سے آراستہ آس لیب کا بھی تفصیلی معائنہ کیا۔ ان کا کہنا تھا کہ مولانا طارق جمیل فاؤنڈیشن کی جانب سے عوامی خدمت کیلئے کیے جانے والے اقدامات قابلِ تحسین ہیں۔'
-    }
-  },
-  {
-    id: 'aid-camp-15-days',
-    title: 'ماہِ میں ساڑھے 5 ارب روپے کی امدادی سرگرمیوں کے بدلے 15 ماہ کے لیے 15 ارب روپے',
-    subtitle: 'January 18, 2025',
-    image: mediaCoverImage1,
-    donateButtonText: 'Read full news',
-    donationUrl: 'https://e.jang.com.pk/',
-    openInNewTab: true,
-    content: {
-      description:
-        'لاہور: الخدمت فاؤنڈیشن پاکستان نے اپنے فلاحی پروگرامز کے ذریعے ملک بھر میں مستحق خاندانوں تک امداد پہنچائی۔ تنظیم کے ترجمان کے مطابق متاثرہ علاقوں میں راشن، طبی سہولیات اور صاف پانی کی فراہمی کا عمل مسلسل جاری رہا۔ رپورٹ کے مطابق مختلف شہروں میں فوری ریلیف کی سرگرمیوں سے ہزاروں افراد مستفید ہوئے اور آئندہ مرحلے میں مزید منصوبے شروع کیے جائیں گے۔'
-    }
-  },
-  {
-    id: 'livelihood-distribution-1200-families',
-    title: 'الخدمت فاؤنڈیشن کے تحت دیوالی کی مناسبت سے تقریباً 1200 خاندانوں میں فوڈ پیکیج اور تحائف تقسیم',
-    subtitle: 'October 26, 2024',
-    image: mediaCoverImage2,
-    donateButtonText: 'Read full news',
-    donationUrl: 'https://www.nawaiwaqt.com.pk/',
-    openInNewTab: true,
-    content: {
-      description:
-        'لاہور: الخدمت فاؤنڈیشن پاکستان کے زیرِ اہتمام خصوصی تقریب میں مستحق خاندانوں میں فوڈ پیکیجز اور ضروری اشیاء تقسیم کی گئیں۔ تقریب میں سماجی رہنماؤں اور رضاکاروں نے شرکت کی۔ منتظمین کا کہنا ہے کہ اس اقدام کا مقصد کمزور طبقے کے ساتھ یکجہتی اور عملی تعاون کو فروغ دینا ہے۔ شرکاء نے اس خدمت کو قابلِ تحسین قرار دیا۔'
-    }
-  },
-  {
-    id: 'balochistan-flood-relief',
-    title: 'الخدمت فاؤنڈیشن پاکستان کے زیرِ اہتمام بلوچستان میں تباہ کن سیلاب سے متاثرہ خاندانوں کی امداد',
-    subtitle: 'October 24, 2024',
-    image: mediaCoverImage3,
-    donateButtonText: 'Read full news',
-    donationUrl: 'https://www.express.com.pk/',
-    openInNewTab: true,
-    content: {
-      description:
-        'لاہور: بلوچستان کے متاثرہ علاقوں میں الخدمت فاؤنڈیشن کی جانب سے ہنگامی امدادی سرگرمیاں جاری ہیں۔ تنظیمی ٹیموں نے متاثرین تک خوراک، صاف پانی، ادویات اور عارضی رہائش کی سہولیات پہنچائیں۔ متاثرہ افراد نے فوری امداد پر فاؤنڈیشن کا شکریہ ادا کیا جبکہ ذمہ داران نے بحالی کے اگلے مرحلے میں مزید تعاون جاری رکھنے کا عزم ظاہر کیا۔'
     }
   }
 ]

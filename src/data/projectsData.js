@@ -2107,10 +2107,20 @@ This Ramadan, Let Your Zakat Speak for You`,
         {
           question: 'What happens if I give Fitrana after Eid prayer?',
           answer: 'If Fitrana is given after the Eid prayer, it will be counted as Sadaqah instead of Fitrana.'
+        },
+        {
+          question: 'Give Your Fitrana and Share the Blessings of Eid',
+          answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
         }
       ],
       donateButtonText: 'Donate Your Fitrana Today'
-    }
+    },
+    // ctaContent: {
+    //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
+    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   cta_btn_text: 'Donate Your Fitrana Today',
+    //   route: '/donate'
+    // },
   },
   'food-pack': {
     id: 'food-pack',

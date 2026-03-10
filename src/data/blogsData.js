@@ -3,13 +3,15 @@ import ceo from '../assets/img/blogs/ceo.webp'
 import blog1 from '../assets/img/causes/poor boy.webp'
 import blog2 from '../assets/img/causes/meet box.webp'
 import heroBlogs from '../assets/img/blogs/hero_blogs.webp'
-import powerOfCleanWater from '../assets/img/blogs/power of clean water.webp'
-import poorMan from '../assets/img/blogs/poor man.webp'
+import powerOfCleanWater from '../assets/img/blogs/power of clean water.png'
+import poorMan from '../assets/img/blogs/poor man.png'
 import poorChild from '../assets/img/blogs/poor child.webp'
 import imageBlog3 from '../assets/img/blogs/image blog 3.webp'
 import handpump from '../assets/img/blogs/handpump.webp'
 import bull from '../assets/img/blogs/bull.webp'
-import h_2 from '../assets/img/projects/projects-details/Health/h_2.webp'
+import h_2 from '../assets/img/blogs/education.png'
+import qurbani from '../assets/img/blogs/qurbani.png'
+import marriage from '../assets/img/blogs/marriage.png'
 import h_3 from '../assets/img/projects/projects-details/Health/health_free_opd.webp'
 import h_4 from '../assets/img/projects/projects-details/Health/health_free_medicines.webp'
 import h_5 from '../assets/img/projects/projects-details/Health/health_free_medical_camps.webp'
@@ -201,7 +203,7 @@ export const blogs = [
   date: 'June 15, 2018',
   title: 'The Significance of Marriage and the Growing Challenges Amidst Inflation',
   category: 'Marriage',
-  image: h_2,
+  image: marriage,
   excerpt: 'Every year, thousands of families in Pakistan struggle to provide a decent wedding for their children. Learn how our community stepped in to help, transforming dreams into reality.',
   content: 'content',
   subProjects: 'subProjects',
@@ -338,7 +340,7 @@ export const blogs = [
   {
     id:'qurbani',
     title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
-    image: h_2,
+    image: qurbani,
     description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
                   honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
                   sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens

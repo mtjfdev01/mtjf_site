@@ -92,7 +92,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 )}
                 {subProject.description && (<>
                   {subProject?.descriptionBold && <b>{subProject?.descriptionBold || ''}</b>}
-                  <p className="media-content-description"> {subProject.description} </p>
+                  <p className="media-content-description"> {subProject?.description?.length > 700 ? subProject.description.slice(0, 600) + '...' : subProject.description} </p>
                   </>
                 )} 
               {subProject.description2 && (<>

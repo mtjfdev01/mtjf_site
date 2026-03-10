@@ -60,6 +60,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
   }
 
   const categoryOptions = ['General', project.donateCategory].filter(Boolean)
+  const projectCtaProps = project?.ctaProps || project?.ctaContent || {}
 
   return (
     <div className="project-detail-page">
@@ -242,7 +243,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
               <Newsletter />
             </Suspense>
             <Suspense fallback={null}>
-              <DonationCta />
+              <DonationCta {...projectCtaProps} />
             </Suspense>
             <Suspense fallback={null}>
               <Footer />

@@ -4,6 +4,7 @@ import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
+import HomeInfoSection from "../components/homeInfoSection/HomeInfoSection";
 import ProjectsTestimonial from "../components/projectsTestimonial/ProjectsTestimonial";
 import { home_testimonials } from "../utils/variables";
 import Stats from "../components/stats/Stats";
@@ -29,7 +30,7 @@ const Footer = lazy(() => import("../components/footer/Footer"));
 const Newsletter = lazy(() => import("../components/newsletter/Newsletter"));
 // const Partners = lazy(() => import("../components/partners/Partners"));
 
-const Home = () => {
+const Home = ({ showHomeInfoSection = false }) => {
   // Simple progressive loading - components load when they're about to enter viewport
   const [heroContentRef, showHeroContent] = useIntersectionObserver({ 
     rootMargin: '50px',
@@ -65,10 +66,12 @@ const Home = () => {
                 title={home_testimonials.title}
                 subtitle={home_testimonials?.subtitle}
               />
+              {showHomeInfoSection && <HomeInfoSection />}
               {/* <QuickBlogs /> 
               <Events /> */}
               <Newsletter />
               <DonationCta />
+           
               <Footer />
       </div>
     </>
