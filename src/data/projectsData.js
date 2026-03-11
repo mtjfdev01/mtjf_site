@@ -402,7 +402,6 @@ export const PROJECTS_DETAIL_DATA = {
           'Lifesaving treatments for critical patients',
           'Diagnostic support for illnesses often left undetected',
           'Emergency response for urgent medical cases',
-          'Long-term care for chronic patients who have no financial backing',
           'Long-term care for chronic patients who have no financial backing'
         ],
         impact: 'Every contribution you make becomes someone\'s chance to survive.',
