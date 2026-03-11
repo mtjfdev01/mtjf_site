@@ -5,6 +5,8 @@ import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
 import InitiativeDonationCard from '../components/donation/projects_menu/InitiativeDonationCard'
+import DonationSidebar from '../components/donation/projects_menu/DonationSidebar'
+import { useDonation } from '../contexts/DonationContext'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 const MediaContentSection = lazy(() => import('../components/mediaContentSection/MediaContentSection'))
@@ -17,8 +19,10 @@ const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const ProjectDetail = ({ forcedProjectId }) => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { amount } = useDonation()
   const resolvedProjectId = forcedProjectId || id
   const project = PROJECTS_DETAIL_DATA[resolvedProjectId]
+  const totalDonationAmount = amount || 0
 
   // First component after header - loads immediately
   const [contentRef, showContent] = useIntersectionObserver({ 
@@ -251,6 +255,9 @@ const ProjectDetail = ({ forcedProjectId }) => {
           </>
         )}
       </div>
+      {totalDonationAmount > 0 && (
+        <DonationSidebar />
+      )}
     </div>
   )
 }

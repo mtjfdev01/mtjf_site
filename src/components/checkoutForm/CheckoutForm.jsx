@@ -166,12 +166,16 @@ const CheckoutForm = () => {
   
   useEffect(() => {
     if (isProjectDonationsFlow && firstDonationType) {
+      const normalizedType = String(firstDonationType).trim().toLowerCase()
       const typeMap = {
-        'GENERAL': 'general',
-        'SADKA': 'sadqa',
-        'ZAKAT': 'zakat'
+        general: 'general',
+        sadqa: 'sadqa',
+        sadka: 'sadqa',
+        zakat: 'zakat',
+        fitrana: 'fitrana_2026',
+        fitrana_2026: 'fitrana_2026'
       }
-    const newDonationType = typeMap[firstDonationType] || 'general'
+    const newDonationType = typeMap[normalizedType] || 'general'
       
       // Only update if the donation type has actually changed
       // Use a ref to track the last donation type we set to prevent infinite loops
@@ -710,8 +714,9 @@ const CheckoutForm = () => {
                 className="checkout-panel__input checkout-panel__select"
               >
                 <option value="general">General Donation</option>
-                <option value="zakat">Zakat Donation</option>
-                <option value="sadqa">Sadqa Donation</option>
+                <option value="zakat">Zakat </option>
+                <option value="sadqa">Sadqa </option>
+                <option value="fitrana_2026">Fitrana </option>
               </select>
             </span>
           </div>
