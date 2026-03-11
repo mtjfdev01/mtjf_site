@@ -6,12 +6,19 @@ import './InitiativeDonationCard.css'
 const InitiativeDonationCard = ({ initiative }) => {
   const { projectDonations, updateProjectDonation } = useDonation()
   const [quantity, setQuantity] = useState(0)
-  const [donationType, setDonationType] = useState('GENERAL')
   const [customAmount, setCustomAmount] = useState('')
   const [showOverlay, setShowOverlay] = useState(false)
   const pricingOptions = Array.isArray(initiative.pricingOptions) && initiative.pricingOptions.length > 0
     ? initiative.pricingOptions
     : null
+  // Donation type options - can be customized per initiative
+  const donationTypeOptions = initiative.donationTypeOptions || [
+    { value: 'GENERAL', label: 'GENERAL' },
+    { value: 'SADKA', label: 'SADKA' },
+    { value: 'ZAKAT', label: 'ZAKAT' }
+  ]
+  const defaultDonationType = donationTypeOptions[0]?.value || 'GENERAL'
+  const [donationType, setDonationType] = useState(defaultDonationType)
   const defaultPricingOptionId = initiative.defaultPricingOptionId || pricingOptions?.[0]?.id || null
   const [selectedPricingOptionId, setSelectedPricingOptionId] = useState(defaultPricingOptionId)
 
@@ -30,20 +37,13 @@ const InitiativeDonationCard = ({ initiative }) => {
     
     if (existingDonation) {
       setQuantity(existingDonation.quantity || 0)
-      setDonationType(existingDonation.donationType || 'GENERAL')
+      setDonationType(existingDonation.donationType || defaultDonationType)
       setCustomAmount(existingDonation.customAmount ? existingDonation.customAmount.toString() : '')
       if (pricingOptions) {
         setSelectedPricingOptionId(existingDonation.selectedPricingOptionId || defaultPricingOptionId)
       }
     }
-  }, [projectDonations, initiative.parentProjectId, initiative.id, pricingOptions, defaultPricingOptionId])
-
-  // Donation type options - can be customized per initiative
-  const donationTypeOptions = initiative.donationTypeOptions || [
-    { value: 'GENERAL', label: 'GENERAL' },
-    { value: 'SADKA', label: 'SADKA' },
-    { value: 'ZAKAT', label: 'ZAKAT' }
-  ]
+  }, [projectDonations, initiative.parentProjectId, initiative.id, pricingOptions, defaultPricingOptionId, defaultDonationType])
 
   const handleQuantityChange = (delta) => {
     const newQuantity = Math.max(0, quantity + delta)

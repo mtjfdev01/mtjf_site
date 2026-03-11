@@ -11,7 +11,7 @@ const links = [
                 { name: "Volunteer", path: "/volunteerRegistration " },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" },
-                { name: "Ramadan 2026", path: "", submenu:[{name:'Zakat', path:'/projects/ramzan-zakat'},{name:'Zakat Calculator', path:'/zakat-calculator'}] },
+                { name: "Ramadan 2026", path: "", submenu:[{name:'Zakat', path:'/projects/ramzan-zakat'},{name:'Zakat Calculator', path:'/zakat-calculator'}, {name:'Fitrana', path:'/fitrana'}] },
 
 ];
 

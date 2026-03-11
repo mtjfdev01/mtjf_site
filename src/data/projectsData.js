@@ -46,10 +46,14 @@ import h_7 from '../assets/img/projects/projects-details/Health/Health_health_pr
 import h_8 from '../assets/img/projects/projects-details/Health/health_dircet_aid.webp'
 import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
-import fitrana_hero from '../assets/img/projects/projects-details/fitrana/fitrana.jpg'
-import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.jpg'
+import fitrana_hero from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
+import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
 import fitrana_matters from '../assets/img/projects/projects-details/fitrana/fitrana_sub_project.jpg'
-
+import fitrana_pricing from '../assets/img/projects/projects-details/fitrana/fitrana_pricing.webp'
+import fitrana_affect from '../assets/img/projects/projects-details/fitrana/fitrana_affect.webp'
+import fitranaIntro from '../assets/img/projects/projects-details/fitrana/importance.webp'
+import importance from '../assets/img/projects/projects-details/fitrana/matter.JPG'
+import fitrana_payers from '../assets/img/projects/projects-details/fitrana/fitrana_payers.JPG'
 import education from '../assets/img/projects/education_hero.webp'
 import ramzanRation from '../assets/img/projects/rastion packs.webp'
 
@@ -1983,10 +1987,13 @@ This Ramadan, Let Your Zakat Speak for You`,
         price: 450,
         defaultPricingOptionId: 'wheat',
         pricingOptions: [
-          { id: 'dates', label: 'Dates', price: 4500, subtitle: 'Per Person' },
-          { id: 'barley', label: 'Barley', price: 1200, subtitle: 'Per Person' },
-          { id: 'raisins', label: 'Raisins', price: 6000, subtitle: 'Per Person' },
-          { id: 'wheat', label: 'Wheat', price: 600, subtitle: 'Per Person' }
+          { id: 'raisins', label: 'Raisins', price: 3500, subtitle: 'Per Person' },
+          { id: 'dates', label: 'Dates', price: 2000, subtitle: 'Per Person' },
+          { id: 'oats', label: 'Oats', price: 600, subtitle: 'Per Person' },
+          { id: 'wheat', label: 'Wheat', price: 350, subtitle: 'Per Person' }
+        ],
+        donationTypeOptions: [
+          { value: 'fitrana_2026', label: 'Fitrana' },
         ],
         icon: communityIcon,
         description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
@@ -2014,7 +2021,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         },
         donateButtonText: 'Pay Your Fitrana Now',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: fitranaIntro
       },
       {
         id: 'why-fitrana-important',
@@ -2030,7 +2037,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText: 'Your Fitrana can make sure that struggling families have food and dignity on Eid day.',
         donateButtonText: 'Give Fitrana Today',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: importance
       },
       {
         id: 'how-much-fitrana-per-person',
@@ -2043,7 +2050,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         ],
         donateButtonText: 'Calculate & Pay Fitrana',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: fitrana_pricing
       },
       {
         id: 'who-must-pay-fitrana',
@@ -2058,7 +2065,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         ],
         donateButtonText: 'Pay Fitrana for Your Family',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: fitrana_payers
       },
       {
         id: 'when-should-fitrana-be-paid',
@@ -2084,7 +2091,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText: 'We ensure that Fitrana is distributed responsibly and according to Islamic principles to those who are eligible to receive it.',
         donateButtonText: 'Give Fitrana Today',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: fitrana_affect
       }
     ],
     faqs: {

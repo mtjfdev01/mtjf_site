@@ -1,11 +1,23 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import './AnimatedButton.css'
 
 const AnimatedButton = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const [isHovered, setIsHovered] = useState(false)
+  const { pathname } = location
+
+  const shouldHideButton =
+    pathname === '/donate' ||
+    pathname.startsWith('/donate/') ||
+    pathname === '/fitrana' ||
+    pathname.startsWith('/fitrana/')
+
+  if (shouldHideButton) {
+    return null
+  }
 
   const handleClick = () => {
     navigate('/ways-to-donate')
