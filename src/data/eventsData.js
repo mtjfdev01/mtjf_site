@@ -2,7 +2,7 @@ import eventImage1 from '../assets/img/causes/meet box.webp'
 import eventImage2 from '../assets/img/causes/poor boy.webp'
 import eventImage3 from '../assets/img/causes/power of clean water.webp'
 import eventImage4 from '../assets/img/causes/marriage_gift.webp'
-import eventsHero from '../assets/img/events/event_hero.png'
+import eventsHero from '../assets/img/events/event_hero.webp'
 
 export const EVENTS_PAGE_DATA = {
   id: 'events',

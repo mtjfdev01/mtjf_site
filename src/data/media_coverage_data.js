@@ -1,7 +1,7 @@
-import mediaCoverImage1 from '../assets/img/media_coverage/relief_operations_for_flood.jpg'
-import mediaCoverImage2 from '../assets/img/media_coverage/yousuf_cricketer.jpg'
-import mediaCoverImage3 from '../assets/img/media_coverage/breast_cancer.png'
-import mediaHeaderImage from '../assets/img/media_coverage/hero_media_coverage.png'
+import mediaCoverImage1 from '../assets/img/media_coverage/relief_operations_for_flood.webp'
+import mediaCoverImage2 from '../assets/img/media_coverage/yousuf_cricketer.webp'
+import mediaCoverImage3 from '../assets/img/media_coverage/breast_cancer.webp'
+import mediaHeaderImage from '../assets/img/media_coverage/hero_media_coverage.webp'
 
 export const MEDIA_COVERAGE_PAGE_DATA = {
   id: 'media-coverage',
