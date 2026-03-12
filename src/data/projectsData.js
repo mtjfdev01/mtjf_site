@@ -1955,6 +1955,193 @@ This Ramadan, Let Your Zakat Speak for You`,
     //   donateButtonText: 'Give Your Zakat Now'
     // }
   },
+  'layla_tul_qadr': {
+    id: 'layla_tul_qadr',
+    // title: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
+    headerImage: fitrana_hero,
+    headerImageMob: fitrana_hero,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
+      { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
+      { icon: FaGlobeAsia, number: '40+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '50,000+', label: 'Fitrana Distributed' },
+      { icon: FaHome, number: '8,000+', label: 'Households Covered' },
+      { icon: FaChild, number: '20,000+', label: 'Children Fed' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: 'Laylat-ul-Qadr, also known as The Night of Power, is one of the most sacred and powerful nights in the Islamic calendar. It is the night on which the Qur’an was first revealed, a night Allah Himself describes as better than a thousand months.',
+      paragraph2: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
+    },
+    donationForm:false,
+    // mainImage: image1,
+    // donateCategory: 'Fitrana',
+    // donateButtonText: 'Pay Your Fitrana',
+    // showInitiative: true,
+    // initiatives: [
+    //   {
+    //     id: 'fitrana-per-person',
+    //     title: 'Fitrana',
+    //     subtitle: 'Per Person',
+    //     price: 450,
+    //     defaultPricingOptionId: 'wheat',
+    //     pricingOptions: [
+    //       { id: 'raisins', label: 'Raisins', price: 3500, subtitle: 'Per Person' },
+    //       { id: 'dates', label: 'Dates', price: 2000, subtitle: 'Per Person' },
+    //       { id: 'oats', label: 'Oats', price: 600, subtitle: 'Per Person' },
+    //       { id: 'wheat', label: 'Wheat', price: 350, subtitle: 'Per Person' }
+    //     ],
+    //     donationTypeOptions: [
+    //       { value: 'fitrana_2026', label: 'Fitrana' },
+    //     ],
+    //     icon: communityIcon,
+    //     description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
+    //     duration: 'Before Eid Prayer'
+    //   },
+    // ],
+    // donationOptions: {
+    //   PKR: [450, 2250, 4500, 9000],
+    //   USD: [5, 25, 50, 100],
+    //   EUR: [5, 23, 45, 90]
+    // },
+    subProjects: [
+      {
+        id: 'why-laylat-ul-qadr-important',
+        title: 'Why Laylat-ul-Qadr Is So Important',
+        subtitle: '',
+        description: 'Allah says in the Qur\'an: "Indeed, We sent the Qur\'an down during the Night of Decree. And what can make you know what the Night of Decree is? The Night of Decree is better than a thousand months." (Surah Al-Qadr 97:1-3)',
+        services: [
+          'Angels descend by Allah\'s command',
+          'Mercy fills the earth',
+          'Duas are accepted',
+          'Sins are forgiven',
+          'Decrees for the coming year are written'
+        ],
+        afterServicesText: 'This is not an ordinary night. It is a gift from Allah to those who seek Him sincerely.',
+        image: fitranaIntro
+      },
+      {
+        id: 'when-is-laylat-ul-qadr',
+        title: 'When Is Laylat-ul-Qadr?',
+        subtitle: '',
+        description: 'The exact night of Laylat-ul-Qadr is unknown and this is by divine wisdom.',
+        quranAyat: {
+          text: 'The Prophet Muhammad صلى الله عليه وسلم said: "Search for Laylat-ul-Qadr in the odd nights of the last ten nights of Ramadan."',
+          reference: 'Sahih al-Bukhari'
+        },
+        afterServicesText: 'This encourages believers to remain consistent in worship throughout the last ten nights, especially the odd nights. In 2026, Laylat-ul-Qadr is expected to fall during the last ten nights of Ramadan, subject to moon sighting. Allah knows best.',
+        image: importance
+      },
+      {
+        id: 'why-last-ten-nights-matter',
+        title: 'Why the Last Ten Nights Matter',
+        subtitle: '',
+        description: 'The Prophet صلى الله عليه وسلم would increase his worship during the last ten nights more than at any other time of the year.',
+        services: [
+          'A chance to seek forgiveness',
+          'A chance to change destiny through du\'a',
+          'A chance to place something eternal on your scale of deeds'
+        ],
+        afterServicesText: 'What you give in these nights may be the deed that saves you.',
+        image: fitrana_pricing
+      },
+      {
+        id: 'what-to-do-on-laylat-ul-qadr',
+        title: 'What to Do on Laylat-ul-Qadr',
+        subtitle: '',
+        description: 'The most beloved actions on this night include:',
+        services: [
+          'Sincere du\'a from the heart',
+          'Nafl (voluntary) prayers, including Tahajjud',
+          'Dhikr (remembrance of Allah)',
+          'Sending salawat upon the Prophet صلى الله عليه وسلم',
+          'Giving Sadaqah and Zakat'
+        ],
+        quranAyat: {
+          text: 'The Prophet صلى الله عليه وسلم said: "The best charity is that given in Ramadan."',
+          reference: 'Tirmidhi'
+        },
+        afterServicesText: 'And charity given on Laylat-ul-Qadr carries reward beyond imagination.',
+        image: fitrana_payers
+      },
+      {
+        id: 'dua-for-laylat-ul-qadr',
+        title: 'A Du\'a the Prophet صلى الله عليه وسلم Taught for Laylat-ul-Qadr',
+        subtitle: '',
+        description: 'Aisha (RA) asked the Prophet صلى الله عليه وسلم what du\'a to make if she found Laylat-ul-Qadr. He replied:',
+        arabicText: 'Allahumma innaka \'afuwwun tuhibbul \'afwa fa\'fu \'anni.',
+        afterServicesText: 'O Allah, You are Most Forgiving, and You love to forgive, so forgive me. This du\'a alone carries oceans of mercy.',
+        donateButtonText: 'Make Du\'a and Give Charity',
+        donationUrl: '/donate/fitrana',
+        image: fitrana_matters
+      },
+      {
+        id: 'give-charity-on-laylat-ul-qadr',
+        title: 'Give Charity on Laylat-ul-Qadr',
+        subtitle: 'Multiply Your Reward Beyond Measure',
+        description: 'Charity given on Laylat-ul-Qadr is multiplied more than 83 years. Your Zakat or Sadaqah on this night can become:',
+        services: [
+          'Provide food to families struggling with poverty',
+          'Medical care for the sick',
+          'Relief for widows, orphans, and the vulnerable',
+          'A source of forgiveness for yourself'
+        ],
+        afterServicesText: 'At Molana Tariq Jamil Foundation, donations given during these blessed nights are distributed responsibly, transparently, and strictly according to Shariah reaching those who need help the most.',
+        image: fitrana_affect
+      },
+      {
+        id: 'let-your-charity-search-for-laylat-ul-qadr',
+        title: 'Let Your Charity Search for Laylat-ul-Qadr',
+        subtitle: '',
+        description: `Since we do not know which night it is, the best approach is to give consistently throughout the last ten nights.`,
+        image: fitrana_affect,
+        services: [
+          'Give with sincerity.',
+          'Give with hope.',
+          'Give while the doors of mercy are wide open.',
+          'These nights will not return once they pass.',
+          'Make your charity part of your worship.'
+        ]
+      },
+      
+    ],
+    // faqs: {
+    //   id: 'frequently-asked-questions',
+    //   title: 'Fitrana FAQs\s',
+    //   // subtitle: 'Everything You Need to Know About Fitrana',
+    //   description: '',
+    //   faqs: [
+    //     {
+    //       question: 'Can I give Fitrana before Eid?',
+    //       answer: 'Yes. In fact, it is recommended to give Fitrana during Ramadan so it can reach those in need before Eid.'
+    //     },
+    //     {
+    //       question: 'Do children have to pay Fitrana?',
+    //       answer: 'Children do not pay it themselves, but the head of the household must give Fitrana on their behalf.'
+    //     },
+    //     {
+    //       question: 'Who can receive Fitrana?',
+    //       answer: 'Fitrana is given to people who are eligible to receive Zakat, including the poor and those who cannot meet their basic needs.'
+    //     },
+    //     {
+    //       question: 'What happens if I give Fitrana after Eid prayer?',
+    //       answer: 'If Fitrana is given after the Eid prayer, it will be counted as Sadaqah instead of Fitrana.'
+    //     },
+    //     {
+    //       question: 'Give Your Fitrana and Share the Blessings of Eid',
+    //       answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
+    //     }
+    //   ],
+    //   donateButtonText: 'Donate Your Fitrana Today'
+    // },
+    // ctaContent: {
+    //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
+    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   cta_btn_text: 'Donate Your Fitrana Today',
+    //   route: '/donate'
+    // },
+  },
   'fitrana': {
     id: 'fitrana',
     title: 'Fitrana (Zakat al-Fitr) – Meaning, Amount & How to Donate',
@@ -1973,36 +2160,6 @@ This Ramadan, Let Your Zakat Speak for You`,
     content: {
       paragraph1: 'Fitrana, also known as Zakat al-Fitr, is a compulsory charity given at the end of Ramadan before the Eid-ul-Fitr prayer. It is an obligation on every eligible Muslim and is meant to purify our fasts while ensuring that those in need can also celebrate Eid with dignity.',
       paragraph2: 'By giving Fitrana through Molana Tariq Jamil Foundation, you help provide food and essential support to families who may otherwise struggle during this blessed time.',
-    },
-    // mainImage: image1,
-    donateCategory: 'Fitrana',
-    donateButtonText: 'Pay Your Fitrana',
-    showInitiative: true,
-    initiatives: [
-      {
-        id: 'fitrana-per-person',
-        title: 'Fitrana',
-        subtitle: 'Per Person',
-        price: 450,
-        defaultPricingOptionId: 'wheat',
-        pricingOptions: [
-          { id: 'raisins', label: 'Raisins', price: 3500, subtitle: 'Per Person' },
-          { id: 'dates', label: 'Dates', price: 2000, subtitle: 'Per Person' },
-          { id: 'oats', label: 'Oats', price: 600, subtitle: 'Per Person' },
-          { id: 'wheat', label: 'Wheat', price: 350, subtitle: 'Per Person' }
-        ],
-        donationTypeOptions: [
-          { value: 'fitrana_2026', label: 'Fitrana' },
-        ],
-        icon: communityIcon,
-        description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
-        duration: 'Before Eid Prayer'
-      },
-    ],
-    donationOptions: {
-      PKR: [450, 2250, 4500, 9000],
-      USD: [5, 25, 50, 100],
-      EUR: [5, 23, 45, 90]
     },
     subProjects: [
       {

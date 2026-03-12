@@ -103,12 +103,12 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
             {/* Main Content Section */}
             {/* show if title exists and content exists */}
-            {project?.title  &&  project?.content &&    (
+            { project?.content &&    (
             <section key={project.id} className="project-content-section container py-48">
               <div className="project-content-grid grid grid-12 gap-32">
                 {/* Left Content */}
                 <div className="project-content-left col-12 lg-8">
-                  <h2>{project.title}</h2>
+                  <h2>{project?.title}</h2>
                   <div className="project-content-text">
                     <p className="text-base mb-24">{project.content.paragraph1}</p>
                     <p className="text-base mb-24">{project.content.paragraph2}</p>
