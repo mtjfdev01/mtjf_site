@@ -54,7 +54,7 @@ const DonationSidebar = ({ onCompleteDonation, showBackButton = false }) => {
           <button
             className="donation-sidebar-button"
             onClick={handleCompleteDonation}
-            disabled={totalAmount <= 0}
+            // disabled={totalAmount <= 0}
           >
             Complete Donation
           </button>

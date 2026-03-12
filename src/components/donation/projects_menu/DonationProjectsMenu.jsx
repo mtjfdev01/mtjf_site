@@ -312,20 +312,25 @@ const DonationProjectsMenu = () => {
   }
 
   const handleCompleteDonation = () => {
-    if (totalDonationAmount <= 0) {
-      setMessage("⚠ Please add at least one donation item.")
-      return
-    }
+
+    // if (totalDonationAmount <= 0) {
+    //   setMessage("⚠ Please add at least one donation item.")
+    //   return
+    // }
+
 
     // Use projectDonations from context
     const donationsToCheckout = projectDonations.filter(donation => {
       return donation.totalAmount > 0
     })
+
     
-    if (donationsToCheckout.length === 0) {
-      setMessage("⚠ Please add at least one donation item.")
-      return
-    }
+    // if (donationsToCheckout.length === 0) {
+    //   setMessage("⚠ Please add at least one donation item.")
+    //   return
+    // }
+
+    
 
     // Navigate to checkout with donation data
     navigate('/checkout', { 
