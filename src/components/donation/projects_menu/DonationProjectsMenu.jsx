@@ -115,7 +115,7 @@ const DonationProjectsMenu = () => {
       ]
     },
     { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa", initiatives: [] },
-    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, price: 5000, new: false, category: "General", initiatives: []     },
+    { id: 'disaster-management', title: "Gaza Relief", icon: disasterRelief, price: 5000, new: false, category: "General", initiatives: []     },
     { 
       id: 'kasb-skill-development', 
       title: "KASB Skill Development", 

@@ -46,13 +46,14 @@ import h_7 from '../assets/img/projects/projects-details/Health/Health_health_pr
 import h_8 from '../assets/img/projects/projects-details/Health/health_dircet_aid.webp'
 import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
+
 import fitrana_hero from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
 import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
 import fitrana_matters from '../assets/img/projects/projects-details/fitrana/fitrana_sub_project.jpg'
 import fitrana_pricing from '../assets/img/projects/projects-details/fitrana/fitrana_pricing.webp'
 import fitrana_affect from '../assets/img/projects/projects-details/fitrana/fitrana_affect.webp'
 import fitranaIntro from '../assets/img/projects/projects-details/fitrana/importance.webp'
-import importance from '../assets/img/projects/projects-details/fitrana/matter.JPG'
+import importance from '../assets/img/projects/projects-details/fitrana/matter.jpg'
 import fitrana_payers from '../assets/img/projects/projects-details/fitrana/fitrana_payers.JPG'
 import education from '../assets/img/projects/education_hero.webp'
 import ramzanRation from '../assets/img/projects/rastion packs.webp'
@@ -68,7 +69,6 @@ import educationprogram from '../assets/img/projects/projects-details/education/
 import quarterlyeducation from '../assets/img/projects/projects-details/education/education_report.webp'
 import supportbuildsfutures from '../assets/img/projects/projects-details/education/education_support.webp'
 import impactglance from '../assets/img/projects/projects-details/education/education_transform.webp'
-
 
 import CleanWater from '../assets/img/projects/water.webp'
 import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
@@ -97,8 +97,6 @@ import pakistan_floods_2025 from '../assets/img/projects/projects-details/Disast
 import accountability_transparency from '../assets/img/projects/projects-details/Disaster/disaster_audit.webp'
 import voices_from_field from '../assets/img/projects/projects-details/Disaster/disaster_voices.webp'
 import call_to_action from '../assets/img/projects/projects-details/Disaster/disaster_call.webp'
-
-
 
 import KasbSkill from '../assets/img/projects/project-image/kasbskill.webp'
 import trainerProgram from '../assets/img/projects/projects-details/kasb/kasb_trainer.webp'
@@ -153,6 +151,15 @@ import {
   FaSeedling,
   FaShieldAlt
 } from 'react-icons/fa'
+
+import lq_hero from '../assets/img/projects/projects-details/laylat_ul_qadr/hero.webp'
+import lq_hero_mob from '../assets/img/projects/projects-details/laylat_ul_qadr/hero.webp'
+import lq_matters from '../assets/img/projects/projects-details/laylat_ul_qadr/importance.webp'
+import lq_time from '../assets/img/projects/projects-details/laylat_ul_qadr/When is LQ.webp'
+import lq_do from '../assets/img/projects/projects-details/laylat_ul_qadr/What to do on LQ.webp'
+import lq_dua from '../assets/img/projects/projects-details/laylat_ul_qadr/A dua prophet SAW taught.webp'
+import lq_charity from '../assets/img/projects/projects-details/laylat_ul_qadr/Give charity on LQ.jpg'
+import lq_charity_search from '../assets/img/projects/projects-details/laylat_ul_qadr/Let your charity search for LQ.webp'
 
 export const PROJECTS_DETAIL_DATA = {
   education: {
@@ -1958,8 +1965,8 @@ This Ramadan, Let Your Zakat Speak for You`,
   'layla_tul_qadr': {
     id: 'layla_tul_qadr',
     // title: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
-    headerImage: fitrana_hero,
-    headerImageMob: fitrana_hero,
+    headerImage: lq_hero,
+    headerImageMob: lq_hero_mob,
     stats: [
       { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
       { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
@@ -1975,36 +1982,6 @@ This Ramadan, Let Your Zakat Speak for You`,
       paragraph2: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
     },
     donationForm:false,
-    // mainImage: image1,
-    // donateCategory: 'Fitrana',
-    // donateButtonText: 'Pay Your Fitrana',
-    // showInitiative: true,
-    // initiatives: [
-    //   {
-    //     id: 'fitrana-per-person',
-    //     title: 'Fitrana',
-    //     subtitle: 'Per Person',
-    //     price: 450,
-    //     defaultPricingOptionId: 'wheat',
-    //     pricingOptions: [
-    //       { id: 'raisins', label: 'Raisins', price: 3500, subtitle: 'Per Person' },
-    //       { id: 'dates', label: 'Dates', price: 2000, subtitle: 'Per Person' },
-    //       { id: 'oats', label: 'Oats', price: 600, subtitle: 'Per Person' },
-    //       { id: 'wheat', label: 'Wheat', price: 350, subtitle: 'Per Person' }
-    //     ],
-    //     donationTypeOptions: [
-    //       { value: 'fitrana_2026', label: 'Fitrana' },
-    //     ],
-    //     icon: communityIcon,
-    //     description: 'Fitrana (Sadaqat al-Fitr) is obligatory upon every Muslim who possesses wealth above the nisab threshold. It must be paid before Eid ul-Fitr prayer for each member of the household, including children and dependents.',
-    //     duration: 'Before Eid Prayer'
-    //   },
-    // ],
-    // donationOptions: {
-    //   PKR: [450, 2250, 4500, 9000],
-    //   USD: [5, 25, 50, 100],
-    //   EUR: [5, 23, 45, 90]
-    // },
     subProjects: [
       {
         id: 'why-laylat-ul-qadr-important',
@@ -2019,7 +1996,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           'Decrees for the coming year are written'
         ],
         afterServicesText: 'This is not an ordinary night. It is a gift from Allah to those who seek Him sincerely.',
-        image: fitranaIntro
+        image: lq_matters
       },
       {
         id: 'when-is-laylat-ul-qadr',
@@ -2031,7 +2008,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           reference: 'Sahih al-Bukhari'
         },
         afterServicesText: 'This encourages believers to remain consistent in worship throughout the last ten nights, especially the odd nights. In 2026, Laylat-ul-Qadr is expected to fall during the last ten nights of Ramadan, subject to moon sighting. Allah knows best.',
-        image: importance
+        image: lq_time
       },
       {
         id: 'why-last-ten-nights-matter',
@@ -2044,7 +2021,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           'A chance to place something eternal on your scale of deeds'
         ],
         afterServicesText: 'What you give in these nights may be the deed that saves you.',
-        image: fitrana_pricing
+        image: lq_matters
       },
       {
         id: 'what-to-do-on-laylat-ul-qadr',
@@ -2063,7 +2040,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           reference: 'Tirmidhi'
         },
         afterServicesText: 'And charity given on Laylat-ul-Qadr carries reward beyond imagination.',
-        image: fitrana_payers
+        image: lq_do
       },
       {
         id: 'dua-for-laylat-ul-qadr',
@@ -2074,7 +2051,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText: 'O Allah, You are Most Forgiving, and You love to forgive, so forgive me. This du\'a alone carries oceans of mercy.',
         donateButtonText: 'Make Du\'a and Give Charity',
         donationUrl: '/donate/fitrana',
-        image: fitrana_matters
+        image: lq_dua
       },
       {
         id: 'give-charity-on-laylat-ul-qadr',
@@ -2088,14 +2065,14 @@ This Ramadan, Let Your Zakat Speak for You`,
           'A source of forgiveness for yourself'
         ],
         afterServicesText: 'At Molana Tariq Jamil Foundation, donations given during these blessed nights are distributed responsibly, transparently, and strictly according to Shariah reaching those who need help the most.',
-        image: fitrana_affect
+        image: lq_charity
       },
       {
         id: 'let-your-charity-search-for-laylat-ul-qadr',
         title: 'Let Your Charity Search for Laylat-ul-Qadr',
         subtitle: '',
         description: `Since we do not know which night it is, the best approach is to give consistently throughout the last ten nights.`,
-        image: fitrana_affect,
+        image: lq_charity_search,
         services: [
           'Give with sincerity.',
           'Give with hope.',
