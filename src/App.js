@@ -97,6 +97,8 @@ function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/laylat-ul-qadar" element={<ProjectDetail forcedProjectId="layla_tul_qadr" />} />
+              <Route path="/test/gaza" element={<ProjectDetail forcedProjectId="gaza" />} />
+
               <Route path="/fitrana" element={<ProjectDetail forcedProjectId="fitrana" />} />
               <Route path="/publications" element={<Publications />} />
               <Route path="/getInvolved" element={<GetInvolved />} />

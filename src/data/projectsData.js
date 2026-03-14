@@ -2127,6 +2127,228 @@ This Ramadan, Let Your Zakat Speak for You`,
     //   route: '/donate'
     // },
   },
+  'gaza': {
+    id: 'gaza',
+    // title: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
+    headerImage: lq_hero,
+    headerImageMob: lq_hero_mob,
+    stats: [
+      { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
+      { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
+      { icon: FaGlobeAsia, number: '40+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '50,000+', label: 'Fitrana Distributed' },
+      { icon: FaHome, number: '8,000+', label: 'Households Covered' },
+      { icon: FaChild, number: '20,000+', label: 'Children Fed' },
+      { icon: FaCalendarAlt, number: '10+', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: 'For over two years now, the people of Gaza have endured relentless hardship, widespread displacement, destruction of homes, food insecurity, and limited access to medical care.',
+      paragraph2: 'During this ongoing crisis, MTJ Foundation has remained committed to standing with the people of Gaza, delivering lifesaving humanitarian assistance and restoring dignity in the most difficult circumstances.',
+      paragraph3:'Through structured international collaboration and on-ground implementation, your support has translated into real impact: saving lives, feeding families, and sustaining hope.'
+      // testimonials:
+      // {
+      //   id:'laylat-ul-qadr',
+      //   title:'Laylat-ul-Qadr ',
+      //   videos:[
+      //     'https://www.youtube.com/watch?v=RaDA7oiNqLs'
+      //   ]
+      // }
+    },
+    donationForm:false,
+    subProjects: [
+      {
+        id: 'why-laylat-ul-qadr-important',
+        title: 'How We Deliver Aid to Gaza',
+        image: fitranaIntro,
+        subtitle: '',
+        description: 'Due to restricted access, MTJ Foundation delivers aid through established humanitarian channels that operate on the ground. This ensures assistance reaches those most in need in a safe, timely, and transparent manner. Our aid delivery process includes :',
+        description2:'Our aid delivery process includes:',
+        services: [
+          {
+            heading: 'Sourcing & Procurement',
+            description: 'Essential relief items are prepared based on urgent needs on the ground.'
+          },
+          {
+            heading: 'Verified Distribution',
+            description: 'All aid distributions are documented through reports, photographs, and videos.'
+          },
+          {
+            heading: 'Targeted Reach',
+            description: 'Support is prioritized for the most vulnerable - displaced families, women, children, and the elderly.'
+          }
+        ],
+      },
+      {
+        id: 'why-laylat-ul-qadr-important',
+        title: ' Our Impact So Far',
+        subtitle: '',
+        image: fitranaIntro,
+
+        description: 'Through consistent and responsible humanitarian action, MTJ Foundation has supported:',
+        description2:true,
+        description2Bold:'110,000+ individuals in Gaza',
+        description3:"Aid provided includes:",
+        // description2Bold:true,
+        services: [
+          // {
+          //   heading: '110,000+ individuals in Gaza',
+          //   description: 'Aid provided includes:'
+          // },
+          {
+            description: 'Emergency food parcels and hot meals.'
+          },
+          {
+            description: 'Baby formula and nutrition support'
+          },
+          {
+            description: 'Hygiene and dignity kits'
+          },
+          {
+            description: 'Medical aid and emergency healthcare'
+          },
+          {
+            description: 'Winter essentials and temporary relief items'
+          }
+        ],
+        afterServicesText:'Every number represents a life supported, a family fed, and dignity restored during crisis.'
+      },
+      {
+        id: 'when-is-laylat-ul-qadr',
+        title: 'From Emergency Relief to Rebuilding Lives',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: 'With the recent ceasefire, MTJ Foundation has expanded its focus beyond immediate survival needs.',
+        description2:`While food and medical aid remain critical, families now face the long road of recovery,
+rebuilding shelter, restoring stability, and reclaiming a sense of normalcy after prolonged displacement.`,
+
+      },
+      {
+        id: 'why-last-ten-nights-matter',
+        title: 'Let’s Rebuild Gaza',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: `MTJ Foundation has launched the Let’s Rebuild Gaza initiative to support families as they move
+from survival toward recovery.`,
+description2:true,
+description2Bold:'Focus Areas:',
+services: [  
+  {
+    heading: 'Temporary Shelter Support',
+    description: 'Establishing temporary remote homes near refugee camps to provide displaced families with safe, dignified shelter until permanent reconstruction becomes possible.'
+  },
+  {
+    heading: 'Food Security & Nutrition',
+    description: 'Continued food distribution to address malnutrition, particularly among children, ensuring families regain strength and stability.'
+  }
+],
+    afterServicesText:`Your support creates real change, providing hope when its needed the most.`
+      },
+      {
+        id: 'what-to-do-on-laylat-ul-qadr',
+        title: 'Stories of Resilience',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: 'Behind every statistic is a human story.',
+        services: [
+          "A mother able to feed her child.",
+          "A family finding shelter after months of displacement.",
+          "A child receiving medical care in a time of crisis."
+        ],
+      },
+      {
+        id: 'what-to-do-on-laylat-ul-qadr',
+        title: 'Transparency & Accountability',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: 'Accountability remains central to MTJ Foundation’s work.',
+        description2:`To ensure responsible use of donations:`,
+        services: [
+          "Detailed financial and impact reports are prepared",
+          "On-ground monitoring is conducted through international chapters",
+          "Visual documentation is collected for every aid drive",
+          "All relief initiatives follow structured approval and reporting processes"
+        ],
+        afterServicesText: 'Your trust is honored through transparency at every step.',
+      },
+      {
+        id: 'dua-for-laylat-ul-qadr',
+        title: 'Challenges & Our Commitment',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: `Delivering aid in conflict zones comes with significant challenges, restricted access, supply chain
+disruptions, and security risks. Despite these obstacles, MTJ Foundation remains steadfast in its
+mission to reach those in urgent need.`,
+        description2:'We continue to adapt and collaborate to ensure aid reaches Gaza responsibly and effectively.',
+
+      },
+      {
+        id: 'give-charity-on-laylat-ul-qadr',
+        title: 'How You Can Help',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: 'Your generosity enables this work to continue.',
+        services: [
+          '**Donate** - Support food, medical aid, and shelter',
+          '**Sponsor Relief** - Help a family survive and recover',
+          '**Spread Awareness** - Share this mission with your community'
+        ],
+      },
+      {
+        id: 'let-your-charity-search-for-laylat-ul-qadr',
+        title: 'Stand With Gaza',
+        image: fitranaIntro,
+
+        subtitle: '',
+        description: `Together, we can help rebuild lives, restore dignity, and bring hope to families who have
+endured the unimaginable.`,
+        // image: lq_charity_search,
+        donateButtonText: 'Donate today (CTA Button)',
+      },
+      
+    ],
+    // faqs: {
+    //   id: 'frequently-asked-questions',
+    //   title: 'Fitrana FAQs\s',
+    //   // subtitle: 'Everything You Need to Know About Fitrana',
+    //   description: '',
+    //   faqs: [
+    //     {
+    //       question: 'Can I give Fitrana before Eid?',
+    //       answer: 'Yes. In fact, it is recommended to give Fitrana during Ramadan so it can reach those in need before Eid.'
+    //     },
+    //     {
+    //       question: 'Do children have to pay Fitrana?',
+    //       answer: 'Children do not pay it themselves, but the head of the household must give Fitrana on their behalf.'
+    //     },
+    //     {
+    //       question: 'Who can receive Fitrana?',
+    //       answer: 'Fitrana is given to people who are eligible to receive Zakat, including the poor and those who cannot meet their basic needs.'
+    //     },
+    //     {
+    //       question: 'What happens if I give Fitrana after Eid prayer?',
+    //       answer: 'If Fitrana is given after the Eid prayer, it will be counted as Sadaqah instead of Fitrana.'
+    //     },
+    //     {
+    //       question: 'Give Your Fitrana and Share the Blessings of Eid',
+    //       answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
+    //     }
+    //   ],
+    //   donateButtonText: 'Donate Your Fitrana Today'
+    // },
+    // ctaContent: {
+    //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
+    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   cta_btn_text: 'Donate Your Fitrana Today',
+    //   route: '/donate'
+    // },
+  },
   'fitrana': {
     id: 'fitrana',
     title: 'Fitrana (Zakat al-Fitr) – Meaning, Amount & How to Donate',

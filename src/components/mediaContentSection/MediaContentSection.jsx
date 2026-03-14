@@ -65,6 +65,98 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
     return subProject?.image
   }
 
+  const getItemField = (item, keys = []) => {
+    if (!item || typeof item !== 'object') return ''
+    for (const key of keys) {
+      const value = item[key]
+      if (typeof value === 'string' && value.trim()) {
+        return value.trim()
+      }
+    }
+    return ''
+  }
+
+  const getSubServiceItems = (item) => {
+    if (!item || typeof item !== 'object') return []
+    const nested = item.subServices || item.subservices || item.items || item.points || item.services
+    if (!Array.isArray(nested)) return []
+    return nested
+      .map((subItem) => {
+        if (typeof subItem === 'string') {
+          return {
+            bold: '',
+            text: subItem.trim()
+          }
+        }
+        if (!subItem || typeof subItem !== 'object') return null
+
+        const bold = getItemField(subItem, ['boldText', 'bold', 'heading', 'title', 'name', 'label'])
+        const text = getItemField(subItem, ['text', 'description', 'subtitle', 'answer'])
+
+        if (!bold && !text) {
+          const fallback = Object.values(subItem).find((value) => typeof value === 'string' && value.trim())
+          return {
+            bold: '',
+            text: typeof fallback === 'string' ? fallback.trim() : ''
+          }
+        }
+
+        return { bold, text }
+      })
+      .filter((entry) => entry && (entry.bold || entry.text))
+  }
+
+  const renderTextWithBoldMarkers = (value) => {
+    if (typeof value !== 'string' || !value) return null
+    const parts = value.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
+
+    return parts.map((part, index) => {
+      const isBold = part.startsWith('**') && part.endsWith('**') && part.length > 4
+      if (isBold) {
+        return <strong key={index}>{part.slice(2, -2)}</strong>
+      }
+      return <React.Fragment key={index}>{part}</React.Fragment>
+    })
+  }
+
+  const normalizeListItem = (item) => {
+    if (typeof item === 'string') {
+      return {
+        heading: '',
+        textBold: '',
+        text: item,
+        subServices: []
+      }
+    }
+
+    if (!item || typeof item !== 'object') {
+      return {
+        heading: '',
+        textBold: '',
+        text: '',
+        subServices: []
+      }
+    }
+
+    const heading = getItemField(item, ['heading', 'title', 'name', 'label', 'question'])
+    const textBold = getItemField(item, ['boldText', 'bold', 'descriptionBold', 'textBold'])
+    const text = getItemField(item, ['description', 'text', 'subtitle', 'answer'])
+    const subServices = getSubServiceItems(item)
+
+    // Fallback for objects that only expose an unknown first string value.
+    if (!heading && !textBold && !text && subServices.length === 0) {
+      const fallback = Object.values(item).find((value) => typeof value === 'string' && value.trim())
+      return {
+        heading: '',
+        textBold: '',
+        text: typeof fallback === 'string' ? fallback.trim() : '',
+        subServices: []
+      }
+    }
+
+    return { heading, textBold, text, subServices }
+  }
+
   if (!subProjects || subProjects.length === 0) {
     return null
   }
@@ -108,12 +200,45 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                 {listItems && listItems.length > 0 && (
                   <ul className="media-content-list">
                     {listItems.map((item, itemIndex) => {
-                      // Handle both string items and object items
-                      const itemText = typeof item === 'string' ? item : item.name || item.title || item.label || JSON.stringify(item)
+                      const normalizedItem = normalizeListItem(item)
+                      if (!normalizedItem.heading && !normalizedItem.textBold && !normalizedItem.text && normalizedItem.subServices.length === 0) {
+                        return null
+                      }
+
                       return (
                         <li key={itemIndex} className="media-content-list-item">
                           <span className="media-content-list-icon"></span>
-                          <span className="media-content-list-text">{itemText}</span>
+                          <div className="media-content-list-content">
+                            {normalizedItem.heading && (
+                              <span className="media-content-list-heading">{normalizedItem.heading}</span>
+                            )}
+                            {(normalizedItem.textBold || normalizedItem.text) && (
+                              <span className="media-content-list-text">
+                                {normalizedItem.textBold && (
+                                  <strong className="media-content-list-inline-strong">
+                                    {normalizedItem.textBold}
+                                  </strong>
+                                )}
+                                {normalizedItem.textBold && normalizedItem.text ? ' ' : ''}
+                                {renderTextWithBoldMarkers(normalizedItem.text)}
+                              </span>
+                            )}
+                            {normalizedItem.subServices.length > 0 && (
+                              <ul className="media-content-sub-list">
+                                {normalizedItem.subServices.map((subService, subIndex) => (
+                                  <li key={`${itemIndex}-${subIndex}`} className="media-content-sub-list-item">
+                                    {subService.bold && (
+                                      <strong className="media-content-list-inline-strong">
+                                        {subService.bold}
+                                      </strong>
+                                    )}
+                                    {subService.bold && subService.text ? ' ' : ''}
+                                    {renderTextWithBoldMarkers(subService.text)}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
                         </li>
                       )
                     })}
