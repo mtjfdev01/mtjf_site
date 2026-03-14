@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 // import apna_ghar_hero_mob from '../../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
 import zakat_hero from '../../assets/img/zakat/zakat_hero.webp'
 import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popup.webp' 
+import hero from '../../assets/img/projects/project-image/gaza.webp'
+import hero_mob from '../../assets/img/projects/project-image/gaza.webp'
 import './hero.css'
 
 const HERO_IMAGES = [
@@ -15,6 +17,8 @@ const HERO_IMAGES = [
   // { desktop: hero, mobile: hero_mob }, 
   // { desktop: winter_hero, mobile: winter_mob },
   // { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
+    // { desktop: hero, mobile: hero_mob, link: '/donate' }, 
+
 ]
 
 const Hero = () => {
@@ -24,7 +28,7 @@ const Hero = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length)
-    }, 50000)
+    }, 5000)
 
     return () => {
       if (intervalRef.current) {

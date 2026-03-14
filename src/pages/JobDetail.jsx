@@ -190,8 +190,31 @@ const JobDetail = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>{job.location}</span>
+                <span>{job.location}</span> 
               </div>
+              { job?.posted_date && (
+              <div className="job-detail-info-item">
+                <span><b> Posted Date: </b> </span>
+                <span>
+                {job?.posted_date
+                  ? new Date(job.posted_date).toLocaleDateString()
+                  : ''}
+              </span> 
+              </div>
+              )
+              }
+              {
+                job?.closing_date && (
+              <div className="job-detail-info-item">
+                <span><b> Closing  Date: </b> </span>
+                <span>
+                {job?.posted_date
+                  ? new Date(job.closing_date).toLocaleDateString()
+                  : ''}
+              </span> 
+              </div>
+              )
+              }
             </div>
             {/* Apply button commented out - using email contact instead */}
             {/* <button 
@@ -241,8 +264,10 @@ const JobDetail = () => {
           </section>
 
           {/* Qualifications */}
+          {
+            job?.qualifications && (
           <section className="job-detail-section">
-            <h2 className="job-detail-section-title">Qualifications  Experience & Skills</h2>
+            <h2 className="job-detail-section-title">Qualifications </h2>
             <ul className="job-detail-list">
               {job.qualifications.map((qualification, index) => (
                 <li key={index} className="job-detail-list-item">
@@ -251,8 +276,43 @@ const JobDetail = () => {
               ))}
             </ul>
           </section>
+          )
+          }
+        {/* Experience*/}
+          {
+            job?.experience && (
+          <section className="job-detail-section">
+            <h2 className="job-detail-section-title"> Experience </h2>
+            <ul className="job-detail-list">
+              {job?.experience.map((experience, index) => (
+                <li key={index} className="job-detail-list-item">
+                  {experience}
+                </li>
+              ))}
+            </ul>
+          </section>
+          )
+          }
+        {/* Skills*/}
+        {
+          job?.skills && (
+        <section className="job-detail-section">
+            <h2 className="job-detail-section-title"> Skills </h2>
+            <ul className="job-detail-list">
+              {job?.skills?.map((skill, index) => (
+                <li key={index} className="job-detail-list-item">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </section>
+          )
+          }
+
 
           {/* Responsibilities */}
+          {
+            job?.responsibilities && (
           <section className="job-detail-section">
             <h2 className="job-detail-section-title">Responsibilities</h2>
             <ul className="job-detail-list">
@@ -263,7 +323,8 @@ const JobDetail = () => {
               ))}
             </ul>
           </section>
-
+          )
+          }
           {/* Company Information */}
           <section className="job-detail-section">
             <h2 className="job-detail-section-title">Molana Tariq Jamil Foundation</h2>
