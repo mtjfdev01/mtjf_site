@@ -1980,6 +1980,14 @@ This Ramadan, Let Your Zakat Speak for You`,
     content: {
       paragraph1: 'Laylat-ul-Qadr, also known as The Night of Power, is one of the most sacred and powerful nights in the Islamic calendar. It is the night on which the Qur’an was first revealed, a night Allah Himself describes as better than a thousand months.',
       paragraph2: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
+      testimonials:
+      {
+        id:'laylat-ul-qadr',
+        title:'Laylat-ul-Qadr ',
+        videos:[
+          'https://www.youtube.com/watch?v=RaDA7oiNqLs'
+        ]
+      }
     },
     donationForm:false,
     subProjects: [
