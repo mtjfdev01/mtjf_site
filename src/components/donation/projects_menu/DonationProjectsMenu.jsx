@@ -361,7 +361,7 @@ const DonationProjectsMenu = () => {
         )}
         
         {/* Category Filter Buttons - Hide when project is expanded */}
-        {!expandedProjectId && (
+        {/* {!expandedProjectId && (
           <div className="category-filter">
             <button
               className={`category-filter-btn ${selectedCategory === "General" ? "active" : ""}`}
@@ -382,7 +382,7 @@ const DonationProjectsMenu = () => {
               Zakat
             </button>
           </div>
-        )}
+        )} */}
 
         <div className="grid-section">
           {/* Hide donation form when a project is expanded */}

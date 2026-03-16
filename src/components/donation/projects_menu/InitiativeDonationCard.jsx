@@ -15,7 +15,8 @@ const InitiativeDonationCard = ({ initiative }) => {
   const donationTypeOptions = initiative.donationTypeOptions || [
     { value: 'GENERAL', label: 'GENERAL' },
     { value: 'SADKA', label: 'SADKA' },
-    { value: 'ZAKAT', label: 'ZAKAT' }
+    { value: 'ZAKAT', label: 'ZAKAT' },
+    { value: 'FITRANA_2026', label: 'FITRANA' }
   ]
   const defaultDonationType = donationTypeOptions[0]?.value || 'GENERAL'
   const [donationType, setDonationType] = useState(defaultDonationType)

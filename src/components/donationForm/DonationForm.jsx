@@ -15,7 +15,7 @@ const DonationForm = ({
   title = 'Donate',
   initialCurrency = 'PKR',
   donationOptions = {},
-  categoryOptions = ['General', 'Sadqa', 'Zakat'],
+  categoryOptions = ['General', 'Sadqa', 'Zakat', 'Fitrana'],
   defaultCategory,
   showProjectSelect = false,
   projects = [],
