@@ -1991,12 +1991,12 @@ This Ramadan, Let Your Zakat Speak for You`,
       { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
     ],
     content: {
-      paragraph1: 'Laylat-ul-Qadr, also known as The Night of Power, is one of the most sacred and powerful nights in the Islamic calendar. It is the night on which the Qur’an was first revealed, a night Allah Himself describes as better than a thousand months.',
+      paragraph1: 'Layla-Tul-Qadr, also known as The Night of Power, is one of the most sacred and powerful nights in the Islamic calendar. It is the night on which the Qur’an was first revealed, a night Allah Himself describes as better than a thousand months.',
       paragraph2: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
       testimonials:
       {
-        id:'laylat-ul-qadr',
-        title:'Laylat-ul-Qadr ',
+        id:'Layla-Tul-Qadr',
+        title:'Layla-Tul-Qadr ',
         videos:[
           'https://www.youtube.com/watch?v=RaDA7oiNqLs'
         ]
@@ -2005,8 +2005,8 @@ This Ramadan, Let Your Zakat Speak for You`,
     donationForm:false,
     subProjects: [
       {
-        id: 'why-laylat-ul-qadr-important',
-        title: 'Why Laylat-ul-Qadr Is So Important',
+        id: 'why-Layla-Tul-Qadr-important',
+        title: 'Why Layla-Tul-Qadr Is So Important',
         subtitle: '',
         description: 'Allah says in the Qur\'an: "Indeed, We sent the Qur\'an down during the Night of Decree. And what can make you know what the Night of Decree is? The Night of Decree is better than a thousand months." (Surah Al-Qadr 97:1-3)',
         services: [
@@ -2020,15 +2020,15 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: lq_matters
       },
       {
-        id: 'when-is-laylat-ul-qadr',
-        title: 'When Is Laylat-ul-Qadr?',
+        id: 'when-is-Layla-Tul-Qadr',
+        title: 'When Is Layla-Tul-Qadr?',
         subtitle: '',
-        description: 'The exact night of Laylat-ul-Qadr is unknown and this is by divine wisdom.',
+        description: 'The exact night of Layla-Tul-Qadr is unknown and this is by divine wisdom.',
         quranAyat: {
-          text: 'The Prophet Muhammad صلى الله عليه وسلم said: "Search for Laylat-ul-Qadr in the odd nights of the last ten nights of Ramadan."',
+          text: 'The Prophet Muhammad صلى الله عليه وسلم said: "Search for Layla-Tul-Qadr in the odd nights of the last ten nights of Ramadan."',
           reference: 'Sahih al-Bukhari'
         },
-        afterServicesText: 'This encourages believers to remain consistent in worship throughout the last ten nights, especially the odd nights. In 2026, Laylat-ul-Qadr is expected to fall during the last ten nights of Ramadan, subject to moon sighting. Allah knows best.',
+        afterServicesText: 'This encourages believers to remain consistent in worship throughout the last ten nights, especially the odd nights. In 2026, Layla-Tul-Qadr is expected to fall during the last ten nights of Ramadan, subject to moon sighting. Allah knows best.',
         image: lq_time
       },
       {
@@ -2045,8 +2045,8 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: lq_matters
       },
       {
-        id: 'what-to-do-on-laylat-ul-qadr',
-        title: 'What to Do on Laylat-ul-Qadr',
+        id: 'what-to-do-on-Layla-Tul-Qadr',
+        title: 'What to Do on Layla-Tul-Qadr',
         subtitle: '',
         description: 'The most beloved actions on this night include:',
         services: [
@@ -2060,14 +2060,14 @@ This Ramadan, Let Your Zakat Speak for You`,
           text: 'The Prophet صلى الله عليه وسلم said: "The best charity is that given in Ramadan."',
           reference: 'Tirmidhi'
         },
-        afterServicesText: 'And charity given on Laylat-ul-Qadr carries reward beyond imagination.',
+        afterServicesText: 'And charity given on Layla-Tul-Qadr carries reward beyond imagination.',
         image: lq_do
       },
       {
-        id: 'dua-for-laylat-ul-qadr',
-        title: 'A Du\'a the Prophet صلى الله عليه وسلم Taught for Laylat-ul-Qadr',
+        id: 'dua-for-Layla-Tul-Qadr',
+        title: 'A Du\'a the Prophet صلى الله عليه وسلم Taught for Layla-Tul-Qadr',
         subtitle: '',
-        description: 'Aisha (RA) asked the Prophet صلى الله عليه وسلم what du\'a to make if she found Laylat-ul-Qadr. He replied:',
+        description: 'Aisha (RA) asked the Prophet صلى الله عليه وسلم what du\'a to make if she found Layla-Tul-Qadr. He replied:',
         arabicText: 'Allahumma innaka \'afuwwun tuhibbul \'afwa fa\'fu \'anni.',
         afterServicesText: 'O Allah, You are Most Forgiving, and You love to forgive, so forgive me. This du\'a alone carries oceans of mercy.',
         donateButtonText: 'Make Du\'a and Give Charity',
@@ -2075,10 +2075,10 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: lq_dua
       },
       {
-        id: 'give-charity-on-laylat-ul-qadr',
-        title: 'Give Charity on Laylat-ul-Qadr',
+        id: 'give-charity-on-Layla-Tul-Qadr',
+        title: 'Give Charity on Layla-Tul-Qadr',
         subtitle: 'Multiply Your Reward Beyond Measure',
-        description: 'Charity given on Laylat-ul-Qadr is multiplied more than 83 years. Your Zakat or Sadaqah on this night can become:',
+        description: 'Charity given on Layla-Tul-Qadr is multiplied more than 83 years. Your Zakat or Sadaqah on this night can become:',
         services: [
           'Provide food to families struggling with poverty',
           'Medical care for the sick',
@@ -2089,8 +2089,8 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: lq_charity
       },
       {
-        id: 'let-your-charity-search-for-laylat-ul-qadr',
-        title: 'Let Your Charity Search for Laylat-ul-Qadr',
+        id: 'let-your-charity-search-for-Layla-Tul-Qadr',
+        title: 'Let Your Charity Search for Layla-Tul-Qadr',
         subtitle: '',
         description: `Since we do not know which night it is, the best approach is to give consistently throughout the last ten nights.`,
         image: lq_charity_search,
@@ -2161,8 +2161,8 @@ This Ramadan, Let Your Zakat Speak for You`,
       paragraph3:'Through structured international collaboration and on-ground implementation, your support has translated into real impact: saving lives, feeding families, and sustaining hope.'
       // testimonials:
       // {
-      //   id:'laylat-ul-qadr',
-      //   title:'Laylat-ul-Qadr ',
+      //   id:'Layla-Tul-Qadr',
+      //   title:'Layla-Tul-Qadr ',
       //   videos:[
       //     'https://www.youtube.com/watch?v=RaDA7oiNqLs'
       //   ]
@@ -2193,7 +2193,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         ],
       },
       {
-        id: 'why-laylat-ul-qadr-important',
+        id: 'why-Layla-Tul-Qadr-important',
         title: ' Our Impact So Far',
         subtitle: '',
         image: ourImpactSoFar,
@@ -2227,7 +2227,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText:'Every number represents a life supported, a family fed, and dignity restored during crisis.'
       },
       {
-        id: 'when-is-laylat-ul-qadr',
+        id: 'when-is-Layla-Tul-Qadr',
         title: 'From Emergency Relief to Rebuilding Lives',
         image: emergencyRelief,
 
