@@ -110,6 +110,8 @@ import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
 import communityIcon from '../assets/img/projects/icons/community.png'
 
+import gaza_hero from '../assets/img/projects/project-image/gaza.webp'
+import gaza_hero_mob from '../assets/img/projects/project-image/gaza_mob.webp'
 import ourImpactSoFar from '../assets/img/projects/projects-details/gaza/Our impact so far.webp'
 import emergencyRelief from '../assets/img/projects/projects-details/gaza/emergency-relief.webp'
 import rebuildGaza from '../assets/img/projects/projects-details/gaza/rebuild-gaza.webp'
@@ -2141,8 +2143,8 @@ This Ramadan, Let Your Zakat Speak for You`,
   'gaza': {
     id: 'gaza',
     // title: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
-    headerImage: lq_hero,
-    headerImageMob: lq_hero_mob,
+    headerImage: gaza_hero,
+    headerImageMob: gaza_hero_mob,
     stats: [
       { icon: FaHandHoldingHeart, number: '30,000+', label: 'Families Served' },
       { icon: FaUsers, number: '150,000+', label: 'Lives Impacted' },
@@ -2302,7 +2304,7 @@ mission to reach those in urgent need.`,
         id: 'give-charity-on-laylat-ul-qadr',
         title: 'How You Can Help',
         image: fitranaIntro,
-        video : 'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
+        video : 'https://www.youtube.com/watch?v=0kX0LP51_1g',
         subtitle: '',
         description: 'Your generosity enables this work to continue.',
         services: [
