@@ -2227,7 +2227,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText:'Every number represents a life supported, a family fed, and dignity restored during crisis.'
       },
       {
-        id: 'Emergency-Relief',
+        id: 'Emergency-Relief-to-Rebuilding-Lives',
         title: 'From Emergency Relief to Rebuilding Lives',
         image: emergencyRelief,
 
@@ -2273,7 +2273,7 @@ services: [
         ],
       },
       {
-        id: 'Transparency',
+        id: 'Transparency-Accountability',
         title: 'Transparency & Accountability',
         image: transparency,
 
@@ -2289,7 +2289,7 @@ services: [
         afterServicesText: 'Your trust is honored through transparency at every step.',
       },
       {
-        id: 'Challenges',
+        id: 'Challenges-Our-Commitment',
         title: 'Challenges & Our Commitment',
         image: challenges,
 

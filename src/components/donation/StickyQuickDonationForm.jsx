@@ -38,7 +38,7 @@ const StickyQuickDonationForm = () => {
     { id: 'education', title: "Education", icon: education, category: "General" },
     { id: 'clean-water', title: "Clean Water", icon: cleanWater, category: "General" },
     { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, category: "Sadqa" },
-    { id: 'disaster-management', title: "Disaster Relief", icon: disasterRelief, category: "General" },
+    { id: 'gaza-relief', title: "Gaza Relief", icon: disasterRelief, category: "General" },
     { id: 'kasb-skill-development', title: "KASB Skill Development", icon: kasb, category: "Sadqa" },
     { id: 'seeds-of-change', title: "Seeds of Change", icon: seeds, category: "General" },
     { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, category: "Zakat" },
