@@ -2173,7 +2173,7 @@ This Ramadan, Let Your Zakat Speak for You`,
       {
         id: 'why-laylat-ul-qadr-important',
         title: 'How We Deliver Aid to Gaza',
-        image: fitranaIntro,
+        image: rebuildGaza,
         subtitle: '',
         description: 'Due to restricted access, MTJ Foundation delivers aid through established humanitarian channels that operate on the ground. This ensures assistance reaches those most in need in a safe, timely, and transparent manner. Our aid delivery process includes :',
         description2:'Our aid delivery process includes:',
