@@ -2323,7 +2323,7 @@ mission to reach those in urgent need.`,
         description: `Together, we can help rebuild lives, restore dignity, and bring hope to families who have
 endured the unimaginable.`,
         // image: lq_charity_search,
-        donateButtonText: 'Donate today (CTA Button)',
+        donateButtonText: 'Donate Today',
       },
       
     ],
