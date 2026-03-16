@@ -2193,8 +2193,8 @@ This Ramadan, Let Your Zakat Speak for You`,
         ],
       },
       {
-        id: 'why-Layla-Tul-Qadr-important',
-        title: ' Our Impact So Far',
+        id: 'Our-Impact-So-Far',
+        title: 'Our Impact So Far',
         subtitle: '',
         image: ourImpactSoFar,
 
@@ -2227,7 +2227,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText:'Every number represents a life supported, a family fed, and dignity restored during crisis.'
       },
       {
-        id: 'when-is-Layla-Tul-Qadr',
+        id: 'Emergency-Relief',
         title: 'From Emergency Relief to Rebuilding Lives',
         image: emergencyRelief,
 
