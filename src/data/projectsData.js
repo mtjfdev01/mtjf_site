@@ -2171,7 +2171,7 @@ This Ramadan, Let Your Zakat Speak for You`,
     donationForm:false,
     subProjects: [
       {
-        id: 'why-laylat-ul-qadr-important',
+        id: 'How-We-Deliver-Aid-to-Gaza',
         title: 'How We Deliver Aid to Gaza',
         image: rebuildGaza,
         subtitle: '',
@@ -2238,7 +2238,7 @@ rebuilding shelter, restoring stability, and reclaiming a sense of normalcy afte
 
       },
       {
-        id: 'why-last-ten-nights-matter',
+        id: 'Let’s-Rebuild-Gaza',
         title: 'Let’s Rebuild Gaza',
         image: rebuildGaza,
 
@@ -2260,7 +2260,7 @@ services: [
     afterServicesText:`Your support creates real change, providing hope when its needed the most.`
       },
       {
-        id: 'what-to-do-on-laylat-ul-qadr',
+        id: 'Stories-of-Resilience',
         title: 'Stories of Resilience',
         image: storiesResilience,
 
@@ -2273,7 +2273,7 @@ services: [
         ],
       },
       {
-        id: 'what-to-do-on-laylat-ul-qadr',
+        id: 'Transparency',
         title: 'Transparency & Accountability',
         image: transparency,
 
@@ -2289,7 +2289,7 @@ services: [
         afterServicesText: 'Your trust is honored through transparency at every step.',
       },
       {
-        id: 'dua-for-laylat-ul-qadr',
+        id: 'Challenges',
         title: 'Challenges & Our Commitment',
         image: challenges,
 
@@ -2301,7 +2301,7 @@ mission to reach those in urgent need.`,
 
       },
       {
-        id: 'give-charity-on-laylat-ul-qadr',
+        id: 'How-You-Can-Help',
         title: 'How You Can Help',
         image: fitranaIntro,
         video : 'https://www.youtube.com/watch?v=0kX0LP51_1g',
@@ -2314,7 +2314,7 @@ mission to reach those in urgent need.`,
         ],
       },
       {
-        id: 'let-your-charity-search-for-laylat-ul-qadr',
+        id: 'Stand-With-Gaza',
         title: 'Stand With Gaza',
         image: fitranaIntro,
         video:'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
