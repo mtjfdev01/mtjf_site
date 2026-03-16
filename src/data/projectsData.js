@@ -109,6 +109,17 @@ import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
 import communityIcon from '../assets/img/projects/icons/community.png'
+
+import ourImpactSoFar from '../assets/img/projects/projects-details/gaza/Our impact so far.webp'
+import emergencyRelief from '../assets/img/projects/projects-details/gaza/emergency-relief.webp'
+import rebuildGaza from '../assets/img/projects/projects-details/gaza/rebuild-gaza.webp'
+import storiesResilience from '../assets/img/projects/projects-details/gaza/stories-resilience.webp'
+import transparency from '../assets/img/projects/projects-details/gaza/transparency.webp'
+import challenges from '../assets/img/projects/projects-details/gaza/challenges.webp'
+
+
+
+
 import {
   FaSchool,
   FaGraduationCap,
@@ -2183,7 +2194,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         id: 'why-laylat-ul-qadr-important',
         title: ' Our Impact So Far',
         subtitle: '',
-        image: fitranaIntro,
+        image: ourImpactSoFar,
 
         description: 'Through consistent and responsible humanitarian action, MTJ Foundation has supported:',
         description2:true,
@@ -2216,7 +2227,7 @@ This Ramadan, Let Your Zakat Speak for You`,
       {
         id: 'when-is-laylat-ul-qadr',
         title: 'From Emergency Relief to Rebuilding Lives',
-        image: fitranaIntro,
+        image: emergencyRelief,
 
         subtitle: '',
         description: 'With the recent ceasefire, MTJ Foundation has expanded its focus beyond immediate survival needs.',
@@ -2227,7 +2238,7 @@ rebuilding shelter, restoring stability, and reclaiming a sense of normalcy afte
       {
         id: 'why-last-ten-nights-matter',
         title: 'Let’s Rebuild Gaza',
-        image: fitranaIntro,
+        image: rebuildGaza,
 
         subtitle: '',
         description: `MTJ Foundation has launched the Let’s Rebuild Gaza initiative to support families as they move
@@ -2249,7 +2260,7 @@ services: [
       {
         id: 'what-to-do-on-laylat-ul-qadr',
         title: 'Stories of Resilience',
-        image: fitranaIntro,
+        image: storiesResilience,
 
         subtitle: '',
         description: 'Behind every statistic is a human story.',
@@ -2262,7 +2273,7 @@ services: [
       {
         id: 'what-to-do-on-laylat-ul-qadr',
         title: 'Transparency & Accountability',
-        image: fitranaIntro,
+        image: transparency,
 
         subtitle: '',
         description: 'Accountability remains central to MTJ Foundation’s work.',
@@ -2278,7 +2289,7 @@ services: [
       {
         id: 'dua-for-laylat-ul-qadr',
         title: 'Challenges & Our Commitment',
-        image: fitranaIntro,
+        image: challenges,
 
         subtitle: '',
         description: `Delivering aid in conflict zones comes with significant challenges, restricted access, supply chain
@@ -2291,7 +2302,7 @@ mission to reach those in urgent need.`,
         id: 'give-charity-on-laylat-ul-qadr',
         title: 'How You Can Help',
         image: fitranaIntro,
-
+        video : 'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
         subtitle: '',
         description: 'Your generosity enables this work to continue.',
         services: [
@@ -2304,6 +2315,7 @@ mission to reach those in urgent need.`,
         id: 'let-your-charity-search-for-laylat-ul-qadr',
         title: 'Stand With Gaza',
         image: fitranaIntro,
+        video:'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
 
         subtitle: '',
         description: `Together, we can help rebuild lives, restore dignity, and bring hope to families who have
