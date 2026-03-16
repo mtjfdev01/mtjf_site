@@ -31,12 +31,12 @@ const ZakatCalculator = () => {
   const [goldWeight, setGoldWeight] = useState('')
   const [goldUnit, setGoldUnit] = useState('tola')
   const [goldKaratPrices] = useState({
-    24: 533262,
-    22: 488949,
-    21: 466724,
-    18: 400049
+    24: 524562,
+    22: 480972,
+    21: 459109,
+    18: 393522
   })
-  const [goldPrice, setGoldPrice] = useState('533262')
+  const [goldPrice, setGoldPrice] = useState('524562')
   const [goldKarat, setGoldKarat] = useState(24)
   const [useCustomGoldPrice, setUseCustomGoldPrice] = useState(false)
   
