@@ -76,7 +76,7 @@ const GoldTab = ({
             <strong>Per Tola</strong>
           </label>
           <p className="h4 text-primary mb-0" style={{ lineHeight: '42px' }}>
-            Rs. {pricePerTola.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            Rs. {pricePerTola.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
           </p>
         </div>
         <div style={{ minWidth: '160px', marginBottom: -10 }}>
@@ -84,7 +84,7 @@ const GoldTab = ({
             <strong>Per Gram</strong>
           </label>
           <p className="h4 text-primary mb-0" style={{ lineHeight: '42px' }}>
-            Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
           </p>
         </div>
       </div>
@@ -106,7 +106,7 @@ const GoldTab = ({
             value={goldPrice}
             onChange={(e) => setGoldPrice(e.target.value)}
             min="0"
-            step="0.01"
+            step="1"
           />
           <p className="text-sm muted mt-8">
             Enter the current market price of gold {goldUnit === 'tola' ? 'per tola' : 'per gram'}.
@@ -132,21 +132,21 @@ const GoldTab = ({
           value={goldWeight}
           onChange={(e) => setGoldWeight(e.target.value)}
           min="0"
-          step="0.01"
+          step="1"
         />
         {goldUnit === 'tola' && goldWeight && (
           <p className="text-sm muted mt-8">
-            {`${(parseFloat(goldWeight) || 0).toFixed(2)} tola = ${weightInGrams.toFixed(2)} grams`}
+            {`${(parseFloat(goldWeight) || 0).toFixed(0)} tola = ${weightInGrams.toFixed(0)} grams`}
           </p>
         )}
       </div>
       
       {goldWeight && goldPrice && (
         <div className="summary-box mt-24">
-          <p className="text-sm">Weight: <strong>{weightInGrams.toFixed(2)} grams</strong></p>
-          <p className="text-sm mt-8">Price per tola: <strong>Rs. {pricePerTola.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
-          <p className="text-sm mt-4">Price per gram: <strong>Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
-          <p className="text-sm bold mt-8">Gold Value: <span className="text-primary">Rs. {goldValue.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+          <p className="text-sm">Weight: <strong>{weightInGrams.toFixed(0)} grams</strong></p>
+          <p className="text-sm mt-8">Price per tola: <strong>Rs. {pricePerTola.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong></p>
+          <p className="text-sm mt-4">Price per gram: <strong>Rs. {pricePerGram.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong></p>
+          <p className="text-sm bold mt-8">Gold Value: <span className="text-primary">Rs. {goldValue.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span></p>
         </div>
       )}
     </div>

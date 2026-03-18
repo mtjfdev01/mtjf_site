@@ -36,20 +36,20 @@ const EligibilityTab = ({ goldNisabAmount, silverNisabAmount, fetchedGoldPrice, 
               </p>
               {goldNisabAmount && (
                 <p className="text-sm mb-8">
-                  <strong>Gold-based Nisab:</strong> Rs. {goldNisabAmount.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  <strong>Gold-based Nisab:</strong> Rs. {goldNisabAmount.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                   {fetchedGoldPrice && (
                     <span className="text-muted" style={{ fontSize: 'var(--fs-14)', display: 'block', marginTop: '4px' }}>
-                      (Rs. {fetchedGoldPrice.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} per tola × 7.5 tola)
+                      (Rs. {fetchedGoldPrice.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} per tola × 7.5 tola)
                     </span>
                   )}
                 </p>
               )}
               {silverNisabAmount && (
                 <p className="text-sm mb-0">
-                  <strong>Silver-based Nisab:</strong> Rs. {silverNisabAmount.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  <strong>Silver-based Nisab:</strong> Rs. {silverNisabAmount.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                   {fetchedSilverPrice && (
                     <span className="text-muted" style={{ fontSize: 'var(--fs-14)', display: 'block', marginTop: '4px' }}>
-                      (Rs. {fetchedSilverPrice.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} per tola × 52.5 tola)
+                      (Rs. {fetchedSilverPrice.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} per tola × 52.5 tola)
                     </span>
                   )}
                 </p>

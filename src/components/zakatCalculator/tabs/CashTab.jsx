@@ -73,7 +73,7 @@ const CashTab = ({ cashItems, setCashItems, debts, setDebts }) => {
                   value={item.amount}
                   onChange={(e) => updateCashItem(item.id, 'amount', e.target.value)}
                   min="0"
-                  step="0.01"
+                  step="1"
                 />
                 {cashItems.length > 1 && (
                   <button
@@ -98,7 +98,7 @@ const CashTab = ({ cashItems, setCashItems, debts, setDebts }) => {
         </button>
         
         <div className="summary-box mt-24">
-          <p className="text-sm bold">Cash Total: <span className="text-primary">Rs. {cashTotal.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+          <p className="text-sm bold">Cash Total: <span className="text-primary">Rs. {cashTotal.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span></p>
         </div>
       </div>
       
@@ -129,7 +129,7 @@ const CashTab = ({ cashItems, setCashItems, debts, setDebts }) => {
                   value={debt.amount}
                   onChange={(e) => updateDebt(debt.id, 'amount', e.target.value)}
                   min="0"
-                  step="0.01"
+                  step="1"
                 />
                 {debts.length > 1 && (
                   <button
@@ -154,8 +154,8 @@ const CashTab = ({ cashItems, setCashItems, debts, setDebts }) => {
         </button>
         
         <div className="summary-box mt-24">
-          <p className="text-sm">Debt Total: <span className="text-danger">Rs. {debtTotal.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
-          <p className="text-sm bold mt-8">Net Cash: <span className="text-primary">Rs. {netCash.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+          <p className="text-sm">Debt Total: <span className="text-danger">Rs. {debtTotal.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span></p>
+          <p className="text-sm bold mt-8">Net Cash: <span className="text-primary">Rs. {netCash.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span></p>
         </div>
       </div>
     </div>

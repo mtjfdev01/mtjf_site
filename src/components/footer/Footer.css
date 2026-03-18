@@ -264,8 +264,7 @@
   }
   
   .footer-location-contacts {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-8);
   }
   
@@ -274,7 +273,7 @@
   }
 
   .footer-links-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -306,7 +305,7 @@
   } */
 
   .footer-links-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .footer-locations-row .footer-list {

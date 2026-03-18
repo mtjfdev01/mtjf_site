@@ -7,7 +7,7 @@ const AssetsTab = ({ assetsItems, setAssetsItems }) => {
   const calculateTotal = (quantity, pricePerItem) => {
     const qty = parseFloat(quantity) || 0
     const price = parseFloat(pricePerItem) || 0
-    return qty * price
+    return Math.round(qty * price)
   }
   
   // Assets items functions (same pattern as cash and debts)
@@ -76,7 +76,7 @@ const AssetsTab = ({ assetsItems, setAssetsItems }) => {
                         value={item.quantity}
                         onChange={(e) => updateAssetItem(item.id, 'quantity', e.target.value)}
                         min="0"
-                        step="0.01"
+                        step="1"
                       />
                       <span className="asset-input-separator">×</span>
                       <input
@@ -86,13 +86,13 @@ const AssetsTab = ({ assetsItems, setAssetsItems }) => {
                         value={item.pricePerItem}
                         onChange={(e) => updateAssetItem(item.id, 'pricePerItem', e.target.value)}
                         min="0"
-                        step="0.01"
+                        step="1"
                       />
                     </div>
                     {itemTotal > 0 && (
                       <div className="asset-total-display">
                         <span className="text-sm muted">Total: </span>
-                        <strong className="text-primary">Rs. {itemTotal.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
+                        <strong className="text-primary">Rs. {itemTotal.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong>
                       </div>
                     )}
                   </div>
@@ -120,7 +120,7 @@ const AssetsTab = ({ assetsItems, setAssetsItems }) => {
         </button>
         
         <div className="summary-box mt-24">
-          <p className="text-sm bold">Assets Total: <span className="text-primary">Rs. {assetsTotal.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+          <p className="text-sm bold">Assets Total: <span className="text-primary">Rs. {assetsTotal.toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span></p>
         </div>
       </div>
       

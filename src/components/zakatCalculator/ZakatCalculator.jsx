@@ -77,7 +77,7 @@ const ZakatCalculator = () => {
           // Calculate Gold Nisab amount (price per tola * 7.5 tola)
           // Assuming prices from API are per tola
           const goldNisab = goldPriceNum * GOLD_NISAB_TOLA
-          setGoldNisabAmount(goldNisab)
+          setGoldNisabAmount(Math.round(goldNisab))
         }
         
         // Update silver price if available
@@ -89,7 +89,7 @@ const ZakatCalculator = () => {
           // Calculate Silver Nisab amount (price per tola * 52.5 tola)
           // Assuming prices from API are per tola
           const silverNisab = silverPriceNum * SILVER_NISAB_TOLA
-          setSilverNisabAmount(silverNisab)
+          setSilverNisabAmount(Math.round(silverNisab))
         }
       }
     }
@@ -101,26 +101,28 @@ const ZakatCalculator = () => {
     if (!useCustomGoldPrice) {
       const karatPrice = goldKaratPrices[goldKarat]
       const displayPrice = goldUnit === 'grams' ? karatPrice / 11.664 : karatPrice
-      setGoldPrice(displayPrice.toFixed(2))
+      setGoldPrice(Math.round(displayPrice).toString())
     }
   }, [goldKarat, useCustomGoldPrice, goldUnit, goldKaratPrices])
 
   useEffect(() => {
     if (!useCustomSilverPrice && fetchedSilverPrice) {
-    setSilverPrice(fetchedSilverPrice.toFixed(2))
+    setSilverPrice(Math.round(fetchedSilverPrice).toString())
     }
 }, [useCustomSilverPrice, fetchedSilverPrice])
   
   // Calculations
   const calculations = useMemo(() => {
+    const toWholeNumber = (value) => Math.round(parseFloat(value) || 0)
+
     // Calculate Net Cash
     const cashTotal = cashItems.reduce((sum, item) => {
-      const amount = parseFloat(item.amount) || 0
+      const amount = toWholeNumber(item.amount)
       return sum + amount
     }, 0)
     
     const debtTotal = debts.reduce((sum, debt) => {
-      const amount = parseFloat(debt.amount) || 0
+      const amount = toWholeNumber(debt.amount)
       return sum + amount
     }, 0)
     
@@ -135,7 +137,7 @@ const ZakatCalculator = () => {
       // If unit is tola, price is per tola, so value = weight * price
       // If unit is grams, price is per gram, so value = weight * price
       // Both cases: value = weight * price (since price matches weight unit)
-      goldValue = weight * price
+      goldValue = Math.round(weight * price)
     }
     
     // Calculate Silver Value
@@ -147,7 +149,7 @@ const ZakatCalculator = () => {
       // If unit is tola, price is per tola, so value = weight * price
       // If unit is grams, price is per gram, so value = weight * price
       // Both cases: value = weight * price (since price matches weight unit)
-      silverValue = weight * price
+      silverValue = Math.round(weight * price)
     }
     
     // Calculate Assets Value
@@ -155,9 +157,11 @@ const ZakatCalculator = () => {
     const assetsTotal = assetsItems.reduce((sum, item) => {
       const quantity = parseFloat(item.quantity) || 0
       const pricePerItem = parseFloat(item.pricePerItem) || 0
-      const amount = parseFloat(item.amount) || 0
+      const amount = toWholeNumber(item.amount)
       // Use calculated value (quantity × price) if both are provided, otherwise use amount
-      const itemValue = (quantity > 0 && pricePerItem > 0) ? (quantity * pricePerItem) : amount
+      const itemValue = (quantity > 0 && pricePerItem > 0)
+        ? Math.round(quantity * pricePerItem)
+        : amount
       return sum + itemValue
     }, 0)
     
@@ -170,19 +174,19 @@ const ZakatCalculator = () => {
 
     if (nisabMethod === 'gold') {
       if (goldNisabAmount) {
-        nisabValue = goldNisabAmount
+        nisabValue = Math.round(goldNisabAmount)
       } else if (goldPrice) {
         const price = parseFloat(goldPrice) || 0
         const pricePerGram = goldUnit === 'tola' ? price / TOLA_TO_GRAMS : price
-        nisabValue = GOLD_NISAB_GRAMS * pricePerGram
+        nisabValue = Math.round(GOLD_NISAB_GRAMS * pricePerGram)
       }
     } else {
       if (silverNisabAmount) {
-        nisabValue = silverNisabAmount
+        nisabValue = Math.round(silverNisabAmount)
       } else if (silverPrice) {
         const price = parseFloat(silverPrice) || 0
         const pricePerGram = silverUnit === 'tola' ? price / TOLA_TO_GRAMS : price
-        nisabValue = SILVER_NISAB_GRAMS * pricePerGram
+        nisabValue = Math.round(SILVER_NISAB_GRAMS * pricePerGram)
       }
     }
     
@@ -204,14 +208,12 @@ const ZakatCalculator = () => {
     let zakatSilver = 0
     
     if (eligibilityStatus === 'due' && netWealth >= nisabValue && nisabValue > 0) {
-      zakatDue = netWealth * ZAKAT_RATE
-      // Calculate zakat for each category proportionally
-      if (netWealth > 0) {
-        zakatCash = (netCash / netWealth) * zakatDue
-        zakatAssets = (assetsTotal / netWealth) * zakatDue
-        zakatGold = (goldValue / netWealth) * zakatDue
-        zakatSilver = (silverValue / netWealth) * zakatDue
-      }
+      // Keep all category and total amounts as whole numbers (non-decimal).
+      zakatCash = Math.round(netCash * ZAKAT_RATE)
+      zakatAssets = Math.round(assetsTotal * ZAKAT_RATE)
+      zakatGold = Math.round(goldValue * ZAKAT_RATE)
+      zakatSilver = Math.round(silverValue * ZAKAT_RATE)
+      zakatDue = zakatCash + zakatAssets + zakatGold + zakatSilver
     }
     
     return {

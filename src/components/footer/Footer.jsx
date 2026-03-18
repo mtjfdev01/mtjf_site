@@ -14,68 +14,27 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container container">
         <div className="footer-grid grid grid-12 gap-24">
-          {/* Leftmost Column - Logo and Contact Information */}
-          <div className="footer-column footer-contact col-12 md-6 lg-3">
-            <div className="footer-logo-wrapper flex flex-col items-start gap-12">
-              <img src={logoImg} alt="MTJ Foundation Logo" className="footer-logo" />
-            </div>
-            
-            <div className="footer-section flex flex-col gap-12">
-              <h4 className="footer-heading h4">Contact Us</h4>
-              <h5 className="footer-subheading h5">Head Office</h5>
-              <ul className="footer-contact-list flex flex-col gap-12">
-                <li>
-                  <a href="https://maps.google.com" className="footer-link">
-                    Makhdoom Pur Road, Tulamba, District Khanewal
-                  </a>
-                </li>
-                <li>
-                  <a href="tel:061111786853" className="footer-link">
-                    061-111-786-853
-                  </a>
-                </li>
-                <li>
-                  <a href="tel:03032440000" className="footer-link">
-                    +92 303 2440000
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@mtjfoundation.org" className="footer-link">
-                    info@mtjfoundation.org
-                  </a>
-                </li>
-                <li>
-                  <span className="footer-label">Feedback:</span>{' '}
-                  <a href="tel:03036660221" className="footer-link">
-                    0303-6660221 
-                  </a>
-                </li>
-                <li>
-                  <span className='footer-label'>National Taxation Number:</span>{' '}
-                  <a className="footer-link"> &nbsp;  6703846-7</a>
-                </li>
-                <li>
-                  <span className='footer-label'>Registration Number:</span>{' '}
-                  <a className="footer-link"> 4156, </a>
-                  <br />
-                  <a className="footer-link"> PB-7207081426668106</a>
-
-                </li>
-                <li>
-                  <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>{' '}
-                </li>
-              </ul>
-            </div>
-          </div>
 
           {/* Combined Section - Locations, Quick Links, and Blogs */}
-          <div className="footer-column footer-combined-section col-12 md-6 lg-9">
+          <div className="footer-column footer-combined-section col-12 md-12 lg-12">
             {/* First Row - Locations */}
             <div className="footer-row footer-locations-row">
               <Link to="/contact" className="footer-link">
                 <h4 className="footer-heading h4">Regional Offices</h4>
               </Link>
               <ul className="footer-list flex flex-col gap-12">
+                <li className="footer-location-item">
+                  <div className="footer-location-city">Tulamba (Head Office)</div>
+                  <div className="footer-location-address">
+                    Makhdoom Pur Road, Tulamba, District Khanewal
+                  </div>
+                  <div className="footer-location-contacts">
+                    <a href="tel:061111786853" className="footer-link">061-111-786-853</a>
+                    <a href="tel:03032440000" className="footer-link">0303-2440000</a>
+                    <a href="mailto:info@mtjfoundation.org" className="footer-link">info@mtjfoundation.org</a>
+                    <a href="tel:03036660221" className="footer-link">Feedback: 0303-6660221</a>
+                  </div>
+                </li>
                 <li className="footer-location-item">
                 <div className="footer-location-city">Karachi</div>
                   <div className="footer-location-address">
@@ -124,6 +83,28 @@ const Footer = () => {
 
             {/* Second Row - Quick Links and Blogs */}
             <div className="footer-row footer-links-row grid gap-24">
+              {/* First Column - Logo and Registration Details */}
+              <div className="footer-column footer-legal-info">
+                <div className="footer-logo-wrapper flex flex-col items-start gap-12">
+                  <img src={logoImg} alt="MTJ Foundation Logo" className="footer-logo" />
+                </div>
+                <ul className="footer-list flex flex-col gap-12">
+                  <li>
+                    <span className='footer-label'>National Taxation Number:</span>{' '}
+                    <span className="footer-link">6703846-7</span>
+                  </li>
+                  <li>
+                    <span className='footer-label'>Registration Number:</span>{' '}
+                    <span className="footer-link">4156</span>
+                    <br />
+                    <span className="footer-link">PB-7207081426668106</span>
+                  </li>
+                  <li>
+                    <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>
+                  </li>
+                </ul>
+              </div>
+
               {/* Third Column - Quick Links */}
               <div className="footer-column footer-quick-links">
                 <h4 className="footer-heading h4">Quick Links</h4>

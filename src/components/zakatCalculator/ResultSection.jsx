@@ -24,8 +24,8 @@ const ResultSection = ({ calculations }) => {
   } = calculations
 
   // Single threshold: Nisab. Net wealth must exceed this for Zakat to be due.
-  const zakatThreshold = Math.round(nisabValue);
-   const exceedsThreshold = zakatThreshold > 0 && (Number(netWealth) == zakatThreshold) || (Number(netWealth) > zakatThreshold);
+  const zakatThreshold = Math.round(nisabValue)
+  const exceedsThreshold = zakatThreshold > 0 && Number(netWealth) >= zakatThreshold
  console.log("Zakat Threshold: " + zakatThreshold + " Net Wealth: " + netWealth + " Exceeds Threshold: " + exceedsThreshold)
   console.log(typeof netWealth, netWealth, typeof zakatThreshold, zakatThreshold)
 
@@ -33,7 +33,7 @@ const ResultSection = ({ calculations }) => {
     if (isDonating) return
     setIsDonating(true)
     try {
-      const amount = Math.round(zakatDue * 100) / 100
+      const amount = Math.round(zakatDue)
       clearDonationData()
       setDonationFormData({
         amount: amount.toString(),
@@ -48,7 +48,7 @@ const ResultSection = ({ calculations }) => {
     }
   }
   
-  const formatRs = (n) => n.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const formatRs = (n) => Number(n || 0).toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
 
   return (
     <div className="result-section">
