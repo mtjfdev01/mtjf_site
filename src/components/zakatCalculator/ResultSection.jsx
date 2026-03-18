@@ -24,8 +24,10 @@ const ResultSection = ({ calculations }) => {
   } = calculations
 
   // Single threshold: Nisab. Net wealth must exceed this for Zakat to be due.
-  const zakatThreshold = nisabValue
-  const exceedsThreshold = zakatThreshold > 0 && netWealth >= zakatThreshold
+  const zakatThreshold = Math.round(nisabValue);
+   const exceedsThreshold = zakatThreshold > 0 && (Number(netWealth) == zakatThreshold) || (Number(netWealth) > zakatThreshold);
+ console.log("Zakat Threshold: " + zakatThreshold + " Net Wealth: " + netWealth + " Exceeds Threshold: " + exceedsThreshold)
+  console.log(typeof netWealth, netWealth, typeof zakatThreshold, zakatThreshold)
 
   const handleProceedToDonate = async () => {
     if (isDonating) return
