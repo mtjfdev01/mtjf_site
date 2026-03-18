@@ -812,6 +812,35 @@ const CheckoutForm = () => {
               </div>
             </div>
           </div> */}
+
+                        {/* Meezan payment option */}
+                        <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'meezan')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay Securely with Credit/Debit Card (1st)</h6>
+                  {formData.donation_frequency === 'monthly' && (
+                    <span className="payment-option-badge">Recurring</span>
+                  )}
+                </div>
+                {isLoading === 'meezan' && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
           
               {/* PayFast payment option */}
               <div className="col-md-6">
@@ -828,7 +857,7 @@ const CheckoutForm = () => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay Securely with Credit/Debit Card (1st)</h6>
+                  <h6>Pay Securely with Credit/Debit Card (2nd)</h6>
                   {formData.donation_frequency === 'monthly' && (
                     <span className="payment-option-badge">Recurring</span>
                   )}
@@ -842,34 +871,7 @@ const CheckoutForm = () => {
             </div>
           </div>
           
-              {/* Meezan payment option */}
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'meezan')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Pay Securely with Credit/Debit Card (2nd)</h6>
-                  {formData.donation_frequency === 'monthly' && (
-                    <span className="payment-option-badge">Recurring</span>
-                  )}
-                </div>
-                {isLoading === 'meezan' && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+
 
               {/* Stripe payment option (recurring when "Give Monthly" selected) */}
           {/* <div className="col-md-6">
