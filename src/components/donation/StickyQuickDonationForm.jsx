@@ -243,6 +243,17 @@ const StickyQuickDonationForm = () => {
               />
               <span>Zakat</span>
             </label>
+
+            <label className={`sticky-fitrana-label ${donationType === "fitrana" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name="sticky-donation"
+                value="fitrana"
+                checked={donationType === "fitrana"}
+                onChange={() => setDonationType("fitrana")}
+              />
+              <span>Fitrana</span>
+            </label>
           </div>
 
           {/* Form Actions */}
