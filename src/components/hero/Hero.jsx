@@ -7,13 +7,16 @@ import { Link } from 'react-router-dom'
 // import apna_ghar_hero from '../../assets/img/projects/projects-details/Apna Ghar/hero.webp'
 // import apna_ghar_hero_mob from '../../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
 import zakat_hero from '../../assets/img/zakat/zakat_hero.webp'
+import change_hero from '../../assets/img/zakat/change_hero.webp'
+
 import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popup.webp' 
 import hero from '../../assets/img/projects/project-image/gaza.webp'
 import hero_mob from '../../assets/img/projects/project-image/gaza_mob.webp'
 import './hero.css'
 
 const HERO_IMAGES = [
-  { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup, link: '/projects/ramzan-zakat' }, 
+  { desktop: change_hero, mobile: change_hero, link: '/donate' },
+  // { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup, link: '/projects/ramzan-zakat' }, 
   // { desktop: hero, mobile: hero_mob }, 
   // { desktop: winter_hero, mobile: winter_mob },
   // { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
