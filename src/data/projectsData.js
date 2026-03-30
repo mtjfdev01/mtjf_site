@@ -198,7 +198,8 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Education',
     donateButtonText: 'Support Education Programs',
     donationOptions: {
-      PKR: [2500, 5000, 10000, 25000],
+      title: 'Donation Amount',
+      PKR: [15000, 35000, 5000, 18000 ],
       USD: [25, 50, 100, 250],
       EUR: [20, 40, 80, 200]
     },
@@ -407,7 +408,7 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Health',
     donateButtonText: 'Support Healthcare Services',
     donationOptions: {
-      PKR: [5000, 10000, 20000, 50000],
+      PKR: [10000,40000, 20000],
       USD: [50, 100, 200, 500],
       EUR: [45, 90, 180, 450]
     },
@@ -807,7 +808,7 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
     donationOptions: {
-      PKR: [4000, 8000, 16000, 32000],
+      PKR: [80000, 125000,  1500000, 2500000, 250000, 500000],
       USD: [40, 80, 160, 320],
       EUR: [35, 70, 140, 280]
     },
