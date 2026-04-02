@@ -3783,15 +3783,15 @@ export const ALL_PROJECTS_DATA = [
     learnMorePath: '/projects/community-services',
     donatePath: '/donate/community-services'
   },
-  {
-    id: 'ramzan-ration',
-    title: 'Ramadan Ration',
-    subtitle: 'Providing Ramadan Ration to Families in Need',
-    description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
-    impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
-    image: ramzanRation,
-    donateButtonText: 'Support a Family',
-    learnMorePath: '/projects/ramzan-ration',
-    donatePath: '/donate/ramzan-ration'
-  }
+  // {
+  //   id: 'ramzan-ration',
+  //   title: 'Ramadan Ration',
+  //   subtitle: 'Providing Ramadan Ration to Families in Need',
+  //   description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
+  //   impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
+  //   image: ramzanRation,
+  //   donateButtonText: 'Support a Family',
+  //   learnMorePath: '/projects/ramzan-ration',
+  //   donatePath: '/donate/ramzan-ration'
+  // }
 ]

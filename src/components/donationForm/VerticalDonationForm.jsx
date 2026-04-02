@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
+import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './VerticalDonationForm.css'
 
 const DEFAULT_DONATION_OPTIONS = {
@@ -40,9 +41,44 @@ const VerticalDonationForm = ({
     amount: '',
     customAmount: '',
     category: defaultCategory || categoryOptions[0] || 'General',
+    subCategory: '',
     projectId: urlProjectId || defaultProjectId || projects[0]?.id || ''
   })
   const [errorMessage, setErrorMessage] = useState('')
+
+  const filteredInitiatives = useMemo(() => {
+    // Ensure projectCards exists and category is selected
+    if (!projectCards || !formData.category) return []
+
+    // 1. Find projects where the category matches exactly
+    // 2. OR find projects where the title matches the category name (e.g. category "Education" matches project title "Education")
+    const matchingProjects = projectCards.filter(project => 
+      project.category === formData.category || 
+      project.title.toLowerCase() === formData.category.toLowerCase()
+    )
+
+    // Collect all initiatives from these matching projects
+    const allInitiatives = matchingProjects.reduce((acc, project) => {
+      if (project.initiatives && project.initiatives.length > 0) {
+        // If the project has initiatives, add their titles and prices
+        const titles = project.initiatives.map(i => ({ id: i.id, title: i.title, price: i.price }))
+        return [...acc, ...titles]
+      } else {
+        // If the project has no initiatives, use the project title and price as a fallback
+        return [...acc, { id: project.id, title: project.title, price: project.price }]
+      }
+    }, [])
+
+    return allInitiatives
+  }, [formData.category])
+
+  // Update subCategory when category changes
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      subCategory: ''
+    }))
+  }, [formData.category])
 
   // Update projectId when URL changes
   useEffect(() => {
@@ -61,6 +97,29 @@ const VerticalDonationForm = ({
     setFormData((prev) => ({
       ...prev,
       amount: amount.toString(),
+      customAmount: ''
+    }))
+  }
+
+  const handleIncrement = () => {
+    const currentAmount = parseFloat(formData.amount) || 0
+    const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+    const step = selectedInitiative?.price || 100
+    setFormData(prev => ({
+      ...prev,
+      amount: (currentAmount + step).toString(),
+      customAmount: ''
+    }))
+  }
+
+  const handleDecrement = () => {
+    const currentAmount = parseFloat(formData.amount) || 0
+    const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+    const step = selectedInitiative?.price || 100
+    const newAmount = currentAmount - step
+    setFormData(prev => ({
+      ...prev,
+      amount: (newAmount > 0 ? newAmount : 0).toString(),
       customAmount: ''
     }))
   }
@@ -142,29 +201,24 @@ const VerticalDonationForm = ({
               {errorMessage}
             </div>
           )}
-          <div className="vertical-donation-group">
-            {/* <label className="vertical-donation-label">Donation Frequency</label> */}
-            <div className="vertical-donation-frequency">
-              {['once', 'monthly'].map((type) => (
-                <button
-                  key={type}
-                  type="button"
-                  className={`vertical-donation-frequency-btn ${
-                    formData.frequency === type ? 'active' : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({ ...prev, frequency: type }))
-                  }
-                >
-                  {type === 'once' ? 'Give Once' : 'Give Monthly'}
-                </button>
-              ))}
-            </div>
-          </div>
 
           <div className="vertical-donation-inline">
             <div className="vertical-donation-group">
-              {/* <label className="vertical-donation-label">Currency</label> */}
+              <label className="vertical-donation-label">Frequency</label>
+              <select
+                className="vertical-donation-input"
+                value={formData.frequency}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, frequency: e.target.value }))
+                }
+              >
+                <option value="once">Give Once</option>
+                <option value="monthly">Give Monthly</option>
+              </select>
+            </div>
+
+            <div className="vertical-donation-group">
+              <label className="vertical-donation-label">Currency</label>
               <select
                 className="vertical-donation-input"
                 value={formData.currency}
@@ -182,9 +236,11 @@ const VerticalDonationForm = ({
                 <option value="EUR">EUR</option>
               </select>
             </div>
+          </div>
 
+          <div className="vertical-donation-inline">
             <div className="vertical-donation-group">
-              {/* <label className="vertical-donation-label">Category</label> */}
+              <label className="vertical-donation-label">Category</label>
               <select
                 className="vertical-donation-input"
                 value={formData.category}
@@ -202,6 +258,34 @@ const VerticalDonationForm = ({
                 ))}
               </select>
             </div>
+
+            {filteredInitiatives.length > 0 && (
+              <div className="vertical-donation-group">
+                <label className="vertical-donation-label">Sub Category</label>
+                <select
+                  className="vertical-donation-input"
+                  value={formData.subCategory}
+                  onChange={(e) => {
+                    const selectedTitle = e.target.value
+                    const selectedInitiative = filteredInitiatives.find(i => i.title === selectedTitle)
+                    
+                    setFormData((prev) => ({
+                      ...prev,
+                      subCategory: selectedTitle,
+                      amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
+                      customAmount: ''
+                    }))
+                  }}
+                >
+                  <option value="">Select Sub Category</option>
+                  {filteredInitiatives.map((initiative) => (
+                    <option key={initiative.id} value={initiative.title}>
+                      {initiative.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
 
           {showProjectSelect && (
@@ -226,23 +310,42 @@ const VerticalDonationForm = ({
             </div>
           )}
 
-          <div className="vertical-donation-group">
-            <label className="vertical-donation-label">Choose Amount</label>
-            <div className="vertical-donation-amounts">
-              {getDonationAmounts(formData.currency).map((amount) => (
-                <button
-                  key={amount}
-                  type="button"
-                  className={`vertical-donation-amount-btn ${
-                    formData.amount === amount.toString() ? 'active' : ''
-                  }`}
-                  onClick={() => handleAmountClick(amount)}
-                >
-                  {amount.toLocaleString()} {formData.currency}
-                </button>
-              ))}
+          {filteredInitiatives.length > 0 && (
+            <div className="vertical-donation-group">
+              <label className="vertical-donation-label">Amount</label>
+              {/* <div className="vertical-donation-amounts">
+                {getDonationAmounts(formData.currency).map((amount) => (
+                  <button
+                    key={amount}
+                    type="button"
+                    className={`vertical-donation-amount-btn ${
+                      formData.amount === amount.toString() ? 'active' : ''
+                    }`}
+                    onClick={() => handleAmountClick(amount)}
+                  >
+                    {amount.toLocaleString()} {formData.currency}
+                  </button>
+                ))}
+              </div> */}
+              <div className="vertical-donation-amount-wrapper">
+                <button type="button" onClick={handleDecrement} className="vertical-donation-amount-btn">-</button>
+                <input
+                  type="number"
+                  className="vertical-donation-input"
+                  placeholder="Amount"
+                  value={formData.amount}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      amount: e.target.value,
+                      customAmount: ''
+                    }))
+                  }
+                />
+                <button type="button" onClick={handleIncrement} className="vertical-donation-amount-btn">+</button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="vertical-donation-group">
             <label className="vertical-donation-label">

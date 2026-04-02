@@ -396,7 +396,7 @@ const Projects = () => {
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      shortDonate()
+                      navigate(`/donate/${project.id}`)
                     }}
                   >
                     {project.donateButtonText}

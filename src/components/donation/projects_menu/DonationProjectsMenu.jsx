@@ -20,18 +20,7 @@ import aaslab from '../../../assets/img/projects/icons/aaslab.png'
 import community from '../../../assets/img/projects/icons/community.png'
 import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
-const DonationProjectsMenu = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { projectId } = useParams()
-  const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation, setRef } = useDonation()
-  const [selectedProjects, setSelectedProjects] = useState([])
-  const [expandedProjectId, setExpandedProjectId] = useState(null)
-  const [message, setMessage] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState("General")
-
-  const projectCards = [
+export const projectCards = [
     { 
       id: 'health', 
       title: "Health", 
@@ -114,7 +103,15 @@ const DonationProjectsMenu = () => {
         }
       ]
     },
-    { id: 'apna-ghar', title: "Apna Ghar", icon: apnaghar, price: 10000, new: false, category: "Sadqa", initiatives: [] },
+    { 
+      id: 'apna-ghar',
+      title: "Apna Ghar",
+      icon: apnaghar, 
+      price: 10000, 
+      new: false, 
+      category: "Sadqa",
+       initiatives: [] 
+      },
     { id: 'disaster-management', title: "Gaza Relief", icon: disasterRelief, price: 5000, new: false, category: "General", initiatives: []     },
     { 
       id: 'kasb-skill-development', 
@@ -166,6 +163,17 @@ const DonationProjectsMenu = () => {
       ]
     },
   ]
+
+const DonationProjectsMenu = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { projectId } = useParams()
+  const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation, setRef } = useDonation()
+  const [selectedProjects, setSelectedProjects] = useState([])
+  const [expandedProjectId, setExpandedProjectId] = useState(null)
+  const [message, setMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState("General")
 
   // Set expandedProjectId from URL parameter on mount
   useEffect(() => {

@@ -81,7 +81,7 @@ const Projects = () => {
                               className="projects-page-donate-btn"
                               onClick={(e) => {
                                 e.preventDefault()
-                                shortDonate()
+                                navigate(`/donate/${project.id}`)
                               }}
                             >
                               {project.donateButtonText || 'Donate'}

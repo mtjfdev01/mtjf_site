@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
+import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './DonationForm.css'
 
 const DEFAULT_DONATION_OPTIONS = {
@@ -15,7 +16,7 @@ const DonationForm = ({
   title = 'Donate',
   initialCurrency = 'PKR',
   donationOptions = {},
-  categoryOptions = ['General', 'Sadqa', 'Zakat', 'Fitrana'],
+  categoryOptions = ['General', 'Sadqa', 'Zakat'],
   defaultCategory,
   showProjectSelect = false,
   projects = [],
@@ -35,16 +36,29 @@ const DonationForm = ({
     }
   }, [donationOptions])
 
-  const [formData, setFormData] = useState({
-    frequency: 'once',
-    currency: initialCurrency,
-    amount: '',
-    customAmount: '',
-    category: defaultCategory || categoryOptions[0] || 'General',
-    projectId: defaultProjectId || projects[0]?.id || '',
-    projectName: defaultProjectName || projects[0]?.title || projects[0]?.name || ''
+  const [formData, setFormData] = useState(() => {
+    const initialProjectId = defaultProjectId || projects[0]?.id || ''
+    const initialProject = projects.find(p => p.id === initialProjectId)
+    const projectMenuData = projectCards.find(p => p.id === initialProjectId)
+    const firstInitiative = projectMenuData?.initiatives?.[0]
+
+    return {
+      frequency: 'once',
+      currency: initialCurrency,
+      amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
+      customAmount: '',
+      category: defaultCategory || categoryOptions[0] || 'General',
+      projectId: initialProjectId,
+      projectName: defaultProjectName || initialProject?.title || initialProject?.name || '',
+      initiativeId: firstInitiative?.id || '',
+      initiativeName: firstInitiative?.title || ''
+    }
   })
   const [errorMessage, setErrorMessage] = useState('')
+
+  const selectedProjectData = useMemo(() => {
+    return projectCards.find(p => p.id === formData.projectId)
+  }, [formData.projectId])
 
   useEffect(() => {
     if (!showProjectSelect) return
@@ -73,6 +87,40 @@ const DonationForm = ({
       customAmount: ''
     }))
   }
+
+  const handleInitiativeChange = (initiativeId) => {
+    const initiative = selectedProjectData?.initiatives?.find(i => i.id === initiativeId)
+    setFormData(prev => ({
+      ...prev,
+      initiativeId: initiativeId,
+      initiativeName: initiative?.title || '',
+      amount: initiative?.price ? initiative.price.toString() : prev.amount,
+      customAmount: ''
+    }))
+  }
+
+  const handleIncrement = () => {
+    const currentAmount = parseFloat(formData.amount) || 0;
+    const initiative = selectedProjectData?.initiatives?.find(i => i.id === formData.initiativeId);
+    const step = initiative?.price || 100; // Default step to 100 if price not found
+    setFormData(prev => ({
+      ...prev,
+      amount: (currentAmount + step).toString(),
+      customAmount: ''
+    }));
+  };
+
+  const handleDecrement = () => {
+    const currentAmount = parseFloat(formData.amount) || 0;
+    const initiative = selectedProjectData?.initiatives?.find(i => i.id === formData.initiativeId);
+    const step = initiative?.price || 100;
+    const newAmount = currentAmount - step;
+    setFormData(prev => ({
+      ...prev,
+      amount: (newAmount > 0 ? newAmount : 0).toString(), // Prevent negative values
+      customAmount: ''
+    }));
+  };
 
   const handleSubmit = (e) => {
 
@@ -153,73 +201,21 @@ const DonationForm = ({
               {errorMessage}
             </div>
           )}
-          {/* First Row: Frequency, Currency, Project, Category */}
+          {/* First Row: Frequency, Category, Project, Sub-Project */}
           <div className="donation-form-row">
             <div className="donation-form-group donation-form-frequency-group">
-              <label className="donation-form-label">Donation Frequency</label>
-              <div className="donation-form-frequency">
-                {['once', 'monthly'].map((type) => (
-                  <button
-                    key={type}
-                    type="button"
-                    className={`donation-form-frequency-btn ${
-                      formData.frequency === type ? 'active' : ''
-                    }`}
-                    onClick={() =>
-                      setFormData((prev) => ({ ...prev, frequency: type }))
-                    }
-                  >
-                    {type === 'once' ? 'Give Once' : 'Give Monthly'}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="donation-form-group donation-form-currency">
-              <label className="donation-form-label">Currency</label>
+              <label className="donation-form-label">Frequency</label>
               <select
                 className="donation-form-input"
-                value={formData.currency}
+                value={formData.frequency}
                 onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    currency: e.target.value,
-                    amount: '',
-                    customAmount: ''
-                  }))
+                  setFormData((prev) => ({ ...prev, frequency: e.target.value }))
                 }
               >
-                <option value="PKR">PKR</option>
-                {/* <option value="USD">USD</option>
-                <option value="EUR">EUR</option> */}
+                <option value="once">Give Once</option>
+                <option value="monthly">Give Monthly</option>
               </select>
             </div>
-
-            {showProjectSelect && (
-              <div className="donation-form-group">
-                <label className="donation-form-label">Select Project</label>
-                <select
-                  className="donation-form-input"
-                  value={formData.projectId}
-                  onChange={(e) => {
-                    const selectedId = e.target.value
-                    const selectedProject = projects.find((p) => p.id === selectedId)
-                    setFormData((prev) => ({
-                      ...prev,
-                      projectId: selectedId,
-                      projectName: selectedProject?.title || selectedProject?.name || ''
-                    }))
-                  }
-                }
-                >
-                  {projects.map((project) => (
-                    <option key={project.id} value={project.id}>
-                      {project.title || project.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
 
             <div className="donation-form-group donation-form-category">
               <label className="donation-form-label">Category</label>
@@ -240,46 +236,129 @@ const DonationForm = ({
                 ))}
               </select>
             </div>
-          </div>
 
-          <div className="donation-form-group">
-            <label className="donation-form-label">Choose Amount</label>
-            <div className="donation-form-amounts-row">
-              <div className="donation-form-amounts">
-                {getDonationAmounts(formData.currency).map((amount) => (
-                  <button
-                    key={amount}
-                    type="button"
-                    className={`donation-form-amount-btn ${
-                      formData.amount === amount.toString() ? 'active' : ''
-                    }`}
-                    onClick={() => handleAmountClick(amount)}
-                  >
-                    {amount.toLocaleString()} {formData.currency}
-                  </button>
-                ))}
-              </div>
-              
-              <div className="donation-form-actions-input">
-                <label className="donation-form-label md:d-none">
-                  {formData.currency} Enter an amount
-                </label>
-                <input
-                  type="number"
+            {showProjectSelect && (
+              <div className="donation-form-group">
+                <label className="donation-form-label">Projects</label>
+                <select
                   className="donation-form-input"
-                  placeholder="Enter custom amount"
-                  value={formData.customAmount}
-                  onChange={(e) =>
+                  value={formData.projectId}
+                  onChange={(e) => {
+                    const selectedId = e.target.value
+                    const selectedProject = projects.find((p) => p.id === selectedId)
+                    
+                    // Find the first initiative for this project from projectCards
+                    const projectMenuData = projectCards.find(p => p.id === selectedId)
+                    const firstInitiative = projectMenuData?.initiatives?.[0]
+                    
                     setFormData((prev) => ({
                       ...prev,
-                      customAmount: e.target.value,
-                      amount: ''
+                      projectId: selectedId,
+                      projectName: selectedProject?.title || selectedProject?.name || '',
+                      initiativeId: firstInitiative?.id || '',
+                      initiativeName: firstInitiative?.title || '',
+                      amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
+                      customAmount: ''
                     }))
                   }
-                />
+                }
+                >
+                  {projects.map((project) => (
+                    <option key={project.id} value={project.id}>
+                      {project.title || project.name}
+                    </option>
+                  ))}
+                </select>
               </div>
+            )}
 
-              <button type="submit" className="donation-form-submit btn--alert btn-donate-animated">
+            {selectedProjectData?.initiatives?.length > 0 && (
+              <div className="donation-form-group">
+                <label className="donation-form-label">Sub Project</label>
+                <select
+                  className="donation-form-input"
+                  value={formData.initiativeId}
+                  onChange={(e) => handleInitiativeChange(e.target.value)}
+                >
+                  {selectedProjectData?.initiatives?.map((initiative) => (
+                    <option key={initiative.id} value={initiative.id}>
+                      {initiative.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Second Row: Currency, PKR Amount, Custom Amount, Donate Button */}
+          <div className="donation-form-row mt-24">
+            <div className="donation-form-group donation-form-currency">
+              <label className="donation-form-label">Currency</label>
+              <select
+                className="donation-form-input"
+                value={formData.currency}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    currency: e.target.value,
+                    amount: '',
+                    customAmount: ''
+                  }))
+                }
+              >
+                <option value="PKR">PKR</option>
+                {/* <option value="USD">USD</option>
+                <option value="EUR">EUR</option> */}
+              </select>
+            </div>
+
+            {formData.initiativeId && (
+              <div className="donation-form-group">
+                <label className="donation-form-label">
+                    {formData.currency} Price
+                  </label>
+                  <div className="donation-form-amount-wrapper">
+                    <button type="button" onClick={handleDecrement} className="donation-form-amount-btn">-</button>
+                    <input
+                      type="number"
+                      className="donation-form-input"
+                      placeholder="Enter amount"
+                      value={formData.amount}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          amount: e.target.value,
+                          customAmount: ''
+                        }))
+                      }
+                    />
+                    <button type="button" onClick={handleIncrement} className="donation-form-amount-btn">+</button>
+                  </div>
+              </div>
+            )}
+
+            <div className="donation-form-group">
+              <label className="donation-form-label">
+                {formData.currency} Custom Amount
+              </label>
+              <input
+                type="number"
+                className="donation-form-input"
+                placeholder="Enter custom amount"
+                value={formData.customAmount}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    customAmount: e.target.value,
+                    amount: ''
+                  }))
+                }
+              />
+            </div>
+
+            <div className="donation-form-group">
+              <label className="donation-form-label">&nbsp;</label>
+              <button type="submit" className="donation-form-submit btn--alert btn-donate-animated" style={{ width: '100%', minWidth: 'auto' }}>
                 {/* Animated background particles */}
 
                 <span className="particle particle-3"></span>

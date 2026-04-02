@@ -60,7 +60,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
   }
 
   const handleDonationSubmit = (formData) => {
-    navigate('/donate', { state: { project: project.id, ...formData } })
+    navigate(`/donate/${project.id}`, { state: { ...formData } })
   }
 
   const categoryOptions = ['General', project.donateCategory].filter(Boolean)

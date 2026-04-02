@@ -15,6 +15,7 @@ const HeroContent = lazy(() =>
 const DonationForm = lazy(() =>
   import("../components/donationForm/DonationForm")
 );
+
 const DonationFeatures = lazy(() =>
   import("../components/donationfeatures/DonationFeatures")
 );
