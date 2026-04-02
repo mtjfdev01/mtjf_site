@@ -68,7 +68,7 @@ const DonationProjectsMenuForm = ({
           Zakat
         </label>
 
-        <label className={`fitrana-label text-center ${donationType === "fitrana" ? "active" : ""}`}>
+        {/* <label className={`fitrana-label text-center ${donationType === "fitrana" ? "active" : ""}`}>
           <input
             type="radio"
             name="donation"
@@ -77,7 +77,7 @@ const DonationProjectsMenuForm = ({
             onChange={() => setDonationType("fitrana")}
           />
           Fitrana
-        </label>
+        </label> */}
       </div>
 
       <div className="form-actions">
