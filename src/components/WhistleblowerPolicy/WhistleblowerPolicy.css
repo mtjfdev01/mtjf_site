@@ -1,0 +1,74 @@
+.whistleblower-policy-section {
+  background: #ffffff;
+  border-top: 1px solid rgba(19, 16, 34, 0.08);
+  padding-top: var(--space-64);
+}
+
+.whistleblower-policy-inner {
+  max-width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.whistleblower-policy-subtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.35;
+  margin-bottom: var(--space-24);
+}
+
+.whistleblower-policy-body {
+  color: #4b5563;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.whistleblower-policy-body p {
+  margin: 0 0 var(--space-16);
+}
+
+.whistleblower-policy-report-via {
+  font-weight: 600;
+  color: #374151;
+  margin-top: var(--space-8);
+}
+
+.whistleblower-policy-download-intro {
+  margin-top: var(--space-24);
+  margin-bottom: var(--space-12);
+  font-weight: 600;
+  color: #374151;
+}
+
+.whistleblower-policy-link {
+  color: #2ab1e1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: var(--transition);
+}
+
+.whistleblower-policy-link:hover {
+  color: #1a8fc0;
+}
+
+.whistleblower-policy-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #34c759;
+  color: var(--color-white);
+  border: none;
+  padding: var(--space-12) var(--space-24);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.whistleblower-policy-download-btn:hover {
+  background-color: #1f5a22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}

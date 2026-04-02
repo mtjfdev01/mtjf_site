@@ -5,6 +5,9 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const Career = lazy(() => import("../components/career/Career"));
 const JoinTeam = lazy(() => import("../components/JoinTeam/JoinTeam"));
+const WhistleblowerPolicy = lazy(() =>
+  import("../components/WhistleblowerPolicy/WhistleblowerPolicy")
+);
 // const Pagination = lazy(() => import("../components/pagination/Pagination"));
 const Events = lazy(() => import("../components/events/Events"));
 const QuickBlogs = lazy(() => import("../components/quickblogs/index"));
@@ -44,6 +47,9 @@ const Careers = () => {
           <>
             <Suspense fallback={null}>
               <JoinTeam />
+            </Suspense>
+            <Suspense fallback={null}>
+              <WhistleblowerPolicy />
             </Suspense>
             {/* <Suspense fallback={null}>
               <Pagination />

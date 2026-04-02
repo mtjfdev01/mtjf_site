@@ -14,6 +14,9 @@ const CoreValues = lazy(() =>
 );
 const Directors = lazy(() => import("../components/directors/Directors"));
 const Team = lazy(() => import("../components/team/Team"));
+const FinancialReports = lazy(() =>
+  import("../components/financialReports/FinancialReports")
+);
 const Events = lazy(() => import("../components/events/Events"));
 const QuickBlogs = lazy(() => import("../components/quickblogs/index"));
 const DonationCta = lazy(() =>
@@ -60,6 +63,7 @@ const About = () => {
                 ]}
               />
               <Team />
+              {/* <FinancialReports /> */}
             {/* <Suspense fallback={null}>
               <Events />
             </Suspense> */}
