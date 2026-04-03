@@ -192,17 +192,28 @@ const JobDetail = () => {
                 </svg>
                 <span>{job.location}</span> 
               </div>
-              { job?.posted_date && (
-              <div className="job-detail-info-item">
-                <span><b> Posted Date: </b> </span>
-                <span>
-                {job?.posted_date
-                  ? new Date(job.posted_date).toLocaleDateString()
-                  : ''}
-              </span> 
-              </div>
-              )
-              }
+              { job?.posted_date && job?.closing_date && (() => {
+                const postedDate = new Date(job.posted_date);
+                const closingDate = new Date(job.closing_date);
+                const currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0); // Normalize current date to start of day
+
+                const isPostedToday = postedDate.toDateString() === currentDate.toDateString();
+                const hasClosingDatePassed = closingDate < currentDate;
+
+                if (isPostedToday && hasClosingDatePassed) {
+                  return null; // Hide posted date
+                }
+
+                return (
+                  <div className="job-detail-info-item">
+                    <span><b> Posted Date: </b> </span>
+                    <span>
+                      {postedDate.toLocaleDateString()}
+                    </span> 
+                  </div>
+                );
+              })()}
               {
                 job?.closing_date && (
               <div className="job-detail-info-item">
