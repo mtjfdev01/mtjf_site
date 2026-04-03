@@ -63,7 +63,7 @@ const About = () => {
                 ]}
               />
               <Team />
-              {/* <FinancialReports /> */}
+              <FinancialReports />
             {/* <Suspense fallback={null}>
               <Events />
             </Suspense> */}

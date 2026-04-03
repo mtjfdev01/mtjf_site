@@ -29,34 +29,63 @@
   }
 }
 
+/* Vertical card — cover 1:1; centered, narrow on desktop; slightly wider on mobile */
 .financial-reports-card {
-  margin: 0;
-}
-
-.financial-reports-card-body {
-  border: 1px solid #e6e6e6;
-  border-radius: 14px;
-  padding: var(--space-20);
-  background: #ffffff;
-  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
   box-shadow: 0 8px 24px rgba(19, 16, 34, 0.06);
 }
 
-.financial-reports-card-title {
-  margin: 0 0 var(--space-8);
-  font-size: 1.125rem;
-  line-height: 1.3;
-  font-weight: 700;
-  color: #111827;
+@media (max-width: 768px) {
+  .financial-reports-card {
+    max-width: 340px;
+  }
 }
 
-.financial-reports-card-desc {
-  margin: 0 0 var(--space-16);
-  color: #4b5563;
-  font-size: 0.95rem;
-  line-height: 1.65;
+.financial-reports-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  background: #e8e6ed;
+}
+
+.financial-reports-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.financial-reports-card-media-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: linear-gradient(145deg, #e8e6ed 0%, #dcd8e4 100%);
+}
+
+.financial-reports-card-body {
+  padding: var(--space-12) var(--space-14) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-12);
+}
+
+.financial-reports-card-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #111827;
   flex: 1;
 }
 
@@ -64,7 +93,6 @@
   display: flex;
   gap: var(--space-12);
   flex-wrap: wrap;
-  margin-top: auto;
 }
 
 .financial-reports-btn {
@@ -80,6 +108,8 @@
   border: 1px solid transparent;
   cursor: pointer;
   transition: var(--transition);
+  flex: 1;
+  min-width: 0;
 }
 
 .financial-reports-btn--primary {
@@ -102,3 +132,13 @@
   background: rgba(0, 0, 0, 0.04);
 }
 
+@media (max-width: 400px) {
+  .financial-reports-actions {
+    flex-direction: column;
+  }
+
+  .financial-reports-btn {
+    flex: none;
+    width: 100%;
+  }
+}

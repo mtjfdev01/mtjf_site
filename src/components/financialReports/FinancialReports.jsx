@@ -1,24 +1,33 @@
 import './FinancialReports.css'
+import reportCover2324 from '../../assets/img/reports/report_1_img.png'
+import reportCover2425 from '../../assets/img/reports/report_b.png'
+import reportCover2223 from '../../assets/img/reports/report_c.png'
 
+/** Encode paths that may contain spaces (public PDFs). */
+const safeUrl = (path) => (path ? encodeURI(path) : '')
+
+/* Paths must match filenames in public/pdfs/reports/ exactly */
 const FINANCIAL_REPORTS = [
   {
+    id: 3,
+    title: 'Annual Report 2022–2023',
+    pdfUrl: '/pdfs/reports/Annual Report 22-23.pdf',
+    imageUrl: reportCover2425,
+
+  },
+  {
     id: 1,
-    title: 'Annual Financial Statements FY 2024–25',
-    desc: 'Audited statement of financial position, comprehensive income, and cash flows for the fiscal year ending June 30, 2025.',
-    pdfUrl: '/pdfs/reports/pdf_1.pdf',
+    title: 'MTJF Annual Report 23–24',
+    pdfUrl: '/pdfs/reports/MTJF Annual Report 2023-24.pdf',
+    imageUrl: reportCover2324,
   },
   {
     id: 2,
-    title: 'Independent Auditor’s Report — Q2 2025',
-    desc: 'Summary of review procedures and key findings for the second quarter, prepared in line with applicable reporting standards.',
-    pdfUrl: '/pdfs/reports/pdf_6.pdf',
+    title: 'MTJF Annual Report 24–25',
+    pdfUrl: '/pdfs/reports/MTJF Annual Report 24-25 (1).pdf',
+    imageUrl: reportCover2223,
   },
-  {
-    id: 3,
-    title: 'Donation Utilization & Program Expenditure Summary',
-    desc: 'High-level breakdown of how funds were allocated across programs, operations, and compliance during the reporting period.',
-    pdfUrl: '/pdfs/reports/pdf_1.pdf',
-  },
+
 ]
 
 export default function FinancialReports() {
@@ -35,46 +44,57 @@ export default function FinancialReports() {
         </header>
 
         <div className="financial-reports-grid">
-          {FINANCIAL_REPORTS.map((d) => (
-            <article className="financial-reports-card" key={d.id}>
-              <div className="financial-reports-card-body">
-                <h3 className="financial-reports-card-title">{d.title}</h3>
-                <p className="financial-reports-card-desc">{d.desc}</p>
-
-                <div className="financial-reports-actions">
-                  <a
-                    className="financial-reports-btn financial-reports-btn--outline"
-                    href={d.pdfUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      window.open(d.pdfUrl, '_blank', 'noopener,noreferrer')
-                    }}
-                  >
-                    View
-                  </a>
-                  <a
-                    className="financial-reports-btn financial-reports-btn--primary"
-                    href={d.pdfUrl}
-                    download
-                    onClick={(e) => {
-                      const link = document.createElement('a')
-                      link.href = d.pdfUrl
-                      link.download = d.title.replace(/\s+/g, '_') + '.pdf'
-                      link.target = '_blank'
-                      document.body.appendChild(link)
-                      link.click()
-                      document.body.removeChild(link)
-                      e.preventDefault()
-                    }}
-                  >
-                    Download Now
-                  </a>
+          {FINANCIAL_REPORTS.map((d) => {
+            const href = safeUrl(d.pdfUrl)
+            const imgSrc = d.imageUrl ? safeUrl(d.imageUrl) : ''
+            const safeFilename = `${(d.title || 'report').replace(/\s+/g, '_')}.pdf`
+            return (
+              <article className="financial-reports-card" key={d.id}>
+                <div className="financial-reports-card-media">
+                  {imgSrc ? (
+                    <img src={imgSrc} alt={d.title} loading="lazy" />
+                  ) : (
+                    <div className="financial-reports-card-media-placeholder" aria-hidden />
+                  )}
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="financial-reports-card-body">
+                  <h3 className="financial-reports-card-title">{d.title}</h3>
+                  <div className="financial-reports-actions">
+                    <a
+                      className="financial-reports-btn financial-reports-btn--outline"
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        window.open(href, '_blank', 'noopener,noreferrer')
+                      }}
+                    >
+                      View
+                    </a>
+                    <a
+                      className="financial-reports-btn financial-reports-btn--primary"
+                      href={href}
+                      download={safeFilename}
+                      onClick={(e) => {
+                        const link = document.createElement('a')
+                        link.href = href
+                        link.download = safeFilename
+                        link.target = '_blank'
+                        link.rel = 'noopener noreferrer'
+                        document.body.appendChild(link)
+                        link.click()
+                        document.body.removeChild(link)
+                        e.preventDefault()
+                      }}
+                    >
+                      Download
+                    </a>
+                  </div>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
