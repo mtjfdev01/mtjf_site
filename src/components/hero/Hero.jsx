@@ -32,7 +32,7 @@ const Hero = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length)
-    }, 5000)
+    }, 10000) // Moderate, smooth pace (10 seconds)
 
     return () => {
       if (intervalRef.current) {
