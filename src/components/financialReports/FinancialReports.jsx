@@ -17,13 +17,13 @@ const FINANCIAL_REPORTS = [
   },
   {
     id: 1,
-    title: 'MTJF Annual Report 23–24',
+    title: 'Annual Report 2023–2024',
     pdfUrl: '/pdfs/reports/MTJF Annual Report 2023-24.pdf',
     imageUrl: reportCover2324,
   },
   {
     id: 2,
-    title: 'MTJF Annual Report 24–25',
+    title: 'Annual Report 2024–2025',
     pdfUrl: '/pdfs/reports/MTJF Annual Report 24-25 (1).pdf',
     imageUrl: reportCover2223,
   },
