@@ -315,7 +315,7 @@ const DonationForm = ({
             {formData.initiativeId && (
               <div className="donation-form-group">
                 <label className="donation-form-label">
-                    {formData.currency} Price
+                    {formData.currency} Currency
                   </label>
                   <div className="donation-form-amount-wrapper">
                     <button type="button" onClick={handleDecrement} className="donation-form-amount-btn">-</button>
