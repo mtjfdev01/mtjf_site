@@ -203,8 +203,11 @@ const JobDetail = () => {
                     const isPostedToday = postedDate.toDateString() === currentDate.toDateString();
                     const hasClosingDatePassed = closingDate < currentDate;
 
-                    if (isPostedToday && hasClosingDatePassed) {
-                      return null; // First Condition: Hide posted date if today and closed
+                    const isPostedCurrentYear = postedDate.getFullYear() === currentDate.getFullYear();
+                    const isClosingPastYear = closingDate.getFullYear() < currentDate.getFullYear();
+
+                    if ((isPostedToday && hasClosingDatePassed) || (isPostedCurrentYear && isClosingPastYear)) {
+                      return null; // Hide posted date if today and closed, OR if current year posted and past year closed
                     }
 
                     return (
