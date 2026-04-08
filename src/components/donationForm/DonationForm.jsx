@@ -371,8 +371,8 @@ const DonationForm = ({
               <button type="submit" className="donation-form-submit btn--alert btn-donate-animated" style={{ width: '100%', minWidth: 'auto' }}>
                 {/* Animated background particles */}
 
-                <span className="particle particle-3"></span>
-                <span className="particle particle-4"></span>
+                {/* <span className="particle particle-3"></span> */}
+                {/* <span className="particle particle-4"></span> */}
                 
                 {/* Glowing border */}
                 <span className="glow-border"></span>
