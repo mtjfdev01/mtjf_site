@@ -45,7 +45,7 @@ const DonationForm = ({
     return {
       frequency: 'once',
       currency: initialCurrency,
-      amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
+      amount: firstInitiative?.price ? firstInitiative.price.toString() : '0',
       customAmount: '',
       category: defaultCategory || categoryOptions[0] || 'General',
       projectId: initialProjectId,
@@ -318,21 +318,27 @@ const DonationForm = ({
                     {formData.currency} Currency
                   </label>
                   <div className="donation-form-amount-wrapper">
-                    <button type="button" onClick={handleDecrement} className="donation-form-amount-btn">-</button>
+                    <button type="button" onClick={handleDecrement} className="donation-form-amount-btn" disabled={!!formData.customAmount || Number(formData.amount) <= 0}>-</button>
                     <input
                       type="number"
-                      className="donation-form-input"
+                      className="donation-form-input no-spinner"
                       placeholder="Enter amount"
-                      value={formData.amount}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          amount: e.target.value,
-                          customAmount: ''
-                        }))
-                      }
+                      value={Number(formData.amount) === 0 ? '0' : formData.amount}
+                      min="0"
+                      disabled={!!formData.customAmount || Number(formData.amount) === 0}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const numVal = Number(val);
+                        if (val === '' || numVal >= 0) {
+                          setFormData((prev) => ({
+                            ...prev,
+                            amount: (val === '' || numVal === 0) ? '0' : val,
+                            customAmount: ''
+                          }))
+                        }
+                      }}
                     />
-                    <button type="button" onClick={handleIncrement} className="donation-form-amount-btn">+</button>
+                    <button type="button" onClick={handleIncrement} className="donation-form-amount-btn" disabled={!!formData.customAmount}>+</button>
                   </div>
               </div>
             )}
@@ -343,16 +349,20 @@ const DonationForm = ({
               </label>
               <input
                 type="number"
-                className="donation-form-input"
+                className="donation-form-input no-spinner"
                 placeholder="Enter custom amount"
                 value={formData.customAmount}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    customAmount: e.target.value,
-                    amount: ''
-                  }))
-                }
+                min="0"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === '' || Number(val) >= 0) {
+                    setFormData((prev) => ({
+                      ...prev,
+                      customAmount: val,
+                      amount: '0'
+                    }))
+                  }
+                }}
               />
             </div>
 
