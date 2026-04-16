@@ -1558,7 +1558,7 @@ team will provide you with individualised attention and assistance.`,
   },
    'qurbani-barai-mustehqeen': {
     id: 'qurbani-barai-mustehqeen',
-    title: 'qurbani-barai-mustehqeen',
+    title: 'Qurbani Barai Mustehqeen',
     headerImage: Qurbani, 
     headerImageMob: apna_ghar_hero_mob,
     stats: [
@@ -1577,7 +1577,7 @@ team will provide you with individualised attention and assistance.`,
       paragraph3: ''
     },
     mainImage: Qurbani,
-    donateCategory: 'Apna Ghar',
+    donateCategory: 'Qurbani Barai Mustehqeen',
     donateButtonText: 'Build a Home for a Widow & Her Children',
     donationOptions: {
       PKR: [10000, 25000, 50000, 100000],
