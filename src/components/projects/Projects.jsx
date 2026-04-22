@@ -294,7 +294,7 @@ const Projects = () => {
   }, [])
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'PKR',
       minimumFractionDigits: 0,
