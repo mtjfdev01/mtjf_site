@@ -75,7 +75,9 @@
 
 @media (min-width: 768px) {
   .donation-form-row {
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 260px));
+    justify-content: center;
   }
 }
 

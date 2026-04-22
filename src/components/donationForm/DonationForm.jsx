@@ -5,6 +5,19 @@ import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './DonationForm.css'
 
+// ─── [ADDED] Currency helpers ─────────────────────────────────────────────────
+const formatCurrency = (amount) => {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'PKR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(amount)
+}
+
+// Strips formatting so only a plain number string is sent to the API / context
+const parseCurrencyInput = (value) => String(value).replace(/[^0-9.]/g, '')
+
 const DEFAULT_DONATION_OPTIONS = {
   PKR: [5000, 10000, 25000, 50000],
   USD: [50, 100, 250, 500],
@@ -127,8 +140,8 @@ const DonationForm = ({
     e.preventDefault()
     setErrorMessage('')
     
-    // Calculate final amount
-    const finalAmount = formData.customAmount || formData.amount
+   // [CHANGED] Strip any formatting before validation so pure numbers are used
+    const finalAmount = parseCurrencyInput(formData.customAmount || formData.amount)
     
     // Validate amount is selected
     if (!finalAmount || finalAmount.trim() === '') {
@@ -319,31 +332,26 @@ const DonationForm = ({
                   </label>
                   <div className="donation-form-amount-wrapper">
                     <button type="button" onClick={handleDecrement} className="donation-form-amount-btn" disabled={!!formData.customAmount || Number(formData.amount) <= 0}>-</button>
+                    {/* [CHANGED] type="text" + readOnly to display formatted value.
+                        formData.amount stays a plain number string — no logic changed. */}
                     <input
-                      type="number"
+                      type="text"
+                      readOnly
                       className="donation-form-input no-spinner"
                       placeholder="Enter amount"
-                      value={Number(formData.amount) === 0 ? '0' : formData.amount}
-                      min="0"
+                      value={
+                        !!formData.customAmount || Number(formData.amount) === 0
+                          ? formatCurrency(0)
+                          : formatCurrency(Number(formData.amount))
+                      }
                       disabled={!!formData.customAmount || Number(formData.amount) === 0}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        const numVal = Number(val);
-                        if (val === '' || numVal >= 0) {
-                          setFormData((prev) => ({
-                            ...prev,
-                            amount: (val === '' || numVal === 0) ? '0' : val,
-                            customAmount: ''
-                          }))
-                        }
-                      }}
                     />
                     <button type="button" onClick={handleIncrement} className="donation-form-amount-btn" disabled={!!formData.customAmount}>+</button>
                   </div>
               </div>
             )}
 
-            <div className="donation-form-group">
+             <div className="donation-form-group">
               <label className="donation-form-label">
                 {formData.currency} Custom Amount
               </label>
@@ -364,6 +372,12 @@ const DonationForm = ({
                   }
                 }}
               />
+              {/* [ADDED] Formatted preview shown below custom amount while typing */}
+              {formData.customAmount && Number(formData.customAmount) > 0 && (
+                <small className="donation-form-amount-preview">
+                  {formatCurrency(Number(formData.customAmount))}
+                </small>
+              )}
             </div>
 
             <div className="donation-form-group">
