@@ -10,6 +10,20 @@ import imageBlog3 from '../assets/img/blogs/image blog 3.webp'
 import handpump from '../assets/img/blogs/handpump.webp'
 import bull from '../assets/img/blogs/bull.webp'
 import h_2 from '../assets/img/blogs/education.webp'
+import sadaqah_jariyah1 from '../assets/img/blogs_details/sadaqah_jariyah/sadaqah_jariyah1.webp'
+import sadaqah_jariyah2 from '../assets/img/blogs_details/sadaqah_jariyah/sadaqah_jariyah2.webp'
+import sadaqah_jariyah3 from '../assets/img/blogs_details/sadaqah_jariyah/sadaqah_jariyah3.webp'
+import sadaqah_jariyah4 from '../assets/img/blogs_details/sadaqah_jariyah/sadaqah_jariyah4.webp'
+import sadaqah_jariyah5 from '../assets/img/blogs_details/sadaqah_jariyah/sadaqah_jariyah5.webp'
+import clean_water1 from '../assets/img/blogs_details/clean_water/clean_water1.webp'
+import clean_water2 from '../assets/img/blogs_details/clean_water/clean_water2.webp'
+import marriage1 from '../assets/img/blogs_details/marriage/marriage1.webp'
+import marriage2 from '../assets/img/blogs_details/marriage/marriage2.webp'
+import marriage3 from '../assets/img/blogs_details/marriage/marriage3.webp'
+import education1 from '../assets/img/blogs_details/education/education1.webp'
+import education2 from '../assets/img/blogs_details/education/education2.webp'
+
+
 import qurbani from '../assets/img/blogs/qurbani.webp'
 import marriage from '../assets/img/blogs/marriage.webp'
 import h_3 from '../assets/img/projects/projects-details/Health/health_free_opd.webp'
@@ -36,10 +50,10 @@ export const blogs = [
         id: 'what-is-sadaqah-jariyah',
         title: 'What is Sadaqah Jariyah?',
         // subtitle: 'When Illness Strikes, We Step In: Immediately',
-        image: h_2,
+        image: sadaqah_jariyah1,
         description: 'Sadaqah Jariyah, or ongoing charity, is a form of giving that continues to benefit people long after the giver has passed. Unlike one-time charity (Sadaqah), which provides immediate relief, Sadaqah Jariyah ensures continuous reward for as long as people benefit from it.',
         descriptionBold: null,
-        description2Bold:'The Prophet Muhammad (ﷺ) said:',
+        description2Bold:'The Prophet Muhammad (ﷺ) said',
         description2:'“When a person dies, all their deeds end except three: a continuing charity, knowledge that benefits others, or a righteous child who prays for them.” (Muslim 1631).',
         description3:'This means that your generosity can become your legacy, bringing endless rewards even after you leave this world.',
         description3Bold: null,
@@ -48,37 +62,77 @@ export const blogs = [
         id: 'types-of-sadaqah-jariyah',
         title: 'Types of Sadaqah Jariyah',
         impact:'Sadaqah Jariyah can take many forms, each carrying its own ripple effect of blessings:',
-        image: h_3,
+        image: sadaqah_jariyah2,
         descriptionBold: 'Providing Clean Water – Installing hand pumps, wells, or water filtration plants.',
-        description: 'Imagine someone quenching their thirst, making wudu, or preparing food with the water you provided—every drop earns you reward! At MTJ Foundation, we run the Clean Water Program, installing hand pumps and water filtration plants in water-scarce areas, ensuring access to safe drinking water for thousands.',
-        description2Bold: 'Building Mosques – A place where countless prayers are offered.',
-        description2: 'Whoever builds a mosque for the sake of Allah, Allah will build for him a house in Jannah.” (Bukhari & Muslim)',
-
-        bottomText: 'Every letter a child reads, every lesson learned, every dua made by a student of knowledge—all will add to your rewards. MTJ Foundation runs an Educational Program, providing children with learning opportunities, scholarships, and academic resources to help build a brighter future.',
+        description: 'The Prophet (ﷺ) was asked, “Which charity is best?” He replied, “(Providing) water.” (Abu Dawood 1681)',
+        description2Bold: '',
+        description2: 'Imagine someone quenching their thirst, making wudu, or preparing food with the water you provided—every drop earns you reward! At MTJ Foundation, we run the Clean Water Program, installing hand pumps and water filtration plants in water-scarce areas, ensuring access to safe drinking water for thousands.',
+        bottomText: '',
         // bottomTextBold: 'Every act of charity (sadaqah) is a form of sadaqah Jariyah, creating continuous rewards for generations to come.',
         // bottomTextSubTitle:"The best of you are those who learn the Quran and teach it. (Bukhari)",
       },
       {
-        id: 'supporting-medical-aid',
-        title: 'Supporting Medical Aid – Funding hospitals, clinics, or treatments.',
+        id: 'Building-Mosques',
+        title: '',
         impact:'',
-        image: h_3,
-        descriptionBold: '',
-        description: 'Helping the sick and needy ensures that lives are saved and communities remain healthy.Our Healthcare Initiative at MTJ Foundation provides medical aid, medicines, and healthcare support to underprivileged families, ensuring access to essential treatment.',
+        image: '',
+        descriptionBold: 'Building Mosques – A place where countless prayers are offered.',
+        description: 'Whoever builds a mosque for the sake of Allah, Allah will build for him a house in Jannah.” (Bukhari & Muslim)',
+        bottomText: '',
+        bottomTextBold: '',
+
+      },
+      {
+        id: 'Sponsoring-Orphans-Education',
+        title: '',
+        impact:'',
+        image: sadaqah_jariyah3,
+        descriptionBold: ' Sponsoring Orphans & Education – Providing for a child’s education and future',
+        description: '“The best of you are those who learn the Quran and teach it.” (Bukhari)',
+         description2Bold: '',
+        description2:'Every letter a child reads, every lesson learned, every dua made by a student of knowledge—all will add to your rewards. MTJ Foundation runs an Educational Program, providing children with learning opportunities, scholarships, and academic resources to help build a brighter future.',
         bottomText: '',
         bottomTextBold: '',
 
       },  
       {
-        id: 'planting-trees',
-        title: 'Planting Trees – A simple act that benefits generations.',
-        impact:'The Prophet (ﷺ) said, “If a Muslim plants a tree or sows seeds, and then birds, or a person, or an animal eats from it, it is regarded as charity for him.” (Bukhari)',
-        image: h_3,
-        descriptionBold: '',
-        description: 'MTJ Foundation conducts plantation drives across different areas, promoting a greener, healthier environment that benefits both people and nature. Why Should You Give Sadaqah Jariyah?',
+        id: 'Supporting-Medical-Aid',
+        title: '',
+        impact:'',
+        image: sadaqah_jariyah4,
+        descriptionBold: 'Supporting Medical Aid – Funding hospitals, clinics, or treatments.',
+        description: 'Helping the sick and needy ensures that lives are saved and communities remain healthy.Our Healthcare Initiative at MTJ Foundation provides medical aid, medicines, and healthcare support to underprivileged families, ensuring access to essential treatment.',
         description2Bold: '',
           services: [
             '✨ It Protects You from Hardships – “Charity extinguishes sins just as water extinguishes fire.” (Tirmidhi 614)',
+            '✨ It Multiplies in Reward – “The example of those who spend their wealth in the way of Allah is like a seed that grows seven spikes; in each spike is a hundred grains.” (Qur’an 2:261)',
+            '✨ It Brings Barakah to Your Wealth – Your generosity never decreases your wealth; instead, it invites endless blessings.',
+          ],
+        description2: ''
+      },
+        {
+        id: 'Planting-Trees',
+        title: '',
+        impact:'',
+        image: sadaqah_jariyah5,
+        descriptionBold: 'Planting Trees – A simple act that benefits generations',
+        description: 'The Prophet (ﷺ) said, “If a Muslim plants a tree or sows seeds, and then birds, or a person, or an animal eats from it, it is regarded as charity for him.” (Bukhari)',
+         description2Bold: '',
+        description2:'MTJ Foundation conducts plantation drives across different areas, promoting a greener, healthier environment that benefits both people and nature.',
+        bottomText: '',
+        bottomTextBold: '',
+
+      }, 
+        {
+        id: 'Why-Should-You-Give-Sadaqah-Jariyah',
+        title: 'Why Should You Give Sadaqah Jariyah?',
+        impact:'',
+        image: '',
+        descriptionBold: '',
+        description: '',
+        description2Bold: '',
+          services: [
+            '✨  It Protects You from Hardships – “Charity extinguishes sins just as water extinguishes fire.” (Tirmidhi 614)',
             '✨ It Multiplies in Reward – “The example of those who spend their wealth in the way of Allah is like a seed that grows seven spikes; in each spike is a hundred grains.” (Qur’an 2:261)',
             '✨ It Brings Barakah to Your Wealth – Your generosity never decreases your wealth; instead, it invites endless blessings.',
           ],
@@ -88,7 +142,7 @@ export const blogs = [
         id: 'how-to-contribute',
         title: 'How You Can Contribute to Sadaqah Jariyah Through MTJ Foundation',
         impact:'',
-        image: h_3,
+        image: '',
         descriptionBold: '',
         description: 'At MTJ Foundation, we are dedicated to empowering communities through impactful projects that qualify as Sadaqah Jariyah. You can take part by contributing to:',
         services:[
@@ -103,7 +157,7 @@ export const blogs = [
         id: 'your-chance-to-build-your-akhirah',
         title: 'Your Chance to Build Your Akhirah',
         impact:'🌙 This Ramadan, be a source of endless mercy and reward. Give Sadaqah Jariyah today, and let your kindness illuminate lives for generations to come.',
-        image: h_3,
+        image: '',
         descriptionBold: '',
         description: 'Sadaqah Jariyah is more than just charity—it is an everlasting investment in your hereafter. Every drop of clean water, every child’s education, every life-saving treatment you support creates a ripple effect of blessings that continues long after you have left this world.',
         donateButtonText: 'Donate Now',
@@ -116,10 +170,10 @@ export const blogs = [
   {
     id: 'clean-water',
     date: 'June 15, 2018',
-    title: 'The Power of Clean Water: Transforming Lives One Drop at a Time',
+    title: 'The Power of Clean Water',
     category: 'Water',
     image: powerOfCleanWater,
-    excerpt: 'Clean water is a fundamental human right. Learn how access to safe drinking water transforms communities and saves lives.',
+    excerpt: '',
     content: 'content',
     subProjects: 'subProjects',
     link: '/blogs/clean-water',
@@ -127,19 +181,28 @@ export const blogs = [
     featured: false,
     subProjects:[
       {
-        id: 'what-is-sadaqah-jariyah',
+        id: 'The-Power-of-Clean-Water',
         title: 'The Power of Clean Water: Transforming Lives One Drop at a Time',
         // subtitle: 'When Illness Strikes, We Step In: Immediately',
-        image: h_2,
+        image: clean_water1,
         description: 'Water is life. It nourishes, cleanses, and sustains us. Yet, for millions across the world, access to clean drinking water is still a distant dream. Imagine a mother walking miles under the scorching sun, carrying a heavy container just to fetch water that may not even be safe to drink. Imagine a child, too weak to attend school, suffering from preventable waterborne diseases. This is not just a scenario—it is the reality of many communities in Pakistan and beyond.',
         description2:'At MTJ Foundation, we believe that access to clean water is not a privilege; it is a fundamental right. It is not just about quenching thirst—it is about dignity, health, and the chance for a better future. Our mission is to ensure that every drop of water brings hope, healing, and transformation.',
-        bottomText:'In Pakistan, more than 80% of the population lacks access to clean drinking water. This crisis disproportionately affects children, leading to waterborne diseases such as cholera, diarrhea, and typhoid. According to UNICEF, these diseases contribute to over 50,000 child deaths every year in the country. The impact is heartbreaking—lives are lost, dreams are shattered, and communities are left in perpetual struggle.'  
+        bottomText:''  
+      },
+        {
+        id: 'A-Crisis',
+        title: 'A Crisis That Can’t Be Ignored',
+        // subtitle: 'When Illness Strikes, We Step In: Immediately',
+        image: '',
+        description: 'In Pakistan, more than 80% of the population lacks access to clean drinking water. This crisis disproportionately affects children, leading to waterborne diseases such as cholera, diarrhea, and typhoid. According to UNICEF, these diseases contribute to over 50,000 child deaths every year in the country. The impact is heartbreaking—lives are lost, dreams are shattered, and communities are left in perpetual struggle.',
+        description2:'',
+        bottomText:''  
       },
       {
         id: 'commitment',
         title: 'MTJ Foundation’s Commitment to Change',
         // subtitle: 'When Illness Strikes, We Step In: Immediately',
-        image: h_2,
+        image: '',
         description: 'At MTJ Foundation, we are not just witnessing this crisis—we are actively working to change the narrative. Through our Clean Water Initiative, we are reaching out to the most vulnerable communities, providing them with sustainable solutions for safe and accessible water. Our projects focus on:',
         services:[
           'Hand Pump Installations – Bringing water closer to families and communities who previously had to walk miles to fetch it.',
@@ -150,7 +213,7 @@ export const blogs = [
       {
         id:'water-as-a-lifeline-in-gaza',
         title:'Water as a Lifeline in Gaza',
-        image: h_2,
+        image: '',
         description:'Beyond Pakistan, we are also extending our help to those suffering in conflict zones. Our foundation has been sending essential aid to Gaza, where families are displaced and struggling for survival. With limited access to safe drinking water, the crisis in Gaza is worsening every day. Through our relief efforts, we are providing formula milk powder and other necessities, ensuring that displaced families, especially children and mothers, receive the care they need.',
         description2:'For us, clean water is not just about health—it is about giving people a fighting chance. It is about allowing children to go to school without suffering from illness. It is about empowering women, who no longer have to spend hours fetching water. It is about restoring hope in places where despair looms large.',
         videos: [
@@ -160,23 +223,16 @@ export const blogs = [
       {
         id:'impacting-lives-through-clean-water-access',
         title:'Impacting Lives Through Clean Water Access',
-        image: h_2,
+        image: clean_water2,
         description:'With the installation of our hand pumps and water filtration plants, we have impacted the lives of more than 300,000 people, bringing hope and ease to communities that once struggled for something as basic as water. Families no longer have to walk miles for water, a struggle we heard from countless beneficiaries. Mothers shared how they would set out before sunrise, walking for hours with heavy pots, only to return home exhausted, leaving little time for their children or household needs. Children, instead of attending school, would accompany their parents on these long, tiring journeys.',
         description2:'But now, with access to clean water just steps away, their lives have taken a new turn. Children can finally focus on their education without the burden of water collection. Mothers have more time to care for their families and pursue small income-generating activities. We have seen entire communities thrive, with gardens growing fresh vegetables and livestock staying healthy.',
-        bottomText:'The risk of waterborne diseases, which once caused untold suffering, has significantly decreased. Villagers no longer live in fear of contaminated water harming their loved ones. Now, they celebrate healthier, brighter days. The ripple effect of clean water is profound—it’s not just about survival but about living with dignity and hope.'
-      },
-      {
-        id:'why-your-support-matters',
-        title:'Why Your Support Matters:',
-        image: h_2,
-        description:'At MTJ Foundation, every drop matters because every life matters. Each hand pump installed means a mother no longer has to risk her life walking miles for water. Each water filtration plant means a child can go to school healthy and happy. Every donation, every action, and every shared story brings us closer to a world where no one has to suffer from the lack of clean water.',
-        description2:'Together, we can turn the tide—one drop at a time. Your support isn’t just a donation; it’s a lifeline. Will you help us bring clean water and hope to those who need it most?',
-        bottomText:'The fight for clean water is far from over. Every day, millions of people still live without access to safe drinking water, but together, we can change that. With your support, we can bring more clean water, more smiles, and more hope to communities in need. Whether through donations, spreading awareness, or participating in our projects, your contribution has the power to transform lives.'    
+        description3:'The risk of waterborne diseases, which once caused untold suffering, has significantly decreased. Villagers no longer live in fear of contaminated water harming their loved ones. Now, they celebrate healthier, brighter days. The ripple effect of clean water is profound—it’s not just about survival but about living with dignity and hope.',
+        bottomText:''
       },
       {
         id:'how-you-can-make-a-difference',
         title:'How You Can Make a Difference',
-        image: h_2,
+        image: '',
         descriptionBold:'💧 Spread Awareness:',
         description:'Be a voice for those who struggle every day. Share the message with your friends, family, and social networks. When more people know about the water crisis, more people will care—and together, we can drive greater change. Your voice has power. Use it to advocate for clean water for all.',
         description2Bold:'💧 Join Our Campaigns:',
@@ -189,13 +245,14 @@ export const blogs = [
         bottomText:'With just one donation, you can help provide a community with access to clean water for years to come. Every drop you help provide brings safety, dignity, and opportunity to families who have suffered without it.',
         donateButtonText:'Donate Now'
       },
-      {
-        id:'your-role-in-creating-a-clean-water-legacy',
-        title:'Your Role in Creating a Clean Water Legacy',
-        image: h_2,
-        description:'',
-        description2:''
-      },
+        {
+        id:'why-your-support-matters',
+        title:'Why Your Support Matters:',
+        image: '',
+        description:'At MTJ Foundation, every drop matters because every life matters. Each hand pump installed means a mother no longer has to risk her life walking miles for water. Each water filtration plant means a child can go to school healthy and happy. Every donation, every action, and every shared story brings us closer to a world where no one has to suffer from the lack of clean water.',
+        description2:'Together, we can turn the tide—one drop at a time. Your support isn’t just a donation; it’s a lifeline. Will you help us bring clean water and hope to those who need it most?',
+        bottomText:''    
+      }
   ]
   },
   {
@@ -204,38 +261,50 @@ export const blogs = [
   title: 'The Significance of Marriage and the Growing Challenges Amidst Inflation',
   category: 'Marriage',
   image: marriage,
-  excerpt: 'Every year, thousands of families in Pakistan struggle to provide a decent wedding for their children. Learn how our community stepped in to help, transforming dreams into reality.',
+  excerpt: '',
   content: 'content',
   subProjects: 'subProjects',
   link: '/blogs/marriage-in-need',
   subProjects:[
     {
-    id:'',
+    id:'Significance-of-Marriage',
     title:'The Significance of Marriage and the Growing Challenges Amidst Inflation',
-    image: h_2,
+    image: marriage1,
     description:'Marriage, an institution deeply rooted in tradition, culture, and faith, is more than just a social contract. It signifies the union of two souls, the foundation of a family, and the cornerstone of a stable society. In Islam, marriage holds immense value, as it is considered half of one’s faith, encouraging companionship, mutual support, and societal harmony. However, with rising inflation and financial challenges, many families today struggle to fulfill this fundamental social obligation.',
-    description2Bold:"Marriage in Islam: A Sacred Bond",
+    description2Bold:"",
 
-    description2:'Islam views marriage as a sacred bond that fosters love, compassion, and mercy between spouses. The Quran beautifully highlights this significance:',
-    description3:`And among His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy." (Surah Ar-Rum, 30:21)`,
+    description2:'',
+    description3:'',
     // bottomTextBold:'The Rising Cost of Marriage: A Growing Concern',
-    bottomText: `In recent years, inflation has made it increasingly difficult for middle- and lower-income families to bear the expenses associated with weddings. What were once considered basic necessities—bedding, kitchenware, and household items—have now become unaffordable luxuries for many. In Pakistan, where marriage is a communal celebration, families often feel disheartened when they are unable to arrange even a simple ceremony for their children.
-    Parents spend years saving for these special occasions, but rising costs often force them to delay or even abandon wedding plans, causing emotional distress for the entire family. Unfortunately, these financial challenges sometimes push families into debt or lead them to make sacrifices that impact their day-to-day well-being.
-    Recognizing this growing concern, compassionate individuals and organizations have come forward to offer support, understanding that marriage is not just a personal milestone but a societal necessity.`,
+    bottomText: '',
+  },
+    {
+    id:'Marriage-in-Islam',
+    title:'Marriage in Islam: A Sacred Bond',
+    // image: h_2,
+    description:`Islam views marriage as a sacred bond that fosters love, compassion, and mercy between spouses. The Quran beautifully highlights this significance:
+"And among His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy." (Surah Ar-Rum, 30:21)`,
+    description2Bold:"",
+
+    description2:`Marriage strengthens the family structure, safeguards individuals from societal challenges, and nurtures the next generation. It is an act of worship when carried out with sincere intentions, and Prophet Muhammad (PBUH) encouraged young adults to marry, emphasizing the spiritual and practical benefits it brings to individuals and the community alike.`,
+    description3:`However, despite the religious and social importance of marriage, many parents find themselves helpless when it comes to arranging their children's weddings due to the ever-increasing financial burden.`,
+    // bottomTextBold:'The Rising Cost of Marriage: A Growing Concern',
+    bottomText: '',
   },
   {
     id:'',
     title:'A Day of Joy: Mass Wedding for 50 Couples in Badin',
-    image: h_2,
+    image: marriage2,
     description:'Just last week, in the heart of Badin, 50 deserving couples were united in marriage during a simple yet joyful mass wedding ceremony. The event brought together not only the couples and their families but also community members who came to celebrate this beautiful occasion. Among the guests was Member of the Provincial Assembly, Ms. Sumbul Ayamin Shah, who appreciated the collective effort in making these weddings possible.',
     description2:'The couples were provided with essential household items, including bedding, kitchenware, and other necessities to help them begin their new lives with dignity and ease. Witnessing the joy and relief on the faces of the newlyweds and their parents was a heartwarming reminder of the profound impact that collective kindness can have.',
-    bottomText:'Since 2019, efforts like these have supported many families struggling to manage wedding expenses. These initiatives stem from a belief in the power of community and the importance of preserving the sanctity of marriage, especially for those facing financial hardships.',
+    description3:`Since 2019, efforts like these have supported many families struggling to manage wedding expenses. These initiatives stem from a belief in the power of community and the importance of preserving the sanctity of marriage, especially for those facing financial hardships.`,
+    bottomText:'',
     // donateButtonText:'Donate Now'
   },
   {
     id:'',
     title:'Community Support: A Collective Responsibility',
-    image: h_2,
+    image: marriage3,
     description:'Marriage is not just a family event; it is a societal milestone that binds communities together. Islam encourages the community to support those who are less fortunate in this regard. Prophet Muhammad (PBUH) said:',
     description2:'The most blessed marriage is the one with the least expenses." (Mishkat al-Masabih 3097)',
     description3:'This hadith serves as a reminder that simplicity, sincerity, and community solidarity matter more than the grandeur of any event. When communities come together to help struggling families, they become part of a greater purpose—one that reflects the true spirit of compassion and unity.',
@@ -253,10 +322,18 @@ export const blogs = [
       'Collaborate with Charities: Encourage individuals and businesses to collaborate with charitable organizations to provide essential items and financial support to underprivileged families.'
     ],
     description2:'',
-    bottomText:`Marriage, as a cornerstone of family life, brings stability, love, and growth to individuals and society. In Islam, it is a sacred bond that carries both spiritual and worldly significance. Yet, for many, the rising cost of living has made this milestone increasingly difficult to achieve.The mass wedding in Badin was a reminder of how, together, we can alleviate these challenges. We are deeply grateful to all the donors and supporters who made this event possible. Your generosity gave 50 couples a hopeful start to their married lives—something that would have been unattainable without your help. We hope to continue supporting families in need through similar initiatives in the future. If you'd like to be a part of this cause and contribute to making dreams come true for more couples, donate today.Together, we can uphold the sacred tradition of marriage and continue to spread happiness in the lives of those who need it most.`
-  
-    }
-
+    bottomText:''
+  },
+      {
+    id:'',
+    title:'Conclusion: Gratitude and a Call for Continued Support',
+    // image: h_2,
+    description:'Marriage, as a cornerstone of family life, brings stability, love, and growth to individuals and society. In Islam, it is a sacred bond that carries both spiritual and worldly significance. Yet, for many, the rising cost of living has made this milestone increasingly difficult to achieve.',
+    description2:'The mass wedding in Badin was a reminder of how, together, we can alleviate these challenges. We are deeply grateful to all the donors and supporters who made this event possible. Your generosity gave 50 couples a hopeful start to their married lives—something that would have been unattainable without your help.',
+    description3:`We hope to continue supporting families in need through similar initiatives in the future. If you'd like to be a part of this cause and contribute to making dreams come true for more couples, `,
+    donateButtonText:'Donate Today',
+    bottomText:'Together, we can uphold the sacred tradition of marriage and continue to spread happiness in the lives of those who need it most.'
+  }
 ]
   },
   {
@@ -270,37 +347,77 @@ export const blogs = [
     subProjects:[
       {
         id:'',
-        title:'Why Education is the Key to Breaking the Cycle of Poverty',
+        title:'A Child’s Dream Beyond the Classroom',
         // subtitle:'The Power of Education: Transforming Lives One Child at a Time',
-        image: h_2,
-        descriptionBold:'The Power of Education: Transforming Lives One Child at a Time',
+        image: education1,
+        descriptionBold:'',
         description:'In a small village, a little girl named Amina watches other children walk to school, her heart full of longing. Poverty has kept her from classrooms and books, tying her future to the same struggles her family has faced for generations. Yet, within her, a dream persists—because education is more than learning; it is a lifeline to opportunity. Amina represents millions of children whose dreams are paused, waiting for someone to press play.',
 
-        description2:'Amina’s story echoes across Pakistan, where over 22.8 million children are out of school, the second-highest number globally. Poverty, cultural barriers, and a lack of schools rob children of their right to education. Without learning, they grow into adults without choices—locked into low-paying jobs and hardship, continuing the cycle of poverty. The cost of missed education is generational, as children without schooling are more likely to raise families trapped in poverty.',
-        description2Bold:'The Harsh Reality: When Poverty Steals Potential',
+        description2:'',
+        description2Bold:'',
+        bottomText:'',
+        // donateButtonText:'Donate Now'
+      },
+        {
+        id:'',
+        title:'The Harsh Reality: When Poverty Steals Potential',
+        // subtitle:'The Power of Education: Transforming Lives One Child at a Time',
+        image: education2,
+        descriptionBold:'',
+        description:'Amina’s story echoes across Pakistan, where over 22.8 million children are out of school, the second-highest number globally. Poverty, cultural barriers, and a lack of schools rob children of their right to education. Without learning, they grow into adults without choices—locked into low-paying jobs and hardship, continuing the cycle of poverty. The cost of missed education is generational, as children without schooling are more likely to raise families trapped in poverty.',
+
+        description2:'',
+        description2Bold:'',
         bottomText:'',
         // donateButtonText:'Donate Now'
       },
       {
         id:'',
-        title:'',
-        image: h_2,
+        title:'The Islamic Perspective: Education as a Duty and a Legacy of Hope',
+        // image: h_2,
         description:'Amina’s story is one of longing and resilience—a child whose dreams are put on hold by the chains of poverty. But in the teachings of Islam, we are reminded that knowledge is the greatest key to breaking those chains. The first word revealed in the Quran was “Iqra” (Read), a divine command highlighting the importance of learning. Prophet Muhammad (ﷺ) said, “Seeking knowledge is an obligation upon every Muslim” (Sunan Ibn Majah). Education is more than books and lessons—it is a means to empower the soul, uplift communities, and create change that lasts beyond a lifetime.',
-        descriptionBold:'The Islamic Perspective: Education as a Duty and a Legacy of Hope',
+        descriptionBold:'',
         description2:'',
-        description2Bold:'A Continuous Charity That Never Ends',
-        description2:`In Islam, the power of knowledge extends beyond the individual. It becomes an act of Sadaqah Jariyah (continuous charity)—one that multiplies in reward long after we are gone. The Prophet Muhammad (ﷺ) said, “When a man dies, his deeds come to an end except for three things: Sadaqah Jariyah, knowledge from which benefit is gained, or a righteous child who prays for him” (Sahih Muslim). Supporting a child's education is not just a donation—it is a seed that grows into a legacy, bearing fruit for generations. `,
-        description3Bold:'The Ripple Effect of Your Support',
-        description3:`Imagine the impact when a child like Amina is given the chance to learn. With knowledge, she becomes a teacher, a healer, or a leader—someone who shapes the future of her community. When a woman gains an education, she passes that knowledge to her children, breaking the cycle of poverty for generations to come.`,
-        bottomText:'Your support has the power to transform lives, not just for today, but forever. Together, we can ensure that children like Amina don’t just dream—they achieve. With every classroom built, every book provided, and every teacher supported, we move closer to a world where education becomes a beacon of hope and a lasting charity that benefits all of humanity.',
+        description2Bold:'',
+        description2:'',
+        description3Bold:'',
+        description3:``,
+        bottomText:'',
+        // donateButtonText:'Donate Now'
+      },
+       {
+        id:'',
+        title:'A Continuous Charity That Never Ends',
+        // image: h_2,
+        description:`In Islam, the power of knowledge extends beyond the individual. It becomes an act of Sadaqah Jariyah (continuous charity)—one that multiplies in reward long after we are gone. The Prophet Muhammad (ﷺ) said, “When a man dies, his deeds come to an end except for three things: Sadaqah Jariyah, knowledge from which benefit is gained, or a righteous child who prays for him” (Sahih Muslim). Supporting a child's education is not just a donation—it is a seed that grows into a legacy, bearing fruit for generations. `,
+        descriptionBold:'',
+        description2:'',
+        description2Bold:'',
+        description2:'',
+        description3Bold:'',
+        description3:``,
+        bottomText:'',
+        // donateButtonText:'Donate Now'
+      },
+       {
+        id:'',
+        title:'The Ripple Effect of Your Support',
+        // image: h_2,
+        descriptionBold:'',
+        description:'Imagine the impact when a child like Amina is given the chance to learn. With knowledge, she becomes a teacher, a healer, or a leader—someone who shapes the future of her community. When a woman gains an education, she passes that knowledge to her children, breaking the cycle of poverty for generations to come.',
+        description2Bold:'',
+        description2:'Your support has the power to transform lives, not just for today, but forever. Together, we can ensure that children like Amina don’t just dream—they achieve. With every classroom built, every book provided, and every teacher supported, we move closer to a world where education becomes a beacon of hope and a lasting charity that benefits all of humanity.',
+        description3Bold:'',
+        description3:``,
+        bottomText:'',
         // donateButtonText:'Donate Now'
       },
       {
         id:'',
-        title:'',
+        title:'How Education Breaks the Cycle',
         // image: h_2,
         description:'But what if Amina could go to school? Education is the most powerful tool to break generational poverty. Here’s how:',
-        descriptionBold:'How Education Breaks the Cycle',
+        descriptionBold:'',
         services:[
           '💙 Breaking Barriers to Employment: Educated individuals earn 10 times more, creating financial stability and uplifting their families.',
           '💙 Healthier Families: Literate parents make informed decisions, reducing child mortality and improving family well-being.',
@@ -339,25 +456,33 @@ export const blogs = [
   },
   {
     id:'qurbani',
-    title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
+    title:'Understanding Qurbani',
     image: qurbani,
-    description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
-                  honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
-                  sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens
-                  our faith, revives our sense of empathy, and uplifts entire communities. At MTJ Foundation, we
-                  believe in making this act of worship meaningful by ensuring it reaches those who need it the
-                  most.
-                  In this detailed guide, we’ll explore the meaning of Qurbani, its significance, the rules that
-                  govern it, who must perform it, and how your donation can make a lasting impact — both
-    spiritually and socially.`,
+    description:``,
     description2:'',
     bottomText:'',
     // donateButtonText:'Donate Now',
     subProjects:[
+        {
+        id:'',
+        title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
+        // image: h_2,
+        description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
+                  honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
+                  sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens
+                  our faith, revives our sense of empathy, and uplifts entire communities. At MTJ Foundation, we
+                  believe in making this act of worship meaningful by ensuring it reaches those who need it the
+                  most. `,
+        description2:`In this detailed guide, we’ll explore the meaning of Qurbani, its significance, the rules that
+                  govern it, who must perform it, and how your donation can make a lasting impact — both
+    spiritually and socially.`,
+        bottomText:``,
+        donateButtonText:''
+      },
       {
         id:'',
         title:'What is Qurbani?',
-        image: h_2,
+        // image: h_2,    
         description:`Qurbani, meaning "sacrifice" in Arabic, refers to the ritual slaughter of an animal during the
 days of Eid-ul-Adha. This act commemorates the willingness of Prophet Ibrahim (AS) to sacrifice
 his beloved son, Ismail (AS), as a demonstration of unwavering submission to Allah (SWT). Just
@@ -369,7 +494,7 @@ Muslims today, Qurbani is an opportunity to revive this legacy and fulfill a sig
         bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
 can partake in the joy of Eid. For many families living in poverty, this is the only time of year
 they have access to meat, making the gesture not just symbolic but deeply impactful.`,
-        donateButtonText:'Donate Now'
+        donateButtonText:''
       },
       {
         id:'',
@@ -406,10 +531,11 @@ not obligatory, it is considered highly recommended (Sunnah Mu’akkadah).`,
 those who have little, we develop a deeper appreciation for our blessings. We recognize the
 struggle of those who live in poverty and hunger daily. This empathy strengthens the ummah
 and brings us closer together in the true spirit of Eid.`,
-        donateButtonText:'Donate Now'
+        donateButtonText:''
       },
       {
         id:'The Story Behind Qurbani',
+        title:'The Story Behind Qurbani',
         description: `The story of Qurbani traces back to Prophet Ibrahim (AS) who, in a divine dream, saw himself
 sacrificing his son, Ismail (AS). Understanding this dream as a command from Allah, he prepared
 to fulfill it despite the emotional difficulty. When he shared the dream with his son, Ismail (AS)
@@ -423,7 +549,7 @@ level of submission and reliance — or tawakkul — is something every Muslim s
       {
         id:'',
         title:'How to perform Qurbani',
-        image: h_2,
+        // image: h_2,
         description:`The Nisab is currently measured as either 87.48 grams of gold or 612.36 grams of silver. For
 instance, as of May 2025, the value of silver was approximately $640.40, while gold was over
 $9,000. Anyone whose savings or assets exceed this amount is required to give Qurbani.`,

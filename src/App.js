@@ -68,6 +68,7 @@ function App() {
       <CartProvider>
         <DonationProvider>
           <ScrollToTop />
+
           {/* <PromoPopup
             routes={['/', '/home']}
             redirectUrl="/projects/ramzan-zakat"
@@ -79,6 +80,7 @@ function App() {
             delay={3000}
             altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
           /> */}
+          
           {/* <PublicNoticePopup
             routes={['/donate', '/ways-to-donate', '/zakat-calculator', '/projects/ramzan-zakat']}
             storageKey="mtj_public_notice_popup_shown"
@@ -107,8 +109,8 @@ function App() {
               <Route path="/careers/:id" element={<JobDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/blogs/:id" element={<BlogsDetailsV2/>} />
-              <Route path="/blogs/details-v2" element={<BlogsDetails/>} />
+              <Route path="/blogs/:id" element={<BlogsDetails/>} />
+              {/* <Route path="/blogs/details-v2" element={<BlogsDetails/>} /> */}
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
