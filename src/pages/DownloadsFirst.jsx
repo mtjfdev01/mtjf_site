@@ -2,17 +2,12 @@ import React, { Suspense, lazy } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import ImportantDocuments from '../components/downloads/Downloads'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import image1 from '../assets/img/blogs/hero_blogs.webp'
 
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
-const FinancialReports = lazy(() => import('../components/financialReports/FinancialReports'))
-const WhistleblowerPolicy = lazy(() =>
-  import("../components/WhistleblowerPolicy/WhistleblowerPolicy")
-);
 
-const DownloadsPage = () => {
+const DownloadsPageFirst = () => {
   // First component after header - loads immediately
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
     rootMargin: '50px',
@@ -25,12 +20,12 @@ const DownloadsPage = () => {
 
   return (
     <>
-        <PageHeader image={image1} />
+      {/* <PageHeader title="Downloads" /> */}
       
       {/* Downloads Section - loads immediately */}
       <div ref={firstSectionRef}>
         {showFirstSection && (
-          <FinancialReports />
+          <ImportantDocuments />
         )}
       </div>
 
@@ -38,9 +33,6 @@ const DownloadsPage = () => {
       <div ref={restRef} style={{ minHeight: '200px' }}>
         {showRest && (
           <>
-          <Suspense fallback={null}>
-             <WhistleblowerPolicy />
-            </Suspense>
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>
@@ -57,4 +49,4 @@ const DownloadsPage = () => {
   )
 }
 
-export default DownloadsPage
+export default DownloadsPageFirst

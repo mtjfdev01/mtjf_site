@@ -14,6 +14,7 @@ const MediaCoverageCardsList = () => {
     subtitle: item.subtitle,
     image: item.image,
     description: item.content?.description || '',
+    readFullNewsText: item.readFullNewsText,
     donateButtonText: item.donateButtonText,
     donationUrl: item.donationUrl,
     openInNewTab: item.openInNewTab

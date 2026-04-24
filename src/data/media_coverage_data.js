@@ -15,6 +15,10 @@ export const MEDIA_COVERAGE_DATA = [
     title: 'مولانا طارق جمیل  فاؤنڈیشن کے زیرِ اہتمام چھاتی کے سرطان (بریسٹ کینسر) سے متعلق آگاہی سیشن کا انعقاد کیا گیا',
     subtitle: '',
     image: mediaCoverImage3,
+    readFullNewsText: '',
+    donateButtonText: '',
+    donationUrl: '',
+    openInNewTab: false,
     content: {
       description: `مختلف تعلیمی اداروں سے تعلق رکھنے والی طالبات نے بڑی تعداد میں شرکت کی۔
 
@@ -42,9 +46,12 @@ export const MEDIA_COVERAGE_DATA = [
     title: 'MTJ Foundation Expands Rescue and Relief Operations for Flood Victims Nationwide',
     subtitle: 'September 21, 2025',
     image: mediaCoverImage1,
-    donateButtonText: 'Read full news',
-    donationUrl: 'http://epaper.pakobserver.net/popup.php?newssrc=issues/2025/2025-09-21/31701/8.jpg',
-    openInNewTab: true,
+    readFullNewsText: 'Read full news:',
+    donateButtonText: ['Pakistan Observer'],
+    donationUrl: [
+      'http://epaper.pakobserver.net/popup.php?newssrc=issues/2025/2025-09-21/31701/8.jpg',
+    ],
+    openInNewTab: [true, true, true, true],
     content: {
       description: `“MTJ Foundation would continue its support until the complete rehabilitation of the flood victims"
 
@@ -69,9 +76,12 @@ MTJ Foundation`
     title: 'سابق ٹیسٹ کرکٹر محمد یوسف کادورہ مولانا طارق جمیل فاؤنڈیشن ،بطوررضاکاررجسٹر ',
     subtitle: 'February 22, 2026',
     image: mediaCoverImage2,
-    donateButtonText: 'Read full news',
-    donationUrl: 'https://www.nawaiwaqt.com.pk/22-Feb-2026/1971336',
-    openInNewTab: true,
+    readFullNewsText: 'Read full news:',
+    donateButtonText: ['Nawaiwaqt'],
+    donationUrl: [
+      'https://www.nawaiwaqt.com.pk/22-Feb-2026/1971336',
+    ],
+    openInNewTab: [true, true],
     content: {
       description:
         'لاہور (نیوزرپورٹر) نامور سابق ٹیسٹ کرکٹر محمد یوسف نے مولانا طارق جمیل فاؤنڈیشن کے ہیڈ آفس کا خصوصی دورہ کیا جہاں انہیں ایم ٹی جے فاؤنڈیشن کے جاری فلاحی منصوبوں اور عوامی خدمات کے بارے میں تفصیلی بریفنگ دی گئی۔ اس موقع پر ایم ٹی جے فاؤنڈیشن کے سی ای او احتشام اللہ قریشی کی جانب سے ایم ٹی جے فاؤنڈیشن کے 10 سے زائد جاری فلاحی منصوبوں سے آگاہ کیا گیا جن میں صحت، تعلیم، کمیونٹی سروسز، سٹیٹ آف دی آرٹ آس لیب اینڈ ڈائیگناسٹک سینٹر، بیوہ ماؤں اور یتیم بچوں کیلئے اپنا گھر، ڈیزاسٹر مینجمنٹ سمیت مختلف اہم منصوبے شامل ہیں۔ محمد یوسف نے ایم ٹی جے فاؤنڈیشن کے کسب ووکیشنل سنٹر کا بھی دورہ کیا جہاں خواتین کو بین الاقوامی معیار کے فٹبالز بنانے کی تربیت دیکر ہنرمند بنایا جا رہا ہے تاکہ وہ باعزت روزگار حاصل کر سکیں اور اپنے خاندان کی کفالت کر سکیں۔ انہوں نے بیوہ ماؤں اور یتیم بچوں کیلئے زیر تعمیر اپنا گھر پراجیکٹ اور جدید سہولیات سے آراستہ آس لیب کا بھی تفصیلی معائنہ کیا۔ ان کا کہنا تھا کہ مولانا طارق جمیل فاؤنڈیشن کی جانب سے عوامی خدمت کیلئے کیے جانے والے اقدامات قابلِ تحسین ہیں۔'

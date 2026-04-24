@@ -14,6 +14,7 @@ import PublicNoticePopup from './components/publicNoticePopup';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
+
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -34,11 +35,13 @@ const DonationCardsPage = lazy(() => import("./components/donation/projects_menu
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
+const DownloadsPageFirst = lazy(() => import("./pages/DownloadsFirst"));
 const DownloadsPage = lazy(() => import("./pages/Downloads"));
 const MediaPage = lazy(() => import("./pages/MediaPage"));
 const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList"));
 const NewsPage = lazy(() => import("./pages/News"));
 const EventsPage = lazy(() => import("./pages/EventsPage"));
+const ImpactsPage = lazy(() => import("./pages/Impacts"));
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
  
@@ -121,9 +124,10 @@ function App() {
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
-              <Route path="/media1" element={<DownloadsPage />} />
-              <Route path="/media/downloads" element={<DownloadsPage />} />
+              <Route path="/media1" element={<DownloadsPageFirst />} />
+              <Route path="/downloads" element={<DownloadsPage />} />
               <Route path="/media" element={<MediaPage />} />
+              <Route path="/impacts" element={<ImpactsPage />} />
               <Route path="/media/coverage" element={<MediaCoverageCardsList />} />
               <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />
