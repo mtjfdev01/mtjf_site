@@ -112,7 +112,14 @@ export const projectCards = [
       category: "Sadqa",
        initiatives: [] 
       },
-    { id: 'disaster-management', title: "Gaza Relief", icon: disasterRelief, price: 5000, new: false, category: "General", initiatives: []     },
+    { 
+      id: 'disaster-management',
+      title: "Gaza Relief",
+      icon: disasterRelief, 
+      price: 5000, new: false,
+      category: "General",
+      initiatives: []    
+     },
     { 
       id: 'kasb-skill-development', 
       title: "KASB Skill Development", 
@@ -138,8 +145,33 @@ export const projectCards = [
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    { id: 'qurbani-barai-mustehqeen', title: "Qurbani Barai Mustehqeen", icon: qurbani, price: 15000, new: false, category: "Zakat", initiatives:[] },
-    { id: 'aas-lab-diagnostics', title: "Aaslab", icon: aaslab, price: 3500, new: false, category: "General", initiatives:[] },
+    {
+       id: 'qurbani-barai-mustehqeen', 
+       title: "Qurbani Barai Mustehqeen",
+       icon: qurbani,
+       price: 15000,
+       new: false, 
+       category: "Zakat", 
+       initiatives:[
+        {
+          id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+        },
+        {
+          id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+        },
+        {
+          id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+        }
+       ]
+       },
+    {
+       id: 'aas-lab-diagnostics', 
+       title: "Aaslab",
+       icon: aaslab, 
+       price: 3500, 
+       new: false, 
+       category: "General", 
+       initiatives:[] },
     { 
       id: 'community-services', 
       title: "Community Service", 

@@ -55,6 +55,8 @@ const BlogDetailSection = ({
         </div>
       </section> */}
 
+    
+
       <MediaContentSection
         subProjects={subProjects || []} 
         defaultImage={image || heroImg}

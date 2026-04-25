@@ -10,7 +10,7 @@ const mediaCards = [
     id: 'news',
     title: 'News',
     image: news,
-    link: '/media/news',
+    link: '/news',
     cta: 'Learn More'
   },
   {
@@ -31,14 +31,14 @@ const mediaCards = [
     id: 'impacts',
     title: 'Impacts',
     image: impact,
-    link: '/latest/impacts',
+    link: '/impacts',
     cta: 'Learn More'
   },
   {
     id: 'downloads',
     title: 'Downloads',
     image: download,
-    link: '/latest/downloads',
+    link: '/downloads',
     cta: 'Learn More'
   },
   {

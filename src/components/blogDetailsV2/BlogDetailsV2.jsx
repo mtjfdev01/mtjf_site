@@ -82,7 +82,6 @@ const BlogDetailsV2 = () => {
   return (
     <article className="blog-v2-page">
       <PageHeader title={blog?.title || 'Blog'} image={blog?.image} />
-
       <section className="blog-v2-intro container py-48">
         <div className="blog-v2-split blog-v2-split--60-40">
           <div className="blog-v2-text">

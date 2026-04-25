@@ -25,10 +25,10 @@ const PROJECTS_DATA = [
     title: 'Ensuring Access to Dignified, Affordable Healthcare',
     description: 'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
     image: health,
-    progress: 47.56,
+    progress: 47.79,
     progressColor: '#9B59B6',
     goal: 1000000,
-    pledged: 477890,
+    Achieved: 477890,
     donateButtonText: 'Support Healthcare Services',
     learnMorePath: '/projects/health',
     donatePath: '/donate/health'
@@ -40,10 +40,10 @@ const PROJECTS_DATA = [
     title: 'Opening Doors to Learning and Opportunity',
     description: 'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
     image: education,
-    progress: 47.58,
+    progress: 87.50,
     progressColor: '#2ECC71',
-    goal: 100000,
-    pledged: 875080,
+    goal: 1000000,
+    Achieved: 875080,
     donateButtonText: 'Educate a Child',
     learnMorePath: '/projects/education',
     donatePath: '/donate/education'
@@ -55,10 +55,10 @@ const PROJECTS_DATA = [
     title: 'Rapid Response When <br />Crisis Strikes',
     description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
     image: disaster,
-    progress: 47.58,
+    progress: 77.58,
     progressColor: '#F39C12',
     goal: 1000000,
-    pledged: 775800,
+    Achieved: 775800,
     donateButtonText: 'Help in Emergencies',
     learnMorePath: '/projects/disaster-management',
     donatePath: '/donate/disaster-management'
@@ -70,10 +70,10 @@ const PROJECTS_DATA = [
     title: 'Providing Safe Water for Healthier Communities.',
     description: 'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
     image: water,
-    progress: 52.30,
+    progress: 18.56,
     progressColor: '#3498DB',
     goal: 1500000,
-    pledged: 278450,
+    Achieved: 278450,
     donateButtonText: 'Sponsor a Water Project',
     learnMorePath: '/projects/clean-water',
     donatePath: '/donate/clean-water'
@@ -85,10 +85,10 @@ const PROJECTS_DATA = [
     title: 'A home where lost futures are rebuilt',
     description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
     image: apna_ghr,
-    progress: 38.25,
+    progress: 15.37,
     progressColor: '#9B59B6',
     goal: 7000000,
-    pledged: 1076500,
+    Achieved: 1076500,
     donateButtonText: 'Support Apna Ghar',
     learnMorePath: '/projects/apna-ghar',
     donatePath: '/donate/disaster-relief'
@@ -100,10 +100,10 @@ const PROJECTS_DATA = [
     title: 'Empowering Youth and Women Through Skills',
     description: 'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
     image: kasb,
-    progress: 38.25,
+    progress: 8.82,
     progressColor: '#9B59B6',
     goal: 2000000,
-    pledged: 176500,
+    Achieved: 176500,
     donateButtonText: 'Sponsor Skill Training',
     learnMorePath: '/projects/kasb-skill-development',
     donatePath: '/donate/kasb-skill-development'
@@ -115,10 +115,10 @@ const PROJECTS_DATA = [
     title: 'seeds-of-change',
     description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
     image: Seeds,
-    progress: 38.25,
+    progress: 35.62,
     progressColor: '#9B59B6',
     goal: 2000000,
-    pledged: 712500,
+    Achieved: 712500,
     donateButtonText: 'Plant a Tree',
     learnMorePath: '/projects/seeds-of-change',
     donatePath: '/donate/seeds-of-change'
@@ -130,10 +130,10 @@ const PROJECTS_DATA = [
     title: 'Delivering Qurbani Meat to Families in Need',
     description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
     image: qurbani,
-    progress: 38.25,
+    progress: 22.25,
     progressColor: '#9B59B6',
-    goal: 100000,
-    pledged: 222500,
+    goal: 1000000,
+    Achieved: 222500,
     donateButtonText: 'Book Your Qurbani',
     learnMorePath: '/projects/qurbani-barai-mustehqeen',
     donatePath: '/donate/qurbani-barai-mustehqeen'
@@ -145,10 +145,10 @@ const PROJECTS_DATA = [
     title: 'Accessible and Affordable Diagnostic Care for all',
     description: 'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
     image: aas_lab,
-    progress: 38.25,
+    progress: 32.55,
     progressColor: '#9B59B6',
     goal: 3000000,
-    pledged: 976500,
+    Achieved: 976500,
     donateButtonText: 'Support Diagnostic Care',
     learnMorePath: '/projects/aas-lab-diagnostics',
     donatePath: '/donate/aas-lab-diagnostics'
@@ -160,10 +160,10 @@ const PROJECTS_DATA = [
     title: 'Supporting Vulnerable Families With Essential Relief',
     description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
     image: community,
-    progress: 38.25,
+    progress: 67.07,
     progressColor: '#9B59B6',
     goal: 2000000,
-    pledged: 1341500,
+    Achieved: 1341500,
     donateButtonText: 'Support a Family',
     learnMorePath: '/projects/community-services',
     donatePath: '/donate/community-services'
@@ -294,7 +294,7 @@ const Projects = () => {
   }, [])
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'PKR',
       minimumFractionDigits: 0,
@@ -385,8 +385,8 @@ const Projects = () => {
                 </div>
 
                 <div className="project-goal-info">
-                  Goal : {formatCurrency(project.goal)} - Pledged :{' '}
-                  {formatCurrency(project.pledged)}
+                  Goal : {formatCurrency(project.goal)} - Achieved :{' '}
+                  {formatCurrency(project.Achieved)}
                 </div>
 
                 <div className="project-actions">

@@ -14,6 +14,7 @@ import PublicNoticePopup from './components/publicNoticePopup';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
+
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -34,6 +35,7 @@ const DonationCardsPage = lazy(() => import("./components/donation/projects_menu
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
+const DownloadsPageFirst = lazy(() => import("./pages/DownloadsFirst"));
 const DownloadsPage = lazy(() => import("./pages/Downloads"));
 const MediaPage = lazy(() => import("./pages/MediaPage"));
 const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList"));
@@ -42,6 +44,7 @@ const EventsPage = lazy(() => import("./pages/EventsPage"));
 const DonorLogin = lazy(() => import("./pages/DonorLogin"));
 const DonorDonations = lazy(() => import("./pages/DonorDonations"));
 const DonorDonationView = lazy(() => import("./pages/DonorDonationView"));
+const ImpactsPage = lazy(() => import("./pages/Impacts"));
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
  
@@ -71,6 +74,7 @@ function App() {
       <CartProvider>
         <DonationProvider>
           <ScrollToTop />
+
           {/* <PromoPopup
             routes={['/', '/home']}
             redirectUrl="/projects/ramzan-zakat"
@@ -82,6 +86,7 @@ function App() {
             delay={3000}
             altText="Calculate and Pay Your Ramzan Zakat - MTJ Foundation"
           /> */}
+          
           {/* <PublicNoticePopup
             routes={['/donate', '/ways-to-donate', '/zakat-calculator', '/projects/ramzan-zakat']}
             storageKey="mtj_public_notice_popup_shown"
@@ -110,8 +115,8 @@ function App() {
               <Route path="/careers/:id" element={<JobDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/blogs/:id" element={<BlogsDetailsV2/>} />
-              <Route path="/blogs/details-v2" element={<BlogsDetails/>} />
+              <Route path="/blogs/:id" element={<BlogsDetails/>} />
+              {/* <Route path="/blogs/details-v2" element={<BlogsDetails/>} /> */}
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
@@ -122,9 +127,10 @@ function App() {
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
-              <Route path="/media1" element={<DownloadsPage />} />
-              <Route path="/media/downloads" element={<DownloadsPage />} />
+              <Route path="/media1" element={<DownloadsPageFirst />} />
+              <Route path="/downloads" element={<DownloadsPage />} />
               <Route path="/media" element={<MediaPage />} />
+              <Route path="/impacts" element={<ImpactsPage />} />
               <Route path="/media/coverage" element={<MediaCoverageCardsList />} />
               <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />

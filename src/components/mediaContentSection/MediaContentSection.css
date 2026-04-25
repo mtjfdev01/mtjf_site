@@ -165,6 +165,28 @@
   align-self: flex-start;
 }
 
+/* CTA Wrapper for text + button */
+.media-content-cta-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.media-content-cta-text {
+  font-size: var(--fs-16);
+  font-weight: 600;
+  color: var(--color-700);
+}
+
+/* Container for multiple buttons */
+.media-content-cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+}
+
 /* Arabic Dua Text */
 .media-content-arabic-text {
   text-align: center;
@@ -317,6 +339,23 @@
   .media-content-bottom-paragraph {
     font-size: var(--fs-15);
     text-align: left;
+  }
+
+  .media-content-cta-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+  }
+
+  .media-content-cta-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .media-content-cta-buttons .media-content-cta {
+    width: 100%;
+    text-align: center;
   }
 
   .media-content-image {

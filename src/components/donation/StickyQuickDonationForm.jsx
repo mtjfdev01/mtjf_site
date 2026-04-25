@@ -19,7 +19,7 @@ const StickyQuickDonationForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { donationType, setDonationType, updateProjectDonation } = useDonation()
-  const [localAmount, setLocalAmount] = useState('')
+  const [localAmount, setLocalAmount] = useState('0')
   const [selectedProjectId, setSelectedProjectId] = useState('general')
   const [selectedInitiativeId, setSelectedInitiativeId] = useState('')
   const [customInput, setCustomInput] = useState('')
@@ -152,7 +152,17 @@ const StickyQuickDonationForm = () => {
       title: "Qurbani Barai Mustehqeen",
       icon: qurbani,
       category: "Zakat",
-      initiatives:[]
+      initiatives:[
+                {
+                  id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+                },
+                {
+                  id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+                },
+                {
+                  id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+                }
+   ]
     },
     {
        id: 'aas-lab-diagnostics', 
@@ -230,7 +240,7 @@ const StickyQuickDonationForm = () => {
     updateProjectDonation(quickDonateItem)
 
     // Clear the input
-    setLocalAmount('')
+    setLocalAmount('0')
 
     // Navigate to checkout
     navigate('/checkout')
@@ -333,7 +343,7 @@ const StickyQuickDonationForm = () => {
                   setLocalAmount(firstInitiative.price.toString())
                 } else {
                   setSelectedInitiativeId('')
-                  setLocalAmount('')
+                  setLocalAmount('0')
                 }
                 setCustomInput('') // Reset custom input when project changes
               }}
@@ -378,20 +388,38 @@ const StickyQuickDonationForm = () => {
           {showInitiatives && (
             <div className="sticky-amount-section">
               <div className="sticky-amount-input-wrapper">
-                <button type="button" className="sticky-amount-btn" onClick={handleDecrement}>-</button>
+                <button 
+                  type="button" 
+                  className="sticky-amount-btn" 
+                  onClick={handleDecrement}
+                  disabled={Number(localAmount) <= 0 || customInput.trim() !== ''}
+                >
+                  -
+                </button>
                 <input
                   type="number"
                   min="0"
                   placeholder="Amount"
-                  value={localAmount}
+                  value={Number(localAmount) === 0 ? '0' : localAmount}
+                  disabled={Number(localAmount) === 0 || customInput.trim() !== ''}
                   onChange={(e) => {
-                    setLocalAmount(e.target.value)
-                    setCustomInput('') // Reset custom input when manually typing amount
+                    const val = e.target.value
+                    if (val === '' || Number(val) >= 0) {
+                      setLocalAmount(val === '' ? '0' : val)
+                      setCustomInput('') // Reset custom input when manually typing amount
+                    }
                   }}
                   aria-label="Donation amount in rupees"
                   className="sticky-donation-amount-input text-center"
                 />
-                <button type="button" className="sticky-amount-btn" onClick={handleIncrement}>+</button>
+                <button 
+                  type="button" 
+                  className="sticky-amount-btn" 
+                  onClick={handleIncrement}
+                  disabled={customInput.trim() !== ''}
+                >
+                  +
+                </button>
                 {/* <span className="sticky-currency">Rs.</span> */}
               </div>
             </div>

@@ -76,6 +76,8 @@
 @media (min-width: 768px) {
   .donation-form-row {
     grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(350px, 260px)); */
+    /* justify-content: center; */
   }
 }
 
@@ -140,6 +142,28 @@
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(48, 174, 227, 0.1);
+}
+
+/* Hide increment/decrement arrows for number inputs */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner {
+  -moz-appearance: textfield;
+}
+
+.donation-form-input:disabled {
+  background-color: var(--color-100);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.donation-form-amount-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .donation-form-frequency {

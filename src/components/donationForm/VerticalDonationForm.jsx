@@ -232,8 +232,8 @@ const VerticalDonationForm = ({
                 }
               >
                 <option value="PKR">PKR</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
+                {/* <option value="USD">USD</option> */}
+                {/* <option value="EUR">EUR</option> */}
               </select>
             </div>
           </div>
@@ -370,8 +370,8 @@ const VerticalDonationForm = ({
             {/* Animated background particles */}
               {/* <span className="particle particle-1"></span>
               <span className="particle particle-2"></span> */}
-            <span className="particle particle-3"></span>
-            <span className="particle particle-4"></span>
+            {/* <span className="particle particle-3"></span> */}
+            {/* <span className="particle particle-4"></span> */}
             
             {/* Glowing border */}
             <span className="glow-border"></span>

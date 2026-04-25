@@ -5,6 +5,9 @@ import BrandArea from '../brands/brands'
 import './MediaContentSection.css'
 import PageHeader from '../pageHeader/PageHeader'
 const ProjectsTestimonial = lazy(() => import('../projectsTestimonial/ProjectsTestimonial'))
+const Newsletter = lazy(() => import('../newsletter/Newsletter'))
+const DonationCta = lazy(() => import('../donationCta/DonationCta'))
+const Footer = lazy(() => import('../footer/Footer'))
 
 const MediaContentSection = ({ subProjects, defaultImage }) => {
   const navigate = useNavigate()
@@ -262,14 +265,53 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                   </div>
                 )}
 
-                {subProject.donateButtonText && (
-                  <button
-                    className="media-content-cta btn btn--primary"
-                    onClick={() => handleDonateClick(subProject.donationUrl, subProject.openInNewTab)}
-                  >
-                    {subProject.donateButtonText}
-                  </button>
-                )}
+                {/* Render CTA buttons - handles both single and multiple buttons */}
+                {(() => {
+                  // Check if donateButtonText exists and is not empty
+                  if (!subProject.donateButtonText) return null
+                  
+                  // Normalize to array format
+                  const buttons = Array.isArray(subProject.donateButtonText) 
+                    ? subProject.donateButtonText 
+                    : [subProject.donateButtonText]
+                  
+                  // Filter out empty strings
+                  const validButtons = buttons.filter(btn => btn && btn.trim() !== '')
+                  if (validButtons.length === 0) return null
+
+                  // Get corresponding URLs and openInNewTab settings
+                  const urls = Array.isArray(subProject.donationUrl) 
+                    ? subProject.donationUrl 
+                    : [subProject.donationUrl]
+                  
+                  const openInNewTabs = Array.isArray(subProject.openInNewTab) 
+                    ? subProject.openInNewTab 
+                    : [subProject.openInNewTab]
+
+                  return (
+                    <div className="media-content-cta-wrapper">
+                      {subProject.readFullNewsText && (
+                        <span className="media-content-cta-text">{subProject.readFullNewsText}</span>
+                      )}
+                      <div className="media-content-cta-buttons">
+                        {validButtons.map((btnText, index) => {
+                          const url = urls[index] || urls[0] || ''
+                          const openInNewTab = openInNewTabs[index] !== undefined ? openInNewTabs[index] : (openInNewTabs[0] || false)
+                          
+                          return (
+                            <button
+                              key={index}
+                              className="media-content-cta btn btn--primary"
+                              onClick={() => handleDonateClick(url, openInNewTab)}
+                            >
+                              {btnText}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )
+                })()}
               </div>
 
               {/* Video or Image Side */}
@@ -359,6 +401,11 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
           </div>
         )
       })}
+
+      {/* Newsletter, Donation CTA, and Footer Sections */}
+      <Newsletter />
+      <DonationCta />
+      <Footer />
     </section>
   )
 }

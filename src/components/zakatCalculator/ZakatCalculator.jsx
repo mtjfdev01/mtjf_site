@@ -31,19 +31,19 @@ const ZakatCalculator = () => {
   const [goldWeight, setGoldWeight] = useState('')
   const [goldUnit, setGoldUnit] = useState('tola')
   const [goldKaratPrices] = useState({
-    24: 523762,
-    22: 480238,
-    21: 458409,
-    18: 392922
+    24: 499500,
+    22:  457993,
+    21: 437175,
+    18: 374722
   })
-  const [goldPrice, setGoldPrice] = useState('523762')
+  const [goldPrice, setGoldPrice] = useState('499500')
   const [goldKarat, setGoldKarat] = useState(24)
   const [useCustomGoldPrice, setUseCustomGoldPrice] = useState(false)
   
   // Silver state
   const [silverWeight, setSilverWeight] = useState('')
   const [silverUnit, setSilverUnit] = useState('tola')
-  const [silverPrice, setSilverPrice] = useState('8430')
+  const [silverPrice, setSilverPrice] = useState('7771')
   const [useCustomSilverPrice, setUseCustomSilverPrice] = useState(false)
   
   // Nisab base threshold selection (gold or silver)
