@@ -403,9 +403,9 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
       })}
 
       {/* Newsletter, Donation CTA, and Footer Sections */}
-      <Newsletter />
+      {/* <Newsletter />
       <DonationCta />
-      <Footer />
+      <Footer /> */}
     </section>
   )
 }

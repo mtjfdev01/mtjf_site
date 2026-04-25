@@ -45,7 +45,7 @@ const mediaCards = [
     id: 'videos',
     title: 'Videos',
     image: video,
-    link: '/latest/videos',
+    link: '/videos',
     cta: 'Learn More'
   }
 ]

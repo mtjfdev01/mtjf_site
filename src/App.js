@@ -42,6 +42,8 @@ const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList
 const NewsPage = lazy(() => import("./pages/News"));
 const EventsPage = lazy(() => import("./pages/EventsPage"));
 const ImpactsPage = lazy(() => import("./pages/Impacts"));
+const VideosPage = lazy(() => import("./pages/Videos"));
+
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
  
@@ -128,6 +130,7 @@ function App() {
               <Route path="/downloads" element={<DownloadsPage />} />
               <Route path="/media" element={<MediaPage />} />
               <Route path="/impacts" element={<ImpactsPage />} />
+              <Route path="/videos" element={<VideosPage />} />
               <Route path="/media/coverage" element={<MediaCoverageCardsList />} />
               <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />
