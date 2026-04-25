@@ -41,6 +41,9 @@ const MediaPage = lazy(() => import("./pages/MediaPage"));
 const MediaCoverageCardsList = lazy(() => import("./pages/MediaCoverageCardsList"));
 const NewsPage = lazy(() => import("./pages/News"));
 const EventsPage = lazy(() => import("./pages/EventsPage"));
+const DonorLogin = lazy(() => import("./pages/DonorLogin"));
+const DonorDonations = lazy(() => import("./pages/DonorDonations"));
+const DonorDonationView = lazy(() => import("./pages/DonorDonationView"));
 const ImpactsPage = lazy(() => import("./pages/Impacts"));
 const VideosPage = lazy(() => import("./pages/Videos"));
 
@@ -135,6 +138,9 @@ function App() {
               <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/donor-login" element={<DonorLogin />} />
+              <Route path="/donor/donations" element={<DonorDonations />} />
+              <Route path="/donor/donations/:id" element={<DonorDonationView />} />
               
             </Routes>
           </Suspense>

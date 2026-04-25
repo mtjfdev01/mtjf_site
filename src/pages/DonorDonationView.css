@@ -1,0 +1,472 @@
+.donorDonationView {
+  background: #f6f8f7;
+  min-height: 100vh;
+  padding: 120px 16px 60px;
+  color: #0f172a;
+}
+
+.donorDonationView__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ddvHero {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 280px;
+  background: #e7efe9;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.ddvHero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ddvHero__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 248, 247, 0.98) 0%,
+    rgba(246, 248, 247, 0.86) 40%,
+    rgba(246, 248, 247, 0.35) 62%,
+    rgba(246, 248, 247, 0) 78%
+  );
+}
+
+.ddvHero__topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+}
+
+.ddvBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.ddvBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ddvBtn--primary {
+  background: #0f3a2c;
+  border-color: #0f3a2c;
+  color: #fff;
+}
+
+.ddvHero__content {
+  position: relative;
+  z-index: 1;
+  padding: 10px 18px 20px;
+  max-width: 540px;
+}
+
+.ddvHero__title {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  color: #0b1f18;
+}
+
+.ddvHero__subtitle {
+  margin: 6px 0 0;
+  color: rgba(15, 23, 42, 0.7);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ddvHero__statusPill {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.ddvHero__statusIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(45, 204, 112, 0.12);
+  color: #0f3a2c;
+}
+
+.ddvHero__statusTextTop {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15, 58, 44, 0.88);
+}
+
+.ddvHero__statusTextBottom {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.68);
+  margin-top: 1px;
+}
+
+.ddvCard {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+}
+
+.ddvSection {
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.ddvSection__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ddvSection__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(45, 204, 112, 0.12);
+  color: #0f3a2c;
+}
+
+.ddvSection__title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0b1f18;
+  margin: 0;
+}
+
+.ddvSection__divider {
+  height: 3px;
+  width: 26px;
+  border-radius: 999px;
+  background: rgba(15, 58, 44, 0.18);
+  margin-top: 4px;
+}
+
+.ddvSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ddvKv {
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ddvKv__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 58, 44, 0.08);
+  color: #0f3a2c;
+  flex: 0 0 auto;
+}
+
+.ddvKv__k {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.ddvKv__v {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.ddvKv--span2 {
+  grid-column: span 2;
+}
+.ddvKv--span3 {
+  grid-column: 1 / -1;
+}
+
+.ddvBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f8fafc;
+  color: #0f172a;
+  text-transform: capitalize;
+}
+
+.ddvBadge--completed {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+.ddvBadge--pending {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+.ddvBadge--in_progress {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+.ddvBadge--cancelled {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+.ddvBadge--skipped {
+  background: #f3f4f6;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+.ddvTrackingList {
+  display: grid;
+  gap: 12px;
+}
+
+.ddvStep {
+  display: grid;
+  grid-template-columns: 28px 120px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.ddvStep__rail {
+  display: flex;
+  justify-content: center;
+}
+
+.ddvStep__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(15, 23, 42, 0.14);
+  background: #fff;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.ddvStep__dot--completed {
+  border-color: rgba(6, 95, 70, 0.25);
+  background: rgba(16, 185, 129, 0.1);
+  color: #065f46;
+}
+
+.ddvStep__dot--pending {
+  border-color: rgba(146, 64, 14, 0.25);
+  background: rgba(245, 158, 11, 0.12);
+  color: #92400e;
+}
+
+.ddvStep__thumb {
+  width: 120px;
+  height: 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: radial-gradient(120px 70px at 30% 30%, rgba(45, 204, 112, 0.22), rgba(15, 58, 44, 0.08)),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.08));
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.ddvStep__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ddvStep__title {
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.ddvStep__sub {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.ddvEvidenceRow {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ddvEvidenceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #0f3a2c;
+  text-decoration: none;
+  border: 1px solid rgba(15, 58, 44, 0.18);
+  background: rgba(45, 204, 112, 0.12);
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.ddvEvidenceLink:hover {
+  background: rgba(45, 204, 112, 0.18);
+}
+
+.ddvNote {
+  margin-top: 12px;
+  color: rgba(15, 23, 42, 0.7);
+  line-height: 1.6;
+  font-weight: 600;
+  white-space: pre-wrap;
+}
+
+.ddvMuted {
+  color: rgba(15, 23, 42, 0.6);
+  font-weight: 700;
+}
+
+.ddvInlineError {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #9f1239;
+  font-weight: 900;
+}
+
+.ddvFooterArt {
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: #fff;
+}
+
+.ddvFooterArt img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .ddvSummaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ddvKv--span2 {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .ddvHero {
+    min-height: 320px;
+  }
+
+  .ddvHero__veil {
+    background: linear-gradient(
+      180deg,
+      rgba(246, 248, 247, 0.95) 0%,
+      rgba(246, 248, 247, 0.85) 45%,
+      rgba(246, 248, 247, 0.35) 75%,
+      rgba(246, 248, 247, 0) 100%
+    );
+  }
+
+  .ddvHero__content {
+    max-width: none;
+  }
+
+  .ddvStep {
+    grid-template-columns: 28px 96px 1fr;
+    grid-template-areas:
+      "rail thumb badge"
+      "rail main main";
+    align-items: start;
+  }
+
+  .ddvStep__rail {
+    grid-area: rail;
+    padding-top: 10px;
+  }
+
+  .ddvStep__thumb {
+    grid-area: thumb;
+    width: 96px;
+    height: 56px;
+  }
+
+  .ddvStep__badgeWrap {
+    grid-area: badge;
+    justify-self: end;
+  }
+
+  .ddvStep__main {
+    grid-area: main;
+  }
+}
+
+@media (max-width: 520px) {
+  .donorDonationView {
+    padding: 110px 14px 44px;
+  }
+
+  .ddvHero__title {
+    font-size: 28px;
+  }
+
+  .ddvBtn {
+    padding: 9px 12px;
+  }
+}
+
