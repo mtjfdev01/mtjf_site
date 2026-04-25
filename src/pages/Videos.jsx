@@ -3,13 +3,14 @@ import PageHeader from '../components/pageHeader/PageHeader'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import image1 from '../assets/img/blogs/hero_blogs.webp'
 import { home_testimonials } from "../utils/variables";
+import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
 
-const ImpactsPage = () => {
+const VideosPage = () => {
   // First component after header - loads immediately
   const [firstSectionRef, showFirstSection] = useIntersectionObserver({ 
     rootMargin: '50px',
@@ -19,6 +20,29 @@ const ImpactsPage = () => {
   const [restRef, showRest] = useIntersectionObserver({ 
     rootMargin: '200px'
   });
+
+  // Extract videos from PROJECTS_DETAIL_DATA
+  const projectsVideosData = Object.values(PROJECTS_DETAIL_DATA).reduce((acc, project) => {
+    if (project.videos && Array.isArray(project.videos)) {
+      acc.push({
+        videos: project.videos,
+        title: project.title,
+        subtitle: project.subtitle || ''
+      })
+    }
+    if (project.subProjects && Array.isArray(project.subProjects)) {
+      project.subProjects.forEach(sub => {
+        if (sub.videos && Array.isArray(sub.videos)) {
+          acc.push({
+            videos: sub.videos,
+            title: sub.title,
+            subtitle: sub.subtitle || ''
+          })
+        }
+      })
+    }
+    return acc
+  }, [])
 
   return (
     <>
@@ -52,6 +76,21 @@ const ImpactsPage = () => {
                             title="Why Our Programs Matter"
                           />
                         </Suspense>
+
+                        {/* Videos from PROJECTS_DETAIL_DATA */}
+                        {projectsVideosData.length > 0 && (
+                          <Suspense fallback={null}>
+                            {projectsVideosData.map((projectData, index) => (
+                              <ProjectsTestimonial
+                                key={`project-video-${index}`}
+                                videos={projectData.videos}
+                                title={projectData.title}
+                                subtitle={projectData.subtitle}
+                              />
+                            ))}
+                          </Suspense>
+                        )}
+                        
             <Suspense fallback={null}>
               <Newsletter />
             </Suspense>
@@ -67,4 +106,4 @@ const ImpactsPage = () => {
   )
 }
 
-export default ImpactsPage
+export default VideosPage
