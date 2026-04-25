@@ -1,0 +1,296 @@
+.donor-login {
+  padding: 120px 24px 48px;
+}
+
+.donor-login__layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.donor-login__media {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #0f3a2c;
+  min-height: 520px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.donor-login__video,
+.donor-login__videoFallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.donor-login__video {
+  object-fit: cover;
+}
+
+.donor-login__videoFallback {
+  background: radial-gradient(1200px 700px at 30% 20%, rgba(45, 204, 112, 0.22), transparent 55%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55));
+}
+
+.donor-login__mediaOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.6));
+}
+
+.donor-login__mediaContent {
+  position: relative;
+  z-index: 1;
+  padding: 44px 40px;
+  color: #fff;
+  max-width: 420px;
+}
+
+.donor-login__brand {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  opacity: 0.9;
+}
+
+.donor-login__headline {
+  margin: 16px 0 10px;
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.donor-login__subhead {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.donor-login__hint {
+  margin: 18px 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.donor-login__hint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.donor-login__panel {
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.donor-login__panelHeader {
+  margin-bottom: 18px;
+}
+
+.donor-login__title {
+  margin: 0 0 6px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.donor-login__panelSubtitle {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.donor-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.donor-login__field {
+  background: #f3f3f3;
+  border-radius: 16px;
+  padding: 6px 24px 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  position: relative;
+}
+
+.donor-login__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.donor-login__input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 18px 0;
+  color: #1a1a1a;
+  font-family: inherit;
+}
+
+.donor-login__input::placeholder {
+  color: #b0b0b0;
+  font-weight: 400;
+}
+
+.donor-login__input:focus {
+  outline: none;
+}
+
+.donor-login__field--password .donor-login__input {
+  padding-right: 72px;
+}
+
+.donor-login__toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(26, 26, 26, 0.9);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.donor-login__toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.donor-login__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 2px;
+}
+
+.donor-login__remember {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(26, 26, 26, 0.85);
+  cursor: pointer;
+  user-select: none;
+}
+
+.donor-login__remember input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #2dcc70;
+}
+
+.donor-login__link {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.85);
+  text-decoration: none;
+}
+
+.donor-login__link:hover {
+  text-decoration: underline;
+}
+
+.donor-login__submit {
+  margin-top: 8px;
+  border: none;
+  border-radius: 18px;
+  padding: 18px;
+  background: #0f3a2c;
+  color: #fff;
+  font-weight: 650;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  font-family: inherit;
+  box-shadow: 0 14px 24px rgba(15, 58, 44, 0.26);
+}
+
+.donor-login__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #0b2c21;
+}
+
+.donor-login__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.donor-login__message {
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.donor-login__message--info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+@media (max-width: 900px) {
+  .donor-login__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-login__media {
+    min-height: 360px;
+  }
+
+  .donor-login__panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .donor-login {
+    padding: 100px 16px 40px;
+  }
+
+  .donor-login__mediaContent,
+  .donor-login__panel {
+    padding: 28px 22px;
+  }
+
+  .donor-login__headline {
+    font-size: 34px;
+  }
+
+  .donor-login__row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
