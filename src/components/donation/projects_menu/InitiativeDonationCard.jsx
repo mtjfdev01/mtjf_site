@@ -126,6 +126,9 @@ const InitiativeDonationCard = ({ initiative }) => {
         </div>
       )}
 
+      {/* Initiative Title - Displayed above donation type filter */}
+      <h3 className="initiative-card-title">{initiative.title}</h3>
+
       <div className="initiative-quantity-selector">
         <button
           type="button"
