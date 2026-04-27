@@ -107,6 +107,9 @@ import kasb_football from '../assets/img/projects/projects-details/kasb/kasb_foo
 
 import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
+import qurbani_hero_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero.webp'
+import qurbani_mobile_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero-mobile.webp'
+
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
 import communityIcon from '../assets/img/projects/icons/community.png'
 
@@ -3672,8 +3675,8 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
   'qurbani': {
     id: 'qurbani-2026',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
-    headerImage: Qurbani, 
-    headerImageMob: apna_ghar_hero_mob,
+    headerImage:qurbani_hero_2026, 
+    headerImageMob: qurbani_mobile_2026,
     stats: [],
     content: {
       paragraph1: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.`,
