@@ -145,44 +145,44 @@ export const projectCards = [
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    // {
-    //    id: 'qurbani-barai-mustehqeen', 
-    //    title: "Qurbani Barai Mustehqeen",
-    //    icon: qurbani,
-    //    price: 15000,
-    //    new: false, 
-    //    category: "Zakat", 
-    //    initiatives:[
-    //     {
-    //       id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
-    //     },
-    //     {
-    //       id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
-    //     },
-    //     {
-    //       id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
-    //     }
-    //    ]
-    //    },
-         {
-       id: 'qurbani', 
-       title: "Qurbani 2026",
+    {
+       id: 'qurbani-barai-mustehqeen', 
+       title: "Qurbani Barai Mustehqeen",
        icon: qurbani,
        price: 15000,
        new: false, 
        category: "Zakat", 
        initiatives:[
         {
-          id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+          id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
         },
         {
-          id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+          id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
         },
         {
-          id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+          id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
         }
        ]
        },
+      //    {
+      //  id: 'qurbani', 
+      //  title: "Qurbani 2026",
+      //  icon: qurbani,
+      //  price: 15000,
+      //  new: false, 
+      //  category: "Zakat", 
+      //  initiatives:[
+      //   {
+      //     id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+      //   },
+      //   {
+      //     id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+      //   },
+      //   {
+      //     id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+      //   }
+      //  ]
+      //  },
     {
        id: 'aas-lab-diagnostics', 
        title: "Aaslab",
