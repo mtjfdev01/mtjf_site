@@ -57,6 +57,7 @@ export const blogs = [
         description2:'“When a person dies, all their deeds end except three: a continuing charity, knowledge that benefits others, or a righteous child who prays for them.” (Muslim 1631).',
         description3:'This means that your generosity can become your legacy, bringing endless rewards even after you leave this world.',
         description3Bold: null,
+        donationUrl: '/donate',
       },
       {
         id: 'types-of-sadaqah-jariyah',
@@ -151,7 +152,8 @@ export const blogs = [
           '✅ Healthcare Aid – Provide medical care to those who cannot afford it.',
           '✅ Plantation Activity – Support tree-planting initiatives that benefit communities for generations.',
         ],
-        bottomText:'Your one-time donation or continuous support can create a legacy of blessings that lives beyond your lifetime.'
+        bottomText:'Your one-time donation or continuous support can create a legacy of blessings that lives beyond your lifetime.',
+        donationUrl: '/donate',
       },
       {
         id: 'your-chance-to-build-your-akhirah',
@@ -159,8 +161,9 @@ export const blogs = [
         impact:'🌙 This Ramadan, be a source of endless mercy and reward. Give Sadaqah Jariyah today, and let your kindness illuminate lives for generations to come.',
         image: '',
         descriptionBold: '',
-        description: 'Sadaqah Jariyah is more than just charity—it is an everlasting investment in your hereafter. Every drop of clean water, every child’s education, every life-saving treatment you support creates a ripple effect of blessings that continues long after you have left this world.',
+        description:'Sadaqah Jariyah is more than just charity—it is an everlasting investment in your hereafter. Every drop of clean water, every child\'s education, every life-saving treatment you support creates a ripple effect of blessings that continues long after you have left this world.',
         donateButtonText: 'Donate Now',
+        donationUrl: '/donate',
       },
     ], 
     link: '/blogs/sadqah-jariyah', 
@@ -243,7 +246,8 @@ export const blogs = [
           'Sponsor a Community Handpump for PKR 125,000, serving larger villages and ensuring that more people benefit from clean water daily.',
         ],
         bottomText:'With just one donation, you can help provide a community with access to clean water for years to come. Every drop you help provide brings safety, dignity, and opportunity to families who have suffered without it.',
-        donateButtonText:'Donate Now'
+        donateButtonText:'Donate Now',
+        donationUrl: '/donate',
       },
         {
         id:'why-your-support-matters',
@@ -332,6 +336,7 @@ export const blogs = [
     description2:'The mass wedding in Badin was a reminder of how, together, we can alleviate these challenges. We are deeply grateful to all the donors and supporters who made this event possible. Your generosity gave 50 couples a hopeful start to their married lives—something that would have been unattainable without your help.',
     description3:`We hope to continue supporting families in need through similar initiatives in the future. If you'd like to be a part of this cause and contribute to making dreams come true for more couples, `,
     donateButtonText:'Donate Today',
+    donationUrl: '/donate',
     bottomText:'Together, we can uphold the sacred tradition of marriage and continue to spread happiness in the lives of those who need it most.'
   }
 ]

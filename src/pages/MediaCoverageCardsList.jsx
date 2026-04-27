@@ -10,6 +10,7 @@ import './MediaCoverageCardsList.css'
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const Footer = lazy(() => import('../components/footer/Footer'))
+const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
 
 
 const MediaCoverageCardsList = () => {
@@ -33,8 +34,15 @@ const MediaCoverageCardsList = () => {
       />
 
       <MediaContentSection subProjects={subProjects} />
-       {/* Newsletter, Donation CTA, and Footer Sections */}
-      <Newsletter/>
+      <Suspense fallback={null}>
+        <ProjectsTestimonial
+          videos={[
+            'https://www.youtube.com/watch?v=S8ThPzyp4s0',
+           ]}
+          title="Our Impact in Action"
+        />
+      </Suspense>
+      <Newsletter />
       <DonationCta />
       <Footer />
     </div>

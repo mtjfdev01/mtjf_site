@@ -9,6 +9,7 @@ const Donate = () => {
   return (
     <>
     <div className='d-none md:d-block'>
+    
       <PageHeader title={'Main Donation Page'} image={DonateLgImage}/>
     </div>
     <div className='md:d-none'>
