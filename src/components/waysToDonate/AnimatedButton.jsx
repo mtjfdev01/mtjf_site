@@ -13,7 +13,9 @@ const AnimatedButton = () => {
     pathname === '/donate' ||
     pathname.startsWith('/donate/') ||
     pathname === '/fitrana' ||
-    pathname.startsWith('/fitrana/')
+    pathname.startsWith('/fitrana/') ||
+    pathname === '/checkout' ||
+    pathname.startsWith('/checkout/')
 
   if (shouldHideButton) {
     return null

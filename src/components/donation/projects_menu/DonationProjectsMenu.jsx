@@ -85,7 +85,7 @@ export const projectCards = [
           description: 'The Afridev Community Hand Pump is highly recommended for areas with low water levels, as it is specifically designed to efficiently extract water from shallow depths.',
           duration: 'One time'
         },
-        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater,
+        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant(without construction)', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater,
           description: 'This initiative will be carried out with active community participation and contributions. It encompasses all expenses related to the RO filtration plant, excluding civil construction work.',
           duration: 'One time'
         },

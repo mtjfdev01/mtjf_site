@@ -6,6 +6,7 @@ import {
   MEDIA_COVERAGE_PAGE_DATA
 } from '../data/media_coverage_data'
 import './MediaCoverageCardsList.css'
+import MediaContentVideoSection from '../mediaContentVideoSection'
 
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
@@ -35,8 +36,12 @@ const MediaCoverageCardsList = () => {
 
       <MediaContentSection subProjects={subProjects} />
       <Suspense fallback={null}>
-        <ProjectsTestimonial
+        <MediaContentVideoSection
           videos={[
+            'https://www.youtube.com/watch?v=S8ThPzyp4s0',
+            'https://www.youtube.com/watch?v=S8ThPzyp4s0',
+            'https://www.youtube.com/watch?v=S8ThPzyp4s0',
+            'https://www.youtube.com/watch?v=S8ThPzyp4s0',
             'https://www.youtube.com/watch?v=S8ThPzyp4s0',
            ]}
           title="Our Impact in Action"
