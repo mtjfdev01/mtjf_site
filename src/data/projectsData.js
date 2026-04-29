@@ -109,6 +109,15 @@ import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import qurbani_hero_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero.webp'
 import qurbani_mobile_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero-mobile.webp'
+import commitment from '../assets/img/projects/projects-details/qurbani_2026/commitment.webp'
+import reaches from '../assets/img/projects/projects-details/qurbani_2026/trust-reach.webp'
+import impact from '../assets/img/projects/projects-details/qurbani_2026/impact.webp'
+import delivered from '../assets/img/projects/projects-details/qurbani_2026/delivery.webp'
+import matters from '../assets/img/projects/projects-details/qurbani_2026/qurbani-matters.webp'
+import receives from '../assets/img/projects/projects-details/qurbani_2026/receiving.webp'
+import date from '../assets/img/projects/projects-details/qurbani_2026/date.webp'
+import art from '../assets/img/projects/projects-details/qurbani_2026/art.webp'
+
 
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
 import communityIcon from '../assets/img/projects/icons/community.png'
@@ -3700,7 +3709,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
 This is not just distribution. It is presence. It is being remembered at a time when they need it most.
 `,
         donateButtonText: '',
-        image: Qurbani
+        image: reaches
       },
       {
         id: 'your-impact-last-year',
@@ -3715,7 +3724,7 @@ This impact was only possible because of your contribution. In 2026, we aim to r
         services: [],
         afterServicesText:'',
         donateButtonText: '',
-        image: Qurbani,
+        image: impact,
       },
       {
         id: 'meaning-behind-qurbani',
@@ -3731,7 +3740,7 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         ],
         afterServicesText: "",
         donateButtonText: '',
-        image: Qurbani,
+        image: art,
       },
            {
         id: 'a-reminder-from-the-prophet',
@@ -3765,7 +3774,7 @@ Our teams ensure that
         ],
         afterServicesText: `We focus on reaching families who are often excluded from regular aid cycles, ensuring your sacrifice reaches those who truly need it.`,
         donateButtonText: '',
-        image: Qurbani,
+        image: delivered,
       },
             {
         id: 'qurbani-options-for-2026',
@@ -3799,7 +3808,7 @@ Our teams ensure that
         ],
         afterServicesText: `Each family receives one Qurbani portion so that support is distributed fairly and widely.`,
         donateButtonText: '',
-        image: Qurbani,
+        image: receives,
       },
        {
         id: 'when-qurbani-will-be-performed',
@@ -3819,33 +3828,13 @@ All arrangements are made in advance so that the sacrifice is completed within t
         title: '',
         subtitle: 'Expected Dates for 2026',
          description:``,
-        impact: `Dhul Hijjah is expected to begin on 18 May 2026`,
-        services: [],
-        afterServicesText: ``,
-        donateButtonText: '',
-        image: "",
-      },
-         {
-        id: '',
-        title: '',
-        subtitle: '',
-         description:``,
-        impact: `Day of Arafah is expected on 26 May 2026`,
-        services: [],
-        afterServicesText: ``,
-        donateButtonText: '',
-        image: '',
-      },
-        {
-        id: '',
-        title: '',
-        subtitle: '',
-         description:``,
-        impact: `Eid ul Adha is expected between 27 May and 29 May 2026`,
-        services: [],
+        impact: ``,
+        services: [`Dhul Hijjah is expected to begin on 18 May 2026`,
+                   `Day of Arafah is expected on 26 May 2026`,
+                  `Eid ul Adha is expected between 27 May and 29 May 2026`],
         afterServicesText: `These dates may change based on moon sighting.`,
         donateButtonText: '',
-        image: ''
+        image: date,
       },
          {
         id: 'why-your-qurbani-matters',
@@ -3856,7 +3845,7 @@ All arrangements are made in advance so that the sacrifice is completed within t
         services: [],
         afterServicesText: `Your act of worship becomes their moment of relief.`,
         donateButtonText: '',
-        image: Qurbani,
+        image: matters,
       },
         {
         id: 'our-commitment-to-quality-and-integrity',
@@ -3872,7 +3861,7 @@ Strong monitoring at every stage of the process
         services: [],
         afterServicesText: `We treat every Qurbani as an amanah entrusted to us.`,
         donateButtonText: '',
-        image: Qurbani,
+        image: commitment,
       },
        {
         id: 'can-i-give-more-than-one-qurbani',
