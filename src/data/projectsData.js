@@ -1,4 +1,4 @@
-import image1 from '../assets/img/projects/camp.webp' 
+import image1 from '../assets/img/projects/camp.webp'
 import ZakatCalculator from '../assets/img/zakat/zakat_hero.webp'
 import ZakatResponsibilityImage from '../assets/img/zakat/Your zakat your responsibility.webp'
 
@@ -211,7 +211,7 @@ export const PROJECTS_DETAIL_DATA = {
     donateButtonText: 'Support Education Programs',
     donationOptions: {
       title: 'Donation Amount',
-      PKR: [15000, 35000, 5000, 18000 ],
+      PKR: [15000, 35000, 5000, 18000],
       USD: [25, 50, 100, 250],
       EUR: [20, 40, 80, 200]
     },
@@ -221,7 +221,7 @@ export const PROJECTS_DETAIL_DATA = {
         title: 'Al Husnain School System',
         subtitle: 'Free Schools for Children in Underserved Communities',
         description: 'For many children, simply having a classroom and books is a dream. Al Husnain Schools ensure that children in underprivileged districts can access quality education, school supplies, and a safe space to learn.',
-        programs: [ 'Shokat Mor (40 Students)',
+        programs: ['Shokat Mor (40 Students)',
           'Muhallah Mistrian, Tulamba (45 Students)',
           'Tawylan Wala Khoh (42 Students)',
           'Chak 13/8 R (38 Students)',
@@ -351,7 +351,7 @@ export const PROJECTS_DETAIL_DATA = {
         'https://www.youtube.com/watch?v=_rQhKds84rc&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=49'
       ]
     },
-    faqs:{
+    faqs: {
       id: 'frequently-asked-questions',
       title: 'Frequently Asked Questions',
       subtitle: 'Everything You Need to Know About MTJ Foundation\'s Education Services',
@@ -420,7 +420,7 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Health',
     donateButtonText: 'Support Healthcare Services',
     donationOptions: {
-      PKR: [10000,40000, 20000],
+      PKR: [10000, 40000, 20000],
       USD: [50, 100, 200, 500],
       EUR: [45, 90, 180, 450]
     },
@@ -598,7 +598,7 @@ export const PROJECTS_DETAIL_DATA = {
         'https://www.youtube.com/watch?v=r8Kz53e9yZY&list=PLwuAnGkonZSIggK0nwd-V_5QNSjM-uClN&index=48'
       ]
     },
-    faqs:       {
+    faqs: {
       id: 'frequently-asked-questions',
       title: 'Frequently Asked Questions',
       subtitle: 'Everything You Need to Know About MTJ Foundation\'s Health Services',
@@ -820,50 +820,50 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
     donationOptions: {
-      PKR: [80000, 125000,  1500000, 2500000, 250000, 500000],
+      PKR: [80000, 125000, 1500000, 2500000, 250000, 500000],
       USD: [40, 80, 160, 320],
       EUR: [35, 70, 140, 280]
     },
     subProjects: [
-          {
-            id: 'individual-handpumps',
-            title: 'Individual Handpumps',
-            image: individualhandpump,
-            description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (sadqah Jariyah), benefiting generations.',
-            benefits: [
-              'Protects families from waterborne diseases such as cholera and hepatitis',
-              'Reduces the daily burden on women and children',
-              'Provides dignity, ease, and health to families',
-              'Serves as sadqah Jariyah, earning ongoing blessings'
-            ],
-            donateButtonText: 'Sponsor an Individual Handpump'
-          },
-          {
-            id: 'community-handpumps',
-            title: 'Community Handpumps',
-            image: communityhandpump,
-            description: 'In villages and neighborhoods where water scarcity affects multiple households, MTJ Foundation installs community handpumps. These shared water points ensure equitable access for all, strengthen social bonds, and promote hygiene and public health. Supporting a community handpump is a long-term, impactful charity, serving numerous families for years and generating continuous spiritual reward for donors.',
-            benefits: [
-              'Serves multiple households efficiently',
-              'Improves public health and reduces waterborne diseases',
-              'Strengthens community ties and resilience',
-              'Acts as sadqah Jariyah, benefiting generations'
-            ],
-            donateButtonText: 'Sponsor a Community Handpump'
-          },
-          {
-            id: 'water-filtration-plants',
-            title: 'Water Filtration Plants',
-            image: waterfiltrationplant,
-            description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of sadqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
-            benefits: [
-              'Ensures consistent, safe drinking water for large populations',
-              'Reduces disease prevalence and improves long-term health',
-              'Supports sustainable community development',
-              'Leaves a lasting charitable legacy for donors'
-            ],
-            donateButtonText: 'Sponsor a Water Filtration Plant'
-          }
+      {
+        id: 'individual-handpumps',
+        title: 'Individual Handpumps',
+        image: individualhandpump,
+        description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (sadqah Jariyah), benefiting generations.',
+        benefits: [
+          'Protects families from waterborne diseases such as cholera and hepatitis',
+          'Reduces the daily burden on women and children',
+          'Provides dignity, ease, and health to families',
+          'Serves as sadqah Jariyah, earning ongoing blessings'
+        ],
+        donateButtonText: 'Sponsor an Individual Handpump'
+      },
+      {
+        id: 'community-handpumps',
+        title: 'Community Handpumps',
+        image: communityhandpump,
+        description: 'In villages and neighborhoods where water scarcity affects multiple households, MTJ Foundation installs community handpumps. These shared water points ensure equitable access for all, strengthen social bonds, and promote hygiene and public health. Supporting a community handpump is a long-term, impactful charity, serving numerous families for years and generating continuous spiritual reward for donors.',
+        benefits: [
+          'Serves multiple households efficiently',
+          'Improves public health and reduces waterborne diseases',
+          'Strengthens community ties and resilience',
+          'Acts as sadqah Jariyah, benefiting generations'
+        ],
+        donateButtonText: 'Sponsor a Community Handpump'
+      },
+      {
+        id: 'water-filtration-plants',
+        title: 'Water Filtration Plants',
+        image: waterfiltrationplant,
+        description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of sadqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
+        benefits: [
+          'Ensures consistent, safe drinking water for large populations',
+          'Reduces disease prevalence and improves long-term health',
+          'Supports sustainable community development',
+          'Leaves a lasting charitable legacy for donors'
+        ],
+        donateButtonText: 'Sponsor a Water Filtration Plant'
+      }
       // {
       //   id: 'impact-highlights',
       //   title: 'Impact Highlights',
@@ -1134,7 +1134,7 @@ export const PROJECTS_DETAIL_DATA = {
             impact: 'Trainees actively contribute to global supply chains, with products used even in FIFA events.'
           }
         ],
-          donateButtonText: 'View Detailed Quarterly Reports',
+        donateButtonText: 'View Detailed Quarterly Reports',
         image: impactmetrics
       }
     ],
@@ -1183,7 +1183,7 @@ export const PROJECTS_DETAIL_DATA = {
   'apna-ghar': {
     id: 'apna-ghar',
     title: 'Apna Ghar – A Safe, Dignified, and Empowering Community for Widows & Orphans',
-    headerImage: apna_ghar, 
+    headerImage: apna_ghar,
     headerImageMob: apna_ghar_hero_mob,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
@@ -1214,7 +1214,7 @@ export const PROJECTS_DETAIL_DATA = {
         subtitle: 'A Purpose-Built Community Where Widows and Orphans Can Rebuild Their Lives',
         description: 'Apna Ghar is MTJF\'s flagship initiative focused on uplifting widowed, abandoned, and divorced women along with their orphan children. The project offers permanent housing, skills, faith-based guidance, education support, and community belonging, all within a protected, sustainable environment. Phase I is under development in Tulamba Town, where MTJF is building 70 eco-friendly, solar-powered homes equipped with clean water access and community infrastructure that supports both mothers and their children. Apna Ghar is not just a housing scheme; it is a foundation for a stable childhood and a dignified motherhood.',
         donateButtonText: 'Build a Home for a Widow & Her Children',
-        image: apna_ghar_media 
+        image: apna_ghar_media
       },
       {
         id: 'why-apna-ghar-matters',
@@ -1228,7 +1228,7 @@ export const PROJECTS_DETAIL_DATA = {
           'Disrupted education for children',
           'Lack of emotional and spiritual support'
         ],
-        afterServicesText:'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values , ensuring that no widow or orphan is left behind.',
+        afterServicesText: 'Apna Ghar offers a holistic solution rooted in compassion, sustainability, and Islamic values , ensuring that no widow or orphan is left behind.',
         donateButtonText: 'Help Provide Safety and Stability',
         image: apna_ghar_matters
       },
@@ -1367,7 +1367,7 @@ export const PROJECTS_DETAIL_DATA = {
   'aas-lab-diagnostics': {
     id: 'aas-lab-diagnostics',
     title: 'Objective: Basic Healthcare for the Underprivileged',
-    headerImage: healthhero, 
+    headerImage: healthhero,
     headerImageMob: apna_ghar_hero_mob,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
@@ -1438,7 +1438,7 @@ team will provide you with individualised attention and assistance.`,
           'Emergency Testing Services',
           'Inclusive Dental X-ray Services'
         ],
-        afterServicesText:'',
+        afterServicesText: '',
         donateButtonText: '',
         image: AASLab
       }
@@ -1481,10 +1481,10 @@ team will provide you with individualised attention and assistance.`,
       donateButtonText: ''
     }
   },
-   'seeds-of-change': {
+  'seeds-of-change': {
     id: 'seeds-of-change',
     title: 'Make Pakistan Green Again',
-    headerImage: SeedsOfChange, 
+    headerImage: SeedsOfChange,
     headerImageMob: apna_ghar_hero_mob,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
@@ -1516,16 +1516,16 @@ team will provide you with individualised attention and assistance.`,
         subtitle: '',
         description: `Seeds of Change" is a nationwide plantation drive aimed at restoring Pakistan's natural beauty and addressing environmental challenges. Every tree planted contributes to a healthier, greener future for our country.`,
         donateButtonText: '',
-        image: SeedsOfChange 
+        image: SeedsOfChange
       },
       {
         id: 'The Time to act is NOW!',
         title: 'The Time to act is NOW!',
         subtitle: '',
-         description:`Together, we can make a significant impact, from reducing our carbon footprint to planting trees that will nurture future generations.`,
+        description: `Together, we can make a significant impact, from reducing our carbon footprint to planting trees that will nurture future generations.`,
         impact: '',
         services: [],
-        afterServicesText:'',
+        afterServicesText: '',
         donateButtonText: '',
         image: SeedsOfChange
       },
@@ -1533,7 +1533,7 @@ team will provide you with individualised attention and assistance.`,
         id: 'Our Gallery',
         title: 'Our Gallery',
         subtitle: '',
-         description:`Explore the heart of our mission through images that capture the essence of our work. From impactful community initiatives to moments of change, each photo tells a story of hope, resilience, and progress. Dive in and witness the difference we're making together.`,
+        description: `Explore the heart of our mission through images that capture the essence of our work. From impactful community initiatives to moments of change, each photo tells a story of hope, resilience, and progress. Dive in and witness the difference we're making together.`,
         impact: '',
         services: [
         ],
@@ -1568,10 +1568,10 @@ team will provide you with individualised attention and assistance.`,
       donateButtonText: 'Donate Now — Support Widows & Orphans'
     }
   },
-   'qurbani-barai-mustehqeen': {
+  'qurbani-barai-mustehqeen': {
     id: 'qurbani-barai-mustehqeen',
     title: 'Qurbani Barai Mustehqeen',
-    headerImage: Qurbani, 
+    headerImage: Qurbani,
     headerImageMob: apna_ghar_hero_mob,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
@@ -1609,10 +1609,10 @@ team will provide you with individualised attention and assistance.`,
         id: '',
         title: '',
         subtitle: '',
-         description:``,
+        description: ``,
         impact: '',
         services: [],
-        afterServicesText:'',
+        afterServicesText: '',
         donateButtonText: '',
         image: ""
       },
@@ -1620,7 +1620,7 @@ team will provide you with individualised attention and assistance.`,
         id: '',
         title: '',
         subtitle: '',
-         description:``,
+        description: ``,
         impact: '',
         services: [
         ],
@@ -1651,7 +1651,7 @@ team will provide you with individualised attention and assistance.`,
           question: 'Will I receive any of the sacrificial meat?',
           answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals.'
         },
-          {
+        {
           question: 'How can I check the status of my Qurbani on Eid day?',
           answer: 'To check the status of your Qurbani on Eid day, please contact us using the provided number. You will also receive updates via SMS.'
         }
@@ -1659,10 +1659,10 @@ team will provide you with individualised attention and assistance.`,
       donateButtonText: ''
     }
   },
-'community-services': {
+  'community-services': {
     id: 'community-services',
     title: 'Marriage gift',
-    headerImage: image1, 
+    headerImage: image1,
     headerImageMob: image1,
     stats: [
       { icon: FaHome, number: '1,850', label: 'Houses Built' },
@@ -1700,10 +1700,10 @@ team will provide you with individualised attention and assistance.`,
         id: 'Ration',
         title: 'Ration',
         subtitle: '',
-        description:`The MTJ Foundation is steadfast in its mission to tackle food insecurity in Pakistan. Our initiative focuses on providing crucial food supplies to highly vulnerable families, with a special emphasis during the month of Ramadan and continuing on a monthly basis. The primary goal is to enhance nutrition and fulfill essential needs, a task made more challenging due to the prevalent issues of poverty and inflation. This sustained effort ensures that individuals have reliable access to necessary sustenance throughout the year.`,
+        description: `The MTJ Foundation is steadfast in its mission to tackle food insecurity in Pakistan. Our initiative focuses on providing crucial food supplies to highly vulnerable families, with a special emphasis during the month of Ramadan and continuing on a monthly basis. The primary goal is to enhance nutrition and fulfill essential needs, a task made more challenging due to the prevalent issues of poverty and inflation. This sustained effort ensures that individuals have reliable access to necessary sustenance throughout the year.`,
         impact: '',
         services: [],
-        afterServicesText:'MTJ Foundation serves over 500 vulnerable families monthly, offering a lifeline of food staples to prevent hunger and improve overall nutrition. It’s our pledge to address food insecurity head-on, providing continual support to those in need.',
+        afterServicesText: 'MTJ Foundation serves over 500 vulnerable families monthly, offering a lifeline of food staples to prevent hunger and improve overall nutrition. It’s our pledge to address food insecurity head-on, providing continual support to those in need.',
         donateButtonText: '',
         image: image1
       },
@@ -1711,7 +1711,7 @@ team will provide you with individualised attention and assistance.`,
         id: 'EID GIFT',
         title: 'EID GIFT',
         subtitle: '',
-         description:`Molana Tariq Jamil Foundation joyously engages in the spirit of celebration by distributing Eid gifts, fostering a sense of togetherness and spreading happiness within the community. The act of sharing these gifts goes beyond mere material offerings; it symbolizes the Foundation’s commitment to inclusivity and ensuring that everyone, regardless of their economic circumstances, feels the warmth of celebration.`,
+        description: `Molana Tariq Jamil Foundation joyously engages in the spirit of celebration by distributing Eid gifts, fostering a sense of togetherness and spreading happiness within the community. The act of sharing these gifts goes beyond mere material offerings; it symbolizes the Foundation’s commitment to inclusivity and ensuring that everyone, regardless of their economic circumstances, feels the warmth of celebration.`,
         impact: '',
         services: [
         ],
@@ -1719,11 +1719,11 @@ team will provide you with individualised attention and assistance.`,
         donateButtonText: '',
         image: image1
       },
-       {
+      {
         id: 'Livlihood:',
         title: 'Livlihood:',
         subtitle: '',
-         description:`At the core of our mission, MTJ Foundation is dedicated to comprehensive livelihood support, committed to elevating the well-being of communities. Through a range of initiatives, from vocational training to income-generating projects, we empower individuals, fostering economic independence and creating sustainable opportunities.`,
+        description: `At the core of our mission, MTJ Foundation is dedicated to comprehensive livelihood support, committed to elevating the well-being of communities. Through a range of initiatives, from vocational training to income-generating projects, we empower individuals, fostering economic independence and creating sustainable opportunities.`,
         impact: '',
         services: [
         ],
@@ -1784,9 +1784,9 @@ team will provide you with individualised attention and assistance.`,
       paragraph3: '',
       testimonials:
       {
-        id:'zakat',
-        title:'Zakat Appeal',
-        videos:[
+        id: 'zakat',
+        title: 'Zakat Appeal',
+        videos: [
           'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
         ]
       }
@@ -1809,9 +1809,9 @@ It is a month where hearts soften, hands open, and wealth finds its true purpose
 
 Allah gives us this month so we pause and ask ourselves a simple question:
 `,
-services:[
-'Have I fulfilled the right of Allah and the right of His creation?'
-],
+        services: [
+          'Have I fulfilled the right of Allah and the right of His creation?'
+        ],
         donateButtonText: 'Give Your Zakat This Ramadan',
         // donationUrl: '/zakat-calculator',
         image: ZakatResponsibilityImage
@@ -1833,18 +1833,18 @@ And it becomes a source of relief for someone who has been waiting for help, oft
         donationUrl: '/zakat-calculator',
         image: ZakatWhyMattersImage,
         carosellImages: [
-            zakatSlider1,
-            zakatSlider2,
-            zakatSlider3,
-            zakatSlider4,
-            zakatSlider5,
-            zakatSlider6,
-            zakatSlider7,
-            zakatSlider8,
-            zakatSlider9,
-            zakatSlider10,
-            zakatSlider11,
-            zakatSlider12,
+          zakatSlider1,
+          zakatSlider2,
+          zakatSlider3,
+          zakatSlider4,
+          zakatSlider5,
+          zakatSlider6,
+          zakatSlider7,
+          zakatSlider8,
+          zakatSlider9,
+          zakatSlider10,
+          zakatSlider11,
+          zakatSlider12,
         ],
         carosellItemWidth: 300,
         carosellMobWidth: 170,
@@ -1878,8 +1878,8 @@ This is relief that reaches hearts, homes, and futures.`,
         donateButtonText: 'Make Your Zakat Count',
         donationUrl: '/zakat-calculator',
         image: ZakatHowHelpsImage,
-        impact:'',
-        services:[
+        impact: '',
+        services: [
 
           'It helps a mother feed her children without asking.',
           'It helps a family survive Ramadan without fear of hunger.',
@@ -1895,7 +1895,7 @@ This is relief that reaches hearts, homes, and futures.`,
           impactNum7,
           impactNum9,
           impactNum8,
-      ],
+        ],
       },
       {
         id: 'message-from-molana-tariq-jamil',
@@ -1909,15 +1909,15 @@ This is relief that reaches hearts, homes, and futures.`,
           reference: 'Sahih Muslim'
         },
         bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine. This Ramadan, answer that call.`,
-        donateButtonText: 'Give Zakat for the Sake of Allah', 
+        donateButtonText: 'Give Zakat for the Sake of Allah',
         donationUrl: '/zakat-calculator',
         image: ZakatCalculator,
         video: 'https://www.youtube.com/watch?v=RaDA7oiNqLs',
 
         carosellVideos: [
-         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
-         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
-         'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
         ]
       },
       {
@@ -1949,14 +1949,14 @@ This Ramadan, Let Your Zakat Speak for You`,
       }
     ],
     testimonials:
-      {
-        id:'zakat',
-        title:'Zakat Appeal',
-        mobileOnly: true,
-        videos:[
-          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
-        ]
-      }
+    {
+      id: 'zakat',
+      title: 'Zakat Appeal',
+      mobileOnly: true,
+      videos: [
+        'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+      ]
+    }
 
     // faqs: {
     //   id: 'frequently-asked-questions',
@@ -2008,14 +2008,14 @@ This Ramadan, Let Your Zakat Speak for You`,
       paragraph2: 'One sincere act of worship on this night is greater than 83 years of continuous reward.',
       testimonials:
       {
-        id:'Layla-Tul-Qadr',
-        title:'Layla-Tul-Qadr ',
-        videos:[
+        id: 'Layla-Tul-Qadr',
+        title: 'Layla-Tul-Qadr ',
+        videos: [
           'https://www.youtube.com/watch?v=RaDA7oiNqLs'
         ]
       }
     },
-    donationForm:false,
+    donationForm: false,
     subProjects: [
       {
         id: 'why-Layla-Tul-Qadr-important',
@@ -2115,7 +2115,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           'Make your charity part of your worship.'
         ]
       },
-      
+
     ],
     // faqs: {
     //   id: 'frequently-asked-questions',
@@ -2171,7 +2171,7 @@ This Ramadan, Let Your Zakat Speak for You`,
     content: {
       paragraph1: 'For over two years now, the people of Gaza have endured relentless hardship, widespread displacement, destruction of homes, food insecurity, and limited access to medical care.',
       paragraph2: 'During this ongoing crisis, MTJ Foundation has remained committed to standing with the people of Gaza, delivering lifesaving humanitarian assistance and restoring dignity in the most difficult circumstances.',
-      paragraph3:'Through structured international collaboration and on-ground implementation, your support has translated into real impact: saving lives, feeding families, and sustaining hope.'
+      paragraph3: 'Through structured international collaboration and on-ground implementation, your support has translated into real impact: saving lives, feeding families, and sustaining hope.'
       // testimonials:
       // {
       //   id:'Layla-Tul-Qadr',
@@ -2181,7 +2181,7 @@ This Ramadan, Let Your Zakat Speak for You`,
       //   ]
       // }
     },
-    donationForm:false,
+    donationForm: false,
     subProjects: [
       {
         id: 'How-We-Deliver-Aid-to-Gaza',
@@ -2189,7 +2189,7 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: rebuildGaza,
         subtitle: '',
         description: 'Due to restricted access, MTJ Foundation delivers aid through established humanitarian channels that operate on the ground. This ensures assistance reaches those most in need in a safe, timely, and transparent manner. Our aid delivery process includes :',
-        description2:'Our aid delivery process includes:',
+        description2: 'Our aid delivery process includes:',
         services: [
           {
             heading: 'Sourcing & Procurement',
@@ -2212,9 +2212,9 @@ This Ramadan, Let Your Zakat Speak for You`,
         image: ourImpactSoFar,
 
         description: 'Through consistent and responsible humanitarian action, MTJ Foundation has supported:',
-        description2:true,
-        description2Bold:'110,000+ individuals in Gaza',
-        description3:"Aid provided includes:",
+        description2: true,
+        description2Bold: '110,000+ individuals in Gaza',
+        description3: "Aid provided includes:",
         // description2Bold:true,
         services: [
           // {
@@ -2237,7 +2237,7 @@ This Ramadan, Let Your Zakat Speak for You`,
             description: 'Winter essentials and temporary relief items'
           }
         ],
-        afterServicesText:'Every number represents a life supported, a family fed, and dignity restored during crisis.'
+        afterServicesText: 'Every number represents a life supported, a family fed, and dignity restored during crisis.'
       },
       {
         id: 'Emergency-Relief-to-Rebuilding-Lives',
@@ -2246,7 +2246,7 @@ This Ramadan, Let Your Zakat Speak for You`,
 
         subtitle: '',
         description: 'With the recent ceasefire, MTJ Foundation has expanded its focus beyond immediate survival needs.',
-        description2:`While food and medical aid remain critical, families now face the long road of recovery,
+        description2: `While food and medical aid remain critical, families now face the long road of recovery,
 rebuilding shelter, restoring stability, and reclaiming a sense of normalcy after prolonged displacement.`,
 
       },
@@ -2258,19 +2258,19 @@ rebuilding shelter, restoring stability, and reclaiming a sense of normalcy afte
         subtitle: '',
         description: `MTJ Foundation has launched the Let’s Rebuild Gaza initiative to support families as they move
 from survival toward recovery.`,
-description2:true,
-description2Bold:'Focus Areas:',
-services: [  
-  {
-    heading: 'Temporary Shelter Support',
-    description: 'Establishing temporary remote homes near refugee camps to provide displaced families with safe, dignified shelter until permanent reconstruction becomes possible.'
-  },
-  {
-    heading: 'Food Security & Nutrition',
-    description: 'Continued food distribution to address malnutrition, particularly among children, ensuring families regain strength and stability.'
-  }
-],
-    afterServicesText:`Your support creates real change, providing hope when its needed the most.`
+        description2: true,
+        description2Bold: 'Focus Areas:',
+        services: [
+          {
+            heading: 'Temporary Shelter Support',
+            description: 'Establishing temporary remote homes near refugee camps to provide displaced families with safe, dignified shelter until permanent reconstruction becomes possible.'
+          },
+          {
+            heading: 'Food Security & Nutrition',
+            description: 'Continued food distribution to address malnutrition, particularly among children, ensuring families regain strength and stability.'
+          }
+        ],
+        afterServicesText: `Your support creates real change, providing hope when its needed the most.`
       },
       {
         id: 'Stories-of-Resilience',
@@ -2292,7 +2292,7 @@ services: [
 
         subtitle: '',
         description: 'Accountability remains central to MTJ Foundation’s work.',
-        description2:`To ensure responsible use of donations:`,
+        description2: `To ensure responsible use of donations:`,
         services: [
           "Detailed financial and impact reports are prepared",
           "On-ground monitoring is conducted through international chapters",
@@ -2310,14 +2310,14 @@ services: [
         description: `Delivering aid in conflict zones comes with significant challenges, restricted access, supply chain
 disruptions, and security risks. Despite these obstacles, MTJ Foundation remains steadfast in its
 mission to reach those in urgent need.`,
-        description2:'We continue to adapt and collaborate to ensure aid reaches Gaza responsibly and effectively.',
+        description2: 'We continue to adapt and collaborate to ensure aid reaches Gaza responsibly and effectively.',
 
       },
       {
         id: 'How-You-Can-Help',
         title: 'How You Can Help',
         image: fitranaIntro,
-        video : 'https://www.youtube.com/watch?v=0kX0LP51_1g',
+        video: 'https://www.youtube.com/watch?v=0kX0LP51_1g',
         subtitle: '',
         description: 'Your generosity enables this work to continue.',
         services: [
@@ -2330,7 +2330,7 @@ mission to reach those in urgent need.`,
         id: 'Stand-With-Gaza',
         title: 'Stand With Gaza',
         image: fitranaIntro,
-        video:'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
+        video: 'https://www.youtube.com/watch?v=HdM8Xhbqqbc',
 
         subtitle: '',
         description: `Together, we can help rebuild lives, restore dignity, and bring hope to families who have
@@ -2338,7 +2338,7 @@ endured the unimaginable.`,
         // image: lq_charity_search,
         donateButtonText: 'Donate Today',
       },
-      
+
     ],
     // faqs: {
     //   id: 'frequently-asked-questions',
@@ -3684,7 +3684,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
   'qurbani': {
     id: 'qurbani-2026',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
-    headerImage:qurbani_hero_2026, 
+    headerImage: qurbani_hero_2026,
     headerImageMob: qurbani_mobile_2026,
     stats: [],
     content: {
@@ -3693,10 +3693,10 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
       paragraph3: ``,
       testimonials:
       {
-        id:'zakat',
-        title:'Zakat Appeal',
-        videos:[
-          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+        id: 'qurbani',
+        title: 'Qurbani Appeal',
+        videos: [
+          'https://www.youtube.com/watch?v=rPnB-zkP_hA'
         ]
       },
     },
@@ -3718,21 +3718,21 @@ This is not just distribution. It is presence. It is being remembered at a time 
 `,
         donateButtonText: '',
         image: reaches,
-      carosellItemWidth: 300,
-      carosellMobWidth: 170,
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
       },
       {
         id: 'your-impact-last-year',
         title: 'Your Impact Last Year',
         subtitle: '',
-         description:`Because of your trust and generosity, Qurbani 2025 became a source of relief for thousands of families who otherwise would not have been able to celebrate Eid with dignity.
+        description: `Because of your trust and generosity, Qurbani 2025 became a source of relief for thousands of families who otherwise would not have been able to celebrate Eid with dignity.
 Through your support, MTJ Foundation was able to distribute 4 to 5 kilograms of Qurbani meat to 3,225 families.
 Each of these families received not just food, but a moment of care. A reminder that they were remembered during one of the most important days in the Islamic calendar.
 This impact was only possible because of your contribution. In 2026, we aim to reach even more families who are waiting for the same support.
 `,
         impact: '4 to 5 kilograms of Qurbani meat to 3,225 families.',
         services: [],
-        afterServicesText:'',
+        afterServicesText: '',
         donateButtonText: '',
         image: impact,
         carosellImages: [
@@ -3747,13 +3747,15 @@ This impact was only possible because of your contribution. In 2026, we aim to r
           reaches,
           impact,
           art,
-      ],
+        ],
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
       },
       {
         id: 'meaning-behind-qurbani',
         title: 'The Meaning Behind Qurbani',
         subtitle: '',
-         description:`Qurbani is an act of submission and love for Allah (SWT). It is rooted in the sacrifice of Prophet Ibrahim (AS), who was willing to give up what he loved most in obedience to his Lord.Allah (SWT) says in the Qur’an
+        description: `Qurbani is an act of submission and love for Allah (SWT). It is rooted in the sacrifice of Prophet Ibrahim (AS), who was willing to give up what he loved most in obedience to his Lord.Allah (SWT) says in the Qur’an
 “So pray to your Lord and sacrifice.”
 Surah Al Kausar 108 verse 2
 This verse reminds us that sacrifice is not only physical. It is spiritual. It is about giving from what we love for the sake of Allah and for the benefit of His creation.
@@ -3765,15 +3767,15 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         donateButtonText: '',
         image: art,
       },
-           {
+      {
         id: 'a-reminder-from-the-prophet',
         title: 'A Reminder from the Prophet ﷺ',
         subtitle: '',
-         quranAyat: {
+        quranAyat: {
           text: 'There are no days on which righteous deeds are more beloved to Allah than these ten days.',
           reference: 'Sahih Bukhari'
         },
-         description:`The Prophet Muhammad (peace be upon him) said
+        description: `The Prophet Muhammad (peace be upon him) said
 `,
         impact: '',
         services: [
@@ -3782,11 +3784,11 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         donateButtonText: '',
         image: Qurbani,
       },
-           {
+      {
         id: 'how-your-qurbani-is-delivered',
         title: 'How Your Qurbani Is Delivered',
         subtitle: '',
-         description:`Every Qurbani entrusted to MTJ Foundation is handled with care, dignity, and accountability.
+        description: `Every Qurbani entrusted to MTJ Foundation is handled with care, dignity, and accountability.
 Our teams ensure that
 `,
         impact: '',
@@ -3800,26 +3802,30 @@ Our teams ensure that
         donateButtonText: '',
         image: delivered,
       },
-            {
+      {
         id: 'qurbani-options-for-2026',
         title: 'Qurbani Options for 2026',
-        subtitle: 'You can choose to give in the following way',
-         description:``,
+        subtitle: '',
+        quranAyat: {
+          text: `Cow at PKR 171,500.\nCow Share at PKR 24,500.\nGoat at PKR 58,000`,
+          reference: ''
+        },
+        description: `You can choose to give in the following way`,
         impact: '',
         services: [
-          { boldText: 'Cow', text: 'at **PKR 171,500**' },
-          { boldText: 'Cow Share', text: 'at **PKR 24,500**' },
-          { boldText: 'Goat', text: 'at **PKR 58,000**' }
+          // { boldText: 'Cow', text: 'at **PKR 171,500**' },
+          // { boldText: 'Cow Share', text: 'at **PKR 24,500**' },
+          // { boldText: 'Goat', text: 'at **PKR 58,000**' }
         ],
-        afterServicesText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.`,
+        afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
         donateButtonText: '',
         image: Qurbani,
       },
-       {
+      {
         id: 'who-receives-your-qurbani',
         title: 'Who Receives Your Qurbani',
         subtitle: 'We prioritize families who are living under extreme hardship and are unable to meet daily food requirements.',
-         description:``,
+        description: ``,
         impact: 'These include:',
         services: [
           `Families living below minimum income levels`,
@@ -3834,11 +3840,11 @@ Our teams ensure that
         donateButtonText: '',
         image: receives,
       },
-       {
+      {
         id: 'when-qurbani-will-be-performed',
         title: 'When Qurbani Will Be Performed',
         subtitle: '',
-         description:`Qurbani is carried out after Eid prayer on the tenth of Dhul Hijjah and continues until the thirteenth.
+        description: `Qurbani is carried out after Eid prayer on the tenth of Dhul Hijjah and continues until the thirteenth.
 All arrangements are made in advance so that the sacrifice is completed within the prescribed Islamic time period without delay or uncertainty.
 `,
         impact: '',
@@ -3847,35 +3853,35 @@ All arrangements are made in advance so that the sacrifice is completed within t
         donateButtonText: '',
         image: Qurbani,
       },
-       {
+      {
         id: '',
         title: '',
         subtitle: 'Expected Dates for 2026',
-         description:``,
+        description: ``,
         impact: ``,
         services: [`Dhul Hijjah is expected to begin on **18 May 2026**`,
-                   `Day of Arafah is expected on **26 May 2026**`,
-                  `Eid ul Adha is expected between **27 May** and **29 May 2026**`],
+          `Day of Arafah is expected on **26 May 2026**`,
+          `Eid ul Adha is expected between **27 May** and **29 May 2026**`],
         afterServicesText: `These dates may change based on moon sighting.`,
         donateButtonText: '',
         image: date,
       },
-         {
+      {
         id: 'why-your-qurbani-matters',
         title: 'Why Your Qurbani Matters More Than Ever',
         subtitle: '',
-        description:`Global hunger levels continue to rise.According to international humanitarian reports,hundreds of millions of people face severe food insecurity every day.For many of these families,your Qurbani is not symbolic. It is the difference between eating meat once a year or not at all.`,
+        description: `Global hunger levels continue to rise.According to international humanitarian reports,hundreds of millions of people face severe food insecurity every day.For many of these families,your Qurbani is not symbolic. It is the difference between eating meat once a year or not at all.`,
         impact: ``,
         services: [],
         afterServicesText: `Your act of worship becomes their moment of relief.`,
         donateButtonText: '',
         image: matters,
       },
-        {
+      {
         id: 'our-commitment-to-quality-and-integrity',
         title: 'Our Commitment to Quality and Integrity',
         subtitle: 'We believe that what is given in the name of Allah (SWT) must be handled with excellence.',
-         description:`That is why MTJ Foundation ensures
+        description: `That is why MTJ Foundation ensures
 Careful selection of healthy animals
 Ethical sourcing that supports local communities
 Respectful handling and distribution
@@ -3898,7 +3904,7 @@ Strong monitoring at every stage of the process
           question: 'What is Qurbani and why is it performed?',
           answer: 'Qurbani is the sacrifice of an animal during Eid ul Adha in remembrance of Prophet Ibrahim (AS) and his willingness to obey Allah (SWT). The meat is distributed to people in need as an act of charity and worship.'
         },
-         {
+        {
           question: 'Can I Give More Than One Qurbani?',
           answer: 'Yes. You are allowed to give more than one Qurbani if you are able. The Prophet Muhammad (PBUH) himself offered multiple sacrifices on behalf of himself and the Ummah.Each additional Qurbani extends your impact and brings relief to more families.'
         },
@@ -3914,19 +3920,19 @@ Strong monitoring at every stage of the process
           question: 'Will my Qurbani be performed on time?',
           answer: 'Yes. All Qurbanis are scheduled and executed within the Islamic timeframe from the tenth to the thirteenth of Dhul Hijjah after Eid prayer.'
         },
-          {
+        {
           question: 'Can I give Qurbani on behalf of someone else?',
           answer: 'Yes. You may give Qurbani on behalf of yourself or another person. Intention is what matters in Islamic practice.'
         },
-          {
+        {
           question: 'Why is there a cost difference between animals?',
           answer: 'Costs vary based on animal type, quality standards, transportation, and local market conditions in different regions where Qurbani is performed.'
         },
-         {
+        {
           question: 'How can I be sure my Qurbani is actually performed?',
           answer: 'MTJ Foundation follows strict monitoring and execution systems with local teams on ground. Each Qurbani is carried out according to Islamic guidelines and verified through internal reporting mechanisms.'
         },
-          {
+        {
           question: 'Can Qurbani meat be sent to specific villages or individuals?',
           answer: 'Distribution is done based on need assessments in targeted vulnerable communities to ensure fairness and maximum reach rather than individual selection.'
         }
@@ -4026,18 +4032,18 @@ export const ALL_PROJECTS_DATA = [
     learnMorePath: '/projects/qurbani-barai-mustehqeen',
     donatePath: '/donate/qurbani-barai-mustehqeen'
   },
-//     {
-//     id: 'qurbani',
-//     title: 'Qurbani 2026 ',
-//     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
-//     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
-// For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
-//     impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
-//     image: Qurbani,
-//     donateButtonText: 'Book Your Qurbani',
-//     learnMorePath: '/projects/qurbani',
-//     donatePath: '/donate/qurbani'
-//   },
+  //     {
+  //     id: 'qurbani',
+  //     title: 'Qurbani 2026 ',
+  //     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
+  //     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
+  // For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
+  //     impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
+  //     image: Qurbani,
+  //     donateButtonText: 'Book Your Qurbani',
+  //     learnMorePath: '/projects/qurbani',
+  //     donatePath: '/donate/qurbani'
+  //   },
   {
     id: 'aas-lab-diagnostics',
     title: 'AAS Lab & Diagnostics',
