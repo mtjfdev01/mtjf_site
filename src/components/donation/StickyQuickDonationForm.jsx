@@ -479,4 +479,3 @@ const StickyQuickDonationForm = () => {
 }
 
 export default StickyQuickDonationForm
-

@@ -83,7 +83,7 @@ const DonationSidebar = ({
             className="donation-sidebar-button donation-sidebar-back-button"
             onClick={handleBackToDonations}
           >
-            Back to Donations Menu
+            Go Back
           </button>
         )}
       </div>

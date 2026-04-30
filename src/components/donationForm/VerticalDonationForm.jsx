@@ -239,7 +239,9 @@ const VerticalDonationForm = ({
     }
     
     // Validate minimum amount (100 PKR)
-    const amountPKRForValidation = toPKRAmount(amountNumber)
+    // For Qurbani multi-currency mode, `formData.amount` is intentionally kept in PKR
+    // (currency selection is display-only). So do NOT reconvert PKR -> PKR again.
+    const amountPKRForValidation = isQurbaniMultiCurrencyProject ? Math.round(amountNumber) : toPKRAmount(amountNumber)
     if (amountPKRForValidation < 100) {
       setErrorMessage('Minimum donation amount is 100 PKR')
       setTimeout(() => {
@@ -253,12 +255,13 @@ const VerticalDonationForm = ({
     }
     
     // Prepare donation data
+    const amountPKRToStore = isQurbaniMultiCurrencyProject ? Math.round(amountNumber) : amountNumber
     const donationData = {
       ...formData,
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
-      amount: isQurbaniMultiCurrencyProject ? toPKRAmount(amountNumber).toString() : finalAmount,
-      finalAmount: isQurbaniMultiCurrencyProject ? toPKRAmount(amountNumber).toString() : finalAmount
+      amount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
+      finalAmount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount
     }
     
     // Store in context
