@@ -581,7 +581,6 @@ const DonationProjectsMenu = () => {
           convertOnlyForProjectId={expandedProjectId}
         />
       )}
-      <h2>mujee</h2>
     </div>
   )
 }
