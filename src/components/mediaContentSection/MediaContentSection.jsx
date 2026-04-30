@@ -273,6 +273,11 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
                   </div>
                 )}
 
+                {/* Text that should appear after the Hadith/Quran block */}
+                {subProject.afterHadithText && (
+                  <p className="media-content-description">{subProject.afterHadithText}</p>
+                )}
+
                 {/* Render CTA buttons - handles both single and multiple buttons */}
                 {(() => {
                   // Check if donateButtonText exists and is not empty

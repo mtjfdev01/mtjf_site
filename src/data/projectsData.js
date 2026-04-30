@@ -3778,7 +3778,7 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         impact: '',
         services: [
         ],
-        // afterServicesText: "These blessed days of Dhul Hijjah are an opportunity to earn reward through generosity. Your Qurbani during these days becomes an act of worship that carries immense spiritual value.",
+        afterHadithText: "These blessed days of Dhul Hijjah are an opportunity to earn reward through generosity. Your Qurbani during these days becomes an act of worship that carries immense spiritual value.",
         donateButtonText: '',
         image: Qurbani,
       },
