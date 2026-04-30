@@ -83,7 +83,7 @@ const paymentFrequency = {
 const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref } = useDonation()
+  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams } = useDonation()
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(null)
@@ -554,6 +554,17 @@ const CheckoutForm = () => {
         ...(ref && {
           ref: ref
         }),
+        // UTM campaign tracking (captured from landing URL)
+        ...(utmParams && {
+          ...(() => {
+            const { utm_source, utm_medium, utm_campaign } = utmParams || {}
+            return {
+              ...(utm_source ? { utm_source } : {}),
+              ...(utm_medium ? { utm_medium } : {}),
+              ...(utm_campaign ? { campaign_id: utm_campaign } : {})
+            }
+          })()
+        }),
         // Stripe / Stripe Embed: recurring true when "Give Monthly" is selected
         ...((currentPayment === 'stripe' || currentPayment === 'stripe_embed') && {
           recurring: formData.donation_frequency === 'monthly'
@@ -561,7 +572,6 @@ const CheckoutForm = () => {
         notification_subscription: formData.notification_subscription !== false
       }
       console.log('payload', payload)
-return;
       // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)

@@ -15,6 +15,15 @@ export const DonationProvider = ({ children }) => {
   const [projectDonations, setProjectDonations] = useState([]); 
   const [donationType, setDonationType] = useState("general");
   const [ref, setRef] = useState(null);
+  const [utmParams, setUtmParamsState] = useState(() => {
+    try {
+      const raw = localStorage.getItem('mtj_utm_params');
+      const parsed = raw ? JSON.parse(raw) : null;
+      return parsed && typeof parsed === 'object' ? parsed : null;
+    } catch {
+      return null;
+    }
+  });
 
   // Calculate total amount from all donation sources
   // This amount is automatically updated when updateProjectDonation is called
@@ -85,19 +94,29 @@ export const DonationProvider = ({ children }) => {
     // Note: We don't clear ref here as it should persist across donation flows
   }, []);
 
+  const setUtmParams = useCallback((next) => {
+    setUtmParamsState(prev => {
+      if (!next) return prev;
+      const merged = { ...(prev || {}), ...(next || {}) };
+      return Object.keys(merged).length > 0 ? merged : null;
+    });
+  }, []);
+
   const value = useMemo(() => ({
     donationData,
     projectDonations,
     amount, // Total calculated amount from all sources (donationData + projectDonations)
     donationType,
     ref,
+    utmParams,
     setDonationFormData,
     setProjectDonationData,
     updateProjectDonation,
     clearDonationData,
     setDonationType,
-    setRef
-  }), [donationData, projectDonations, amount, donationType, ref, setDonationFormData, setProjectDonationData, updateProjectDonation, clearDonationData]);
+    setRef,
+    setUtmParams
+  }), [donationData, projectDonations, amount, donationType, ref, utmParams, setDonationFormData, setProjectDonationData, updateProjectDonation, clearDonationData, setUtmParams]);
 
   return (
     <DonationContext.Provider value={value}>

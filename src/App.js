@@ -14,6 +14,7 @@ import PublicNoticePopup from './components/publicNoticePopup';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
+import CampaignTracker from './components/analytics/CampaignTracker'
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -76,6 +77,7 @@ function App() {
       <CartProvider>
         <DonationProvider>
           <ScrollToTop />
+          <CampaignTracker />
 
           {/* <PromoPopup
             routes={['/', '/home']}
