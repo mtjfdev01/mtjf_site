@@ -1570,97 +1570,97 @@ team will provide you with individualised attention and assistance.`,
       donateButtonText: 'Donate Now — Support Widows & Orphans'
     }
   },
-  'qurbani-barai-mustehqeen': {
-    id: 'qurbani-barai-mustehqeen',
-    title: 'Qurbani Barai Mustehqeen',
-    headerImage: Qurbani,
-    headerImageMob: apna_ghar_hero_mob,
-    stats: [
-      { icon: FaHome, number: '1,850', label: 'Houses Built' },
-      { icon: FaUsers, number: '9,250', label: 'People Housed' },
-      { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
-      { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
-      { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
-      { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
-      { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
-      { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
-    ],
-    content: {
-      paragraph1: `Your contribution will bring joy and nourishment to those who deserve it the most. The Qurbani will be done in Pakistan, and the meat will be distributed to those who do not have access to it. Let's come together and spread the spirit of generosity and compassion this Eid.`,
-      paragraph2: '',
-      paragraph3: ''
-    },
-    mainImage: Qurbani,
-    donateCategory: 'Qurbani Barai Mustehqeen',
-    donateButtonText: '',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
-    subProjects: [
-      {
-        id: 'qurbani-barai-mustehqeen',
-        title: 'The Holy Prophet (S.A.W) said:',
-        subtitle: '',
-        description: `There is nothing dearer to Allah during the days of Qurbani than the sacrificing of animals. The sacrificed animal shall come on the Day of Qiyamah with its horns, hair, and hooves (to be weighed on a person’s good deeds). The sacrifice is accepted by Allah before the blood reaches the ground. Therefore sacrifice with an open and happy heart.” -Tirmidhi`,
-        donateButtonText: '',
-        image: Qurbani
-      },
-      {
-        id: '',
-        title: '',
-        subtitle: '',
-        description: ``,
-        impact: '',
-        services: [],
-        afterServicesText: '',
-        donateButtonText: '',
-        image: ""
-      },
-      {
-        id: '',
-        title: '',
-        subtitle: '',
-        description: ``,
-        impact: '',
-        services: [
-        ],
-        afterServicesText: "",
-        donateButtonText: '',
-        image: ''
-      }
-    ],
-    faqs: {
-      id: 'frequently-asked-questions',
-      title: 'Frequently Asked Questions',
-      subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
-      description: '',
-      faqs: [
-        {
-          question: 'How will the sacrificial meat be distributed?',
-          answer: 'The sacrificial meat will be given to those in need. The value of skins, furs, and other parts will be utilized by MTJ Foundation for charitable purposes in accordance with Shariah principles.'
-        },
-        {
-          question: 'What expenses are covered by my donation?',
-          answer: 'Your donation covers the costs of the animal’s transportation, food, slaughter, and other necessary expenses related to the sacrifice.'
-        },
-        {
-          question: 'What happens if there are extra funds from my donation?',
-          answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals'
-        },
-        {
-          question: 'Will I receive any of the sacrificial meat?',
-          answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals.'
-        },
-        {
-          question: 'How can I check the status of my Qurbani on Eid day?',
-          answer: 'To check the status of your Qurbani on Eid day, please contact us using the provided number. You will also receive updates via SMS.'
-        }
-      ],
-      donateButtonText: ''
-    }
-  },
+  // 'qurbani-barai-mustehqeen': {
+  //   id: 'qurbani-barai-mustehqeen',
+  //   title: 'Qurbani Barai Mustehqeen',
+  //   headerImage: Qurbani,
+  //   headerImageMob: qurbani_mobile_2026, 
+  //   stats: [
+  //     { icon: FaHome, number: '1,850', label: 'Houses Built' },
+  //     { icon: FaUsers, number: '9,250', label: 'People Housed' },
+  //     { icon: FaChild, number: '5,200', label: 'Orphan Children Supported' },
+  //     { icon: FaHandHoldingHeart, number: '2,100', label: 'Widows Housed' },
+  //     { icon: FaSchool, number: '4,800', label: 'Children Enrolled in School' },
+  //     { icon: FaBriefcase, number: '1,500', label: 'Mothers with Stable Income' },
+  //     { icon: FaGlobeAsia, number: '25', label: 'Communities Served' },
+  //     { icon: FaUsers, number: '12,000', label: 'Total Beneficiaries' }
+  //   ],
+  //   content: {
+  //     paragraph1: `Your contribution will bring joy and nourishment to those who deserve it the most. The Qurbani will be done in Pakistan, and the meat will be distributed to those who do not have access to it. Let's come together and spread the spirit of generosity and compassion this Eid.`,
+  //     paragraph2: '',
+  //     paragraph3: ''
+  //   },
+  //   mainImage: Qurbani,
+  //   donateCategory: 'Qurbani Barai Mustehqeen',
+  //   donateButtonText: '',
+  //   donationOptions: {
+  //     PKR: [10000, 25000, 50000, 100000],
+  //     USD: [100, 250, 500, 1000],
+  //     EUR: [90, 230, 460, 920]
+  //   },
+  //   subProjects: [
+  //     {
+  //       id: 'qurbani-barai-mustehqeen',
+  //       title: 'The Holy Prophet (S.A.W) said:',
+  //       subtitle: '',
+  //       description: `There is nothing dearer to Allah during the days of Qurbani than the sacrificing of animals. The sacrificed animal shall come on the Day of Qiyamah with its horns, hair, and hooves (to be weighed on a person’s good deeds). The sacrifice is accepted by Allah before the blood reaches the ground. Therefore sacrifice with an open and happy heart.” -Tirmidhi`,
+  //       donateButtonText: '',
+  //       image: Qurbani
+  //     },
+  //     {
+  //       id: '',
+  //       title: '',
+  //       subtitle: '',
+  //       description: ``,
+  //       impact: '',
+  //       services: [],
+  //       afterServicesText: '',
+  //       donateButtonText: '',
+  //       image: ""
+  //     },
+  //     {
+  //       id: '',
+  //       title: '',
+  //       subtitle: '',
+  //       description: ``,
+  //       impact: '',
+  //       services: [
+  //       ],
+  //       afterServicesText: "",
+  //       donateButtonText: '',
+  //       image: ''
+  //     }
+  //   ],
+  //   faqs: {
+  //     id: 'frequently-asked-questions',
+  //     title: 'Frequently Asked Questions',
+  //     subtitle: 'Everything You Need to Know About Supporting Widows & Orphans',
+  //     description: '',
+  //     faqs: [
+  //       {
+  //         question: 'How will the sacrificial meat be distributed?',
+  //         answer: 'The sacrificial meat will be given to those in need. The value of skins, furs, and other parts will be utilized by MTJ Foundation for charitable purposes in accordance with Shariah principles.'
+  //       },
+  //       {
+  //         question: 'What expenses are covered by my donation?',
+  //         answer: 'Your donation covers the costs of the animal’s transportation, food, slaughter, and other necessary expenses related to the sacrifice.'
+  //       },
+  //       {
+  //         question: 'What happens if there are extra funds from my donation?',
+  //         answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals'
+  //       },
+  //       {
+  //         question: 'Will I receive any of the sacrificial meat?',
+  //         answer: 'No, donors will not receive the sacrificial meat. It will be distributed among the needy and deserving individuals.'
+  //       },
+  //       {
+  //         question: 'How can I check the status of my Qurbani on Eid day?',
+  //         answer: 'To check the status of your Qurbani on Eid day, please contact us using the provided number. You will also receive updates via SMS.'
+  //       }
+  //     ],
+  //     donateButtonText: ''
+  //   }
+  // },
   'community-services': {
     id: 'community-services',
     title: 'Marriage gift',
@@ -3683,7 +3683,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
       }
     ]
   },
-  'qurbani-2026': {
+  'qurbani-barai-mustehqeen': {
     id: 'qurbani-2026',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
     headerImage: qurbani_hero_2026,

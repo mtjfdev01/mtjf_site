@@ -164,6 +164,21 @@
   }
 }
 
+/* Below lg breakpoint: single column — show donate / initiatives first, then main content (image section follows in page flow) */
+@media (max-width: 991px) {
+  .project-content-grid {
+    align-items: stretch;
+  }
+
+  .project-donate-sidebar {
+    order: -1;
+  }
+
+  .project-content-left {
+    order: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .project-stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
