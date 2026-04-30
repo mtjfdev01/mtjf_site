@@ -20,7 +20,7 @@ const StickyQuickDonationForm = () => {
   const location = useLocation()
   const { donationType, setDonationType, updateProjectDonation } = useDonation()
   const [localAmount, setLocalAmount] = useState('0')
-  const [selectedProjectId, setSelectedProjectId] = useState('general')
+  const [selectedProjectId, setSelectedProjectId] = useState('qurbani-barai-mustehqeen')
   const [selectedInitiativeId, setSelectedInitiativeId] = useState('')
   const [customInput, setCustomInput] = useState('')
   const [message, setMessage] = useState('')
@@ -36,6 +36,23 @@ const StickyQuickDonationForm = () => {
   // Project list - same as DonationProjectsMenu
   const projectCards = [
     // { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
+    { 
+      id: 'qurbani-barai-mustehqeen',
+      title: "Qurbani Barai Mustehqeen",
+      icon: qurbani,
+      category: "Zakat",
+      initiatives:[
+                {
+                  id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+                },
+                {
+                  id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+                },
+                {
+                  id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+                }
+   ]
+    },
     { 
       id: 'health',
       title: "Health",
@@ -147,23 +164,7 @@ const StickyQuickDonationForm = () => {
                { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
              ]
       },
-    { 
-      id: 'qurbani-barai-mustehqeen',
-      title: "Qurbani Barai Mustehqeen",
-      icon: qurbani,
-      category: "Zakat",
-      initiatives:[
-                {
-                  id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
-                },
-                {
-                  id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
-                },
-                {
-                  id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
-                }
-   ]
-    },
+
     {
        id: 'aas-lab-diagnostics', 
        title: "Aaslab", 
