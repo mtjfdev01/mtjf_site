@@ -5,6 +5,7 @@ import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './VerticalDonationForm.css'
 
+
 const DEFAULT_DONATION_OPTIONS = {
   PKR: [5000, 10000, 25000, 50000],
   USD: [50, 100, 250, 500],
@@ -43,7 +44,8 @@ const VerticalDonationForm = ({
     customAmount: '',
     category: defaultCategory || categoryOptions[0] || 'General',
     subCategory: '',
-    projectId: urlProjectId || defaultProjectId || projects[0]?.id || ''
+    projectId: urlProjectId || defaultProjectId || projects[0]?.id || '',
+    quantity: 1
   })
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -103,24 +105,31 @@ const VerticalDonationForm = ({
   }
 
   const handleIncrement = () => {
-    const currentAmount = parseFloat(formData.amount) || 0
     const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
-    const step = selectedInitiative?.price || 100
+    const basePrice = selectedInitiative?.price || 0
+    const newQuantity = formData.quantity + 1
+    const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
+    
     setFormData(prev => ({
       ...prev,
-      amount: (currentAmount + step).toString(),
+      quantity: newQuantity,
+      amount: newAmount,
       customAmount: ''
     }))
   }
 
   const handleDecrement = () => {
-    const currentAmount = parseFloat(formData.amount) || 0
+    if (formData.quantity <= 1) return
+    
     const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
-    const step = selectedInitiative?.price || 100
-    const newAmount = currentAmount - step
+    const basePrice = selectedInitiative?.price || 0
+    const newQuantity = formData.quantity - 1
+    const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
+    
     setFormData(prev => ({
       ...prev,
-      amount: (newAmount > 0 ? newAmount : 0).toString(),
+      quantity: newQuantity,
+      amount: newAmount,
       customAmount: ''
     }))
   }
@@ -192,6 +201,11 @@ const VerticalDonationForm = ({
     navigate('/checkout', { state: { returnTo } })
   }
 
+  const isQurbaniPage = location.pathname.includes('qurbani');
+  const categoryOptionsToShow = isQurbaniPage
+  ? ["Qurbani 2026"]
+  : categoryOptions;
+
   return (
     <div id={formId} className={`vertical-donation-form ${className}`}>
       <div className="vertical-donation-card">
@@ -207,16 +221,30 @@ const VerticalDonationForm = ({
           <div className="vertical-donation-inline">
             <div className="vertical-donation-group">
               <label className="vertical-donation-label">Frequency</label>
-              <select
-                className="vertical-donation-input"
-                value={formData.frequency}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, frequency: e.target.value }))
-                }
-              >
-                <option value="once">Give Once</option>
-                <option value="monthly">Give Monthly</option>
-              </select>
+               {isQurbaniPage ? (
+          // ✅ Fixed value (no dropdown)
+          <input
+            type="text"
+            className="vertical-donation-input"
+            value="Give Once"
+            readOnly
+          />
+        ) : (
+          // ✅ Normal dropdown for other pages
+          <select
+            className="vertical-donation-input"
+            value={formData.frequency}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                frequency: e.target.value
+              }))
+            }
+          >
+            <option value="once">Give Once</option>
+            <option value="monthly">Give Monthly</option>
+          </select>
+        )}
             </div>
 
             <div className="vertical-donation-group">
@@ -243,22 +271,22 @@ const VerticalDonationForm = ({
           <div className="vertical-donation-inline">
             <div className="vertical-donation-group">
               <label className="vertical-donation-label">Category</label>
-              <select
-                className="vertical-donation-input"
-                value={formData.category}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    category: e.target.value
-                  }))
-                }
-              >
-                {categoryOptions.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
+               <select
+    className="vertical-donation-input"
+    value={formData.category}
+    onChange={(e) =>
+      setFormData((prev) => ({
+        ...prev,
+        category: e.target.value,
+      }))
+    }
+  >
+    {categoryOptionsToShow.map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
+    ))}
+  </select>
             </div>
 
             {filteredInitiatives.length > 0 && (
@@ -274,6 +302,7 @@ const VerticalDonationForm = ({
                     setFormData((prev) => ({
                       ...prev,
                       subCategory: selectedTitle,
+                      quantity: 1,
                       amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
                       customAmount: ''
                     }))
@@ -289,6 +318,34 @@ const VerticalDonationForm = ({
               </div>
             )}
           </div>
+
+          {!formData.customAmount && (
+            <div className="vertical-donation-inline">
+              <div className="vertical-donation-group">
+                <label className="vertical-donation-label">Quantity</label>
+                <div className="vertical-donation-quantity-wrapper">
+                  <button type="button" onClick={handleDecrement} className="vertical-donation-quantity-btn">−</button>
+                  <input
+                    type="number"
+                    className="vertical-donation-input vertical-donation-quantity-input"
+                    value={formData.quantity}
+                    readOnly
+                  />
+                  <button type="button" onClick={handleIncrement} className="vertical-donation-quantity-btn">+</button>
+                </div>
+              </div>
+
+              <div className="vertical-donation-group">
+                <label className="vertical-donation-label">Amount</label>
+                <input
+                  type="text"
+                  className="vertical-donation-input"
+                  value={formData.amount ? `${formData.currency} ${Number(formData.amount).toLocaleString()}` : ''}
+                  readOnly
+                />
+              </div>
+            </div>
+          )}
 
           {showProjectSelect && (
             <div className="vertical-donation-group">
@@ -312,43 +369,6 @@ const VerticalDonationForm = ({
             </div>
           )}
 
-          {filteredInitiatives.length > 0 && (
-            <div className="vertical-donation-group">
-              <label className="vertical-donation-label">Amount</label>
-              {/* <div className="vertical-donation-amounts">
-                {getDonationAmounts(formData.currency).map((amount) => (
-                  <button
-                    key={amount}
-                    type="button"
-                    className={`vertical-donation-amount-btn ${
-                      formData.amount === amount.toString() ? 'active' : ''
-                    }`}
-                    onClick={() => handleAmountClick(amount)}
-                  >
-                    {amount.toLocaleString()} {formData.currency}
-                  </button>
-                ))}
-              </div> */}
-              <div className="vertical-donation-amount-wrapper">
-                <button type="button" onClick={handleDecrement} className="vertical-donation-amount-btn">-</button>
-                <input
-                  type="number"
-                  className="vertical-donation-input"
-                  placeholder="Amount"
-                  value={formData.amount}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      amount: e.target.value,
-                      customAmount: ''
-                    }))
-                  }
-                />
-                <button type="button" onClick={handleIncrement} className="vertical-donation-amount-btn">+</button>
-              </div>
-            </div>
-          )}
-
           <div className="vertical-donation-group">
             <label className="vertical-donation-label">
               {formData.currency} Enter an amount
@@ -358,13 +378,29 @@ const VerticalDonationForm = ({
               className="vertical-donation-input"
               placeholder="Enter custom amount"
               value={formData.customAmount}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  customAmount: e.target.value,
-                  amount: ''
-                }))
-              }
+              onChange={(e) => {
+                const customValue = e.target.value
+                
+                // If clearing the custom amount, restore the calculated amount
+                if (customValue === '' || customValue === null) {
+                  const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+                  const basePrice = selectedInitiative?.price || 0
+                  const restoredAmount = basePrice > 0 ? (formData.quantity * basePrice).toString() : ''
+                  
+                  setFormData((prev) => ({
+                    ...prev,
+                    customAmount: '',
+                    amount: restoredAmount
+                  }))
+                } else {
+                  // User is typing, clear the preset amount
+                  setFormData((prev) => ({
+                    ...prev,
+                    customAmount: customValue,
+                    amount: ''
+                  }))
+                }
+              }}
             />
           </div>
 

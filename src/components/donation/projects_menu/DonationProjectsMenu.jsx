@@ -164,25 +164,25 @@ export const projectCards = [
         }
        ]
        },
-      //    {
-      //  id: 'qurbani', 
-      //  title: "Qurbani 2026",
-      //  icon: qurbani,
-      //  price: 15000,
-      //  new: false, 
-      //  category: "Zakat", 
-      //  initiatives:[
-      //   {
-      //     id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
-      //   },
-      //   {
-      //     id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
-      //   },
-      //   {
-      //     id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
-      //   }
-      //  ]
-      //  },
+         {
+       id: 'qurbani', 
+       title: "Qurbani 2026",
+       icon: qurbani,
+       price: 15000,
+       new: false, 
+       category: "Zakat", 
+       initiatives:[
+        {
+          id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+        },
+        {
+          id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+        },
+        {
+          id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+        }
+       ]
+       },
     {
        id: 'aas-lab-diagnostics', 
        title: "Aaslab",

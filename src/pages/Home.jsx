@@ -72,8 +72,7 @@ const Home = ({ showHomeInfoSection = false }) => {
               <Events /> */}
               <Newsletter />
               <DonationCta />
-           
-              <Footer />
+               <Footer />
       </div>
     </>
   );
