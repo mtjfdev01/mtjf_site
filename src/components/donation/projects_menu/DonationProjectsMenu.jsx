@@ -21,6 +21,25 @@ import community from '../../../assets/img/projects/icons/community.png'
 import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 export const projectCards = [
+  {
+    id: 'qurbani-barai-mustehqeen', 
+    title: "Qurbani Barai Mustehqeen",
+    icon: qurbani,
+    price: 15000,
+    new: false, 
+    category: "Zakat", 
+    initiatives:[
+     {
+       id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
+     },
+     {
+       id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
+     },
+     {
+       id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
+     }
+    ]
+    },
     { 
       id: 'health', 
       title: "Health", 
@@ -145,44 +164,26 @@ export const projectCards = [
         { id: 'seeds-of-change-plant', title: 'SEEDS OF CHANGE', subtitle: 'Per Plant', price: 750, icon: seeds }
       ]
     },
-    {
-       id: 'qurbani-barai-mustehqeen', 
-       title: "Qurbani Barai Mustehqeen",
-       icon: qurbani,
-       price: 15000,
-       new: false, 
-       category: "Zakat", 
-       initiatives:[
-        {
-          id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
-        },
-        {
-          id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
-        },
-        {
-          id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
-        }
-       ]
-       },
-         {
-       id: 'qurbani', 
-       title: "Qurbani 2026",
-       icon: qurbani,
-       price: 15000,
-       new: false, 
-       category: "Zakat", 
-       initiatives:[
-        {
-          id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
-        },
-        {
-          id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
-        },
-        {
-          id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
-        }
-       ]
-       },
+
+      //    {
+      //  id: 'qurbani', 
+      //  title: "Qurbani 2026",
+      //  icon: qurbani,
+      //  price: 15000,
+      //  new: false, 
+      //  category: "Zakat", 
+      //  initiatives:[
+      //   {
+      //     id: 'qurbani-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+      //   },
+      //   {
+      //     id: 'qurbani-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+      //   },
+      //   {
+      //     id: 'qurbani-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+      //   }
+      //  ]
+      //  },
     {
        id: 'aas-lab-diagnostics', 
        title: "Aaslab",
@@ -528,7 +529,7 @@ const DonationProjectsMenu = () => {
                 </div>
 
                 {/* Currency selector (Qurbani Barai Mustehqeen only) */}
-                {QURBANI_PROJECT_IDS.includes(expandedProjectId) && (
+                {/* {QURBANI_PROJECT_IDS.includes(expandedProjectId) && (
                   <div className="general-donation-card form-card">
                     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
                       <strong>Currency</strong>
@@ -550,7 +551,7 @@ const DonationProjectsMenu = () => {
                       </span>
                     </div>
                   </div>
-                )}
+                )} */}
                 
                 {expandedProject.initiatives.map((initiative) => {
                   const initiativeData = {

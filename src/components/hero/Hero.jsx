@@ -18,14 +18,14 @@ import './hero.css'
 
 const HERO_IMAGES = [
   { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/donate' },
-  { desktop: change_hero, mobile: change_mob, link: '/donate' },
+  { desktop: change_hero, mobile: change_mob, link: '/' },
   
   
   // { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup, link: '/projects/ramzan-zakat' }, 
   // { desktop: hero, mobile: hero_mob }, 
   // { desktop: winter_hero, mobile: winter_mob },
   // { desktop: apna_ghar_hero, mobile: apna_ghar_hero_mob }
-    { desktop: hero, mobile: hero_mob, link: '/donate' }, 
+    { desktop: hero, mobile: hero_mob, link: '/' }, 
 
 ]
 
