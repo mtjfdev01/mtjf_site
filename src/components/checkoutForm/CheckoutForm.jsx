@@ -571,9 +571,7 @@ const CheckoutForm = () => {
         }),
         notification_subscription: formData.notification_subscription !== false
       }
-      console.log('payload', payload)
-      return;
-      // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
+        // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)
         setIsLoading(null)
@@ -840,7 +838,7 @@ const CheckoutForm = () => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay Securely with Credit/Debit Card (1st)</h6>
+                  <h6>Pay Securely with Credit/Debit Card</h6>
                   {formData.donation_frequency === 'monthly' && (
                     <span className="payment-option-badge">Recurring</span>
                   )}
@@ -855,7 +853,7 @@ const CheckoutForm = () => {
           </div>
 
                         {/* Meezan payment option */}
-                        <div className="col-md-6">
+          {/* <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -881,7 +879,7 @@ const CheckoutForm = () => {
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
           
 
           

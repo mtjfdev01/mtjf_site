@@ -23,6 +23,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-10);
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .donation-form-group {
@@ -75,9 +79,9 @@
 
 @media (min-width: 768px) {
   .donation-form-row {
-    grid-template-columns: repeat(4, 1fr);
-    /* grid-template-columns: repeat(auto-fit, minmax(350px, 260px)); */
-    /* justify-content: center; */
+    /* Center the grid so the form doesn't look left-heavy on wide screens */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    justify-content: center;
   }
 }
 
