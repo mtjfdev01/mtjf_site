@@ -4021,29 +4021,29 @@ export const ALL_PROJECTS_DATA = [
     learnMorePath: '/projects/seeds-of-change',
     donatePath: '/donate/seeds-of-change'
   },
-  {
-    id: 'qurbani-barai-mustehqeen',
-    title: 'Qurbani Barai Mustehqeen',
-    subtitle: 'Delivering Qurbani Meat to Families in Need',
-    description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
-    impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
-    image: Qurbani,
-    donateButtonText: 'Book Your Qurbani',
-    learnMorePath: '/projects/qurbani-barai-mustehqeen',
-    donatePath: '/donate/qurbani-barai-mustehqeen'
-  },
-  //     {
-  //     id: 'qurbani',
-  //     title: 'Qurbani 2026 ',
-  //     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
-  //     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
-  // For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
-  //     impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
-  //     image: Qurbani,
-  //     donateButtonText: 'Book Your Qurbani',
-  //     learnMorePath: '/projects/qurbani',
-  //     donatePath: '/donate/qurbani'
-  //   },
+  // {
+  //   id: 'qurbani-barai-mustehqeen',
+  //   title: 'Qurbani Barai Mustehqeen',
+  //   subtitle: 'Delivering Qurbani Meat to Families in Need',
+  //   description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
+  //   impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
+  //   image: Qurbani,
+  //   donateButtonText: 'Book Your Qurbani',
+  //   learnMorePath: '/projects/qurbani-barai-mustehqeen',
+  //   donatePath: '/donate/qurbani-barai-mustehqeen'
+  // },
+      {
+      id: 'qurbani-2026',
+      title: 'Qurbani Barai Mustehqeen',
+      subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
+      description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
+  For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
+      impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
+      image: Qurbani,
+      donateButtonText: 'Book Your Qurbani',
+      learnMorePath: '/projects/qurbani-2026',
+      donatePath: '/donate/qurbani-2026'
+    },
   {
     id: 'aas-lab-diagnostics',
     title: 'AAS Lab & Diagnostics',
