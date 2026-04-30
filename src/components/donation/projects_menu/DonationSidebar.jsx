@@ -1,21 +1,25 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { useDonation } from '../../../contexts/DonationContext'
 import './DonationSidebar.css'
 
 const DonationSidebar = ({ onCompleteDonation, showBackButton = false }) => {
+  const location = useLocation()
   const navigate = useNavigate()
   const { amount, clearDonationData } = useDonation()
 
   // Use total amount from context (already calculated from all sources)
   const totalAmount = amount || 0
 
+  const currentPath = `${location.pathname}${location.search}${location.hash || ''}`
+  const returnTo = location.state?.returnTo
+
   const handleCompleteDonation = () => {
     if (onCompleteDonation) {
       onCompleteDonation()
     } else {
-      navigate('/checkout')
+      navigate('/checkout', { state: { ...(location.state || {}), returnTo: currentPath } })
     }
   }
 
@@ -27,6 +31,10 @@ const DonationSidebar = ({ onCompleteDonation, showBackButton = false }) => {
   }
 
   const handleBackToDonations = () => {
+    if (returnTo) {
+      navigate(returnTo)
+      return
+    }
     navigate('/donate')
   }
 

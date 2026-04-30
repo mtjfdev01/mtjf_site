@@ -37,7 +37,8 @@ const DonationCardsPage = () => {
             donationType: 'GENERAL',
             basePrice: initiative.price || 0,
             customAmount: 0,
-            totalAmount: 0
+            totalAmount: 0,
+            templateCode: initiative?.templateCode || null
           })
         })
       } else {
@@ -52,7 +53,8 @@ const DonationCardsPage = () => {
           donationType: 'GENERAL',
           basePrice: project.price || 0,
           customAmount: 0,
-          totalAmount: 0
+          totalAmount: 0,
+          templateCode: project?.templateCode || null
         })
       }
     })

@@ -235,7 +235,7 @@ const CheckoutForm = () => {
               category: failedTransaction.donation_type === 'zakat' ? 'Zakat' : 
                        failedTransaction.donation_type === 'sadqa' ? 'Sadqa' : 'General',
               projectId: failedTransaction.project_id || '',
-              donation_type: failedTransaction.donation_type || 'general'
+              donation_type: failedTransaction.donation_type || 'general',
             }
             console.log("Setting donation form data:", donationFormDataToSet)
             setDonationFormData(donationFormDataToSet)
@@ -533,7 +533,6 @@ const CheckoutForm = () => {
 
       const payload = {
         project_id,
-        // progress_workflow_template_id: 1, for progress tracking 
         project_name,
         ...formData,
         donation_method: currentPayment,
@@ -561,7 +560,8 @@ const CheckoutForm = () => {
         }),
         notification_subscription: formData.notification_subscription !== false
       }
-
+      console.log('payload', payload)
+return;
       // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)

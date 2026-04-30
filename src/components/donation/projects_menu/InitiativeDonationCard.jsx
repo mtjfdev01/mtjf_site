@@ -86,7 +86,8 @@ const InitiativeDonationCard = ({ initiative }) => {
       selectedPricingOptionId: selectedOptionForPayload?.id || null,
       selectedPricingOptionLabel: selectedOptionForPayload?.label || null,
       customAmount: parseFloat(custom) || 0,
-      totalAmount: amount
+      totalAmount: amount,
+      templateCode: initiative?.templateCode || null
     }
 
     // Update context directly - context will handle removal if totalAmount is 0

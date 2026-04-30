@@ -40,7 +40,8 @@ const ProjectDonationCard = ({ project, onUpdate }) => {
       // donationType: type,
       basePrice: basePrice,
       customAmount: parseFloat(custom) || 0,
-      totalAmount: amount
+      totalAmount: amount,
+      templateCode: project?.templateCode || null
     })
   }
 

@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
@@ -25,6 +25,7 @@ const VerticalDonationForm = ({
   className = ''
 }) => {
   const navigate = useNavigate()
+  const location = useLocation()
   const { id: urlProjectId } = useParams() // Extract project_id from URL
   const { setDonationFormData } = useDonation()
   const mergedDonationOptions = useMemo(() => {
@@ -187,7 +188,8 @@ const VerticalDonationForm = ({
     onSubmit?.(donationData)
     
     // Navigate to checkout
-    navigate('/checkout')
+    const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
+    navigate('/checkout', { state: { returnTo } })
   }
 
   return (
@@ -277,7 +279,7 @@ const VerticalDonationForm = ({
                     }))
                   }}
                 >
-                  <option value="">Select Sub Category</option>
+                  {/* <option value="">Select Sub Category</option> */}
                   {filteredInitiatives.map((initiative) => (
                     <option key={initiative.id} value={initiative.title}>
                       {initiative.title}
