@@ -3,7 +3,7 @@ import { useDonation } from '../../../contexts/DonationContext'
 import { FaTimes } from 'react-icons/fa'
 import './InitiativeDonationCard.css'
 
-const InitiativeDonationCard = ({ initiative }) => {
+const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeRatesPKR }) => {
   const { projectDonations, updateProjectDonation } = useDonation()
   const [quantity, setQuantity] = useState(0)
   const [customAmount, setCustomAmount] = useState('')
@@ -28,6 +28,18 @@ const InitiativeDonationCard = ({ initiative }) => {
     : null
   const basePrice = selectedPricingOption?.price ?? initiative.price ?? 0
   const totalPrice = quantity * basePrice + (parseFloat(customAmount) || 0)
+
+  const isQurbaniMultiCurrencyProject =
+    initiative?.parentProjectId === 'qurbani-barai-mustehqeen' || initiative?.parentProjectId === 'qurbani'
+  const resolvedRates = exchangeRatesPKR || { PKR: 1 }
+  const effectiveCurrency = isQurbaniMultiCurrencyProject ? displayCurrency : 'PKR'
+  const rate = resolvedRates[effectiveCurrency] || 1
+  const toDisplayAmount = (amountPKR) => {
+    const n = Number(amountPKR) || 0
+    if (effectiveCurrency === 'PKR') return Math.round(n)
+    return Math.round(n / rate)
+  }
+  const formatNumber = (n) => Number(n || 0).toLocaleString()
 
   // Restore state from context on mount
   useEffect(() => {
@@ -119,7 +131,7 @@ const InitiativeDonationCard = ({ initiative }) => {
               >
                 <span className="initiative-pricing-option-title">{option.label}</span>
                 <span className="initiative-pricing-option-amount">
-                  PKR {option.price.toLocaleString()} {option.subtitle || initiative.subtitle || 'Per Item'}
+                  {effectiveCurrency} {formatNumber(toDisplayAmount(option.price))} {option.subtitle || initiative.subtitle || 'Per Item'}
                 </span>
               </button>
             )
@@ -177,8 +189,8 @@ const InitiativeDonationCard = ({ initiative }) => {
       <div className="initiative-price-field">
         <label className="initiative-field-label">
           {(selectedPricingOption?.subtitle || initiative.subtitle)
-            ? `RS ${basePrice.toLocaleString()} ${selectedPricingOption?.subtitle || initiative.subtitle}`
-            : `RS ${basePrice.toLocaleString()} Per Item`
+            ? `${effectiveCurrency} ${formatNumber(toDisplayAmount(basePrice))} ${selectedPricingOption?.subtitle || initiative.subtitle}`
+            : `${effectiveCurrency} ${formatNumber(toDisplayAmount(basePrice))} Per Item`
           }
           {initiative.description && (
             <span 
@@ -193,10 +205,10 @@ const InitiativeDonationCard = ({ initiative }) => {
           <input
             type="text"
             className="initiative-price-input"
-            value={totalPrice > 0 ? totalPrice.toLocaleString() : '0'}
+            value={toDisplayAmount(totalPrice) > 0 ? formatNumber(toDisplayAmount(totalPrice)) : '0'}
             readOnly
           />
-          <span className="initiative-price-currency">PKR</span>
+          <span className="initiative-price-currency">{effectiveCurrency}</span>
         </div>
       </div>
 

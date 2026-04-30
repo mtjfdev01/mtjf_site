@@ -12,6 +12,17 @@ const DEFAULT_DONATION_OPTIONS = {
   EUR: [45, 90, 225, 450]
 }
 
+const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+const QURBANI_EXCHANGE_RATES_PKR = {
+  PKR: 1,
+  CAD: 200,
+  USD: 279,
+  SAR: 74,
+  AED: 76,
+  GBP: 375,
+  EUR: 326
+}
+
 const VerticalDonationForm = ({
   formId,
   title = 'Donate',
@@ -37,19 +48,56 @@ const VerticalDonationForm = ({
     }
   }, [donationOptions])
 
-  const [formData, setFormData] = useState({
-    frequency: 'once',
-    currency: initialCurrency,
-    amount: '',
-    customAmount: '',
-    category: defaultCategory || categoryOptions[0] || 'General',
-    subCategory: '',
-    projectId: urlProjectId || defaultProjectId || projects[0]?.id || '',
-    quantity: 1
+  const [formData, setFormData] = useState(() => {
+    const initialProjectId = urlProjectId || defaultProjectId || projects[0]?.id || ''
+    const isQurbaniInit = QURBANI_PROJECT_IDS.includes(initialProjectId)
+    const qurbaniProject = isQurbaniInit ? projectCards?.find((p) => p.id === initialProjectId) : null
+    const firstInitiative = qurbaniProject?.initiatives?.[0]
+
+    return {
+      frequency: 'once',
+      currency: initialCurrency,
+      amount: isQurbaniInit && firstInitiative?.price ? String(firstInitiative.price) : '',
+      customAmount: '',
+      category: defaultCategory || categoryOptions[0] || 'General',
+      // store initiative id (not title) — needed for quantity → amount linkage
+      subCategory: isQurbaniInit && firstInitiative?.id ? firstInitiative.id : '',
+      projectId: initialProjectId,
+      quantity: 1
+    }
   })
   const [errorMessage, setErrorMessage] = useState('')
 
+  const isQurbaniMultiCurrencyProject = QURBANI_PROJECT_IDS.includes(urlProjectId || formData.projectId)
+  const rate = QURBANI_EXCHANGE_RATES_PKR[formData.currency] || 1
+  const toDisplayAmount = (amountPKR) => {
+    const n = Number(amountPKR) || 0
+    if (!isQurbaniMultiCurrencyProject || formData.currency === 'PKR') return Math.round(n)
+    return Math.round(n / rate)
+  }
+  const toPKRAmount = (amountDisplay) => {
+    const n = Number(amountDisplay) || 0
+    if (!isQurbaniMultiCurrencyProject || formData.currency === 'PKR') return Math.round(n)
+    return Math.round(n * rate)
+  }
+
+  // Qurbani projects: disallow custom amount input
+  useEffect(() => {
+    if (!isQurbaniMultiCurrencyProject) return
+    if (!formData.customAmount) return
+    setFormData((prev) => ({ ...prev, customAmount: '' }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isQurbaniMultiCurrencyProject])
+
   const filteredInitiatives = useMemo(() => {
+    // For Qurbani projects, ignore Category dropdown entirely and pull initiatives by project id
+    if (isQurbaniMultiCurrencyProject) {
+      const projectIdToUse = urlProjectId || formData.projectId
+      const project = projectCards?.find((p) => p.id === projectIdToUse)
+      const initiatives = project?.initiatives || []
+      return initiatives.map((i) => ({ id: i.id, title: i.title, price: i.price }))
+    }
+
     // Ensure projectCards exists and category is selected
     if (!projectCards || !formData.category) return []
 
@@ -73,15 +121,35 @@ const VerticalDonationForm = ({
     }, [])
 
     return allInitiatives
-  }, [formData.category])
+  }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId])
+
+  // Qurbani projects: default to first initiative (Cow Share) and set PKR price so +/− works
+  useEffect(() => {
+    if (!isQurbaniMultiCurrencyProject) return
+    if (!filteredInitiatives || filteredInitiatives.length === 0) return
+
+    const exists = filteredInitiatives.some((i) => i.id === formData.subCategory)
+    if (exists && formData.amount && String(formData.amount).trim() !== '') return
+
+    const first = filteredInitiatives[0]
+    setFormData((prev) => ({
+      ...prev,
+      subCategory: exists ? prev.subCategory : first.id,
+      quantity: 1,
+      amount: String(first.price ?? ''),
+      customAmount: ''
+    }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isQurbaniMultiCurrencyProject, filteredInitiatives])
 
   // Update subCategory when category changes
   useEffect(() => {
+    if (isQurbaniMultiCurrencyProject) return
     setFormData((prev) => ({
       ...prev,
       subCategory: ''
     }))
-  }, [formData.category])
+  }, [formData.category, isQurbaniMultiCurrencyProject])
 
   // Update projectId when URL changes
   useEffect(() => {
@@ -105,7 +173,7 @@ const VerticalDonationForm = ({
   }
 
   const handleIncrement = () => {
-    const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+    const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
     const basePrice = selectedInitiative?.price || 0
     const newQuantity = formData.quantity + 1
     const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
@@ -121,7 +189,7 @@ const VerticalDonationForm = ({
   const handleDecrement = () => {
     if (formData.quantity <= 1) return
     
-    const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+    const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
     const basePrice = selectedInitiative?.price || 0
     const newQuantity = formData.quantity - 1
     const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
@@ -141,7 +209,7 @@ const VerticalDonationForm = ({
     setErrorMessage('')
     
     // Calculate final amount
-    const finalAmount = formData.customAmount || formData.amount
+    const finalAmount = (isQurbaniMultiCurrencyProject ? '' : formData.customAmount) || formData.amount
     
     // Validate amount is selected
     if (!finalAmount || finalAmount.trim() === '') {
@@ -171,7 +239,8 @@ const VerticalDonationForm = ({
     }
     
     // Validate minimum amount (100 PKR)
-    if (amountNumber < 100) {
+    const amountPKRForValidation = toPKRAmount(amountNumber)
+    if (amountPKRForValidation < 100) {
       setErrorMessage('Minimum donation amount is 100 PKR')
       setTimeout(() => {
         const amountInput = document.querySelector('input[type="number"]')
@@ -186,8 +255,10 @@ const VerticalDonationForm = ({
     // Prepare donation data
     const donationData = {
       ...formData,
-      amount: finalAmount,
-      finalAmount: finalAmount
+      currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
+      displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
+      amount: isQurbaniMultiCurrencyProject ? toPKRAmount(amountNumber).toString() : finalAmount,
+      finalAmount: isQurbaniMultiCurrencyProject ? toPKRAmount(amountNumber).toString() : finalAmount
     }
     
     // Store in context
@@ -256,52 +327,65 @@ const VerticalDonationForm = ({
                   setFormData((prev) => ({
                     ...prev,
                     currency: e.target.value,
-                    amount: '',
+                    // keep PKR base price for Qurbani projects; only affects display
+                    ...(isQurbaniMultiCurrencyProject ? {} : { amount: '' }),
                     customAmount: ''
                   }))
                 }
               >
                 <option value="PKR">PKR</option>
-                {/* <option value="USD">USD</option> */}
-                {/* <option value="EUR">EUR</option> */}
+                {isQurbaniMultiCurrencyProject && (
+                  <>
+                    <option value="CAD">CAD</option>
+                    <option value="USD">USD</option>
+                    <option value="SAR">SAR</option>
+                    <option value="AED">AED</option>
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                  </>
+                )}
               </select>
             </div>
           </div>
 
           <div className="vertical-donation-inline">
-            <div className="vertical-donation-group">
-              <label className="vertical-donation-label">Category</label>
-               <select
-    className="vertical-donation-input"
-    value={formData.category}
-    onChange={(e) =>
-      setFormData((prev) => ({
-        ...prev,
-        category: e.target.value,
-      }))
-    }
-  >
-    {categoryOptionsToShow.map((category) => (
-      <option key={category} value={category}>
-        {category}
-      </option>
-    ))}
-  </select>
-            </div>
+            {!isQurbaniMultiCurrencyProject && (
+              <div className="vertical-donation-group">
+                <label className="vertical-donation-label">Category</label>
+                <select
+                  className="vertical-donation-input"
+                  value={formData.category}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      category: e.target.value
+                    }))
+                  }
+                >
+                  {categoryOptionsToShow.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             {filteredInitiatives.length > 0 && (
               <div className="vertical-donation-group">
-                <label className="vertical-donation-label">Sub Category</label>
+                <label className="vertical-donation-label">
+                  {isQurbaniMultiCurrencyProject ? 'Category' : 'Sub Category'}
+                </label>
                 <select
                   className="vertical-donation-input"
                   value={formData.subCategory}
                   onChange={(e) => {
-                    const selectedTitle = e.target.value
-                    const selectedInitiative = filteredInitiatives.find(i => i.title === selectedTitle)
+                    const selectedId = e.target.value
+                    const selectedInitiative = filteredInitiatives.find(i => i.id === selectedId)
                     
                     setFormData((prev) => ({
                       ...prev,
-                      subCategory: selectedTitle,
+                      subCategory: selectedId,
                       quantity: 1,
                       amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
                       customAmount: ''
@@ -310,7 +394,7 @@ const VerticalDonationForm = ({
                 >
                   {/* <option value="">Select Sub Category</option> */}
                   {filteredInitiatives.map((initiative) => (
-                    <option key={initiative.id} value={initiative.title}>
+                    <option key={initiative.id} value={initiative.id}>
                       {initiative.title}
                     </option>
                   ))}
@@ -340,7 +424,7 @@ const VerticalDonationForm = ({
                 <input
                   type="text"
                   className="vertical-donation-input"
-                  value={formData.amount ? `${formData.currency} ${Number(formData.amount).toLocaleString()}` : ''}
+                  value={formData.amount ? `${formData.currency} ${toDisplayAmount(formData.amount).toLocaleString()}` : ''}
                   readOnly
                 />
               </div>
@@ -369,40 +453,42 @@ const VerticalDonationForm = ({
             </div>
           )}
 
-          <div className="vertical-donation-group">
-            <label className="vertical-donation-label">
-              {formData.currency} Enter an amount
-            </label>
-            <input
-              type="number"
-              className="vertical-donation-input"
-              placeholder="Enter custom amount"
-              value={formData.customAmount}
-              onChange={(e) => {
-                const customValue = e.target.value
-                
-                // If clearing the custom amount, restore the calculated amount
-                if (customValue === '' || customValue === null) {
-                  const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
-                  const basePrice = selectedInitiative?.price || 0
-                  const restoredAmount = basePrice > 0 ? (formData.quantity * basePrice).toString() : ''
+          {!isQurbaniMultiCurrencyProject && (
+            <div className="vertical-donation-group">
+              <label className="vertical-donation-label">
+                {formData.currency} Enter an amount
+              </label>
+              <input
+                type="number"
+                className="vertical-donation-input"
+                placeholder="Enter custom amount"
+                value={formData.customAmount}
+                onChange={(e) => {
+                  const customValue = e.target.value
                   
-                  setFormData((prev) => ({
-                    ...prev,
-                    customAmount: '',
-                    amount: restoredAmount
-                  }))
-                } else {
-                  // User is typing, clear the preset amount
-                  setFormData((prev) => ({
-                    ...prev,
-                    customAmount: customValue,
-                    amount: ''
-                  }))
-                }
-              }}
-            />
-          </div>
+                  // If clearing the custom amount, restore the calculated amount
+                  if (customValue === '' || customValue === null) {
+                    const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+                    const basePrice = selectedInitiative?.price || 0
+                    const restoredAmount = basePrice > 0 ? (formData.quantity * basePrice).toString() : ''
+                    
+                    setFormData((prev) => ({
+                      ...prev,
+                      customAmount: '',
+                      amount: restoredAmount
+                    }))
+                  } else {
+                    // User is typing, clear the preset amount
+                    setFormData((prev) => ({
+                      ...prev,
+                      customAmount: customValue,
+                      amount: ''
+                    }))
+                  }
+                }}
+              />
+            </div>
+          )}
 
           <button type="submit" className="vertical-donation-submit btn-donate-animated">
             {/* Animated background particles */}

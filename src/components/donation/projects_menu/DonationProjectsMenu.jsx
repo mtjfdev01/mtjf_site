@@ -225,6 +225,21 @@ const DonationProjectsMenu = () => {
   const [message, setMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("General")
+  const [qurbaniCurrency, setQurbaniCurrency] = useState('PKR')
+
+  const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+  const QURBANI_EXCHANGE_RATES_PKR = useMemo(
+    () => ({
+      PKR: 1,
+      CAD: 200,
+      USD: 279,
+      SAR: 74,
+      AED: 76,
+      GBP: 375,
+      EUR: 326
+    }),
+    []
+  )
 
   // Set expandedProjectId from URL parameter on mount
   useEffect(() => {
@@ -232,6 +247,13 @@ const DonationProjectsMenu = () => {
       setExpandedProjectId(projectId)
     }
   }, [projectId])
+
+  // Reset currency when leaving Qurbani project
+  useEffect(() => {
+    if (!QURBANI_PROJECT_IDS.includes(expandedProjectId) && qurbaniCurrency !== 'PKR') {
+      setQurbaniCurrency('PKR')
+    }
+  }, [expandedProjectId, qurbaniCurrency])
 
   // Extract and store ref query parameter
   useEffect(() => {
@@ -504,6 +526,31 @@ const DonationProjectsMenu = () => {
                     showMessage={message}
                   />
                 </div>
+
+                {/* Currency selector (Qurbani Barai Mustehqeen only) */}
+                {QURBANI_PROJECT_IDS.includes(expandedProjectId) && (
+                  <div className="general-donation-card form-card">
+                    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                      <strong>Currency</strong>
+                      <select
+                        value={qurbaniCurrency}
+                        onChange={(e) => setQurbaniCurrency(e.target.value)}
+                        aria-label="Select currency for Qurbani prices"
+                      >
+                        <option value="PKR">Pakistan (PKR)</option>
+                        <option value="CAD">Canadian Dollar (CAD)</option>
+                        <option value="USD">American Dollar (USD)</option>
+                        <option value="SAR">Saudi Riyal (SAR)</option>
+                        <option value="AED">UAE Dirham (AED)</option>
+                        <option value="GBP">UK Pound (GBP)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                      </select>
+                      <span style={{ opacity: 0.8 }}>
+                        Amounts will be charged in PKR at checkout.
+                      </span>
+                    </div>
+                  </div>
+                )}
                 
                 {expandedProject.initiatives.map((initiative) => {
                   const initiativeData = {
@@ -516,6 +563,8 @@ const DonationProjectsMenu = () => {
                     <InitiativeDonationCard
                       key={initiative.id}
                       initiative={initiativeData}
+                      displayCurrency={QURBANI_PROJECT_IDS.includes(expandedProjectId) ? qurbaniCurrency : 'PKR'}
+                      exchangeRatesPKR={QURBANI_EXCHANGE_RATES_PKR}
                     />
                   )
                 })}
@@ -527,6 +576,9 @@ const DonationProjectsMenu = () => {
       {totalDonationAmount > 0 && (
         <DonationSidebar 
           onCompleteDonation={handleCompleteDonation}
+          displayCurrency={QURBANI_PROJECT_IDS.includes(expandedProjectId) ? qurbaniCurrency : 'PKR'}
+          exchangeRatesPKR={QURBANI_EXCHANGE_RATES_PKR}
+          convertOnlyForProjectId={expandedProjectId}
         />
       )}
     </div>

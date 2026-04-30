@@ -5,14 +5,25 @@ import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './DonationForm.css'
 
-// ─── [ADDED] Currency helpers ─────────────────────────────────────────────────
-const formatCurrency = (amount) => {
-  return new Intl.NumberFormat('en-IN', {
+const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+const QURBANI_EXCHANGE_RATES_PKR = {
+  PKR: 1,
+  CAD: 200,
+  USD: 279,
+  SAR: 74,
+  AED: 76,
+  GBP: 375,
+  EUR: 326
+}
+
+const formatCurrency = (amount, currency) => {
+  const resolvedCurrency = currency || 'PKR'
+  return new Intl.NumberFormat('en', {
     style: 'currency',
-    currency: 'PKR',
+    currency: resolvedCurrency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(amount)
+  }).format(Number(amount) || 0)
 }
 
 // Strips formatting so only a plain number string is sent to the API / context
@@ -72,6 +83,28 @@ const DonationForm = ({
   const selectedProjectData = useMemo(() => {
     return projectCards.find(p => p.id === formData.projectId)
   }, [formData.projectId])
+
+  const isQurbaniMultiCurrencyProject = QURBANI_PROJECT_IDS.includes(formData.projectId)
+  const effectiveCurrency = isQurbaniMultiCurrencyProject ? formData.currency : 'PKR'
+  const rate = QURBANI_EXCHANGE_RATES_PKR[effectiveCurrency] || 1
+  const toDisplayAmount = (amountPKR) => {
+    const n = Number(amountPKR) || 0
+    if (!isQurbaniMultiCurrencyProject || effectiveCurrency === 'PKR') return Math.round(n)
+    return Math.round(n / rate)
+  }
+  const toPKRAmount = (amountDisplay) => {
+    const n = Number(amountDisplay) || 0
+    if (!isQurbaniMultiCurrencyProject || effectiveCurrency === 'PKR') return Math.round(n)
+    return Math.round(n * rate)
+  }
+
+  // Qurbani projects: disallow custom amount input
+  useEffect(() => {
+    if (!isQurbaniMultiCurrencyProject) return
+    if (!formData.customAmount) return
+    setFormData((prev) => ({ ...prev, customAmount: '' }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isQurbaniMultiCurrencyProject])
 
   useEffect(() => {
     if (!showProjectSelect) return
@@ -141,7 +174,13 @@ const DonationForm = ({
     setErrorMessage('')
     
    // [CHANGED] Strip any formatting before validation so pure numbers are used
-    const finalAmount = parseCurrencyInput(formData.customAmount || formData.amount)
+    const finalAmount = parseCurrencyInput(
+      (isQurbaniMultiCurrencyProject ? '' : formData.customAmount) || formData.amount
+    )
+    const usingCustomAmount =
+      !isQurbaniMultiCurrencyProject &&
+      !!formData.customAmount &&
+      String(formData.customAmount).trim() !== ''
     
     // Validate amount is selected
     if (!finalAmount || finalAmount.trim() === '') {
@@ -171,7 +210,8 @@ const DonationForm = ({
     }
     
     // Validate minimum amount (100 PKR)
-    if (amountNumber < 100) {
+    const amountPKRForValidation = usingCustomAmount ? toPKRAmount(amountNumber) : Math.round(amountNumber)
+    if (amountPKRForValidation < 100) {
       setErrorMessage('Minimum donation amount is 100 PKR')
       setTimeout(() => {
         const amountInput = document.querySelector('input[type="number"]')
@@ -184,10 +224,13 @@ const DonationForm = ({
     }
     
     // Prepare donation data
+    const amountPKRToStore = usingCustomAmount ? toPKRAmount(amountNumber) : Math.round(amountNumber)
     const donationData = {
       ...formData,
-      amount: finalAmount,
-      finalAmount: finalAmount
+      currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
+      displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
+      amount: amountPKRToStore.toString(),
+      finalAmount: amountPKRToStore.toString()
     }
     
     // Store in context
@@ -230,25 +273,27 @@ const DonationForm = ({
               </select>
             </div>
 
-            <div className="donation-form-group donation-form-category">
-              <label className="donation-form-label">Category</label>
-              <select
-                className="donation-form-input"
-                value={formData.category}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    category: e.target.value
-                  }))
-                }
-              >
-                {categoryOptions.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
+            {!isQurbaniMultiCurrencyProject && (
+              <div className="donation-form-group donation-form-category">
+                <label className="donation-form-label">Category</label>
+                <select
+                  className="donation-form-input"
+                  value={formData.category}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      category: e.target.value
+                    }))
+                  }
+                >
+                  {categoryOptions.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             {showProjectSelect && (
               <div className="donation-form-group">
@@ -313,15 +358,21 @@ const DonationForm = ({
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
-                    currency: e.target.value,
-                    amount: '',
-                    customAmount: ''
+                    currency: e.target.value
                   }))
                 }
               >
                 <option value="PKR">PKR</option>
-                {/* <option value="USD">USD</option>
-                <option value="EUR">EUR</option> */}
+                {isQurbaniMultiCurrencyProject && (
+                  <>
+                    <option value="CAD">CAD</option>
+                    <option value="USD">USD</option>
+                    <option value="SAR">SAR</option>
+                    <option value="AED">AED</option>
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                  </>
+                )}
               </select>
             </div>
 
@@ -341,8 +392,8 @@ const DonationForm = ({
                       placeholder="Enter amount"
                       value={
                         !!formData.customAmount || Number(formData.amount) === 0
-                          ? formatCurrency(0)
-                          : formatCurrency(Number(formData.amount))
+                          ? formatCurrency(0, effectiveCurrency)
+                          : formatCurrency(toDisplayAmount(Number(formData.amount)), effectiveCurrency)
                       }
                       disabled={!!formData.customAmount || Number(formData.amount) === 0}
                     />
@@ -351,34 +402,35 @@ const DonationForm = ({
               </div>
             )}
 
-             <div className="donation-form-group">
-              <label className="donation-form-label">
-                {formData.currency} Custom Amount
-              </label>
-              <input
-                type="number"
-                className="donation-form-input no-spinner"
-                placeholder="Enter custom amount"
-                value={formData.customAmount}
-                min="0"
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === '' || Number(val) >= 0) {
-                    setFormData((prev) => ({
-                      ...prev,
-                      customAmount: val,
-                      amount: '0'
-                    }))
-                  }
-                }}
-              />
-              {/* [ADDED] Formatted preview shown below custom amount while typing */}
-              {formData.customAmount && Number(formData.customAmount) > 0 && (
-                <small className="donation-form-amount-preview">
-                  {formatCurrency(Number(formData.customAmount))}
-                </small>
-              )}
-            </div>
+            {!isQurbaniMultiCurrencyProject && (
+              <div className="donation-form-group">
+                <label className="donation-form-label">
+                  {formData.currency} Custom Amount
+                </label>
+                <input
+                  type="number"
+                  className="donation-form-input no-spinner"
+                  placeholder="Enter custom amount"
+                  value={formData.customAmount}
+                  min="0"
+                  onChange={(e) => {
+                    const val = e.target.value
+                    if (val === '' || Number(val) >= 0) {
+                      setFormData((prev) => ({
+                        ...prev,
+                        customAmount: val,
+                        amount: '0'
+                      }))
+                    }
+                  }}
+                />
+                {formData.customAmount && Number(formData.customAmount) > 0 && (
+                  <small className="donation-form-amount-preview">
+                    {formatCurrency(Number(formData.customAmount), effectiveCurrency)}
+                  </small>
+                )}
+              </div>
+            )}
 
             <div className="donation-form-group">
               <label className="donation-form-label">&nbsp;</label>

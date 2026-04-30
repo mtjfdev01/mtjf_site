@@ -3700,7 +3700,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
         ]
       },
     },
-    mainImage: Qurbani,
+    // mainImage: Qurbani,
     donateCategory: 'Qurbani 2026',
     donateButtonText: '',
     donationOptions: {
@@ -3717,7 +3717,9 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
 This is not just distribution. It is presence. It is being remembered at a time when they need it most.
 `,
         donateButtonText: '',
-        image: reaches
+        image: reaches,
+      carosellItemWidth: 300,
+      carosellMobWidth: 170,
       },
       {
         id: 'your-impact-last-year',
@@ -3733,6 +3735,19 @@ This impact was only possible because of your contribution. In 2026, we aim to r
         afterServicesText:'',
         donateButtonText: '',
         image: impact,
+        carosellImages: [
+          impact,
+          art,
+          Qurbani,
+          delivered,
+          receives,
+          date,
+          matters,
+          commitment,
+          reaches,
+          impact,
+          art,
+      ],
       },
       {
         id: 'meaning-behind-qurbani',
