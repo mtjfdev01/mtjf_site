@@ -117,6 +117,8 @@ import matters from '../assets/img/projects/projects-details/qurbani_2026/qurban
 import receives from '../assets/img/projects/projects-details/qurbani_2026/receiving.webp'
 import date from '../assets/img/projects/projects-details/qurbani_2026/date.webp'
 import art from '../assets/img/projects/projects-details/qurbani_2026/art.webp'
+import QurbaniBottomBanner from '../assets/img/projects/projects-details/qurbani_2026/QurbaniBottomBanner.webp'
+import QurbaniBottomBannerMobile from '../assets/img/projects/projects-details/qurbani_2026/QurbaniBottomBannerMobile.webp'
 
 
 import AASLab from '../assets/img/projects/project-image/aaslab.webp'
@@ -3681,7 +3683,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
       }
     ]
   },
-  'qurbani': {
+  'qurbani-2026': {
     id: 'qurbani-2026',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
     headerImage: qurbani_hero_2026,
@@ -3766,6 +3768,8 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         afterServicesText: "",
         donateButtonText: '',
         image: art,
+        bottom_banner_img: QurbaniBottomBanner,
+        bottom_banner_mobile_img: QurbaniBottomBannerMobile
       },
       {
         id: 'a-reminder-from-the-prophet',
@@ -3812,11 +3816,7 @@ Our teams ensure that
         },
         description: `You can choose to give in the following way`,
         impact: '',
-        services: [
-          // { boldText: 'Cow', text: 'at **PKR 171,500**' },
-          // { boldText: 'Cow Share', text: 'at **PKR 24,500**' },
-          // { boldText: 'Goat', text: 'at **PKR 58,000**' }
-        ],
+        services: [],
         afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
         donateButtonText: '',
         image: Qurbani,
