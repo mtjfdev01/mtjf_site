@@ -9,7 +9,7 @@ const Newsletter = lazy(() => import('../newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../donationCta/DonationCta'))
 const Footer = lazy(() => import('../footer/Footer'))
 
-const MediaContentSection = ({ subProjects, defaultImage }) => {
+const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
   const navigate = useNavigate()
 
   // Function to handle donate button click
@@ -128,7 +128,8 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
         heading: '',
         textBold: '',
         text: item,
-        subServices: []
+        subServices: [],
+        forceBold: false
       }
     }
 
@@ -137,7 +138,8 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
         heading: '',
         textBold: '',
         text: '',
-        subServices: []
+        subServices: [],
+        forceBold: false
       }
     }
 
@@ -145,6 +147,7 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
     const textBold = getItemField(item, ['boldText', 'bold', 'descriptionBold', 'textBold'])
     const text = getItemField(item, ['description', 'text', 'subtitle', 'answer'])
     const subServices = getSubServiceItems(item)
+    const forceBold = item.bold === true || item.forceBold === true || item.allBold === true || item.isBold === true
 
     // Fallback for objects that only expose an unknown first string value.
     if (!heading && !textBold && !text && subServices.length === 0) {
@@ -153,11 +156,12 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
         heading: '',
         textBold: '',
         text: typeof fallback === 'string' ? fallback.trim() : '',
-        subServices: []
+        subServices: [],
+        forceBold
       }
     }
 
-    return { heading, textBold, text, subServices }
+    return { heading, textBold, text, subServices, forceBold }
   }
 
   if (!subProjects || subProjects.length === 0) {
@@ -223,7 +227,11 @@ const MediaContentSection = ({ subProjects, defaultImage }) => {
                                   </strong>
                                 )}
                                 {normalizedItem.textBold && normalizedItem.text ? ' ' : ''}
-                                {renderTextWithBoldMarkers(normalizedItem.text)}
+                                {normalizedItem.forceBold ? (
+                                  <strong>{renderTextWithBoldMarkers(normalizedItem.text)}</strong>
+                                ) : (
+                                  renderTextWithBoldMarkers(normalizedItem.text)
+                                )}
                               </span>
                             )}
                             {normalizedItem.subServices.length > 0 && (

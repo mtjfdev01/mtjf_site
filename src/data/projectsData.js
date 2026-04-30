@@ -3807,9 +3807,9 @@ Our teams ensure that
          description:``,
         impact: '',
         services: [
-          `Cow at PKR 171,500`,
-          `Cow Share at PKR 24,500`,
-          `Goat at PKR 58,000`
+          { boldText: 'Cow', text: 'at **PKR 171,500**' },
+          { boldText: 'Cow Share', text: 'at **PKR 24,500**' },
+          { boldText: 'Goat', text: 'at **PKR 58,000**' }
         ],
         afterServicesText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.`,
         donateButtonText: '',
@@ -3853,9 +3853,9 @@ All arrangements are made in advance so that the sacrifice is completed within t
         subtitle: 'Expected Dates for 2026',
          description:``,
         impact: ``,
-        services: [`Dhul Hijjah is expected to begin on 18 May 2026`,
-                   `Day of Arafah is expected on 26 May 2026`,
-                  `Eid ul Adha is expected between 27 May and 29 May 2026`],
+        services: [`Dhul Hijjah is expected to begin on **18 May 2026**`,
+                   `Day of Arafah is expected on **26 May 2026**`,
+                  `Eid ul Adha is expected between **27 May** and **29 May 2026**`],
         afterServicesText: `These dates may change based on moon sighting.`,
         donateButtonText: '',
         image: date,

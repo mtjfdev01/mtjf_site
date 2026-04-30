@@ -210,6 +210,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
                 <MediaContentSection 
                   subProjects={project.subProjects} 
                   defaultImage={project.mainImage}
+                  projectKey={resolvedProjectId}
                 />
               </Suspense>
             )}
