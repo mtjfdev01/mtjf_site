@@ -307,7 +307,7 @@ const VerticalDonationForm = ({
                     }))
                   }}
                 >
-                  <option value="">Select Sub Category</option>
+                  {/* <option value="">Select Sub Category</option> */}
                   {filteredInitiatives.map((initiative) => (
                     <option key={initiative.id} value={initiative.title}>
                       {initiative.title}

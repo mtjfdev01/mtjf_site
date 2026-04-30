@@ -73,7 +73,6 @@ const Home = ({ showHomeInfoSection = false }) => {
               <Newsletter />
               <DonationCta />
                <Footer />
-               <h2>mujeehehfahfhkfkj</h2>
       </div>
     </>
   );

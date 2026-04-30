@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-48);
-  align-items: center;
+  align-items: start;
 }
 
 /* When no image, use single column layout */

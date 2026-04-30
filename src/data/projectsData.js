@@ -3688,9 +3688,17 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
     headerImageMob: qurbani_mobile_2026,
     stats: [],
     content: {
-      paragraph1: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.`,
-      paragraph2: `For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
-      paragraph3: `Through your Qurbani, MTJ Foundation ensures that these families are not left behind. Your sacrifice becomes nourishment for someone who would otherwise go without.`
+      paragraph1: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.Through your Qurbani, MTJ Foundation ensures that these families are not left behind. Your sacrifice becomes nourishment for someone who would otherwise go without.`,
+      paragraph2: ``,
+      paragraph3: ``,
+      testimonials:
+      {
+        id:'zakat',
+        title:'Zakat Appeal',
+        videos:[
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+        ]
+      },
     },
     mainImage: Qurbani,
     donateCategory: 'Qurbani 2026',
@@ -3746,15 +3754,16 @@ This verse reminds us that sacrifice is not only physical. It is spiritual. It i
         id: 'a-reminder-from-the-prophet',
         title: 'A Reminder from the Prophet ﷺ',
         subtitle: '',
+         quranAyat: {
+          text: 'There are no days on which righteous deeds are more beloved to Allah than these ten days.',
+          reference: 'Sahih Bukhari'
+        },
          description:`The Prophet Muhammad (peace be upon him) said
-“There are no days on which righteous deeds are more beloved to Allah than these ten days.”
-Sahih Bukhari
-These blessed days of Dhul Hijjah are an opportunity to earn reward through generosity. Your Qurbani during these days becomes an act of worship that carries immense spiritual value.
 `,
         impact: '',
         services: [
         ],
-        afterServicesText: "",
+        // afterServicesText: "These blessed days of Dhul Hijjah are an opportunity to earn reward through generosity. Your Qurbani during these days becomes an act of worship that carries immense spiritual value.",
         donateButtonText: '',
         image: Qurbani,
       },
@@ -3840,7 +3849,7 @@ All arrangements are made in advance so that the sacrifice is completed within t
         id: 'why-your-qurbani-matters',
         title: 'Why Your Qurbani Matters More Than Ever',
         subtitle: '',
-         description:`Global hunger levels continue to rise. According to international humanitarian reports, hundreds of millions of people face severe food insecurity every day.For many of these families, your Qurbani is not symbolic. It is the difference between eating meat once a year or not at all.`,
+        description:`Global hunger levels continue to rise.According to international humanitarian reports,hundreds of millions of people face severe food insecurity every day.For many of these families,your Qurbani is not symbolic. It is the difference between eating meat once a year or not at all.`,
         impact: ``,
         services: [],
         afterServicesText: `Your act of worship becomes their moment of relief.`,
@@ -3863,17 +3872,6 @@ Strong monitoring at every stage of the process
         donateButtonText: '',
         image: commitment,
       },
-       {
-        id: 'can-i-give-more-than-one-qurbani',
-        title: 'Can I Give More Than One Qurbani',
-        subtitle: '',
-         description:`Yes. You are allowed to give more than one Qurbani if you are able. The Prophet Muhammad (PBUH) himself offered multiple sacrifices on behalf of himself and the Ummah.`,
-        impact: ``,
-        services: [],
-        afterServicesText: `Each additional Qurbani extends your impact and brings relief to more families.`,
-        donateButtonText: '',
-        image: Qurbani
-      }
     ],
     faqs: {
       id: 'frequently-asked-questions',
@@ -3884,6 +3882,10 @@ Strong monitoring at every stage of the process
         {
           question: 'What is Qurbani and why is it performed?',
           answer: 'Qurbani is the sacrifice of an animal during Eid ul Adha in remembrance of Prophet Ibrahim (AS) and his willingness to obey Allah (SWT). The meat is distributed to people in need as an act of charity and worship.'
+        },
+         {
+          question: 'Can I Give More Than One Qurbani?',
+          answer: 'Yes. You are allowed to give more than one Qurbani if you are able. The Prophet Muhammad (PBUH) himself offered multiple sacrifices on behalf of himself and the Ummah.Each additional Qurbani extends your impact and brings relief to more families.'
         },
         {
           question: 'Is Qurbani obligatory?',
