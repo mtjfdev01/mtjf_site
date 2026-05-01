@@ -171,8 +171,9 @@ const ProjectDetail = ({ forcedProjectId }) => {
                     <VerticalDonationForm
                       formId="project-detail-donation-form"
                       donationOptions={project.donationOptions}
-                      categoryOptions={categoryOptions} 
+                      categoryOptions={categoryOptions}
                       defaultCategory={project.donateCategory}
+                      defaultProjectId={resolvedProjectId}
                       onSubmit={handleDonationSubmit}
                       projects={project.initiatives || []} // pass the initiatives as projects to the donation form
                     />

@@ -38,8 +38,14 @@ const VerticalDonationForm = ({
 }) => {
   const navigate = useNavigate()
   const location = useLocation()
+  const isQurbaniPage = location.pathname.includes('qurbani')
+  const categoryOptionsToShow = useMemo(
+    () => (isQurbaniPage ? ['Qurbani 2026'] : categoryOptions),
+    [isQurbaniPage, categoryOptions]
+  )
   const { id: urlProjectId } = useParams() // Extract project_id from URL
   const { setDonationFormData } = useDonation()
+
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -67,6 +73,13 @@ const VerticalDonationForm = ({
     }
   })
   const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    if (!isQurbaniPage) return
+    const next = categoryOptionsToShow[0]
+    if (!next) return
+    setFormData((prev) => (prev.category === next ? prev : { ...prev, category: next }))
+  }, [isQurbaniPage, categoryOptionsToShow])
 
   const isQurbaniMultiCurrencyProject = QURBANI_PROJECT_IDS.includes(urlProjectId || formData.projectId)
   const rate = QURBANI_EXCHANGE_RATES_PKR[formData.currency] || 1
@@ -275,11 +288,6 @@ const VerticalDonationForm = ({
     navigate('/checkout', { state: { returnTo } })
   }
 
-  const isQurbaniPage = location.pathname.includes('qurbani');
-  const categoryOptionsToShow = isQurbaniPage
-  ? ["Qurbani 2026"]
-  : categoryOptions;
-
   return (
     <div id={formId} className={`vertical-donation-form ${className}`}>
       <div className="vertical-donation-card">
@@ -352,33 +360,29 @@ const VerticalDonationForm = ({
           </div>
 
           <div className="vertical-donation-inline">
-            {!isQurbaniMultiCurrencyProject && (
-              <div className="vertical-donation-group">
-                <label className="vertical-donation-label">Category</label>
-                <select
-                  className="vertical-donation-input"
-                  value={formData.category}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      category: e.target.value
-                    }))
-                  }
-                >
-                  {categoryOptionsToShow.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="vertical-donation-group">
+              <label className="vertical-donation-label">Category</label>
+              <select
+                className="vertical-donation-input"
+                value={formData.category}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    category: e.target.value
+                  }))
+                }
+              >
+                {categoryOptionsToShow.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {filteredInitiatives.length > 0 && (
               <div className="vertical-donation-group">
-                <label className="vertical-donation-label">
-                  {isQurbaniMultiCurrencyProject ? 'Category' : 'Sub Category'}
-                </label>
+                <label className="vertical-donation-label">Sub Category</label>
                 <select
                   className="vertical-donation-input"
                   value={formData.subCategory}
