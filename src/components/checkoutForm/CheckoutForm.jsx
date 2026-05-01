@@ -558,10 +558,16 @@ const CheckoutForm = () => {
         ...(utmParams && {
           ...(() => {
             const { utm_source, utm_medium, utm_campaign } = utmParams || {}
+            // Case-insensitive so ?utm_campaign=Qurbani2026 matches (same as qurbani2026)
+            const utmCampaignNorm = utm_campaign != null ? String(utm_campaign).trim().toLowerCase() : ''
+            const hasUtmCampaign = utmCampaignNorm !== ''
+            const resolvedCampaignId = hasUtmCampaign
+              ? (utmCampaignNorm === 'qurbani2026' ? 3 : null)
+              : undefined
             return {
               ...(utm_source ? { utm_source } : {}),
               ...(utm_medium ? { utm_medium } : {}),
-              ...(utm_campaign ? { campaign_id: utm_campaign } : {})
+              ...(hasUtmCampaign ? { campaign_id: resolvedCampaignId } : {})
             }
           })()
         }),
