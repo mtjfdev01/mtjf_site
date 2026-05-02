@@ -40,7 +40,7 @@ const VerticalDonationForm = ({
   const location = useLocation()
   const isQurbaniPage = location.pathname.includes('qurbani')
   const categoryOptionsToShow = useMemo(
-    () => (isQurbaniPage ? ['Qurbani 2026'] : categoryOptions),
+    () => (isQurbaniPage ? ['qurbani-barai-mustehqeen'] : categoryOptions),
     [isQurbaniPage, categoryOptions]
   )
   const { id: urlProjectId } = useParams() // Extract project_id from URL

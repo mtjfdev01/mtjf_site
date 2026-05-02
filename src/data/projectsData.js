@@ -3684,7 +3684,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
     ]
   },
   'qurbani-barai-mustehqeen': {
-    id: 'qurbani-2026',
+    id: 'qurbani-barai-mustehqeen',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
     headerImage: qurbani_hero_2026,
     headerImageMob: qurbani_mobile_2026,

@@ -6,6 +6,14 @@ import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './DonationForm.css'
 
 const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+
+/** When checkout reads `category`, Qurbani detail project must send `qurbani-barai-mustehqeen`. */
+const resolveCategoryForProjectId = (projectId, prevCategory, fallbackCategory) => {
+  if (projectId === 'qurbani-barai-mustehqeen') return 'qurbani-barai-mustehqeen'
+  if (prevCategory === 'qurbani-barai-mustehqeen') return fallbackCategory
+  return prevCategory
+}
+
 const QURBANI_EXCHANGE_RATES_PKR = {
   PKR: 1,
   CAD: 200,
@@ -65,13 +73,18 @@ const DonationForm = ({
     const initialProject = projects.find(p => p.id === initialProjectId)
     const projectMenuData = projectCards.find(p => p.id === initialProjectId)
     const firstInitiative = projectMenuData?.initiatives?.[0]
+    const fallbackCategory = defaultCategory || categoryOptions[0] || 'General'
 
     return {
       frequency: 'once',
       currency: initialCurrency,
       amount: firstInitiative?.price ? firstInitiative.price.toString() : '0',
       customAmount: '',
-      category: defaultCategory || categoryOptions[0] || 'General',
+      category: resolveCategoryForProjectId(
+        initialProjectId,
+        fallbackCategory,
+        fallbackCategory
+      ),
       projectId: initialProjectId,
       projectName: defaultProjectName || initialProject?.title || initialProject?.name || '',
       initiativeId: firstInitiative?.id || '',
@@ -115,13 +128,15 @@ const DonationForm = ({
     const nextId = defaultProjectId || projects[0]?.id || ''
     const nextProject = projects.find((p) => p.id === nextId)
     const nextName = defaultProjectName || nextProject?.title || nextProject?.name || ''
+    const fallbackCategory = defaultCategory || categoryOptions[0] || 'General'
 
     setFormData((prev) => ({
       ...prev,
       projectId: nextId,
-      projectName: nextName
+      projectName: nextName,
+      category: resolveCategoryForProjectId(nextId, prev.category, fallbackCategory)
     }))
-  }, [showProjectSelect, projects, defaultProjectId, defaultProjectName, formData.projectId])
+  }, [showProjectSelect, projects, defaultProjectId, defaultProjectName, formData.projectId, defaultCategory, categoryOptions])
 
   const getDonationAmounts = (currency) =>
     mergedDonationOptions[currency] || mergedDonationOptions[initialCurrency]
@@ -308,7 +323,9 @@ const DonationForm = ({
                     // Find the first initiative for this project from projectCards
                     const projectMenuData = projectCards.find(p => p.id === selectedId)
                     const firstInitiative = projectMenuData?.initiatives?.[0]
-                    
+                    const fallbackCategory =
+                      defaultCategory || categoryOptions[0] || 'General'
+
                     setFormData((prev) => ({
                       ...prev,
                       projectId: selectedId,
@@ -316,7 +333,12 @@ const DonationForm = ({
                       initiativeId: firstInitiative?.id || '',
                       initiativeName: firstInitiative?.title || '',
                       amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
-                      customAmount: ''
+                      customAmount: '',
+                      category: resolveCategoryForProjectId(
+                        selectedId,
+                        prev.category,
+                        fallbackCategory
+                      )
                     }))
                   }
                 }

@@ -11,14 +11,22 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
   const pricingOptions = Array.isArray(initiative.pricingOptions) && initiative.pricingOptions.length > 0
     ? initiative.pricingOptions
     : null
-  // Donation type options - can be customized per initiative
-  const donationTypeOptions = initiative.donationTypeOptions || [
-    { value: 'GENERAL', label: 'GENERAL' },
-    { value: 'SADKA', label: 'SADKA' },
-    { value: 'ZAKAT', label: 'ZAKAT' },
-    // { value: 'FITRANA_2026', label: 'FITRANA' }
-  ]
-  const defaultDonationType = donationTypeOptions[0]?.value || 'GENERAL'
+
+  const isQurbaniMultiCurrencyProject =
+    initiative?.parentProjectId === 'qurbani-barai-mustehqeen' || initiative?.parentProjectId === 'qurbani'
+
+  // Qurbani projects always use this donation type only (no GENERAL / SADKA / ZAKAT selector)
+  const donationTypeOptions = isQurbaniMultiCurrencyProject
+    ? [{ value: 'qurbani-barai-mustehqeen', label: 'QURBANI' }]
+    : (initiative.donationTypeOptions || [
+        { value: 'GENERAL', label: 'GENERAL' },
+        { value: 'SADKA', label: 'SADKA' },
+        { value: 'ZAKAT', label: 'ZAKAT' },
+        { value: 'qurbani-barai-mustehqeen', label: 'QURBANI' },
+      ])
+  const defaultDonationType = isQurbaniMultiCurrencyProject
+    ? 'qurbani-barai-mustehqeen'
+    : (donationTypeOptions[0]?.value || 'GENERAL')
   const [donationType, setDonationType] = useState(defaultDonationType)
   const defaultPricingOptionId = initiative.defaultPricingOptionId || pricingOptions?.[0]?.id || null
   const [selectedPricingOptionId, setSelectedPricingOptionId] = useState(defaultPricingOptionId)
@@ -28,9 +36,6 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
     : null
   const basePrice = selectedPricingOption?.price ?? initiative.price ?? 0
   const totalPrice = quantity * basePrice + (parseFloat(customAmount) || 0)
-
-  const isQurbaniMultiCurrencyProject =
-    initiative?.parentProjectId === 'qurbani-barai-mustehqeen' || initiative?.parentProjectId === 'qurbani'
   const resolvedRates = exchangeRatesPKR || { PKR: 1 }
   const effectiveCurrency = isQurbaniMultiCurrencyProject ? displayCurrency : 'PKR'
   const rate = resolvedRates[effectiveCurrency] || 1
@@ -50,13 +55,17 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
     
     if (existingDonation) {
       setQuantity(existingDonation.quantity || 0)
-      setDonationType(existingDonation.donationType || defaultDonationType)
+      setDonationType(
+        isQurbaniMultiCurrencyProject
+          ? 'qurbani-barai-mustehqeen'
+          : (existingDonation.donationType || defaultDonationType)
+      )
       setCustomAmount(existingDonation.customAmount ? existingDonation.customAmount.toString() : '')
       if (pricingOptions) {
         setSelectedPricingOptionId(existingDonation.selectedPricingOptionId || defaultPricingOptionId)
       }
     }
-  }, [projectDonations, initiative.parentProjectId, initiative.id, pricingOptions, defaultPricingOptionId, defaultDonationType])
+  }, [projectDonations, initiative.parentProjectId, initiative.id, pricingOptions, defaultPricingOptionId, defaultDonationType, isQurbaniMultiCurrencyProject])
 
   const handleQuantityChange = (delta) => {
     const newQuantity = Math.max(0, quantity + delta)
@@ -171,20 +180,22 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
         </button>
       </div>
 
-      <div className="initiative-donation-type-field">
-        <label className="initiative-field-label">Donation type</label>
-        <select
-          className="initiative-donation-type-select"
-          value={donationType}
-          onChange={handleDonationTypeChange}
-        >
-          {donationTypeOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      {!isQurbaniMultiCurrencyProject && (
+        <div className="initiative-donation-type-field">
+          <label className="initiative-field-label">Donation type</label>
+          <select
+            className="initiative-donation-type-select"
+            value={donationType}
+            onChange={handleDonationTypeChange}
+          >
+            {donationTypeOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <div className="initiative-price-field">
         <label className="initiative-field-label">

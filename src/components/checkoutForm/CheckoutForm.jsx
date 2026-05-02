@@ -7,6 +7,7 @@ import axiosInstance from '../../utils/axios'
 import { ALL_PROJECTS_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
+import Loader from '../Loader/Loader'
 import { CiCreditCard2 } from "react-icons/ci";
 
 const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
@@ -68,6 +69,7 @@ const DEFAULT_FORM = {
   country: '',
   city: '',
   address: '',
+  on_behalf_names: '',
   notification_subscription: true
 }
 
@@ -84,11 +86,15 @@ const CheckoutForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams } = useDonation()
+  console.log("donationData", donationData);
+  console.log("projectDonations", projectDonations);
+
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(null)
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
+  const [isDonationPostLoading, setIsDonationPostLoading] = useState(false)
   const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
   const [stripeEmbedClientSecret, setStripeEmbedClientSecret] = useState(null)
   const hasFetchedFailedTransaction = useRef(false)
@@ -117,22 +123,51 @@ const CheckoutForm = () => {
   
   // Determine which donation flow we're using
   const isProjectDonationsFlow = donationItemsFromState.length > 0 || projectDonations.length > 0
+  const projectDonationItemsForCheckout = useMemo(
+    () => (donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations),
+    [donationItemsFromState, projectDonations]
+  )
+  const isQurbaniOnlyCheckout = useMemo(
+    () =>
+      isProjectDonationsFlow &&
+      projectDonationItemsForCheckout.length > 0 &&
+      projectDonationItemsForCheckout.every(
+        (d) => d.projectId === 'qurbani-barai-mustehqeen' || d.projectId === 'qurbani'
+      ),
+    [isProjectDonationsFlow, projectDonationItemsForCheckout]
+  )
+  const isQurbaniCheckout = useMemo(
+    () =>
+      isQurbaniOnlyCheckout ||
+      donationData?.projectId === 'qurbani-barai-mustehqeen' ||
+      donationData?.projectId === 'qurbani',
+    [isQurbaniOnlyCheckout, donationData?.projectId]
+  )
   const isOldDonationFormFlow = !!donationData
   const isFailedTransactionFlow = !!donationIdFromQuery
 
   // Initialize form with donation data if available (skip if failed transaction flow)
   useEffect(() => {
     if (donationData && !isFailedTransactionFlow) {
-      // Set donation_type from donationData category if available
       if (donationData.category) {
-        const categoryMap = {
-          'General': 'general',
-          'Zakat': 'zakat',
-          'Sadqa': 'sadqa'
+        const labelToDonationType = {
+          General: 'general',
+          Zakat: 'zakat',
+          Sadqa: 'sadqa',
+          Qurbani: 'qurbani-barai-mustehqeen',
+          // DonationForm / context may store the API value as category (e.g. qurbani flow)
+          'qurbani-barai-mustehqeen': 'qurbani-barai-mustehqeen',
+          qurbani: 'qurbani-barai-mustehqeen'
         }
-        setFormData(prev => ({
+        const raw = donationData.category
+        const donationType =
+          labelToDonationType[raw] ||
+          (['general', 'zakat', 'sadqa', 'fitrana_2026', 'qurbani-barai-mustehqeen'].includes(raw)
+            ? raw
+            : 'general')
+        setFormData((prev) => ({
           ...prev,
-          donation_type: categoryMap[donationData.category] || 'general'
+          donation_type: donationType
         }))
       }
     }
@@ -160,11 +195,21 @@ const CheckoutForm = () => {
   // Initialize donation type from project donations if available
   // Memoize the donation type to prevent unnecessary recalculations
   const firstDonationType = useMemo(() => {
-    const donationTypeSource = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
-    return donationTypeSource.length > 0 ? donationTypeSource[0]?.donationType : null
-  }, [donationItemsFromState, projectDonations])
+    return projectDonationItemsForCheckout.length > 0
+      ? projectDonationItemsForCheckout[0]?.donationType
+      : null
+  }, [projectDonationItemsForCheckout])
   
   useEffect(() => {
+    if (isQurbaniOnlyCheckout) {
+      setFormData((prev) => {
+        if (prev.donation_type === 'qurbani-barai-mustehqeen') return prev
+        return { ...prev, donation_type: 'qurbani-barai-mustehqeen' }
+      })
+      previousDonationTypeRef.current = 'qurbani-barai-mustehqeen'
+      return
+    }
+
     if (isProjectDonationsFlow && firstDonationType) {
       const normalizedType = String(firstDonationType).trim().toLowerCase()
       const typeMap = {
@@ -173,15 +218,13 @@ const CheckoutForm = () => {
         sadka: 'sadqa',
         zakat: 'zakat',
         fitrana: 'fitrana_2026',
-        fitrana_2026: 'fitrana_2026'
+        fitrana_2026: 'fitrana_2026',
+        'qurbani-barai-mustehqeen': 'qurbani-barai-mustehqeen'
       }
-    const newDonationType = typeMap[normalizedType] || 'general'
-      
-      // Only update if the donation type has actually changed
-      // Use a ref to track the last donation type we set to prevent infinite loops
+      const newDonationType = typeMap[normalizedType] || 'general'
+
       if (previousDonationTypeRef.current !== newDonationType) {
-        setFormData(prev => {
-          // Double-check: if current value already matches, don't update
+        setFormData((prev) => {
           if (prev.donation_type === newDonationType) {
             return prev
           }
@@ -193,10 +236,9 @@ const CheckoutForm = () => {
         previousDonationTypeRef.current = newDonationType
       }
     } else if (!isProjectDonationsFlow) {
-      // Reset ref when not in project donations flow
       previousDonationTypeRef.current = null
     }
-  }, [isProjectDonationsFlow, firstDonationType])
+  }, [isProjectDonationsFlow, firstDonationType, isQurbaniOnlyCheckout])
 
   // Handle failed transaction flow - fetch and populate form data
   useEffect(() => {
@@ -390,7 +432,7 @@ const CheckoutForm = () => {
           form.parentNode.removeChild(form)
         }
       }, 1000)
-      
+
       setIsLoading(null)
     } catch (error) {
       console.error('Error in postToPayfast:', error)
@@ -531,10 +573,14 @@ const CheckoutForm = () => {
         }
       }
 
+      const { on_behalf_names, ...formFieldsForPayload } = formData
       const payload = {
         project_id,
         project_name,
-        ...formData,
+        ...formFieldsForPayload,
+        ...(isQurbaniCheckout && {
+          on_behalf_names: typeof on_behalf_names === 'string' ? on_behalf_names.trim() : ''
+        }),
         donation_method: currentPayment,
         // editable in UI, fallback to method default if missing
         donation_frequency: formData.donation_frequency || paymentFrequency[currentPayment] || 'once',
@@ -583,8 +629,14 @@ const CheckoutForm = () => {
         setIsLoading(null)
         return
       }
-      // Use PUT to update existing donation if it's a failed transaction retry, otherwise POST
-      const response = await axiosInstance.post('/donations', payload)
+      
+      let response
+      try {
+        setIsDonationPostLoading(true)
+        response = await axiosInstance.post('/donations', payload)
+      } finally {
+        setIsDonationPostLoading(false)
+      }
       
 
       if (currentPayment === 'payfast') {
@@ -633,16 +685,9 @@ const CheckoutForm = () => {
     }
   }
 
-  // REMOVED: Render check - always show checkout form
-  // Show loading state while fetching failed transaction
+  // Failed-transaction fetch: full-screen loader only (donation context cleared until data loads)
   if (isLoadingFailedTransaction) {
-    return (
-      <section className="checkout-panel">
-        <div className="checkout-panel__message checkout-panel__message--info">
-          Loading your donation information...
-        </div>
-      </section>
-    )
+    return <Loader loading />
   }
 
   // Always render the form - no conditions
@@ -652,8 +697,12 @@ const CheckoutForm = () => {
 
   const stripeEmbedReturnUrl = `${window.location.origin}/thanks`
 
+  const showCheckoutApiLoader = isDonationPostLoading
+
   return (
-    <section className="checkout-panel">
+    <>
+      <Loader loading={showCheckoutApiLoader} />
+      <section className="checkout-panel">
       {stripeEmbedClientSecret && stripePromise && (
         <div className="stripe-embed-overlay" role="dialog" aria-modal="true" aria-labelledby="stripe-embed-title">
           <div className="stripe-embed-modal">
@@ -729,10 +778,17 @@ const CheckoutForm = () => {
                 onChange={handleInputChange}
                 className="checkout-panel__input checkout-panel__select"
               >
-                <option value="general">General Donation</option>
-                <option value="zakat">Zakat </option>
-                <option value="sadqa">Sadqa </option>
-                <option value="fitrana_2026">Fitrana </option>
+                {isQurbaniOnlyCheckout ? (
+                  <option value="qurbani-barai-mustehqeen">Qurbani </option>
+                ) : (
+                  <>
+                    <option value="general">General Donation</option>
+                    <option value="zakat">Zakat </option>
+                    <option value="sadqa">Sadqa </option>
+                    <option value="fitrana_2026">Fitrana </option>
+                    <option value="qurbani-barai-mustehqeen">Qurbani </option>
+                  </>
+                )}
               </select>
             </span>
           </div>
@@ -782,6 +838,22 @@ const CheckoutForm = () => {
               rows="4"
             />
           </div>
+        {isQurbaniCheckout && (
+          <div className="input-item input-item-textarea ltn__custom-icon checkout-panel__field checkout-panel__field--textarea">
+            <label className="donation-form-label" htmlFor="checkout-on-behalf-names">
+              On Behalf Names
+            </label>
+            <textarea
+              id="checkout-on-behalf-names"
+              name="on_behalf_names"
+              placeholder="Enter names (one per line or separated by commas)"
+              value={formData.on_behalf_names}
+              onChange={handleInputChange}
+              className="checkout-panel__input checkout-panel__textarea"
+              rows="4"
+            />
+          </div>
+        )}
         {/* Notification / campaign subscription */}
         <div className="checkout-panel__field checkout-panel__field--checkbox">
           <label className="checkout-panel__checkbox-label">
@@ -951,6 +1023,7 @@ const CheckoutForm = () => {
         </div>
       </form>
     </section>
+    </>
   )
 }
 
