@@ -15,25 +15,15 @@ import qurbani from '../../assets/img/projects/icons/qurbani.png'
 import aaslab from '../../assets/img/projects/icons/aaslab.png'
 import community from '../../assets/img/projects/icons/community.png'
 
+/** Default selected project in sticky form — must exist in `projectCards` below */
+const STICKY_DEFAULT_PROJECT_ID = 'qurbani-barai-mustehqeen'
+
 const StickyQuickDonationForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { donationType, setDonationType, updateProjectDonation } = useDonation()
-  const [localAmount, setLocalAmount] = useState('0')
-  const [selectedProjectId, setSelectedProjectId] = useState('qurbani-barai-mustehqeen')
-  const [selectedInitiativeId, setSelectedInitiativeId] = useState('')
-  const [customInput, setCustomInput] = useState('')
-  const [message, setMessage] = useState('')
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [shouldShow, setShouldShow] = useState(false)
 
-  // Pages where StickyQuickDonationForm should not be shown
-  const hiddenPages = ['/donate', '/donation', '/checkout']
-  const shouldHideOnPage = hiddenPages.some(page => 
-    location.pathname === page || location.pathname.startsWith(page + '/')
-  )
-
-  // Project list - same as DonationProjectsMenu
+  // Project list - same as DonationProjectsMenu (before state so first initiative price applies on first render)
   const projectCards = [
     // { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
     { 
@@ -193,6 +183,27 @@ const StickyQuickDonationForm = () => {
           ]
     },
   ]
+
+  const stickyDefaultProject = projectCards.find((p) => p.id === STICKY_DEFAULT_PROJECT_ID)
+  const stickyFirstInitiative = stickyDefaultProject?.initiatives?.[0]
+
+  const [localAmount, setLocalAmount] = useState(() =>
+    stickyFirstInitiative?.price != null ? String(stickyFirstInitiative.price) : '0'
+  )
+  const [selectedProjectId, setSelectedProjectId] = useState(STICKY_DEFAULT_PROJECT_ID)
+  const [selectedInitiativeId, setSelectedInitiativeId] = useState(
+    () => stickyFirstInitiative?.id ?? ''
+  )
+  const [customInput, setCustomInput] = useState('')
+  const [message, setMessage] = useState('')
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [shouldShow, setShouldShow] = useState(false)
+
+  // Pages where StickyQuickDonationForm should not be shown
+  const hiddenPages = ['/donate', '/donation', '/checkout']
+  const shouldHideOnPage = hiddenPages.some(page =>
+    location.pathname === page || location.pathname.startsWith(page + '/')
+  )
 
   const handleQuickDonate = () => {
     // Clear previous message
