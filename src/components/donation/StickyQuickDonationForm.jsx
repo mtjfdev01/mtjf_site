@@ -439,6 +439,7 @@ const StickyQuickDonationForm = () => {
           )}
 
           {/* Custom Input Field */}
+          {selectedProjectId !== 'qurbani-barai-mustehqeen' && (
           <div className="sticky-amount-section">
             <div className="sticky-amount-input-wrapper">
               <input
@@ -456,6 +457,7 @@ const StickyQuickDonationForm = () => {
               />
             </div>
           </div>
+          )}
 
           {/* Donation Type Selection */}
           <div className="sticky-project-section">
@@ -465,9 +467,15 @@ const StickyQuickDonationForm = () => {
               onChange={(e) => setDonationType(e.target.value)}
               aria-label="Select donation type"
             >
-              <option value="general">General</option>
-              <option value="sadqa">Sadqa</option>
-              <option value="zakat">Zakat</option>
+        {selectedProjectId === 'qurbani-barai-mustehqeen' ? (
+      <option value="qurbani">Qurbani</option>
+    ) : (
+      <>
+        <option value="general">General</option>
+        <option value="sadqa">Sadqa</option>
+        <option value="zakat">Zakat</option>
+      </>
+    )}
             </select>
           </div>
 
