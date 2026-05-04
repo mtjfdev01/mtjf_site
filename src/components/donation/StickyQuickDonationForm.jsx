@@ -246,7 +246,8 @@ const StickyQuickDonationForm = () => {
       customAmount: 0,
       customField: customInput, // Added custom input field
       totalAmount: numericAmount,
-      templateCode: selectedProject?.templateCode || null
+      templateCode:
+        selectedInitiative?.templateCode ?? selectedProject?.templateCode ?? null
     }
 
     // Add to projectDonations in context

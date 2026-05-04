@@ -13,6 +13,27 @@ const DEFAULT_DONATION_OPTIONS = {
 }
 
 const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+
+/** Resolve templateCode from projectCards for checkout / API (initiative-level or project fallback). */
+const resolveInitiativeTemplateCode = (projectId, initiativeId) => {
+  if (!projectCards?.length) return null
+  if (projectId && initiativeId) {
+    const project = projectCards.find((p) => p.id === projectId)
+    const fromProject = project?.initiatives?.find((i) => i.id === initiativeId)
+    if (fromProject) return fromProject.templateCode ?? null
+  }
+  if (initiativeId) {
+    for (const p of projectCards) {
+      const init = p.initiatives?.find((i) => i.id === initiativeId)
+      if (init) return init.templateCode ?? null
+    }
+  }
+  if (projectId) {
+    return projectCards.find((p) => p.id === projectId)?.templateCode ?? null
+  }
+  return null
+}
+
 const QURBANI_EXCHANGE_RATES_PKR = {
   PKR: 1,
   CAD: 200,
@@ -269,12 +290,16 @@ const VerticalDonationForm = ({
     
     // Prepare donation data
     const amountPKRToStore = isQurbaniMultiCurrencyProject ? Math.round(amountNumber) : amountNumber
+    const projectIdToUse = urlProjectId || formData.projectId
+    const templateCode = resolveInitiativeTemplateCode(projectIdToUse, formData.subCategory)
+
     const donationData = {
       ...formData,
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
       amount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
-      finalAmount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount
+      finalAmount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
+      templateCode
     }
     
     // Store in context
