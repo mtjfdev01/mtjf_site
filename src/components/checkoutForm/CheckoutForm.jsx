@@ -592,6 +592,12 @@ const CheckoutForm = () => {
         ...(isProjectDonationsFlow && {
           donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
         }),
+        // Old single-form flow: initiative template (e.g. Qurbani cow_share) from context
+        ...(isOldDonationFormFlow &&
+          donationData?.templateCode != null &&
+          String(donationData.templateCode).trim() !== '' && {
+            template_code: String(donationData.templateCode).trim()
+          }),
         // Include donationID if this is a retry of failed transaction
         ...(isFailedTransactionFlow && donationIdFromQuery && {
           previous_donation_id: donationIdFromQuery
@@ -623,6 +629,9 @@ const CheckoutForm = () => {
         }),
         notification_subscription: formData.notification_subscription !== false
       }
+      
+      console.log('payload', payload)
+      // return;
         // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)

@@ -88,7 +88,8 @@ const DonationForm = ({
       projectId: initialProjectId,
       projectName: defaultProjectName || initialProject?.title || initialProject?.name || '',
       initiativeId: firstInitiative?.id || '',
-      initiativeName: firstInitiative?.title || ''
+      initiativeName: firstInitiative?.title || '',
+      templateCode: firstInitiative?.templateCode ?? projectMenuData?.templateCode ?? null
     }
   })
   const [errorMessage, setErrorMessage] = useState('')
@@ -155,6 +156,7 @@ const DonationForm = ({
       ...prev,
       initiativeId: initiativeId,
       initiativeName: initiative?.title || '',
+      templateCode: initiative?.templateCode ?? selectedProjectData?.templateCode ?? null,
       amount: initiative?.price ? initiative.price.toString() : prev.amount,
       customAmount: ''
     }))
@@ -240,12 +242,22 @@ const DonationForm = ({
     
     // Prepare donation data
     const amountPKRToStore = usingCustomAmount ? toPKRAmount(amountNumber) : Math.round(amountNumber)
+    const selectedInitiative = selectedProjectData?.initiatives?.find(
+      (i) => i.id === formData.initiativeId
+    )
+    const resolvedTemplateCode =
+      selectedInitiative?.templateCode ??
+      selectedProjectData?.templateCode ??
+      formData.templateCode ??
+      null
+
     const donationData = {
       ...formData,
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
       amount: amountPKRToStore.toString(),
-      finalAmount: amountPKRToStore.toString()
+      finalAmount: amountPKRToStore.toString(),
+      templateCode: resolvedTemplateCode
     }
     
     // Store in context
@@ -332,6 +344,8 @@ const DonationForm = ({
                       projectName: selectedProject?.title || selectedProject?.name || '',
                       initiativeId: firstInitiative?.id || '',
                       initiativeName: firstInitiative?.title || '',
+                      templateCode:
+                        firstInitiative?.templateCode ?? projectMenuData?.templateCode ?? null,
                       amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
                       customAmount: '',
                       category: resolveCategoryForProjectId(
