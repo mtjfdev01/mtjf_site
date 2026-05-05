@@ -268,6 +268,61 @@
   gap: 12px;
 }
 
+.ddvBatchTabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 4px 2px;
+  margin: 2px 0 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.ddvSplitNotice {
+  border: 1px solid rgba(15, 58, 44, 0.14);
+  background: rgba(45, 204, 112, 0.1);
+  color: rgba(15, 58, 44, 0.9);
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 14px;
+  margin: 4px 0 8px;
+}
+
+.ddvBatchTab {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+  color: rgba(15, 23, 42, 0.85);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ddvBatchTab:hover {
+  background: #eef2f7;
+}
+
+.ddvBatchTab--active {
+  background: rgba(45, 204, 112, 0.14);
+  border-color: rgba(15, 58, 44, 0.28);
+  color: #0f3a2c;
+}
+
+.ddvBatchMeta {
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.ddvBatchMeta__title {
+  font-weight: 900;
+  color: #0f172a;
+}
+
 .ddvStep {
   display: grid;
   grid-template-columns: 28px 120px 1fr auto;
