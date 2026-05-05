@@ -138,21 +138,6 @@ const PROJECTS_DATA = [
     learnMorePath: '/projects/qurbani-barai-mustehqeen',
     donatePath: '/donate/qurbani-barai-mustehqeen'
   },
-  //   {
-  //   id: 'qurbani-2026',
-  //   category: 'Qurbani Barai Mustehqeen',
-  //   categoryColor: '#DDA0DD',
-  //   title: 'Delivering Qurbani Meat to Families in Need',
-  //   description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
-  //   image: qurbani,
-  //   progress: 22.25,
-  //   progressColor: '#9B59B6',
-  //   goal: 1000000,
-  //   Achieved: 222500,
-  //   donateButtonText: 'Book Your Qurbani',
-  //   learnMorePath: '/projects/qurbani-barai-mustehqeen',
-  //   donatePath: '/donate/qurbani-barai-mustehqeen'
-  // },
    {
     id: 'aas-lab-diagnostics',
     category: 'AAS Lab & Diagnostics',

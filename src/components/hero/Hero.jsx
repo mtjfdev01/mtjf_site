@@ -14,10 +14,13 @@ import hero_qurbani_mobile from '../../assets/img/hero/hero_qurbani_mobile.webp'
 import ramzan_zakat_mob_popup from '../../assets/img/zakat/ramzan_zakat_mob_popup.webp' 
 import hero from '../../assets/img/projects/project-image/gaza.webp'
 import hero_mob from '../../assets/img/projects/project-image/gaza_mob.webp'
+import change_hero_health from '../../assets/img/hero/change_hero_health.webp'
+import hero_health_mobile from '../../assets/img/hero/hero_health_mobile.webp'
 import './hero.css'
 
 const HERO_IMAGES = [
   { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/donate' },
+  { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate' },
   { desktop: change_hero, mobile: change_mob, link: '/' },
   
   
