@@ -83,6 +83,7 @@ const Thanks = () => {
   }
 
   const statusInfo = getStatusMessage()
+  const donationIdLabel = donationId ? `MTJF-D-${String(donationId)}` : null
 
   return (
     <>
@@ -159,7 +160,7 @@ const Thanks = () => {
                 fontSize: '0.9rem',
                 color: '#6b7280'
               }}>
-                Donation ID: <strong>{donationId}</strong>
+                Donation ID: <strong>{donationIdLabel}</strong>
               </div>
             )}
 

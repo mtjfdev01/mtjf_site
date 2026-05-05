@@ -34,6 +34,11 @@ export default function DonorDonations() {
   );
 }
 
+function formatDonationId(id) {
+  if (id === null || id === undefined || id === "") return "-";
+  return `MTJF-D-${String(id)}`;
+}
+
 function DonorDonationsList({ onOpenDonation }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -154,7 +159,7 @@ function DonorDonationsList({ onOpenDonation }) {
 
                   return (
                     <tr key={String(id)} style={styles.tr}>
-                      <td style={styles.tdMono}>{id}</td>
+                      <td style={styles.tdMono}>{formatDonationId(id)}</td>
                       <td style={styles.td}>
                         {date ? new Date(date).toLocaleDateString() : "-"}
                       </td>

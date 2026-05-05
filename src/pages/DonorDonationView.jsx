@@ -37,6 +37,11 @@ export default function DonorDonationViewPage() {
   );
 }
 
+function formatDonationId(id) {
+  if (id === null || id === undefined || id === "") return "-";
+  return `MTJF-D-${String(id)}`;
+}
+
 function DonorDonationView({ donationId, onBack }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -47,6 +52,7 @@ function DonorDonationView({ donationId, onBack }) {
   const [trackingLoading, setTrackingLoading] = useState(false);
   const [trackingError, setTrackingError] = useState("");
   const [tracking, setTracking] = useState(null); // steps array
+  const [activeBatchKey, setActiveBatchKey] = useState(null);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -152,7 +158,7 @@ function DonorDonationView({ donationId, onBack }) {
   const info = useMemo(() => {
     if (!donation) return [];
     return [
-      { label: "Donation ID", value: donation.id },
+      { label: "Donation ID", value: formatDonationId(donation.id) },
       {
         label: "Date",
         value:
@@ -177,6 +183,64 @@ function DonorDonationView({ donationId, onBack }) {
     if (raw === "cancelled") return { label: "Cancelled", tone: "cancelled" };
     return { label: donation?.status || "In progress", tone: "pending" };
   }, [donation?.status]);
+
+  const trackingBatches = useMemo(() => {
+    if (!Array.isArray(tracking)) return null;
+
+    const groups = new Map();
+    for (const step of tracking) {
+      const batchId = step?.batch_id ?? step?.batch?.id ?? null;
+      const key = batchId != null ? String(batchId) : "no-batch";
+      const existing = groups.get(key);
+      if (existing) {
+        existing.steps.push(step);
+      } else {
+        groups.set(key, {
+          key,
+          batch: step?.batch ?? null,
+          steps: [step],
+        });
+      }
+    }
+
+    const asArray = Array.from(groups.values());
+    for (const g of asArray) {
+      g.steps = g.steps
+        .slice()
+        .sort((a, b) => Number(a?.step_order || 0) - Number(b?.step_order || 0));
+    }
+
+    // Prefer ordering by batch_number when available (older → newer).
+    asArray.sort((a, b) => {
+      const an = Number(a?.batch?.batch_number);
+      const bn = Number(b?.batch?.batch_number);
+      const aHas = Number.isFinite(an);
+      const bHas = Number.isFinite(bn);
+      if (aHas && bHas) return an - bn;
+      if (aHas) return -1;
+      if (bHas) return 1;
+      return 0;
+    });
+
+    return asArray;
+  }, [tracking]);
+
+  useEffect(() => {
+    if (!trackingBatches || trackingBatches.length === 0) {
+      setActiveBatchKey(null);
+      return;
+    }
+    setActiveBatchKey((prev) => {
+      if (prev && trackingBatches.some((b) => b.key === prev)) return prev;
+      // Default to newest batch when batch_number exists (we sort older→newer above)
+      return trackingBatches[trackingBatches.length - 1].key;
+    });
+  }, [trackingBatches]);
+
+  const activeBatch = useMemo(() => {
+    if (!trackingBatches || !activeBatchKey) return null;
+    return trackingBatches.find((b) => b.key === activeBatchKey) || null;
+  }, [trackingBatches, activeBatchKey]);
 
   return (
     <main className="donorDonationView">
@@ -260,7 +324,7 @@ function DonorDonationView({ donationId, onBack }) {
               </div>
 
               <div className="ddvSummaryGrid">
-                <Kv icon={<HashIcon />} k="Donation ID" v={renderValue(donation.id)} />
+                <Kv icon={<HashIcon />} k="Donation ID" v={renderValue(formatDonationId(donation.id))} />
                 <Kv
                   icon={<CalendarIcon />}
                   k="Date"
@@ -316,58 +380,100 @@ function DonorDonationView({ donationId, onBack }) {
 
               {!trackingLoading && !trackingError && tracking && (
                 <div className="ddvTrackingList">
-                  {tracking.map((s) => {
-                    const tone = normalizeStatusTone(s?.status);
-                    const evidence = Array.isArray(s?.evidence) ? s.evidence : [];
-                    const thumbUrl = pickThumbUrl(evidence);
+                  {(trackingBatches || []).length > 1 && (
+                    <>
+                      <div className="ddvSplitNotice">
+                        Your donation is allocated across multiple batches. Select a batch below to view its updates.
+                      </div>
+                      <div className="ddvBatchTabs" role="tablist" aria-label="Batches">
+                        {(trackingBatches || []).map((group) => {
+                          const batchNumber = group?.batch?.batch_number;
+                          const label = batchNumber != null ? `Batch #${batchNumber}` : "Batch";
+                          const isActive = group.key === activeBatchKey;
+                          return (
+                            <button
+                              key={group.key}
+                              type="button"
+                              role="tab"
+                              aria-selected={isActive}
+                              className={`ddvBatchTab ${isActive ? "ddvBatchTab--active" : ""}`}
+                              onClick={() => setActiveBatchKey(group.key)}
+                            >
+                              {label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
 
-                    return (
-                      <div key={String(s?.id ?? `${s?.tracker_id}-${s?.step_key}`)} className="ddvStep">
-                        <div className="ddvStep__rail" aria-hidden="true">
-                          <div className={`ddvStep__dot ddvStep__dot--${tone}`}>
-                            {tone === "completed" ? <CheckIcon /> : <DotIcon />}
-                          </div>
-                        </div>
-
-                        <div className="ddvStep__thumb" aria-hidden="true">
-                          {thumbUrl ? <img src={thumbUrl} alt="" /> : null}
-                        </div>
-
-                        <div className="ddvStep__main">
-                          <div className="ddvStep__title">
-                            {Number.isFinite(Number(s?.step_order)) ? `${s.step_order}. ` : ""}
-                            {renderValue(s?.title)}
-                          </div>
-                          <div className="ddvStep__sub">
-                            {evidence.length > 0 ? "View details" : "Updates will appear here as they are available."}
-                          </div>
-
-                          {evidence.length > 0 && (
-                            <div className="ddvEvidenceRow">
-                              {evidence.map((ev) => (
-                                <a
-                                  key={String(ev?.id ?? ev?.file_url)}
-                                  className="ddvEvidenceLink"
-                                  href={ev?.file_url}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                >
-                                  {ev?.file_type || "Evidence"}
-                                  <ExternalIcon />
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="ddvStep__badgeWrap">
-                          <span className={`ddvBadge ddvBadge--${tone}`}>
-                            {renderValue(s?.status)}
-                          </span>
+                  {activeBatch && (
+                    <>
+                      <div className="ddvBatchMeta">
+                        <div className="ddvBatchMeta__title">
+                          {activeBatch?.batch?.batch_number != null
+                            ? `Batch #${activeBatch.batch.batch_number}`
+                            : "Batch"}
                         </div>
                       </div>
-                    );
-                  })}
+
+                      {activeBatch.steps.map((s) => {
+                        const tone = normalizeStatusTone(s?.status);
+                        const evidence = Array.isArray(s?.evidence) ? s.evidence : [];
+                        const thumbUrl =
+                          pickThumbUrl(evidence) || stepThumbAsset(s?.step_key) || null;
+
+                        return (
+                          <div key={String(s?.id ?? `${s?.tracker_id}-${s?.step_key}`)} className="ddvStep">
+                            <div className="ddvStep__rail" aria-hidden="true">
+                              <div className={`ddvStep__dot ddvStep__dot--${tone}`}>
+                                {tone === "completed" ? <CheckIcon /> : <DotIcon />}
+                              </div>
+                            </div>
+
+                            <div className="ddvStep__thumb" aria-hidden="true">
+                              {thumbUrl ? <img src={thumbUrl} alt="" /> : null}
+                            </div>
+
+                            <div className="ddvStep__main">
+                              <div className="ddvStep__title">
+                                {Number.isFinite(Number(s?.step_order)) ? `${s.step_order}. ` : ""}
+                                {renderValue(s?.title)}
+                              </div>
+                              <div className="ddvStep__sub">
+                                {evidence.length > 0
+                                  ? "View details"
+                                  : "Updates will appear here as they are available."}
+                              </div>
+
+                              {evidence.length > 0 && (
+                                <div className="ddvEvidenceRow">
+                                  {evidence.map((ev) => (
+                                    <a
+                                      key={String(ev?.id ?? ev?.file_url)}
+                                      className="ddvEvidenceLink"
+                                      href={ev?.file_url}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      {ev?.file_type || "Evidence"}
+                                      <ExternalIcon />
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="ddvStep__badgeWrap">
+                              <span className={`ddvBadge ddvBadge--${tone}`}>
+                                {renderValue(s?.status)}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
 
                   {tracking.length === 0 && <div className="ddvMuted">No updates yet.</div>}
                 </div>
@@ -405,6 +511,24 @@ function normalizeStatusTone(status) {
   if (s === "skipped") return "skipped";
   if (s === "failed") return "cancelled";
   return "pending";
+}
+
+function stepThumbAsset(stepKey) {
+  const k = String(stepKey || "").toLowerCase();
+  const map = {
+    booked: "/assets/booked.png",
+    animal_purchased: "/assets/purchased.png",
+    purchased: "/assets/purchased.png",
+    tag_assigned: "/assets/tag.png",
+    animal_tag_assigned: "/assets/tag.png",
+    slaughter_completed: "/assets/slaughtered.png",
+    slaughtered: "/assets/slaughtered.png",
+    meat_distributed: "/assets/meat_distribution.png",
+    meat_distribution: "/assets/meat_distribution.png",
+    offered_prayer: "/assets/prayer.png",
+    prayer: "/assets/prayer.png",
+  };
+  return map[k] || null;
 }
 
 function pickThumbUrl(evidence) {
