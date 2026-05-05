@@ -279,10 +279,15 @@ const DonationProjectsMenu = () => {
         // If already expanded, collapse it
         setExpandedProjectId(null)
         setSelectedProjects([])
+        navigate({ pathname: '/donate', search: location.search }, { replace: true })
       } else {
         // Expand this project
         setExpandedProjectId(card.id)
         setSelectedProjects([card])
+        navigate(
+          { pathname: `/donate/${card.id}`, search: location.search },
+          { replace: true }
+        )
       }
     // } else {
     //   // Regular project without initiatives - toggle selection
@@ -434,6 +439,7 @@ const DonationProjectsMenu = () => {
             className="back-to-projects-btn"
             onClick={() => {
               setExpandedProjectId(null) 
+              navigate({ pathname: '/donate', search: location.search }, { replace: true })
               // clearDonationData()
             }}
           >
