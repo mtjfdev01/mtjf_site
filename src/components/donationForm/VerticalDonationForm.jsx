@@ -102,6 +102,8 @@ const VerticalDonationForm = ({
     setFormData((prev) => (prev.category === next ? prev : { ...prev, category: next }))
   }, [isQurbaniPage, categoryOptionsToShow])
 
+
+
   const isQurbaniMultiCurrencyProject = QURBANI_PROJECT_IDS.includes(urlProjectId || formData.projectId)
   const rate = QURBANI_EXCHANGE_RATES_PKR[formData.currency] || 1
   const toDisplayAmount = (amountPKR) => {
@@ -156,6 +158,27 @@ const VerticalDonationForm = ({
 
     return allInitiatives
   }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId])
+
+  useEffect(() => {
+  if (isQurbaniMultiCurrencyProject) return
+  if (!filteredInitiatives || filteredInitiatives.length === 0) return
+
+  const exists = filteredInitiatives.some(
+    (i) => i.id === formData.subCategory
+  )
+
+  if (exists && formData.amount) return
+
+  const first = filteredInitiatives[0]
+
+  setFormData((prev) => ({
+    ...prev,
+    subCategory: first.id,
+    quantity: 1,
+    amount: first.price ? first.price.toString() : '',
+    customAmount: ''
+  }))
+}, [filteredInitiatives, isQurbaniMultiCurrencyProject])
 
   // Qurbani projects: default to first initiative (Cow Share) and set PKR price so +/− works
   useEffect(() => {
