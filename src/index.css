@@ -1,4 +1,2 @@
-/* here i want to import the base.css file */
 @import './common/styles/base.css';
-@import './common/styles/common.css'
-
+@import './common/styles/common.css';
