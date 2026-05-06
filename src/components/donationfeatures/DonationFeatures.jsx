@@ -94,10 +94,10 @@ const FEATURE_ITEMS = [
   },
   {
     id: 'qurbani-barai-mustehqeen',
-    title: 'Qurbani Barai Mustehqeen',
+    title: 'Qurbani Baraye Mustehqeen',
     description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
     icon: (
-     <img src={Qurbani} alt="Qurbani Barai Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
+     <img src={Qurbani} alt="Qurbani Baraye Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
 )
   },
   {

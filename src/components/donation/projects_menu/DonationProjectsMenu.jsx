@@ -23,7 +23,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 export const projectCards = [
   {
     id: 'qurbani-barai-mustehqeen', 
-    title: "Qurbani Barai Mustehqeen",
+    title: "Qurbani Baraye Mustehqeen",
     icon: qurbani,
     price: 15000,
     new: false, 
@@ -534,7 +534,7 @@ const DonationProjectsMenu = () => {
                   />
                 </div>
 
-                {/* Currency selector (Qurbani Barai Mustehqeen only) */}
+                {/* Currency selector (Qurbani Baraye Mustehqeen only) */}
                 {/* {QURBANI_PROJECT_IDS.includes(expandedProjectId) && (
                   <div className="general-donation-card form-card">
                     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>

@@ -125,7 +125,7 @@ const PROJECTS_DATA = [
   },
    {
     id: 'qurbani-barai-mustehqeen',
-    category: 'Qurbani Barai Mustehqeen',
+    category: 'Qurbani Baraye Mustehqeen',
     categoryColor: '#DDA0DD',
     title: 'Delivering Qurbani Meat to Families in Need',
     description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',

@@ -28,7 +28,7 @@ const StickyQuickDonationForm = () => {
     // { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
     { 
       id: 'qurbani-barai-mustehqeen',
-      title: "Qurbani Barai Mustehqeen",
+      title: "Qurbani Baraye Mustehqeen",
       icon: qurbani,
       category: "Zakat",
       initiatives:[

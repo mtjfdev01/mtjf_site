@@ -1572,7 +1572,7 @@ team will provide you with individualised attention and assistance.`,
   },
   // 'qurbani-barai-mustehqeen': {
   //   id: 'qurbani-barai-mustehqeen',
-  //   title: 'Qurbani Barai Mustehqeen',
+  //   title: 'Qurbani Baraye Mustehqeen',
   //   headerImage: Qurbani,
   //   headerImageMob: qurbani_mobile_2026, 
   //   stats: [
@@ -1591,7 +1591,7 @@ team will provide you with individualised attention and assistance.`,
   //     paragraph3: ''
   //   },
   //   mainImage: Qurbani,
-  //   donateCategory: 'Qurbani Barai Mustehqeen',
+  //   donateCategory: 'Qurbani Baraye Mustehqeen',
   //   donateButtonText: '',
   //   donationOptions: {
   //     PKR: [10000, 25000, 50000, 100000],
@@ -3946,7 +3946,7 @@ Strong monitoring at every stage of the process
 export const ALL_PROJECTS_DATA = [
   {
     id: 'qurbani-barai-mustehqeen',
-    title: 'Qurbani Barai Mustehqeen',
+    title: 'Qurbani Baraye Mustehqeen',
     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
 For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
@@ -4035,7 +4035,7 @@ For many families living in poverty, conflict zones, and disaster affected regio
   },
   // {
   //   id: 'qurbani-barai-mustehqeen',
-  //   title: 'Qurbani Barai Mustehqeen',
+  //   title: 'Qurbani Baraye Mustehqeen',
   //   subtitle: 'Delivering Qurbani Meat to Families in Need',
   //   description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
   //   impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
