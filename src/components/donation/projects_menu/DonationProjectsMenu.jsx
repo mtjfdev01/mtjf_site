@@ -22,7 +22,7 @@ import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 export const projectCards = [
   {
-    id: 'qurbani-barai-mustehqeen', 
+    id: 'qurbani-baraye-mustehqeen', 
     title: "Qurbani Baraye Mustehqeen",
     icon: qurbani,
     price: 15000,
@@ -30,13 +30,13 @@ export const projectCards = [
     category: "Zakat", 
     initiatives:[
      {
-       id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
+       id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
      },
      {
-       id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
+       id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
      },
      {
-       id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
+       id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
      }
     ]
     },
@@ -228,7 +228,7 @@ const DonationProjectsMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState("General")
   const [qurbaniCurrency, setQurbaniCurrency] = useState('PKR')
 
-  const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+  const QURBANI_PROJECT_IDS = ['qurbani-baraye-mustehqeen', 'qurbani']
   const QURBANI_EXCHANGE_RATES_PKR = useMemo(
     () => ({
       PKR: 1,

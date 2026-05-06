@@ -12,7 +12,7 @@ const DEFAULT_DONATION_OPTIONS = {
   EUR: [45, 90, 225, 450]
 }
 
-const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+const QURBANI_PROJECT_IDS = ['qurbani-baraye-mustehqeen', 'qurbani']
 
 /** Resolve templateCode from projectCards for checkout / API (initiative-level or project fallback). */
 const resolveInitiativeTemplateCode = (projectId, initiativeId) => {
@@ -61,7 +61,7 @@ const VerticalDonationForm = ({
   const location = useLocation()
   const isQurbaniPage = location.pathname.includes('qurbani')
   const categoryOptionsToShow = useMemo(
-    () => (isQurbaniPage ? ['qurbani-barai-mustehqeen'] : categoryOptions),
+    () => (isQurbaniPage ? ['qurbani-baraye-mustehqeen'] : categoryOptions),
     [isQurbaniPage, categoryOptions]
   )
   const { id: urlProjectId } = useParams() // Extract project_id from URL

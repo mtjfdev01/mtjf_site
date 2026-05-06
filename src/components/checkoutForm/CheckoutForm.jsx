@@ -132,14 +132,14 @@ const CheckoutForm = () => {
       isProjectDonationsFlow &&
       projectDonationItemsForCheckout.length > 0 &&
       projectDonationItemsForCheckout.every(
-        (d) => d.projectId === 'qurbani-barai-mustehqeen' || d.projectId === 'qurbani'
+        (d) => d.projectId === 'qurbani-baraye-mustehqeen' || d.projectId === 'qurbani'
       ),
     [isProjectDonationsFlow, projectDonationItemsForCheckout]
   )
   const isQurbaniCheckout = useMemo(
     () =>
       isQurbaniOnlyCheckout ||
-      donationData?.projectId === 'qurbani-barai-mustehqeen' ||
+      donationData?.projectId === 'qurbani-baraye-mustehqeen' ||
       donationData?.projectId === 'qurbani',
     [isQurbaniOnlyCheckout, donationData?.projectId]
   )
@@ -154,15 +154,15 @@ const CheckoutForm = () => {
           General: 'general',
           Zakat: 'zakat',
           Sadqa: 'sadqa',
-          Qurbani: 'qurbani-barai-mustehqeen',
+          Qurbani: 'qurbani-baraye-mustehqeen',
           // DonationForm / context may store the API value as category (e.g. qurbani flow)
-          'qurbani-barai-mustehqeen': 'qurbani-barai-mustehqeen',
-          qurbani: 'qurbani-barai-mustehqeen'
+          'qurbani-baraye-mustehqeen': 'qurbani-baraye-mustehqeen',
+          qurbani: 'qurbani-baraye-mustehqeen'
         }
         const raw = donationData.category
         const donationType =
           labelToDonationType[raw] ||
-          (['general', 'zakat', 'sadqa', 'fitrana_2026', 'qurbani-barai-mustehqeen'].includes(raw)
+          (['general', 'zakat', 'sadqa', 'fitrana_2026', 'qurbani-baraye-mustehqeen'].includes(raw)
             ? raw
             : 'general')
         setFormData((prev) => ({
@@ -203,10 +203,10 @@ const CheckoutForm = () => {
   useEffect(() => {
     if (isQurbaniOnlyCheckout) {
       setFormData((prev) => {
-        if (prev.donation_type === 'qurbani-barai-mustehqeen') return prev
-        return { ...prev, donation_type: 'qurbani-barai-mustehqeen' }
+        if (prev.donation_type === 'qurbani-baraye-mustehqeen') return prev
+        return { ...prev, donation_type: 'qurbani-baraye-mustehqeen' }
       })
-      previousDonationTypeRef.current = 'qurbani-barai-mustehqeen'
+      previousDonationTypeRef.current = 'qurbani-baraye-mustehqeen'
       return
     }
 
@@ -219,7 +219,7 @@ const CheckoutForm = () => {
         zakat: 'zakat',
         fitrana: 'fitrana_2026',
         fitrana_2026: 'fitrana_2026',
-        'qurbani-barai-mustehqeen': 'qurbani-barai-mustehqeen'
+        'qurbani-baraye-mustehqeen': 'qurbani-baraye-mustehqeen'
       }
       const newDonationType = typeMap[normalizedType] || 'general'
 
@@ -787,14 +787,14 @@ const CheckoutForm = () => {
                 className="checkout-panel__input checkout-panel__select"
               >
                 {isQurbaniOnlyCheckout ? (
-                  <option value="qurbani-barai-mustehqeen">Qurbani </option>
+                  <option value="qurbani-baraye-mustehqeen">Qurbani </option>
                 ) : (
                   <>
                     <option value="general">General Donation</option>
                     <option value="zakat">Zakat </option>
                     <option value="sadqa">Sadqa </option>
                     <option value="fitrana_2026">Fitrana </option>
-                    <option value="qurbani-barai-mustehqeen">Qurbani </option>
+                    <option value="qurbani-baraye-mustehqeen">Qurbani </option>
                   </>
                 )}
               </select>

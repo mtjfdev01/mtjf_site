@@ -1570,8 +1570,8 @@ team will provide you with individualised attention and assistance.`,
       donateButtonText: 'Donate Now — Support Widows & Orphans'
     }
   },
-  // 'qurbani-barai-mustehqeen': {
-  //   id: 'qurbani-barai-mustehqeen',
+  // 'qurbani-baraye-mustehqeen': {
+  //   id: 'qurbani-baraye-mustehqeen',
   //   title: 'Qurbani Baraye Mustehqeen',
   //   headerImage: Qurbani,
   //   headerImageMob: qurbani_mobile_2026, 
@@ -1600,7 +1600,7 @@ team will provide you with individualised attention and assistance.`,
   //   },
   //   subProjects: [
   //     {
-  //       id: 'qurbani-barai-mustehqeen',
+  //       id: 'qurbani-baraye-mustehqeen',
   //       title: 'The Holy Prophet (S.A.W) said:',
   //       subtitle: '',
   //       description: `There is nothing dearer to Allah during the days of Qurbani than the sacrificing of animals. The sacrificed animal shall come on the Day of Qiyamah with its horns, hair, and hooves (to be weighed on a person’s good deeds). The sacrifice is accepted by Allah before the blood reaches the ground. Therefore sacrifice with an open and happy heart.” -Tirmidhi`,
@@ -3683,8 +3683,8 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
       }
     ]
   },
-  'qurbani-barai-mustehqeen': {
-    id: 'qurbani-barai-mustehqeen',
+  'qurbani-baraye-mustehqeen': {
+    id: 'qurbani-baraye-mustehqeen',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
     headerImage: qurbani_hero_2026,
     headerImageMob: qurbani_mobile_2026,
@@ -3945,7 +3945,7 @@ Strong monitoring at every stage of the process
 
 export const ALL_PROJECTS_DATA = [
   {
-    id: 'qurbani-barai-mustehqeen',
+    id: 'qurbani-baraye-mustehqeen',
     title: 'Qurbani Baraye Mustehqeen',
     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
@@ -4034,15 +4034,15 @@ For many families living in poverty, conflict zones, and disaster affected regio
     donatePath: '/donate/seeds-of-change'
   },
   // {
-  //   id: 'qurbani-barai-mustehqeen',
+  //   id: 'qurbani-baraye-mustehqeen',
   //   title: 'Qurbani Baraye Mustehqeen',
   //   subtitle: 'Delivering Qurbani Meat to Families in Need',
   //   description: 'We carry out donor Qurbanis with transparency and Shariah compliance, distributing fresh meat to families who rarely enjoy this blessing.',
   //   impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
   //   image: Qurbani,
   //   donateButtonText: 'Book Your Qurbani',
-  //   learnMorePath: '/projects/qurbani-barai-mustehqeen',
-  //   donatePath: '/donate/qurbani-barai-mustehqeen'
+  //   learnMorePath: '/projects/qurbani-baraye-mustehqeen',
+  //   donatePath: '/donate/qurbani-baraye-mustehqeen'
   // },
 
   {

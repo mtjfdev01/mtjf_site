@@ -16,7 +16,7 @@ import aaslab from '../../assets/img/projects/icons/aaslab.png'
 import community from '../../assets/img/projects/icons/community.png'
 
 /** Default selected project in sticky form — must exist in `projectCards` below */
-const STICKY_DEFAULT_PROJECT_ID = 'qurbani-barai-mustehqeen'
+const STICKY_DEFAULT_PROJECT_ID = 'qurbani-baraye-mustehqeen'
 
 const StickyQuickDonationForm = () => {
   const navigate = useNavigate()
@@ -27,19 +27,19 @@ const StickyQuickDonationForm = () => {
   const projectCards = [
     // { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
     { 
-      id: 'qurbani-barai-mustehqeen',
+      id: 'qurbani-baraye-mustehqeen',
       title: "Qurbani Baraye Mustehqeen",
       icon: qurbani,
       category: "Zakat",
       initiatives:[
                 {
-                  id: 'qurbani-barai-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+                  id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
                 },
                 {
-                  id: 'qurbani-barai-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+                  id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
                 },
                 {
-                  id: 'qurbani-barai-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+                  id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
                 }
    ]
     },
@@ -440,7 +440,7 @@ const StickyQuickDonationForm = () => {
           )}
 
           {/* Custom Input Field */}
-          {selectedProjectId !== 'qurbani-barai-mustehqeen' && (
+          {selectedProjectId !== 'qurbani-baraye-mustehqeen' && (
           <div className="sticky-amount-section">
             <div className="sticky-amount-input-wrapper">
               <input
@@ -468,7 +468,7 @@ const StickyQuickDonationForm = () => {
               onChange={(e) => setDonationType(e.target.value)}
               aria-label="Select donation type"
             >
-        {selectedProjectId === 'qurbani-barai-mustehqeen' ? (
+        {selectedProjectId === 'qurbani-baraye-mustehqeen' ? (
       <option value="qurbani">Qurbani</option>
     ) : (
       <>

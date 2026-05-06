@@ -5,12 +5,12 @@ import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
 import './DonationForm.css'
 
-const QURBANI_PROJECT_IDS = ['qurbani-barai-mustehqeen', 'qurbani']
+const QURBANI_PROJECT_IDS = ['qurbani-baraye-mustehqeen', 'qurbani']
 
-/** When checkout reads `category`, Qurbani detail project must send `qurbani-barai-mustehqeen`. */
+/** When checkout reads `category`, Qurbani detail project must send `qurbani-baraye-mustehqeen`. */
 const resolveCategoryForProjectId = (projectId, prevCategory, fallbackCategory) => {
-  if (projectId === 'qurbani-barai-mustehqeen') return 'qurbani-barai-mustehqeen'
-  if (prevCategory === 'qurbani-barai-mustehqeen') return fallbackCategory
+  if (projectId === 'qurbani-baraye-mustehqeen') return 'qurbani-baraye-mustehqeen'
+  if (prevCategory === 'qurbani-baraye-mustehqeen') return fallbackCategory
   return prevCategory
 }
 

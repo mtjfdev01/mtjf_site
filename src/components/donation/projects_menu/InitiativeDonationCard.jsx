@@ -13,19 +13,19 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
     : null
 
   const isQurbaniMultiCurrencyProject =
-    initiative?.parentProjectId === 'qurbani-barai-mustehqeen' || initiative?.parentProjectId === 'qurbani'
+    initiative?.parentProjectId === 'qurbani-baraye-mustehqeen' || initiative?.parentProjectId === 'qurbani'
 
   // Qurbani projects always use this donation type only (no GENERAL / SADKA / ZAKAT selector)
   const donationTypeOptions = isQurbaniMultiCurrencyProject
-    ? [{ value: 'qurbani-barai-mustehqeen', label: 'QURBANI' }]
+    ? [{ value: 'qurbani-baraye-mustehqeen', label: 'QURBANI' }]
     : (initiative.donationTypeOptions || [
         { value: 'GENERAL', label: 'GENERAL' },
         { value: 'SADKA', label: 'SADKA' },
         { value: 'ZAKAT', label: 'ZAKAT' },
-        { value: 'qurbani-barai-mustehqeen', label: 'QURBANI' },
+        { value: 'qurbani-baraye-mustehqeen', label: 'QURBANI' },
       ])
   const defaultDonationType = isQurbaniMultiCurrencyProject
-    ? 'qurbani-barai-mustehqeen'
+    ? 'qurbani-baraye-mustehqeen'
     : (donationTypeOptions[0]?.value || 'GENERAL')
   const [donationType, setDonationType] = useState(defaultDonationType)
   const defaultPricingOptionId = initiative.defaultPricingOptionId || pricingOptions?.[0]?.id || null
@@ -57,7 +57,7 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
       setQuantity(existingDonation.quantity || 0)
       setDonationType(
         isQurbaniMultiCurrencyProject
-          ? 'qurbani-barai-mustehqeen'
+          ? 'qurbani-baraye-mustehqeen'
           : (existingDonation.donationType || defaultDonationType)
       )
       setCustomAmount(existingDonation.customAmount ? existingDonation.customAmount.toString() : '')

@@ -18,7 +18,7 @@ const DonationSidebar = ({
   // Use total amount from context (already calculated from all sources)
   const totalAmount = amount || 0
   const shouldConvert =
-    (convertOnlyForProjectId === 'qurbani-barai-mustehqeen' || convertOnlyForProjectId === 'qurbani') &&
+    (convertOnlyForProjectId === 'qurbani-baraye-mustehqeen' || convertOnlyForProjectId === 'qurbani') &&
     displayCurrency !== 'PKR'
   const rate = (exchangeRatesPKR && exchangeRatesPKR[displayCurrency]) || 1
   const displayTotalAmount = shouldConvert ? Math.round(Number(totalAmount || 0) / rate) : Math.round(Number(totalAmount || 0))

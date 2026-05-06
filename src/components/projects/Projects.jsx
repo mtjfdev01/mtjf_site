@@ -124,7 +124,7 @@ const PROJECTS_DATA = [
     donatePath: '/donate/seeds-of-change'
   },
    {
-    id: 'qurbani-barai-mustehqeen',
+    id: 'qurbani-baraye-mustehqeen',
     category: 'Qurbani Baraye Mustehqeen',
     categoryColor: '#DDA0DD',
     title: 'Delivering Qurbani Meat to Families in Need',
@@ -135,8 +135,8 @@ const PROJECTS_DATA = [
     goal: 1000000,
     Achieved: 222500,
     donateButtonText: 'Book Your Qurbani',
-    learnMorePath: '/projects/qurbani-barai-mustehqeen',
-    donatePath: '/donate/qurbani-barai-mustehqeen'
+    learnMorePath: '/projects/qurbani-baraye-mustehqeen',
+    donatePath: '/donate/qurbani-baraye-mustehqeen'
   },
    {
     id: 'aas-lab-diagnostics',
