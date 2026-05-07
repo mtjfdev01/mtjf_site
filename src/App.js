@@ -34,6 +34,7 @@ const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration")
 const Checkout = lazy(() => import("./pages/Checkout"));
 const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
+const DiagnosticCenter = lazy(() => import("./pages/DiagnosticCenter"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
 const DownloadsPageFirst = lazy(() => import("./pages/DownloadsFirst"));
@@ -128,6 +129,7 @@ function App() {
               <Route path="/donation" element={<Donate />} />
               <Route path="/donate/cards" element={<DonationCardsPage />} />
               <Route path="/ways-to-donate" element={<WaysToDonate />} />
+              <Route path="/diagnostic-center" element={<DiagnosticCenter />} />
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />

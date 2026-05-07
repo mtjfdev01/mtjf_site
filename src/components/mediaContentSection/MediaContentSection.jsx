@@ -338,13 +338,23 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
               {subProject.video ? (
                 <div className="media-content-image">
                   <div className="media-content-video-wrapper">
-                    <iframe
-                      src={subProject.video.replace('watch?v=', 'embed/').split('&')[0]}
-                      title={subProject.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    {subProject.video.includes('youtube.com') || subProject.video.includes('youtu.be') ? (
+                      <iframe
+                        src={`${subProject.video.replace('watch?v=', 'embed/').split('&')[0]}`}
+                        title={subProject.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        src={subProject.video}
+                        preload="metadata"
+                        playsInline
+                        controls
+                        className="media-content-video-element"
+                      />
+                    )}
                   </div>
                 </div>
               ) : image ? (

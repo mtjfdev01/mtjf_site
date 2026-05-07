@@ -240,3 +240,90 @@
   border-left: 1px solid var(--color-300);
 }
 
+/* =========================================
+   Qurbani Tabs
+========================================= */
+
+.vertical-donation-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-24);
+}
+
+.vertical-donation-tab {
+  flex: 1;
+  height: 48px;
+  border: 1px solid var(--color-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-900);
+  font-size: var(--fs-15);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.vertical-donation-tab:hover {
+  border-color: #4caf50;
+  background-color: #f1f8f1;
+}
+
+.vertical-donation-tab.active {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================
+   Other Ways To Donate
+========================================= */
+
+.other-ways-donation-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-top: var(--space-8);
+}
+
+.other-donation-btn {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid var(--color-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-900);
+  font-size: var(--fs-16);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: var(--space-16);
+}
+
+.other-donation-btn:hover {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================
+   Mobile Responsive
+========================================= */
+
+@media (max-width: 768px) {
+  .vertical-donation-tabs {
+    flex-direction: column;
+  }
+
+  .vertical-donation-tab {
+    width: 100%;
+  }
+
+  .other-donation-btn {
+    font-size: var(--fs-14);
+    min-height: 50px;
+  }
+}

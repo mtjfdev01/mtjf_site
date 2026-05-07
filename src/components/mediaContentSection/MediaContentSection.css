@@ -390,7 +390,8 @@
   overflow: hidden;
 }
 
-.media-content-video-wrapper iframe {
+.media-content-video-wrapper iframe,
+.media-content-video-element {
   position: absolute;
   top: 0;
   left: 0;
@@ -398,5 +399,6 @@
   height: 100%;
   border: none;
   border-radius: var(--radius-lg);
+  object-fit: cover;
 }
 

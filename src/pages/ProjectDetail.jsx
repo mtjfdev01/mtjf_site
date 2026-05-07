@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
@@ -23,6 +23,8 @@ const ProjectDetail = ({ forcedProjectId }) => {
   const resolvedProjectId = forcedProjectId || id
   const project = PROJECTS_DETAIL_DATA[resolvedProjectId]
   const totalDonationAmount = amount || 0
+
+  const [isPlayingContentVideo, setIsPlayingContentVideo] = useState(false)
 
   // First component after header - loads immediately
   const [contentRef, showContent] = useIntersectionObserver({ 
@@ -132,12 +134,35 @@ const ProjectDetail = ({ forcedProjectId }) => {
                   {/* Single video embed inside content */}
                   {project.content.testimonials?.videos?.[0] && (
                     <div className="project-content-video">
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.content.testimonials.videos[0].match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1]}`}
-                        title="Video"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
+                      {isPlayingContentVideo ? (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${project.content.testimonials.videos[0].match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1]}?autoplay=1`}
+                          title="Video"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <div 
+                          className="project-content-video-thumbnail"
+                          onClick={() => setIsPlayingContentVideo(true)}
+                        >
+                          <img 
+                            src={`https://img.youtube.com/vi/${project.content.testimonials.videos[0].match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1]}/maxresdefault.jpg`}
+                            alt="Video Thumbnail"
+                            onError={(e) => {
+                              e.target.src = `https://img.youtube.com/vi/${project.content.testimonials.videos[0].match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1]}/hqdefault.jpg`
+                            }}
+                          />
+                          <div className="play-button-overlay">
+                            <div className="play-button">
+                              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="30" fill="white" fillOpacity="0.9" />
+                                <path d="M24 20L24 40L38 30L24 20Z" fill="var(--color-primary)" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

@@ -3819,7 +3819,8 @@ Our teams ensure that
         services: [],
         afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
         donateButtonText: '',
-        image: Qurbani,
+        video: 'https://www.youtube.com/watch?v=h_crjWKb35E',
+        
       },
       {
         id: 'who-receives-your-qurbani',
