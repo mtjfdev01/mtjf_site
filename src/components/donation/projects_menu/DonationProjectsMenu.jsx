@@ -232,12 +232,12 @@ const DonationProjectsMenu = () => {
   const QURBANI_EXCHANGE_RATES_PKR = useMemo(
     () => ({
       PKR: 1,
-      CAD: 200,
-      USD: 279,
+      CAD: 204,
+      USD: 280,
       SAR: 74,
       AED: 76,
-      GBP: 375,
-      EUR: 326
+      GBP: 379,
+      EUR: 328
     }),
     []
   )
