@@ -345,7 +345,7 @@ const VerticalDonationForm = ({
       {/* =========================================
           Qurbani Tabs Only
       ========================================= */}
-      {isQurbaniPage && (
+      {/* {isQurbaniPage && (
         <div className="vertical-donation-tabs">
           <button
             type="button"
@@ -373,11 +373,11 @@ const VerticalDonationForm = ({
             Other Ways To Donate
           </button>
         </div>
-      )}
+      )} */}
       <div className="vertical-donation-card">
         <h3 className="vertical-donation-title h2">{title}</h3>
-        {(!isQurbaniPage ||
-          activeTab === 'online-donation') && (
+        {/* {(!isQurbaniPage ||
+          activeTab === 'online-donation') && ( */}
             <form onSubmit={handleSubmit} className="vertical-donation-body">
               {errorMessage && (
                 <div className="vertical-donation-error">
@@ -599,13 +599,13 @@ const VerticalDonationForm = ({
                 </span>
               </button>
             </form>
-          )}
+          {/* )} */}
 
 
         {/* =========================================
           OTHER WAYS TO DONATE
       ========================================= */}
-        {isQurbaniPage &&
+        {/* {isQurbaniPage &&
           activeTab === 'other-ways' && (
             <div className="other-ways-donation-card">
               <button className="other-donation-btn">
@@ -630,7 +630,7 @@ const VerticalDonationForm = ({
 
                 Through Bank Transfer</p>
             </div>
-          )}
+          )} */}
       </div>
     </div>
   )
