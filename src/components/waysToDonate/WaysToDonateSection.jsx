@@ -215,7 +215,7 @@ const WaysToDonateSection = () => {
     },
     {
       id: 'faysal-sadaqah',
-      bankName: 'Faysal Bank Limited (Sadaqah)',
+      bankName: 'Faysal Bank Limited',
       accountNumber: '3369301000003939',
       iban: 'PK76FAYS3369301000003939',
       category: 'sadaqah',
