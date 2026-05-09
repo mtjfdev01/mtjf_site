@@ -17,6 +17,7 @@ import hblLogo from '../../assets/img/ways_to_donate/hbl.png'
 import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
 import easypaisaImage from '../../assets/img/ways_to_donate/easypesa.webp'
 import alflah from '../../assets/img/ways_to_donate/alflah.jpg'
+import aasLogo from '../../assets/img/diagnosticCenter/aasLogo.webp'
 
 const DiagnosticCenterSection = () => {
   const navigate = useNavigate()
@@ -209,7 +210,7 @@ Arqam School, Makhdoom Pur `,
       ptclNumber: '',
       phcReg: 'Reg#: R-92391',
     }
- ]
+  ]
 
   return (
     <section className="ways-to-donate-section">
@@ -232,15 +233,16 @@ Arqam School, Makhdoom Pur `,
               {diagnosticCenterData.map((center) => (
                 <div key={center.id} className="bank-details-box">
                   <div className="bank-header">
-                    {/* <div className="bank-logo">
-                      {center.logo ? (
-                        <img src={center.logo} alt={center.centerName} className="bank-logo-img" />
-                      ) : (
-                        <div className="bank-logo-placeholder">
-                          {center.centerName.substring(0, 3).toUpperCase()}
-                        </div>
-                      )}
-                    </div> */}
+                    {/* Show logo only for the Head Office card */}
+                    {center.id === 'mian-channu' && (
+                      <div className="bank-logo">
+                        <img
+                          src={aasLogo}
+                          alt="AAS Lab & Diagnostic Centre"
+                          className="bank-logo-img"
+                        />
+                      </div>
+                    )}
                     <h3 className="bank-name">{center.centerName}</h3>
                   </div>
                   <div className="bank-info">

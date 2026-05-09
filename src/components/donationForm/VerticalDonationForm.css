@@ -2,6 +2,7 @@
   width: 100%;
   scroll-margin-top: 120px;
   margin-top: var(--space-32);
+ align-self: start
 }
 
 .vertical-donation-card {
@@ -283,25 +284,73 @@
 .other-ways-donation-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
-  padding-top: var(--space-8);
+  gap: var(--space-12);
+  padding-top: 0;
+}
+
+.other-ways-section-title {
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--color-900);
+  margin: 0;
+}
+
+.other-ways-section-desc {
+  font-size: var(--fs-14);
+  color: var(--color-700);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.other-ways-inline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
 }
 
 .other-donation-btn {
   width: 100%;
-  min-height: 54px;
+  height: 44px;
   border: 1px solid var(--color-300);
   border-radius: var(--radius-md);
   background-color: var(--color-white);
   color: var(--color-900);
-  font-size: var(--fs-16);
+  font-size: var(--fs-5);
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  padding: var(--space-16);
+  padding: var(--space-12) var(--space-16);
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .other-donation-btn:hover {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.other-donation-btn-full {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--color-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-900);
+  font-size: var(--fs-14);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: var(--space-12) var(--space-16);
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.other-donation-btn-full:hover {
   background-color: #4caf50;
   border-color: #4caf50;
   color: var(--color-white);
@@ -315,15 +364,31 @@
 
 @media (max-width: 768px) {
   .vertical-donation-tabs {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 0;
+    margin-bottom: var(--space-24);
+    margin-left: var(--space-16);
+    margin-right: var(--space-16);
   }
 
   .vertical-donation-tab {
-    width: 100%;
+    flex: 1;
+    border-radius: 0 !important;
+    padding: 10px 0 !important;
+    font-size: 13px !important;
+    font-weight: 600;
+    text-align: center;
+    height: auto;
   }
 
-  .other-donation-btn {
-    font-size: var(--fs-14);
-    min-height: 50px;
+  .other-ways-inline {
+    /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
+    grid-template-columns: 1fr;
+  }
+
+  .other-donation-btn,
+  .other-donation-btn-full {
+    font-size: var(--fs-13);
+    height: 44px;
   }
 }

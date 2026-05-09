@@ -3941,6 +3941,264 @@ Strong monitoring at every stage of the process
       donateButtonText: ''
     }
   },
+  'test-qurbani-baraye-mustehqeen': {
+    id: 'test-qurbani-baraye-mustehqeen',
+    title: 'When Your Sacrifice Becomes Someone’s Only Meal',
+    headerImage: qurbani_hero_2026,
+    headerImageMob: qurbani_mobile_2026,
+    stats: [],
+    content: {
+      paragraph1: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.Through your Qurbani, MTJ Foundation ensures that these families are not left behind. Your sacrifice becomes nourishment for someone who would otherwise go without.`,
+      paragraph2: ``,
+      paragraph3: ``,
+      testimonials:
+      {
+        id: 'qurbani',
+        title: 'Qurbani Appeal',
+        videos: [
+          'https://www.youtube.com/watch?v=rPnB-zkP_hA'
+        ]
+      },
+    },
+    // mainImage: Qurbani,
+    donateCategory: 'Qurbani 2026',
+    donateButtonText: '',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'trust-that-reaches',
+        title: 'A Trust That Reaches the Most Vulnerable',
+        subtitle: '',
+        description: `Rising food insecurity has left millions unable to afford basic nutrition. Meat, which should be part of dignity and celebration on Eid, has become a rare luxury.For many families we serve, Qurbani is the only time in the year they receive meat. Your contribution becomes their source of strength, dignity, and relief.
+This is not just distribution. It is presence. It is being remembered at a time when they need it most.
+`,
+        donateButtonText: '',
+        image: reaches,
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
+      },
+      {
+        id: 'your-impact-last-year',
+        title: 'Your Impact Last Year',
+        subtitle: '',
+        description: `Because of your trust and generosity, Qurbani 2025 became a source of relief for thousands of families who otherwise would not have been able to celebrate Eid with dignity.
+Through your support, MTJ Foundation was able to distribute 4 to 5 kilograms of Qurbani meat to 3,225 families.
+Each of these families received not just food, but a moment of care. A reminder that they were remembered during one of the most important days in the Islamic calendar.
+This impact was only possible because of your contribution. In 2026, we aim to reach even more families who are waiting for the same support.
+`,
+        impact: '4 to 5 kilograms of Qurbani meat to 3,225 families.',
+        services: [],
+        afterServicesText: '',
+        donateButtonText: '',
+        image: impact,
+        carosellImages: [
+          impact,
+          art,
+          Qurbani,
+          delivered,
+          receives,
+          date,
+          matters,
+          commitment,
+          reaches,
+          impact,
+          art,
+        ],
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
+      },
+      {
+        id: 'meaning-behind-qurbani',
+        title: 'The Meaning Behind Qurbani',
+        subtitle: '',
+        description: `Qurbani is an act of submission and love for Allah (SWT). It is rooted in the sacrifice of Prophet Ibrahim (AS), who was willing to give up what he loved most in obedience to his Lord.Allah (SWT) says in the Qur’an
+“So pray to your Lord and sacrifice.”
+Surah Al Kausar 108 verse 2
+This verse reminds us that sacrifice is not only physical. It is spiritual. It is about giving from what we love for the sake of Allah and for the benefit of His creation.
+`,
+        impact: '',
+        services: [
+        ],
+        afterServicesText: "",
+        donateButtonText: '',
+        image: art,
+        bottom_banner_img: QurbaniBottomBanner,
+        bottom_banner_mobile_img: QurbaniBottomBannerMobile
+      },
+      {
+        id: 'a-reminder-from-the-prophet',
+        title: 'A Reminder from the Prophet ﷺ',
+        subtitle: '',
+        quranAyat: {
+          text: 'There are no days on which righteous deeds are more beloved to Allah than these ten days.',
+          reference: 'Sahih Bukhari'
+        },
+        description: `The Prophet Muhammad (peace be upon him) said
+`,
+        impact: '',
+        services: [
+        ],
+        afterHadithText: "These blessed days of Dhul Hijjah are an opportunity to earn reward through generosity. Your Qurbani during these days becomes an act of worship that carries immense spiritual value.",
+        donateButtonText: '',
+        image: Qurbani,
+      },
+      {
+        id: 'how-your-qurbani-is-delivered',
+        title: 'How Your Qurbani Is Delivered',
+        subtitle: '',
+        description: `Every Qurbani entrusted to MTJ Foundation is handled with care, dignity, and accountability.
+Our teams ensure that
+`,
+        impact: '',
+        services: [
+          `Animals meet strict Islamic and quality standards`,
+          `The sacrifice is performed according to Shariah guidelines`,
+          `Meat is hygienically prepared and distributed quickly`,
+          `Families are selected based on verified need assessments`
+        ],
+        afterServicesText: `We focus on reaching families who are often excluded from regular aid cycles, ensuring your sacrifice reaches those who truly need it.`,
+        donateButtonText: '',
+        image: delivered,
+      },
+      {
+        id: 'qurbani-options-for-2026',
+        title: 'Qurbani Options for 2026',
+        subtitle: '',
+        quranAyat: {
+          text: `Cow at PKR 171,500.\nCow Share at PKR 24,500.\nGoat at PKR 58,000`,
+          reference: ''
+        },
+        description: `You can choose to give in the following way`,
+        impact: '',
+        services: [],
+        afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
+        donateButtonText: '',
+        video: 'https://www.youtube.com/watch?v=h_crjWKb35E',
+        
+      },
+      {
+        id: 'who-receives-your-qurbani',
+        title: 'Who Receives Your Qurbani',
+        subtitle: 'We prioritize families who are living under extreme hardship and are unable to meet daily food requirements.',
+        description: ``,
+        impact: 'These include:',
+        services: [
+          `Families living below minimum income levels`,
+          `Women-headed households without stable income`,
+          `Elderly individuals without support`,
+          `Families caring for disabled members`,
+          `Households with young children under five`,
+          `Pregnant and breastfeeding mothers`,
+          `Communities with limited or no access to food markets`
+        ],
+        afterServicesText: `Each family receives one Qurbani portion so that support is distributed fairly and widely.`,
+        donateButtonText: '',
+        image: receives,
+      },
+      {
+        id: 'when-qurbani-will-be-performed',
+        title: 'When Qurbani Will Be Performed',
+        subtitle: '',
+        description: `Qurbani is carried out after Eid prayer on the tenth of Dhul Hijjah and continues until the thirteenth.
+All arrangements are made in advance so that the sacrifice is completed within the prescribed Islamic time period without delay or uncertainty.
+`,
+        impact: '',
+        services: [],
+        afterServicesText: ``,
+        donateButtonText: '',
+        image: Qurbani,
+      },
+      {
+        id: '',
+        title: '',
+        subtitle: 'Expected Dates for 2026',
+        description: ``,
+        impact: ``,
+        services: [`Dhul Hijjah is expected to begin on **18 May 2026**`,
+          `Day of Arafah is expected on **26 May 2026**`,
+          `Eid ul Adha is expected between **27 May** and **29 May 2026**`],
+        afterServicesText: `These dates may change based on moon sighting.`,
+        donateButtonText: '',
+        image: date,
+      },
+      {
+        id: 'why-your-qurbani-matters',
+        title: 'Why Your Qurbani Matters More Than Ever',
+        subtitle: '',
+        description: `Global hunger levels continue to rise.According to international humanitarian reports,hundreds of millions of people face severe food insecurity every day.For many of these families,your Qurbani is not symbolic. It is the difference between eating meat once a year or not at all.`,
+        impact: ``,
+        services: [],
+        afterServicesText: `Your act of worship becomes their moment of relief.`,
+        donateButtonText: '',
+        image: matters,
+      },
+      {
+        id: 'our-commitment-to-quality-and-integrity',
+        title: 'Our Commitment to Quality and Integrity',
+        subtitle: 'We believe that what is given in the name of Allah (SWT) must be handled with excellence.',
+        description: `That is why MTJ Foundation ensures
+Careful selection of healthy animals
+Ethical sourcing that supports local communities
+Respectful handling and distribution
+Strong monitoring at every stage of the process
+`,
+        impact: ``,
+        services: [],
+        afterServicesText: `We treat every Qurbani as an amanah entrusted to us.`,
+        donateButtonText: '',
+        image: commitment,
+      },
+    ],
+    faqs: {
+      id: 'frequently-asked-questions',
+      title: 'Frequently Asked Questions',
+      subtitle: '',
+      description: '',
+      faqs: [
+        {
+          question: 'What is Qurbani and why is it performed?',
+          answer: 'Qurbani is the sacrifice of an animal during Eid ul Adha in remembrance of Prophet Ibrahim (AS) and his willingness to obey Allah (SWT). The meat is distributed to people in need as an act of charity and worship.'
+        },
+        {
+          question: 'Can I Give More Than One Qurbani?',
+          answer: 'Yes. You are allowed to give more than one Qurbani if you are able. The Prophet Muhammad (PBUH) himself offered multiple sacrifices on behalf of himself and the Ummah.Each additional Qurbani extends your impact and brings relief to more families.'
+        },
+        {
+          question: 'Is Qurbani obligatory?',
+          answer: 'Most scholars consider Qurbani highly recommended. According to the Hanafi school of thought, it is obligatory for those who possess wealth above their essential needs, similar to Zakat eligibility.'
+        },
+        {
+          question: 'How do you decide who receives Qurbani meat?',
+          answer: 'Families are selected through a structured needs assessment. Priority is given to those facing the most severe hardship including low income households, women headed families, elderly individuals, children, and those with limited access to food.'
+        },
+        {
+          question: 'Will my Qurbani be performed on time?',
+          answer: 'Yes. All Qurbanis are scheduled and executed within the Islamic timeframe from the tenth to the thirteenth of Dhul Hijjah after Eid prayer.'
+        },
+        {
+          question: 'Can I give Qurbani on behalf of someone else?',
+          answer: 'Yes. You may give Qurbani on behalf of yourself or another person. Intention is what matters in Islamic practice.'
+        },
+        {
+          question: 'Why is there a cost difference between animals?',
+          answer: 'Costs vary based on animal type, quality standards, transportation, and local market conditions in different regions where Qurbani is performed.'
+        },
+        {
+          question: 'How can I be sure my Qurbani is actually performed?',
+          answer: 'MTJ Foundation follows strict monitoring and execution systems with local teams on ground. Each Qurbani is carried out according to Islamic guidelines and verified through internal reporting mechanisms.'
+        },
+        {
+          question: 'Can Qurbani meat be sent to specific villages or individuals?',
+          answer: 'Distribution is done based on need assessments in targeted vulnerable communities to ensure fairness and maximum reach rather than individual selection.'
+        }
+      ],
+      donateButtonText: ''
+    }
+  },
 }
 
 

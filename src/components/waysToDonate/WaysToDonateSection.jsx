@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaCopy, FaCheck } from 'react-icons/fa'
 import { BiSolidDonateHeart } from 'react-icons/bi'
 import { FcDonate } from "react-icons/fc";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './WaysToDonateSection.css'
 import meezanBankLogo from '../../assets/img/ways_to_donate/meezan-bank.webp'
 import mcbLogo from '../../assets/img/ways_to_donate/mcb.jpeg'
@@ -20,12 +20,24 @@ import alflah from '../../assets/img/ways_to_donate/alflah.jpg'
 
 const WaysToDonateSection = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const [activeMainTab, setActiveMainTab] = useState('online-banking')
   const [activeSubTab, setActiveSubTab] = useState('debit-credit')
   const [activeCategory, setActiveCategory] = useState('general-donation')
   const [copiedItem, setCopiedItem] = useState(null)
   const [activeSubTabLabel, setActiveSubTabLabel] = useState('Debit/Credit Card')
-  
+  const [selectedBankId, setSelectedBankId] = useState(null)
+
+  // When navigated here with a specific bankId in location state,
+  // switch to bank-transfer tab and filter to that card
+  useEffect(() => {
+    if (location.state?.bankId) {
+      setActiveMainTab('bank-transfer')
+      setSelectedBankId(location.state.bankId)
+      // Clear location state so back-navigation doesn't re-trigger
+      window.history.replaceState({}, '')
+    }
+  }, [location.state])
 
   const copyToClipboard = async (text, itemId) => {
     try {
@@ -285,13 +297,13 @@ const WaysToDonateSection = () => {
 
   const handleMainTabChange = (tabId) => {
     setActiveMainTab(tabId)
-    // Reset sub-tabs based on main tab
+    // Clear any specific bank filter when manually switching tabs
+    setSelectedBankId(null)
     if (tabId === 'online-banking') {
       setActiveSubTab('debit-credit')
     } else if (tabId === 'international-accounts') {
       setActiveSubTab('usd')
     } else if (tabId === 'bank-transfer') {
-      // Reset to general-donation to show all banks by default
       setActiveCategory('general-donation')
     }
   }
@@ -309,7 +321,6 @@ const WaysToDonateSection = () => {
                   onClick={() => {
                     setActiveSubTab(tab.id)
                     setActiveSubTabLabel(tab.label)
-
                   }}
                 >
                   {tab.label}
@@ -318,17 +329,18 @@ const WaysToDonateSection = () => {
             </div>
             <div className="content-box online-banking-content-box">
               {activeSubTab === 'debit-credit' && (
-                <>  
-              <div className="content-box-icon">
-                <FcDonate size={48} />
-              </div>
-                <div className="content-box-text">
-                  <p>
-                    You can make donations to MTJ Foundation using your {activeSubTabLabel}  from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
-                    <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
-                  </p>
-                </div>
-                </>)}
+                <>
+                  <div className="content-box-icon">
+                    <FcDonate size={48} />
+                  </div>
+                  <div className="content-box-text">
+                    <p>
+                      You can make donations to MTJ Foundation using your {activeSubTabLabel} from any corner of the globe, at any time using our website. It's a convenient and secure way to support from wherever you are.{' '}
+                      <a className="donate-link" onClick={() => navigate('/donate')}>Donate Now mtjfoundation.org/donate</a>
+                    </p>
+                  </div>
+                </>
+              )}
               {activeSubTab === 'easypaisa' && (
                 <div className="online-banking-image-wrap">
                   <img
@@ -343,9 +355,11 @@ const WaysToDonateSection = () => {
         )
 
       case 'bank-transfer':
-        // Show all banks for all categories (filtering disabled for now)
-        // TODO: Implement category-based filtering later
-        const filteredBanks = banksData
+        // If a specific bank was requested, show only that card
+        // Otherwise show all banks as before
+        const filteredBanks = selectedBankId
+          ? banksData.filter((bank) => bank.id === selectedBankId)
+          : banksData
 
         return (
           <div className="ways-to-donate-content">
@@ -354,7 +368,11 @@ const WaysToDonateSection = () => {
                 <button
                   key={category.id}
                   className={`category-btn ${activeCategory === category.id ? 'active' : ''}`}
-                  onClick={() => setActiveCategory(category.id)}
+                  onClick={() => {
+                    setActiveCategory(category.id)
+                    // Clear specific filter when user manually picks a category
+                    setSelectedBankId(null)
+                  }}
                 >
                   {category.label}
                 </button>
@@ -378,15 +396,15 @@ const WaysToDonateSection = () => {
                     </div>
                     <div className="bank-info">
                       <p><strong>Account Title:</strong> MTJ Foundation Pakistan</p>
-                      <CopyableField 
-                        label="Account no. (PKR):" 
-                        value={bank.accountNumber} 
-                        itemId={`${bank.id}-account`} 
+                      <CopyableField
+                        label="Account no. (PKR):"
+                        value={bank.accountNumber}
+                        itemId={`${bank.id}-account`}
                       />
-                      <CopyableField 
-                        label="IBAN:" 
-                        value={bank.iban} 
-                        itemId={`${bank.id}-iban`} 
+                      <CopyableField
+                        label="IBAN:"
+                        value={bank.iban}
+                        itemId={`${bank.id}-iban`}
                       />
                       {/* {bank.branch && <p><strong>Branch:</strong> {bank.branch}</p>} */}
                       {/* {bank.swiftCode && <p><strong>SWIFT code:</strong> {bank.swiftCode}</p>} */}
@@ -508,10 +526,10 @@ const WaysToDonateSection = () => {
     <section className="ways-to-donate-section">
       <div className="container text-center">
         {/* <h1 className="ways-to-donate-title"> */}
-        <h1 className="heading-secondary"> 
+        <h1 className="heading-secondary">
           Ways To Donate
         </h1>
-        
+
         <div className="whatsapp-notice">
           <p>
             To get donation receipt please share your transaction slip to our following WhatsApp number:{' '}
@@ -540,4 +558,3 @@ const WaysToDonateSection = () => {
 }
 
 export default WaysToDonateSection
-
