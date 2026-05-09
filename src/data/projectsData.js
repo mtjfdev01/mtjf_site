@@ -3698,7 +3698,7 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
         id: 'qurbani',
         title: 'Qurbani Appeal',
         videos: [
-          'https://www.youtube.com/watch?v=rPnB-zkP_hA'
+          'https://www.youtube.com/watch?v=h_crjWKb35E'
         ]
       },
     },
@@ -3819,7 +3819,7 @@ Our teams ensure that
         services: [],
         afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
         donateButtonText: '',
-        video: 'https://www.youtube.com/watch?v=h_crjWKb35E',
+        video: 'https://www.youtube.com/watch?v=rPnB-zkP_hA',
         
       },
       {
@@ -3956,7 +3956,7 @@ Strong monitoring at every stage of the process
         id: 'qurbani',
         title: 'Qurbani Appeal',
         videos: [
-          'https://www.youtube.com/watch?v=rPnB-zkP_hA'
+          'https://www.youtube.com/watch?v=h_crjWKb35E'
         ]
       },
     },
@@ -4077,7 +4077,7 @@ Our teams ensure that
         services: [],
         afterHadithText: `Each option includes complete execution from procurement to distribution, ensuring your donation is fully implemented on your behalf.These blessed days of Dhul Hijjah are an opportunity`,
         donateButtonText: '',
-        video: 'https://www.youtube.com/watch?v=h_crjWKb35E',
+        video: 'https://www.youtube.com/watch?v=rPnB-zkP_hA',
         
       },
       {
