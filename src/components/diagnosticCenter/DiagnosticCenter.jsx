@@ -17,6 +17,7 @@ import hblLogo from '../../assets/img/ways_to_donate/hbl.png'
 import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
 import easypaisaImage from '../../assets/img/ways_to_donate/easypesa.webp'
 import alflah from '../../assets/img/ways_to_donate/alflah.jpg'
+import aasLogo from '../../assets/img/diagnosticCenter/aasLogo.webp'
 
 const DiagnosticCenterSection = () => {
   const navigate = useNavigate()
@@ -64,14 +65,14 @@ const DiagnosticCenterSection = () => {
   const diagnosticCenterData = [
     {
       id: 'mian-channu',
-      centerName: 'Mian Channu (Head Office)',
+      centerName: 'Mian Channu',
+      centerBadge: '(Head Office)',
       address: `Rasheeda Ibrahim Centre, Near 
 PSO Petrol Pump, GT Road Mian 
 Channu `,
       openingTime: '07:AM',
       closingTime: '10:00PM',
-      mobileNumber: `0311-1605227 ,
-                    0304-6660534`,
+      mobileNumbers: ['0311-1605227', '0304-6660534'],
       ptclNumber: '065-2664227 ',
       phcReg: 'Reg#: R-76541 ',
     },
@@ -83,7 +84,7 @@ Al-Rehman Business Tower,
 University Road, Sargodha `,
       openingTime: '7:30 AM',
       closingTime: '9:30 PM',
-      mobileNumber: `0311-1605227, 0303-6661302 `,
+      mobileNumbers: ['0311-1605227', '0303-6661302'],
       ptclNumber: '',
       phcReg: 'Reg#: R-95079 ',
     },
@@ -94,7 +95,7 @@ University Road, Sargodha `,
 Makhdoom Pur Road, Tulamba `,
       openingTime: '08:00AM',
       closingTime: '06:00PM',
-      mobileNumber: `0311-1605227, 0304-6660643 `,
+      mobileNumbers: ['0311-1605227', '0304-6660643'],
       ptclNumber: '',
       phcReg: 'Reg#: R-85547',
     },
@@ -105,7 +106,7 @@ Makhdoom Pur Road, Tulamba `,
 Board, Fareed Town, Sahiwal `,
       openingTime: '07:00AM',
       closingTime: '10:00PM',
-      mobileNumber: `0311-1605227, 0304-6660695 `,
+      mobileNumbers: ['0311-1605227', '0304-6660695'],
       ptclNumber: '040-4557227 ',
       phcReg: 'Reg#: R-87207',
     },
@@ -116,7 +117,7 @@ Board, Fareed Town, Sahiwal `,
 Road, Abdul Hakim `,
       openingTime: '07:00AM',
       closingTime: '08:00PM',
-      mobileNumber: `0311-1605227, 0304-6660583 `,
+      mobileNumbers: ['0311-1605227', '0304-6660583'],
       ptclNumber: '',
       phcReg: 'Reg#: R-85595',
     },
@@ -127,7 +128,7 @@ Road, Abdul Hakim `,
 Khanewal`,
       openingTime: '07:00AM',
       closingTime: '9:00 PM',
-      mobileNumber: `0311-1605227, 0303-6661315 `,
+      mobileNumbers: ['0311-1605227', '0303-6661315'],
       ptclNumber: '',
       phcReg: 'Reg#: R-92217',
     },
@@ -138,7 +139,7 @@ Khanewal`,
 Dhidowali, Daska, Sialkot`,
       openingTime: '9:00 AM ',
       closingTime: '5:00 PM ',
-      mobileNumber: `0311-1605227, 0303-6661132 `,
+      mobileNumbers: ['0311-1605227', '0303-6661132'],
       ptclNumber: '',
       phcReg: '',
     },
@@ -150,7 +151,7 @@ Sabzi Mandi Abdul Hakim Road,
 Kacha Khu `,
       openingTime: '7:30 AM',
       closingTime: '5:30 PM',
-      mobileNumber: `0311-1605227, 0304-6668529 `,
+      mobileNumbers: ['0311-1605227', '0304-6668529'],
       ptclNumber: '',
       phcReg: 'Reg#: R-90053',
     },
@@ -161,7 +162,7 @@ Kacha Khu `,
 Chowk, Block# 15, Chichawatni `,
       openingTime: '07:00AM ',
       closingTime: '09:30PM',
-      mobileNumber: `0311-1605227, 0304-6660237 `,
+      mobileNumbers: ['0311-1605227', '0304-6660237'],
       ptclNumber: '040-5480227 ',
       phcReg: 'Reg#: R-83098 ',
     },
@@ -172,7 +173,7 @@ Chowk, Block# 15, Chichawatni `,
 Shehnaz Road, Chichawatni `,
       openingTime: '07:00AM',
       closingTime: '09:30PM',
-      mobileNumber: `0311-1605227, 0304-6665479`,
+      mobileNumbers: ['0311-1605227', '0304-6665479'],
       ptclNumber: '040-5481227 ',
       phcReg: 'Reg#: R-90209',
     },
@@ -184,7 +185,7 @@ PSO Petrol Pump, Tulamba
 Road Mian Channu `,
       openingTime: '8:00 AM',
       closingTime: '6:00 PM ',
-      mobileNumber: `0311-1605227, 0303-6661133 `,
+      mobileNumbers: ['0311-1605227', '0303-6661133'],
       ptclNumber: '',
       phcReg: '',
     },
@@ -194,7 +195,7 @@ Road Mian Channu `,
       address: 'Iqbal Nagar Road, 90 Morh',
       openingTime: '7:30 AM',
       closingTime: '5:30 PM ',
-      mobileNumber: `0311-1605227, 0305-6660287`,
+      mobileNumbers: ['0311-1605227', '0305-6660287'],
       ptclNumber: '',
       phcReg: 'Reg#: R-90346',
     },
@@ -205,16 +206,15 @@ Road Mian Channu `,
 Arqam School, Makhdoom Pur `,
       openingTime: '7:30 AM ',
       closingTime: '5:30 PM',
-      mobileNumber: `0311-1605227, 0304-6660634`,
+      mobileNumbers: ['0311-1605227', '0304-6660634'],
       ptclNumber: '',
       phcReg: 'Reg#: R-92391',
     }
- ]
+  ]
 
   return (
     <section className="ways-to-donate-section">
       <div className="container text-center">
-        {/* <h1 className="ways-to-donate-title"> */}
         <h1 className="heading-secondary">
           Ways To Donate
         </h1>
@@ -232,22 +232,36 @@ Arqam School, Makhdoom Pur `,
               {diagnosticCenterData.map((center) => (
                 <div key={center.id} className="bank-details-box">
                   <div className="bank-header">
-                    {/* <div className="bank-logo">
-                      {center.logo ? (
-                        <img src={center.logo} alt={center.centerName} className="bank-logo-img" />
-                      ) : (
-                        <div className="bank-logo-placeholder">
-                          {center.centerName.substring(0, 3).toUpperCase()}
-                        </div>
+                    {center.id === 'mian-channu' && (
+                      <div className="bank-logo">
+                        <img
+                          src={aasLogo}
+                          alt="AAS Lab & Diagnostic Centre"
+                          className="bank-logo-img"
+                        />
+                      </div>
+                    )}
+                    {/* Fix 1: name and badge rendered as separate elements */}
+                    <h3 className="bank-name">
+                      <span className="bank-name-text">{center.centerName}</span>
+                      {center.centerBadge && (
+                        <span className="bank-name-badge">{center.centerBadge}</span>
                       )}
-                    </div> */}
-                    <h3 className="bank-name">{center.centerName}</h3>
+                    </h3>
                   </div>
                   <div className="bank-info">
                     {center.address && <p><strong>Address:</strong> {center.address}</p>}
                     {center.openingTime && <p><strong>Opening Time:</strong> {center.openingTime}</p>}
                     {center.closingTime && <p><strong>Closing Time:</strong> {center.closingTime}</p>}
-                    {center.mobileNumber && <p><strong>Contact Us:</strong> {center.mobileNumber}</p>}
+                    {/* Fix 2: each phone number rendered on its own line via separate spans */}
+                    {center.mobileNumbers && center.mobileNumbers.length > 0 && (
+                      <p>
+                        <strong>Contact Us:</strong>{' '}
+                        {center.mobileNumbers.map((num, index) => (
+                          <span key={index} className="phone-number">{num}</span>
+                        ))}
+                      </p>
+                    )}
                     {center.ptclNumber && <p><strong>PTCL:</strong> {center.ptclNumber}</p>}
                     {center.phcReg && <p><strong>PHC Reg:</strong> {center.phcReg}</p>}
                   </div>

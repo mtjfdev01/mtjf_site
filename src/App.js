@@ -16,6 +16,7 @@ import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import GlobeSection from "./components/globe/GlobeSection";
 import CampaignTracker from './components/analytics/CampaignTracker'
 
+
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -35,6 +36,7 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const DiagnosticCenter = lazy(() => import("./pages/DiagnosticCenter"));
+const RegionalOffices = lazy(() => import("./pages/RegionalOffices"));
 const Thanks = lazy(() => import("./components/thanks"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
 const DownloadsPageFirst = lazy(() => import("./pages/DownloadsFirst"));
@@ -130,6 +132,7 @@ function App() {
               <Route path="/donate/cards" element={<DonationCardsPage />} />
               <Route path="/ways-to-donate" element={<WaysToDonate />} />
               <Route path="/diagnostic-center" element={<DiagnosticCenter />} />
+              <Route path="/regional-offices" element={<RegionalOffices />} />
               <Route path="/thanks" element={<Thanks />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />

@@ -157,7 +157,7 @@
 .project-donate-sidebar {
   position: sticky;
   top: var(--space-24);
-  align-self: center;
+  align-self: start;
 }
 
 /* Full Width Image Section */

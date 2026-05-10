@@ -55,12 +55,14 @@ const VerticalDonationForm = ({
   projects = [],
   defaultProjectId,
   onSubmit = (data) => console.log('Donation submitted:', data),
-  className = ''
+  className = '',
 }) => {
   const navigate = useNavigate()
   const location = useLocation()
   // ✅ Only qurbani page check
   const isQurbaniPage = location.pathname.includes('qurbani')
+  const showQurbaniTabs =
+  location.pathname.includes('test-qurbani-baraye-mustehqeen')
   // ✅ Tabs state only for qurbani
   const [activeTab, setActiveTab] = useState('online-donation')
 
@@ -345,13 +347,14 @@ const VerticalDonationForm = ({
       {/* =========================================
           Qurbani Tabs Only
       ========================================= */}
-      {/* {isQurbaniPage && (
+      {/* {isQurbaniPage && ( */}
+      {showQurbaniTabs && (
         <div className="vertical-donation-tabs">
           <button
             type="button"
             className={`vertical-donation-tab ${activeTab === 'online-donation'
-                ? 'active'
-                : ''
+              ? 'active'
+              : ''
               }`}
             onClick={() =>
               setActiveTab('online-donation')
@@ -363,8 +366,8 @@ const VerticalDonationForm = ({
           <button
             type="button"
             className={`vertical-donation-tab ${activeTab === 'other-ways'
-                ? 'active'
-                : ''
+              ? 'active'
+              : ''
               }`}
             onClick={() =>
               setActiveTab('other-ways')
@@ -373,11 +376,12 @@ const VerticalDonationForm = ({
             Other Ways To Donate
           </button>
         </div>
-      )} */}
+      )}
       <div className="vertical-donation-card">
         <h3 className="vertical-donation-title h2">{title}</h3>
-        {/* {(!isQurbaniPage ||
-          activeTab === 'online-donation') && ( */}
+        {/* {(!isQurbaniPage || */}
+        {(!showQurbaniTabs ||
+          activeTab === 'online-donation') && (
             <form onSubmit={handleSubmit} className="vertical-donation-body">
               {errorMessage && (
                 <div className="vertical-donation-error">
@@ -599,38 +603,59 @@ const VerticalDonationForm = ({
                 </span>
               </button>
             </form>
-          {/* )} */}
+          )}
 
 
         {/* =========================================
           OTHER WAYS TO DONATE
       ========================================= */}
-        {/* {isQurbaniPage &&
+        {/* {isQurbaniPage && */}
+        {showQurbaniTabs &&
           activeTab === 'other-ways' && (
             <div className="other-ways-donation-card">
-              <button className="other-donation-btn">
-                Diagnostic Center
-              </button>
 
-              <button className="other-donation-btn">
-                Regional Offices
-              </button>
+              <p className="other-ways-section-title">Cash, Cheque, or Bank Draft</p>
+              <p className="other-ways-section-desc">
+                Please deposit cash or a bank draft for your Qurbani amount at AAS Lab |
+                Regional Offices | AAS Lab Collection Centers
+              </p>
 
-              <button className="other-donation-btn">
+              {/* Diagnostic Center + Regional Offices — 2-col grid like Frequency/Currency */}
+              <div className="other-ways-inline">
+                <button
+                  type="button"
+                  className="other-donation-btn"
+                  onClick={() => navigate('/diagnostic-center')}
+                >
+                  Diagnostic Center
+                </button>
+                <button
+                  type="button"
+                  className="other-donation-btn"
+                  onClick={() => navigate('/regional-offices')}
+                >
+                  Regional Offices
+                </button>
+              </div>
+
+              {/* Section 2: Direct Bank Transfer */}
+              <p className="other-ways-section-title">Direct Bank Transfer</p>
+              <p className="other-ways-section-desc">
+                You can directly deposit the Qurbani amount to the below mentioned Molana
+                Tariq Jamil Foundation Faysal bank account.
+              </p>
+
+              {/* Through Bank Transfer — full width */}
+              <button
+                type="button"
+                className="other-donation-btn-full"
+                onClick={() => navigate('/ways-to-donate', { state: { bankId: 'faysal-sadaqah' } })}
+              >
                 Through Bank Transfer
               </button>
-              <p>Cash, Cheque, or Bank Draft
-                Please deposit cash or a bank draft for your Qurbani amount at AAS Lab| Regional Offices | AAS Lab Collection Centers
-                AAS Lab
-                Regional Offices
-                AAS Lab Collection Centers
 
-                Direct Bank Transfer
-                You can directly deposit the Qurbani amount to the below mentioned Molana Tariq Jamil Foundation Faysal bank account.
-
-                Through Bank Transfer</p>
             </div>
-          )} */}
+          )}
       </div>
     </div>
   )

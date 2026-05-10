@@ -128,6 +128,26 @@
   color: var(--color-primary);
   margin: 0;
   flex: 1;
+  /* Fix 1 (desktop): name and badge sit inline by default */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* Fix 1: badge styles — inline pill on desktop */
+.bank-name-text {
+  /* plain text, inherits bank-name color */
+}
+
+.bank-name-badge {
+  font-size: var(--fs-13);
+  font-weight: 600;
+  /* color: var(--color-white); */
+  /* background-color: var(--color-primary); */
+  padding: 2px var(--space-8);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
 }
 
 .bank-info {
@@ -139,7 +159,6 @@
 .bank-info p {
   font-size: var(--fs-16);
   line-height: 1.6;
-  /* color: var(--color-700); */
   margin: 0;
   text-align: justify;
 }
@@ -147,6 +166,15 @@
 .bank-info strong {
   color: var(--color-900);
   font-weight: 600;
+}
+
+/* Fix 2 (desktop): phone numbers inline with comma separator */
+.phone-number {
+  display: inline;
+}
+
+.phone-number + .phone-number::before {
+  content: ', ';
 }
 
 /* Copyable Field Styles */
@@ -278,8 +306,12 @@
     font-size: var(--fs-16);
   }
 
+  /* Fix 1 (mobile): bank name stacks vertically, badge drops below */
   .bank-name {
     font-size: var(--fs-16);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
   }
 
   .bank-info {
@@ -289,6 +321,15 @@
   .bank-info p {
     font-size: var(--fs-14);
     text-align: center;
+  }
+
+  /* Fix 2 (mobile): each phone number on its own line */
+  .phone-number {
+    display: block;
+  }
+
+  .phone-number + .phone-number::before {
+    content: '';
   }
 
   .content-wrapper {
