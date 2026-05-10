@@ -65,7 +65,7 @@ const VerticalDonationForm = ({
   const [activeTab, setActiveTab] = useState('online-donation')
 
   const categoryOptionsToShow = useMemo(
-    () => (isQurbaniPage ? ['qurbani-baraye-mustehqeen'] : categoryOptions),
+    () => (isQurbaniPage ? ['Qurbani Baraye Mustehqeen'] : categoryOptions),
     [isQurbaniPage, categoryOptions]
   )
   const { id: urlProjectId } = useParams() // Extract project_id from URL
