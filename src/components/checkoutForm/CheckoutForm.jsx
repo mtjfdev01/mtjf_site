@@ -631,6 +631,7 @@ const CheckoutForm = () => {
       }
       
       console.log('payload', payload)
+      // return;
               // Optional debug: set REACT_APP_DEBUG_CHECKOUT_PAYLOAD="true" to only log payload
       if (process.env.REACT_APP_DEBUG_CHECKOUT_PAYLOAD === 'true') {
         console.log('payload', payload)
