@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
@@ -84,15 +84,19 @@ const VerticalDonationForm = ({
   const [formData, setFormData] = useState(() => {
     const initialProjectId = urlProjectId || defaultProjectId || projects[0]?.id || ''
     const isQurbaniInit = QURBANI_PROJECT_IDS.includes(initialProjectId)
-    const qurbaniProject = isQurbaniInit ? projectCards?.find((p) => p.id === initialProjectId) : null
-    const firstInitiative = qurbaniProject?.initiatives?.[0]
+    const project = projectCards?.find((p) => p.id === initialProjectId)
+    const firstInitiative = project?.initiatives?.[0]
+
+    // Determine the initial category
+    // Priority: 1. prop defaultCategory, 2. project.category from cards, 3. categoryOptions[0], 4. 'General'
+    let initialCategory = defaultCategory || (project && project.category) || categoryOptions[0] || 'General'
 
     return {
       frequency: 'once',
       currency: initialCurrency,
       amount: isQurbaniInit && firstInitiative?.price ? String(firstInitiative.price) : '',
       customAmount: '',
-      category: defaultCategory || categoryOptions[0] || 'General',
+      category: initialCategory,
       // store initiative id (not title) — needed for quantity → amount linkage
       subCategory: isQurbaniInit && firstInitiative?.id ? firstInitiative.id : '',
       projectId: initialProjectId,
@@ -140,6 +144,29 @@ const VerticalDonationForm = ({
       return initiatives.map((i) => ({ id: i.id, title: i.title, price: i.price }))
     }
 
+    // NEW Priority: If projects prop is provided (e.g. from ProjectDetail), use it.
+    // This handles initiatives for projects that might not be in the global projectCards.
+    if (projects && projects.length > 0 && !showProjectSelect) {
+      return projects.map(i => ({
+        id: i.id || i.title,
+        title: i.title,
+        price: i.price
+      }))
+    }
+
+    // Priority 1: If we have a specific urlProjectId (detail page), use its initiatives from projectCards
+    if (urlProjectId && urlProjectId !== 'general') {
+      const project = projectCards?.find((p) => p.id === urlProjectId)
+      if (project) {
+        if (project.initiatives && project.initiatives.length > 0) {
+          return project.initiatives.map(i => ({ id: i.id, title: i.title, price: i.price }))
+        } else {
+          return [{ id: project.id, title: project.title, price: project.price }]
+        }
+      }
+    }
+
+    // Priority 2: Standard category-based logic (for home/general pages)
     // Ensure projectCards exists and category is selected
     if (!projectCards || !formData.category) return []
 
@@ -163,7 +190,7 @@ const VerticalDonationForm = ({
     }, [])
 
     return allInitiatives
-  }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId])
+  }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId, projects, showProjectSelect])
 
   useEffect(() => {
     if (isQurbaniMultiCurrencyProject) return
@@ -205,6 +232,40 @@ const VerticalDonationForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isQurbaniMultiCurrencyProject, filteredInitiatives])
 
+  // Sync category with projectId (from URL or selection) or defaultCategory prop
+  // Only sync when the project ID or defaultCategory prop actually changes
+  const prevTargetIdRef = useRef(null)
+  const prevDefaultCategoryRef = useRef(null)
+
+  useEffect(() => {
+    const targetId = urlProjectId || formData.projectId
+    
+    // Only proceed if targetId or defaultCategory has changed
+    if (targetId === prevTargetIdRef.current && defaultCategory === prevDefaultCategoryRef.current) {
+      return
+    }
+
+    if (!projectCards) return
+    
+    // 1. Prioritize defaultCategory if provided
+    if (defaultCategory) {
+      setFormData(prev => ({ ...prev, category: defaultCategory }))
+    } 
+    // 2. Otherwise, look up project in projectCards
+    else if (targetId) {
+      const project = projectCards.find(p => p.id === targetId)
+      if (project && project.category) {
+        setFormData(prev => ({
+          ...prev,
+          category: project.category
+        }))
+      }
+    }
+
+    prevTargetIdRef.current = targetId
+    prevDefaultCategoryRef.current = defaultCategory
+  }, [urlProjectId, formData.projectId, defaultCategory])
+
   // Update subCategory when category changes
   useEffect(() => {
     if (isQurbaniMultiCurrencyProject) return
@@ -237,7 +298,25 @@ const VerticalDonationForm = ({
 
   const handleIncrement = () => {
     const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
-    const basePrice = selectedInitiative?.price || 0
+    let basePrice = selectedInitiative?.price || 0
+
+    // Fallback 1: Check projectCards directly if basePrice is 0
+    if (basePrice === 0 && formData.projectId) {
+      const project = projectCards.find(p => p.id === formData.projectId)
+      basePrice = project?.price || 0
+    }
+
+    // Fallback 1.5: Check projects prop directly if basePrice is still 0
+    if (basePrice === 0 && projects && projects.length > 0) {
+      const p = projects.find(i => (i.id || i.title) === formData.subCategory)
+      basePrice = p?.price || 0
+    }
+
+    // Fallback 2: Derive from current amount/quantity if still 0
+    if (basePrice === 0 && formData.amount && formData.quantity > 0) {
+      basePrice = Math.round(Number(formData.amount) / formData.quantity)
+    }
+
     const newQuantity = formData.quantity + 1
     const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
 
@@ -253,7 +332,25 @@ const VerticalDonationForm = ({
     if (formData.quantity <= 1) return
 
     const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
-    const basePrice = selectedInitiative?.price || 0
+    let basePrice = selectedInitiative?.price || 0
+
+    // Fallback 1: Check projectCards directly if basePrice is 0
+    if (basePrice === 0 && formData.projectId) {
+      const project = projectCards.find(p => p.id === formData.projectId)
+      basePrice = project?.price || 0
+    }
+
+    // Fallback 1.5: Check projects prop directly if basePrice is still 0
+    if (basePrice === 0 && projects && projects.length > 0) {
+      const p = projects.find(i => (i.id || i.title) === formData.subCategory)
+      basePrice = p?.price || 0
+    }
+
+    // Fallback 2: Derive from current amount/quantity if still 0
+    if (basePrice === 0 && formData.amount && formData.quantity > 0) {
+      basePrice = Math.round(Number(formData.amount) / formData.quantity)
+    }
+
     const newQuantity = formData.quantity - 1
     const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : formData.amount
 
@@ -564,21 +661,20 @@ const VerticalDonationForm = ({
 
                       // If clearing the custom amount, restore the calculated amount
                       if (customValue === '' || customValue === null) {
-                        const selectedInitiative = filteredInitiatives.find(i => i.title === formData.subCategory)
+                        const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
                         const basePrice = selectedInitiative?.price || 0
                         const restoredAmount = basePrice > 0 ? (formData.quantity * basePrice).toString() : ''
-
+                        
                         setFormData((prev) => ({
                           ...prev,
                           customAmount: '',
                           amount: restoredAmount
                         }))
                       } else {
-                        // User is typing, clear the preset amount
                         setFormData((prev) => ({
                           ...prev,
                           customAmount: customValue,
-                          amount: ''
+                          amount: '0'
                         }))
                       }
                     }}

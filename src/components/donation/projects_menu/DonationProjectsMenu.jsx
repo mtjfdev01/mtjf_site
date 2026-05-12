@@ -135,7 +135,8 @@ export const projectCards = [
       id: 'disaster-management',
       title: "Gaza Relief",
       icon: disasterRelief, 
-      price: 5000, new: false,
+      price: 5000,
+      new: false,
       category: "General",
       initiatives: []    
      },
@@ -191,7 +192,8 @@ export const projectCards = [
        price: 3500, 
        new: false, 
        category: "General", 
-       initiatives:[] },
+       initiatives:[]
+       },
     { 
       id: 'community-services', 
       title: "Community Service", 
