@@ -16,6 +16,7 @@ import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import GlobeSection from "./components/globe/GlobeSection";
 import CampaignTracker from './components/analytics/CampaignTracker'
 
+
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));

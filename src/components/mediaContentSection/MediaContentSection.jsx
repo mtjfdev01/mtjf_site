@@ -397,7 +397,7 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
                   alt: `${subProject.title} image ${i + 1}`
                 }))}
                 title=""
-                speed={80}
+                speed={500}
                 itemWidth={subProject.carosellItemWidth}
                 mobWidth={subProject.carosellMobWidth}
               />

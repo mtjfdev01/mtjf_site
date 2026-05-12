@@ -117,6 +117,37 @@ import matters from '../assets/img/projects/projects-details/qurbani_2026/qurban
 import receives from '../assets/img/projects/projects-details/qurbani_2026/receiving.webp'
 import date from '../assets/img/projects/projects-details/qurbani_2026/date.webp'
 import art from '../assets/img/projects/projects-details/qurbani_2026/art.webp'
+import qurbani1 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (1).JPG'
+import qurbani2 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (2).JPG'
+import qurbani3 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (3).JPG'
+import qurbani4 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (4).JPG'
+import qurbani5 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (5).JPG'
+import qurbani6 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (6).JPG'
+import qurbani7 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (7).JPG'
+import qurbani8 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (8).JPG'
+import qurbani9 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (9).JPG'
+import qurbani10 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (10).JPG'
+import qurbani11 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (11).JPG'
+import qurbani12 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (12).JPG'
+import qurbani13 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (13).JPG'
+import qurbani14 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (14).JPG'
+import qurbani15 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (15).JPG'
+import qurbani16 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (16).JPG'
+import qurbani17 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (17).JPG'
+import qurbani18 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (18).JPG'
+import qurbani19 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (19).JPG'
+import qurbani20 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (20).JPG'
+import qurbani21 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (21).JPG'
+import qurbani22 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (22).JPG'
+import qurbani23 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (23).JPG'
+import qurbani24 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (24).JPG'
+import qurbani25 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (25).JPG'
+import qurbani26 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (26).JPG'
+import qurbani27 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (27).JPG'
+import qurbani28 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (28).JPG'
+import qurbani29 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (29).JPG'
+import qurbani30 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (30).JPG'
+import qurbani31 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (31).JPG'
 import QurbaniBottomBanner from '../assets/img/projects/projects-details/qurbani_2026/QurbaniBottomBanner.webp'
 import QurbaniBottomBannerMobile from '../assets/img/projects/projects-details/qurbani_2026/QurbaniBottomBannerMobile.webp'
 
@@ -3647,17 +3678,37 @@ This impact was only possible because of your contribution. In 2026, we aim to r
         donateButtonText: '',
         image: impact,
         carosellImages: [
-          impact,
-          art,
-          Qurbani,
-          delivered,
-          receives,
-          date,
-          matters,
-          commitment,
-          reaches,
-          impact,
-          art,
+          qurbani1,
+          qurbani2,
+          qurbani3,
+          qurbani4,
+          qurbani5,
+          qurbani6,
+          qurbani7,
+          qurbani8,
+          qurbani9,
+          qurbani10,
+          qurbani11,
+          qurbani12,
+          qurbani13,
+          qurbani14,
+          qurbani15,
+          qurbani16,
+          qurbani17,
+          qurbani18,
+          // qurbani19,
+          qurbani20,
+          qurbani21,
+          // qurbani22,
+          qurbani23,
+          qurbani24,
+          // qurbani25,
+          qurbani26,
+          // qurbani27,
+          qurbani28,
+          qurbani29,
+          qurbani30,
+          qurbani31
         ],
         carosellItemWidth: 300,
         carosellMobWidth: 170,
