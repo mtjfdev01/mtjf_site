@@ -14,12 +14,10 @@ import "./DonorDonationView.css";
  *     B) {...}
  *
  * OPTIONAL tracking integration:
- * - If your donation detail returns tracker info:
- *     donation.progress_tracker?.id
- *   Then we call:
- *     GET /progress/trackers/:trackerId
- *   If that returns tracker.public_tracking_token:
- *     GET /progress/public/:token  (public read model)
+ * - New: donation.progress_trackers[] — each item has template (name/code),
+ *   overall_status, and steps[] (each step may include batch + evidence).
+ *   UI: pick tracker (allocation type) → pick batch (if multiple) → steps list.
+ * - Legacy: donation.progress_tracker?.id → GET /progress/trackers/:trackerId/steps
  */
 export default function DonorDonationViewPage() {
   const navigate = useNavigate();
@@ -51,9 +49,29 @@ function DonorDonationView({ donationId, onBack }) {
 
   const [trackingLoading, setTrackingLoading] = useState(false);
   const [trackingError, setTrackingError] = useState("");
-  const [tracking, setTracking] = useState(null); // steps array
+  /** Legacy API: flat steps array from GET /progress/trackers/:id/steps */
+  const [legacyTrackingSteps, setLegacyTrackingSteps] = useState(null);
+  const [activeTrackerId, setActiveTrackerId] = useState(null);
   const [activeBatchKey, setActiveBatchKey] = useState(null);
   const navigate = useNavigate();
+
+  const embeddedTrackers = useMemo(() => {
+    const raw = donation?.progress_trackers;
+    if (!Array.isArray(raw) || raw.length === 0) return [];
+    return raw
+      .filter((t) => t?.donor_visible !== false)
+      .map((t) => ({
+        ...t,
+        steps: Array.isArray(t?.steps)
+          ? t.steps
+              .filter((s) => s?.donor_visible !== false)
+              .slice()
+              .sort((a, b) => Number(a?.step_order || 0) - Number(b?.step_order || 0))
+          : [],
+      }));
+  }, [donation?.progress_trackers, donation?.id]);
+
+  const hasEmbeddedTracking = embeddedTrackers.length > 0;
 
   const handleLogout = async () => {
     if (isLoggingOut) return;
@@ -99,6 +117,13 @@ function DonorDonationView({ donationId, onBack }) {
   }, [donationId, navigate]);
 
   useEffect(() => {
+    if (hasEmbeddedTracking) {
+      setTrackingLoading(false);
+      setTrackingError("");
+      setLegacyTrackingSteps(null);
+      return undefined;
+    }
+
     let alive = true;
 
     async function runTracking() {
@@ -107,17 +132,16 @@ function DonorDonationView({ donationId, onBack }) {
         if (alive) {
           setTrackingLoading(false);
           setTrackingError("");
-          setTracking(null);
+          setLegacyTrackingSteps(null);
         }
         return;
       }
 
       setTrackingLoading(true);
       setTrackingError("");
-      setTracking(null);
+      setLegacyTrackingSteps(null);
 
       try {
-        // Tracking steps endpoint returns an array of steps
         const stepsResponse = await axiosInstance.get(
           `/progress/trackers/${trackerId}/steps`
         );
@@ -130,7 +154,7 @@ function DonorDonationView({ donationId, onBack }) {
           .filter((s) => s?.donor_visible !== false)
           .slice()
           .sort((a, b) => Number(a?.step_order || 0) - Number(b?.step_order || 0));
-        if (alive) setTracking(normalized);
+        if (alive) setLegacyTrackingSteps(normalized);
       } catch (e) {
         if (e?.response?.status === 401) {
           navigate("/donor-login");
@@ -139,7 +163,7 @@ function DonorDonationView({ donationId, onBack }) {
         if (e?.response?.status === 404) {
           if (alive) {
             setTrackingError("");
-            setTracking(null);
+            setLegacyTrackingSteps(null);
           }
           return;
         }
@@ -153,7 +177,34 @@ function DonorDonationView({ donationId, onBack }) {
     return () => {
       alive = false;
     };
-  }, [donation?.progress_tracker?.id, navigate]);
+  }, [donation?.progress_tracker?.id, donation?.id, hasEmbeddedTracking, navigate]);
+
+  useEffect(() => {
+    if (!hasEmbeddedTracking) {
+      setActiveTrackerId(null);
+      return;
+    }
+    setActiveTrackerId((prev) => {
+      const firstId = embeddedTrackers[0]?.id ?? null;
+      if (prev == null) return firstId;
+      if (embeddedTrackers.some((t) => t.id === prev)) return prev;
+      return firstId;
+    });
+  }, [hasEmbeddedTracking, embeddedTrackers]);
+
+  const activeEmbeddedTracker = useMemo(() => {
+    if (!hasEmbeddedTracking) return null;
+    return (
+      embeddedTrackers.find((t) => t.id === activeTrackerId) || embeddedTrackers[0] || null
+    );
+  }, [hasEmbeddedTracking, embeddedTrackers, activeTrackerId]);
+
+  const stepsForTracking = useMemo(() => {
+    if (hasEmbeddedTracking && activeEmbeddedTracker) {
+      return activeEmbeddedTracker.steps || [];
+    }
+    return legacyTrackingSteps;
+  }, [hasEmbeddedTracking, activeEmbeddedTracker, legacyTrackingSteps]);
 
   const info = useMemo(() => {
     if (!donation) return [];
@@ -185,10 +236,10 @@ function DonorDonationView({ donationId, onBack }) {
   }, [donation?.status]);
 
   const trackingBatches = useMemo(() => {
-    if (!Array.isArray(tracking)) return null;
+    if (!Array.isArray(stepsForTracking)) return null;
 
     const groups = new Map();
-    for (const step of tracking) {
+    for (const step of stepsForTracking) {
       const batchId = step?.batch_id ?? step?.batch?.id ?? null;
       const key = batchId != null ? String(batchId) : "no-batch";
       const existing = groups.get(key);
@@ -223,7 +274,7 @@ function DonorDonationView({ donationId, onBack }) {
     });
 
     return asArray;
-  }, [tracking]);
+  }, [stepsForTracking]);
 
   useEffect(() => {
     if (!trackingBatches || trackingBatches.length === 0) {
@@ -232,8 +283,8 @@ function DonorDonationView({ donationId, onBack }) {
     }
     setActiveBatchKey((prev) => {
       if (prev && trackingBatches.some((b) => b.key === prev)) return prev;
-      // Default to newest batch when batch_number exists (we sort older→newer above)
-      return trackingBatches[trackingBatches.length - 1].key;
+      // Default to first batch (oldest when sorted by batch_number ascending)
+      return trackingBatches[0]?.key ?? null;
     });
   }, [trackingBatches]);
 
@@ -241,6 +292,26 @@ function DonorDonationView({ donationId, onBack }) {
     if (!trackingBatches || !activeBatchKey) return null;
     return trackingBatches.find((b) => b.key === activeBatchKey) || null;
   }, [trackingBatches, activeBatchKey]);
+
+  const canHaveLegacyTracking = Boolean(donation?.progress_tracker?.id);
+  const showNoTrackingMessage =
+    !trackingLoading &&
+    !trackingError &&
+    !hasEmbeddedTracking &&
+    !canHaveLegacyTracking;
+
+  const showEmptyStepsMessage =
+    !trackingLoading &&
+    !trackingError &&
+    (hasEmbeddedTracking || canHaveLegacyTracking) &&
+    Array.isArray(stepsForTracking) &&
+    stepsForTracking.length === 0;
+
+  const showTrackingSteps =
+    !trackingLoading &&
+    !trackingError &&
+    Array.isArray(stepsForTracking) &&
+    stepsForTracking.length > 0;
 
   return (
     <main className="donorDonationView">
@@ -374,16 +445,73 @@ function DonorDonationView({ donationId, onBack }) {
                 <div className="ddvInlineError">{trackingError}</div>
               )}
 
-              {!trackingLoading && !trackingError && !tracking && (
+              {showNoTrackingMessage && (
                 <div className="ddvMuted">No tracking available for this donation.</div>
               )}
 
-              {!trackingLoading && !trackingError && tracking && (
+              {showEmptyStepsMessage && <div className="ddvMuted">No updates yet.</div>}
+
+              {showTrackingSteps && (
                 <div className="ddvTrackingList">
+                  {hasEmbeddedTracking && embeddedTrackers.length > 1 && (
+                    <>
+                      <div className="ddvSplitNotice ddvSplitNotice--info">
+                        This donation includes more than one allocation type (for example Cow Share and Goat).
+                        Choose a type below, then a batch if applicable, to see progress for that part.
+                      </div>
+                      <div className="ddvTrackerTabs" role="tablist" aria-label="Allocation types">
+                        {embeddedTrackers.map((t) => {
+                          const label = t?.template?.name || `Allocation`;
+                          const isActive = activeTrackerId != null && t.id === activeTrackerId;
+                          return (
+                            <button
+                              key={String(t.id)}
+                              type="button"
+                              role="tab"
+                              aria-selected={isActive}
+                              className={`ddvTrackerTab ${isActive ? "ddvTrackerTab--active" : ""}`}
+                              onClick={() => {
+                                setActiveTrackerId(t.id);
+                                setActiveBatchKey(null);
+                              }}
+                            >
+                              <span className="ddvTrackerTab__title">{label}</span>
+                              <span
+                                className={`ddvTrackerTab__badge ddvBadge ddvBadge--${normalizeStatusTone(
+                                  t?.overall_status
+                                )}`}
+                              >
+                                {renderValue(t?.overall_status)}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+
+                  {hasEmbeddedTracking && embeddedTrackers.length === 1 && activeEmbeddedTracker && (
+                    <div className="ddvTrackerSingle">
+                      <div className="ddvTrackerSingle__label">Allocation</div>
+                      <div className="ddvTrackerSingle__row">
+                        <span className="ddvTrackerSingle__title">
+                          {activeEmbeddedTracker?.template?.name || "Progress"}
+                        </span>
+                        <span
+                          className={`ddvBadge ddvBadge--${normalizeStatusTone(
+                            activeEmbeddedTracker?.overall_status
+                          )}`}
+                        >
+                          {renderValue(activeEmbeddedTracker?.overall_status)}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                   {(trackingBatches || []).length > 1 && (
                     <>
                       <div className="ddvSplitNotice">
-                        Your donation is allocated across multiple batches. Select a batch below to view its updates.
+                        This allocation uses more than one batch. Select a batch below to view its updates.
                       </div>
                       <div className="ddvBatchTabs" role="tablist" aria-label="Batches">
                         {(trackingBatches || []).map((group) => {
@@ -424,7 +552,12 @@ function DonorDonationView({ donationId, onBack }) {
                           pickThumbUrl(evidence) || stepThumbAsset(s?.step_key) || null;
 
                         return (
-                          <div key={String(s?.id ?? `${s?.tracker_id}-${s?.step_key}`)} className="ddvStep">
+                          <div
+                            key={String(
+                              s?.id ?? `${activeTrackerId ?? donation?.progress_tracker?.id ?? "t"}-${s?.step_key}`
+                            )}
+                            className="ddvStep"
+                          >
                             <div className="ddvStep__rail" aria-hidden="true">
                               <div className={`ddvStep__dot ddvStep__dot--${tone}`}>
                                 {tone === "completed" ? <CheckIcon /> : <DotIcon />}
@@ -474,8 +607,6 @@ function DonorDonationView({ donationId, onBack }) {
                       })}
                     </>
                   )}
-
-                  {tracking.length === 0 && <div className="ddvMuted">No updates yet.</div>}
                 </div>
               )}
             </section>

@@ -59,7 +59,7 @@ const DonationForm = ({
   className = ''
 }) => {
   const navigate = useNavigate()
-  const { setDonationFormData } = useDonation() 
+  const { setDonationFormData, updateProjectDonation } = useDonation() 
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -259,14 +259,42 @@ const DonationForm = ({
       finalAmount: amountPKRToStore.toString(),
       templateCode: resolvedTemplateCode
     }
-    
-    // Store in context
-    setDonationFormData(donationData)
-    
+
+    // Prefer projectDonations flow so checkout sends donation_items (tracking creation).
+    const resolvedProjectId = formData.projectId || 'general'
+    const resolvedInitiativeId =
+      formData.initiativeId || `donation-form-${Date.now()}`
+    const resolvedQuantity = usingCustomAmount
+      ? 1
+      : Math.max(1, Math.round(Number(formData.quantity) || 1))
+    const projectDonationItem = {
+      projectId: resolvedProjectId,
+      initiativeId: resolvedInitiativeId,
+      projectTitle: formData.projectName || selectedProjectData?.title || '',
+      initiativeTitle: formData.initiativeName || selectedInitiative?.title || null,
+      initiativeSubtitle: null,
+      quantity: resolvedQuantity,
+      donationType: String(
+        isQurbaniMultiCurrencyProject
+          ? 'qurbani-baraye-mustehqeen'
+          : String(formData.category || 'GENERAL').toUpperCase()
+      ),
+      basePrice: resolvedQuantity > 0 ? Math.round(amountPKRToStore / resolvedQuantity) : amountPKRToStore,
+      selectedPricingOptionId: null,
+      selectedPricingOptionLabel: null,
+      customAmount: usingCustomAmount ? amountPKRToStore : 0,
+      totalAmount: amountPKRToStore,
+      templateCode: resolvedTemplateCode
+    }
+
+    // Avoid double counting: clear old single-flow object.
+    setDonationFormData(null)
+    updateProjectDonation(projectDonationItem)
+
     // Call original onSubmit if provided
     onSubmit?.(donationData)
-    
-    // Navigate to checkout
+
+    // Navigate to checkout (context now has projectDonations)
     navigate('/checkout')
   }
 

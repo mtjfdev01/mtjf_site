@@ -290,6 +290,90 @@
   margin: 4px 0 8px;
 }
 
+.ddvSplitNotice--info {
+  border-color: rgba(29, 78, 216, 0.22);
+  background: rgba(59, 130, 246, 0.1);
+  color: rgba(30, 64, 175, 0.95);
+}
+
+.ddvTrackerTabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 4px 2px;
+  margin: 0 0 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.ddvTrackerTab {
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+  color: rgba(15, 23, 42, 0.9);
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.ddvTrackerTab:hover {
+  background: #eef2f7;
+}
+
+.ddvTrackerTab--active {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(29, 78, 216, 0.28);
+  color: #1e3a8a;
+}
+
+.ddvTrackerTab__title {
+  font-weight: 900;
+}
+
+.ddvTrackerTab__badge {
+  text-transform: capitalize;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.ddvTrackerSingle {
+  margin: 4px 0 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f8fafc;
+}
+
+.ddvTrackerSingle__label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.ddvTrackerSingle__row {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ddvTrackerSingle__title {
+  font-weight: 900;
+  color: #0f172a;
+}
+
 .ddvBatchTab {
   flex: 0 0 auto;
   border-radius: 999px;

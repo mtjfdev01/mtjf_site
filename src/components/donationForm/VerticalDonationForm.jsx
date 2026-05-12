@@ -67,11 +67,11 @@ const VerticalDonationForm = ({
   const [activeTab, setActiveTab] = useState('online-donation')
 
   const categoryOptionsToShow = useMemo(
-    () => (isQurbaniPage ? ['qurbani-baraye-mustehqeen'] : categoryOptions),
+    () => (isQurbaniPage ? ['Qurbani Baraye Mustehqeen'] : categoryOptions),
     [isQurbaniPage, categoryOptions]
   )
   const { id: urlProjectId } = useParams() // Extract project_id from URL
-  const { setDonationFormData } = useDonation()
+  const { setDonationFormData, updateProjectDonation } = useDonation()
 
   const mergedDonationOptions = useMemo(() => {
     return {
@@ -419,22 +419,52 @@ const VerticalDonationForm = ({
     const projectIdToUse = urlProjectId || formData.projectId
     const templateCode = resolveInitiativeTemplateCode(projectIdToUse, formData.subCategory)
 
+    const usingCustomAmount =
+      !isQurbaniMultiCurrencyProject &&
+      !!formData.customAmount &&
+      String(formData.customAmount).trim() !== ''
+    const quantityStored = usingCustomAmount
+      ? 1
+      : Math.max(1, Math.round(Number(formData.quantity)) || 1)
+
     const donationData = {
       ...formData,
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
       amount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
       finalAmount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
+      templateCode,
+      quantity: quantityStored
+    }
+
+    const selectedProject = projectCards?.find((p) => p.id === projectIdToUse) || null
+    const selectedInitiative =
+      selectedProject?.initiatives?.find((i) => i.id === formData.subCategory) || null
+
+    const projectDonationItem = {
+      projectId: projectIdToUse || 'general',
+      initiativeId: formData.subCategory || `vertical-form-${Date.now()}`,
+      projectTitle: selectedProject?.title || '',
+      initiativeTitle: selectedInitiative?.title || null,
+      initiativeSubtitle: selectedInitiative?.subtitle || null,
+      quantity: quantityStored,
+      donationType: String(
+        isQurbaniMultiCurrencyProject
+          ? 'qurbani-baraye-mustehqeen'
+          : String(formData.category || 'GENERAL').toUpperCase()
+      ),
+      basePrice: quantityStored > 0 ? Math.round(amountPKRToStore / quantityStored) : amountPKRToStore,
+      customAmount: usingCustomAmount ? amountPKRToStore : 0,
+      totalAmount: amountPKRToStore,
       templateCode
     }
 
-    // Store in context
-    setDonationFormData(donationData)
+    // Avoid double counting: clear single-flow object and store as project donation line item.
+    setDonationFormData(null)
+    updateProjectDonation(projectDonationItem)
 
-    // Call original onSubmit if provided
     onSubmit?.(donationData)
 
-    // Navigate to checkout
     const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
     navigate('/checkout', { state: { returnTo } })
   }
