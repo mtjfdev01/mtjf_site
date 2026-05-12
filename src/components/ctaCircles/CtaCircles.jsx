@@ -8,7 +8,8 @@ const CTA_ITEMS = [
   {
     id: 'donation',
     label: 'Make Donation',
-    color: '#F5C46E',
+    // color: '#F5C46E',
+    color: '#eaaa00',
     image: donateImg, 
     alt: 'Donation jar filled with coins',
     hideOnSm: false
@@ -24,7 +25,8 @@ const CTA_ITEMS = [
   {
     id: 'volunteer',
     label: 'Become  Volunteer',
-    color: '#56C7C8',
+    // color: '#56C7C8',
+    color: '#00a3e0',
     image: volunteerImg,
     alt: 'Hands stacked together to volunteer',
     hideOnSm: false

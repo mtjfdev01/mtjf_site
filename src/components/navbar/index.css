@@ -164,7 +164,8 @@
 }
 
 .btn-zakat-nav {
-  background-color: #2cade3 !important;
+    background-color: #009a44 !important;
+  /* background-color: #2cade3 !important; */
   color: #fff !important;
   border: none !important;
   padding: 0 !important;

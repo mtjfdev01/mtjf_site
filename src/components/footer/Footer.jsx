@@ -165,11 +165,12 @@ const Footer = () => {
             {/* Second  */}
             <div className="footer-row footer-locations-row">
               <Link to="/contact" className="footer-link">
-                <h4 className="footer-heading h4">Regional Offices</h4>
+                {/* <h4 className="footer-heading h4">Regional Offices</h4> */}
+                  <h4 className="footer-heading h4">Regional Offices</h4>
               </Link>
               <ul className="footer-list flex flex-col gap-12">
                 <li className="footer-location-item">
-                  <div className="footer-location-city">Tulamba (Head Office)</div>
+                  <div className="footer-location-city footer-heading">Tulamba (Head Office)</div>
                   <div className="footer-location-address">
                     Makhdoom Pur Road, Tulamba, District Khanewal
                   </div>

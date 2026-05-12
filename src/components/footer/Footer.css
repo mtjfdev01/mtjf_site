@@ -1,6 +1,11 @@
 .footer {
   width: 100%;
-  background-color: #C9EBF7;
+  /* background-color: #C9EBF7; */
+background: linear-gradient(
+  135deg,
+  var(--color-primary) 0%,
+  var(--color-primary-light) 100%
+);
   padding: var(--space-16);
 }
 
@@ -143,7 +148,8 @@
 
 
 .footer-heading {
-  color: var(--color-900);
+  /* color: var(--color-900); */
+  color: var(--color-white);
   margin: 0;
   font-size: var(--fs-16);
   font-weight: 800;
@@ -151,7 +157,8 @@
 }
 
 .footer-subheading {
-  color: var(--color-900);
+  /* color: var(--color-900); */
+  color: var(--color-white);
   margin: 0;
   font-size: var(--fs-14);
   font-weight: 700;
@@ -182,7 +189,8 @@
 }
 
 .footer-link {
-  color: var(--color-900);
+  color: var(--color-white);
+  /* color: var(--color-900); */
   text-decoration: none;
   font-size: var(--fs-14);
   line-height: 1.2;
@@ -202,7 +210,8 @@
 }
 
 .footer-label {
-  color: var(--color-900);
+   color: var(--color-white);
+  /* color: var(--color-900); */
   font-size: var(--fs-14);
   font-weight: 500;
 }
@@ -224,7 +233,8 @@
 
 .footer-location-address {
   font-size: var(--fs-14);
-  color: var(--color-900);
+  color: var(--color-white);
+  /* color: var(--color-900); */
   line-height: 1.6;
   margin-bottom: var(--space-4);
 }
@@ -243,7 +253,8 @@
 .footer-location-city {
   font-size: var(--fs-14);
   font-weight: 600;
-  color: var(--color-900);
+  /* color: var(--color-900); */
+  color: var(--color-white);
   margin-top: var(--space-4);
   text-transform: capitalize;
 }
