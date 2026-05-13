@@ -40,7 +40,651 @@ import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
 
 
-export const blogs = [ 
+export const blogs = [
+    {
+    id:'qurbani-is-more-than-a-sacrifice',
+    date:'May 13, 2026',
+    title:'Qurbani Is More Than a Sacrifice: It’s a Lifeline for the Needy',
+    category:`Qurbani`,
+    image: qurbani_is,
+    description:``,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+        {
+        id:'',
+        title:'Qurbani Is More Than a Sacrifice: It’s a Lifeline for the Needy',
+        // image: h_2,
+        description:`Every year, as Eid-ul-Adha approaches, homes fill with preparations, conversations revolve around animals and arrangements, and the act of Qurbani becomes part of our routine. For many of us, it is a familiar ritual, one we have grown up witnessing, participating in, and fulfilling with sincerity. Yet, in the rush of it all, there is a risk of forgetting what Qurbani truly represents and who it ultimately serves. `,
+        description2:`Qurbani is not only an act of worship. It is an act of responsibility. And for countless families living in hardship, it becomes something even more profound: a lifeline.`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'The Meaning Beyond the Ritual',
+        // image: h_2,    
+        description:`At its core, Qurbani is about submission, humility, and trust in Allah. It commemorates the unwavering faith of Prophet Ibrahim (AS) and his readiness to give up what he loved most for the sake of obedience. But Islam does not teach worship in isolation from humanity. Every act of ibadah carries a social responsibility, and Qurbani is a powerful example of this balance. `,
+        description2:`Allah reminds us that neither the meat nor the blood reaches Him. It is the sincerity and righteousness behind the act that truly matters. That sincerity is reflected not only in performing Qurbani correctly but also in ensuring that its benefits reach those who need them the most.`,
+        bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
+can partake in the joy of Eid. For many families living in poverty, this is the only time of year
+they have access to meat, making the gesture not just symbolic but deeply impactful.`,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'When Meat Is Not a Given',
+        // image: h_2,
+        description:`For many families, meat on Eid is not a celebration; it is a rare occurrence. In underserved communities, rising inflation, unemployment, and daily survival challenges mean that nutritious food is often a luxury. Children grow up with meals that barely meet their nutritional needs. Elderly parents quietly accept scarcity with dignity. Mothers stretch meals, hoping no one notices how little is on their own plate.`,
+        description2:`For these families, Qurbani meat is not just food. It is relief. It is nourishment. It is a reminder that they are seen, remembered, and cared for.`,
+       description3:`When a Qurbani reaches a deserving home, it fills more than empty plates. It restores dignity. It brings smiles to children who wait eagerly for Eid, not for clothes or gifts, but for a proper meal. It allows parents to provide for their families without shame. And it creates a moment of joy in lives often marked by struggle.`,
+      },
+      {
+        id:'',
+        title:'A Trust That Carries Weight',
+        // image: h_2,
+        description:`When you give Qurbani through an organization, you are placing an Amanah, a trust, in their hands. This trust is sacred. It demands honesty, transparency, and a deep fear of accountability before Allah.`,
+        description2:`Qurbani done with negligence, shortcuts, or corruption strips the act of its spirit. Delayed distributions, compromised quality, or favoritism are not small administrative issues, they are moral failures. When Qurbani is mishandled, it is not only resources that are wasted, but the trust of donors and the rights of the needy that are violated.`,
+        description3:`True Qurbani is performed with care at every step: from selecting healthy animals and following Islamic guidelines, to fair distribution and timely delivery to deserving families. When done correctly, it becomes an act of worship that uplifts both the giver and the receiver.`,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'From Your Intention to Their Table',
+        description: `Many people give Qurbani with the hope that their sacrifice will reach those who genuinely need it. But intention alone is not enough. Action must follow intention with integrity.`,
+        description2:`A single Qurbani, when managed responsibly, can feed multiple families. It can support households where income is uncertain and food insecurity is real. It can ease a burden, even if only for a few days, and remind people that compassion still exists in the world.`,
+        description3:`This is the beauty of Qurbani. It connects hearts that may never meet. Your sacrifice, made with sincerity, travels across distance and circumstance to reach a home where it becomes a blessing and a dua for you.`,
+      },
+      {
+        id:'',
+        title:'The Reward Multiplies When Shared',
+        // image: h_2,
+        description:`Islam teaches us that the reward of charity multiplies when it is given selflessly and reaches those most in need. Qurbani is a unique form of charity because it combines worship with social welfare. It nourishes bodies, strengthens communities, and reinforces the values of empathy and generosity.`,
+        description2:`When Qurbani is done with the right intention and proper care, it leaves a lasting impact. It does not end with the distribution of meat. It lives on in the prayers of mothers, the smiles of children, and the quiet gratitude of families who feel remembered on a day meant for joy.`,
+        description3Bold:'',
+        description3:``,
+        services:[],
+        bottomText:''
+      },
+      {
+        id:'',
+        title: 'Choosing to Make a Difference',
+        description:"In a world where suffering often goes unseen, Qurbani is a chance to act. A chance to move beyond ritual and into meaningful service. A chance to ensure that your act of worship becomes someone else’s moment of relief.",
+        description2:`This Eid, let your Qurbani be more than a checkbox fulfilled. Let it be a source of nourishment, dignity, and hope. Let it reach the hands that wait quietly and the homes where it is needed most.`,
+        description3:`Because when Qurbani is done with sincerity, integrity, and compassion, it does more than honor a Sunnah. It becomes a lifeline for the needy.`,
+        services:[],
+        afterServicesText:``,
+        // image: cta_banner,
+        bottom_banner_img:cta_banner,
+        bottom_banner_mobile_img:cta_banner,
+        donationUrl: '/donate/qurbani-baraye-mustehqeen',
+      },
+    ]
+  }, 
+    {
+    id:'from-your-qurbani-to-hungry-home',
+    date:`May 13, 2026`,
+    title:'From Your Qurbani to a Hungry Home: How One Sacrifice Feeds Many',
+    category:`Qurbani`,
+    image: hungry_home,
+    description:``,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+        {
+        id:'',
+        title:'From Your Qurbani to a Hungry Home: How One Sacrifice Feeds Many',
+        // image: h_2,
+        description:`Eid-ul-Adha is a time of devotion, reflection, and remembrance. It is a day when sacrifice is honored, not only through words and rituals, but through action. For many of us, Qurbani is performed with sincerity and gratitude. Yet, far away from our homes and celebrations, there are families for whom Eid arrives quietly, without abundance, without certainty, and often without enough food.`,
+        description2:`This is where the true journey of Qurbani begins.`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'When Eid Looks Different',
+        // image: h_2,    
+        description:` In countless underserved communities, Eid does not begin with festive meals or full tables. It begins like any other day: with worry. Worry about what will be cooked, how long supplies will last, and whether children will sleep with full stomachs. Meat, which many of us consider essential on Eid, is a rarity for these families. Some may receive it once a year. Others not at all.`,
+        description2:`For them, Qurbani is not symbolic. It is deeply practical. It is nutrition. It is relief. It is dignity.`,
+        description3:`When Qurbani meat reaches such a home, the atmosphere changes instantly. A mother plans meals without anxiety. Children experience the joy of Eid not just in name, but in nourishment. A father feels, even for a moment, that his family has not been forgotten.`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'One Sacrifice, Many Lives Touched',
+        // image: h_2,
+        description:`A single Qurbani does far more than feed one household. When managed responsibly and distributed fairly, it reaches multiple families, each with its own story of hardship, patience, and quiet resilience.`,
+        description2:``,
+        description3Bold:'One sacrifice may feed:',
+        services:[
+          'A widow caring for her children alone',
+          'An elderly couple surviving on a limited income ',
+          'A laborer whose daily wages barely cover essentials ',
+          'Children whose growth depends on proper nutrition ',
+        ],
+        bottomText:`Each portion carries more than meat. It carries compassion. It carries intention. It carries the message that someone, somewhere, chose to share their blessing.
+        This is the beauty of Qurbani when done with purpose: its impact multiplies far beyond what we can see.`,
+      },
+      {
+        id:'',
+        title:'The Responsibility Behind the Act',
+        // image: h_2,
+        description:`Qurbani is not complete at the point of sacrifice. It is completed when it reaches the right hands. This is where responsibility matters most.`,
+        description2:`From selecting healthy animals to ensuring Shariah-compliant sacrifice, from hygienic handling to timely and fair distribution, every step carries weight. Negligence at any stage weakens the impact of the act and compromises the trust placed by both the donor and the recipient.`,
+        description3:`For families waiting in hope, delays or mismanagement mean more than inconvenience. They mean disappointment. They mean another Eid marked by uncertainty.
+                      That is why integrity, transparency, and accountability are not optional in Qurbani, they are essential.`,
+        description3Bold:'',
+        services:[],
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'The Journey from Intention to Impact',
+        description: `When you give Qurbani, your intention sets something powerful in motion. That intention travels through systems, people, and processes until it finally reaches a home where it becomes a meal.`,
+        description2:`But intention must be protected along the way.`,
+        description3:`A trustworthy Qurbani process ensures that:`,
+        services:[
+          `The sacrifice is performed strictly according to Islamic guidelines `,
+          `Distribution is prioritized for the most deserving `,
+          `No favoritism, corruption, or shortcuts compromise the outcome `,
+          `Every donor’s amanah is honored `
+        ],
+        bottomText:`When this journey is handled with care, the result is profound. A simple act of worship becomes a chain of goodness, linking the giver and the receiver through sincerity and shared humanity.`,
+      },
+     {
+        id:'',
+        title:`Dignity in Giving, Dignity in Receiving`,
+        description:`One of the most beautiful aspects of Qurbani is that it preserves dignity on both sides. The giver fulfills an obligation without seeking recognition. The receiver accepts support without feeling like a burden.
+                     There are no labels. No questions asked. Only quiet gratitude.`,
+       description2:`This dignity matters. Poverty already takes so much from people. Their comfort, their security, their choices. Qurbani, when done right, gives something bigger back: Respect.`,
+       bottomText:``,
+      //  image: qurbani,
+       bottom_banner_img:cta_banner,
+       bottom_banner_mobile_img:cta_banner,
+       donationUrl: '/donate/qurbani-baraye-mustehqeen',
+      },
+        {
+        id:'',
+        title:`Why It Matters Today More Than Ever`,
+        description:`Rising costs, economic uncertainty, and widespread hardship have pushed more families into food insecurity. What once was occasional difficulty has become a daily struggle. In such times, Qurbani is not just a Sunnah: it is a lifeline.`,
+       description2:`It reminds us that our worship is connected to the world around us. That faith is not isolated from hunger. That obedience to Allah includes caring for His creation.`,
+       description3:`When we choose to give Qurbani responsibly, we are choosing to stand with those who are struggling. We are choosing empathy over excess, service over convenience.`,
+       bottomText:``,
+       image: ``,
+      },
+      {
+        id:'',
+        title:`A Choice That Echoes Beyond Eid`,
+        description:`The meat distributed on Eid will be consumed in days, but the impact lasts much longer. Children remember the joy. Parents remember the relief. Families remember that on a day meant for celebration, they were included.`,
+       description2:`And the giver? The giver earns reward that continues, carried in silent prayers and grateful hearts.`,
+       description3:``,
+       bottomText:``,
+       image: ``,
+      },
+      {
+        id:'',
+        title:`Make Your Qurbani Reach Where It’s Needed Most`,
+        description:`No matter where you are in the world, you can perform your Qurbani in a way that truly matters. By choosing a trusted, Shariah-compliant process, your sacrifice can reach deserving families across Pakistan, families for whom this gift means nourishment, dignity, and hope.`,
+       description2:`Let your Qurbani travel beyond the ritual. Let it reach a hungry home. Let one sacrifice feed many.`,
+       description3:`Because when Qurbani is guided by sincerity and responsibility, it becomes more than an obligation fulfilled. It becomes mercy in action.`,
+       bottomText:``,
+       image: ``,
+      }
+    ]
+  },
+    {
+    id:'choosing-the-right-qurbani',
+    date:`May 13, 2026`,
+    title:'Choosing the Right Qurbani: Why Trust, Transparency, and Amanah Matter',
+    category:`Qurbani`,
+    image: right_qurbani,
+    description:``,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+        {
+        id:'',
+        title:'Choosing the Right Qurbani: Why Trust, Transparency, and Amanah Matter',
+        // image: h_2,
+        description:`Every year, as Eid-ul-Adha approaches, people begin one of the most important decisions connected to this sacred act: where should I give my Qurbani?`,
+        description2:`On the surface, it may seem simple. Choose an animal, make a payment, and complete the ritual. But in reality, Qurbani is much deeper than that. It is not just about fulfilling an obligation; it is about entrusting your worship, your intention, and your sacrifice into someone else’s care.`,
+        description3:`And that is where trust becomes everything.`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'Qurbani is an Amanah, not just a transaction',
+        // image: h_2,    
+        description:`In Islam, Amanah is not a light word. It means trust, responsibility, and accountability before Allah. When someone gives their Qurbani through an organization, they are not just making a donation. They are placing an Amanah in someone’s hands.`,
+        description2:`That Amanah carries weight.`,
+        description3:`It includes:`,
+        services:[
+          `The correct sacrifice according to Shariah `,
+          `Ethical handling of animals `,
+          `Proper hygiene and processing `,
+          `Fair and timely distribution `,
+          `Ensuring it reaches the most deserving families `
+        ],
+        bottomText:`When any of these steps are compromised, it is not just a service failure. It is a breach of trust on something deeply spiritual.`,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'Why transparency matters more than ever',
+        // image: h_2,
+        description:`In today’s world, people are more aware and rightly so. Donors want to know where their Qurbani goes, how it is performed, and who benefits from it. This is not doubt; it is responsibility.`,
+        description2:`Transparency builds confidence. It allows people to feel connected to their sacrifice, even if they are thousands of miles away.`,
+        description3Bold:'A transparent Qurbani process ensures:',
+        services:[
+          `Clear communication before and after execution `,
+          `Visibility of how and where distribution happens `,
+          `Accountability at every step `,
+          `Assurance that no part of the process is misused or delayed `
+        ],
+        bottomText:`When transparency exists, Qurbani becomes more meaningful. It is no longer distant, it becomes personal.`,
+      },
+      {
+        id:'',
+        title:'The real impact is at the receiving end',
+        // image: h_2,
+        description:`For many families, Qurbani meat is not a routine addition to their Eid, it is the only time in the year they receive it.`,
+        description2:`Behind every distribution is a story:`,
+        description3:``,
+        description3Bold:'',
+        services:[
+          `A mother trying to create a moment of joy for her children.`,
+          `An elderly couple quietly enduring hardship.`,
+          `A family that has learned to live with less, but still hopes for more.`
+        ],
+        bottomText:`When Qurbani is handled with care and integrity, it reaches these homes not just as meat, but as dignity. It tells them: you are not forgotten.`,
+        donateButtonText:''
+      },
+     {
+        id:'',
+        title:`Trust is built in action, not words`,
+        description:`Anyone can promise good service. But in Qurbani, trust is proven through execution.`,
+       description2:`It is seen in:`,
+       services:[
+          `Animals selected with care and respect `,
+          `Strict adherence to Islamic guidelines `,
+          `Organized and fair distribution systems  `,
+          `Respectful treatment of beneficiaries `,
+          `Zero compromise on ethics or quality `
+        ],
+       bottomText:`When an organization takes this responsibility seriously, it reflects in every step. And that consistency is what builds true trust over time.`,
+       image: ``,
+      },
+        {
+        id:'',
+        title:`Why your choice matters`,
+        description:`Choosing where to give your Qurbani is also a choice about what kind of impact you want to create.`,
+       description2:`Do you want your sacrifice to simply be performed or do you want it to reach someone who truly needs it?
+                     Do you want it to be routine or meaningful?`,
+       description3:`The right choice ensures that your worship is not only completed, but honored in the best possible way. It ensures that your intention is protected until it reaches the people who are waiting for it most.`,
+       bottomText:``,
+       // image: qurbani,
+       bottom_banner_img:cta_banner,
+       bottom_banner_mobile_img:cta_banner,
+       donationUrl: '/donate/qurbani-baraye-mustehqeen',
+      },
+      {
+        id:'',
+        title:`A trust that returns to you`,
+        description:`One of the most beautiful aspects of Qurbani is that it does not end with distribution. It returns to the giver in the form of reward, dua, and unseen blessings.`,
+       description2:`Every careful step taken, every honest effort made, every hungry home reached: all of it becomes part of your reward.`,
+       description3:`And that is why trust, transparency, and Amanah are not just operational values. They are acts of worship in themselves.`,
+       bottomText:``,
+       image: ``,
+      },
+      {
+        id:'',
+        title:`Final thought`,
+        description:`Qurbani is not only about sacrifice. It is about responsibility.`,
+       description2:`When done with sincerity and entrusted to the right hands, it becomes something far greater than meat distribution. It becomes a bridge between those who can give and those who need to receive. A bridge built on trust, protected by transparency, and honored through Amanah.`,
+       description3:`Because in the end, the true value of Qurbani is not just in what is given but in how faithfully it reaches those it is meant for.`,
+       bottomText:``,
+       image: ``,
+      }
+    ]
+  },
+    {
+    id:'this-eid-let-your-qurbani-change-lives-beyond-the-ritual',
+    date:`May 13, 2026`,
+    title:'This Eid, Let Your Qurbani Change Lives Beyond the Ritual',
+    category:`Qurbani`, 
+    image: this_eid,
+    description:``,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+        {
+        id:'',
+        title:'This Eid, Let Your Qurbani Change Lives Beyond the Ritual',
+        // image: h_2,
+        description:`Eid-ul-Adha is often seen through the lens of tradition. Animals are selected, sacrifices are made, and families gather in gratitude. It is a beautiful ritual, deeply rooted in faith and remembrance. But somewhere between the preparations and celebrations, there is a deeper question we often forget to ask:`,
+        description2:`What if your Qurbani could be more than a ritual this year?`,
+        description3:`What if it could become a source of real change in someone’s life?`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'When worship meets responsibility',
+        // image: h_2,    
+        description:`Qurbani is an act of devotion, but it is also an act of responsibility. It is not meant to end at sacrifice alone. Its true spirit continues when its impact reaches those who are struggling silently, far away from the joy of Eid.`,
+        description2:`For many families, Eid does not begin with celebration; it begins with uncertainty. There is no guarantee of a special meal. No assurance of meat. No ease that comes with abundance. In such homes, Qurbani is not symbolic; it is survival support.`,
+        description3:`This is where worship transforms into something even more powerful: service to humanity.`,
+        services:[],
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'Beyond the ritual, toward real impact',
+        // image: h_2,
+        description:`When Qurbani is done with intention and care, it moves beyond a personal obligation and becomes a shared blessing. It reaches homes where food is limited, where children understand scarcity too early, and where parents quietly carry the weight of providing with very little.`,
+        description2:`In those moments, Qurbani becomes:`,
+        description3Bold:'',
+        services:[
+          `A meal that restores strength  `,
+          `A moment of joy for children `,
+          `A relief for struggling parents `,
+          `A reminder that they are not forgotten `
+        ],
+        bottomText:`It is no longer just meat. It is dignity. It is compassion made visible.`,
+      },
+      {
+        id:'',
+        title:'The true spirit of Eid',
+        // image: h_2,
+        description:`Eid-ul-Adha is not only about sacrifice, it is also about obedience, gratitude, and empathy. The story of Prophet Ibrahim (A.S.) teaches us surrender, but it also teaches us trust in Allah and care for His creation.`,
+        description2:`True celebration of Eid is not measured by how many rituals are completed, but by how deeply their spirit is lived.`,
+        description3:`And that spirit is most alive when our sacrifice reaches those who need it the most.`,
+        services:[
+        ],
+        bottomText:``,
+        donateButtonText:''
+      },
+     {
+        id:'',
+        title:`Your Qurbani has a journey`,
+        description:`Every Qurbani carries a journey:`,
+       description2:`From intention to sacrifice to distribution to a home in need.
+                     At each step, sincerity matters. Care matters. Integrity matters.
+                     Because somewhere along that journey, your sacrifice becomes someone else’s hope.`,
+      description3:`A well-managed Qurbani ensures that:`,               
+       services:[
+        `The process is performed according to Islamic guidelines `,
+        `The distribution is fair, transparent, and timely `,
+        `The most deserving families are prioritized `,
+        `No effort is wasted, and no trust is broken `
+       ],
+       bottomText:`When handled responsibly, Qurbani becomes a chain of goodness that connects you to people you may never meet but who will remember your kindness in their prayers.`,
+       image: ``,
+      },
+        {
+        id:'',
+        title:`Changing lives, not just fulfilling rituals`,
+        description:`It is easy to view Qurbani as something that ends once the sacrifice is done. But in reality, its true completion lies in its impact.`,
+       description2:`A child eating meat for the first time in months.
+                     A mother serving a meal with relief instead of worry.
+                    An elderly couple feeling remembered on a day meant for joy.
+                   These are not just outcomes. They are lives touched by intention.`,
+       description3:`This is what it means for Qurbani to go beyond ritual. It becomes an act that changes the emotional reality of someone’s Eid.`,
+       bottomText:``,
+       // image: qurbani,
+       bottom_banner_img:cta_banner,
+       bottom_banner_mobile_img:cta_banner,
+       donationUrl: '/donate/qurbani-baraye-mustehqeen',
+      },
+      {
+        id:'',
+        title:`A choice that defines meaning`,
+        description:`Every year, you have a choice. To perform Qurbani as a tradition or to perform it as transformation.`,
+       description2:`The difference lies in intention, and in where you choose to direct your sacrifice.`,
+       description3:`When given through a trusted and responsible system, your Qurbani becomes more than personal worship. It becomes social impact. It becomes shared joy. It becomes relief for someone who has been waiting silently for help.`,
+       bottomText:``,
+       image: ``,
+      },
+      {
+        id:'',
+        title:`Let your Qurbani carry purpose`,
+        description:`This Eid, let your sacrifice do more than fulfill an obligation.`,
+       description2:`Let it reach a hungry home.
+                     Let it ease a burden.
+                     Let it bring dignity where there was struggle.
+                     Let it remind someone that they are seen.`,
+       description3:`Because when Qurbani is done with sincerity and directed with care, it does not end at ritual—it begins a ripple of change that touches lives far beyond your own.
+                     And that is where its true beauty lies.`,
+       bottomText:``,
+       image: ``,
+      }
+    ]
+  },
+   {
+    id:'qurbani',
+    date:'June 15, 2018',
+    title:'Understanding Qurbani',
+    category:'Qurbani',
+    image: qurbani,
+    description:``,
+    description2:'',
+    bottomText:'',
+    // donateButtonText:'Donate Now',
+    subProjects:[
+        {
+        id:'',
+        title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
+        // image: h_2,
+        description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
+                  honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
+                  sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens
+                  our faith, revives our sense of empathy, and uplifts entire communities. At MTJ Foundation, we
+                  believe in making this act of worship meaningful by ensuring it reaches those who need it the
+                  most. `,
+        description2:`In this detailed guide, we’ll explore the meaning of Qurbani, its significance, the rules that
+                  govern it, who must perform it, and how your donation can make a lasting impact — both
+    spiritually and socially.`,
+        bottomText:``,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'What is Qurbani?',
+        // image: h_2,    
+        description:`Qurbani, meaning "sacrifice" in Arabic, refers to the ritual slaughter of an animal during the
+days of Eid-ul-Adha. This act commemorates the willingness of Prophet Ibrahim (AS) to sacrifice
+his beloved son, Ismail (AS), as a demonstration of unwavering submission to Allah (SWT). Just
+as he was about to follow through, Allah replaced Ismail with a lamb, signifying that the
+sacrifice was accepted. `,
+        description2:`This act of sacrifice has remained a powerful expression of obedience and spiritual devotion for
+generations. It reflects the values of faith, sacrifice, and commitment to divine command. For
+Muslims today, Qurbani is an opportunity to revive this legacy and fulfill a significant Sunnah.`,
+        bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
+can partake in the joy of Eid. For many families living in poverty, this is the only time of year
+they have access to meat, making the gesture not just symbolic but deeply impactful.`,
+        donateButtonText:''
+      },
+      {
+        id:'',
+        title:'The Meaning Behind the Word Qurbani',
+        // image: h_2,
+        description:`In Arabic, “Qurbani” is derived from the word “Qurban,” which means a way or means of
+gaining closeness to Allah. It highlights the core purpose of this act — to get closer to our
+Creator through the sacrifice of something valuable. Prophet Ibrahim’s readiness to give up his
+son symbolizes the ultimate submission to God’s will, a lesson in selflessness that transcends
+generations.`,
+        description2:`This meaning transforms the act of Qurbani from a simple animal slaughter into a sacred
+expression of devotion, bringing immense spiritual rewards to those who perform it with
+sincerity and care.`,
+      },
+      {
+        id:'',
+        title:'Why Do Muslims Perform Qurbani?',
+        // image: h_2,
+        description:`Qurbani is more than just the slaughter of an animal — it is a means of drawing nearer to Allah
+(SWT), showing gratitude for one’s blessings, and supporting the less fortunate.`,
+        description2:`According to the Hanafi school of thought, Qurbani is obligatory (wajib) for every Muslim who
+meets specific financial and personal criteria. For followers of other schools of thought, while
+not obligatory, it is considered highly recommended (Sunnah Mu’akkadah).`,
+
+        description3Bold:'Performing Qurbani allows Muslims to:',
+        services:[
+          'Reaffirm their submission to the will of Allah (SWT)',
+          'Follow in the footsteps of Prophet Ibrahim (AS)',
+          'Share the blessings of Eid with those who are struggling',
+          'Reflect on personal sacrifice and spiritual discipline',
+          'Fulfill a charitable obligation that uplifts communities',
+        ],
+        bottomText:`Qurbani is also an act that fosters empathy and awareness. When we sacrifice an animal for
+those who have little, we develop a deeper appreciation for our blessings. We recognize the
+struggle of those who live in poverty and hunger daily. This empathy strengthens the ummah
+and brings us closer together in the true spirit of Eid.`,
+        donateButtonText:''
+      },
+      {
+        id:'The Story Behind Qurbani',
+        title:'The Story Behind Qurbani',
+        description: `The story of Qurbani traces back to Prophet Ibrahim (AS) who, in a divine dream, saw himself
+sacrificing his son, Ismail (AS). Understanding this dream as a command from Allah, he prepared
+to fulfill it despite the emotional difficulty. When he shared the dream with his son, Ismail (AS)
+responded with unwavering faith and agreed to be sacrificed.`,
+description2:`As Ibrahim (AS) was about to carry out the command, Allah (SWT) intervened, replacing Ismail
+with a lamb. This event became an eternal symbol of submission, sacrifice, and faith — values
+that continue to inspire Muslims to this day.`,
+description3:`It reminds us that true faith requires trust in Allah’s wisdom, even when the path is difficult. This
+level of submission and reliance — or tawakkul — is something every Muslim should strive for.`,
+      },
+      {
+        id:'',
+        title:'How to perform Qurbani',
+        // image: h_2,
+        description:`The Nisab is currently measured as either 87.48 grams of gold or 612.36 grams of silver. For
+instance, as of May 2025, the value of silver was approximately $640.40, while gold was over
+$9,000. Anyone whose savings or assets exceed this amount is required to give Qurbani.`,
+        description2:`It's important to note that if multiple members of a family meet this criterion, each must
+perform their own Qurbani. So in a household, both husband and wife may be required to offer
+a separate Qurbani.`,
+        description3Bold:'Types of Animals Eligible for Qurbani',
+        description3:`The animals eligible for Qurbani include:`,
+        services:[
+          'Sheep/Goat (minimum age: 1 year) – 1 Qurbani share',
+           'Cow/Buffalo (minimum age: 2 years) – 7 Qurbani shares',
+           'Camel (minimum age: 5 years) – 7 Qurbani shares',
+          'Animals must be healthy and free of disease or defects. Some disqualifying conditions include:',
+           'Missing over half their teeth',
+           'Being blind or one-eyed',
+           'Having a severely lame leg',
+           'Being underweight or physically weak',
+           'Inability to walk to the site of slaughter'
+        ],
+        bottomText:'These health and age requirements ensure that the animals selected are suitable and respected as per Islamic principles.'
+      },
+      {
+        id:'',
+        title: 'How is Qurbani Performed?',
+        description:"The Qurbani must be performed according to strict Islamic guidelines:",
+        services:[
+           'A sharp knife must be used to minimize suffering',
+          'The animal should not see the knife being sharpened',
+          'No other animal should be present during the slaughter',
+          'The phrase "Bismillahi Allahu Akbar" must be recited before the cut',
+          'The animal should not be skinned until it has completely cooled',
+        ],
+        afterServicesText:`
+        The entire process should be handled with the utmost compassion and care. It reflects the
+        mercy that Islam advocates not just toward humans, but toward all living beings. The goal is to
+        complete the ritual respectfully, keeping the sanctity of the act at its core.`,
+      },
+      {
+        id:'',
+        title:'When Should Qurbani Be Performed?',
+        description:`Qurbani should be carried out between the 10th and 12th days of Dhul Hijjah. Donations to us
+can be made up until the end of the (9th Dhul Hijjah). However, early donations are highly
+recommended to ensure timely sacrifice.`,
+description2Bold:`How is Qurbani Meat Distributed?`,
+description2:'Traditionally, the meat from Qurbani is divided into three parts:',
+services:[
+ 'One-third for the donor and their household',
+ 'One-third for friends and relatives',
+ 'One-third for the poor and needy',
+],
+afterServicesText:`At MTJ Foundation, we ensure that all Qurbani meat is distributed to the most vulnerable
+families in disaster-affected and underserved communities across Pakistan. For many of these
+families, this is their only access to meat in the entire year.`
+
+      },
+      {
+        id:'',
+        title:'',
+        description:"Our distribution process uses a fair and transparent scoring system that prioritizes:",
+        services:[
+           'Female-headed households',
+           'Families with disabled or elderly members',
+           'Pregnant or breastfeeding mothers',
+           'Households with young children',
+           'Low-income families in remote areas',
+
+        ]
+      },
+      {
+        id:'',
+        title:'What If You Missed Qurbani in the Past?',
+        description:`If Qurbani was obligatory for you in past years and you missed it, you can still fulfill this
+obligation by donating the equivalent number of shares in the current year.
+This act is known as compensatory Qurbani and serves as a means to rectify missed
+opportunities for worship.`,
+description2Bold:'Can I Give More Than One Qurbani?',
+description2:`Absolutely. The Prophet Muhammad (PBUH) gave multiple Qurbanis — one on behalf of himself
+and one on behalf of his Ummah. Many Muslims also choose to offer Qurbani for deceased
+parents or other loved ones. You can give as many shares as you like, especially to maximize
+reward in the blessed days of Dhul Hijjah.
+This also offers a chance to honor the memory of your loved ones while contributing to a noble
+cause.`,
+description3Bold:`Pre-Qurbani Etiquette:`,
+description3:`Hair and Nails According to the Hanbali madhab and supported by many scholars, individuals
+intending to give Qurbani should avoid cutting their hair and nails from the 1st of Dhul Hijjah
+until their sacrifice is performed. This act symbolizes humility and submission.`,
+      },
+      {
+        id:'',
+        title:'Why Choose MTJ Foundation for Your Qurbani?',
+        services:
+        [
+          'Transparency & Trust: Every donation is tracked from payment to distribution.',
+`Shariah Compliance: We ensure that each Qurbani is carried out according to Islamic
+guidelines. `,
+`  Serving the Most Needy: We work in disaster-hit, flood-affected, and impoverished
+areas.`,
+
+`Hygiene & Dignity: All meat is packed and distributed with proper hygiene and respect
+for the beneficiaries. `,
+`Community-Centric: Your donation not only provides food but also strengthens our
+collective sense of solidarity.`
+        ],
+        afterServicesText: `By choosing MTJ Foundation, you're not just donating — you're uplifting lives, spreading smiles,
+and fulfilling a divine command with full sincerity.`
+      },
+      {
+        id:'',
+        title:`Final Thoughts`,
+        description:`Qurbani is a profound reminder of our relationship with Allah (SWT). It calls us to reflect on the
+values of obedience, compassion, and community. As we honor the legacy of Prophet Ibrahim
+(AS), we must also recognize our responsibility to share what we have with those who have less.`,
+description2:`This Dhul Hijjah, let your Qurbani be more than a ritual. Let it be a source of joy for someone in
+need — a family that will remember your sacrifice every time they gather around a warm meal
+on Eid.`,
+bottomText:`Donate your Qurbani through MTJ Foundation and be the reason someone smiles this Eid.`
+      }
+    ]
+  },
   {
     id: 'sadqah-jariyah',
     date: 'June 15, 2018',
@@ -347,7 +991,9 @@ export const blogs = [
   },
   {
     id:'education',
+    date: 'June 15, 2018',
     title:'Why Education is the Key to Breaking the Cycle of Poverty',
+    category:'Education',
     image: h_2,
     description:'',
     description2:'',
@@ -460,640 +1106,6 @@ export const blogs = [
           '💙 Fund Vocational Programs: Empower women with skills that enable them to support their families and uplift entire communities.',
         ],
         bottomText:`Your contribution is more than charity—it’s an investment in the future. When you educate one child, you empower an entire generation. When you support one woman, you strengthen an entire community. Together, let’s build a world where every child, like Amina, can not only dream—but thrive.`
-      }
-    ]
-  },
-  {
-    id:'qurbani',
-    title:'Understanding Qurbani',
-    image: qurbani,
-    description:``,
-    description2:'',
-    bottomText:'',
-    // donateButtonText:'Donate Now',
-    subProjects:[
-        {
-        id:'',
-        title:'Understanding Qurbani: Its Meaning, Rules, and Significance in Islam',
-        // image: h_2,
-        description:`Every year, as the sacred days of Dhul Hijjah draw near, Muslims around the world prepare to
-                  honor the powerful legacy of Prophet Ibrahim (AS) through the act of Qurbani. This annual
-                  sacrifice is not merely a tradition; it is a deeply spiritual and symbolic practice that strengthens
-                  our faith, revives our sense of empathy, and uplifts entire communities. At MTJ Foundation, we
-                  believe in making this act of worship meaningful by ensuring it reaches those who need it the
-                  most. `,
-        description2:`In this detailed guide, we’ll explore the meaning of Qurbani, its significance, the rules that
-                  govern it, who must perform it, and how your donation can make a lasting impact — both
-    spiritually and socially.`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'What is Qurbani?',
-        // image: h_2,    
-        description:`Qurbani, meaning "sacrifice" in Arabic, refers to the ritual slaughter of an animal during the
-days of Eid-ul-Adha. This act commemorates the willingness of Prophet Ibrahim (AS) to sacrifice
-his beloved son, Ismail (AS), as a demonstration of unwavering submission to Allah (SWT). Just
-as he was about to follow through, Allah replaced Ismail with a lamb, signifying that the
-sacrifice was accepted. `,
-        description2:`This act of sacrifice has remained a powerful expression of obedience and spiritual devotion for
-generations. It reflects the values of faith, sacrifice, and commitment to divine command. For
-Muslims today, Qurbani is an opportunity to revive this legacy and fulfill a significant Sunnah.`,
-        bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
-can partake in the joy of Eid. For many families living in poverty, this is the only time of year
-they have access to meat, making the gesture not just symbolic but deeply impactful.`,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'The Meaning Behind the Word Qurbani',
-        // image: h_2,
-        description:`In Arabic, “Qurbani” is derived from the word “Qurban,” which means a way or means of
-gaining closeness to Allah. It highlights the core purpose of this act — to get closer to our
-Creator through the sacrifice of something valuable. Prophet Ibrahim’s readiness to give up his
-son symbolizes the ultimate submission to God’s will, a lesson in selflessness that transcends
-generations.`,
-        description2:`This meaning transforms the act of Qurbani from a simple animal slaughter into a sacred
-expression of devotion, bringing immense spiritual rewards to those who perform it with
-sincerity and care.`,
-      },
-      {
-        id:'',
-        title:'Why Do Muslims Perform Qurbani?',
-        // image: h_2,
-        description:`Qurbani is more than just the slaughter of an animal — it is a means of drawing nearer to Allah
-(SWT), showing gratitude for one’s blessings, and supporting the less fortunate.`,
-        description2:`According to the Hanafi school of thought, Qurbani is obligatory (wajib) for every Muslim who
-meets specific financial and personal criteria. For followers of other schools of thought, while
-not obligatory, it is considered highly recommended (Sunnah Mu’akkadah).`,
-
-        description3Bold:'Performing Qurbani allows Muslims to:',
-        services:[
-          'Reaffirm their submission to the will of Allah (SWT)',
-          'Follow in the footsteps of Prophet Ibrahim (AS)',
-          'Share the blessings of Eid with those who are struggling',
-          'Reflect on personal sacrifice and spiritual discipline',
-          'Fulfill a charitable obligation that uplifts communities',
-        ],
-        bottomText:`Qurbani is also an act that fosters empathy and awareness. When we sacrifice an animal for
-those who have little, we develop a deeper appreciation for our blessings. We recognize the
-struggle of those who live in poverty and hunger daily. This empathy strengthens the ummah
-and brings us closer together in the true spirit of Eid.`,
-        donateButtonText:''
-      },
-      {
-        id:'The Story Behind Qurbani',
-        title:'The Story Behind Qurbani',
-        description: `The story of Qurbani traces back to Prophet Ibrahim (AS) who, in a divine dream, saw himself
-sacrificing his son, Ismail (AS). Understanding this dream as a command from Allah, he prepared
-to fulfill it despite the emotional difficulty. When he shared the dream with his son, Ismail (AS)
-responded with unwavering faith and agreed to be sacrificed.`,
-description2:`As Ibrahim (AS) was about to carry out the command, Allah (SWT) intervened, replacing Ismail
-with a lamb. This event became an eternal symbol of submission, sacrifice, and faith — values
-that continue to inspire Muslims to this day.`,
-description3:`It reminds us that true faith requires trust in Allah’s wisdom, even when the path is difficult. This
-level of submission and reliance — or tawakkul — is something every Muslim should strive for.`,
-      },
-      {
-        id:'',
-        title:'How to perform Qurbani',
-        // image: h_2,
-        description:`The Nisab is currently measured as either 87.48 grams of gold or 612.36 grams of silver. For
-instance, as of May 2025, the value of silver was approximately $640.40, while gold was over
-$9,000. Anyone whose savings or assets exceed this amount is required to give Qurbani.`,
-        description2:`It's important to note that if multiple members of a family meet this criterion, each must
-perform their own Qurbani. So in a household, both husband and wife may be required to offer
-a separate Qurbani.`,
-        description3Bold:'Types of Animals Eligible for Qurbani',
-        description3:`The animals eligible for Qurbani include:`,
-        services:[
-          'Sheep/Goat (minimum age: 1 year) – 1 Qurbani share',
-           'Cow/Buffalo (minimum age: 2 years) – 7 Qurbani shares',
-           'Camel (minimum age: 5 years) – 7 Qurbani shares',
-          'Animals must be healthy and free of disease or defects. Some disqualifying conditions include:',
-           'Missing over half their teeth',
-           'Being blind or one-eyed',
-           'Having a severely lame leg',
-           'Being underweight or physically weak',
-           'Inability to walk to the site of slaughter'
-        ],
-        bottomText:'These health and age requirements ensure that the animals selected are suitable and respected as per Islamic principles.'
-      },
-      {
-        id:'',
-        title: 'How is Qurbani Performed?',
-        description:"The Qurbani must be performed according to strict Islamic guidelines:",
-        services:[
-           'A sharp knife must be used to minimize suffering',
-          'The animal should not see the knife being sharpened',
-          'No other animal should be present during the slaughter',
-          'The phrase "Bismillahi Allahu Akbar" must be recited before the cut',
-          'The animal should not be skinned until it has completely cooled',
-        ],
-        afterServicesText:`
-        The entire process should be handled with the utmost compassion and care. It reflects the
-        mercy that Islam advocates not just toward humans, but toward all living beings. The goal is to
-        complete the ritual respectfully, keeping the sanctity of the act at its core.`,
-      },
-      {
-        id:'',
-        title:'When Should Qurbani Be Performed?',
-        description:`Qurbani should be carried out between the 10th and 12th days of Dhul Hijjah. Donations to us
-can be made up until the end of the (9th Dhul Hijjah). However, early donations are highly
-recommended to ensure timely sacrifice.`,
-description2Bold:`How is Qurbani Meat Distributed?`,
-description2:'Traditionally, the meat from Qurbani is divided into three parts:',
-services:[
- 'One-third for the donor and their household',
- 'One-third for friends and relatives',
- 'One-third for the poor and needy',
-],
-afterServicesText:`At MTJ Foundation, we ensure that all Qurbani meat is distributed to the most vulnerable
-families in disaster-affected and underserved communities across Pakistan. For many of these
-families, this is their only access to meat in the entire year.`
-
-      },
-      {
-        id:'',
-        title:'',
-        description:"Our distribution process uses a fair and transparent scoring system that prioritizes:",
-        services:[
-           'Female-headed households',
-           'Families with disabled or elderly members',
-           'Pregnant or breastfeeding mothers',
-           'Households with young children',
-           'Low-income families in remote areas',
-
-        ]
-      },
-      {
-        id:'',
-        title:'What If You Missed Qurbani in the Past?',
-        description:`If Qurbani was obligatory for you in past years and you missed it, you can still fulfill this
-obligation by donating the equivalent number of shares in the current year.
-This act is known as compensatory Qurbani and serves as a means to rectify missed
-opportunities for worship.`,
-description2Bold:'Can I Give More Than One Qurbani?',
-description2:`Absolutely. The Prophet Muhammad (PBUH) gave multiple Qurbanis — one on behalf of himself
-and one on behalf of his Ummah. Many Muslims also choose to offer Qurbani for deceased
-parents or other loved ones. You can give as many shares as you like, especially to maximize
-reward in the blessed days of Dhul Hijjah.
-This also offers a chance to honor the memory of your loved ones while contributing to a noble
-cause.`,
-description3Bold:`Pre-Qurbani Etiquette:`,
-description3:`Hair and Nails According to the Hanbali madhab and supported by many scholars, individuals
-intending to give Qurbani should avoid cutting their hair and nails from the 1st of Dhul Hijjah
-until their sacrifice is performed. This act symbolizes humility and submission.`,
-      },
-      {
-        id:'',
-        title:'Why Choose MTJ Foundation for Your Qurbani?',
-        services:
-        [
-          'Transparency & Trust: Every donation is tracked from payment to distribution.',
-`Shariah Compliance: We ensure that each Qurbani is carried out according to Islamic
-guidelines. `,
-`  Serving the Most Needy: We work in disaster-hit, flood-affected, and impoverished
-areas.`,
-
-`Hygiene & Dignity: All meat is packed and distributed with proper hygiene and respect
-for the beneficiaries. `,
-`Community-Centric: Your donation not only provides food but also strengthens our
-collective sense of solidarity.`
-        ],
-        afterServicesText: `By choosing MTJ Foundation, you're not just donating — you're uplifting lives, spreading smiles,
-and fulfilling a divine command with full sincerity.`
-      },
-      {
-        id:'',
-        title:`Final Thoughts`,
-        description:`Qurbani is a profound reminder of our relationship with Allah (SWT). It calls us to reflect on the
-values of obedience, compassion, and community. As we honor the legacy of Prophet Ibrahim
-(AS), we must also recognize our responsibility to share what we have with those who have less.`,
-description2:`This Dhul Hijjah, let your Qurbani be more than a ritual. Let it be a source of joy for someone in
-need — a family that will remember your sacrifice every time they gather around a warm meal
-on Eid.`,
-bottomText:`Donate your Qurbani through MTJ Foundation and be the reason someone smiles this Eid.`
-      }
-    ]
-  },
-    {
-    id:'qurbani-is-more-than-a-sacrifice',
-    title:'Qurbani Is More Than a Sacrifice: It’s a Lifeline for the Needy',
-    image: qurbani_is,
-    description:``,
-    description2:'',
-    bottomText:'',
-    // donateButtonText:'Donate Now',
-    subProjects:[
-        {
-        id:'',
-        title:'Qurbani Is More Than a Sacrifice: It’s a Lifeline for the Needy',
-        // image: h_2,
-        description:`Every year, as Eid-ul-Adha approaches, homes fill with preparations, conversations revolve around animals and arrangements, and the act of Qurbani becomes part of our routine. For many of us, it is a familiar ritual, one we have grown up witnessing, participating in, and fulfilling with sincerity. Yet, in the rush of it all, there is a risk of forgetting what Qurbani truly represents and who it ultimately serves. `,
-        description2:`Qurbani is not only an act of worship. It is an act of responsibility. And for countless families living in hardship, it becomes something even more profound: a lifeline.`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'The Meaning Beyond the Ritual',
-        // image: h_2,    
-        description:`At its core, Qurbani is about submission, humility, and trust in Allah. It commemorates the unwavering faith of Prophet Ibrahim (AS) and his readiness to give up what he loved most for the sake of obedience. But Islam does not teach worship in isolation from humanity. Every act of ibadah carries a social responsibility, and Qurbani is a powerful example of this balance. `,
-        description2:`Allah reminds us that neither the meat nor the blood reaches Him. It is the sincerity and righteousness behind the act that truly matters. That sincerity is reflected not only in performing Qurbani correctly but also in ensuring that its benefits reach those who need them the most.`,
-        bottomText:`The meat from the sacrificed animal is then distributed among the poor, ensuring that everyone
-can partake in the joy of Eid. For many families living in poverty, this is the only time of year
-they have access to meat, making the gesture not just symbolic but deeply impactful.`,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'When Meat Is Not a Given',
-        // image: h_2,
-        description:`For many families, meat on Eid is not a celebration; it is a rare occurrence. In underserved communities, rising inflation, unemployment, and daily survival challenges mean that nutritious food is often a luxury. Children grow up with meals that barely meet their nutritional needs. Elderly parents quietly accept scarcity with dignity. Mothers stretch meals, hoping no one notices how little is on their own plate.`,
-        description2:`For these families, Qurbani meat is not just food. It is relief. It is nourishment. It is a reminder that they are seen, remembered, and cared for.`,
-       description3:`When a Qurbani reaches a deserving home, it fills more than empty plates. It restores dignity. It brings smiles to children who wait eagerly for Eid, not for clothes or gifts, but for a proper meal. It allows parents to provide for their families without shame. And it creates a moment of joy in lives often marked by struggle.`,
-      },
-      {
-        id:'',
-        title:'A Trust That Carries Weight',
-        // image: h_2,
-        description:`When you give Qurbani through an organization, you are placing an Amanah, a trust, in their hands. This trust is sacred. It demands honesty, transparency, and a deep fear of accountability before Allah.`,
-        description2:`Qurbani done with negligence, shortcuts, or corruption strips the act of its spirit. Delayed distributions, compromised quality, or favoritism are not small administrative issues, they are moral failures. When Qurbani is mishandled, it is not only resources that are wasted, but the trust of donors and the rights of the needy that are violated.`,
-        description3:`True Qurbani is performed with care at every step: from selecting healthy animals and following Islamic guidelines, to fair distribution and timely delivery to deserving families. When done correctly, it becomes an act of worship that uplifts both the giver and the receiver.`,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'From Your Intention to Their Table',
-        description: `Many people give Qurbani with the hope that their sacrifice will reach those who genuinely need it. But intention alone is not enough. Action must follow intention with integrity.`,
-        description2:`A single Qurbani, when managed responsibly, can feed multiple families. It can support households where income is uncertain and food insecurity is real. It can ease a burden, even if only for a few days, and remind people that compassion still exists in the world.`,
-        description3:`This is the beauty of Qurbani. It connects hearts that may never meet. Your sacrifice, made with sincerity, travels across distance and circumstance to reach a home where it becomes a blessing and a dua for you.`,
-      },
-      {
-        id:'',
-        title:'The Reward Multiplies When Shared',
-        // image: h_2,
-        description:`Islam teaches us that the reward of charity multiplies when it is given selflessly and reaches those most in need. Qurbani is a unique form of charity because it combines worship with social welfare. It nourishes bodies, strengthens communities, and reinforces the values of empathy and generosity.`,
-        description2:`When Qurbani is done with the right intention and proper care, it leaves a lasting impact. It does not end with the distribution of meat. It lives on in the prayers of mothers, the smiles of children, and the quiet gratitude of families who feel remembered on a day meant for joy.`,
-        description3Bold:'',
-        description3:``,
-        services:[],
-        bottomText:''
-      },
-      {
-        id:'',
-        title: 'Choosing to Make a Difference',
-        description:"In a world where suffering often goes unseen, Qurbani is a chance to act. A chance to move beyond ritual and into meaningful service. A chance to ensure that your act of worship becomes someone else’s moment of relief.",
-        description2:`This Eid, let your Qurbani be more than a checkbox fulfilled. Let it be a source of nourishment, dignity, and hope. Let it reach the hands that wait quietly and the homes where it is needed most.`,
-        description3:`Because when Qurbani is done with sincerity, integrity, and compassion, it does more than honor a Sunnah. It becomes a lifeline for the needy.`,
-        services:[],
-        afterServicesText:``,
-        // image: cta_banner,
-        bottom_banner_img:cta_banner,
-        bottom_banner_mobile_img:cta_banner,
-        donationUrl: '/donate/qurbani-baraye-mustehqeen',
-      },
-    ]
-  },
-   {
-    id:'from-your-qurbani-to-hungry-home',
-    title:'From Your Qurbani to a Hungry Home: How One Sacrifice Feeds Many',
-    image: hungry_home,
-    description:``,
-    description2:'',
-    bottomText:'',
-    // donateButtonText:'Donate Now',
-    subProjects:[
-        {
-        id:'',
-        title:'From Your Qurbani to a Hungry Home: How One Sacrifice Feeds Many',
-        // image: h_2,
-        description:`Eid-ul-Adha is a time of devotion, reflection, and remembrance. It is a day when sacrifice is honored, not only through words and rituals, but through action. For many of us, Qurbani is performed with sincerity and gratitude. Yet, far away from our homes and celebrations, there are families for whom Eid arrives quietly, without abundance, without certainty, and often without enough food.`,
-        description2:`This is where the true journey of Qurbani begins.`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'When Eid Looks Different',
-        // image: h_2,    
-        description:` In countless underserved communities, Eid does not begin with festive meals or full tables. It begins like any other day: with worry. Worry about what will be cooked, how long supplies will last, and whether children will sleep with full stomachs. Meat, which many of us consider essential on Eid, is a rarity for these families. Some may receive it once a year. Others not at all.`,
-        description2:`For them, Qurbani is not symbolic. It is deeply practical. It is nutrition. It is relief. It is dignity.`,
-        description3:`When Qurbani meat reaches such a home, the atmosphere changes instantly. A mother plans meals without anxiety. Children experience the joy of Eid not just in name, but in nourishment. A father feels, even for a moment, that his family has not been forgotten.`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'One Sacrifice, Many Lives Touched',
-        // image: h_2,
-        description:`A single Qurbani does far more than feed one household. When managed responsibly and distributed fairly, it reaches multiple families, each with its own story of hardship, patience, and quiet resilience.`,
-        description2:``,
-        description3Bold:'One sacrifice may feed:',
-        services:[
-          'A widow caring for her children alone',
-          'An elderly couple surviving on a limited income ',
-          'A laborer whose daily wages barely cover essentials ',
-          'Children whose growth depends on proper nutrition ',
-        ],
-        bottomText:`Each portion carries more than meat. It carries compassion. It carries intention. It carries the message that someone, somewhere, chose to share their blessing.
-        This is the beauty of Qurbani when done with purpose: its impact multiplies far beyond what we can see.`,
-      },
-      {
-        id:'',
-        title:'The Responsibility Behind the Act',
-        // image: h_2,
-        description:`Qurbani is not complete at the point of sacrifice. It is completed when it reaches the right hands. This is where responsibility matters most.`,
-        description2:`From selecting healthy animals to ensuring Shariah-compliant sacrifice, from hygienic handling to timely and fair distribution, every step carries weight. Negligence at any stage weakens the impact of the act and compromises the trust placed by both the donor and the recipient.`,
-        description3:`For families waiting in hope, delays or mismanagement mean more than inconvenience. They mean disappointment. They mean another Eid marked by uncertainty.
-                      That is why integrity, transparency, and accountability are not optional in Qurbani, they are essential.`,
-        description3Bold:'',
-        services:[],
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'The Journey from Intention to Impact',
-        description: `When you give Qurbani, your intention sets something powerful in motion. That intention travels through systems, people, and processes until it finally reaches a home where it becomes a meal.`,
-        description2:`But intention must be protected along the way.`,
-        description3:`A trustworthy Qurbani process ensures that:`,
-        services:[
-          `The sacrifice is performed strictly according to Islamic guidelines `,
-          `Distribution is prioritized for the most deserving `,
-          `No favoritism, corruption, or shortcuts compromise the outcome `,
-          `Every donor’s amanah is honored `
-        ],
-        bottomText:`When this journey is handled with care, the result is profound. A simple act of worship becomes a chain of goodness, linking the giver and the receiver through sincerity and shared humanity.`,
-      },
-     {
-        id:'',
-        title:`Dignity in Giving, Dignity in Receiving`,
-        description:`One of the most beautiful aspects of Qurbani is that it preserves dignity on both sides. The giver fulfills an obligation without seeking recognition. The receiver accepts support without feeling like a burden.
-                     There are no labels. No questions asked. Only quiet gratitude.`,
-       description2:`This dignity matters. Poverty already takes so much from people. Their comfort, their security, their choices. Qurbani, when done right, gives something bigger back: Respect.`,
-       bottomText:``,
-      //  image: qurbani,
-       bottom_banner_img:cta_banner,
-       bottom_banner_mobile_img:cta_banner,
-       donationUrl: '/donate/qurbani-baraye-mustehqeen',
-      },
-        {
-        id:'',
-        title:`Why It Matters Today More Than Ever`,
-        description:`Rising costs, economic uncertainty, and widespread hardship have pushed more families into food insecurity. What once was occasional difficulty has become a daily struggle. In such times, Qurbani is not just a Sunnah: it is a lifeline.`,
-       description2:`It reminds us that our worship is connected to the world around us. That faith is not isolated from hunger. That obedience to Allah includes caring for His creation.`,
-       description3:`When we choose to give Qurbani responsibly, we are choosing to stand with those who are struggling. We are choosing empathy over excess, service over convenience.`,
-       bottomText:``,
-       image: ``,
-      },
-      {
-        id:'',
-        title:`A Choice That Echoes Beyond Eid`,
-        description:`The meat distributed on Eid will be consumed in days, but the impact lasts much longer. Children remember the joy. Parents remember the relief. Families remember that on a day meant for celebration, they were included.`,
-       description2:`And the giver? The giver earns reward that continues, carried in silent prayers and grateful hearts.`,
-       description3:``,
-       bottomText:``,
-       image: ``,
-      },
-      {
-        id:'',
-        title:`Make Your Qurbani Reach Where It’s Needed Most`,
-        description:`No matter where you are in the world, you can perform your Qurbani in a way that truly matters. By choosing a trusted, Shariah-compliant process, your sacrifice can reach deserving families across Pakistan, families for whom this gift means nourishment, dignity, and hope.`,
-       description2:`Let your Qurbani travel beyond the ritual. Let it reach a hungry home. Let one sacrifice feed many.`,
-       description3:`Because when Qurbani is guided by sincerity and responsibility, it becomes more than an obligation fulfilled. It becomes mercy in action.`,
-       bottomText:``,
-       image: ``,
-      }
-    ]
-  },
-   {
-    id:'choosing-the-right-qurbani',
-    title:'Choosing the Right Qurbani: Why Trust, Transparency, and Amanah Matter',
-    image: right_qurbani,
-    description:``,
-    description2:'',
-    bottomText:'',
-    // donateButtonText:'Donate Now',
-    subProjects:[
-        {
-        id:'',
-        title:'Choosing the Right Qurbani: Why Trust, Transparency, and Amanah Matter',
-        // image: h_2,
-        description:`Every year, as Eid-ul-Adha approaches, people begin one of the most important decisions connected to this sacred act: where should I give my Qurbani?`,
-        description2:`On the surface, it may seem simple. Choose an animal, make a payment, and complete the ritual. But in reality, Qurbani is much deeper than that. It is not just about fulfilling an obligation; it is about entrusting your worship, your intention, and your sacrifice into someone else’s care.`,
-        description3:`And that is where trust becomes everything.`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'Qurbani is an Amanah, not just a transaction',
-        // image: h_2,    
-        description:`In Islam, Amanah is not a light word. It means trust, responsibility, and accountability before Allah. When someone gives their Qurbani through an organization, they are not just making a donation. They are placing an Amanah in someone’s hands.`,
-        description2:`That Amanah carries weight.`,
-        description3:`It includes:`,
-        services:[
-          `The correct sacrifice according to Shariah `,
-          `Ethical handling of animals `,
-          `Proper hygiene and processing `,
-          `Fair and timely distribution `,
-          `Ensuring it reaches the most deserving families `
-        ],
-        bottomText:`When any of these steps are compromised, it is not just a service failure. It is a breach of trust on something deeply spiritual.`,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'Why transparency matters more than ever',
-        // image: h_2,
-        description:`In today’s world, people are more aware and rightly so. Donors want to know where their Qurbani goes, how it is performed, and who benefits from it. This is not doubt; it is responsibility.`,
-        description2:`Transparency builds confidence. It allows people to feel connected to their sacrifice, even if they are thousands of miles away.`,
-        description3Bold:'A transparent Qurbani process ensures:',
-        services:[
-          `Clear communication before and after execution `,
-          `Visibility of how and where distribution happens `,
-          `Accountability at every step `,
-          `Assurance that no part of the process is misused or delayed `
-        ],
-        bottomText:`When transparency exists, Qurbani becomes more meaningful. It is no longer distant, it becomes personal.`,
-      },
-      {
-        id:'',
-        title:'The real impact is at the receiving end',
-        // image: h_2,
-        description:`For many families, Qurbani meat is not a routine addition to their Eid, it is the only time in the year they receive it.`,
-        description2:`Behind every distribution is a story:`,
-        description3:``,
-        description3Bold:'',
-        services:[
-          `A mother trying to create a moment of joy for her children.`,
-          `An elderly couple quietly enduring hardship.`,
-          `A family that has learned to live with less, but still hopes for more.`
-        ],
-        bottomText:`When Qurbani is handled with care and integrity, it reaches these homes not just as meat, but as dignity. It tells them: you are not forgotten.`,
-        donateButtonText:''
-      },
-     {
-        id:'',
-        title:`Trust is built in action, not words`,
-        description:`Anyone can promise good service. But in Qurbani, trust is proven through execution.`,
-       description2:`It is seen in:`,
-       services:[
-          `Animals selected with care and respect `,
-          `Strict adherence to Islamic guidelines `,
-          `Organized and fair distribution systems  `,
-          `Respectful treatment of beneficiaries `,
-          `Zero compromise on ethics or quality `
-        ],
-       bottomText:`When an organization takes this responsibility seriously, it reflects in every step. And that consistency is what builds true trust over time.`,
-       image: ``,
-      },
-        {
-        id:'',
-        title:`Why your choice matters`,
-        description:`Choosing where to give your Qurbani is also a choice about what kind of impact you want to create.`,
-       description2:`Do you want your sacrifice to simply be performed or do you want it to reach someone who truly needs it?
-                     Do you want it to be routine or meaningful?`,
-       description3:`The right choice ensures that your worship is not only completed, but honored in the best possible way. It ensures that your intention is protected until it reaches the people who are waiting for it most.`,
-       bottomText:``,
-       // image: qurbani,
-       bottom_banner_img:cta_banner,
-       bottom_banner_mobile_img:cta_banner,
-       donationUrl: '/donate/qurbani-baraye-mustehqeen',
-      },
-      {
-        id:'',
-        title:`A trust that returns to you`,
-        description:`One of the most beautiful aspects of Qurbani is that it does not end with distribution. It returns to the giver in the form of reward, dua, and unseen blessings.`,
-       description2:`Every careful step taken, every honest effort made, every hungry home reached: all of it becomes part of your reward.`,
-       description3:`And that is why trust, transparency, and Amanah are not just operational values. They are acts of worship in themselves.`,
-       bottomText:``,
-       image: ``,
-      },
-      {
-        id:'',
-        title:`Final thought`,
-        description:`Qurbani is not only about sacrifice. It is about responsibility.`,
-       description2:`When done with sincerity and entrusted to the right hands, it becomes something far greater than meat distribution. It becomes a bridge between those who can give and those who need to receive. A bridge built on trust, protected by transparency, and honored through Amanah.`,
-       description3:`Because in the end, the true value of Qurbani is not just in what is given but in how faithfully it reaches those it is meant for.`,
-       bottomText:``,
-       image: ``,
-      }
-    ]
-  },
-    {
-    id:'this-eid-let-your-qurbani-change-lives-beyond-the-ritual',
-    title:'This Eid, Let Your Qurbani Change Lives Beyond the Ritual',
-    image: this_eid,
-    description:``,
-    description2:'',
-    bottomText:'',
-    // donateButtonText:'Donate Now',
-    subProjects:[
-        {
-        id:'',
-        title:'This Eid, Let Your Qurbani Change Lives Beyond the Ritual',
-        // image: h_2,
-        description:`Eid-ul-Adha is often seen through the lens of tradition. Animals are selected, sacrifices are made, and families gather in gratitude. It is a beautiful ritual, deeply rooted in faith and remembrance. But somewhere between the preparations and celebrations, there is a deeper question we often forget to ask:`,
-        description2:`What if your Qurbani could be more than a ritual this year?`,
-        description3:`What if it could become a source of real change in someone’s life?`,
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'When worship meets responsibility',
-        // image: h_2,    
-        description:`Qurbani is an act of devotion, but it is also an act of responsibility. It is not meant to end at sacrifice alone. Its true spirit continues when its impact reaches those who are struggling silently, far away from the joy of Eid.`,
-        description2:`For many families, Eid does not begin with celebration; it begins with uncertainty. There is no guarantee of a special meal. No assurance of meat. No ease that comes with abundance. In such homes, Qurbani is not symbolic; it is survival support.`,
-        description3:`This is where worship transforms into something even more powerful: service to humanity.`,
-        services:[],
-        bottomText:``,
-        donateButtonText:''
-      },
-      {
-        id:'',
-        title:'Beyond the ritual, toward real impact',
-        // image: h_2,
-        description:`When Qurbani is done with intention and care, it moves beyond a personal obligation and becomes a shared blessing. It reaches homes where food is limited, where children understand scarcity too early, and where parents quietly carry the weight of providing with very little.`,
-        description2:`In those moments, Qurbani becomes:`,
-        description3Bold:'',
-        services:[
-          `A meal that restores strength  `,
-          `A moment of joy for children `,
-          `A relief for struggling parents `,
-          `A reminder that they are not forgotten `
-        ],
-        bottomText:`It is no longer just meat. It is dignity. It is compassion made visible.`,
-      },
-      {
-        id:'',
-        title:'The true spirit of Eid',
-        // image: h_2,
-        description:`Eid-ul-Adha is not only about sacrifice, it is also about obedience, gratitude, and empathy. The story of Prophet Ibrahim (A.S.) teaches us surrender, but it also teaches us trust in Allah and care for His creation.`,
-        description2:`True celebration of Eid is not measured by how many rituals are completed, but by how deeply their spirit is lived.`,
-        description3:`And that spirit is most alive when our sacrifice reaches those who need it the most.`,
-        services:[
-        ],
-        bottomText:``,
-        donateButtonText:''
-      },
-     {
-        id:'',
-        title:`Your Qurbani has a journey`,
-        description:`Every Qurbani carries a journey:`,
-       description2:`From intention to sacrifice to distribution to a home in need.
-                     At each step, sincerity matters. Care matters. Integrity matters.
-                     Because somewhere along that journey, your sacrifice becomes someone else’s hope.`,
-      description3:`A well-managed Qurbani ensures that:`,               
-       services:[
-        `The process is performed according to Islamic guidelines `,
-        `The distribution is fair, transparent, and timely `,
-        `The most deserving families are prioritized `,
-        `No effort is wasted, and no trust is broken `
-       ],
-       bottomText:`When handled responsibly, Qurbani becomes a chain of goodness that connects you to people you may never meet but who will remember your kindness in their prayers.`,
-       image: ``,
-      },
-        {
-        id:'',
-        title:`Changing lives, not just fulfilling rituals`,
-        description:`It is easy to view Qurbani as something that ends once the sacrifice is done. But in reality, its true completion lies in its impact.`,
-       description2:`A child eating meat for the first time in months.
-                     A mother serving a meal with relief instead of worry.
-                    An elderly couple feeling remembered on a day meant for joy.
-                   These are not just outcomes. They are lives touched by intention.`,
-       description3:`This is what it means for Qurbani to go beyond ritual. It becomes an act that changes the emotional reality of someone’s Eid.`,
-       bottomText:``,
-       // image: qurbani,
-       bottom_banner_img:cta_banner,
-       bottom_banner_mobile_img:cta_banner,
-       donationUrl: '/donate/qurbani-baraye-mustehqeen',
-      },
-      {
-        id:'',
-        title:`A choice that defines meaning`,
-        description:`Every year, you have a choice. To perform Qurbani as a tradition or to perform it as transformation.`,
-       description2:`The difference lies in intention, and in where you choose to direct your sacrifice.`,
-       description3:`When given through a trusted and responsible system, your Qurbani becomes more than personal worship. It becomes social impact. It becomes shared joy. It becomes relief for someone who has been waiting silently for help.`,
-       bottomText:``,
-       image: ``,
-      },
-      {
-        id:'',
-        title:`Let your Qurbani carry purpose`,
-        description:`This Eid, let your sacrifice do more than fulfill an obligation.`,
-       description2:`Let it reach a hungry home.
-                     Let it ease a burden.
-                     Let it bring dignity where there was struggle.
-                     Let it remind someone that they are seen.`,
-       description3:`Because when Qurbani is done with sincerity and directed with care, it does not end at ritual—it begins a ripple of change that touches lives far beyond your own.
-                     And that is where its true beauty lies.`,
-       bottomText:``,
-       image: ``,
       }
     ]
   },
