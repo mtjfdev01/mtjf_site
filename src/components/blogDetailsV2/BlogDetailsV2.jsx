@@ -1,22 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { useEffect, useMemo, useState, lazy, Suspense } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import PageHeader from '../pageHeader/PageHeader'
 import './BlogDetailsV2.css'
 import Footer from '../footer/Footer'
 import { getBlogById } from '../../data/blogsData'
+
+const DonationCta = lazy(() => import('../donationCta/DonationCta'))
 
 const BlogDetailsV2 = () => {
   const { id, slug } = useParams()
   const navigate = useNavigate()
   const blog = useMemo(() => getBlogById(id || slug), [id, slug])
   const subProjects = blog?.subProjects && Array.isArray(blog.subProjects) ? blog.subProjects : []
-  const firstSection = subProjects[0] || null
-  const secondSection = subProjects[1] || null
-  const bullets = (secondSection?.services && Array.isArray(secondSection.services))
-    ? secondSection.services
-    : (firstSection?.services && Array.isArray(firstSection.services))
-      ? firstSection.services
-      : []
+
   const sliderImages = useMemo(() => {
     const imgs = []
     if (blog?.image) imgs.push(blog.image)
@@ -82,93 +78,110 @@ const BlogDetailsV2 = () => {
   return (
     <article className="blog-v2-page">
       <PageHeader title={blog?.title || 'Blog'} image={blog?.image} />
-      <section className="blog-v2-intro container py-48">
-        <div className="blog-v2-split blog-v2-split--60-40">
-          <div className="blog-v2-text">
-            <h2 className="heading-secondary">{firstSection?.title || blog?.title}</h2>
-            {blog?.excerpt ? <p>{blog.excerpt}</p> : null}
-            {firstSection?.description ? <p>{firstSection.description}</p> : null}
-            {firstSection?.description2 ? <p>{firstSection.description2}</p> : null}
-          </div>
-          <div className="blog-v2-image-wrap">
-            {firstSection?.image ? (
-              <img src={firstSection.image} alt="Blog visual" className="blog-v2-image" />
-            ) : null}
-          </div>
-        </div>
-      </section>
+      {subProjects.map((subProject, index) => (
+        <React.Fragment key={subProject.id || index}>
+          {/* Main Content Section for each subProject */}
+          <section className="blog-v2-intro container py-48">
+            <div className={`blog-v2-split blog-v2-split--60-40 ${index % 2 !== 0 ? 'blog-v2-split--reverse' : ''}`}>
+              <div className="blog-v2-text">
+                <h2 className="heading-secondary">{subProject.title}</h2>
+                {subProject.description && <p>{subProject.description}</p>}
+                {subProject.description2 && <p>{subProject.description2}</p>}
+                {subProject.description3 && <p>{subProject.description3}</p>}
+                {subProject.services && subProject.services.length > 0 && (
+                  <ul className="blog-v2-bullets">
+                    {subProject.services.map((service, i) => (
+                      <li key={i}>{service}</li>
+                    ))}
+                  </ul>
+                )}
+                {subProject.bottomText && <h3 className="blog-v2-bottom-heading">{subProject.bottomText}</h3>}
+              </div>
+              <div className="blog-v2-image-wrap">
+                {subProject.image && (
+                  <img src={subProject.image} alt={subProject.title} className="blog-v2-image" />
+                )}
+              </div>
+            </div>
+          </section>
 
-      <section className="blog-v2-slider container">
-        <div className="blog-v2-slider__frame">
-          <button
-            type="button"
-            className="blog-v2-slider__nav blog-v2-slider__nav--prev"
-            onClick={goPrev}
-            aria-label="Previous image"
-          >
-            ‹
-          </button>
-          <div className="blog-v2-slider__viewport">
-            <div
-              className="blog-v2-slider__track"
-              style={{
-                transform: `translateX(-${currentSlide * (100 / cardsPerView)}%)`,
-                '--cards-per-view': cardsPerView
-              }}
-            >
-              {(sliderImages || []).map((image, index) => (
-                <div key={`${index}-${image}`} className="blog-v2-slider__item">
-                  <div className="blog-v2-slider__item-inner">
-                    <img
-                      src={image}
-                      alt={`Slide ${index + 1}`}
-                      className="blog-v2-slider__image"
-                      loading="lazy"
-                    />
+          {/* Slider Section - Render only once after the first subProject */}
+          {index === 0 && sliderImages.length > 0 && (
+            <section className="blog-v2-slider container">
+              <div className="blog-v2-slider__frame">
+                <button
+                  type="button"
+                  className="blog-v2-slider__nav blog-v2-slider__nav--prev"
+                  onClick={goPrev}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <div className="blog-v2-slider__viewport">
+                  <div
+                    className="blog-v2-slider__track"
+                    style={{
+                      transform: `translateX(-${currentSlide * (100 / cardsPerView)}%)`,
+                      '--cards-per-view': cardsPerView
+                    }}
+                  >
+                    {(sliderImages || []).map((image, index) => (
+                      <div key={`${index}-${image}`} className="blog-v2-slider__item">
+                        <div className="blog-v2-slider__item-inner">
+                          <img
+                            src={image}
+                            alt={`Slide ${index + 1}`}
+                            className="blog-v2-slider__image"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+                <button
+                  type="button"
+                  className="blog-v2-slider__nav blog-v2-slider__nav--next"
+                  onClick={goNext}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+            </section>
+          )}
+
+          {/* Bottom Banner for each subProject */}
+          {subProject.bottom_banner_img && subProject.bottom_banner_mobile_img && (
+            <div className="blog-v2-banner-wrapper">
+              <div className="banner_img d-none md:d-block">
+                <PageHeader 
+                  title={subProject.title} 
+                  image={subProject.bottom_banner_img} 
+                  url={subProject.donationUrl}
+                />
+              </div>
+              <div className="banner_img--mobile sm:d-block md:d-none">
+                {subProject.donationUrl ? (
+                  <Link to={subProject.donationUrl}>
+                    <img 
+                      src={subProject.bottom_banner_mobile_img} 
+                      alt={subProject.title} 
+                      style={{ width: '100%', height: 'auto', display: 'block' }} 
+                    />
+                  </Link>
+                ) : (
+                  <img 
+                    src={subProject.bottom_banner_mobile_img} 
+                    alt={subProject.title} 
+                    style={{ width: '100%', height: 'auto', display: 'block' }} 
+                  />
+                )}
+              </div>
             </div>
-          </div>
-          <button
-            type="button"
-            className="blog-v2-slider__nav blog-v2-slider__nav--next"
-            onClick={goNext}
-            aria-label="Next image"
-          >
-            ›
-          </button>
-        </div>
-      </section>
-
-      <section className="blog-v2-secondary container py-48">
-        <div className="blog-v2-split blog-v2-split--60-40">
-          <div className="blog-v2-text">
-            <h2 className="heading-secondary">{secondSection?.title || 'Details'}</h2>
-            {secondSection?.description ? <p>{secondSection.description}</p> : null}
-            {secondSection?.description2 ? <p>{secondSection.description2}</p> : null}
-            {secondSection?.description3 ? <p>{secondSection.description3}</p> : null}
-            {secondSection?.bottomText ? <h3 className="blog-v2-bottom-heading">{secondSection.bottomText}</h3> : null}
-          </div>
-          <div className="blog-v2-image-wrap">
-            {secondSection?.image ? (
-              <img src={secondSection.image} alt="Secondary visual" className="blog-v2-image" />
-            ) : null}
-          </div>
-        </div>
-        {secondSection?.bottomText ? (
-          <p className="blog-v2-bottom-paragraph">{secondSection.bottomText}</p>
-        ) : null}
-      </section>
-
-      {bullets && bullets.length > 0 ? (
-        <section className="blog-v2-highlights container py-48">
-          <h2 className="heading-secondary">Key Points</h2>
-          <ul className="blog-v2-bullets">
-            {bullets.map((b, i) => <li key={`bullet-${i}`}>{b}</li>)}
-          </ul>
-        </section>
-      ) : null}
+          )}
+        </React.Fragment>
+      ))}
 
       {tableRows.length > 0 ? (
         <section className="blog-v2-table container py-48">
@@ -193,6 +206,11 @@ const BlogDetailsV2 = () => {
           </div>
         </section>
       ) : null}
+
+      <Suspense fallback={null}>
+        <DonationCta route="/donate/qurbani-baraye-mustehqeen" />
+      </Suspense>
+
       <Footer />
     </article>
   )
