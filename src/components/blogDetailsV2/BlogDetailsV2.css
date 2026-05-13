@@ -171,3 +171,26 @@
     padding: 0;
   }
 }
+
+/* Banner Link Styles */
+.blog-v2-banner-wrapper {
+  transition: opacity 0.3s ease;
+  width: 100%;
+}
+
+.blog-v2-banner-link {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.blog-v2-banner-wrapper:hover {
+  opacity: 0.95;
+}
+
+.banner_img--mobile img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
