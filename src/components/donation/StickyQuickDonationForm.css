@@ -138,6 +138,23 @@
   flex: 0 0 24px;
 }
 
+.sticky-quantity-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  padding: 0 6px;
+  height: 100%;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #236c34;
+  background: #f7faf7;
+  border-left: 1px solid #d4d4d4;
+  box-sizing: border-box;
+}
+
 .sticky-amount-btn:hover {
   background: #e0e0e0;
 }

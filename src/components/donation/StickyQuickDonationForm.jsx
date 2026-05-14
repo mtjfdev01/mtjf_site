@@ -190,6 +190,8 @@ const StickyQuickDonationForm = () => {
   const [localAmount, setLocalAmount] = useState(() =>
     stickyFirstInitiative?.price != null ? String(stickyFirstInitiative.price) : '0'
   )
+  /** Keeps checkout `quantity` in sync with +/- (and with typed totals that are exact multiples of unit price). */
+  const [localQuantity, setLocalQuantity] = useState(1)
   const [selectedProjectId, setSelectedProjectId] = useState(STICKY_DEFAULT_PROJECT_ID)
   const [selectedInitiativeId, setSelectedInitiativeId] = useState(
     () => stickyFirstInitiative?.id ?? ''
@@ -232,6 +234,24 @@ const StickyQuickDonationForm = () => {
     const selectedProject = projectCards.find(p => p.id === selectedProjectId) || null
     const selectedInitiative = selectedProject?.initiatives?.find(i => i.id === selectedInitiativeId) || null
 
+    const unitPrice = selectedInitiative?.price
+    const usedCustomField = customInput.trim() !== ''
+    const totalRounded = Math.round(numericAmount)
+    const unitRounded = unitPrice > 0 ? Math.round(unitPrice) : 0
+
+    let quantity = 1
+    let basePrice = totalRounded
+    if (!usedCustomField && unitRounded > 0 && selectedInitiative) {
+      const expectedTotal = localQuantity * unitRounded
+      if (totalRounded === expectedTotal) {
+        quantity = localQuantity
+        basePrice = unitRounded
+      } else if (totalRounded >= unitRounded && totalRounded % unitRounded === 0) {
+        quantity = totalRounded / unitRounded
+        basePrice = unitRounded
+      }
+    }
+
     // Create quick donate item
     const quickDonateItem = {
       projectId: selectedProjectId,
@@ -240,9 +260,9 @@ const StickyQuickDonationForm = () => {
       initiativeTitle: selectedInitiative?.title || null,
       initiativeSubtitle: selectedInitiative?.subtitle || null,
       projectIcon: selectedProject?.icon || null,
-      quantity: 1,
+      quantity,
       donationType: donationType.toUpperCase(),
-      basePrice: numericAmount,
+      basePrice,
       customAmount: 0,
       customField: customInput, // Added custom input field
       totalAmount: numericAmount,
@@ -255,6 +275,7 @@ const StickyQuickDonationForm = () => {
 
     // Clear the input
     setLocalAmount('0')
+    setLocalQuantity(1)
 
     // Navigate to checkout
     navigate('/checkout')
@@ -265,22 +286,28 @@ const StickyQuickDonationForm = () => {
   }
 
   const handleIncrement = () => {
-    const currentAmount = parseFloat(localAmount) || 0
     const selectedProject = projectCards.find(p => p.id === selectedProjectId)
     const selectedInitiative = selectedProject?.initiatives?.find(i => i.id === selectedInitiativeId)
-    const step = selectedInitiative?.price || 100
-    setLocalAmount((currentAmount + step).toString())
-    setCustomInput('') // Reset custom input when using amount buttons
+    const step = Math.round(selectedInitiative?.price || 100)
+    setLocalQuantity((prev) => {
+      const next = prev + 1
+      setLocalAmount(String(next * step))
+      return next
+    })
+    setCustomInput('')
   }
 
   const handleDecrement = () => {
-    const currentAmount = parseFloat(localAmount) || 0
     const selectedProject = projectCards.find(p => p.id === selectedProjectId)
     const selectedInitiative = selectedProject?.initiatives?.find(i => i.id === selectedInitiativeId)
-    const step = selectedInitiative?.price || 100
-    const newAmount = currentAmount - step
-    setLocalAmount((newAmount > 0 ? newAmount : 0).toString())
-    setCustomInput('') // Reset custom input when using amount buttons
+    const step = Math.round(selectedInitiative?.price || 100)
+    setLocalQuantity((prev) => {
+      if (prev <= 1) return prev
+      const next = prev - 1
+      setLocalAmount(next <= 0 ? '0' : String(next * step))
+      return next
+    })
+    setCustomInput('')
   }
 
   // Hide sticky form based on scroll position
@@ -355,9 +382,11 @@ const StickyQuickDonationForm = () => {
                   const firstInitiative = project.initiatives[0]
                   setSelectedInitiativeId(firstInitiative.id)
                   setLocalAmount(firstInitiative.price.toString())
+                  setLocalQuantity(1)
                 } else {
                   setSelectedInitiativeId('')
                   setLocalAmount('0')
+                  setLocalQuantity(1)
                 }
                 setCustomInput('') // Reset custom input when project changes
               }}
@@ -384,6 +413,7 @@ const StickyQuickDonationForm = () => {
                   const initiative = selectedProject.initiatives.find(i => i.id === initiativeId)
                   if (initiative) {
                     setLocalAmount(initiative.price.toString())
+                    setLocalQuantity(1)
                   }
                   setCustomInput('') // Reset custom input when initiative changes
                 }}
@@ -406,7 +436,7 @@ const StickyQuickDonationForm = () => {
                   type="button" 
                   className="sticky-amount-btn" 
                   onClick={handleDecrement}
-                  disabled={Number(localAmount) <= 0 || customInput.trim() !== ''}
+                  disabled={localQuantity <= 1 || customInput.trim() !== ''}
                 >
                   -
                 </button>
@@ -420,7 +450,16 @@ const StickyQuickDonationForm = () => {
                     const val = e.target.value
                     if (val === '' || Number(val) >= 0) {
                       setLocalAmount(val === '' ? '0' : val)
-                      setCustomInput('') // Reset custom input when manually typing amount
+                      setCustomInput('')
+                      const project = projectCards.find(p => p.id === selectedProjectId)
+                      const initiative = project?.initiatives?.find(i => i.id === selectedInitiativeId)
+                      const unit = initiative?.price != null ? Math.round(initiative.price) : 0
+                      const total = Math.round(Number(val === '' ? 0 : val))
+                      if (unit > 0 && total > 0 && total % unit === 0) {
+                        setLocalQuantity(total / unit)
+                      } else {
+                        setLocalQuantity(1)
+                      }
                     }
                   }}
                   aria-label="Donation amount in rupees"
@@ -434,7 +473,13 @@ const StickyQuickDonationForm = () => {
                 >
                   +
                 </button>
-                {/* <span className="sticky-currency">Rs.</span> */}
+                <span
+                  className="sticky-quantity-display"
+                  title="Quantity"
+                  aria-label={`Quantity ${localQuantity}`}
+                >
+                  {localQuantity}
+                </span>
               </div>
             </div>
           )}
@@ -451,6 +496,7 @@ const StickyQuickDonationForm = () => {
                   setCustomInput(e.target.value)
                   if (e.target.value.trim() !== '') {
                     setLocalAmount('0')
+                    setLocalQuantity(1)
                   }
                 }}
                 aria-label="Custom input"

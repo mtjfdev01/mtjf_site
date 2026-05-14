@@ -566,6 +566,20 @@
     max-width: none;
   }
 
+  /* Batch / tracker tabs: wrap to new lines instead of overflowing horizontally */
+  .ddvBatchTabs,
+  .ddvTrackerTabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    row-gap: 8px;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .ddvTrackerTab {
+    white-space: normal;
+    max-width: 100%;
+  }
+
   .ddvStep {
     grid-template-columns: 28px 96px 1fr;
     grid-template-areas:

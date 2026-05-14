@@ -89,7 +89,8 @@ const DonationForm = ({
       projectName: defaultProjectName || initialProject?.title || initialProject?.name || '',
       initiativeId: firstInitiative?.id || '',
       initiativeName: firstInitiative?.title || '',
-      templateCode: firstInitiative?.templateCode ?? projectMenuData?.templateCode ?? null
+      templateCode: firstInitiative?.templateCode ?? projectMenuData?.templateCode ?? null,
+      quantity: 1
     }
   })
   const [errorMessage, setErrorMessage] = useState('')
@@ -146,7 +147,8 @@ const DonationForm = ({
     setFormData((prev) => ({
       ...prev,
       amount: amount.toString(),
-      customAmount: ''
+      customAmount: '',
+      quantity: 1
     }))
   }
 
@@ -158,29 +160,38 @@ const DonationForm = ({
       initiativeName: initiative?.title || '',
       templateCode: initiative?.templateCode ?? selectedProjectData?.templateCode ?? null,
       amount: initiative?.price ? initiative.price.toString() : prev.amount,
-      customAmount: ''
+      customAmount: '',
+      quantity: 1
     }))
   }
 
   const handleIncrement = () => {
-    const currentAmount = parseFloat(formData.amount) || 0;
     const initiative = selectedProjectData?.initiatives?.find(i => i.id === formData.initiativeId);
-    const step = initiative?.price || 100; // Default step to 100 if price not found
+    const basePrice = initiative?.price || 100;
+    const newQuantity = (Number(formData.quantity) || 1) + 1
+    const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : (parseFloat(formData.amount) || 0) + basePrice
+
     setFormData(prev => ({
       ...prev,
-      amount: (currentAmount + step).toString(),
+      quantity: newQuantity,
+      amount: newAmount,
       customAmount: ''
     }));
   };
 
   const handleDecrement = () => {
-    const currentAmount = parseFloat(formData.amount) || 0;
+    const currentQty = Number(formData.quantity) || 1
+    if (currentQty <= 1) return
+
     const initiative = selectedProjectData?.initiatives?.find(i => i.id === formData.initiativeId);
-    const step = initiative?.price || 100;
-    const newAmount = currentAmount - step;
+    const basePrice = initiative?.price || 100;
+    const newQuantity = currentQty - 1
+    const newAmount = basePrice > 0 ? (newQuantity * basePrice).toString() : Math.max(0, (parseFloat(formData.amount) || 0) - basePrice)
+
     setFormData(prev => ({
       ...prev,
-      amount: (newAmount > 0 ? newAmount : 0).toString(), // Prevent negative values
+      quantity: newQuantity,
+      amount: newAmount,
       customAmount: ''
     }));
   };
@@ -376,6 +387,7 @@ const DonationForm = ({
                         firstInitiative?.templateCode ?? projectMenuData?.templateCode ?? null,
                       amount: firstInitiative?.price ? firstInitiative.price.toString() : '',
                       customAmount: '',
+                      quantity: 1,
                       category: resolveCategoryForProjectId(
                         selectedId,
                         prev.category,
@@ -462,6 +474,13 @@ const DonationForm = ({
                       disabled={!!formData.customAmount || Number(formData.amount) === 0}
                     />
                     <button type="button" onClick={handleIncrement} className="donation-form-amount-btn" disabled={!!formData.customAmount}>+</button>
+                    <span
+                      className="donation-form-quantity-display"
+                      title="Quantity"
+                      aria-label={`Quantity ${Math.max(1, Math.round(Number(formData.quantity) || 1))}`}
+                    >
+                      {Math.max(1, Math.round(Number(formData.quantity) || 1))}
+                    </span>
                   </div>
               </div>
             )}
@@ -483,7 +502,8 @@ const DonationForm = ({
                       setFormData((prev) => ({
                         ...prev,
                         customAmount: val,
-                        amount: '0'
+                        amount: '0',
+                        quantity: 1
                       }))
                     }
                   }}

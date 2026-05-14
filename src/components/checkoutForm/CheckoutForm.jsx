@@ -96,6 +96,8 @@ const CheckoutForm = () => {
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
   const [isDonationPostLoading, setIsDonationPostLoading] = useState(false)
   const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
+  /** Set when `?donationId=` retry flow loads `/donations/public/failed-transaction/:id` — sent as `donor_id` on POST */
+  const [failedRetryDonorId, setFailedRetryDonorId] = useState(null)
   const [stripeEmbedClientSecret, setStripeEmbedClientSecret] = useState(null)
   const hasFetchedFailedTransaction = useRef(false)
   const hasSetDonationItems = useRef(false)
@@ -114,6 +116,7 @@ const CheckoutForm = () => {
       // Reset when donationId is removed from URL
       hasFetchedFailedTransaction.current = false
       setDonationIdFromQuery(null)
+      setFailedRetryDonorId(null)
     }
   }, [location.search, donationIdFromQuery])
 
@@ -252,34 +255,56 @@ const CheckoutForm = () => {
         
         // First, reset donation data as requested
         clearDonationData()
+        setFailedRetryDonorId(null)
 
         // Fetch failed transaction data
         const response = await axiosInstance.get(`/donations/public/failed-transaction/${donationIdFromQuery}`)
-        console.log("failed transaction response", response)
-        
+
         if (response.data && response.data.success) {
-          const failedTransaction = response.data.data
-          const donor = failedTransaction.donor || {}
-          
-          console.log("Failed transaction data:", failedTransaction)
-          console.log("Donor data:", donor)
-          
+          const failedTransaction = response.data?.data
+          if (!failedTransaction || typeof failedTransaction !== 'object') {
+            setFormMessage({
+              type: 'error',
+              text: 'Failed to load donation information (empty response). Please try again.'
+            })
+            hasFetchedFailedTransaction.current = false
+            return
+          }
+
+          const donor = failedTransaction.donor && typeof failedTransaction.donor === 'object'
+            ? failedTransaction.donor
+            : {}
+
+          const donorIdRaw =
+            failedTransaction.donor_id ?? donor?.id ?? null
+          const donorIdNum = donorIdRaw != null ? Number(donorIdRaw) : NaN
+          setFailedRetryDonorId(Number.isFinite(donorIdNum) ? donorIdNum : null)
+
+          const dt = String(failedTransaction.donation_type || '').toLowerCase()
+          let categoryLabel = 'General'
+          if (dt === 'zakat') categoryLabel = 'Zakat'
+          else if (dt === 'sadqa' || dt === 'sadka') categoryLabel = 'Sadqa'
+          else if (dt === 'qurbani-baraye-mustehqeen' || dt === 'qurbani') categoryLabel = 'Qurbani'
+
           // Extract donation amount from transaction
           const donationAmount = failedTransaction.amount || 0
-          console.log("Donation amount:", donationAmount)
-          
+
           // FIRST: Set donation amount in context to make form visible
           if (donationAmount > 0) {
+            const retryTemplateCode =
+              failedTransaction.template_code ?? failedTransaction.templateCode ?? null
             const donationFormDataToSet = {
               amount: donationAmount.toString(),
               finalAmount: donationAmount.toString(),
               currency: failedTransaction.currency || 'PKR',
-              category: failedTransaction.donation_type === 'zakat' ? 'Zakat' : 
-                       failedTransaction.donation_type === 'sadqa' ? 'Sadqa' : 'General',
+              category: categoryLabel,
               projectId: failedTransaction.project_id || '',
               donation_type: failedTransaction.donation_type || 'general',
+              ...(retryTemplateCode != null &&
+                String(retryTemplateCode).trim() !== '' && {
+                  templateCode: String(retryTemplateCode).trim()
+                })
             }
-            console.log("Setting donation form data:", donationFormDataToSet)
             setDonationFormData(donationFormDataToSet)
             
             // THEN: Pre-populate form with donor and transaction data after a small delay
@@ -294,7 +319,6 @@ const CheckoutForm = () => {
                 city: failedTransaction.city || donor.city || '',
                 address: donor.address || ''
               }
-              console.log("Setting form data:", formDataToSet)
               setFormData(prev => ({
                 ...prev,
                 ...formDataToSet
@@ -311,7 +335,6 @@ const CheckoutForm = () => {
               city: failedTransaction.city || donor.city || '',
               address: donor.address || ''
             }
-            console.log("Setting form data (no amount):", formDataToSet)
             setFormData(prev => ({
               ...prev,
               ...formDataToSet
@@ -323,13 +346,15 @@ const CheckoutForm = () => {
             text: 'Your previous donation attempt was not completed. Please complete the payment below.' 
           })
         } else {
-          setFormMessage({ 
-            type: 'error', 
-            text: 'Failed to load donation information. Please try again.' 
+          setFailedRetryDonorId(null)
+          setFormMessage({
+            type: 'error',
+            text: 'Failed to load donation information. Please try again.'
           })
         }
       } catch (error) {
         console.error('Error fetching failed transaction:', error)
+        setFailedRetryDonorId(null)
         setFormMessage({ 
           type: 'error', 
           text: error?.response?.data?.message || 'Failed to load donation information. Please try again.' 
@@ -602,6 +627,11 @@ const CheckoutForm = () => {
         ...(isFailedTransactionFlow && donationIdFromQuery && {
           previous_donation_id: donationIdFromQuery
         }),
+        ...(isFailedTransactionFlow &&
+          failedRetryDonorId != null &&
+          Number.isFinite(Number(failedRetryDonorId)) && {
+            donor_id: Number(failedRetryDonorId)
+          }),
         // Include ref if available (agency performance tracking)
         ...(ref && {
           ref: ref
