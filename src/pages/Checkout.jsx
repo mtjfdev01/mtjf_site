@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useMemo } from 'react'
+import React, { Suspense, lazy, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDonation } from '../contexts/DonationContext'
 // import image1 from '../assets/img/projects/apna_ghr.webp'
@@ -11,13 +11,27 @@ const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const Footer = lazy(() => import('../components/footer/Footer'))
 const DonationSidebar = lazy(() => import('../components/donation/projects_menu/DonationSidebar'))
 
+const TEST_CHECKOUT_DEFAULT_AMOUNT = 222
+
 const Checkout = () => {
   const location = useLocation()
   const alfalahOnly = location.pathname === '/test-checkout'
-  const { amount } = useDonation()
-  
+  const { amount, setDonationFormData } = useDonation()
+
+  useEffect(() => {
+    if (!alfalahOnly || (amount && amount > 0)) return
+    setDonationFormData({
+      amount: String(TEST_CHECKOUT_DEFAULT_AMOUNT),
+      finalAmount: TEST_CHECKOUT_DEFAULT_AMOUNT,
+      customAmount: TEST_CHECKOUT_DEFAULT_AMOUNT,
+      currency: 'PKR',
+      category: 'General',
+      donation_type: 'general',
+    })
+  }, [alfalahOnly, amount, setDonationFormData])
+
   // Use total amount from context (already calculated from all sources)
-  const totalAmount = amount || 0
+  const totalAmount = amount || (alfalahOnly ? TEST_CHECKOUT_DEFAULT_AMOUNT : 0)
 
   // First component after header - loads immediately
   const [formRef, showForm] = useIntersectionObserver({ 

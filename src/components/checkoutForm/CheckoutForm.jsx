@@ -709,6 +709,9 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
     if (totalAmount === 0 && totalAmountFromState > 0) {
       totalAmount = totalAmountFromState
     }
+    if (totalAmount === 0 && alfalahOnly) {
+      totalAmount = 222
+    }
     totalAmount = Math.round(Number(totalAmount))
 
     if (!totalAmount || Number(totalAmount) <= 0 || Number(totalAmount) < 100) {
