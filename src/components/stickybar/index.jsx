@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
 import './index.css'
 import { FaLinkedinIn } from "react-icons/fa";
+// import UrgentAppealsBar from '../appeals/UrgentAppealsBar'
 
 const StickyBar = () => {
   const [showPhoneNumber, setShowPhoneNumber] = useState(false)
@@ -46,7 +47,9 @@ const StickyBar = () => {
   return (
     <div className="sticky_bar_container">
       <div className={`sticky_bar-content ${!isMobile ? 'container' : ''}`}>
-        <div className={`sticky_bar-contact ${showPhoneNumber ? 'show-phone' : ''}`}>
+        <div className="sticky_bar-start">
+          {/* <UrgentAppealsBar /> */}
+          <div className={`sticky_bar-contact ${showPhoneNumber ? 'show-phone' : ''}`}>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mtjfoundation.org" target="_blank" rel="noopener noreferrer" className="sticky_bar-link sticky_bar-email-link" onClick={handleEmailClick}>
             <FaEnvelope />
             <span className="sticky_bar-email-text">info@mtjfoundation.org</span>
@@ -61,6 +64,7 @@ const StickyBar = () => {
               061-111-786-853
             </span>
           </a>
+        </div>
         </div>
 
 

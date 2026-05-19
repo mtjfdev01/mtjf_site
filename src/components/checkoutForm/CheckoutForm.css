@@ -25,10 +25,9 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
-.checkout-panel__field--textarea {
+.checkout-panel__field--full {
   grid-column: 1 / -1;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100%;
 }
 
 .checkout-panel__input {
@@ -57,11 +56,6 @@
   background-repeat: no-repeat;
   background-position: right 0 center;
   padding-right: 30px;
-}
-
-.checkout-panel__textarea {
-  min-height: 120px;
-  resize: vertical;
 }
 
 .checkout-panel__title-2 {
@@ -316,6 +310,12 @@
   border: 1px solid #fcc;
 }
 
+.checkout-panel__message--info {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
 .checkout-panel__message--success {
   background-color: #efe;
   color: #3c3;
@@ -331,7 +331,7 @@
     grid-template-columns: 1fr;
   }
 
-  .checkout-panel__field--textarea {
+  .checkout-panel__field--full {
     grid-column: 1;
   }
 }

@@ -27,6 +27,10 @@
   .financial-reports-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .financial-reports-grid.is-downloads-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* Vertical card — cover 1:1; centered, narrow on desktop; slightly wider on mobile */
@@ -63,6 +67,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  margin-top: -6px;
 }
 
 .financial-reports-card-media-placeholder {

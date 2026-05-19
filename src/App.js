@@ -38,6 +38,7 @@ const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const DiagnosticCenter = lazy(() => import("./pages/DiagnosticCenter"));
 const RegionalOffices = lazy(() => import("./pages/RegionalOffices"));
 const Thanks = lazy(() => import("./components/thanks"));
+const AlfalahCardRedirect = lazy(() => import("./pages/AlfalahCardRedirect"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
 const DownloadsPageFirst = lazy(() => import("./pages/DownloadsFirst"));
 const DownloadsPage = lazy(() => import("./pages/Downloads"));
@@ -50,6 +51,8 @@ const DonorDonations = lazy(() => import("./pages/DonorDonations"));
 const DonorDonationView = lazy(() => import("./pages/DonorDonationView"));
 const ImpactsPage = lazy(() => import("./pages/Impacts"));
 const VideosPage = lazy(() => import("./pages/Videos"));
+const AppealsListing = lazy(() => import("./pages/AppealsListing"));
+const AppealDetail = lazy(() => import("./pages/AppealDetail"));
 
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
@@ -126,6 +129,7 @@ function App() {
               {/* <Route path="/blogs/details-v2" element={<BlogsDetails/>} /> */}
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/test-checkout" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donate/:projectId" element={<Donate />} />
               <Route path="/donation" element={<Donate />} />
@@ -134,6 +138,10 @@ function App() {
               <Route path="/diagnostic-center" element={<DiagnosticCenter />} />
               <Route path="/regional-offices" element={<RegionalOffices />} />
               <Route path="/thanks" element={<Thanks />} />
+              <Route path="/thank-you" element={<Thanks />} />
+              <Route path="/payment-failed" element={<Thanks />} />
+              <Route path="/pending" element={<Thanks />} />
+              <Route path="/donate/alfalah-card" element={<AlfalahCardRedirect />} />
               <Route path="/winter-packages" element={<Winter />} />
               <Route path="/zakat-calculator" element={<ZakatCalculator />} />
               <Route path="/media1" element={<DownloadsPageFirst />} />
@@ -145,6 +153,8 @@ function App() {
               <Route path="/media/news" element={<NewsPage />} />
               <Route path="/globe" element={<GlobeSection />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/appeals" element={<AppealsListing />} />
+              <Route path="/appeals/:slug" element={<AppealDetail />} />
               <Route path="/donor-login" element={<DonorLogin />} />
               <Route path="/donor/donations" element={<DonorDonations />} />
               <Route path="/donor/donations/:id" element={<DonorDonationView />} />

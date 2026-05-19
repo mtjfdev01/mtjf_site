@@ -1,0 +1,84 @@
+.appeal-detail-page {
+  padding-top: 120px;
+  min-height: 100vh;
+  background: #f7faf8;
+}
+
+.appeal-detail-page--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.appeal-detail-page--center a {
+  color: #1e4d3a;
+  font-weight: 600;
+}
+
+.appeal-detail-page__breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0 8px;
+  font-size: 0.8125rem;
+  color: #7a8a82;
+}
+
+.appeal-detail-page__breadcrumbs a {
+  color: #1e4d3a;
+  text-decoration: none;
+}
+
+.appeal-detail-page__breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.appeal-detail-page__breadcrumbs span:last-child {
+  color: #5f6f66;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+
+.appeal-detail-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 48px;
+}
+
+.appeal-detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.appeal-detail-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 992px) {
+  .appeal-detail-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .appeal-detail-page__main {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .appeal-detail-page__breadcrumbs span:last-child {
+    max-width: 160px;
+  }
+}

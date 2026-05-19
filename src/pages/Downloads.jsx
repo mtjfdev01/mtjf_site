@@ -20,17 +20,18 @@ const DownloadsPage = () => {
   });
   // Rest of components - loads on more scroll
   const [restRef, showRest] = useIntersectionObserver({ 
-    rootMargin: '200px'
+    rootMargin: '200px',
+    loadImmediately: true 
   });
 
   return (
     <>
-        <PageHeader image={image1} />
+        {/* <PageHeader image={image1} />  */}
       
       {/* Downloads Section - loads immediately */}
-      <div ref={firstSectionRef}>
+      <div ref={firstSectionRef} style={{marginTop:"130px"}}>
         {showFirstSection && (
-          <FinancialReports />
+          <FinancialReports showTitle isDownloads />
         )}
       </div>
 

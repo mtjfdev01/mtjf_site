@@ -1,0 +1,115 @@
+.appeal-donate-sidebar {
+  position: sticky;
+  top: 140px;
+}
+
+.appeal-donate-sidebar__card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eef2ef;
+}
+
+.appeal-donate-sidebar__progress-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.appeal-donate-sidebar__raised {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.appeal-donate-sidebar__goal {
+  margin: 4px 0 8px;
+  font-size: 0.875rem;
+  color: #7a8a82;
+}
+
+.appeal-donate-sidebar__donors {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #1e4d3a;
+  font-weight: 600;
+}
+
+.appeal-donate-sidebar__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 16px 0;
+  border-top: 1px solid #eef2ef;
+  border-bottom: 1px solid #eef2ef;
+  text-align: center;
+}
+
+.appeal-donate-sidebar__stats strong {
+  display: block;
+  font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+.appeal-donate-sidebar__stats span {
+  font-size: 0.75rem;
+  color: #7a8a82;
+}
+
+.appeal-donate-sidebar__donate-btn,
+.appeal-donate-sidebar__share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
+}
+
+.appeal-donate-sidebar__donate-btn {
+  background: #53af47;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.appeal-donate-sidebar__donate-btn:hover {
+  background: #449a3a;
+}
+
+.appeal-donate-sidebar__share-btn {
+  background: #fff;
+  border: 1px solid #c5d4cb;
+  color: #1e4d3a;
+}
+
+.appeal-donate-sidebar__share-btn:hover {
+  background: #f4f8f5;
+}
+
+.appeal-donate-sidebar__secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 16px 0 0;
+  font-size: 0.8125rem;
+  color: #7a8a82;
+}
+
+@media (max-width: 992px) {
+  .appeal-donate-sidebar {
+    position: static;
+  }
+}

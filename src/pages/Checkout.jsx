@@ -13,7 +13,8 @@ const DonationSidebar = lazy(() => import('../components/donation/projects_menu/
 
 const Checkout = () => {
   const location = useLocation()
-  const { amount } = useDonation() 
+  const alfalahOnly = location.pathname === '/test-checkout'
+  const { amount } = useDonation()
   
   // Use total amount from context (already calculated from all sources)
   const totalAmount = amount || 0
@@ -33,7 +34,7 @@ const Checkout = () => {
       <div ref={formRef}>
         {showForm && (
           <Suspense fallback={null}>
-            <CheckoutForm />
+            <CheckoutForm alfalahOnly={alfalahOnly} />
           </Suspense>
         )}
       </div>

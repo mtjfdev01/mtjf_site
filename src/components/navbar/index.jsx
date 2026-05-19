@@ -11,6 +11,7 @@ const navItems = [
   { name: "Home", path: "/home" },
   { name: "About", path: "/about" },
   { name: "Programs", path: "/projects" },
+  { name: "Appeals", path: "/appeals" },
   // { name: "Blogs", path: "/blogs " },
   { name: "Volunteer", path: "/volunteerRegistration " },
   { name: "Careers", path: "/careers" },
@@ -45,7 +46,10 @@ const Navbar = () => {
       const isProjectDetail =
         item.path.trim() === '/projects' &&
         currentPath.startsWith('/projects/');
-      return isHome || isExactMatch || isProjectDetail;
+      const isAppealsDetail =
+        item.path.trim() === '/appeals' &&
+        currentPath.startsWith('/appeals/');
+      return isHome || isExactMatch || isProjectDetail || isAppealsDetail;
     });
      
      if (matchedItem) {

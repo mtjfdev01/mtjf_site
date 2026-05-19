@@ -1,0 +1,71 @@
+.appeal-checkout-fields {
+  grid-column: 1 / -1;
+  background: #f7faf8;
+  border: 1px solid #dde5df;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 4px;
+}
+
+.appeal-checkout-fields__title {
+  margin: 0 0 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e4d3a;
+}
+
+.appeal-checkout-fields__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.appeal-checkout-fields__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.appeal-checkout-fields__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #5f6f66;
+}
+
+.appeal-checkout-fields__select,
+.appeal-checkout-fields__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #dde5df;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.appeal-checkout-fields__select:focus,
+.appeal-checkout-fields__input:focus {
+  outline: none;
+  border-color: #1e4d3a;
+  box-shadow: 0 0 0 3px rgba(30, 77, 58, 0.12);
+}
+
+.appeal-checkout-fields__select:disabled,
+.appeal-checkout-fields__input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.appeal-checkout-fields__progress {
+  margin: 14px 0 0;
+  font-size: 0.875rem;
+  color: #1e4d3a;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .appeal-checkout-fields__row {
+    grid-template-columns: 1fr;
+  }
+}

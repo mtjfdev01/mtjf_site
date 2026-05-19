@@ -1,0 +1,149 @@
+.featured-appeal-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 0;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eef2ef;
+}
+
+.featured-appeal-card__media {
+  position: relative;
+  display: block;
+  min-height: 280px;
+  text-decoration: none;
+}
+
+.featured-appeal-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-appeal-card__featured-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #1e4d3a;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.featured-appeal-card__content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featured-appeal-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featured-appeal-card__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.featured-appeal-card__title a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.featured-appeal-card__title a:hover {
+  color: #1e4d3a;
+}
+
+.featured-appeal-card__desc {
+  margin: 0;
+  color: #5f6f66;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.featured-appeal-card__stats span {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e4d3a;
+  margin-bottom: 10px;
+}
+
+.featured-appeal-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.875rem;
+  color: #7a8a82;
+}
+
+.featured-appeal-card__verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e4d3a;
+  font-weight: 600;
+}
+
+.featured-appeal-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.featured-appeal-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9375rem;
+}
+
+.featured-appeal-card__btn--primary {
+  background: #1e4d3a;
+  color: #fff;
+}
+
+.featured-appeal-card__btn--primary:hover {
+  background: #163a2b;
+}
+
+.featured-appeal-card__btn--donate {
+  border: 1px solid #1e4d3a;
+  color: #1e4d3a;
+  background: #fff;
+}
+
+.featured-appeal-card__btn--donate:hover {
+  background: #f4f8f5;
+}
+
+@media (max-width: 900px) {
+  .featured-appeal-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-appeal-card__media {
+    min-height: 220px;
+  }
+
+  .featured-appeal-card__content {
+    padding: 22px 20px;
+  }
+}

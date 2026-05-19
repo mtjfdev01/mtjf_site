@@ -21,6 +21,14 @@
   flex-wrap: wrap;
 }
 
+.sticky_bar-start {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
 .sticky_bar-contact {
   display: flex;
   align-items: center;

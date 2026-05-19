@@ -6,6 +6,7 @@ const links = [
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },
                 { name: "Programs", path: "/projects" },
+                { name: "Appeals", path: "/appeals" },
                 // { name: "blogs ", path: "/blogs " },
                 // { name: "Media", path: "/media", submenu: [{ name: "Downloads", path: "/media/downloads" }] },
                 { name: "Volunteer", path: "/volunteerRegistration " },
@@ -35,7 +36,10 @@ const Mobilenavbar = () => {
          const isProjectSubRoute =
            itemPath === '/projects' &&
            currentPath.startsWith('/projects/');
-         return isHome || isExactMatch || isProjectSubRoute;
+         const isAppealsSubRoute =
+           itemPath === '/appeals' &&
+           currentPath.startsWith('/appeals/');
+         return isHome || isExactMatch || isProjectSubRoute || isAppealsSubRoute;
        });
        setActiveLink(matchedItem ? matchedItem.name : "Home");
      }, [location.pathname]);
