@@ -155,7 +155,9 @@ function DonorDonationsList({ onOpenDonation }) {
                     null;
 
                   const hasTracking =
-                    Boolean(trackerId) || d?.has_tracking === true;
+                    Boolean(trackerId) ||
+                    d?.has_tracking === true ||
+                    (Array.isArray(d?.progress_trackers) && d.progress_trackers.length > 0);
 
                   return (
                     <tr key={String(id)} style={styles.tr}>
@@ -168,15 +170,25 @@ function DonorDonationsList({ onOpenDonation }) {
                         <span style={badgeStyle(status)}>{status}</span>
                       </td>
                       <td style={styles.tdRight}>
-                        <button
-                          style={styles.btn}
-                          onClick={() => onOpenDonation?.(id)}
-                        >
-                          View
-                        </button>
-                        {hasTracking && (
-                          <span style={styles.hint}>Tracking available</span>
-                        )}
+                        <div style={styles.actionRow}>
+                          <button
+                            style={styles.btn}
+                            onClick={() => onOpenDonation?.(id)}
+                          >
+                            View
+                          </button>
+                          {hasTracking && (
+                            <button
+                              type="button"
+                              style={styles.iconBtn}
+                              title="View tracking history"
+                              aria-label="View tracking history"
+                              onClick={() => navigate(`/donor/donations/${id}#tracking`)}
+                            >
+                              <TrackingHistoryIcon />
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   );
@@ -185,7 +197,7 @@ function DonorDonationsList({ onOpenDonation }) {
             </table>
           </div>
           <div style={styles.footnote}>
-            Note: Tracking details appear inside the donation view.
+            Use the clock icon to open tracking history for a donation.
           </div>
         </div>
       )}
@@ -241,6 +253,21 @@ function badgeStyle(status) {
       borderColor: "#e5e7eb",
     };
   return base;
+}
+
+function TrackingHistoryIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path
+        d="M10 17C13.866 17 17 13.866 17 10C17 6.134 13.866 3 10 3C6.686 3 3.911 5.122 3.2 8.2"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path d="M3.5 5.5V8.5H6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 6.5V10.5L12.8 12.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 const styles = {
@@ -315,6 +342,24 @@ const styles = {
       'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   },
   tdRight: { padding: "12px 10px", textAlign: "right", whiteSpace: "nowrap" },
+  actionRow: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 8,
+  },
+  iconBtn: {
+    display: "inline-grid",
+    placeItems: "center",
+    width: 36,
+    height: 36,
+    padding: 0,
+    borderRadius: 10,
+    border: "1px solid #d1d5db",
+    background: "#ffffff",
+    color: "#0f3a2c",
+    cursor: "pointer",
+  },
   btn: {
     padding: "8px 12px",
     borderRadius: 10,
