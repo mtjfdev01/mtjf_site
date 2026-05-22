@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/footer/Footer";
 import axiosInstance from "../utils/axios";
@@ -53,7 +53,6 @@ function DonorDonationView({ donationId, onBack }) {
   const [legacyTrackingSteps, setLegacyTrackingSteps] = useState(null);
   const [activeTrackerId, setActiveTrackerId] = useState(null);
   const [activeBatchKey, setActiveBatchKey] = useState(null);
-  const trackingSectionRef = useRef(null);
   const navigate = useNavigate();
 
   const embeddedTrackers = useMemo(() => {
@@ -314,27 +313,6 @@ function DonorDonationView({ donationId, onBack }) {
     Array.isArray(stepsForTracking) &&
     stepsForTracking.length > 0;
 
-  const hasTrackingAvailable = useMemo(() => {
-    if (!donation) return false;
-    if (hasEmbeddedTracking) return true;
-    if (donation?.progress_tracker?.id) return true;
-    if (donation?.has_tracking === true) return true;
-    const raw = donation?.progress_trackers;
-    return Array.isArray(raw) && raw.length > 0;
-  }, [donation, hasEmbeddedTracking]);
-
-  const scrollToTracking = useCallback(() => {
-    trackingSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
-
-  useEffect(() => {
-    if (!donation || loading) return;
-    if (window.location.hash !== "#tracking") return;
-    if (!hasTrackingAvailable) return;
-    const t = window.setTimeout(() => scrollToTracking(), 300);
-    return () => window.clearTimeout(t);
-  }, [donation, loading, hasTrackingAvailable, scrollToTracking]);
-
   return (
     <main className="donorDonationView">
       <div className="donorDonationView__container">
@@ -406,27 +384,14 @@ function DonorDonationView({ donationId, onBack }) {
         {!loading && !error && donation && (
           <>
             <section className="ddvCard ddvSection" aria-label="Summary">
-              <div className="ddvSection__head ddvSection__head--actions">
-                <div className="ddvSection__headMain">
-                  <div className="ddvSection__icon" aria-hidden="true">
-                    <DocIcon />
-                  </div>
-                  <div>
-                    <h2 className="ddvSection__title">Summary</h2>
-                    <div className="ddvSection__divider" />
-                  </div>
+              <div className="ddvSection__head">
+                <div className="ddvSection__icon" aria-hidden="true">
+                  <DocIcon />
                 </div>
-                {hasTrackingAvailable && (
-                  <button
-                    type="button"
-                    className="ddvIconBtn"
-                    onClick={scrollToTracking}
-                    aria-label="View tracking history"
-                    title="View tracking history"
-                  >
-                    <HistoryIcon />
-                  </button>
-                )}
+                <div>
+                  <h2 className="ddvSection__title">Summary</h2>
+                  <div className="ddvSection__divider" />
+                </div>
               </div>
 
               <div className="ddvSummaryGrid">
@@ -463,12 +428,7 @@ function DonorDonationView({ donationId, onBack }) {
               {donation.note && <div className="ddvNote">{donation.note}</div>}
             </section>
 
-            <section
-              ref={trackingSectionRef}
-              id="donation-tracking"
-              className="ddvCard ddvSection"
-              aria-label="Tracking"
-            >
+            <section className="ddvCard ddvSection" aria-label="Tracking">
               <div className="ddvSection__head">
                 <div className="ddvSection__icon" aria-hidden="true">
                   <MapIcon />
@@ -794,21 +754,6 @@ function MapIcon() {
       <path d="M7 4L13 2.5L13 16L7 17.5L7 4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
       <path d="M3.5 5.2L7 4V17.5L3.5 18.8V5.2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
       <path d="M13 2.5L16.5 3.7V17.3L13 16V2.5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function HistoryIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path
-        d="M10 17C13.866 17 17 13.866 17 10C17 6.134 13.866 3 10 3C6.686 3 3.911 5.122 3.2 8.2"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path d="M3.5 5.5V8.5H6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 6.5V10.5L12.8 12.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
