@@ -1,69 +1,45 @@
-import { formatProgress } from '../../lib/appealsHelpers'
-import './AppealCheckoutFields.css'
-
+/**
+ * Appeal checkout fields — rendered inside checkout `.row` (not a separate section).
+ * Shows the pre-selected appeal (read-only) and donation amount.
+ */
 const AppealCheckoutFields = ({
-  appeals = [],
+  appealTitle = '',
   loading = false,
-  selectedAppealId,
   amount,
-  onAppealChange,
   onAmountChange,
-}) => {
-  const selected = appeals.find((a) => String(a.id) === String(selectedAppealId))
-  const stats = selected ? formatProgress(selected) : null
-
-  return (
-    <section className="appeal-checkout-fields checkout-panel__field--full">
-      <h2 className="appeal-checkout-fields__title">Support an appeal</h2>
-
-      <div className="appeal-checkout-fields__row">
-        <div className="appeal-checkout-fields__group">
-          <label className="appeal-checkout-fields__label" htmlFor="checkout-appeal-select">
-            Select appeal
-          </label>
-          <select
-            id="checkout-appeal-select"
-            className="appeal-checkout-fields__select"
-            value={selectedAppealId ?? ''}
-            onChange={(e) => onAppealChange(e.target.value)}
-            disabled={loading || appeals.length === 0}
-          >
-            <option value="">
-              {loading ? 'Loading appeals…' : 'Choose an appeal'}
-            </option>
-            {appeals.map((appeal) => (
-              <option key={appeal.id} value={appeal.id}>
-                {appeal.title}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="appeal-checkout-fields__group">
-          <label className="appeal-checkout-fields__label" htmlFor="checkout-appeal-amount">
-            Donation amount ({selected?.currency || 'PKR'})
-          </label>
-          <input
-            id="checkout-appeal-amount"
-            type="number"
-            min="100"
-            step="1"
-            className="appeal-checkout-fields__input"
-            placeholder="Minimum 100"
-            value={amount}
-            onChange={(e) => onAmountChange(e.target.value)}
-            disabled={!selectedAppealId}
-          />
-        </div>
+  currency = 'PKR',
+}) => (
+  <>
+    <div className="col-md-6">
+      <div className="input-item checkout-panel__field">
+        <input
+          type="text"
+          readOnly
+          className="checkout-panel__input"
+          value={loading && !appealTitle ? 'Loading appeal…' : appealTitle}
+          placeholder="Appeal"
+          aria-label="Selected appeal"
+        />
       </div>
+    </div>
 
-      {selected && stats && (
-        <p className="appeal-checkout-fields__progress">
-          {stats.raised} raised of {stats.goal} · {stats.percent}% funded
-        </p>
-      )}
-    </section>
-  )
-}
+    <div className="col-md-6">
+      <div className="input-item checkout-panel__field">
+        <input
+          id="checkout-appeal-amount"
+          type="number"
+          min="100"
+          step="1"
+          className="checkout-panel__input"
+          placeholder={`Donation amount (${currency}, min 100)`}
+          value={amount}
+          onChange={(e) => onAmountChange(e.target.value)}
+          disabled={loading && !appealTitle}
+          aria-label="Donation amount"
+        />
+      </div>
+    </div>
+  </>
+)
 
 export default AppealCheckoutFields

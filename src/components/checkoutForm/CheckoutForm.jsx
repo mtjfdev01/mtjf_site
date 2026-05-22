@@ -292,6 +292,29 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
     setProjectDonationData,
   ])
 
+  const selectedAppealForCheckout = useMemo(() => {
+    if (!isAppealCheckoutFlow) return null
+    const fromList = appealsList.find((a) => String(a.id) === String(selectedAppealId))
+    if (fromList) return fromList
+    const fromCart = projectDonationItemsForCheckout.find(isAppealDonationLine)
+    if (fromCart) {
+      return {
+        id: fromCart.appealId,
+        title: fromCart.projectTitle || 'Appeal',
+        currency: fromCart.currency || 'PKR',
+      }
+    }
+    if (selectedAppealId) {
+      return { id: selectedAppealId, title: 'Appeal', currency: 'PKR' }
+    }
+    return null
+  }, [
+    isAppealCheckoutFlow,
+    appealsList,
+    selectedAppealId,
+    projectDonationItemsForCheckout,
+  ])
+
   // Initialize form with donation data if available (skip if failed transaction flow or appeal checkout)
   useEffect(() => {
     if (donationData && !isFailedTransactionFlow && !isAppealCheckoutFlow) {
@@ -718,14 +741,14 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
       setFormMessage({
         type: 'error',
         text: isAppealCheckoutFlow
-          ? 'Please select an appeal and enter a valid donation amount (minimum 100 PKR)'
+          ? 'Please enter a valid donation amount (minimum 100 PKR)'
           : 'Please add donation items to the cart or enter a valid donation amount (minimum donation amount is 100 PKR)',
       })
       return
     }
 
     if (isAppealCheckoutFlow && !selectedAppealId) {
-      setFormMessage({ type: 'error', text: 'Please select an appeal to support.' })
+      setFormMessage({ type: 'error', text: 'Appeal information is missing. Please open checkout from the appeal page again.' })
       return
     }
 
@@ -989,20 +1012,19 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           </div>
         )}
 
-        {isAppealCheckoutFlow && (
-          <AppealCheckoutFields
-            appeals={appealsList}
-            loading={appealsLoading}
-            selectedAppealId={selectedAppealId}
-            amount={appealAmount}
-            onAppealChange={setSelectedAppealId}
-            onAmountChange={(val) => {
-              if (val === '' || Number(val) >= 0) setAppealAmount(val)
-            }}
-          />
-        )}
-
         <div className="row">
+          {isAppealCheckoutFlow && (
+            <AppealCheckoutFields
+              appealTitle={selectedAppealForCheckout?.title || ''}
+              loading={appealsLoading}
+              amount={appealAmount}
+              currency={selectedAppealForCheckout?.currency || 'PKR'}
+              onAmountChange={(val) => {
+                if (val === '' || Number(val) >= 0) setAppealAmount(val)
+              }}
+            />
+          )}
+
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input

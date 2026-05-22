@@ -16,12 +16,12 @@ const resolveCategoryForProjectId = (projectId, prevCategory, fallbackCategory) 
 
 const QURBANI_EXCHANGE_RATES_PKR = {
   PKR: 1,
-  CAD: 204,
-  USD: 280,
+  CAD: 200,
+  USD: 279,
   SAR: 74,
   AED: 76,
-  GBP: 379,
-  EUR: 328
+  GBP: 375,
+  EUR: 326
 }
 
 const formatCurrency = (amount, currency) => {
