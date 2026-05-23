@@ -109,6 +109,8 @@ import SeedsOfChange from '../assets/img/projects/project-image/seeds.webp'
 import Qurbani from '../assets/img/projects/project-image/qurbani.webp'
 import qurbani_hero_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero.webp'
 import qurbani_mobile_2026 from '../assets/img/projects/projects-details/qurbani_2026/hero-mobile.webp'
+import barakah_hero_web from '../assets/img/projects/projects-details/mtjf_sadqa/MTJF_Sadaqa_web.webp'
+import barakah_hero_mob from '../assets/img/projects/projects-details/mtjf_sadqa/MTJF Sadaqa Mob.webp'
 import commitment from '../assets/img/projects/projects-details/qurbani_2026/commitment.webp'
 import reaches from '../assets/img/projects/projects-details/qurbani_2026/trust-reach.webp'
 import impact from '../assets/img/projects/projects-details/qurbani_2026/impact.webp'
@@ -3901,6 +3903,124 @@ Strong monitoring at every stage of the process
       donateButtonText: ''
     }
   },
+//   '10-days-of-barakah': {
+//     id: '10-days-of-barakah',
+//     title: 'Every Day, One Act of Khair',
+//     headerImage: barakah_hero_web,
+//     headerImageMob: barakah_hero_mob,
+//     stats: [],
+//     content: {
+//       paragraph1: `The blessed days of Dhul Hijjah are here: the days Allah swore by. Days when a small act of charity carries immense reward.`,
+//       paragraph2: `In these final days, turn your Sadaqah, Astaghfar, and intention into real relief for families struggling to survive.`,
+//       paragraph3: ``,
+//     },
+//     donateCategory: '',
+//     donateButtonText: '',
+//     donationOptions: {
+//       PKR: [5000, 10000, 25000, 50000],
+//       USD: [50, 100, 250, 500],
+//       EUR: [45, 90, 230, 460]
+//     },
+//     subProjects: [
+//       {
+//         id: '',
+//         title: '',
+//         subtitle: '',
+//         description: ``,
+//         donateButtonText: '',
+//         donationUrl: '',
+//         image: '',
+//         imageMob: '',
+//         carosellItemWidth: '',
+//         carosellMobWidth: '',
+//       },
+//       {
+//         id: 'why-give-in-dhul-hijjah',
+//         title: 'Why Give in Dhul Hijjah?',
+//         subtitle: '',
+//         quranAyat: {
+//           text: 'By the dawn, and by the ten nights…',
+//           reference: 'Surah Al-Fajr'
+//         },
+//         description: `These are not ordinary days. They are days of mercy, forgiveness, and multiplied reward.
+
+// Your donation today can:`,
+//         services: [
+//           'Feed a hungry family',
+//           'Support a struggling livelihood',
+//           'Educate a future change maker',
+//           'Bring relief to those who are struggling'
+//         ],
+//         donateButtonText: '',
+//         donationUrl: '',
+//         image: barakah_hero_web,
+//         imageMob: barakah_hero_mob
+//       },
+//       {
+//         id: 'last-years-impact',
+//         title: 'Last Year’s Impact',
+//         subtitle: 'Because of generous donors like you:',
+//         description: ``,
+//         services: [
+//           'Thousands of deserving families were supported',
+//           'Essential needs were met during sacred days',
+//           'Smiles replaced hardship, even if just for a moment'
+//         ],
+//         afterServicesText: 'This year, you can do even more.',
+//         donateButtonText: '',
+//         donationUrl: '',
+//         image: barakah_hero_web,
+//         imageMob: barakah_hero_mob
+//       },
+//       {
+//         id: 'your-sadaqah-creates-impact',
+//         title: 'Your Sadaqah Creates Immediate Impact',
+//         subtitle: 'A little from you can mean:',
+//         description: `This is not just charity. This is compassion in action.`,
+//         services: [
+//           'A meal on someone’s table',
+//           'Relief from unbearable heat',
+//           'Support for daily wage earners',
+//           'A reminder that they are not forgotten'
+//         ],
+//         afterServicesText: 'This is not just charity. This is compassion in action.',
+//         donateButtonText: '',
+//         donationUrl: '',
+//         image: barakah_hero_web,
+//         imageMob: barakah_hero_mob
+//       },
+//       {
+//         id: 'give-with-a-pure-heart',
+//         title: 'Give with a Pure Heart',
+//         subtitle: '',
+//         description: `You may never know which deed:`,
+//         services: [
+//           'Earns Allah’s pleasure ',
+//           'Becomes a means of forgiveness',
+//           'Weighs the heaviest on your scale'
+//         ],
+//         afterServicesText:`So give quietly.Seek Astaghfar sincerely.And trust Allah with the rest.`,
+//         donateButtonText: '',
+//         donationUrl: '',
+//         image: barakah_hero_web,
+//         imageMob: barakah_hero_mob,
+//         bottom_banner_img: QurbaniBottomBanner,
+//         bottom_banner_mobile_img: QurbaniBottomBannerMobile
+//       },
+//       {
+//         id: 'dont-let-blessed-days-pass',
+//         title: 'Don’t Let These Blessed Days Pass Empty',
+//         subtitle: '',
+//         description: `Give your Sadaqah today and be a source of relief for those in need.`,
+//         donateButtonText: 'Donate Now',
+//         donationUrl: '/donate/10-days-of-barakah',
+//         image: barakah_hero_web,
+//         imageMob: barakah_hero_mob,
+//         // bottom_banner_img: barakah_hero_web,
+//         // bottom_banner_mobile_img: barakah_hero_mob
+//       }
+//     ]
+//   },
   'test-qurbani-baraye-mustehqeen': {
     id: 'test-qurbani-baraye-mustehqeen',
     title: 'When Your Sacrifice Becomes Someone’s Only Meal',
@@ -4163,6 +4283,18 @@ Strong monitoring at every stage of the process
 
 
 export const ALL_PROJECTS_DATA = [
+//   {
+//     id: '10-days-of-barakah',
+//     title: '10 Days of Barakah',
+//     subtitle: 'Every Day, One Act of Khair',
+//     description: `The blessed days of Dhul Hijjah are here: the days Allah swore by. Days when a small act of charity carries immense reward.
+// In these final days, turn your Sadaqah, Astaghfar, and intention into real relief for families struggling to survive.`,
+//     impactStatement: 'Your Sadaqah becomes nourishment, dignity, and hope for those in need.',
+//     image: barakah_hero_web,
+//     donateButtonText: 'Donate Now',
+//     learnMorePath: '/projects/10-days-of-barakah',
+//     donatePath: '/donate/10-days-of-barakah'
+//   },
   {
     id: 'qurbani-baraye-mustehqeen',
     title: 'Qurbani Baraye Mustehqeen',
@@ -4252,7 +4384,6 @@ For many families living in poverty, conflict zones, and disaster affected regio
     learnMorePath: '/projects/seeds-of-change',
     donatePath: '/donate/seeds-of-change'
   },
-
   {
     id: 'aas-lab-diagnostics',
     title: 'AAS Lab & Diagnostics',

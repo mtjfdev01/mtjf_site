@@ -359,11 +359,26 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
                 </div>
               ) : image ? (
                 <div className="media-content-image">
-                  <LazyImage
-                    src={image}
-                    alt={subProject.title}
-                    className="media-content-image-img"
-                  />
+                  {subProject.imageMob ? (
+                    <>
+                      <LazyImage
+                        src={image}
+                        alt={subProject.title}
+                        className="media-content-image-img d-none md:d-block"
+                      />
+                      <LazyImage
+                        src={subProject.imageMob}
+                        alt={subProject.title}
+                        className="media-content-image-img sm:d-block md:d-none"
+                      />
+                    </>
+                  ) : (
+                    <LazyImage
+                      src={image}
+                      alt={subProject.title}
+                      className="media-content-image-img"
+                    />
+                  )}
                 </div>
               ) : null}
 

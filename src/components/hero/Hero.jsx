@@ -17,12 +17,14 @@ import hero_mob from '../../assets/img/projects/project-image/gaza_mob.webp'
 import change_hero_health from '../../assets/img/hero/change_hero_health.webp'
 import hero_health_mobile from '../../assets/img/hero/hero_health_mobile.webp'
 import './hero.css'
+import barakah_hero_web from '../../assets/img/projects/projects-details/mtjf_sadqa/MTJF_Sadaqa_web.webp'
+import barakah_hero_mob from '../../assets/img/projects/projects-details/mtjf_sadqa/MTJF Sadaqa Mob.webp'
 
 const HERO_IMAGES = [
-  { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/donate/qurbani-baraye-mustehqeen' },
-  { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
+    { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/donate/qurbani-baraye-mustehqeen' },
+    { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
   // { desktop: change_hero, mobile: change_mob, link: '/' },
-  
+  { desktop: barakah_hero_web, mobile: barakah_hero_mob, link: '/donate/10-days-of-barakah' },
   
   // { desktop: zakat_hero, mobile: ramzan_zakat_mob_popup, link: '/projects/ramzan-zakat' }, 
   // { desktop: hero, mobile: hero_mob }, 

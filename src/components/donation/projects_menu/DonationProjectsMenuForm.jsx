@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDonation } from '../../../contexts/DonationContext'
 import './DonationProjectsMenuForm.css'
 
@@ -9,6 +9,10 @@ const DonationProjectsMenuForm = ({
   const { donationType, setDonationType } = useDonation()
   // Use local state for input field - don't update context until button is clicked
   const [localAmount, setLocalAmount] = useState('')
+
+  useEffect(() => {
+    setDonationType('sadqa')
+  }, [setDonationType])
 
   const handleQuickDonate = () => {
     // Pass the local amount to the parent handler

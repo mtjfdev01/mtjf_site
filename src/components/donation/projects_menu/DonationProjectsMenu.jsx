@@ -244,12 +244,23 @@ const DonationProjectsMenu = () => {
     []
   )
 
-  // Set expandedProjectId from URL parameter on mount
+  const isKnownProjectId = useMemo(
+    () => (projectId ? projectCards.some((p) => p.id === projectId) : false),
+    [projectId]
+  )
+
+  const hasInvalidProjectInUrl = Boolean(projectId && !isKnownProjectId)
+
+  // Sync expanded state only for project ids that exist in projectCards
   useEffect(() => {
-    if (projectId) {
+    if (projectId && isKnownProjectId) {
+      const card = projectCards.find((p) => p.id === projectId)
       setExpandedProjectId(projectId)
+      if (card) setSelectedProjects([card])
+    } else if (!projectId) {
+      setExpandedProjectId(null)
     }
-  }, [projectId])
+  }, [projectId, isKnownProjectId])
 
   // Reset currency when leaving Qurbani project
   useEffect(() => {
@@ -435,8 +446,8 @@ const DonationProjectsMenu = () => {
       <div className="donation-content">
         <h2 className="section-title">Support a Project</h2>
         
-        {/* Back Button - Show when project is expanded */}
-        {expandedProjectId && (
+        {/* Back Button - Show when a known project is expanded */}
+        {expandedProjectId && !hasInvalidProjectInUrl && (
           <button
             className="back-to-projects-btn"
             onClick={() => {
@@ -475,8 +486,8 @@ const DonationProjectsMenu = () => {
         )} */}
 
         <div className="grid-section">
-          {/* Hide donation form when a project is expanded */}
-          {!expandedProjectId && (
+          {/* Main donate page, or unknown /donate/:id — quick donate form only */}
+          {(!expandedProjectId || hasInvalidProjectInUrl) && (
             <div className="general-donation-card form-card">
               <DonationProjectsMenuForm
                 onQuickDonate={handleSubmitDonation}
@@ -485,7 +496,7 @@ const DonationProjectsMenu = () => {
             </div>
           )}
 
-          {filteredProjects.map((card) => {
+          {!hasInvalidProjectInUrl && filteredProjects.map((card) => {
             const isSelected = selectedProjects.some(p => p.id === card.id)
             const isExpanded = expandedProjectId === card.id
             const shouldShow = expandedProjectId === null || expandedProjectId === card.id
@@ -511,8 +522,8 @@ const DonationProjectsMenu = () => {
             )
           })}
           
-          {/* Show initiatives if a project is expanded */}
-          {expandedProjectId && (() => {
+          {/* Show initiatives if a known project is expanded */}
+          {!hasInvalidProjectInUrl && expandedProjectId && (() => {
             const expandedProject = filteredProjects.find(p => p.id === expandedProjectId)
             if (expandedProject && expandedProject?.initiatives.length === 0) return (
               <>
