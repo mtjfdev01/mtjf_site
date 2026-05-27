@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import PageHeader from '../pageHeader/PageHeader'
 import image from '../../assets/img/thanks/thanks.webp'
 import Footer from '../footer/Footer' 
@@ -7,20 +7,55 @@ import axiosInstance from '../../utils/axios'
 
 const Thanks = () => {
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const donationId = searchParams.get('donationId')
   const urlStatus = searchParams.get('status') // success, failed, pending
   const [donationStatus, setDonationStatus] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
+  // Bank Alfalah card step 1 lands here with AuthToken when portal Return URL is /thanks
   useEffect(() => {
+    const authToken =
+      searchParams.get('AuthToken') ||
+      searchParams.get('authToken') ||
+      searchParams.get('auth_token')
+    if (!authToken) return
+
+    const orderRef =
+      searchParams.get('donationId') ||
+      searchParams.get('donation_id') ||
+      searchParams.get('O') ||
+      searchParams.get('o')
+
+    if (orderRef) {
+      navigate(
+        `/donate/alfalah-card?donationId=${encodeURIComponent(orderRef)}&authToken=${encodeURIComponent(authToken)}`,
+        { replace: true },
+      )
+      return
+    }
+
+    setLoading(false)
+    setError(
+      'Bank Alfalah returned a payment token but no donation reference. Please start checkout again.',
+    )
+  }, [searchParams, navigate])
+
+  useEffect(() => {
+    const authToken =
+      searchParams.get('AuthToken') ||
+      searchParams.get('authToken') ||
+      searchParams.get('auth_token')
+    if (authToken) return
+
     if (donationId) {
       verifyDonationStatus()
     } else {
       setLoading(false)
       setError('Donation ID not found in URL')
-    } 
-  }, [donationId])
+    }
+  }, [donationId, searchParams])
 
   const verifyDonationStatus = async () => {
     try {

@@ -92,14 +92,14 @@ const FEATURE_ITEMS = [
       <img src={Seeds} alt="Seeds of Change - Environmental conservation and tree planting program icon"  {...ICON_PROPS}/>
     )
   },
-  {
-    id: 'qurbani-baraye-mustehqeen',
-    title: 'Qurbani Baraye Mustehqeen',
-    description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
-    icon: (
-     <img src={Qurbani} alt="Qurbani Baraye Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
-)
-  },
+//   {
+//     id: 'qurbani-baraye-mustehqeen',
+//     title: 'Qurbani Baraye Mustehqeen',
+//     description: 'Sharing the blessings of Qurbani and Eid with families who rarely enjoy fresh meat.',
+//     icon: (
+//      <img src={Qurbani} alt="Qurbani Baraye Mustehqeen - Qurbani meat distribution program icon" {...ICON_PROPS}/>
+// )
+//   },
   {
     id: 'aas-lab-diagnostics',
     title: 'AAS LAB',

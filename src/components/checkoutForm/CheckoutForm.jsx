@@ -11,7 +11,7 @@ import AppealCheckoutFields from './AppealCheckoutFields'
 import AlfalahCheckoutFields from './AlfalahCheckoutFields'
 import AlfalahOtpPanel from './AlfalahOtpPanel'
 import Loader from '../Loader/Loader'
-import { postGatewayForm } from '../../lib/paymentGatewayForm'
+import { postGatewayForm, getAlfalahAuthToken } from '../../lib/paymentGatewayForm'
 import { CiCreditCard2 } from "react-icons/ci";
 import { fetchAppealsList } from '../../lib/appealsApi'
 import { buildAppealDonationLine, isAppealDonationLine } from '../../lib/appealsHelpers'
@@ -921,11 +921,20 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           }
           setIsLoading(null)
         } else {
-          setIsLoading(null)
-          setFormMessage({
-            type: 'error',
-            text: 'Unexpected Bank Alfalah response. Please try again.',
-          })
+          const authToken = getAlfalahAuthToken(alfalahData)
+          const donationId = alfalahData?.donationId
+          if (authToken && donationId) {
+            setIsLoading(null)
+            navigate(
+              `/donate/alfalah-card?donationId=${donationId}&authToken=${encodeURIComponent(authToken)}`,
+            )
+          } else {
+            setIsLoading(null)
+            setFormMessage({
+              type: 'error',
+              text: 'Unexpected Bank Alfalah response. Please try again.',
+            })
+          }
         }
       } else if (currentPayment === 'stripe_embed') {
         const data = response.data?.data || response.data

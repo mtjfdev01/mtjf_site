@@ -26,23 +26,23 @@ const StickyQuickDonationForm = () => {
   // Project list - same as DonationProjectsMenu (before state so first initiative price applies on first render)
   const projectCards = [
     // { id: 'ramzan-ration', title: "Ramadan Ration", icon: community, category: "General" },
-    { 
-      id: 'qurbani-baraye-mustehqeen',
-      title: "Qurbani Baraye Mustehqeen",
-      icon: qurbani,
-      category: "Zakat",
-      initiatives:[
-                {
-                  id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
-                },
-                {
-                  id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
-                },
-                {
-                  id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
-                }
-   ]
-    },
+  //   { 
+  //     id: 'qurbani-baraye-mustehqeen',
+  //     title: "Qurbani Baraye Mustehqeen",
+  //     icon: qurbani,
+  //     category: "Zakat",
+  //     initiatives:[
+  //               {
+  //                 id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani
+  //               },
+  //               {
+  //                 id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani
+  //               },
+  //               {
+  //                 id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani
+  //               }
+  //  ]
+  //   },
     { 
       id: 'health',
       title: "Health",
