@@ -21,25 +21,25 @@ import community from '../../../assets/img/projects/icons/community.png'
 import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
 export const projectCards = [
-  {
-    id: 'qurbani-baraye-mustehqeen', 
-    title: "Qurbani Baraye Mustehqeen",
-    icon: qurbani,
-    price: 15000,
-    new: false, 
-    category: "Zakat", 
-    initiatives:[
-     {
-       id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
-     },
-     {
-       id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
-     },
-     {
-       id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
-     }
-    ]
-    },
+  // {
+  //   id: 'qurbani-baraye-mustehqeen', 
+  //   title: "Qurbani Baraye Mustehqeen",
+  //   icon: qurbani,
+  //   price: 15000,
+  //   new: false, 
+  //   category: "Zakat", 
+  //   initiatives:[
+  //    {
+  //      id: 'qurbani-baraye-mustehqeen-1', title: 'Cow Share', subtitle: 'Cow Share', price: 24500, icon: qurbani, templateCode: "cow_share",
+  //    },
+  //    {
+  //      id: 'qurbani-baraye-mustehqeen-2', title: 'Full Cow', subtitle: 'Full Cow', price: 171500, icon: qurbani, templateCode: "cow",
+  //    },
+  //    {
+  //      id: 'qurbani-baraye-mustehqeen-3', title: 'Goat', subtitle: 'Goat', price: 58000, icon: qurbani, templateCode: "goat",
+  //    }
+  //   ]
+  //   },
     { 
       id: 'health', 
       title: "Health", 
