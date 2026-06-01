@@ -21,7 +21,7 @@ import barakah_hero_web from '../../assets/img/projects/projects-details/mtjf_sa
 import barakah_hero_mob from '../../assets/img/projects/projects-details/mtjf_sadqa/MTJF Sadaqa Mob.webp'
 
 const HERO_IMAGES = [
-    { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/' },
+    // { desktop: change_hero_qurbani, mobile: hero_qurbani_mobile, link: '/' },
     { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
   // { desktop: change_hero, mobile: change_mob, link: '/' },
   { desktop: barakah_hero_web, mobile: barakah_hero_mob, link: '/' },

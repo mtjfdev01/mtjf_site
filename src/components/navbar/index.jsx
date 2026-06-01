@@ -18,7 +18,7 @@ const navItems = [
   { name: "Contact", path: "/contact" },
   // { name: "Ramadan 2026", path: "", submenu:[{name:'Zakat', path:'/projects/ramzan-zakat'},{name:'Zakat Calculator', path:'/zakat-calculator'}, {name:'Fitrana', path:'/fitrana'}, {name:'Laylatul Qadr', path:'/laylat-ul-qadar'}, {name:'Gaza Relief', path:'/gaza'}] },
   // { name: "Media", path: "/media", submenu: [{ name: "Downloads", path: "/media/downloads" }] },
-  { name: "Qurbani 2026 ", path: "/qurbani2026"},
+  // { name: "Qurbani 2026 ", path: "/qurbani2026"},
   // { name: "Qurbani 2026 ", path: "", submenu:[{name:'Qurbani', path:'/projects/qurbani'}] },
 ];
 

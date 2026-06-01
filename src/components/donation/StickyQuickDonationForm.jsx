@@ -514,15 +514,13 @@ const StickyQuickDonationForm = () => {
               onChange={(e) => setDonationType(e.target.value)}
               aria-label="Select donation type"
             >
-        {selectedProjectId === 'qurbani-baraye-mustehqeen' ? (
-      <option value="qurbani">Qurbani</option>
-    ) : (
+        {selectedProjectId &&
       <>
         <option value="general">General</option>
         <option value="sadqa">Sadqa</option>
         <option value="zakat">Zakat</option>
       </>
-    )}
+    }
             </select>
           </div>
 
