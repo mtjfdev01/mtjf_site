@@ -485,7 +485,7 @@ const StickyQuickDonationForm = () => {
           )}
 
           {/* Custom Input Field */}
-          {selectedProjectId !== 'qurbani-baraye-mustehqeen' && (
+          {selectedProjectId && (
           <div className="sticky-amount-section">
             <div className="sticky-amount-input-wrapper">
               <input
