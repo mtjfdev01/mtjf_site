@@ -6,12 +6,13 @@ export function getAlfalahApiReturnUrl(donationId, authToken) {
   if (!apiBase) return null
   const params = new URLSearchParams()
   if (donationId) params.set('donationId', String(donationId))
-  if (authToken) params.set('AuthToken', String(authToken))
+  if (authToken) params.set('auth_token', String(authToken))
   return `${apiBase}/donations/public/alfalah/return?${params.toString()}`
 }
 
 /**
- * POST an HTML form to APG (step 1: HS/HS/HS or legacy step 2: SSO/SSO/SSO).
+ * POST an HTML form to APG.
+ * Checkout: Step 1 only (HS/HS/HS). Step 2 (SSO/SSO/SSO) is via API /alfalah/return after auth_token.
  */
 export function postGatewayForm(formAction, formFields) {
   if (!formAction || !formFields || typeof formFields !== 'object') {

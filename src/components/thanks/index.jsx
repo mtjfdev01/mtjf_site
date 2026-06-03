@@ -32,7 +32,7 @@ const Thanks = () => {
     if (orderRef && apiBase) {
       const q = new URLSearchParams({
         donationId: String(orderRef),
-        AuthToken: authToken,
+        auth_token: authToken,
       })
       window.location.replace(
         `${apiBase}/donations/public/alfalah/return?${q.toString()}`,

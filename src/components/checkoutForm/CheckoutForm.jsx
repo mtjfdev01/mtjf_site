@@ -9,7 +9,7 @@ import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import AppealCheckoutFields from './AppealCheckoutFields'
 import Loader from '../Loader/Loader'
-import { postGatewayForm } from '../../lib/paymentGatewayForm'
+import { postGatewayForm, getAlfalahApiReturnUrl } from '../../lib/paymentGatewayForm'
 import {
   getStripeRecurringForPayload,
   isMonthlyDonationFrequency,
@@ -638,6 +638,11 @@ const CheckoutForm = ({ testCheckout = false }) => {
     // Use the passed payment method or the current selected payment
     const currentPayment = paymentMethod
 
+    if (!currentPayment) {
+      setFormMessage({ type: 'error', text: 'Please select a payment method.' })
+      return
+    }
+
     // Validate required fields and focus on first invalid field
     if (!formData.donor_name.trim()) {
       setFormMessage({ 
@@ -812,8 +817,11 @@ const CheckoutForm = ({ testCheckout = false }) => {
           on_behalf_names: typeof on_behalf_names === 'string' ? on_behalf_names.trim() : ''
         }),
         donation_method: currentPayment,
-        // editable in UI, fallback to method default if missing
-        donation_frequency: formData.donation_frequency || paymentFrequency[currentPayment] || 'once',
+        // Card gateways are one-time only; never send monthly with alfalah/payfast/etc.
+        donation_frequency:
+          currentPayment === 'alfalah'
+            ? 'once'
+            : formData.donation_frequency || paymentFrequency[currentPayment] || 'once',
         donation_source: 'website',
         amount: totalAmount,
         currency: (isOldDonationFormFlow || isFailedTransactionFlow) ? (donationData?.currency || 'PKR') : 'PKR',
@@ -898,10 +906,25 @@ const CheckoutForm = ({ testCheckout = false }) => {
         postToPayfast(payfastData, formData)
       } else if (currentPayment === 'alfalah') {
         const alfalahData = response.data?.data || response.data
-        if (alfalahData?.formAction && alfalahData?.formFields) {
+        const { formAction, formFields, donationId, transactionReference, cardStep } =
+          alfalahData || {}
+
+        // Step 2 (SSO) only after APG returns auth_token — handled by API /alfalah/return
+        if (cardStep === 2 && formFields?.AuthToken) {
+          const apiReturn = getAlfalahApiReturnUrl(
+            donationId || transactionReference,
+            formFields.AuthToken,
+          )
+          if (apiReturn) {
+            setIsLoading(null)
+            window.location.replace(apiReturn)
+            return
+          }
+        }
+
+        if (formAction && formFields && String(formAction).includes('/HS/HS/HS')) {
           try {
-            // cardStep 2 = SSO/SSO/SSO (server did HS handshake); cardStep 1 = browser HS fallback
-            postGatewayForm(alfalahData.formAction, alfalahData.formFields)
+            postGatewayForm(formAction, formFields)
           } catch (formErr) {
             console.error(formErr)
             setFormMessage({
@@ -913,6 +936,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
           setFormMessage({
             type: 'error',
             text:
+              alfalahData?.message ||
               response.data?.message ||
               'Unexpected Bank Alfalah response. Please try again.',
           })
