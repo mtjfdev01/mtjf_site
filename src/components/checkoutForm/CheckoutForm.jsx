@@ -1085,8 +1085,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
                     <option value="general">General Donation</option>
                     <option value="zakat">Zakat </option>
                     <option value="sadqa">Sadqa </option>
-                    <option value="fitrana_2026">Fitrana </option>
-                    <option value="qurbani-baraye-mustehqeen">Qurbani </option>
+                    {/* <option value="fitrana_2026">Fitrana </option> */}
+                    {/* <option value="qurbani-baraye-mustehqeen">Qurbani </option> */}
                   </>
                 )}
               </select>

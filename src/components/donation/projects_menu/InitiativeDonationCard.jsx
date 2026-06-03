@@ -16,14 +16,12 @@ const InitiativeDonationCard = ({ initiative, displayCurrency = 'PKR', exchangeR
     initiative?.parentProjectId === 'qurbani-baraye-mustehqeen' || initiative?.parentProjectId === 'qurbani'
 
   // Qurbani projects always use this donation type only (no GENERAL / SADKA / ZAKAT selector)
-  const donationTypeOptions = isQurbaniMultiCurrencyProject
-    ? [{ value: 'qurbani-baraye-mustehqeen', label: 'QURBANI' }]
-    : (initiative.donationTypeOptions || [
+  const donationTypeOptions = initiative.donationTypeOptions || [
         { value: 'GENERAL', label: 'GENERAL' },
-        { value: 'SADKA', label: 'SADKA' },
+        { value: 'SADQA', label: 'SADQA' },
         { value: 'ZAKAT', label: 'ZAKAT' },
-        { value: 'qurbani-baraye-mustehqeen', label: 'QURBANI' },
-      ])
+        // { value: 'qurbani-baraye-mustehqeen', label: 'QURBANI' },
+      ]
   const defaultDonationType = isQurbaniMultiCurrencyProject
     ? 'qurbani-baraye-mustehqeen'
     : (donationTypeOptions[0]?.value || 'GENERAL')

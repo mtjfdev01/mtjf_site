@@ -93,7 +93,7 @@ const ProjectDonationCard = ({ project, onUpdate }) => {
           onChange={handleDonationTypeChange}
         >
           <option value="GENERAL">GENERAL</option>
-          <option value="SADKA">SADKA</option>
+          <option value="SADQA">SADQA</option>
           <option value="ZAKAT">ZAKAT</option>
         </select>
       </div>
