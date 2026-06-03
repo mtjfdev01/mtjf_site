@@ -176,7 +176,7 @@ const Footer = () => {
                   <div className="footer-location-contacts">
                     <a href="tel:061111786853" className="footer-link">061-111-786-853</a>
                     <a href="tel:03032440000" className="footer-link">0303-2440000</a>
-                    <a href="mailto:info@mtjfoundation.org" className="footer-link">info@mtjfoundation.org</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mtjfoundation.org" target="_blank" rel="noopener noreferrer" className="footer-link">info@mtjfoundation.org</a>
                     <a href="tel:03036660221" className="footer-link">Feedback: 0303-6660221</a>
                   </div>
                 </li>
