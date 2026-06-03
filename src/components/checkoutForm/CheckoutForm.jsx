@@ -12,6 +12,11 @@ import AlfalahCheckoutFields from './AlfalahCheckoutFields'
 import AlfalahOtpPanel from './AlfalahOtpPanel'
 import Loader from '../Loader/Loader'
 import { postGatewayForm, getAlfalahAuthToken } from '../../lib/paymentGatewayForm'
+import {
+  getStripeRecurringForPayload,
+  isMonthlyDonationFrequency,
+  STRIPE_DONATION_METHOD,
+} from '../../lib/stripeRecurring'
 import { CiCreditCard2 } from "react-icons/ci";
 import { fetchAppealsList } from '../../lib/appealsApi'
 import { buildAppealDonationLine, isAppealDonationLine } from '../../lib/appealsHelpers'
@@ -79,7 +84,7 @@ const DEFAULT_FORM = {
   notification_subscription: true
 }
 
-// Payment frequency mapping (Stripe supports recurring; form value used when 'monthly')
+// Non-Stripe gateways are one-time only; monthly uses donation_method stripe + recurring object
 const paymentFrequency = {
   blinq: 'once',
   payfast: 'once',
@@ -89,7 +94,7 @@ const paymentFrequency = {
   alfalah: 'once',
 }
 
-const CheckoutForm = ({ alfalahOnly = false }) => {
+const CheckoutForm = ({ testCheckout = false }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams } = useDonation()
@@ -732,7 +737,7 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
     if (totalAmount === 0 && totalAmountFromState > 0) {
       totalAmount = totalAmountFromState
     }
-    if (totalAmount === 0 && alfalahOnly) {
+    if (totalAmount === 0 && testCheckout) {
       totalAmount = 222
     }
     totalAmount = Math.round(Number(totalAmount))
@@ -749,6 +754,26 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
 
     if (isAppealCheckoutFlow && !selectedAppealId) {
       setFormMessage({ type: 'error', text: 'Appeal information is missing. Please open checkout from the appeal page again.' })
+      return
+    }
+
+    if (
+      isMonthlyDonationFrequency(formData.donation_frequency) &&
+      currentPayment !== STRIPE_DONATION_METHOD &&
+      currentPayment !== 'stripe'
+    ) {
+      setFormMessage({
+        type: 'error',
+        text: 'Monthly donations are only available with Stripe. Choose Give Once or pay with Stripe.',
+      })
+      return
+    }
+
+    if (currentPayment === STRIPE_DONATION_METHOD && !stripePromise) {
+      setFormMessage({
+        type: 'error',
+        text: 'Stripe is not configured. Please contact support or use another payment method.',
+      })
       return
     }
 
@@ -859,9 +884,16 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
             }
           })()
         }),
-        // Stripe / Stripe Embed: recurring true when "Give Monthly" is selected
-        ...((currentPayment === 'stripe' || currentPayment === 'stripe_embed') && {
-          recurring: formData.donation_frequency === 'monthly'
+        // Stripe / stripe_embed: lowercase currency + recurring object when monthly
+        ...((currentPayment === 'stripe' || currentPayment === STRIPE_DONATION_METHOD) && {
+          currency: String(
+            (isOldDonationFormFlow || isFailedTransactionFlow)
+              ? donationData?.currency || 'PKR'
+              : 'PKR',
+          ).toLowerCase(),
+          ...(getStripeRecurringForPayload(formData.donation_frequency) && {
+            recurring: getStripeRecurringForPayload(formData.donation_frequency),
+          }),
         }),
         notification_subscription: formData.notification_subscription !== false,
         ...(currentPayment === 'alfalah' && {
@@ -911,6 +943,7 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           setIsLoading(null)
         } else if (alfalahData?.formAction && alfalahData?.formFields) {
           try {
+            // cardStep 2 = SSO (card page); cardStep 1 = HS handshake (fallback)
             postGatewayForm(alfalahData.formAction, alfalahData.formFields)
           } catch (formErr) {
             console.error(formErr)
@@ -936,7 +969,7 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
             })
           }
         }
-      } else if (currentPayment === 'stripe_embed') {
+      } else if (currentPayment === STRIPE_DONATION_METHOD || currentPayment === 'stripe_embed') {
         const data = response.data?.data || response.data
         const clientSecret = data?.clientSecret
         if (clientSecret) {
@@ -945,6 +978,14 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
         } else {
           setIsLoading(null)
           setFormMessage({ type: 'error', text: 'Failed to start Stripe payment. Please try again.' })
+        }
+      } else if (currentPayment === 'stripe') {
+        if (response?.data?.success && response?.data?.data?.paymentUrl) {
+          setIsLoading(null)
+          window.location.href = response.data.data.paymentUrl
+        } else {
+          setIsLoading(null)
+          setFormMessage({ type: 'error', text: 'Failed to open Stripe checkout. Please try again.' })
         }
       } else {
         if (response?.data?.success && response?.data?.data?.paymentUrl) {
@@ -1001,7 +1042,11 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
         <div className="stripe-embed-overlay" role="dialog" aria-modal="true" aria-labelledby="stripe-embed-title">
           <div className="stripe-embed-modal">
             <div className="stripe-embed-modal__header">
-              <h2 id="stripe-embed-title" className="stripe-embed-modal__title">Complete payment</h2>
+              <h2 id="stripe-embed-title" className="stripe-embed-modal__title">
+                {isMonthlyDonationFrequency(formData.donation_frequency)
+                  ? 'Complete monthly donation'
+                  : 'Complete payment'}
+              </h2>
               <button type="button" className="stripe-embed-modal__close" onClick={() => setStripeEmbedClientSecret(null)} aria-label="Close">×</button>
             </div>
             <Elements stripe={stripePromise} options={{ clientSecret: stripeEmbedClientSecret }}>
@@ -1119,7 +1164,8 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
               />
             </div>
           </div>
-        {/* Donation Frequency; on desktop shares a row with On Behalf when Qurbani */}
+        {/* Donation frequency — monthly recurring only on /test-checkout (Stripe) */}
+        {testCheckout && (
         <div
           className={
             !isQurbaniCheckout
@@ -1127,16 +1173,16 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
               : 'checkout-panel__field'
           }
         >
-          {/* <label className="donation-form-label">Donation Frequency</label> */}
           <select
             className="checkout-panel__input checkout-panel__select"
             value={formData.donation_frequency}
             onChange={(e) => setFormData((prev) => ({ ...prev, donation_frequency: e.target.value }))}
           >
             <option value="once">Give Once only</option>
-            <option value="monthly">Give Monthly</option>
+            <option value="monthly">Give Monthly (Stripe)</option>
           </select>
         </div>
+        )}
         {isQurbaniCheckout && (
           <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
             {/* <label className="donation-form-label" htmlFor="checkout-on-behalf-names">
@@ -1185,7 +1231,7 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           </label>
         </div>
 
-        {alfalahOtpSession && alfalahOnly ? (
+        {alfalahOtpSession && testCheckout ? (
           <AlfalahOtpPanel
             session={alfalahOtpSession}
             onCancel={() => {
@@ -1198,17 +1244,15 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           />
         ) : (
           <>
-        {alfalahOnly && (
-        <AlfalahCheckoutFields
-          accountNumber={alfalahAccountNumber}
-          onAccountNumberChange={setAlfalahAccountNumber}
-          disabled={isSubmitting || Boolean(isLoading)}
-        />
+        {testCheckout && (
+          <AlfalahCheckoutFields
+            accountNumber={alfalahAccountNumber}
+            onAccountNumberChange={setAlfalahAccountNumber}
+            disabled={isSubmitting || Boolean(isLoading)}
+          />
         )}
 
         {/* Payment Method Section */}
-        {/* <h5 className="checkout-panel__title-2">Donate Via :</h5> */}
-
         <div className="row">
                   {/* blinq payment option */}
           {/* <div className="col-md-6">
@@ -1240,9 +1284,9 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
             </div>
           </div> */}
 
-                        {/* PayFast — credit / debit card (regular checkout only) */}
-          {!alfalahOnly && (
-          <div className="col-md-6">
+                        {/* PayFast — single card option on regular /checkout */}
+          {!testCheckout && (
+          <div className="col-12">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -1258,9 +1302,6 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
                 <div className="payment-content">
                   <h6>Credit / Debit Card</h6>
                   <span className="payment-option-badge payment-option-badge--info">PayFast</span>
-                  {formData.donation_frequency === 'monthly' && (
-                    <span className="payment-option-badge">Recurring</span>
-                  )}
                 </div>
                 {isLoading === 'payfast' && (
                   <div className="payment-loading">
@@ -1270,62 +1311,6 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
               </div>
             </div>
           </div>
-          )}
-
-          {alfalahOnly && (
-          <>
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleAlfalahPayment(e, '3')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Credit / Debit Card</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span>
-                </div>
-                {isLoading === 'alfalah' && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleAlfalahPayment(e, '1')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Mobile OTP</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Alfa Wallet</span>
-                </div>
-                {isLoading === 'alfalah' && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          </>
           )}
 
           {/* Alfalah account (SMS + email OTAC) — disabled */}
@@ -1388,14 +1373,16 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
           
 
 
-              {/* Stripe payment option (recurring when "Give Monthly" selected) */}
-          {/* <div className="col-md-6">
+              {/* /test-checkout — Stripe + Bank Alfalah */}
+          {testCheckout && (
+          <>
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'stripe')
+                    handleSubmit(e, STRIPE_DONATION_METHOD)
                   }
                 }}
               >
@@ -1403,28 +1390,28 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay with Stripe (Card)</h6>
-                  {formData.donation_frequency === 'monthly' && (
-                    <span className="payment-option-badge">Recurring</span>
+                  <h6>Pay with Stripe</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Card</span>
+                  {isMonthlyDonationFrequency(formData.donation_frequency) && (
+                    <span className="payment-option-badge">Monthly</span>
                   )}
                 </div>
-                {isLoading && (
+                {isLoading === STRIPE_DONATION_METHOD && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
 
-              {/* Stripe Embedded: payment form on page (no redirect) */}
-          {/* <div className="col-md-6">
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'stripe_embed')
+                    handleAlfalahPayment(e, '3')
                   }
                 }}
               >
@@ -1432,19 +1419,45 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay with Stripe </h6>
-                  {formData.donation_frequency === 'monthly' && (
-                    <span className="payment-option-badge">Recurring</span>
-                  )}
+                  <h6>Credit / Debit Card</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span>
                 </div>
-                {isLoading && (
+                {isLoading === 'alfalah' && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
+
+          <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleAlfalahPayment(e, '1')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Mobile OTP</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Alfa Wallet</span>
+                </div>
+                {isLoading === 'alfalah' && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          </>
+          )}
         </div>
           </>
         )}
@@ -1455,4 +1468,3 @@ const CheckoutForm = ({ alfalahOnly = false }) => {
 }
 
 export default CheckoutForm
-

@@ -15,11 +15,11 @@ const TEST_CHECKOUT_DEFAULT_AMOUNT = 222
 
 const Checkout = () => {
   const location = useLocation()
-  const alfalahOnly = location.pathname === '/test-checkout'
+  const testCheckout = location.pathname === '/test-checkout'
   const { amount, setDonationFormData } = useDonation()
 
   useEffect(() => {
-    if (!alfalahOnly || (amount && amount > 0)) return
+    if (!testCheckout || (amount && amount > 0)) return
     setDonationFormData({
       amount: String(TEST_CHECKOUT_DEFAULT_AMOUNT),
       finalAmount: TEST_CHECKOUT_DEFAULT_AMOUNT,
@@ -28,10 +28,10 @@ const Checkout = () => {
       category: 'General',
       donation_type: 'general',
     })
-  }, [alfalahOnly, amount, setDonationFormData])
+  }, [testCheckout, amount, setDonationFormData])
 
   // Use total amount from context (already calculated from all sources)
-  const totalAmount = amount || (alfalahOnly ? TEST_CHECKOUT_DEFAULT_AMOUNT : 0)
+  const totalAmount = amount || (testCheckout ? TEST_CHECKOUT_DEFAULT_AMOUNT : 0)
 
   // First component after header - loads immediately
   const [formRef, showForm] = useIntersectionObserver({ 
@@ -48,7 +48,7 @@ const Checkout = () => {
       <div ref={formRef}>
         {showForm && (
           <Suspense fallback={null}>
-            <CheckoutForm alfalahOnly={alfalahOnly} />
+            <CheckoutForm testCheckout={testCheckout} />
           </Suspense>
         )}
       </div>
