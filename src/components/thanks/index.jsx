@@ -14,7 +14,7 @@ const Thanks = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // Bank Alfalah card step 1 lands here with AuthToken when portal Return URL is /thanks
+  // Misconfigured APG HS_ReturnURL: forward AuthToken to API (step 2 SSO is server-side HTML)
   useEffect(() => {
     const authToken =
       searchParams.get('AuthToken') ||
@@ -28,10 +28,14 @@ const Thanks = () => {
       searchParams.get('O') ||
       searchParams.get('o')
 
-    if (orderRef) {
-      navigate(
-        `/donate/alfalah-card?donationId=${encodeURIComponent(orderRef)}&authToken=${encodeURIComponent(authToken)}`,
-        { replace: true },
+    const apiBase = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '')
+    if (orderRef && apiBase) {
+      const q = new URLSearchParams({
+        donationId: String(orderRef),
+        AuthToken: authToken,
+      })
+      window.location.replace(
+        `${apiBase}/donations/public/alfalah/return?${q.toString()}`,
       )
       return
     }
@@ -40,7 +44,7 @@ const Thanks = () => {
     setError(
       'Bank Alfalah returned a payment token but no donation reference. Please start checkout again.',
     )
-  }, [searchParams, navigate])
+  }, [searchParams])
 
   useEffect(() => {
     const authToken =

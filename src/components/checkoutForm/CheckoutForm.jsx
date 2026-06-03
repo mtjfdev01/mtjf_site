@@ -8,10 +8,8 @@ import { ALL_PROJECTS_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import AppealCheckoutFields from './AppealCheckoutFields'
-import AlfalahCheckoutFields from './AlfalahCheckoutFields'
-import AlfalahOtpPanel from './AlfalahOtpPanel'
 import Loader from '../Loader/Loader'
-import { postGatewayForm, getAlfalahAuthToken } from '../../lib/paymentGatewayForm'
+import { postGatewayForm } from '../../lib/paymentGatewayForm'
 import {
   getStripeRecurringForPayload,
   isMonthlyDonationFrequency,
@@ -121,9 +119,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
   const [appealsLoading, setAppealsLoading] = useState(false)
   const [selectedAppealId, setSelectedAppealId] = useState('')
   const [appealAmount, setAppealAmount] = useState('')
-  const [alfalahAccountNumber, setAlfalahAccountNumber] = useState('')
-  const [alfalahOtpSession, setAlfalahOtpSession] = useState(null)
-
   const appealIdFromQuery = useMemo(() => {
     const searchParams = new URLSearchParams(location.search)
     return searchParams.get('appealId')
@@ -637,12 +632,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
     }
   }
 
-  const handleAlfalahPayment = (e, transactionType) => {
-    if (e?.preventDefault) e.preventDefault()
-    handleSubmit(e, 'alfalah', { alfalah_transaction_type: String(transactionType) })
-  }
-
-  const handleSubmit = async (e, paymentMethod = null, extras = {}) => {
+  const handleSubmit = async (e, paymentMethod = null) => {
     e.preventDefault()
 
     // Use the passed payment method or the current selected payment
@@ -777,19 +767,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
       return
     }
 
-    const alfalahTxType = extras.alfalah_transaction_type
-      ? String(extras.alfalah_transaction_type)
-      : '1'
-    if (currentPayment === 'alfalah' && (alfalahTxType === '1' || alfalahTxType === '2')) {
-      if (!alfalahAccountNumber.trim()) {
-        setFormMessage({
-          type: 'error',
-          text: 'Please enter your Alfa Wallet or Alfalah account number.',
-        })
-        return
-      }
-    }
-
     setIsSubmitting(true)
     setFormMessage({ type: '', text: '' })
 
@@ -896,12 +873,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
           }),
         }),
         notification_subscription: formData.notification_subscription !== false,
-        ...(currentPayment === 'alfalah' && {
-          alfalah_transaction_type: alfalahTxType,
-          ...((alfalahTxType === '1' || alfalahTxType === '2') && {
-            alfalah_account_number: alfalahAccountNumber.trim(),
-          }),
-        }),
       }
       
       console.log('payload', payload)
@@ -927,23 +898,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
         postToPayfast(payfastData, formData)
       } else if (currentPayment === 'alfalah') {
         const alfalahData = response.data?.data || response.data
-        if (alfalahData?.requiresOtp) {
-          setAlfalahOtpSession({
-            donationId: alfalahData.donationId,
-            isOtp: alfalahData.isOtp !== false,
-            otpLength: alfalahData.otpLength,
-            otpHint: alfalahData.otpHint,
-          })
-          setFormMessage({
-            type: 'info',
-            text:
-              alfalahData.otpHint ||
-              'Bank Alfalah has sent a verification code. Enter it below to complete your donation.',
-          })
-          setIsLoading(null)
-        } else if (alfalahData?.formAction && alfalahData?.formFields) {
+        if (alfalahData?.formAction && alfalahData?.formFields) {
           try {
-            // cardStep 2 = SSO (card page); cardStep 1 = HS handshake (fallback)
+            // cardStep 2 = SSO/SSO/SSO (server did HS handshake); cardStep 1 = browser HS fallback
             postGatewayForm(alfalahData.formAction, alfalahData.formFields)
           } catch (formErr) {
             console.error(formErr)
@@ -952,23 +909,15 @@ const CheckoutForm = ({ testCheckout = false }) => {
               text: 'Failed to open Bank Alfalah checkout. Please try again.',
             })
           }
-          setIsLoading(null)
         } else {
-          const authToken = getAlfalahAuthToken(alfalahData)
-          const donationId = alfalahData?.donationId
-          if (authToken && donationId) {
-            setIsLoading(null)
-            navigate(
-              `/donate/alfalah-card?donationId=${donationId}&authToken=${encodeURIComponent(authToken)}`,
-            )
-          } else {
-            setIsLoading(null)
-            setFormMessage({
-              type: 'error',
-              text: 'Unexpected Bank Alfalah response. Please try again.',
-            })
-          }
+          setFormMessage({
+            type: 'error',
+            text:
+              response.data?.message ||
+              'Unexpected Bank Alfalah response. Please try again.',
+          })
         }
+        setIsLoading(null)
       } else if (currentPayment === STRIPE_DONATION_METHOD || currentPayment === 'stripe_embed') {
         const data = response.data?.data || response.data
         const clientSecret = data?.clientSecret
@@ -1231,27 +1180,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
           </label>
         </div>
 
-        {alfalahOtpSession && testCheckout ? (
-          <AlfalahOtpPanel
-            session={alfalahOtpSession}
-            onCancel={() => {
-              setAlfalahOtpSession(null)
-              setFormMessage({
-                type: 'info',
-                text: 'Verification cancelled. You can start a new Bank Alfalah payment below.',
-              })
-            }}
-          />
-        ) : (
-          <>
-        {testCheckout && (
-          <AlfalahCheckoutFields
-            accountNumber={alfalahAccountNumber}
-            onAccountNumberChange={setAlfalahAccountNumber}
-            disabled={isSubmitting || Boolean(isLoading)}
-          />
-        )}
-
         {/* Payment Method Section */}
         <div className="row">
                   {/* blinq payment option */}
@@ -1284,7 +1212,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div> */}
 
-                        {/* PayFast — single card option on regular /checkout */}
+          {/* Bank Alfalah — credit/debit card (APG page redirection) */}
           {!testCheckout && (
           <div className="col-12">
             <div className="input-item">
@@ -1292,7 +1220,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'payfast')
+                    handleSubmit(e, 'alfalah')
                   }
                 }}
               >
@@ -1301,9 +1229,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 </div>
                 <div className="payment-content">
                   <h6>Credit / Debit Card</h6>
-                  <span className="payment-option-badge payment-option-badge--info">PayFast</span>
+                  <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span>
                 </div>
-                {isLoading === 'payfast' && (
+                {isLoading === 'alfalah' && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
@@ -1373,7 +1301,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
           
 
 
-              {/* /test-checkout — Stripe + Bank Alfalah */}
           {testCheckout && (
           <>
           <div className="col-md-6">
@@ -1411,7 +1338,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    handleAlfalahPayment(e, '3')
+                    handleSubmit(e, 'alfalah')
                   }
                 }}
               >
@@ -1430,37 +1357,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
-
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleAlfalahPayment(e, '1')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Mobile OTP</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Alfa Wallet</span>
-                </div>
-                {isLoading === 'alfalah' && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
           </>
           )}
         </div>
-          </>
-        )}
       </form>
     </section>
     </>

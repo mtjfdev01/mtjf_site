@@ -1,19 +1,17 @@
 /**
- * Bank Alfalah handshake JSON (success + AuthToken) when card step 1 returns API mode.
+ * Public API return URL for APG card step 2 (AuthToken → SSO auto-post on server).
  */
-export function getAlfalahAuthToken(data) {
-  if (!data || typeof data !== 'object') return null
-  const token = data.AuthToken ?? data.authToken
-  if (!token) return null
-  const rawSuccess = data.success ?? data.Success
-  if (rawSuccess !== undefined && rawSuccess !== null) {
-    if (String(rawSuccess).toLowerCase() !== 'true') return null
-  }
-  return String(token)
+export function getAlfalahApiReturnUrl(donationId, authToken) {
+  const apiBase = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '')
+  if (!apiBase) return null
+  const params = new URLSearchParams()
+  if (donationId) params.set('donationId', String(donationId))
+  if (authToken) params.set('AuthToken', String(authToken))
+  return `${apiBase}/donations/public/alfalah/return?${params.toString()}`
 }
 
 /**
- * POST an HTML form to a payment gateway (PayFast, Bank Alfalah card HS, etc.).
+ * POST an HTML form to APG (step 1: HS/HS/HS or legacy step 2: SSO/SSO/SSO).
  */
 export function postGatewayForm(formAction, formFields) {
   if (!formAction || !formFields || typeof formFields !== 'object') {
