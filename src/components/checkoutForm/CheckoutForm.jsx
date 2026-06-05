@@ -9,7 +9,7 @@ import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import AppealCheckoutFields from './AppealCheckoutFields'
 import Loader from '../Loader/Loader'
-import { postGatewayForm, getAlfalahApiReturnUrl } from '../../lib/paymentGatewayForm'
+import { postGatewayForm } from '../../lib/paymentGatewayForm'
 import {
   getStripeRecurringForPayload,
   isMonthlyDonationFrequency,
@@ -881,6 +881,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
           }),
         }),
         notification_subscription: formData.notification_subscription !== false,
+        ...(currentPayment === 'alfalah' && {
+          alfalah_transaction_type: '3',
+        }),
       }
       
       console.log('payload', payload)
@@ -906,25 +909,11 @@ const CheckoutForm = ({ testCheckout = false }) => {
         postToPayfast(payfastData, formData)
       } else if (currentPayment === 'alfalah') {
         const alfalahData = response.data?.data || response.data
-        const { formAction, formFields, donationId, transactionReference, cardStep } =
-          alfalahData || {}
 
-        // Step 2 (SSO) only after APG returns auth_token — handled by API /alfalah/return
-        if (cardStep === 2 && formFields?.AuthToken) {
-          const apiReturn = getAlfalahApiReturnUrl(
-            donationId || transactionReference,
-            formFields.AuthToken,
-          )
-          if (apiReturn) {
-            setIsLoading(null)
-            window.location.replace(apiReturn)
-            return
-          }
-        }
-
-        if (formAction && formFields && String(formAction).includes('/HS/HS/HS')) {
+        if (alfalahData?.formAction && alfalahData?.formFields) {
           try {
-            postGatewayForm(formAction, formFields)
+            // cardStep 1 → HS/HS/HS; cardStep 2 → SSO/SSO/SSO (hosted card page)
+            postGatewayForm(alfalahData.formAction, alfalahData.formFields)
           } catch (formErr) {
             console.error(formErr)
             setFormMessage({
@@ -1137,8 +1126,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
               />
             </div>
           </div>
-        {/* Donation frequency — monthly recurring only on /test-checkout (Stripe) */}
-        {testCheckout && (
+        {/* Donation frequency — monthly recurring (Stripe); disabled while Stripe UI is commented out */}
+        {/* {testCheckout && (
         <div
           className={
             !isQurbaniCheckout
@@ -1155,7 +1144,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
             <option value="monthly">Give Monthly (Stripe)</option>
           </select>
         </div>
-        )}
+        )} */}
         {isQurbaniCheckout && (
           <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
             {/* <label className="donation-form-label" htmlFor="checkout-on-behalf-names">
@@ -1236,7 +1225,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div> */}
 
-          {/* Bank Alfalah — credit/debit card (APG page redirection) */}
+          {/* PayFast — production /checkout only */}
           {!testCheckout && (
           <div className="col-12">
             <div className="input-item">
@@ -1244,7 +1233,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'alfalah')
+                    handleSubmit(e, 'payfast')
                   }
                 }}
               >
@@ -1253,9 +1242,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 </div>
                 <div className="payment-content">
                   <h6>Credit / Debit Card</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span>
+                  <span className="payment-option-badge payment-option-badge--info">PayFast</span>
                 </div>
-                {isLoading === 'alfalah' && (
+                {isLoading === 'payfast' && (
                   <div className="payment-loading">
                     <span>Processing...</span>
                   </div>
@@ -1325,8 +1314,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
           
 
 
-          {testCheckout && (
-          <>
+          {/* Stripe — /test-checkout (commented out; Alfalah only for now) */}
+          {/* {testCheckout && (
           <div className="col-md-6">
             <div className="input-item">
               <div
@@ -1355,8 +1344,11 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
+          )} */}
 
-          <div className="col-md-6">
+          {/* Bank Alfalah — /test-checkout only */}
+          {testCheckout && (
+          <div className="col-12">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -1381,7 +1373,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
-          </>
           )}
         </div>
       </form>
