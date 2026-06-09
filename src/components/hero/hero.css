@@ -2,6 +2,12 @@
     height: 100vh;
 }
 
+@media (min-width: 769px) {
+  .banner_img.hero-banner {
+    margin-top: var(--desktop-header-clearance);
+  }
+}
+
 /* Smooth fade and slide animation for image changes */
 .banner_img {
   animation: fadeInSlide 0.8s ease-in-out;
@@ -38,11 +44,15 @@
   transform: none;
 }
 
-.banner_img--mobile {
-  margin-top: 150px;
-}
-
 @media (max-width: 768px) {
+  .banner_img--mobile {
+    margin-top: var(--mobile-header-clearance);
+  }
+
+  .banner_img--mobile .banner_img {
+    margin-top: 0;
+  }
+
   .hero-nav-container {
     padding: 0 var(--space-12);
     display: flex !important;

@@ -1,10 +1,15 @@
-.nav-container{
-    width: 85%;
+.nav-outer {
+    position: fixed;
     top: 32px;
     left: 50%;
-    padding: 8px 16px;
     transform: translateX(-50%);
+    width: 85%;
     z-index: 10;
+}
+
+.nav-container{
+    width: 100%;
+    padding: 8px 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
     max-height: 88px;
     min-height: 66px;
@@ -174,14 +179,131 @@
   background-color: #1e9ad0 !important;
 }
 
+@media (min-width: 769px) {
+  .nav-outer {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .nav-outer .nav-container.rounded {
+    border-radius: 0;
+  }
+
+  .nav-container.nav-dark-theme {
+    box-shadow: none;
+  }
+}
+
+/* Zakat countdown banner — desktop only */
+.zakat-countdown-banner {
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  height: var(--zakat-countdown-banner-height);
+  margin-top: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, #1a4fa8 0%, #1e6fd4 45%, #30aee3 100%);
+  color: #fff;
+}
+
+.zakat-countdown-banner__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.zakat-countdown-banner__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.zakat-countdown-banner__message {
+  flex: 1;
+  margin: 0;
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.zakat-countdown-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.zakat-countdown {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zakat-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.zakat-countdown__value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.zakat-countdown__label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  opacity: 0.9;
+  text-transform: capitalize;
+}
+
+.zakat-countdown__sep {
+  font-size: 1.1rem;
+  font-weight: 700;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.zakat-countdown-banner__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  color: #1a4fa8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.zakat-countdown-banner__cta:hover {
+  background: #f0f7ff;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 768px) {
-  .nav-container {
-    top: 35px;                
-    left: 0;               
-    transform: none;      
-    width: 100%;         
-    border-radius: 0 !important;
+  .nav-outer {
+    top: var(--nav-mobile-top);
+    left: 0;
+    transform: none;
+    width: 100%;
     z-index: 20;
+    overflow: hidden;
+  }
+
+  .nav-container {
+    border-radius: 0 !important;
     background-color: white;
     height: auto;
     min-height: auto;

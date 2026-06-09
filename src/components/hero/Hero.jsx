@@ -64,7 +64,7 @@ const Hero = () => {
     <>
       {currentImage.link ? (
         <>
-          <Link to={currentImage.link} className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
+          <Link to={currentImage.link} className='banner_img hero-banner d-none md:d-block' key={`desktop-${currentIndex}`}>
             <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </Link>
           <div className='banner_img--mobile sm:d-block md:d-none' key={`mobile-${currentIndex}`}>
@@ -75,7 +75,7 @@ const Hero = () => {
         </>
       ) : (
         <>
-          <div className='banner_img d-none md:d-block' key={`desktop-${currentIndex}`}>
+          <div className='banner_img hero-banner d-none md:d-block' key={`desktop-${currentIndex}`}>
             <img src={currentImage.desktop} alt="hero background" style={{width:"100%" , height:"auto"}} />
           </div>
           <div className='banner_img--mobile sm:d-block md:d-none' key={`mobile-${currentIndex}`} >
