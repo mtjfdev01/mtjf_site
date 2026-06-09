@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // Update when campaign end date changes (Islamic year end / Zakat deadline)
-export const ZAKAT_COUNTDOWN_TARGET = new Date('2026-06-17T23:59:59')
+export const ZAKAT_COUNTDOWN_TARGET = new Date('2026-06-17T00:00:00')
 
 export const pad = (n) => String(n).padStart(2, '0')
 
