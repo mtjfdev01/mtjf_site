@@ -92,7 +92,7 @@
 
     /* Fixed desktop header: navbar + zakat countdown banner */
     --nav-desktop-top: 32px;
-    --nav-desktop-bar-height: 66px;
+    --nav-desktop-bar-height: 45px;
     --zakat-countdown-banner-height: 64px;
     --desktop-header-clearance: calc(
       var(--nav-desktop-top) +
