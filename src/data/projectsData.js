@@ -4278,7 +4278,233 @@ Strong monitoring at every stage of the process
       ],
       donateButtonText: ''
     }
-  }
+  },
+    'zakat': {
+    id: 'zakat',
+    title: 'Your Zakat: Your Responsibility',
+    headerImage: ZakatCalculator,
+    headerImageMob: ZakatMob,
+    // url:'/zakat-calculator',
+    stats: [
+      { icon: FaHandHoldingHeart, number: '50,000+', label: 'Families Supported' },
+      { icon: FaUsers, number: '200,000+', label: 'Lives Impacted' },
+      { icon: FaGlobeAsia, number: '50+', label: 'Districts Reached' },
+      { icon: FaBoxOpen, number: '100,000+', label: 'Zakat Distributions' },
+      { icon: FaHome, number: '10,000+', label: 'Households Served' },
+      { icon: FaChild, number: '25,000+', label: 'Children Benefited' },
+      { icon: FaCalendarAlt, number: '12', label: 'Years of Service' },
+      { icon: FaShieldAlt, number: '100%', label: 'Shariah Compliant' }
+    ],
+    content: {
+      paragraph1: `Ramadan is not just a month of fasting. It is a month where hearts soften, hands open, and wealth finds its true purpose. Allah gives us this month so we pause and ask ourselves a simple question: Have I fulfilled the right of Allah and the right of His creation?`,
+      paragraph2: ``,
+      paragraph3: '',
+      testimonials:
+      {
+        id: 'zakat',
+        title: 'Zakat Appeal',
+        videos: [
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+        ]
+      }
+
+    },
+    donateCategory: 'Zakat',
+    donateButtonText: 'Give Your Zakat This Ramadan',
+    donationOptions: {
+      PKR: [10000, 25000, 50000, 100000],
+      USD: [100, 250, 500, 1000],
+      EUR: [90, 230, 460, 920]
+    },
+    subProjects: [
+      {
+        id: 'your-zakat-your-responsibility',
+        title: 'Your Zakat: Your Responsibility',
+        subtitle: 'Ramadan is not just a month of fasting.',
+        description: `
+It is a month where hearts soften, hands open, and wealth finds its true purpose.
+
+Allah gives us this month so we pause and ask ourselves a simple question:
+`,
+        services: [
+          'Have I fulfilled the right of Allah and the right of His creation?'
+        ],
+        donateButtonText: 'Give Your Zakat This Ramadan',
+        // donationUrl: '/zakat-calculator',
+        image: ZakatResponsibilityImage
+      },
+      {
+        id: 'why-your-zakat-matters',
+        title: 'Why Your Zakat Matters?',
+        subtitle: 'Zakat is not charity. It is an obligation. A duty. A trust.',
+        description: `Allah reminds us again and again that our wealth is not truly ours. It is a test, and within it lies the right of those who struggle silently.
+
+Zakat purifies what we earn.
+It cleanses the heart from greed.
+And it becomes a source of relief for someone who has been waiting for help, often for years.`,
+        quranAyat: {
+          text: 'Take from their wealth charity by which you purify them and cause them increase.',
+          reference: 'Surah At-Tawbah 9:103'
+        },
+        donateButtonText: 'Fulfill Your Zakat Obligation',
+        donationUrl: '/zakat-calculator',
+        image: ZakatWhyMattersImage,
+        carosellImages: [
+          zakatSlider1,
+          zakatSlider2,
+          zakatSlider3,
+          zakatSlider4,
+          zakatSlider5,
+          zakatSlider6,
+          zakatSlider7,
+          zakatSlider8,
+          zakatSlider9,
+          zakatSlider10,
+          zakatSlider11,
+          zakatSlider12,
+        ],
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
+      },
+      {
+        id: 'who-is-zakat-farz-upon',
+        title: 'Who Is Zakat Farz Upon?',
+        subtitle: 'Zakat becomes obligatory upon every sane, adult Muslim who owns wealth above the nisab threshold for one lunar year.',
+        description: `If Allah has given you stability, savings, gold, business income, or assets beyond your basic needs, then Zakat is not optional. It is a responsibility placed on you with wisdom and mercy.
+
+And when you give it sincerely, Allah promises something greater in return.`,
+        quranAyat: {
+          text: 'The example of those who spend their wealth in the cause of Allah is that of a grain that sprouts into seven ears, each bearing one hundred grains. And Allah multiplies the reward even more to whoever He wills.',
+          reference: 'Surah Al-Baqarah 2:261'
+        },
+        donateButtonText: 'Pay Zakat',
+        donationUrl: '/zakat-calculator',
+        image: ZakatFarz,
+        bottom_banner_img: ZakatBottomBanner,
+        bottom_banner_mobile_img: ZakatBottomBannerMobile
+      },
+      {
+        id: 'how-your-zakat-helps-people',
+        title: 'How Your Zakat Helps People?',
+        subtitle: 'Zakat restores dignity.',
+        description: `
+Through your Zakat, lives move from desperation to stability, from waiting to rebuilding, from surviving to hoping again.
+
+This is not a one-time impact.
+This is relief that reaches hearts, homes, and futures.`,
+        donateButtonText: 'Make Your Zakat Count',
+        donationUrl: '/zakat-calculator',
+        image: ZakatHowHelpsImage,
+        impact: '',
+        services: [
+
+          'It helps a mother feed her children without asking.',
+          'It helps a family survive Ramadan without fear of hunger.',
+          'It helps someone stand on their own feet instead of living in dependence.'
+        ],
+        carosellImages: [
+          impactNum1,
+          impactNum2,
+          impactNum3,
+          impactNum4,
+          impactNum5,
+          impactNum6,
+          impactNum7,
+          impactNum9,
+          impactNum8,
+        ],
+      },
+      {
+        id: 'message-from-molana-tariq-jamil',
+        title: 'A Message from Molana Yousaf Jamil',
+        description: `Zakat is a trust from Allah. What we have is not only for us. Somewhere, a mother is worried
+        about feeding her children. Somewhere, a father is doing his best and turning to Allah for help.
+        When you give Zakat, you ease someone’s burden. You let them know they are not alone.
+        Through your Zakat, a worry is lifted, a prayer is answered, and a life slowly moves toward ease.`,
+        quranAyat: {
+          text: 'Charity does not decrease wealth.',
+          reference: 'Sahih Muslim'
+        },
+        bottomText: `When you give Zakat sincerely, Allah replaces it with barakah in ways you cannot imagine. This Ramadan, answer that call.`,
+        donateButtonText: 'Give Zakat for the Sake of Allah',
+        donationUrl: '/zakat-calculator',
+        image: ZakatCalculator,
+        video: 'https://www.youtube.com/watch?v=RaDA7oiNqLs',
+
+        carosellVideos: [
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+          'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be',
+        ]
+      },
+      {
+        id: 'give-with-trust-this-ramadan',
+        title: 'Give with Trust This Ramadan',
+        subtitle: '',
+        description: `At Molana Tariq Jamil Foundation, Zakat is handled with care, responsibility, and strict adherence to Shariah principles.
+
+Your Zakat reaches those who are eligible, deserving, and in genuine need, quietly, respectfully, and with dignity.
+
+Because Zakat is not just about giving.
+It is about fulfilling a trust.
+
+This Ramadan, Let Your Zakat Speak for You`,
+        donateButtonText: 'Give Your Zakat Now',
+        donationUrl: '/zakat-calculator',
+        image: GiveWithTrustThisRamadan,
+        testimonials: {
+          id: 'health-program-impact',
+          title: 'Support Our Cause',
+          // subtitle: 'Watch Lives You Helped Change',
+          description: '',
+          videos: [
+            'https://www.youtube.com/watch?v=sqX_7Pl7pwg',
+            'https://www.youtube.com/watch?v=UD3YkQqmDAY',
+            'https://www.youtube.com/watch?v=_vb5xeNrWN0'
+          ]
+        },
+      }
+    ],
+    testimonials:
+    {
+      id: 'zakat',
+      title: 'Zakat Appeal',
+      mobileOnly: true,
+      videos: [
+        'https://www.youtube.com/watch?v=zNilfdUdDiY&feature=youtu.be'
+      ]
+    }
+
+    // faqs: {
+    //   id: 'frequently-asked-questions',
+    //   title: 'Frequently Asked Questions',
+    //   subtitle: 'Everything You Need to Know About Zakat',
+    //   description: '',
+    //   faqs: [
+    //     {
+    //       question: 'What is Zakat?',
+    //       answer: 'Zakat is an obligatory form of charity in Islam, requiring Muslims who meet the nisab threshold to give 2.5% of their qualifying wealth annually to those in need.'
+    //     },
+    //     {
+    //       question: 'Who is eligible to receive Zakat?',
+    //       answer: 'Zakat can be given to eight categories of recipients as mentioned in the Quran: the poor, the needy, Zakat administrators, those whose hearts are to be reconciled, freeing captives, those in debt, in the cause of Allah, and travelers in need.'
+    //     },
+    //     {
+    //       question: 'Is my Zakat distributed according to Shariah?',
+    //       answer: 'Yes. MTJ Foundation ensures all Zakat is handled with strict adherence to Shariah principles, reaching only those who are eligible and deserving.'
+    //     },
+    //     {
+    //       question: 'Can I specify where my Zakat goes?',
+    //       answer: 'Yes, donors can designate their Zakat for specific causes such as education, healthcare, or food assistance, as long as it reaches eligible recipients.'
+    //     },
+    //     {
+    //       question: 'When should I pay my Zakat?',
+    //       answer: 'Zakat is due once a lunar year has passed on wealth above the nisab threshold. Many Muslims choose to pay during Ramadan for increased blessings.'
+    //     }
+    //   ],
+    //   donateButtonText: 'Give Your Zakat Now'
+    // }
+  },
 }
 
 

@@ -46,7 +46,7 @@ const ZakatCountdownBanner = () => {
         <button
           type="button"
           className="zakat-countdown-banner__cta"
-          onClick={() => navigate('/projects/ramzan-zakat')}
+          onClick={() => navigate('/projects/zakat')}
         >
           <BiSolidDonateHeart size={18} />
           <span>Give Zakat Now</span>
