@@ -1,5 +1,5 @@
 .projects-page-section {
-  padding: var(--space-48) 0; 
+  /* padding: var(--space-48) 0;  */
   min-height: 80vh;
 }
 
@@ -182,7 +182,7 @@
 /* Mobile (768px) */
 @media (max-width: 768px) {
   .projects-page-section {
-    padding: var(--space-32) 0;
+    /* padding: var(--space-32) 0; */
   }
 
   .projects-page-header {
