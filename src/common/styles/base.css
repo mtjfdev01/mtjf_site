@@ -102,7 +102,7 @@
 
     /* Fixed mobile header: navbar rows + zakat countdown banner */
     /* --nav-mobile-top: 35px; */
-    --nav-mobile-top: 45px;
+    --nav-mobile-top: 30px;
     --nav-mobile-row1-height: 72px;
     --nav-mobile-row2-height: 38px;
     --zakat-countdown-mobile-height: 76px;
