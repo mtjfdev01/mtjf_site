@@ -1,6 +1,6 @@
 .nav-outer {
     position: fixed;
-    top: 32px;
+    top: 29px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -305,7 +305,7 @@
 
 @media (max-width: 768px) {
   .nav-outer {
-    top: var(--nav-mobile-top);
+    /* top: var(--nav-mobile-top); */
     left: 0;
     transform: none;
     width: 100%;
