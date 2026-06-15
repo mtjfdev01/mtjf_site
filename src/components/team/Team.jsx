@@ -7,7 +7,7 @@ import memberCEO from '../../assets/img/team/IhtishamUllahQureshi.png'
 import memberCFO from '../../assets/img/team/MuhammadRashidIqbal.png'
 import memberFundraising from '../../assets/img/team/MairajKhalid.png'
 import memberHR from '../../assets/img/team/MuhammadFarukh.png'
-import memberMeal from '../../assets/img/team/IkramSeher.webp'
+import memberMeal from '../../assets/img/team/IkramSeher.png'
 
 const teamMembers = [
    {
@@ -44,7 +44,7 @@ const teamMembers = [
     id: 'Director of Programs',
     name: 'Ikram Seher',
     role: 'MEAL Manager',
-    // image: memberMeal,
+    image: memberMeal,
     accent: 'amber',
   },
 ]
