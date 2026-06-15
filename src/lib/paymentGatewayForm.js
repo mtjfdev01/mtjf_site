@@ -12,7 +12,7 @@ export function getAlfalahApiReturnUrl(donationId, authToken) {
 
 /**
  * POST an HTML form to APG.
- * Checkout: Step 1 only (HS/HS/HS). Step 2 (SSO/SSO/SSO) is via API /alfalah/return after auth_token.
+ * Checkout: server runs HS handshake; browser POST SSO/SSO/SSO. Legacy /alfalah/return still handles old redirects.
  */
 export function postGatewayForm(formAction, formFields) {
   if (!formAction || !formFields || typeof formFields !== 'object') {
