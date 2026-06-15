@@ -912,7 +912,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
 
         if (alfalahData?.formAction && alfalahData?.formFields) {
           try {
-            // cardStep 1 → HS/HS/HS; cardStep 2 → SSO/SSO/SSO (hosted card page)
+            // Server runs HS handshake; browser POST SSO/SSO/SSO (cardStep 2)
             postGatewayForm(alfalahData.formAction, alfalahData.formFields)
           } catch (formErr) {
             console.error(formErr)

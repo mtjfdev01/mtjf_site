@@ -106,17 +106,23 @@ const Footer = () => {
                 <ul className="footer-list flex flex-col gap-12">
                   <li>
                     <span className='footer-label'>National Taxation Number:</span>{' '}
-                    <span className="footer-link">6703846-7</span>
+                    <span className="footer-link">I652261-4</span>
                   </li>
                   <li>
                     <span className='footer-label'>Registration Number:</span>{' '}
-                    <span className="footer-link">4156</span>
-                    <br />
-                    <span className="footer-link">PB-7207081426668106</span>
+                    <span className="footer-link">I652261</span>
                   </li>
                   <li>
-                    <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>
+                    <span className='footer-label'>SECP License No.:</span>{' '}
+                    <span className="footer-link">SECP/LRD/Co42/350/2025</span>
                   </li>
+                  <li>
+                    <span className='footer-label'>Corporate Unique Identification No.:</span>{' '}
+                    <span className="footer-link">0329787</span>
+                  </li>
+                  {/* <li>
+                    <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>
+                  </li> */}
                 </ul>
               </div>
 
@@ -171,7 +177,7 @@ const Footer = () => {
                 <li className="footer-location-item">
                   <div className="footer-location-city">Tulamba (Head Office)</div>
                   <div className="footer-location-address">
-                    Makhdoom Pur Road, Tulamba, District Khanewal
+                  MTJ Foundation Secretariat, Makhdum Pur Road, Tulamba, District Khanewal, Pakistan
                   </div>
                   <div className="footer-location-contacts">
                     <a href="tel:061111786853" className="footer-link">061-111-786-853</a>
