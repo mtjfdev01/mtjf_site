@@ -127,6 +127,12 @@
 }
 
 @media (max-width: 768px) {
+  .sticky_bar_container {
+    height: var(--sticky-bar-height-mobile);
+    min-height: var(--sticky-bar-height-mobile);
+    box-sizing: border-box;
+  }
+
   .sticky_bar-content {
     flex-direction: row;
     justify-content: space-around;
@@ -134,6 +140,8 @@
     gap: 12px;
     text-align: left;
     flex-wrap: nowrap;
+    height: 100%;
+    min-height: var(--sticky-bar-height-mobile);
   }
 
   .sticky_bar-contact {
@@ -153,6 +161,7 @@
   .sticky_bar-social a,
   .sticky_bar-international-link {
     font-size: 0.9rem;
+    padding: 2px 6px;
   }
 
   /* Mobile: Show both icons, toggle between email text and phone text */
@@ -250,8 +259,9 @@
 
   /* Donate Globally button: reduce padding or hide text on very small screens */
   .sticky_bar-international-link {
-    padding: 2px 10px;
-    font-size: 0.8rem;
+    padding: 1px 8px;
+    font-size: 0.75rem;
+    line-height: 1.2;
   }
 }
 

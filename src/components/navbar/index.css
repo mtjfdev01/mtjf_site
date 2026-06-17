@@ -9,11 +9,11 @@
 
 .nav-container{
     width: 100%;
-    padding: 6px 16px;
+    padding: 8px 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    max-height: 50px;
-    min-height: 45px;
-    height: 45px;
+    max-height: 88px;
+    min-height: 66px;
+    height: 66px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,8 +56,8 @@
     }
   }
 .logo_section .logo {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 .logo_section .logo img {
     width: 100%;
@@ -305,7 +305,7 @@
 
 @media (max-width: 768px) {
   .nav-outer {
-    /* top: var(--nav-mobile-top); */
+    top: var(--nav-mobile-top);
     left: 0;
     transform: none;
     width: 100%;
@@ -319,7 +319,7 @@
     height: auto;
     min-height: auto;
     max-height: none;
-    padding: 6px 12px;
+    padding: 8px 12px;
   }
 
   .nav-row-2 {
@@ -331,8 +331,8 @@
   .nav-row-2__btn {
     flex: 1;
     border-radius: 0 !important;
-    padding: 10px 0 !important;
-    font-size: 13px !important;
+    padding: 12px 0 !important;
+    font-size: 14px !important;
     font-weight: 600;
     text-align: center;
   }

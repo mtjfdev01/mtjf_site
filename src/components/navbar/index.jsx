@@ -4,9 +4,10 @@ import { FcDonate } from 'react-icons/fc'
 import './index.css' 
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
+import MobileNavBrand from '../mobilenavbar/MobileNavBrand'
 import logo from '../../assets/img/logos/only_logo.png'
-import ZakatCountdownBanner from './ZakatCountdownBanner'
-import MobileZakatCountdownBanner from '../mobilenavbar/MobileZakatCountdownBanner'
+// import ZakatCountdownBanner from './ZakatCountdownBanner'
+// import MobileZakatCountdownBanner from '../mobilenavbar/MobileZakatCountdownBanner'
 
 // Navigation items mapping
 const navItems = [
@@ -113,6 +114,7 @@ const Navbar = () => {
                     <img src={logo} alt='logo' />
                   </Link>
                 </div>
+                <MobileNavBrand />
             </div>
             {/* menu section - desktop only */}
             <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
@@ -178,26 +180,26 @@ const Navbar = () => {
               <Hamburger/>
             </div>
         </div>
+        {/* Row 2 - mobile only buttons */}
+        <div className='nav-row-2 md:d-none'>
+          <button 
+            className='btn btn-zakat-nav nav-row-2__btn' 
+            onClick={() => navigate('/zakat-calculator')}
+            aria-label="Navigate to zakat calculator"
+          >
+            Give Your Zakat
+          </button>
+          <button 
+            className='btn btn--alert btn-donate-animated nav-row-2__btn'  
+            onClick={() => navigate('/donate')}
+            aria-label="Navigate to donation form"
+          >
+            Donate Now
+          </button>
+        </div>
       </div>
-      <MobileZakatCountdownBanner />
-      {/* Row 2 - mobile only buttons (below countdown) */}
-      <div className='nav-row-2 md:d-none'>
-        <button 
-          className='btn btn-zakat-nav nav-row-2__btn' 
-          onClick={() => navigate('/zakat-calculator')}
-          aria-label="Navigate to zakat calculator"
-        >
-          Give Your Zakat
-        </button>
-        <button 
-          className='btn btn--alert btn-donate-animated nav-row-2__btn'  
-          onClick={() => navigate('/donate')}
-          aria-label="Navigate to donation form"
-        >
-          Donate Now
-        </button>
-      </div>
-      <ZakatCountdownBanner />
+      {/* <MobileZakatCountdownBanner /> */}
+      {/* <ZakatCountdownBanner /> */}
     </div>
            <div>
             <Mobilenavbar/>

@@ -92,7 +92,7 @@
 
     /* Fixed desktop header: navbar + zakat countdown banner */
     --nav-desktop-top: 32px;
-    --nav-desktop-bar-height: 45px;
+    --nav-desktop-bar-height: 66px;
     --zakat-countdown-banner-height: 64px;
     --desktop-header-clearance: calc(
       var(--nav-desktop-top) +
@@ -100,16 +100,15 @@
       var(--zakat-countdown-banner-height)
     );
 
-    /* Fixed mobile header: navbar rows + zakat countdown banner */
-    /* --nav-mobile-top: 35px; */
-    --nav-mobile-top: 30px;
-    --nav-mobile-row1-height: 72px;
-    --nav-mobile-row2-height: 38px;
+    /* Fixed mobile header: sticky bar + navbar rows */
+    --sticky-bar-height-mobile: 32px;
+    --nav-mobile-top: var(--sticky-bar-height-mobile);
+    --nav-mobile-row1-height: 86px;
+    --nav-mobile-row2-height: 44px;
     --zakat-countdown-mobile-height: 76px;
     --mobile-header-height: calc(
       var(--nav-mobile-top) +
       var(--nav-mobile-row1-height) +
-      var(--zakat-countdown-mobile-height) +
       var(--nav-mobile-row2-height)
     );
     --mobile-header-clearance: var(--mobile-header-height);

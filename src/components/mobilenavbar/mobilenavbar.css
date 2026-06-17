@@ -7,6 +7,94 @@
   z-index: 10;
 }
 
+.mobile-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.mobile-nav-brand__accent {
+  width: 2px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    #eaaa00 0%,
+    #00a3e0 33%,
+    #e4002b 66%,
+    #009a44 100%
+  );
+}
+
+.mobile-nav-brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mobile-nav-brand__name {
+  display: block;
+  font-size: clamp(0.72rem, 2.7vw, 0.88rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--color-900);
+}
+
+.mobile-nav-brand__tagline {
+  display: block;
+  font-size: clamp(0.58rem, 2.1vw, 0.7rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .logo_section {
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    padding-right: 8px;
+  }
+
+  .logo_section .logo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-nav-brand {
+    gap: 7px;
+  }
+
+  .mobile-nav-brand__accent {
+    height: 30px;
+  }
+
+  .mobile-nav-brand__name {
+    font-size: 0.64rem;
+    line-height: 1.1;
+  }
+
+  .mobile-nav-brand__tagline {
+    font-size: 0.54rem;
+    letter-spacing: 0.12em;
+  }
+
+  .logo_section .logo {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 /* Mobile zakat countdown banner — below navbar action buttons */
 .zakat-countdown-banner.zakat-countdown-banner--mobile {
   display: flex;
@@ -79,11 +167,11 @@
 }
 
 .mbl li{
-    margin: 25px;
+    margin: 28px;
 }
 .mbl a {
   position: relative;
-   font-size: 18px;
+   font-size: 20px;
   transition: color 0.3s ease;
   padding-bottom: 3px;  
 }
@@ -119,7 +207,7 @@
   border: none;
   color: inherit;
   font: inherit;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   padding: 0;
   padding-bottom: 3px;
