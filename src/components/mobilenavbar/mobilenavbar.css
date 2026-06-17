@@ -55,6 +55,32 @@
   color: var(--color-primary);
 }
 
+@media (min-width: 769px) {
+  .logo_section {
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-brand {
+    gap: 11px;
+  }
+
+  .mobile-nav-brand__accent {
+    width: 3px;
+    height: 44px;
+  }
+
+  .mobile-nav-brand__name {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .mobile-nav-brand__tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+  }
+}
+
 @media (max-width: 768px) {
   .logo_section {
     gap: 10px;
