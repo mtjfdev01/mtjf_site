@@ -101,7 +101,7 @@
     );
 
     /* Fixed mobile header: sticky bar + navbar rows */
-    --sticky-bar-height-mobile: 32px;
+    --sticky-bar-height-mobile: 36px;
     --nav-mobile-top: var(--sticky-bar-height-mobile);
     --nav-mobile-row1-height: 86px;
     --nav-mobile-row2-height: 44px;

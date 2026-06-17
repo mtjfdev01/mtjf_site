@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
+import { FcGlobe } from 'react-icons/fc'
 import './index.css'
 import { FaLinkedinIn } from "react-icons/fa";
 // import UrgentAppealsBar from '../appeals/UrgentAppealsBar'
@@ -90,7 +91,8 @@ const StickyBar = () => {
             rel="noopener noreferrer"
             className="sticky_bar-international-link"
           >
-             Donate Globally
+            <FcGlobe className="sticky_bar-international-icon" aria-hidden="true" />
+            <span>Donate Globally</span>
           </a>
         </div> 
       </div>
