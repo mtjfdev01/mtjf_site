@@ -4,9 +4,13 @@ import change_hero_health from '../../assets/img/hero/change_hero_health.webp'
 import hero_health_mobile from '../../assets/img/hero/hero_health_mobile.webp'
 import barakah_hero_web from '../../assets/img/projects/projects-details/mtjf_sadqa/MTJF_Sadaqa_web.webp'
 import barakah_hero_mob from '../../assets/img/projects/projects-details/mtjf_sadqa/MTJF Sadaqa Mob.webp'
+import clean_water_hero_mob from '../../assets/img/projects/projects-details/cleanwater/mob_hero.webp'
+import clean_water_hero_web from '../../assets/img/projects/projects-details/cleanwater/hero-section.webp'
+
 import './hero.css'
 
 const HERO_IMAGES = [
+  { desktop: clean_water_hero_web, mobile: clean_water_hero_mob, link: '/projects/clean-water' }, 
   { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
   { desktop: barakah_hero_web, mobile: barakah_hero_mob, link: '/' },
 ]

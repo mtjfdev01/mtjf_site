@@ -220,6 +220,8 @@ import lq_do from '../assets/img/projects/projects-details/laylat_ul_qadr/What t
 import lq_dua from '../assets/img/projects/projects-details/laylat_ul_qadr/A dua prophet SAW taught.webp'
 import lq_charity from '../assets/img/projects/projects-details/laylat_ul_qadr/Give charity on LQ.jpg'
 import lq_charity_search from '../assets/img/projects/projects-details/laylat_ul_qadr/Let your charity search for LQ.webp'
+import cleanwater_hero_mob from '../assets/img/projects/projects-details/cleanwater/mob_hero.webp'
+import cleanwater_hero_web from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
 
 export const PROJECTS_DETAIL_DATA = {
   education: {
@@ -834,7 +836,8 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'clean-water': {
     id: 'clean-water',
-    headerImage: cleanwater,
+    headerImage: cleanwater_hero_web,
+    headerImageMob: cleanwater_hero_mob,
     title: 'Give the Gift of Water This Muharram',
     content: {
       subtitle: 'A Sadaqah Jariyah That Lives On',
@@ -860,7 +863,7 @@ export const PROJECTS_DETAIL_DATA = {
       { icon: FaWater, number: '2.5M', label: 'Liters Daily Capacity' },
       { icon: FaGlobeAsia, number: '15', label: 'Districts Covered' }
     ],
-    mainImage: image2,
+    // mainImage: image2,
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
     donationOptions: {
