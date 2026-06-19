@@ -834,8 +834,22 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'clean-water': {
     id: 'clean-water',
-    title: 'Clean Water for Every Family, A Lifeline of sadqah Jariyah',
     headerImage: cleanwater,
+    title: 'Give the Gift of Water This Muharram',
+    content: {
+      subtitle: 'A Sadaqah Jariyah That Lives On',
+      quranAyat: {
+        text: 'And We made from water every living thing.',
+        reference: "Qur'an 21:30"
+      },
+      paragraph1: 'In the sacred month of Muharram, when good deeds carry multiplied reward, there is no charity more lasting than giving water. Clean water is not just a necessity; it is life, dignity, and mercy.',
+      paragraph2: 'By supporting water projects as Sadaqah Jariyah, you create a source of reward that continues to benefit people long after you give.',
+      hadith: {
+        prefix: 'The Prophet ﷺ said:',
+        text: 'The best form of charity is giving water.',
+        reference: 'Ahmad'
+      }
+    },
     stats: [
       { icon: FaTint, number: '850', label: 'Water Wells Installed' },
       { icon: FaFaucet, number: '1,200', label: 'Water Filtration Plants' },
@@ -846,11 +860,6 @@ export const PROJECTS_DETAIL_DATA = {
       { icon: FaWater, number: '2.5M', label: 'Liters Daily Capacity' },
       { icon: FaGlobeAsia, number: '15', label: 'Districts Covered' }
     ],
-    content: {
-      paragraph1: 'Millions of people across Pakistan face daily struggles due to lack of clean drinking water. Unsafe water leads to waterborne diseases, child mortality, and enormous hardship, especially for women and children who often walk miles carrying heavy pots just to fetch water. MTJ Foundation is turning this struggle into hope.',
-      paragraph2: 'With over 60 handpumps installed and 3 major water filtration plants operational, we provide safe, sustainable water solutions that save lives, restore dignity, and create lasting change. Supporting these projects is not only a humanitarian act: it is sadqah Jariyah, an ongoing source of blessings that continues to benefit people for years to come.',
-      paragraph3: ''
-    },
     mainImage: image2,
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
@@ -862,43 +871,103 @@ export const PROJECTS_DETAIL_DATA = {
     subProjects: [
       {
         id: 'individual-handpumps',
-        title: 'Individual Handpumps',
+        title: 'Why Water Is the Greatest Sadaqah Jariyah',
         image: individualhandpump,
-        description: 'A handpump is not just a source of water: it is a lifeline for a family. Installed within homes or nearby, our individual handpumps provide immediate access to clean drinking water, dramatically improving health and quality of life. Mothers no longer walk for hours each day, children can drink safely, and families are protected from deadly waterborne diseases. For donors, every handpump becomes a continuous act of charity (sadqah Jariyah), benefiting generations.',
+        description: 'Millions of families across Pakistan still struggle to access clean drinking water. Women walk miles every day. Children fall sick from contaminated sources. Entire communities are forced to rely on unsafe water.',
+        description2: 'When you provide water:',
         benefits: [
-          'Protects families from waterborne diseases such as cholera and hepatitis',
-          'Reduces the daily burden on women and children',
-          'Provides dignity, ease, and health to families',
-          'Serves as sadqah Jariyah, earning ongoing blessings'
+          'You protect children from deadly waterborne diseases',
+          'You ease the daily hardship of mothers and caregivers',
+          'You restore dignity to families and communities',
+          'You earn an ongoing reward for every drop used'
         ],
+        afterServicesText: 'Every sip becomes a dua. Every drop becomes a continuous reward. Allah reminds us:',
+        quranAyat: {
+          text: 'Whatever good you spend, Allah knows it well.',
+          reference: "Qur'an 2:273"
+        },
         donateButtonText: 'Sponsor an Individual Handpump'
       },
       {
-        id: 'community-handpumps',
-        title: 'Community Handpumps',
-        image: communityhandpump,
-        description: 'In villages and neighborhoods where water scarcity affects multiple households, MTJ Foundation installs community handpumps. These shared water points ensure equitable access for all, strengthen social bonds, and promote hygiene and public health. Supporting a community handpump is a long-term, impactful charity, serving numerous families for years and generating continuous spiritual reward for donors.',
+        id: 'water-filtration-plants',
+        title: 'Our Water Projects',
+        subtitle: 'Water Filtration Plants',
+        image: waterfiltrationplant,
+        description: 'Water filtration plants provide safe, clean drinking water to hundreds of people every day. Installed in areas facing contamination and scarcity, these plants become a permanent lifeline.',
+        description2: 'Impact of One Filtration Plant:',
         benefits: [
-          'Serves multiple households efficiently',
-          'Improves public health and reduces waterborne diseases',
-          'Strengthens community ties and resilience',
-          'Acts as sadqah Jariyah, benefiting generations'
+          'Serves hundreds of people daily',
+          'Reduces disease and medical expenses',
+          'Provides long-term, sustainable access to clean water',
+          'Becomes a continuous Sadaqah Jariyah for the donor'
         ],
-        donateButtonText: 'Sponsor a Community Handpump'
+        afterServicesText: 'This is an ideal option for donors seeking a large, lasting impact in their own name or in the name of a loved one.',
+        donateButtonText: 'Sponsor a Water Filtration Plant'
       },
       {
-        id: 'water-filtration-plants',
-        title: 'Water Filtration Plants',
-        image: waterfiltrationplant,
-        description: 'Large-scale filtration plants provide safe, chemical-free drinking water to rural and peri-urban communities daily. These plants fight life-threatening illnesses such as cholera and hepatitis and reach hundreds or thousands of families at once. Donating to a water filtration plant is one of the most significant acts of sadqah Jariyah, as it creates a lasting, life-saving impact for entire communities.',
+        id: 'water-hand-pumps',
+        title: 'Water Hand Pumps',
+        image: individualhandpump,
+        description: 'For many families, a hand pump means the end of daily struggle. Installed near homes, schools, or mosques, hand pumps offer immediate relief and lasting dignity.',
+        description2: 'Impact of One Hand Pump:',
         benefits: [
-          'Ensures consistent, safe drinking water for large populations',
-          'Reduces disease prevalence and improves long-term health',
-          'Supports sustainable community development',
-          'Leaves a lasting charitable legacy for donors'
+          'Provides nearby access to clean water',
+          'Saves hours of daily walking',
+          'Protects children from unsafe sources',
+          'Continues to benefit generations'
         ],
-        donateButtonText: 'Sponsor a Water Filtration Plant'
-      }
+        afterServicesText: 'A simple hand pump quietly transforms daily life, consistently and forever. The Prophet ﷺ said:',
+        quranAyat: {
+          text: 'When a person dies, all deeds end except three: ongoing charity (Sadaqah Jariyah), beneficial knowledge, or a righteous child who prays for them.',
+          reference: 'Muslim'
+        },
+        donateButtonText: 'Sponsor a Hand Pump'
+      },
+      {
+        id: 'why-give-in-muharram',
+        title: 'Why Give in Muharram?',
+        image: communityhandpump,
+        description: 'Muharram reminds us of sacrifice, patience, and standing for truth. Giving water during this sacred month transforms remembrance into action.',
+        description2: 'When you donate water in Muharram:',
+        benefits: [
+          'Your charity becomes Sadaqah Jariyah',
+          'Your reward continues every time water is used',
+          'Your intention lives on through service to humanity'
+        ],
+        afterServicesText: 'Water given today will benefit lives tomorrow and reward you endlessly.',
+        donateButtonText: 'Give Water This Muharram'
+      },
+      {
+        id: 'transparent-trusted-responsible',
+        title: 'Transparent. Trusted. Responsible.',
+        image: waterfiltrationplant,
+        description2: 'Your donation is handled with complete Amanah:',
+        benefits: [
+          'Projects are implemented in underserved communities',
+          'Donors receive proper documentation and updates',
+          'Water facilities are installed responsibly and sustainably'
+        ],
+        afterServicesText: 'This is not just charity. It is a trust. Allah commands:',
+        quranAyat: {
+          text: 'Indeed, Allah commands you to render trusts (Amanah) to whom they are due.',
+          reference: "Qur'an 4:58"
+        },
+        donateButtonText: 'Sponsor a Handpump or Filtration Plant'
+      },
+      {
+        id: 'give-water-ongoing-reward',
+        title: 'Give Water. Create Ongoing Reward.',
+        image: communityhandpump,
+        description: 'This Muharram, choose a charity that never stops giving.',
+        benefits: [
+          'Sponsor a Water Filtration Plant for a community – PKR 1.5 Million',
+          'Sponsor a Larger Water Filtration Plant for a community – PKR 2.5 Million',
+          'Install a Hand Pump for a deserving family – PKR 70,000-90,000',
+          'Install a Community Hand Pump for a deserving family – PKR 125,000'
+        ],
+        afterServicesText: 'Donate in your name or on behalf of a loved one',
+        donateButtonText: 'Donate Now'
+      },
       // {
       //   id: 'impact-highlights',
       //   title: 'Impact Highlights',

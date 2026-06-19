@@ -111,9 +111,24 @@ const ProjectDetail = ({ forcedProjectId }) => {
                 {/* Left Content */}
                 <div className="project-content-left col-12 lg-8">
                   <h2>{project?.title}</h2>
+                  {project.content.subtitle && (
+                    <p className="project-content-subtitle">{project.content.subtitle}</p>
+                  )}
+
+                  {project.content.quranAyat && (
+                    <div className="project-content-quran-ayat">
+                      <p className="project-content-quran-ayat__text">{project.content.quranAyat.text}</p>
+                      <span className="project-content-quran-ayat__reference">{project.content.quranAyat.reference}</span>
+                    </div>
+                  )}
+
                   <div className="project-content-text">
-                    <p className="text-base mb-24">{project.content.paragraph1}</p>
-                    <p className="text-base mb-24">{project.content.paragraph2}</p>
+                    {project.content.paragraph1 && (
+                      <p className="text-base mb-24">{project.content.paragraph1}</p>
+                    )}
+                    {project.content.paragraph2 && (
+                      <p className="text-base mb-24">{project.content.paragraph2}</p>
+                    )}
                   </div>
 
                   {/* Main Image */}
@@ -128,6 +143,18 @@ const ProjectDetail = ({ forcedProjectId }) => {
                   {project.content.paragraph3 && (
                     <div className="project-content-text">
                       <p className="text-base">{project.content.paragraph3}</p>
+                    </div>
+                  )}
+
+                  {project.content.hadith && (
+                    <div className="project-content-hadith">
+                      {project.content.hadith.prefix && (
+                        <p className="project-content-hadith__prefix">{project.content.hadith.prefix}</p>
+                      )}
+                      <div className="project-content-quran-ayat project-content-quran-ayat--hadith">
+                        <p className="project-content-quran-ayat__text">{project.content.hadith.text}</p>
+                        <span className="project-content-quran-ayat__reference">{project.content.hadith.reference}</span>
+                      </div>
                     </div>
                   )}
 
