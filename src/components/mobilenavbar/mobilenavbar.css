@@ -38,9 +38,9 @@
 
 .mobile-nav-brand__name {
   display: block;
-  font-size: clamp(0.72rem, 2.7vw, 0.88rem);
+  font-size: clamp(0.82rem, 3vw, 1.02rem);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.38;
   letter-spacing: 0.01em;
   color: var(--color-900);
 }
@@ -71,7 +71,8 @@
   }
 
   .mobile-nav-brand__name {
-    font-size: 0.95rem;
+    font-size: 1.06rem;
+    line-height: 1.38;
     white-space: nowrap;
   }
 
@@ -94,6 +95,11 @@
     height: 56px;
     flex-shrink: 0;
   }
+
+  .mobile-nav-brand__name {
+    font-size: clamp(0.95rem, 4.2vw, 1.14rem);
+    line-height: 1.42;
+  }
 }
 
 @media (max-width: 380px) {
@@ -106,8 +112,8 @@
   }
 
   .mobile-nav-brand__name {
-    font-size: 0.64rem;
-    line-height: 1.1;
+    font-size: 0.88rem;
+    line-height: 1.4;
   }
 
   .mobile-nav-brand__tagline {
