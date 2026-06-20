@@ -10,7 +10,7 @@ import clean_water_hero_web from '../../assets/img/projects/projects-details/cle
 import './hero.css'
 
 const HERO_IMAGES = [
-  { desktop: clean_water_hero_web, mobile: clean_water_hero_mob, link: '/projects/clean-water' }, 
+  { desktop: clean_water_hero_web, mobile: clean_water_hero_mob, link: '/donate/clean-water' }, 
   { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
   { desktop: barakah_hero_web, mobile: barakah_hero_mob, link: '/' },
 ]
