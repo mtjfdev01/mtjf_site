@@ -135,7 +135,7 @@ const Navbar = () => {
                     <img src={logo} alt='logo' />
                   </Link>
                 </div>
-                <MobileNavBrand />
+                <MobileNavBrand onNavigationStart={startNavigation} />
             </div>
             {/* menu section - desktop only */}
             <div className='d-none md:d-block' style={{fontSize:'1vw'}}>
@@ -223,7 +223,7 @@ const Navbar = () => {
       {/* <ZakatCountdownBanner /> */}
     </div>
            <div>
-            <Mobilenavbar/>
+            <Mobilenavbar onNavigationStart={startNavigation} />
            </div>
            </>
          

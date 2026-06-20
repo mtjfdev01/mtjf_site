@@ -100,8 +100,8 @@ export const projectCards = [
           description: 'Projects involving hand pumps cater to varying depths of water levels to ensure access to clean water across different regions',
           duration: 'One time'
         },
-        { id: 'clean-water-afridev', title: 'Afridev Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater,
-          description: 'The Afridev Community Hand Pump is highly recommended for areas with low water levels, as it is specifically designed to efficiently extract water from shallow depths.',
+        { id: 'clean-water-afridev', title: 'Community Hand Pump', subtitle: 'Per Unit', price: 125000, icon: cleanWater,
+          description: 'The Community Hand Pump is highly recommended for areas with low water levels, as it is specifically designed to efficiently extract water from shallow depths.',
           duration: 'One time'
         },
         { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant(without construction)', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater,

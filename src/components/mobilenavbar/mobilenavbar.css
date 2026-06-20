@@ -16,9 +16,9 @@
 }
 
 .mobile-nav-brand__accent {
-  width: 2px;
-  /* height: 40px; */
-  height: 100%;
+  width: 2.5px;
+  height: 40px;
+  /* height: 100%; */
   flex-shrink: 0;
   background: linear-gradient(
     to bottom,

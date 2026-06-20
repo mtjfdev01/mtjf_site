@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Loader from '../Loader/Loader'
 import './mobilenavbar.css'
 
 const links = [
@@ -20,10 +19,9 @@ const links = [
 ];
 
 
-const Mobilenavbar = () => {
+const Mobilenavbar = ({ onNavigationStart }) => {
      const [visible, setVisible] = useState(false);
      const [activeLink, setActiveLink] = useState("Home");
-     const [navigating, setNavigating] = useState(false);
      const [expandedSubmenu, setExpandedSubmenu] = useState(null);
      const location = useLocation();
 
@@ -46,17 +44,9 @@ const Mobilenavbar = () => {
        setActiveLink(matchedItem ? matchedItem.name : "Home");
      }, [location.pathname]);
 
-     useEffect(() => {
-       setNavigating(false);
-     }, [location.pathname]);
-
      const handleLinkClick = (linkName, path) => {
        setActiveLink(linkName);
-       const targetPath = (path || '').trim();
-       const currentPath = location.pathname.trim();
-       if (targetPath && targetPath !== currentPath) {
-         setNavigating(true);
-       }
+       onNavigationStart?.(path);
        const burger = document.querySelector(".hamburger.open");
        if (burger) burger.click();
      };
@@ -80,8 +70,6 @@ const Mobilenavbar = () => {
   if (!visible) return null;
 
   return (
-    <>
-    <Loader loading={navigating} />
     <div className='mbl lg:d-none md:d-block sm:d-block'>
        <ul className='text-white'>
         {links.map((item) => (
@@ -125,7 +113,6 @@ const Mobilenavbar = () => {
         ))}
       </ul>
     </div>
-    </>
   )
 }
 
