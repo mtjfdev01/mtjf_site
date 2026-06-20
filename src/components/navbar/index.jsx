@@ -5,6 +5,7 @@ import './index.css'
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
 import MobileNavBrand from '../mobilenavbar/MobileNavBrand'
+import Loader from '../Loader/Loader'
 import logo from '../../assets/img/logos/only_logo.png'
 // import ZakatCountdownBanner from './ZakatCountdownBanner'
 // import MobileZakatCountdownBanner from '../mobilenavbar/MobileZakatCountdownBanner'
@@ -27,6 +28,7 @@ const navItems = [
 
 const Navbar = () => {
    const [activeLink, setActiveLink] = useState("Home");
+   const [navigating, setNavigating] = useState(false);
    const location = useLocation();
    const navigate = useNavigate();
    // const observerRef = useRef(null);
@@ -63,10 +65,23 @@ const Navbar = () => {
      }
    }, [location.pathname]);
 
+   useEffect(() => {
+     setNavigating(false);
+   }, [location.pathname]);
+
+   const startNavigation = (path) => {
+     const targetPath = (path || '').trim();
+     const currentPath = location.pathname.trim();
+     if (targetPath && targetPath !== currentPath) {
+       setNavigating(true);
+     }
+   };
+
   const handleClick = (linkName, path) => {
     // Scroll to top on current page first
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setActiveLink(linkName);
+    startNavigation(path);
     
     // Wait for scroll to complete, then navigate
     requestAnimationFrame(() => {
@@ -74,6 +89,11 @@ const Navbar = () => {
         navigate(path);
       });
     });
+  };
+
+  const handleNavigate = (path) => {
+    startNavigation(path);
+    navigate(path);
   };
 
   const scrollToDonationForm = () => {
@@ -104,13 +124,14 @@ const Navbar = () => {
   };
   return (
     <>
+    <Loader loading={navigating} />
     <div className="nav-outer">
     <div className={`nav-container rounded ${isLightTheme ? 'nav-light-theme' : 'nav-dark-theme'}`}>
         <div className='nav-row-1'>
             {/* logo section */}
             <div className='flex items-center logo_section'>
                 <div className='logo'>
-                  <Link to="/home">
+                  <Link to="/home" onClick={() => startNavigation('/home')}>
                     <img src={logo} alt='logo' />
                   </Link>
                 </div>
@@ -158,7 +179,7 @@ const Navbar = () => {
             <div className='nav-btn-group d-none md:d-flex'>
               <button 
                 className='btn btn-zakat-nav' 
-                onClick={() => navigate('/zakat-calculator')}
+                onClick={() => handleNavigate('/zakat-calculator')}
                 aria-label="Navigate to zakat calculator"
               >
                 <span className="btn-donate-content">
@@ -167,7 +188,7 @@ const Navbar = () => {
               </button>
               <button 
                 className='btn btn--alert btn-donate-animated' 
-                onClick={() => navigate('/donate')}
+                onClick={() => handleNavigate('/donate')}
                 aria-label="Navigate to donation form"
               >
                 <span className="btn-donate-content">
@@ -184,14 +205,14 @@ const Navbar = () => {
         <div className='nav-row-2 md:d-none'>
           <button 
             className='btn btn-zakat-nav nav-row-2__btn' 
-            onClick={() => navigate('/zakat-calculator')}
+            onClick={() => handleNavigate('/zakat-calculator')}
             aria-label="Navigate to zakat calculator"
           >
             Give Your Zakat
           </button>
           <button 
             className='btn btn--alert btn-donate-animated nav-row-2__btn'  
-            onClick={() => navigate('/donate')}
+            onClick={() => handleNavigate('/donate')}
             aria-label="Navigate to donation form"
           >
             Donate Now

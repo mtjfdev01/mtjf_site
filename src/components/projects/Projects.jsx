@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
+import Loader from '../Loader/Loader'
 import './Projects.css'
 
 import community from '../../assets/img/projects/project-image/cleanwater.webp'
@@ -172,8 +173,10 @@ const PROJECTS_DATA = [
 
 const Projects = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const scrollContainerRef = useRef(null)
   const { shortDonate } = useCart()
+  const [navigating, setNavigating] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
@@ -293,6 +296,17 @@ const Projects = () => {
     }
   }, [])
 
+  useEffect(() => {
+    setNavigating(false)
+  }, [location.pathname])
+
+  const startProjectDetailNavigation = (projectId) => {
+    const targetPath = `/projects/${projectId}`
+    if (location.pathname.trim() !== targetPath) {
+      setNavigating(true)
+    }
+  }
+
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -304,6 +318,7 @@ const Projects = () => {
 
   return (
     <section className="projects-section container py-48">
+      <Loader loading={navigating} />
       <div className="projects-header flex justify-center items-center mb-32">
         <div className="text-center">
           <h2 className="heading-secondary">Our Projects</h2>
@@ -343,6 +358,7 @@ const Projects = () => {
               key={project.id}
               to={`/projects/${project.id}`}
               className="project-card card"
+              onClick={() => startProjectDetailNavigation(project.id)}
             >
               <div className="project-image-container relative">
                 <LazyImage
