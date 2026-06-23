@@ -733,7 +733,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
       totalAmount = totalAmountFromState
     }
     if (totalAmount === 0 && testCheckout) {
-      totalAmount = 222
+      totalAmount = 111
     }
     totalAmount = Math.round(Number(totalAmount))
 
