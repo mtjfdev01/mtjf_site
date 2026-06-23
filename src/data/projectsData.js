@@ -850,7 +850,7 @@ export const PROJECTS_DETAIL_DATA = {
       hadith: {
         prefix: 'The Prophet ﷺ said:',
         text: 'The best form of charity is giving water.',
-        reference: 'Ahmad'
+        reference: 'Sunan al-Nasāī 3664'
       }
     },
     stats: [
