@@ -1,65 +1,70 @@
-import React, { useState, useEffect } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PageHeader from '../pageHeader/PageHeader'
 import image from '../../assets/img/thanks/thanks.webp'
 import Footer from '../footer/Footer' 
 import axiosInstance from '../../utils/axios'
 
+const GOOGLE_ADS_CONVERSION = 'AW-18247055351/YTizCIGswcMcEPfv7_xD'
+
+const parseDonationAmount = (searchParams) => {
+  const raw =
+    searchParams.get('doantion_amount') ||
+    searchParams.get('donation_amount')
+  if (!raw) return null
+  const parsed = parseFloat(String(raw).replace(/,/g, ''))
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null
+}
+
+const isSuccessfulStatus = (status) =>
+  status === 'completed' || status === 'success'
+
 const Thanks = () => {
   const [searchParams] = useSearchParams()
-  const navigate = useNavigate()
   const donationId = searchParams.get('donationId')
   const urlStatus = searchParams.get('status') // success, failed, pending
+  const donationAmount = parseDonationAmount(searchParams)
   const [donationStatus, setDonationStatus] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-
-  // Misconfigured APG HS_ReturnURL: forward AuthToken to API (step 2 SSO is server-side HTML)
-  useEffect(() => {
-    const authToken =
-      searchParams.get('AuthToken') ||
-      searchParams.get('authToken') ||
-      searchParams.get('auth_token')
-    if (!authToken) return
-
-    const orderRef =
-      searchParams.get('donationId') ||
-      searchParams.get('donation_id') ||
-      searchParams.get('O') ||
-      searchParams.get('o')
-
-    const apiBase = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '')
-    if (orderRef && apiBase) {
-      const q = new URLSearchParams({
-        donationId: String(orderRef),
-        auth_token: authToken,
-      })
-      window.location.replace(
-        `${apiBase}/donations/public/alfalah/return?${q.toString()}`,
-      )
-      return
-    }
-
-    setLoading(false)
-    setError(
-      'Bank Alfalah returned a payment token but no donation reference. Please start checkout again.',
-    )
-  }, [searchParams])
+  const conversionFiredRef = useRef(false)
 
   useEffect(() => {
-    const authToken =
-      searchParams.get('AuthToken') ||
-      searchParams.get('authToken') ||
-      searchParams.get('auth_token')
-    if (authToken) return
-
     if (donationId) {
       verifyDonationStatus()
+    } else if (donationAmount) {
+      setDonationStatus('success')
+      setLoading(false)
     } else {
       setLoading(false)
       setError('Donation ID not found in URL')
     }
-  }, [donationId, searchParams])
+  }, [donationId, donationAmount])
+
+  useEffect(() => {
+    if (!donationAmount || conversionFiredRef.current) return
+
+    const status = donationStatus || urlStatus
+
+    if (donationId) {
+      if (loading || !isSuccessfulStatus(status)) return
+    }
+
+    if (typeof window.gtag !== 'function') return
+
+    conversionFiredRef.current = true
+    window.gtag('event', 'conversion', {
+      send_to: GOOGLE_ADS_CONVERSION,
+      value: donationAmount,
+      currency: 'PKR',
+    })
+  }, [
+    donationAmount,
+    donationId,
+    donationStatus,
+    urlStatus,
+    loading,
+  ])
 
   const verifyDonationStatus = async () => {
     try {
@@ -130,7 +135,7 @@ const Thanks = () => {
         // title="Thanks"
         image={image}
       />
-      {donationId && (
+      {(donationId || donationAmount) && (
       <div style={{
         minHeight: '60vh',
         display: 'flex',

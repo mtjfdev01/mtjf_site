@@ -587,7 +587,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
         SIGNATURE,
         VERSION: SIGNATURE,
         TXNDESC: (process.env.REACT_APP_TXNDESC || 'Donation'),
-        SUCCESS_URL: 'https://www.mtjfoundation.org/thanks', 
+        SUCCESS_URL: 'https://www.mtjfoundation.org/thanks?doantion_amount=' + TXNAMT, 
         FAILURE_URL: (process.env.REACT_APP_FAILURE_URL || 'https://www.mtjfoundation.org/donate'), //return back to home page if payment fails
         CHECKOUT_URL: (`https://mtjf-erp-backend.up.railway.app/donations/public/payfast/ipn`), // backend api url to handle payfast response to update donation status
         BASKET_ID,        // must match token call
