@@ -72,9 +72,14 @@ import impactglance from '../assets/img/projects/projects-details/education/educ
 
 import CleanWater from '../assets/img/projects/water.webp'
 import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
+import waterGreateStsadaqah from '../assets/img/projects/projects-details/cleanwater/water_greatest_sadaqah.webp'
 import communityhandpump from '../assets/img/projects/projects-details/cleanwater/community.webp'
+import ongoingReward from '../assets/img/projects/projects-details/cleanwater/ongoing_reward.webp'
 import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
-
+import responsible from '../assets/img/projects/projects-details/cleanwater/responsible.webp'
+import ourwaterprojects from '../assets/img/projects/projects-details/cleanwater/our-water-projects.webp'
+import waterHandPumps from '../assets/img/projects/projects-details/cleanwater/water_hand_pumps.webp'
+import muharram from '../assets/img/projects/projects-details/cleanwater/why_give_in_muharram.webp'
 import ApnaGhar from '../assets/img/projects/project-image/apnaghar.webp'
 import apna_ghar from '../assets/img/projects/projects-details/Apna Ghar/hero.webp'
 import apna_ghar_media from '../assets/img/projects/projects-details/Apna Ghar/media.webp'
@@ -875,7 +880,7 @@ export const PROJECTS_DETAIL_DATA = {
       {
         id: 'individual-handpumps',
         title: 'Why Water Is the Greatest Sadaqah Jariyah',
-        image: individualhandpump,
+        image: waterGreateStsadaqah,
         description: 'Millions of families across Pakistan still struggle to access clean drinking water. Women walk miles every day. Children fall sick from contaminated sources. Entire communities are forced to rely on unsafe water.',
         description2: 'When you provide water:',
         benefits: [
@@ -895,7 +900,7 @@ export const PROJECTS_DETAIL_DATA = {
         id: 'water-filtration-plants',
         title: 'Our Water Projects',
         subtitle: 'Water Filtration Plants',
-        image: waterfiltrationplant,
+        image: ourwaterprojects,
         description: 'Water filtration plants provide safe, clean drinking water to hundreds of people every day. Installed in areas facing contamination and scarcity, these plants become a permanent lifeline.',
         description2: 'Impact of One Filtration Plant:',
         benefits: [
@@ -910,7 +915,7 @@ export const PROJECTS_DETAIL_DATA = {
       {
         id: 'water-hand-pumps',
         title: 'Water Hand Pumps',
-        image: individualhandpump,
+        image: waterHandPumps,
         description: 'For many families, a hand pump means the end of daily struggle. Installed near homes, schools, or mosques, hand pumps offer immediate relief and lasting dignity.',
         description2: 'Impact of One Hand Pump:',
         benefits: [
@@ -929,7 +934,7 @@ export const PROJECTS_DETAIL_DATA = {
       {
         id: 'why-give-in-muharram',
         title: 'Why Give in Muharram?',
-        image: communityhandpump,
+        image: muharram,
         description: 'Muharram reminds us of sacrifice, patience, and standing for truth. Giving water during this sacred month transforms remembrance into action.',
         description2: 'When you donate water in Muharram:',
         benefits: [
@@ -943,7 +948,7 @@ export const PROJECTS_DETAIL_DATA = {
       {
         id: 'transparent-trusted-responsible',
         title: 'Transparent. Trusted. Responsible.',
-        image: waterfiltrationplant,
+        image: responsible,
         description2: 'Your donation is handled with complete Amanah:',
         benefits: [
           'Projects are implemented in underserved communities',
@@ -960,7 +965,7 @@ export const PROJECTS_DETAIL_DATA = {
       {
         id: 'give-water-ongoing-reward',
         title: 'Give Water. Create Ongoing Reward.',
-        image: communityhandpump,
+        image: ongoingReward,
         description: 'This Muharram, choose a charity that never stops giving.',
         benefits: [
           'Sponsor a Water Filtration Plant for a community – PKR 1.5 Million',
@@ -4140,7 +4145,8 @@ This is not just distribution. It is presence. It is being remembered at a time 
         description: `Because of your trust and generosity, Qurbani 2025 became a source of relief for thousands of families who otherwise would not have been able to celebrate Eid with dignity.
 Through your support, MTJ Foundation was able to distribute 4 to 5 kilograms of Qurbani meat to 3,225 families.
 Each of these families received not just food, but a moment of care. A reminder that they were remembered during one of the most important days in the Islamic calendar.
-This impact was only possible because of your contribution. In 2026, we aim to reach even more families who are waiting for the same support.
+This impact was only possible because of your contribution. In 2026, we aim to reach even more families who are waiting for the simport Projects from './../pages/Projects';
+ame support.
 `,
         impact: '4 to 5 kilograms of Qurbani meat to 3,225 families.',
         services: [],
