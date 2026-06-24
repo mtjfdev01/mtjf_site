@@ -96,7 +96,7 @@ export const projectCards = [
       new: true,
       category: "General",
       initiatives: [
-        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 80000, icon: cleanWater,
+        { id: 'clean-water-hand-pump', title: 'Hand Pump', subtitle: 'Per Unit', price: 90000, icon: cleanWater,
           description: 'Projects involving hand pumps cater to varying depths of water levels to ensure access to clean water across different regions',
           duration: 'One time'
         },
@@ -104,11 +104,11 @@ export const projectCards = [
           description: 'The Community Hand Pump is highly recommended for areas with low water levels, as it is specifically designed to efficiently extract water from shallow depths.',
           duration: 'One time'
         },
-        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant(without construction)', subtitle: 'Per Unit : Filtration Plant (without construction 1.5 Million)', price: 1500000, icon: cleanWater,
+        { id: 'clean-water-filtration-plant-1', title: 'Filtration Plant(without construction)', subtitle: 'Per Unit : Filtration Plant (without construction 2.2 Million)', price: 2200000, icon: cleanWater,
           description: 'This initiative will be carried out with active community participation and contributions. It encompasses all expenses related to the RO filtration plant, excluding civil construction work.',
           duration: 'One time'
         },
-        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Filtration Plant Per Unit (2.5 Million)', price: 2500000, icon: cleanWater,
+        { id: 'clean-water-filtration-plant-2', title: 'Filtration Plant', subtitle: 'Filtration Plant Per Unit (3.2 Million)', price: 3200000, icon: cleanWater,
           description: 'This initiative will be implemented without community participation or contributions. It covers all expenses related to the Solarized RO filtration plant (fully automated), including solar system, equipment, machinery, and civil construction work.',
           duration: 'One time'
         },

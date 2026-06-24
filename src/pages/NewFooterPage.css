@@ -1,0 +1,11 @@
+.new-footer-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.new-footer-page__spacer {
+  flex: 1;
+  min-height: 120px;
+}

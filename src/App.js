@@ -53,6 +53,7 @@ const ImpactsPage = lazy(() => import("./pages/Impacts"));
 const VideosPage = lazy(() => import("./pages/Videos"));
 const AppealsListing = lazy(() => import("./pages/AppealsListing"));
 const AppealDetail = lazy(() => import("./pages/AppealDetail"));
+const NewFooterPage = lazy(() => import("./pages/NewFooterPage"));
 
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
 
@@ -159,6 +160,7 @@ function App() {
               <Route path="/donor-login" element={<DonorLogin />} />
               <Route path="/donor/donations" element={<DonorDonations />} />
               <Route path="/donor/donations/:id" element={<DonorDonationView />} />
+              <Route path="/new_footer" element={<NewFooterPage />} />
               
             </Routes>
           </Suspense>

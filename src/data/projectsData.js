@@ -872,7 +872,7 @@ export const PROJECTS_DETAIL_DATA = {
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
     donationOptions: {
-      PKR: [80000, 125000, 1500000, 2500000, 250000, 500000],
+      PKR: [90000, 125000, 2200000, 3200000, 250000, 500000],
       USD: [40, 80, 160, 320],
       EUR: [35, 70, 140, 280]
     },
@@ -4585,6 +4585,14 @@ This Ramadan, Let Your Zakat Speak for You`,
   },
 }
 
+export const projectsInfo = Object.values(PROJECTS_DETAIL_DATA).map((project) => ({
+  id: project.id,
+  title: project.title,
+  subProjects: (project.subProjects ?? []).map((subProject) => ({
+    id: subProject.id,
+    title: subProject.title,
+  })),
+}))
 
 export const ALL_PROJECTS_DATA = [
 //   {

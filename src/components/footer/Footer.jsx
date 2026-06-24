@@ -167,6 +167,16 @@ const Footer = () => {
                   <li>
                     <Link to="/contact" className="footer-link">Contact Us</Link>
                   </li>
+                  <li>
+                    <a
+                      href="/pdfs/policies/Privacy Policy.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="footer-link"
+                    >
+                      Privacy Policy
+                    </a>
+                  </li>
                 </ul>
               </div>
 
