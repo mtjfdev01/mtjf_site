@@ -120,6 +120,9 @@ const Footer = () => {
                     <span className='footer-label'>Corporate Unique Identification No.:</span>{' '}
                     <span className="footer-link">0329787</span>
                   </li>
+                  <div>
+                   <small>NPOs and associations must comply with Companies Regulations, 2024 (S.R.O. 210(I)/2024) Regulations 100(1)(xvii) by including “A Company set up under section 42 of the Companies Act, 2017”</small>
+                  </div>
                   {/* <li>
                     <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>
                   </li> */}
