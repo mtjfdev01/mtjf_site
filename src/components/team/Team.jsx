@@ -42,7 +42,7 @@ const teamMembers = [
   },
   {
     id: 'Director of Programs',
-    name: 'Ikram Seher',
+    name: 'Muhammad Ikram',
     role: 'MEAL Manager',
     image: memberMeal,
     accent: 'amber',

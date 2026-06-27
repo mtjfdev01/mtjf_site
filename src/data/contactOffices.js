@@ -80,7 +80,7 @@ export const nationalOffices = [
     phone: '041-111-786-853',
     hotline: '0300-4463903',
     // email: 'info@mtjfoundation.org',
-    address: 'Jamia Al Hasnain, Green Town, Faisalabad',
+    address: 'Jamia Al-Hasanain, Green Town, Faisalabad',
     image: faislabad,
     region: 'Faisalabad',
   },

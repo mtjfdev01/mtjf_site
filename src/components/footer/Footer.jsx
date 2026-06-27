@@ -224,7 +224,7 @@ const Footer = () => {
                 <li className="footer-location-item">
                   <div className="footer-location-city">Faisalabad</div>
                   <div className="footer-location-address">
-                    Jamia Al Hasnain, Green Town, Faisalabad
+                    Jamia Al-Hasanain, Green Town, Faisalabad
                   </div>
                   <div className="footer-location-contacts">
                     <a href="tel:041111786853" className="footer-link">041-111-786-853</a>
