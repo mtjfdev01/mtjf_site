@@ -33,7 +33,7 @@ import zakatSlider12 from '../assets/img/ramazan_zakat_slider/carosel (12).webp'
 import ZakatMob from '../assets/img/zakat/ramzan_zakat_mob_popup.webp'
 import healthhero from '../assets/img/projects/projects-details/Health/health_hero.webp'
 import edufooter from '../assets/img/projects/projects-details/education/education_footer.webp'
-import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
+// import cleanwater from '../assets/img/projects/projects-details/cleanwater/hero-section.webp'
 import kasb from '../assets/img/projects/projects-details/kasb/hero-section.webp'
 import image2 from '../assets/img/projects/convocation.webp'
 import healthfooter from '../assets/img/projects/projects-details/Health/health_footer.webp'
@@ -48,7 +48,7 @@ import h_9 from '../assets/img/projects/projects-details/Health/support.webp'
 import h_10 from '../assets/img/projects/projects-details/Health/surgeries.webp'
 
 import fitrana_hero from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
-import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
+// import fitrana_hero_mob from '../assets/img/projects/projects-details/fitrana/fitrana.webp'
 import fitrana_matters from '../assets/img/projects/projects-details/fitrana/fitrana_sub_project.jpg'
 import fitrana_pricing from '../assets/img/projects/projects-details/fitrana/fitrana_pricing.webp'
 import fitrana_affect from '../assets/img/projects/projects-details/fitrana/fitrana_affect.webp'
@@ -56,7 +56,7 @@ import fitranaIntro from '../assets/img/projects/projects-details/fitrana/import
 import importance from '../assets/img/projects/projects-details/fitrana/matter.jpg'
 import fitrana_payers from '../assets/img/projects/projects-details/fitrana/fitrana_payers.JPG'
 import education from '../assets/img/projects/education_hero.webp'
-import ramzanRation from '../assets/img/projects/rastion packs.webp'
+// import ramzanRation from '../assets/img/projects/rastion packs.webp'
 
 import image3 from '../assets/img/projects/group of boys.webp'
 import Health from '../assets/img/projects/health.webp'
@@ -91,7 +91,16 @@ import apna_ghar_building from '../assets/img/projects/projects-details/Apna Gha
 import apna_ghar_eligibility from '../assets/img/projects/projects-details/Apna Ghar/eligibility criteria.webp'
 import apna_ghar_goal from '../assets/img/projects/projects-details/Apna Ghar/sdgs.webp'
 import apna_ghar_impact from '../assets/img/projects/projects-details/Apna Ghar/impact.webp'
-import apna_ghar_story from '../assets/img/projects/projects-details/Apna Ghar/story.webp'
+import a_g_carosell_1 from '../assets/img/projects/projects-details/Apna Ghar/carosel (1).webp'
+import a_g_carosell_2 from '../assets/img/projects/projects-details/Apna Ghar/carosel (2).webp'
+import a_g_carosell_3 from '../assets/img/projects/projects-details/Apna Ghar/carosel (3).webp'
+import a_g_carosell_4 from '../assets/img/projects/projects-details/Apna Ghar/carosel (4).webp'
+import a_g_carosell_5 from '../assets/img/projects/projects-details/Apna Ghar/carosel (5).webp'
+import a_g_carosell_6 from '../assets/img/projects/projects-details/Apna Ghar/carosel (6).webp'
+import a_g_carosell_7 from '../assets/img/projects/projects-details/Apna Ghar/carosel (7).webp'
+// import a_g_carosell_8 from '../assets/img/projects/projects-details/Apna Ghar/carosel (8).webp'
+
+// import apna_ghar_story from '../assets/img/projects/projects-details/Apna Ghar/story.webp'
 
 
 import DisasterRelief from '../assets/img/projects/disaster.webp'
@@ -1406,7 +1415,18 @@ export const PROJECTS_DETAIL_DATA = {
           'Build a sustainable, replicable, faith-driven model community'
         ],
         donateButtonText: 'Be Part of This Change',
-        image: apna_ghar_impact
+        image: apna_ghar_impact,
+        testimonials: {
+          id: 'apna-ghar-testimonials',
+          title: 'Why Apna Ghar Matters',
+          // subtitle: 'Watch Stories of Transformation',
+          description: '',
+          videos: [
+            'https://www.youtube.com/watch?v=jmbqgplXe58',
+            'https://www.youtube.com/watch?v=Cvuj7TdyIek',
+            'https://www.youtube.com/watch?v=LKRYtcslqOI'
+          ]
+        }
       },
       {
         id: 'aligned-with-global-goals',
@@ -1424,28 +1444,36 @@ export const PROJECTS_DETAIL_DATA = {
           'Quality Education'
         ],
         donateButtonText: 'Build a Home for a Widow & Her Children',
-        image: apna_ghar_goal
+        image: apna_ghar_goal,
+        carosellImages: [
+          a_g_carosell_1,
+          a_g_carosell_2,
+          a_g_carosell_3,
+          a_g_carosell_4,
+          a_g_carosell_5,
+          a_g_carosell_6,
+          a_g_carosell_7,
+          a_g_carosell_1,
+          a_g_carosell_2,
+          a_g_carosell_3,
+          a_g_carosell_4,
+          a_g_carosell_5,
+          a_g_carosell_6,
+          a_g_carosell_7,
+          // a_g_carosell_8,
+        ],
+        carosellItemWidth: 300,
+        carosellMobWidth: 170,
       },
-      {
-        id: 'stories-of-strength',
-        title: 'Stories of Strength',
-        subtitle: 'Because Every Widow Deserves Support — Every Orphan Deserves a Future',
-        description: 'Apna Ghar will share firsthand stories from mothers and children whose lives have been transformed through stable housing, education, safety, and emotional support. Real journeys. Real resilience. Real transformation.',
-        donateButtonText: 'Watch Their Stories',
-        image: apna_ghar_story
-      }
+      // {
+      //   id: 'stories-of-strength',
+      //   title: 'Stories of Strength',
+      //   subtitle: 'Because Every Widow Deserves Support — Every Orphan Deserves a Future',
+      //   description: 'Apna Ghar will share firsthand stories from mothers and children whose lives have been transformed through stable housing, education, safety, and emotional support. Real journeys. Real resilience. Real transformation.',
+      //   donateButtonText: 'Watch Their Stories',
+      //   image: apna_ghar_story
+      // }
     ],
-    testimonials: {
-      id: 'apna-ghar-testimonials',
-      title: 'Why Apna Ghar Matters',
-      // subtitle: 'Watch Stories of Transformation',
-      description: '',
-      videos: [
-        'https://www.youtube.com/watch?v=jmbqgplXe58',
-        'https://www.youtube.com/watch?v=Cvuj7TdyIek',
-        'https://www.youtube.com/watch?v=LKRYtcslqOI'
-      ]
-    },
     faqs: {
       id: 'frequently-asked-questions',
       title: 'Frequently Asked Questions',
@@ -4494,17 +4522,6 @@ This is relief that reaches hearts, homes, and futures.`,
           'It helps a mother feed her children without asking.',
           'It helps a family survive Ramadan without fear of hunger.',
           'It helps someone stand on their own feet instead of living in dependence.'
-        ],
-        carosellImages: [
-          impactNum1,
-          impactNum2,
-          impactNum3,
-          impactNum4,
-          impactNum5,
-          impactNum6,
-          impactNum7,
-          impactNum9,
-          impactNum8,
         ],
       },
       {
