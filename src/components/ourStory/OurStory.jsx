@@ -43,7 +43,7 @@ const OurStory = () => {
         {/* Text content */}
         <div className="our-story-content">
           <h2 className="heading-secondary text-right mb-16">Our Story</h2>
-          <p>At the heart of the Molana Tariq Jamil Foundation (MTJF) is a simple but powerful belief:<b>every human being deserves dignity, opportunity, and compassion, regardless of their background.</b></p>
+          <p>At the heart of the MTJ Foundation (MTJF) is a simple but powerful belief:<b>every human being deserves dignity, opportunity, and compassion, regardless of their background.</b></p>
             <p></p>
           
           

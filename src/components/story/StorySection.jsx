@@ -5,7 +5,7 @@ import image2 from '../../assets/img/404.webp'
 
 const StorySection = ({ 
   title = 'Have a Story to Share?',
-  description = 'Discover how the Molana Tariq Jamil Foundation is transforming lives across Pakistan and beyond. From impactful initiatives to personal success stories, our blog is your window into the heart of our mission. If you\'ve been touched by the MTJ Foundation or want to contribute your own story, we\'d love to hear from you.',
+  description = 'Discover how the MTJ Foundation is transforming lives across Pakistan and beyond. From impactful initiatives to personal success stories, our blog is your window into the heart of our mission. If you\'ve been touched by the MTJ Foundation or want to contribute your own story, we\'d love to hear from you.',
   onSubmit 
 }) => {
   return (

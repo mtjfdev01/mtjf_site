@@ -57,7 +57,7 @@ export const MEDIA_COVERAGE_DATA = [
 
 CEO MTJ Foundation, Ihtesham Ullah Qureshi
 
-Multan: Rescue and relief activities by the Molana Tariq Jamil Foundation (MTJ Foundation) are continuing across flood-hit areas of the country, with teams of volunteers providing essential aid to affected communities. According to details, daily relief efforts in the flood-affected regions include the distribution of cooked meals, dry rations, clean drinking water, temporary shelters, and fodder for livestock. The MTJ Foundation has also set up medical camps, where hundreds of patients are receiving free treatment and medicines every day.
+Multan: Rescue and relief activities by the MTJ Foundation (MTJ Foundation) are continuing across flood-hit areas of the country, with teams of volunteers providing essential aid to affected communities. According to details, daily relief efforts in the flood-affected regions include the distribution of cooked meals, dry rations, clean drinking water, temporary shelters, and fodder for livestock. The MTJ Foundation has also set up medical camps, where hundreds of patients are receiving free treatment and medicines every day.
 
 CEO MTJ Foundation, Ihtesham Ullah Qureshi, said that rescue and relief operations were launched immediately after the recent floods in Khyber Pakhtunkhwa. With several areas of Punjab now submerged, the scope of relief efforts has been further extended to include the province.
 

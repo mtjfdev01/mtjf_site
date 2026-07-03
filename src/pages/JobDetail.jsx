@@ -176,7 +176,7 @@ const JobDetail = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span className="job-detail-company-name">Molana Tariq Jamil Foundation</span>
+                <span className="job-detail-company-name">MTJ Foundation</span>
               </div>
               <div className="job-detail-info-item">
                 <svg className="job-detail-info-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -240,7 +240,7 @@ const JobDetail = () => {
             <div className="job-detail-logo">
               <LazyImage 
                 src={logoBlueText} 
-                alt="Molana Tariq Jamil Foundation Logo"
+                alt="MTJ Foundation Logo"
                 className="job-detail-logo-img"
               />
             </div>
@@ -339,9 +339,9 @@ const JobDetail = () => {
           }
           {/* Company Information */}
           <section className="job-detail-section">
-            <h2 className="job-detail-section-title">Molana Tariq Jamil Foundation</h2>
+            <h2 className="job-detail-section-title">MTJ Foundation</h2>
             <p className="job-detail-section-text">
-              Molana Tariq Jamil Foundation is a non-profit organization dedicated to serving communities and making a positive impact. We are committed to creating opportunities for growth and development while maintaining the highest standards of excellence in all our endeavors.
+              MTJ Foundation is a non-profit organization dedicated to serving communities and making a positive impact. We are committed to creating opportunities for growth and development while maintaining the highest standards of excellence in all our endeavors.
             </p>
           </section>
         </div>

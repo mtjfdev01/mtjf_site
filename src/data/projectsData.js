@@ -1065,7 +1065,7 @@ export const PROJECTS_DETAIL_DATA = {
       { icon: FaGlobeAsia, number: '25', label: 'Districts Reached' }
     ],
     content: {
-      paragraph1: 'Molana Tariq Jamil Foundation is doing a truly remarkable and heartwarming favor to distribute wedding gifts to poor girls. In many parts of the world, poverty can be a significant barrier to celebrating life\'s important milestones, including weddings.',
+      paragraph1: 'MTJ Foundation is doing a truly remarkable and heartwarming favor to distribute wedding gifts to poor girls. In many parts of the world, poverty can be a significant barrier to celebrating life\'s important milestones, including weddings.',
       paragraph2: 'We provide essential household items and gifts to help families celebrate these special occasions with dignity and joy.',
       paragraph3: 'This initiative brings happiness to families and ensures that financial constraints do not prevent them from celebrating one of life\'s most important moments.'
     },
@@ -1713,7 +1713,7 @@ team will provide you with individualised attention and assistance.`,
         id: 'Financial assistance',
         title: 'Financial assistance',
         subtitle: '',
-        description: `Molana Tariq Jamil Foundation extends a compassionate hand through its financial assistance program, recognizing the diverse and immediate needs of individuals facing challenging circumstances. Our approach involves providing direct cash assistance to those in need, empowering them with the autonomy to address their specific requirements. Whether it be covering essential expenses, medical bills, or unforeseen emergencies, the Foundation’s financial assistance program is designed to offer immediate relief and foster a sense of empowerment.`,
+        description: `MTJ Foundation extends a compassionate hand through its financial assistance program, recognizing the diverse and immediate needs of individuals facing challenging circumstances. Our approach involves providing direct cash assistance to those in need, empowering them with the autonomy to address their specific requirements. Whether it be covering essential expenses, medical bills, or unforeseen emergencies, the Foundation’s financial assistance program is designed to offer immediate relief and foster a sense of empowerment.`,
         donateButtonText: '',
         image: image1
       },
@@ -1732,7 +1732,7 @@ team will provide you with individualised attention and assistance.`,
         id: 'EID GIFT',
         title: 'EID GIFT',
         subtitle: '',
-        description: `Molana Tariq Jamil Foundation joyously engages in the spirit of celebration by distributing Eid gifts, fostering a sense of togetherness and spreading happiness within the community. The act of sharing these gifts goes beyond mere material offerings; it symbolizes the Foundation’s commitment to inclusivity and ensuring that everyone, regardless of their economic circumstances, feels the warmth of celebration.`,
+        description: `MTJ Foundation joyously engages in the spirit of celebration by distributing Eid gifts, fostering a sense of togetherness and spreading happiness within the community. The act of sharing these gifts goes beyond mere material offerings; it symbolizes the Foundation’s commitment to inclusivity and ensuring that everyone, regardless of their economic circumstances, feels the warmth of celebration.`,
         impact: '',
         services: [
         ],
@@ -1945,7 +1945,7 @@ This is relief that reaches hearts, homes, and futures.`,
         id: 'give-with-trust-this-ramadan',
         title: 'Give with Trust This Ramadan',
         subtitle: '',
-        description: `At Molana Tariq Jamil Foundation, Zakat is handled with care, responsibility, and strict adherence to Shariah principles.
+        description: `At MTJ Foundation, Zakat is handled with care, responsibility, and strict adherence to Shariah principles.
 
 Your Zakat reaches those who are eligible, deserving, and in genuine need, quietly, respectfully, and with dignity.
 
@@ -2119,7 +2119,7 @@ This Ramadan, Let Your Zakat Speak for You`,
           'Relief for widows, orphans, and the vulnerable',
           'A source of forgiveness for yourself'
         ],
-        afterServicesText: 'At Molana Tariq Jamil Foundation, donations given during these blessed nights are distributed responsibly, transparently, and strictly according to Shariah reaching those who need help the most.',
+        afterServicesText: 'At MTJ Foundation, donations given during these blessed nights are distributed responsibly, transparently, and strictly according to Shariah reaching those who need help the most.',
         image: lq_charity
       },
       {
@@ -2162,14 +2162,14 @@ This Ramadan, Let Your Zakat Speak for You`,
     //     },
     //     {
     //       question: 'Give Your Fitrana and Share the Blessings of Eid',
-    //       answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
+    //       answer: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
     //     }
     //   ],
     //   donateButtonText: 'Donate Your Fitrana Today'
     // },
     // ctaContent: {
     //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
-    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   title: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
     //   cta_btn_text: 'Donate Your Fitrana Today',
     //   route: '/donate'
     // },
@@ -2385,14 +2385,14 @@ endured the unimaginable.`,
     //     },
     //     {
     //       question: 'Give Your Fitrana and Share the Blessings of Eid',
-    //       answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
+    //       answer: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
     //     }
     //   ],
     //   donateButtonText: 'Donate Your Fitrana Today'
     // },
     // ctaContent: {
     //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
-    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   title: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
     //   cta_btn_text: 'Donate Your Fitrana Today',
     //   route: '/donate'
     // },
@@ -2414,7 +2414,7 @@ endured the unimaginable.`,
     ],
     content: {
       paragraph1: 'Fitrana, also known as Zakat al-Fitr, is a compulsory charity given at the end of Ramadan before the Eid-ul-Fitr prayer. It is an obligation on every eligible Muslim and is meant to purify our fasts while ensuring that those in need can also celebrate Eid with dignity.',
-      paragraph2: 'By giving Fitrana through Molana Tariq Jamil Foundation, you help provide food and essential support to families who may otherwise struggle during this blessed time.',
+      paragraph2: 'By giving Fitrana through MTJ Foundation, you help provide food and essential support to families who may otherwise struggle during this blessed time.',
     },
     subProjects: [
       {
@@ -2492,7 +2492,7 @@ endured the unimaginable.`,
         id: 'how-fitrana-helps',
         title: 'How Your Fitrana Helps Families in Need',
         subtitle: '',
-        description: 'When you give Fitrana through Molana Tariq Jamil Foundation, your contribution supports vulnerable households with meaningful relief during Ramadan and Eid.',
+        description: 'When you give Fitrana through MTJ Foundation, your contribution supports vulnerable households with meaningful relief during Ramadan and Eid.',
         services: [
           'Provide food to families struggling with poverty',
           'Support vulnerable communities across Pakistan',
@@ -2529,14 +2529,14 @@ endured the unimaginable.`,
         },
         {
           question: 'Give Your Fitrana and Share the Blessings of Eid',
-          answer: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
+          answer: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today'
         }
       ],
       donateButtonText: 'Donate Your Fitrana Today'
     },
     // ctaContent: {
     //   intro: 'Give Your Fitrana and Share the Blessings of Eid',
-    //   title: 'Through your support of Molana Tariq Jamil Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
+    //   title: 'Through your support of MTJ Foundation, struggling families can receive the help they need and celebrate Eid with dignity. Donate Your Fitrana Today',
     //   cta_btn_text: 'Donate Your Fitrana Today',
     //   route: '/donate'
     // },
@@ -4519,7 +4519,7 @@ This is relief that reaches hearts, homes, and futures.`,
         id: 'give-with-trust-this-ramadan',
         title: 'Give with Trust This Ramadan',
         subtitle: '',
-        description: `At Molana Tariq Jamil Foundation, Zakat is handled with care, responsibility, and strict adherence to Shariah principles.
+        description: `At MTJ Foundation, Zakat is handled with care, responsibility, and strict adherence to Shariah principles.
 
 Your Zakat reaches those who are eligible, deserving, and in genuine need, quietly, respectfully, and with dignity.
 

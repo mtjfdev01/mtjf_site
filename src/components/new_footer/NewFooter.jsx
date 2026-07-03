@@ -54,6 +54,57 @@ const donationLinks = [
   { label: 'Donate Now', to: '/donate' },
 ]
 
+const regionalOffices = [
+  {
+    city: 'Tulamba (Head Office)',
+    address:
+      'MTJ Foundation Secretariat, Makhdum Pur Road, Tulamba, District Khanewal, Pakistan',
+    contacts: [
+      { label: '061-111-786-853', href: 'tel:061111786853' },
+      { label: '0303-2440000', href: 'tel:03032440000' },
+      {
+        label: 'info@mtjfoundation.org',
+        href: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@mtjfoundation.org',
+        external: true,
+      },
+      { label: 'Feedback: 0303-6660221', href: 'tel:03036660221' },
+    ],
+  },
+  {
+    city: 'Karachi',
+    address:
+      'Office No. 1, 190-1/A, Khayyam Chambers Nursery Market, Block 2, P.E.C.H.S, Main Shahrah-e-Faisal, Karachi',
+    contacts: [
+      { label: '021-111-786-853', href: 'tel:021111786853' },
+      { label: '0300-2001575', href: 'tel:03002001575' },
+    ],
+  },
+  {
+    city: 'Multan',
+    address: 'House #89, Block C, Model Town Phase-2, Multan',
+    contacts: [
+      { label: '061-111-786-853', href: 'tel:061111786853' },
+      { label: '0303-2440000', href: 'tel:03032440000' },
+    ],
+  },
+  {
+    city: 'Faisalabad',
+    address: 'Jamia Al-Hasanain, Green Town, Faisalabad',
+    contacts: [
+      { label: '041-111-786-853', href: 'tel:041111786853' },
+      { label: '0300-4463903', href: 'tel:03004463903' },
+    ],
+  },
+  {
+    city: 'Lahore',
+    address: 'Office #59-B, Faisal Town, Opposite Moon Market, Lahore',
+    contacts: [
+      { label: '042-111-786-853', href: 'tel:042111786853' },
+      { label: '0300-4425557', href: 'tel:03004425557' },
+    ],
+  },
+]
+
 const socialLinks = [
   {
     href: 'https://www.facebook.com/foundation.mtj',
@@ -237,6 +288,12 @@ const NewFooter = () => {
                   info@mtjfoundation.org
                 </a>
               </li>
+              <li>
+                <FaPhone className="new-footer__contact-icon" aria-hidden />
+                <a href="tel:03036660221" className="new-footer__contact-link">
+                  Feedback: 0303-6660221
+                </a>
+              </li>
             </ul>
 
             <div className="new-footer__social-icons">
@@ -264,6 +321,34 @@ const NewFooter = () => {
               <img src={logoImg} alt="MTJ Foundation" className="new-footer__logo" />
             </div> */}
           </div>
+        </div>
+
+        <div className="new-footer__locations">
+          <Link to="/contact" className="new-footer__locations-heading">
+            <h4 className="new-footer__heading">Regional Offices</h4>
+          </Link>
+          <ul className="new-footer__locations-list">
+            {regionalOffices.map((office) => (
+              <li key={office.city} className="new-footer__location-item">
+                <div className="new-footer__location-city">{office.city}</div>
+                <div className="new-footer__location-address">{office.address}</div>
+                <div className="new-footer__location-contacts">
+                  {office.contacts.map((contact) => (
+                    <a
+                      key={contact.label}
+                      href={contact.href}
+                      className="new-footer__contact-link"
+                      {...(contact.external
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
+                      {contact.label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="new-footer__copyright">

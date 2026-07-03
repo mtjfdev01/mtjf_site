@@ -13,7 +13,7 @@ const JoinTeam = ()=>{
             </h2>
             <h2 className="mt-0">Why Join Our Team</h2>
             <p className="join-team-text">
-            At Molana Tariq Jamil Foundation, we are dedicated to serving humanity and making a positive impact on society.
+            At MTJ Foundation, we are dedicated to serving humanity and making a positive impact on society.
             As a non-profit organization, we are driven by our mission to promote peace, tolerance, and compassion through various charitable initiatives.
             Joining our team means becoming part of a noble cause and contributing to the well-being of others
             Joining our team means becoming part of a noble cause and contributing to the well-being of
@@ -49,7 +49,7 @@ const JoinTeam = ()=>{
             <h3>How to Join Our Team?</h3>
             <p>
               You can also submit your resume and cover letter to <a href="mailto:hr@mtjfoundation.org">hr@mtjfoundation.org</a> to be
-              considered for future opportunities. Join us at Molana Tariq Jamil Foundation and be part of our efforts
+              considered for future opportunities. Join us at MTJ Foundation and be part of our efforts
               to promote peace, tolerance, and compassion in the world.Together, we can make a positive impact on humanity!
             </p>
            

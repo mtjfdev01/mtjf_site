@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import './PublicNoticePopup.css'
 
 const PUBLIC_NOTICE_CONTENT = `Important Public Notice | Stay Cautious
-We have received reports of individuals falsely claiming to represent Molana Tariq Jamil Foundation and contacting people to request donations.
+We have received reports of individuals falsely claiming to represent MTJ Foundation and contacting people to request donations.
 Please remain vigilant and protect yourself.
 All official MTJ Foundation bank accounts carry the exact title:
 "MTJ Foundation Pakistan"
