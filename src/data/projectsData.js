@@ -71,24 +71,24 @@ import supportbuildsfutures from '../assets/img/projects/projects-details/educat
 import impactglance from '../assets/img/projects/projects-details/education/education_transform.webp'
 
 import CleanWater from '../assets/img/projects/water.webp'
-import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
+// import individualhandpump from '../assets/img/projects/projects-details/cleanwater/individual.webp'
 import waterGreateStsadaqah from '../assets/img/projects/projects-details/cleanwater/water_greatest_sadaqah.webp'
-import communityhandpump from '../assets/img/projects/projects-details/cleanwater/community.webp'
+// import communityhandpump from '../assets/img/projects/projects-details/cleanwater/community.webp'
 import ongoingReward from '../assets/img/projects/projects-details/cleanwater/ongoing_reward.webp'
-import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
+// import waterfiltrationplant from '../assets/img/projects/projects-details/cleanwater/filter.webp'
 import responsible from '../assets/img/projects/projects-details/cleanwater/responsible.webp'
 import ourwaterprojects from '../assets/img/projects/projects-details/cleanwater/our-water-projects.webp'
 import waterHandPumps from '../assets/img/projects/projects-details/cleanwater/water_hand_pumps.webp'
 import muharram from '../assets/img/projects/projects-details/cleanwater/why_give_in_muharram.webp'
 import ApnaGhar from '../assets/img/projects/project-image/apnaghar.webp'
 import apna_ghar from '../assets/img/projects/projects-details/Apna Ghar/hero.webp'
-import apna_ghar_media from '../assets/img/projects/projects-details/Apna Ghar/media.webp'
+// import apna_ghar_media from '../assets/img/projects/projects-details/Apna Ghar/media.webp'
 import apna_ghar_hero_mob from '../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
 
-import apna_ghar_matters from '../assets/img/projects/projects-details/Apna Ghar/matter.webp'
+import apna_ghar_matters from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar_matters.webp'
 import apna_ghar_mission from '../assets/img/projects/projects-details/Apna Ghar/detail.webp'
 import apna_ghar_building from '../assets/img/projects/projects-details/Apna Ghar/apna_ghar.webp'
-import apna_ghar_eligibility from '../assets/img/projects/projects-details/Apna Ghar/criteria.webp'
+import apna_ghar_eligibility from '../assets/img/projects/projects-details/Apna Ghar/eligibility criteria.webp'
 import apna_ghar_goal from '../assets/img/projects/projects-details/Apna Ghar/sdgs.webp'
 import apna_ghar_impact from '../assets/img/projects/projects-details/Apna Ghar/impact.webp'
 import apna_ghar_story from '../assets/img/projects/projects-details/Apna Ghar/story.webp'
@@ -142,15 +142,11 @@ import qurbani15 from '../assets/img/projects/projects-details/qurbani_2026/qurb
 import qurbani16 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (16).JPG'
 import qurbani17 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (17).JPG'
 import qurbani18 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (18).JPG'
-import qurbani19 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (19).JPG'
 import qurbani20 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (20).JPG'
 import qurbani21 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (21).JPG'
-import qurbani22 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (22).JPG'
 import qurbani23 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (23).JPG'
 import qurbani24 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (24).JPG'
-import qurbani25 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (25).JPG'
 import qurbani26 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (26).JPG'
-import qurbani27 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (27).JPG'
 import qurbani28 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (28).JPG'
 import qurbani29 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (29).JPG'
 import qurbani30 from '../assets/img/projects/projects-details/qurbani_2026/qurbani_pics/carosel (30).JPG'
@@ -1326,7 +1322,8 @@ export const PROJECTS_DETAIL_DATA = {
         subtitle: 'A Purpose-Built Community Where Widows and Orphans Can Rebuild Their Lives',
         description: 'Apna Ghar is MTJF\'s flagship initiative focused on uplifting widowed, abandoned, and divorced women along with their orphan children. The project offers permanent housing, skills, faith-based guidance, education support, and community belonging, all within a protected, sustainable environment. Phase I is under development in Tulamba Town, where MTJF is building 70 eco-friendly, solar-powered homes equipped with clean water access and community infrastructure that supports both mothers and their children. Apna Ghar is not just a housing scheme; it is a foundation for a stable childhood and a dignified motherhood.',
         donateButtonText: 'Build a Home for a Widow & Her Children',
-        image: apna_ghar_media
+        // add video here
+        video: 'https://www.youtube.com/watch?v=4uwMjLibpy0',
       },
       {
         id: 'why-apna-ghar-matters',
@@ -1438,6 +1435,17 @@ export const PROJECTS_DETAIL_DATA = {
         image: apna_ghar_story
       }
     ],
+    testimonials: {
+      id: 'apna-ghar-testimonials',
+      title: 'Why Apna Ghar Matters',
+      // subtitle: 'Watch Stories of Transformation',
+      description: '',
+      videos: [
+        'https://www.youtube.com/watch?v=jmbqgplXe58',
+        'https://www.youtube.com/watch?v=Cvuj7TdyIek',
+        'https://www.youtube.com/watch?v=LKRYtcslqOI'
+      ]
+    },
     faqs: {
       id: 'frequently-asked-questions',
       title: 'Frequently Asked Questions',
@@ -1446,31 +1454,38 @@ export const PROJECTS_DETAIL_DATA = {
       faqs: [
         {
           question: 'Who is Apna Ghar designed for?',
-          answer: 'Widows and divorced women raising orphan or dependent children.'
+          answer:
+            'Apna Ghar is designed for widowed mothers and their orphaned children who lack stable housing and basic security. The project prioritizes families facing extreme financial hardship, ensuring they have a safe place to live with dignity.'
         },
         {
           question: 'Do families have to pay for their homes?',
-          answer: 'No — homes are provided free of cost to eligible families.'
+          answer:
+            'No. Families do not pay for their homes. Housing is provided as part of MTJ Foundation’s welfare support to ensure long-term stability for widows and their children.'
         },
         {
           question: 'Do children receive educational support?',
-          answer: 'Yes. MTJF ensures all children in Apna Ghar are enrolled in school.'
+          answer:
+            'Yes. Children living in Apna Ghar are supported in accessing basic education, including school enrollment and learning support, so they can continue their studies without disruption.'
         },
         {
           question: 'How do mothers earn a stable income?',
-          answer: 'Through KASB Skill Development, microenterprises, and home-based businesses.'
+          answer:
+            'Mothers are supported through skill development, vocational training, and income-generating opportunities, helping them work toward financial independence and self-reliance.'
         },
         {
           question: 'Can donors sponsor a full home?',
-          answer: 'Yes — donors may fund an entire house, solar system, skill center, or community facility.'
+          answer:
+            'Yes. Donors may choose to sponsor a full home or contribute toward its construction, furnishing, or upkeep, allowing them to directly support a family’s safety and future.'
         },
         {
           question: 'Is the project Zakat-eligible?',
-          answer: 'Absolutely — supporting widows and orphans is fully Zakat-eligible.'
+          answer:
+            'Yes. Apna Ghar supports Zakat-eligible beneficiaries, including widows and orphans, and Zakat funds are utilized strictly in accordance with Islamic guidelines.'
         },
         {
           question: 'How does MTJF ensure transparency?',
-          answer: 'Through verification visits, strict criteria, progress updates, and detailed reports.'
+          answer:
+            'MTJ Foundation ensures transparency through proper beneficiary verification, clear allocation of funds, donor reporting and updates, and on-ground monitoring of the project. Donors are kept informed about how their contributions are utilized and the impact created.'
         }
       ],
       donateButtonText: 'Donate Now — Support Widows & Orphans'
