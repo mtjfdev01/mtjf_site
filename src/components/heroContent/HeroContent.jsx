@@ -12,7 +12,7 @@ const HeroContent = () => {
          <h2 className='heading-secondary clr-black'>A Legacy of Compassion</h2>
          <h1 className='clr-black main_page_heading mt-0'>
           A Future of Hope, <br/>
-          Molana Tariq Jamil <br/>
+          MTJ Foundation <br/>
            Foundation
          </h1>
         </div>

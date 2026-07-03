@@ -121,7 +121,7 @@ const Footer = () => {
                     <span className="footer-link">0329787</span>
                   </li>
                   <div>
-                   <small>Molana Tariq Jamil Foundation is a Registered NGO under section 42 of Companies Act. 2017 (As Non-Profit Company)</small>
+                   <small>MTJ Foundation is a Registered NGO under section 42 of Companies Act. 2017 (As Non-Profit Company)</small>
                   </div>
                   {/* <li>
                     <span className='footer-label'>MTJ Foundation Pakistan is a tax-exempt organization under Section 2(36)(c) of the FBR Act.</span>
