@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { useDonation } from '../../../contexts/DonationContext'
+import Loader from '../../Loader/Loader'
 import './DonationSidebar.css'
 
 const DonationSidebar = ({
@@ -14,6 +15,7 @@ const DonationSidebar = ({
   const location = useLocation()
   const navigate = useNavigate()
   const { amount, clearDonationData } = useDonation()
+  const [navigating, setNavigating] = useState(false)
 
   // Use total amount from context (already calculated from all sources)
   const totalAmount = amount || 0
@@ -26,10 +28,24 @@ const DonationSidebar = ({
   const currentPath = `${location.pathname}${location.search}${location.hash || ''}`
   const returnTo = location.state?.returnTo
 
+  useEffect(() => {
+    setNavigating(false)
+  }, [location.pathname])
+
+  const startNavigation = (path) => {
+    const targetPath = (path || '').split('?')[0].trim()
+    const current = location.pathname.trim()
+    if (targetPath && targetPath !== current) {
+      setNavigating(true)
+    }
+  }
+
   const handleCompleteDonation = () => {
     if (onCompleteDonation) {
+      setNavigating(true)
       onCompleteDonation()
     } else {
+      startNavigation('/checkout')
       navigate('/checkout', { state: { ...(location.state || {}), returnTo: currentPath } })
     }
   }
@@ -37,59 +53,65 @@ const DonationSidebar = ({
   const handleClearCart = () => {
     const confirmed = window.confirm('Are you sure you want to remove your donations?')
     if (confirmed) {
+      setNavigating(true)
       clearDonationData()
+      setTimeout(() => setNavigating(false), 300)
     }
   }
 
   const handleBackToDonations = () => {
     if (returnTo) {
+      startNavigation(returnTo)
       navigate(returnTo)
       return
     }
+    startNavigation('/donate')
     navigate('/donate')
   }
 
   return (
-    <div className="donation-sidebar">
-      <div className="donation-sidebar-content">
-        <div className="donation-sidebar-header">
-          <div className="donation-sidebar-total">
-            <span className="total-label">Total Donation</span>
-            <span className="total-amount">{displayTotalAmount.toLocaleString()}</span>
-            <span className="total-currency">{shouldConvert ? displayCurrency : 'PKR'}</span>
+    <>
+      <Loader loading={navigating} />
+      <div className="donation-sidebar">
+        <div className="donation-sidebar-content">
+          <div className="donation-sidebar-header">
+            <div className="donation-sidebar-total">
+              <span className="total-label">Total Donation</span>
+              <span className="total-amount">{displayTotalAmount.toLocaleString()}</span>
+              <span className="total-currency">{shouldConvert ? displayCurrency : 'PKR'}</span>
+            </div>
+            {/* {!showBackButton && ( */}
+              <button
+                className="donation-sidebar-clear-btn"
+                onClick={handleClearCart}
+                title="Clear all donations"
+                aria-label="Clear all donations"
+              >
+                <FaTrash />
+              </button>
+            {/* )} */}
           </div>
-          {/* {!showBackButton && ( */}
+          {!showBackButton && (
             <button
-              className="donation-sidebar-clear-btn"
-              onClick={handleClearCart}
-              title="Clear all donations"
-              aria-label="Clear all donations"
+              className="donation-sidebar-button"
+              onClick={handleCompleteDonation}
+              // disabled={totalAmount <= 0}
             >
-              <FaTrash />
+              Complete Donation
             </button>
-          {/* )} */}
+          )}
+          {showBackButton && (
+            <button
+              className="donation-sidebar-button donation-sidebar-back-button"
+              onClick={handleBackToDonations}
+            >
+              Go Back
+            </button>
+          )}
         </div>
-        {!showBackButton && (
-          <button
-            className="donation-sidebar-button"
-            onClick={handleCompleteDonation}
-            // disabled={totalAmount <= 0}
-          >
-            Complete Donation
-          </button>
-        )}
-        {showBackButton && (
-          <button
-            className="donation-sidebar-button donation-sidebar-back-button"
-            onClick={handleBackToDonations}
-          >
-            Go Back
-          </button>
-        )}
       </div>
-    </div>
+    </>
   )
 }
 
 export default DonationSidebar
-
