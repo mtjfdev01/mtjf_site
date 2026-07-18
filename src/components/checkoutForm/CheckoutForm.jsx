@@ -1126,8 +1126,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
               />
             </div>
           </div>
-        {/* Donation frequency — monthly recurring (Stripe); disabled while Stripe UI is commented out */}
-        {/* {testCheckout && (
+        {/* Donation frequency — monthly recurring (Stripe); /test-checkout only */}
+        {testCheckout && (
         <div
           className={
             !isQurbaniCheckout
@@ -1144,7 +1144,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
             <option value="monthly">Give Monthly (Stripe)</option>
           </select>
         </div>
-        )} */}
+        )}
         {isQurbaniCheckout && (
           <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
             {/* <label className="donation-form-label" htmlFor="checkout-on-behalf-names">
@@ -1314,8 +1314,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
           
 
 
-          {/* Stripe — /test-checkout (commented out; Alfalah only for now) */}
-          {/* {testCheckout && (
+          {/* Stripe — /test-checkout only */}
+          {testCheckout && (
           <div className="col-md-6">
             <div className="input-item">
               <div
@@ -1344,7 +1344,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
-          )} */}
+          )}
 
           {/* Bank Alfalah — /test-checkout only */}
           {testCheckout && (
