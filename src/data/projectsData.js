@@ -256,12 +256,6 @@ export const PROJECTS_DETAIL_DATA = {
     mainImage: edufooter,
     donateCategory: 'Education',
     donateButtonText: 'Support Education Programs',
-    donationOptions: {
-      title: 'Donation Amount',
-      PKR: [15000, 35000, 5000, 18000],
-      USD: [25, 50, 100, 250],
-      EUR: [20, 40, 80, 200]
-    },
     subProjects: [
       {
         id: 'al-husnain-school-system',
@@ -466,11 +460,6 @@ export const PROJECTS_DETAIL_DATA = {
     mainImage: healthfooter,
     donateCategory: 'Health',
     donateButtonText: 'Support Healthcare Services',
-    donationOptions: {
-      PKR: [10000, 40000, 20000],
-      USD: [50, 100, 200, 500],
-      EUR: [45, 90, 180, 450]
-    },
     subProjects: [
       {
         id: 'direct-medical-aid',
@@ -713,11 +702,6 @@ export const PROJECTS_DETAIL_DATA = {
     mainImage: image1,
     donateCategory: 'Disaster Relief',
     donateButtonText: 'Donate for Disaster Relief',
-    donationOptions: {
-      PKR: [3000, 7000, 15000, 30000],
-      USD: [30, 70, 150, 300],
-      EUR: [28, 65, 140, 280]
-    },
     subProjects: [
       {
         id: 'gaza-relief',
@@ -876,11 +860,6 @@ export const PROJECTS_DETAIL_DATA = {
     // mainImage: image2,
     donateCategory: 'Clean Water',
     donateButtonText: 'Sponsor a Handpump or Filtration Plant',
-    donationOptions: {
-      PKR: [90000, 125000, 2200000, 3200000, 250000, 500000],
-      USD: [40, 80, 160, 320],
-      EUR: [35, 70, 140, 280]
-    },
     subProjects: [
       {
         id: 'individual-handpumps',
@@ -1049,11 +1028,6 @@ export const PROJECTS_DETAIL_DATA = {
     },
     mainImage: image3,
     donateCategory: 'E-Commerce Training',
-    donationOptions: {
-      PKR: [3500, 9000, 18000, 36000],
-      USD: [35, 90, 180, 360],
-      EUR: [32, 80, 160, 320]
-    }
   },
   'marriage-gift': {
     id: 'marriage-gift',
@@ -1076,11 +1050,6 @@ export const PROJECTS_DETAIL_DATA = {
     },
     mainImage: image1,
     donateCategory: 'Marriage Gift',
-    donationOptions: {
-      PKR: [6000, 12000, 25000, 50000],
-      USD: [60, 120, 250, 500],
-      EUR: [55, 110, 230, 460]
-    }
   },
   maskan: {
     id: 'maskan',
@@ -1103,11 +1072,6 @@ export const PROJECTS_DETAIL_DATA = {
     },
     mainImage: image2,
     donateCategory: 'Maskan',
-    donationOptions: {
-      PKR: [8000, 16000, 32000, 64000],
-      USD: [80, 160, 320, 640],
-      EUR: [75, 150, 300, 600]
-    }
   },
   'monthly-ration': {
     id: 'monthly-ration',
@@ -1130,11 +1094,6 @@ export const PROJECTS_DETAIL_DATA = {
     },
     mainImage: image3,
     donateCategory: 'Monthly Ration',
-    donationOptions: {
-      PKR: [2500, 6000, 12000, 24000],
-      USD: [25, 60, 120, 240],
-      EUR: [23, 55, 110, 220]
-    }
   },
   'kasb-skill-development': {
     id: 'kasb-skill-development',
@@ -1157,12 +1116,7 @@ export const PROJECTS_DETAIL_DATA = {
     },
     mainImage: image2,
     donateCategory: 'KASB Skill Development',
-    donateButtonText: 'Support Women\'s Skill Development',
-    donationOptions: {
-      PKR: [3500, 9000, 18000, 36000],
-      USD: [35, 90, 180, 360],
-      EUR: [32, 80, 160, 320]
-    },
+    donateButtonText: 'Support Women\'s Skill Development', 
     subProjects: [
       {
         id: 'football-stitching-training-center',
@@ -1319,11 +1273,6 @@ export const PROJECTS_DETAIL_DATA = {
     },
     donateCategory: 'Apna Ghar',
     donateButtonText: 'Build a Home for a Widow & Her Children',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'what-is-apna-ghar',
@@ -1552,11 +1501,6 @@ ultrasound services and Best of its kind.
     mainImage: healthfooter,
     donateCategory: 'Aas Lab Diagnostics',
     donateButtonText: 'Build a Home for a Widow & Her Children',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'AAS Lab and Diagnostic Centre',
@@ -1659,11 +1603,6 @@ team will provide you with individualised attention and assistance.`,
     mainImage: healthfooter,
     donateCategory: 'seeds of change',
     donateButtonText: 'Build a Home for a Widow & Her Children',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'Get to know Our Green Initiative',
@@ -1746,11 +1685,6 @@ team will provide you with individualised attention and assistance.`,
     mainImage: image1,
     donateCategory: 'Community Services',
     donateButtonText: 'Build a Home for a Widow & Her Children',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'Financial assistance',
@@ -1857,12 +1791,7 @@ team will provide you with individualised attention and assistance.`,
 
     },
     donateCategory: 'Zakat',
-    donateButtonText: 'Give Your Zakat This Ramadan',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
+    donateButtonText: 'Give Your Zakat This Ramadan', 
     subProjects: [
       {
         id: 'your-zakat-your-responsibility',
@@ -2617,11 +2546,6 @@ endured the unimaginable.`,
       description: 'A complete Ramadan food pack containing flour, rice, lentils, cooking oil, sugar, tea, dates, and spices — enough to sustain a family for the entire month of Ramadan.',
       duration: '1 Month'
     },
-    donationOptions: {
-      PKR: [8500, 17000, 25500, 51000],
-      USD: [85, 170, 255, 510],
-      EUR: [80, 160, 240, 480]
-    },
     subProjects: [
       {
         id: 'why-food-packs-matter',
@@ -2801,11 +2725,6 @@ The obligation is to feed 60 poor people for each missed fast. This is a serious
       description: 'An Eid gift package for a child includes new clothes, shoes, sweets, and a small toy — everything a child needs to celebrate Eid with joy and dignity.',
       duration: 'One time'
     },
-    donationOptions: {
-      PKR: [3500, 7000, 17500, 35000],
-      USD: [35, 70, 175, 350],
-      EUR: [32, 65, 160, 320]
-    },
     subProjects: [
       {
         id: 'why-eid-gifts-matter',
@@ -2889,11 +2808,6 @@ An Eid gift is more than a present — it is a message that someone cares, that 
       icon: communityIcon,
       description: 'Sponsor a complete Iftar meal for a fasting person. Each meal includes dates, water, a main dish, and dessert — providing nourishment and comfort at the time of breaking the fast.',
       duration: 'Per Day'
-    },
-    donationOptions: {
-      PKR: [350, 3500, 10500, 21000],
-      USD: [4, 35, 105, 210],
-      EUR: [4, 32, 100, 200]
     },
     subProjects: [
       {
@@ -3017,11 +2931,6 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
       description: 'Sponsor one fasting person for the entire month of Ramadan. This covers Sehri and Iftar meals, along with essential food supplies for 30 days — ensuring they can fast with peace and dignity.',
       duration: '30 Days'
     },
-    donationOptions: {
-      PKR: [15000, 30000, 75000, 150000],
-      USD: [150, 300, 750, 1500],
-      EUR: [140, 280, 700, 1400]
-    },
     subProjects: [
       {
         id: 'what-sponsorship-covers',
@@ -3113,11 +3022,6 @@ Many of those who benefit are daily wage workers, widows, elderly, and orphans w
       icon: communityIcon,
       description: `Fidyah requires feeding one poor person for each fast that cannot be kept due to illness, old age, or a permanent condition. This amount covers two meals for one person in compliance with Shariah.`,
       duration: `One time per missed fast`
-    },
-    donationOptions: {
-      PKR: [450, 6750, 13500, 27000],
-      USD: [5, 68, 135, 270],
-      EUR: [5, 63, 125, 250]
     },
     subProjects: [
       {
@@ -3213,11 +3117,6 @@ It is a merciful provision from Allah — recognizing that some people simply ca
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Give Your Zakat This Ramadan`,
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: 'meaning-of-first-ashra',
@@ -3282,11 +3181,6 @@ This is the time to turn to Allah with a humble heart, seek His forgiveness, and
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Give Your Zakat This Ramadan`,
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: 'meaning-of-second-ashra',
@@ -3351,11 +3245,6 @@ No matter how many sins a person has committed, these days remind us that Allah'
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Give Your Zakat This Ramadan`,
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: 'meaning-of-third-ashra',
@@ -3437,11 +3326,6 @@ It is during these final nights that Laylatul Qadr (the Night of Power) occurs �
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Give Your Zakat`,
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: 'what-is-eid-ul-fitr',
@@ -3549,11 +3433,6 @@ On this day, Muslims gather for a special congregational prayer, exchange greeti
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Sponsor Suhoor Meals`,
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: 'what-is-sehar',
@@ -3645,11 +3524,6 @@ The Niyyah should be made before Fajr. It can be made at any time during the nig
     ],
     donateCategory: `Zakat`,
     donateButtonText: `Sponsor Iftar Meals`,
-    donationOptions: {
-      PKR: [350, 3500, 10500, 21000],
-      USD: [4, 35, 105, 210],
-      EUR: [4, 32, 100, 200]
-    },
     subProjects: [
       {
         id: 'what-is-iftar',
@@ -3767,11 +3641,6 @@ This beautiful dua acknowledges the physical relief of breaking the fast while a
     // mainImage: Qurbani,
     donateCategory: 'Qurbani 2026',
     donateButtonText: '',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'trust-that-reaches',
@@ -4036,11 +3905,6 @@ Strong monitoring at every stage of the process
     },
     donateCategory: '',
     donateButtonText: '',
-    donationOptions: {
-      PKR: [5000, 10000, 25000, 50000],
-      USD: [50, 100, 250, 500],
-      EUR: [45, 90, 230, 460]
-    },
     subProjects: [
       {
         id: '',
@@ -4432,11 +4296,6 @@ Strong monitoring at every stage of the process
     },
     donateCategory: 'Zakat',
     donateButtonText: 'Give Your Zakat This Ramadan',
-    donationOptions: {
-      PKR: [10000, 25000, 50000, 100000],
-      USD: [100, 250, 500, 1000],
-      EUR: [90, 230, 460, 920]
-    },
     subProjects: [
       {
         id: 'your-zakat-your-responsibility',
