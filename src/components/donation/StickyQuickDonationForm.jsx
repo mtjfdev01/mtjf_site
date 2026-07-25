@@ -195,7 +195,7 @@ const StickyQuickDonationForm = () => {
   )
   /** Keeps checkout `quantity` in sync with +/- (and with typed totals that are exact multiples of unit price). */
   const [localQuantity, setLocalQuantity] = useState(() => 1)
-  const [selectedProjectId, setSelectedProjectId] = useState(null)
+  const [selectedProjectId, setSelectedProjectId] = useState('general')
   const [selectedInitiativeId, setSelectedInitiativeId] = useState(null)
   const [customInput, setCustomInput] = useState('')
   const [message, setMessage] = useState('')
