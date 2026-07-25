@@ -591,3 +591,126 @@
     grid-column: 1;
   }
 }
+
+.checkout-panel__campaign-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.checkout-panel__campaign-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkout-panel__campaign-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.checkout-panel__campaign-hint,
+.checkout-panel__campaign-loading,
+.checkout-panel__campaign-empty {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.checkout-panel__campaign-empty {
+  color: #b45309;
+}
+
+.checkout-panel__campaign-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-panel__campaign-item {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 12px;
+  align-items: end;
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.checkout-panel__campaign-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkout-panel__campaign-item-name {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.checkout-panel__campaign-item-price {
+  font-size: 14px;
+  color: #374151;
+}
+
+.checkout-panel__campaign-item-desc {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.checkout-panel__campaign-item-qty label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.checkout-panel__campaign-qty-input {
+  padding: 10px 0 !important;
+}
+
+.checkout-panel__campaign-mode-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.checkout-panel__campaign-prepaid label {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.checkout-panel__campaign-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  background: #eff6ff;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #1e3a8a;
+}
+
+@media (max-width: 768px) {
+  .checkout-panel__campaign-item {
+    grid-template-columns: 1fr;
+  }
+}
+.checkout-panel__campaign-mode-hint {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #6b7280;
+}

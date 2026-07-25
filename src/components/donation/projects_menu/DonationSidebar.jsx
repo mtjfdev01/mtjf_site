@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { useDonation } from '../../../contexts/DonationContext'
 import Loader from '../../Loader/Loader'
+import { getCheckoutPathForProjects } from '../../../lib/donationCheckoutPath'
 import './DonationSidebar.css'
 
 const DonationSidebar = ({
@@ -14,7 +15,7 @@ const DonationSidebar = ({
 }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { amount, clearDonationData } = useDonation()
+  const { amount, clearDonationData, projectDonations } = useDonation()
   const [navigating, setNavigating] = useState(false)
 
   // Use total amount from context (already calculated from all sources)
@@ -45,8 +46,11 @@ const DonationSidebar = ({
       setNavigating(true)
       onCompleteDonation()
     } else {
-      startNavigation('/checkout')
-      navigate('/checkout', { state: { ...(location.state || {}), returnTo: currentPath } })
+      const checkoutPath = getCheckoutPathForProjects(
+        (projectDonations || []).map((d) => d.projectId)
+      )
+      startNavigation(checkoutPath)
+      navigate(checkoutPath, { state: { ...(location.state || {}), returnTo: currentPath } })
     }
   }
 

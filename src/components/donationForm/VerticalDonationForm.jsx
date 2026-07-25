@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
 import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
+import { getCheckoutPathForProjects } from '../../lib/donationCheckoutPath'
 import './VerticalDonationForm.css'
 
 
@@ -466,7 +467,8 @@ const VerticalDonationForm = ({
     onSubmit?.(donationData)
 
     const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
-    navigate('/checkout', { state: { returnTo } })
+    const checkoutPath = getCheckoutPathForProjects([projectIdToUse])
+    navigate(checkoutPath, { state: { returnTo } })
   }
 
   return (

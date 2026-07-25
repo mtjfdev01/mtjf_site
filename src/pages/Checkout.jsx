@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react'
+import React, { Suspense, lazy, useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDonation } from '../contexts/DonationContext'
 // import image1 from '../assets/img/projects/apna_ghr.webp'
@@ -11,15 +11,20 @@ const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const Footer = lazy(() => import('../components/footer/Footer'))
 const DonationSidebar = lazy(() => import('../components/donation/projects_menu/DonationSidebar'))
 
-const TEST_CHECKOUT_DEFAULT_AMOUNT = 222
+const TEST_CHECKOUT_DEFAULT_AMOUNT = 100
 
 const Checkout = () => {
   const location = useLocation()
   const testCheckout = location.pathname === '/test-checkout'
   const { amount, setDonationFormData } = useDonation()
 
+  const campaignIdFromQuery = useMemo(() => {
+    const searchParams = new URLSearchParams(location.search)
+    return searchParams.get('campaignId')
+  }, [location.search])
+
   useEffect(() => {
-    if (!testCheckout || (amount && amount > 0)) return
+    if (!testCheckout || campaignIdFromQuery || (amount && amount > 0)) return
     setDonationFormData({
       amount: String(TEST_CHECKOUT_DEFAULT_AMOUNT),
       finalAmount: TEST_CHECKOUT_DEFAULT_AMOUNT,
@@ -28,10 +33,10 @@ const Checkout = () => {
       category: 'General',
       donation_type: 'general',
     })
-  }, [testCheckout, amount, setDonationFormData])
+  }, [testCheckout, campaignIdFromQuery, amount, setDonationFormData])
 
   // Use total amount from context (already calculated from all sources)
-  const totalAmount = amount || (testCheckout ? TEST_CHECKOUT_DEFAULT_AMOUNT : 0)
+  const totalAmount = amount || (testCheckout && !campaignIdFromQuery ? TEST_CHECKOUT_DEFAULT_AMOUNT : 0)
 
   // First component after header - loads immediately
   const [formRef, showForm] = useIntersectionObserver({ 

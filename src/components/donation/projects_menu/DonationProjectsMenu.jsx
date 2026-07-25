@@ -6,6 +6,7 @@ import DonationProjectsMenuCard from './DonationProjectsMenuCard'
 import DonationProjectsMenuForm from './DonationProjectsMenuForm'
 import InitiativeDonationCard from './InitiativeDonationCard'
 import DonationSidebar from './DonationSidebar'
+import { getCheckoutPathForProjects } from '../../../lib/donationCheckoutPath'
 import './DonationProjectsMenu.css'
 
 import health from '../../../assets/img/projects/icons/MTJF_Logos/health.svg'
@@ -438,7 +439,10 @@ const DonationProjectsMenu = () => {
     
 
     // Navigate to checkout with donation data
-    navigate('/checkout', { 
+    const checkoutPath = getCheckoutPathForProjects(
+      donationsToCheckout.map((donation) => donation.projectId)
+    )
+    navigate(checkoutPath, { 
       state: { 
         donationItems: donationsToCheckout, 
         totalAmount: totalDonationAmount 

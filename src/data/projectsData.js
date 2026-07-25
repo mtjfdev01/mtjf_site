@@ -2541,7 +2541,7 @@ endured the unimaginable.`,
       id: 'food-pack-family',
       title: 'Food Pack',
       subtitle: 'Per Family',
-      price: 8500,
+      price: 100,
       icon: communityIcon,
       description: 'A complete Ramadan food pack containing flour, rice, lentils, cooking oil, sugar, tea, dates, and spices — enough to sustain a family for the entire month of Ramadan.',
       duration: '1 Month'

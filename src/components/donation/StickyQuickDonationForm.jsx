@@ -186,18 +186,17 @@ const StickyQuickDonationForm = () => {
     },
   ]
 
-  const stickyDefaultProject = projectCards.find((p) => p.id === STICKY_DEFAULT_PROJECT_ID)
-  const stickyFirstInitiative = stickyDefaultProject?.initiatives?.[0]
+  // const stickyDefaultProject = projectCards.find((p) => p.id === STICKY_DEFAULT_PROJECT_ID)
+  // const stickyFirstInitiative = stickyDefaultProject?.initiatives?.[0]
 
   const [localAmount, setLocalAmount] = useState(() =>
-    stickyFirstInitiative?.price != null ? String(stickyFirstInitiative.price) : '0'
+    // stickyFirstInitiative?.price != null ? String(stickyFirstInitiative.price) : '0'
+    '0'
   )
   /** Keeps checkout `quantity` in sync with +/- (and with typed totals that are exact multiples of unit price). */
-  const [localQuantity, setLocalQuantity] = useState(1)
-  const [selectedProjectId, setSelectedProjectId] = useState(STICKY_DEFAULT_PROJECT_ID)
-  const [selectedInitiativeId, setSelectedInitiativeId] = useState(
-    () => stickyFirstInitiative?.id ?? ''
-  )
+  const [localQuantity, setLocalQuantity] = useState(() => 1)
+  const [selectedProjectId, setSelectedProjectId] = useState(null)
+  const [selectedInitiativeId, setSelectedInitiativeId] = useState(null)
   const [customInput, setCustomInput] = useState('')
   const [message, setMessage] = useState('')
   const [isExpanded, setIsExpanded] = useState(false)

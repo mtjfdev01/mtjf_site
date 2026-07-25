@@ -6,6 +6,11 @@ export const STRIPE_RECURRING_WEEKLY = Object.freeze({
   interval_count: 1,
 })
 
+export const STRIPE_RECURRING_DAILY = Object.freeze({
+  interval: 'day',
+  interval_count: 1,
+})
+
 export const STRIPE_RECURRING_MONTHLY = Object.freeze({
   interval: 'month',
   interval_count: 1,
@@ -27,16 +32,15 @@ export function isWeeklyDonationFrequency(frequency) {
   return frequency === 'weekly'
 }
 
-/** @deprecated Use isWeeklyDonationFrequency — kept for older payloads */
 export function isDailyDonationFrequency(frequency) {
   return frequency === 'daily'
 }
 
 export function isRecurringDonationFrequency(frequency) {
   return (
+    isDailyDonationFrequency(frequency) ||
     isWeeklyDonationFrequency(frequency) ||
-    isMonthlyDonationFrequency(frequency) ||
-    isDailyDonationFrequency(frequency)
+    isMonthlyDonationFrequency(frequency)
   )
 }
 
@@ -47,14 +51,23 @@ export function isRecurringDonationFrequency(frequency) {
  */
 export function getStripeRecurringForPayload(donationFrequency, options = {}) {
   let base
-  if (isWeeklyDonationFrequency(donationFrequency)) {
+  if (isDailyDonationFrequency(donationFrequency)) {
+    base = { ...STRIPE_RECURRING_DAILY }
+  } else if (isWeeklyDonationFrequency(donationFrequency)) {
     base = { ...STRIPE_RECURRING_WEEKLY }
   } else if (isMonthlyDonationFrequency(donationFrequency)) {
     base = { ...STRIPE_RECURRING_MONTHLY }
-  } else if (isDailyDonationFrequency(donationFrequency)) {
-    base = { interval: 'day', interval_count: 1 }
   } else {
     return undefined
+  }
+
+  // Daily has no start-date UI — always charge today and repeat daily
+  if (isDailyDonationFrequency(donationFrequency)) {
+    return {
+      ...base,
+      start_date_mode: RECURRING_START_SAME_DATE,
+      consent: options.consent === true,
+    }
   }
 
   const start_date_mode = options.startDateMode || RECURRING_START_SAME_DATE

@@ -18,6 +18,8 @@ const AnimatedButton = () => {
     pathname.startsWith('/fitrana/') ||
     pathname === '/checkout' ||
     pathname.startsWith('/checkout/') ||
+    pathname === '/test-checkout' ||
+    pathname.startsWith('/test-checkout/') ||
     isNearFooter
 
   useEffect(() => {

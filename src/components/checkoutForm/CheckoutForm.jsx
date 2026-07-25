@@ -8,7 +8,13 @@ import { ALL_PROJECTS_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import AppealCheckoutFields from './AppealCheckoutFields'
+import CampaignCheckoutFields from './CampaignCheckoutFields'
 import Loader from '../Loader/Loader'
+import {
+  fetchPublicCampaign,
+  computeCampaignCheckoutTotal,
+  buildCampaignPledgeSummary,
+} from '../../lib/campaignCheckoutApi'
 import { postGatewayForm } from '../../lib/paymentGatewayForm'
 import {
   getNextFirstOfMonthDateString,
@@ -125,6 +131,14 @@ const CheckoutForm = ({ testCheckout = false }) => {
   const previousDonationItemsRef = useRef(null)
   const previousDonationTypeRef = useRef(null)
   const appealCheckoutInitialized = useRef(false)
+  const campaignCheckoutInitialized = useRef(false)
+
+  const [campaignCheckout, setCampaignCheckout] = useState(null)
+  const [campaignItems, setCampaignItems] = useState([])
+  const [campaignItemsLoading, setCampaignItemsLoading] = useState(false)
+  const [campaignItemQuantities, setCampaignItemQuantities] = useState({})
+  const [campaignPledgeMode, setCampaignPledgeMode] = useState('recurring_monthly')
+  const [campaignPrepaidMonths, setCampaignPrepaidMonths] = useState('3')
 
   const [appealsList, setAppealsList] = useState([])
   const [appealsLoading, setAppealsLoading] = useState(false)
@@ -138,6 +152,11 @@ const CheckoutForm = ({ testCheckout = false }) => {
   const appealSlugFromQuery = useMemo(() => {
     const searchParams = new URLSearchParams(location.search)
     return searchParams.get('appealSlug')
+  }, [location.search])
+
+  const campaignIdFromQuery = useMemo(() => {
+    const searchParams = new URLSearchParams(location.search)
+    return searchParams.get('campaignId')
   }, [location.search])
 
   // Get donationID from query parameters
@@ -185,6 +204,45 @@ const CheckoutForm = ({ testCheckout = false }) => {
   const isOldDonationFormFlow = !!donationData
   const isFailedTransactionFlow = !!donationIdFromQuery
 
+  const isCampaignCheckoutFlow = useMemo(
+    () =>
+      testCheckout &&
+      Boolean(campaignIdFromQuery) &&
+      !isFailedTransactionFlow,
+    [testCheckout, campaignIdFromQuery, isFailedTransactionFlow],
+  )
+
+  const campaignMonthlyTotal = useMemo(() => {
+    if (!isCampaignCheckoutFlow) return 0
+    return computeCampaignCheckoutTotal(
+      campaignItems,
+      campaignItemQuantities,
+      'recurring_monthly',
+      1,
+    )
+  }, [isCampaignCheckoutFlow, campaignItems, campaignItemQuantities])
+
+  const campaignCheckoutTotal = useMemo(() => {
+    if (!isCampaignCheckoutFlow) return 0
+    const mode =
+      campaignCheckout?.is_recurring === false
+        ? 'recurring_monthly'
+        : campaignPledgeMode
+    return computeCampaignCheckoutTotal(
+      campaignItems,
+      campaignItemQuantities,
+      mode,
+      campaignPrepaidMonths,
+    )
+  }, [
+    isCampaignCheckoutFlow,
+    campaignItems,
+    campaignItemQuantities,
+    campaignPledgeMode,
+    campaignPrepaidMonths,
+    campaignCheckout?.is_recurring,
+  ])
+
   const hasNonAppealProjectCart = useMemo(
     () =>
       projectDonationItemsForCheckout.some(
@@ -197,6 +255,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
 
   const isAppealCheckoutFlow = useMemo(
     () => {
+      if (isCampaignCheckoutFlow) return false
       if (isFailedTransactionFlow || donationItemsFromState.length > 0) return false
       if (hasAppealQuery) return true
       return (
@@ -205,6 +264,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
       )
     },
     [
+      isCampaignCheckoutFlow,
       isFailedTransactionFlow,
       donationItemsFromState.length,
       hasAppealQuery,
@@ -212,6 +272,102 @@ const CheckoutForm = ({ testCheckout = false }) => {
       projectDonationItemsForCheckout,
     ]
   )
+
+  // Campaign checkout: load campaign + items from ?campaignId=
+  useEffect(() => {
+    if (!isCampaignCheckoutFlow || !campaignIdFromQuery) return undefined
+    let cancelled = false
+    campaignCheckoutInitialized.current = false
+    setCampaignItemsLoading(true)
+    setFormMessage({ type: '', text: '' })
+
+    fetchPublicCampaign(campaignIdFromQuery)
+      .then((campaign) => {
+        if (cancelled) return
+        setCampaignCheckout(campaign)
+        const items = Array.isArray(campaign?.donation_items)
+          ? campaign.donation_items
+          : []
+        setCampaignItems(items)
+        const initialQty = {}
+        items.forEach((item) => {
+          initialQty[item.id] = ''
+        })
+        setCampaignItemQuantities(initialQty)
+        setProjectDonationData([])
+        setDonationFormData({
+          amount: '0',
+          finalAmount: 0,
+          currency: campaign?.currency || 'PKR',
+          category: 'General',
+          donation_type: 'general',
+          campaignId: campaign.id,
+        })
+        campaignCheckoutInitialized.current = true
+      })
+      .catch((err) => {
+        if (cancelled) return
+        setCampaignCheckout(null)
+        setCampaignItems([])
+        setFormMessage({
+          type: 'error',
+          text: err?.message || 'Failed to load campaign checkout',
+        })
+      })
+      .finally(() => {
+        if (!cancelled) setCampaignItemsLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [
+    isCampaignCheckoutFlow,
+    campaignIdFromQuery,
+    setDonationFormData,
+    setProjectDonationData,
+  ])
+
+  // Keep donation context amount in sync with campaign item selections
+  useEffect(() => {
+    if (!isCampaignCheckoutFlow || !campaignCheckoutInitialized.current) return
+    setDonationFormData({
+      amount: String(campaignCheckoutTotal),
+      finalAmount: campaignCheckoutTotal,
+      currency: campaignCheckout?.currency || 'PKR',
+      category: 'General',
+      donation_type: 'general',
+      campaignId: campaignCheckout?.id ?? campaignIdFromQuery,
+    })
+  }, [
+    isCampaignCheckoutFlow,
+    campaignCheckoutTotal,
+    campaignCheckout,
+    campaignIdFromQuery,
+    setDonationFormData,
+  ])
+
+  // Recurring campaign pledge mode drives frequency defaults on test-checkout
+  useEffect(() => {
+    if (!isCampaignCheckoutFlow || !campaignCheckout?.is_recurring) return
+    if (campaignPledgeMode === 'prepaid_months') {
+      setFormData((prev) =>
+        prev.donation_frequency === 'once'
+          ? prev
+          : { ...prev, donation_frequency: 'once', recurring_consent: false },
+      )
+      return
+    }
+    // Items every month → default Stripe monthly (donor can still switch to one-time)
+    setFormData((prev) => {
+      if (prev.donation_frequency === 'monthly') return prev
+      return {
+        ...prev,
+        donation_frequency: 'monthly',
+        recurring_consent: true,
+      }
+    })
+  }, [isCampaignCheckoutFlow, campaignPledgeMode, campaignCheckout?.is_recurring])
 
   // Appeal donate URL: clear other cart lines and pre-select appeal id before API list loads
   useEffect(() => {
@@ -740,18 +896,45 @@ const CheckoutForm = ({ testCheckout = false }) => {
     // Use amount from context (already calculated from all sources)
     // Fallback to totalAmountFromState if amount is 0 and we have state
     let totalAmount = amount || 0
-    if (totalAmount === 0 && totalAmountFromState > 0) {
+    if (isCampaignCheckoutFlow) {
+      totalAmount = campaignCheckoutTotal
+    } else if (totalAmount === 0 && totalAmountFromState > 0) {
       totalAmount = totalAmountFromState
     }
-    if (totalAmount === 0 && testCheckout) {
+    if (totalAmount === 0 && testCheckout && !isCampaignCheckoutFlow) {
       totalAmount = 111
     }
     totalAmount = Math.round(Number(totalAmount))
 
+    if (isCampaignCheckoutFlow) {
+      const hasSelectedItems = campaignItems.some(
+        (item) => Number(campaignItemQuantities[item.id]) > 0,
+      )
+      if (!hasSelectedItems) {
+        setFormMessage({
+          type: 'error',
+          text: 'Please select at least one campaign item with quantity',
+        })
+        return
+      }
+      if (campaignPledgeMode === 'prepaid_months' && campaignCheckout?.is_recurring) {
+        const months = Number(campaignPrepaidMonths)
+        if (!months || months < 1) {
+          setFormMessage({
+            type: 'error',
+            text: 'Please enter a valid number of prepaid months',
+          })
+          return
+        }
+      }
+    }
+
     if (!totalAmount || Number(totalAmount) <= 0 || Number(totalAmount) < 100) {
       setFormMessage({
         type: 'error',
-        text: isAppealCheckoutFlow
+        text: isCampaignCheckoutFlow
+          ? 'Please select campaign items for a total of at least 100 PKR'
+          : isAppealCheckoutFlow
           ? 'Please enter a valid donation amount (minimum 100 PKR)'
           : 'Please add donation items to the cart or enter a valid donation amount (minimum donation amount is 100 PKR)',
       })
@@ -764,13 +947,14 @@ const CheckoutForm = ({ testCheckout = false }) => {
     }
 
     if (
-      isRecurringDonationFrequency(formData.donation_frequency) &&
-      currentPayment !== STRIPE_DONATION_METHOD &&
-      currentPayment !== 'stripe'
+      isCampaignCheckoutFlow &&
+      campaignCheckout?.is_recurring &&
+      campaignPledgeMode === 'prepaid_months' &&
+      isRecurringDonationFrequency(formData.donation_frequency)
     ) {
       setFormMessage({
         type: 'error',
-        text: 'Recurring donations are only available with Stripe. Choose One-time or pay with Stripe.',
+        text: 'Prepaid multi-month pledges must use a one-time payment.',
       })
       return
     }
@@ -785,6 +969,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
 
     if (
       isRecurringDonationFrequency(formData.donation_frequency) &&
+      !isDailyDonationFrequency(formData.donation_frequency) &&
+      (currentPayment === STRIPE_DONATION_METHOD || currentPayment === 'stripe') &&
       formData.recurring_start_mode === RECURRING_START_CUSTOM &&
       !String(formData.recurring_start_date || '').trim()
     ) {
@@ -813,7 +999,12 @@ const CheckoutForm = ({ testCheckout = false }) => {
       let project_id = ''
       let project_name = ''
       
-      if (isProjectDonationsFlow) {
+      if (isCampaignCheckoutFlow) {
+        project_id = campaignCheckout?.project_id != null
+          ? String(campaignCheckout.project_id)
+          : ''
+        project_name = campaignCheckout?.title || ''
+      } else if (isProjectDonationsFlow) {
         // For project donations flow, get project info from first donation
         const donationsToUse = donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
         if (donationsToUse.length > 0) {
@@ -850,25 +1041,97 @@ const CheckoutForm = ({ testCheckout = false }) => {
         consent: recurring_consent,
       })
 
+      const isStripePayment =
+        currentPayment === 'stripe' || currentPayment === STRIPE_DONATION_METHOD
+
+      const campaignPledgeLines = isCampaignCheckoutFlow
+        ? campaignItems
+            .map((item) => ({
+              campaign_item_id: Number(item.id),
+              quantity: Number(campaignItemQuantities[item.id]) || 0,
+            }))
+            .filter((line) => line.campaign_item_id > 0 && line.quantity > 0)
+        : []
+
+      // Prepaid campaign only — regular recurring uses recurring_donations ledger
+      const enrollManualRecurring =
+        testCheckout &&
+        !isStripePayment &&
+        isCampaignCheckoutFlow &&
+        campaignCheckout?.is_recurring === true &&
+        campaignPledgeMode === 'prepaid_months'
+
+      const resolvedCampaignId = Number(campaignCheckout?.id ?? campaignIdFromQuery)
+      if (
+        isCampaignCheckoutFlow &&
+        (!Number.isFinite(resolvedCampaignId) || resolvedCampaignId <= 0)
+      ) {
+        setFormMessage({
+          type: 'error',
+          text: 'Campaign is still loading. Please wait a moment and try again.',
+        })
+        setIsLoading(null)
+        setIsSubmitting(false)
+        return
+      }
+
       const payload = {
         project_id: isAppealCheckoutFlow ? 'appeal' : project_id,
         project_name: isAppealCheckoutFlow
           ? appealLine?.projectTitle || appealsList.find((a) => String(a.id) === String(selectedAppealId))?.title || ''
           : project_name,
         ...formFieldsForPayload,
+        ...(isCampaignCheckoutFlow && {
+          campaign_id: resolvedCampaignId,
+          item_description: buildCampaignPledgeSummary(
+            campaignItems,
+            campaignItemQuantities,
+            campaignPledgeMode,
+            campaignPrepaidMonths,
+            campaignCheckout?.is_recurring === true,
+          ),
+          item_name:
+            campaignCheckout?.is_recurring && campaignPledgeMode === 'prepaid_months'
+              ? `Prepaid ${campaignPrepaidMonths}-month campaign pledge`
+              : campaignCheckout?.is_recurring
+                ? 'Monthly campaign pledge'
+                : 'Campaign donation',
+        }),
         ...(isQurbaniCheckout && {
           on_behalf_names: typeof on_behalf_names === 'string' ? on_behalf_names.trim() : ''
         }),
         donation_method: currentPayment,
-        // Card gateways are one-time only; never send recurring with alfalah/payfast/etc.
-        donation_frequency:
-          currentPayment === 'alfalah'
+        // Stripe = auto subscription; other gateways charge once (+ manual pledge enrollment)
+        donation_frequency: isCampaignCheckoutFlow
+          ? campaignCheckout?.is_recurring && campaignPledgeMode === 'prepaid_months'
+            ? 'once'
+            : !campaignCheckout?.is_recurring
+              ? 'once'
+              : formData.donation_frequency || paymentFrequency[currentPayment] || 'once'
+          : currentPayment === 'alfalah'
             ? 'once'
             : formData.donation_frequency || paymentFrequency[currentPayment] || 'once',
         donation_source: 'website',
         amount: totalAmount,
-        currency: (isOldDonationFormFlow || isFailedTransactionFlow) ? (donationData?.currency || 'PKR') : 'PKR',
+        currency: isCampaignCheckoutFlow
+          ? (campaignCheckout?.currency || 'PKR')
+          : (isOldDonationFormFlow || isFailedTransactionFlow)
+            ? (donationData?.currency || 'PKR')
+            : 'PKR',
         status: 'pending',
+        ...(enrollManualRecurring && {
+          enroll_manual_recurring: true,
+          pledge_mode: 'prepaid_months',
+          ...(campaignPledgeLines.length > 0 && {
+            campaign_pledge_lines: campaignPledgeLines,
+          }),
+          prepaid_months: Number(campaignPrepaidMonths) || 1,
+          recurring_consent: recurring_consent === true,
+        }),
+        // Consent for recurring (Stripe auto-charge or non-Stripe ledger + cron reminders)
+        ...(isRecurringDonationFrequency(formData.donation_frequency) && {
+          recurring_consent: recurring_consent === true,
+        }),
         // Include donation items for project donations flow
         ...(isProjectDonationsFlow && {
           donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
@@ -896,7 +1159,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
           ref: ref
         }),
         // UTM campaign tracking (captured from landing URL)
-        ...(utmParams && {
+        ...(utmParams && !isCampaignCheckoutFlow && {
           ...(() => {
             const { utm_source, utm_medium, utm_campaign } = utmParams || {}
             // Case-insensitive so ?utm_campaign=Qurbani2026 matches (same as qurbani2026)
@@ -912,12 +1175,14 @@ const CheckoutForm = ({ testCheckout = false }) => {
             }
           })()
         }),
-        // Stripe / stripe_embed: lowercase currency + recurring object when weekly/monthly
-        ...((currentPayment === 'stripe' || currentPayment === STRIPE_DONATION_METHOD) && {
+        // Stripe only: lowercase currency + recurring subscription object
+        ...(isStripePayment && {
           currency: String(
-            (isOldDonationFormFlow || isFailedTransactionFlow)
-              ? donationData?.currency || 'PKR'
-              : 'PKR',
+            isCampaignCheckoutFlow
+              ? campaignCheckout?.currency || 'PKR'
+              : (isOldDonationFormFlow || isFailedTransactionFlow)
+                ? donationData?.currency || 'PKR'
+                : 'PKR',
           ).toLowerCase(),
           ...(stripeRecurringPayload && {
             recurring: stripeRecurringPayload,
@@ -1076,6 +1341,28 @@ const CheckoutForm = ({ testCheckout = false }) => {
           </div>
         )}
 
+        {isCampaignCheckoutFlow && (
+          <CampaignCheckoutFields
+            campaignTitle={campaignCheckout?.title || ''}
+            loading={campaignItemsLoading}
+            items={campaignItems}
+            quantities={campaignItemQuantities}
+            onQuantityChange={(itemId, value) => {
+              if (value === '' || Number(value) >= 0) {
+                setCampaignItemQuantities((prev) => ({ ...prev, [itemId]: value }))
+              }
+            }}
+            pledgeMode={campaignPledgeMode}
+            onPledgeModeChange={setCampaignPledgeMode}
+            prepaidMonths={campaignPrepaidMonths}
+            onPrepaidMonthsChange={setCampaignPrepaidMonths}
+            currency={campaignCheckout?.currency || 'PKR'}
+            monthlyTotal={campaignMonthlyTotal}
+            checkoutTotal={campaignCheckoutTotal}
+            isRecurring={campaignCheckout?.is_recurring === true}
+          />
+        )}
+
         <div className="row">
           {isAppealCheckoutFlow && (
             <AppealCheckoutFields
@@ -1206,14 +1493,18 @@ const CheckoutForm = ({ testCheckout = false }) => {
           />
         </div>
 
-        {/* Donation frequency — recurring (Stripe); /test-checkout only */}
-        {testCheckout && (
+        {/* Donation frequency — recurring (Stripe); /test-checkout only; not for prepaid campaign */}
+        {testCheckout &&
+          !(isCampaignCheckoutFlow && campaignCheckout && !campaignCheckout.is_recurring) &&
+          !(isCampaignCheckoutFlow && campaignPledgeMode === 'prepaid_months') && (
         <div className="checkout-panel__recurring-block">
           <div className="checkout-panel__recurring-header">
             <h3 className="checkout-panel__recurring-title">
               Select frequency:{' '}
               <span className="checkout-panel__recurring-hint">
-                (Choose one-time or set up automatic giving with Stripe)
+                {isCampaignCheckoutFlow && campaignCheckout?.is_recurring
+                  ? '(Stripe = auto-charge · Other methods = pay once now + cron reminders)'
+                  : '(Stripe = auto-charge · Other methods = pay once now + cron reminders)'}
               </span>
             </h3>
           </div>
@@ -1221,6 +1512,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
           <div className="checkout-panel__freq-chips" role="group" aria-label="Donation frequency">
             {[
               { value: 'once', label: 'One-time' },
+              { value: 'daily', label: 'Daily' },
               { value: 'weekly', label: 'Weekly' },
               { value: 'monthly', label: 'Monthly' },
             ].map((opt) => (
@@ -1239,11 +1531,16 @@ const CheckoutForm = ({ testCheckout = false }) => {
                     donation_frequency: nextFrequency,
                     recurring_consent: isRecurringDonationFrequency(nextFrequency),
                     recurring_start_mode:
-                      nextFrequency === 'monthly'
-                        ? prev.recurring_start_mode
-                        : prev.recurring_start_mode === RECURRING_START_FIRST_OF_MONTH
-                          ? RECURRING_START_SAME_DATE
-                          : prev.recurring_start_mode,
+                      isDailyDonationFrequency(nextFrequency)
+                        ? RECURRING_START_SAME_DATE
+                        : nextFrequency === 'monthly'
+                          ? prev.recurring_start_mode
+                          : prev.recurring_start_mode === RECURRING_START_FIRST_OF_MONTH
+                            ? RECURRING_START_SAME_DATE
+                            : prev.recurring_start_mode,
+                    recurring_start_date: isDailyDonationFrequency(nextFrequency)
+                      ? ''
+                      : prev.recurring_start_date,
                   }))
                 }}
               >
@@ -1254,8 +1551,15 @@ const CheckoutForm = ({ testCheckout = false }) => {
 
           {isRecurringDonationFrequency(formData.donation_frequency) && (
             <div className="checkout-panel__recurring-details">
+              {!isDailyDonationFrequency(formData.donation_frequency) && (
+                <>
               <div className="checkout-panel__recurring-subheader">
-                <h4 className="checkout-panel__recurring-subtitle">Select recurring start date</h4>
+                <h4 className="checkout-panel__recurring-subtitle">
+                  Select recurring start date
+                  <span style={{ fontWeight: 400, color: '#6b7280', marginLeft: 6, fontSize: 13 }}>
+                    (Stripe auto-charge only)
+                  </span>
+                </h4>
               </div>
 
               <div className="checkout-panel__start-options" role="radiogroup" aria-label="Recurring start date">
@@ -1364,6 +1668,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
                   />
                 </div>
               )}
+                </>
+              )}
 
               <label
                 className={`checkout-panel__consent-card${
@@ -1437,8 +1743,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div> */}
 
-          {/* PayFast — production /checkout only */}
-          {!testCheckout && (
+          {/* PayFast — production checkout + test-checkout */}
           <div className="col-12">
             <div className="input-item">
               <div
@@ -1464,7 +1769,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
-          )}
 
           {/* Alfalah account (SMS + email OTAC) — disabled */}
           {/* <div className="col-md-6">
