@@ -183,7 +183,7 @@ function ChatbotWidget() {
               </div>
             )}
 
-            <div className="chatbot-widget__shortcut-card">
+            {/* <div className="chatbot-widget__shortcut-card">
               <p className="chatbot-widget__shortcut-title">
                 Here are some quick options to get started:
               </p>
@@ -210,7 +210,7 @@ function ChatbotWidget() {
                 <FaPhone />
                 Contact Us
               </button>
-            </div>
+            </div> */}
           </div>
 
           <form className="chatbot-widget__composer" onSubmit={handleSubmit}>
