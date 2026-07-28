@@ -126,7 +126,12 @@ const StickyQuickDonationForm = () => {
       title: "Apna Ghar", 
       icon: apnaghar,
       category: "Sadqa" ,
-      initiatives: [] 
+      initiatives: [
+           { id: 'apna-ghar-build-home', title: 'Brick', subtitle: 'Per Brick', price: 1000, icon: apnaghar,
+          description: 'This initiative is aimed at deserving widows and their orphaned children who lack stable housing and basic security. The project provides a safe place to live with dignity.',
+          duration: 'One time'
+        }
+      ] 
     },
     { 
       id: 'gaza-relief', 
