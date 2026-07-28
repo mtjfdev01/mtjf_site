@@ -11,6 +11,7 @@ import { Winter } from "./pages/Winter";
 import StickyQuickDonationForm from "./components/donation/StickyQuickDonationForm";
 import PromoPopup from './components/promoPopup';
 import PublicNoticePopup from './components/publicNoticePopup';
+import ChatbotWidget from './components/chatbot/ChatbotWidget';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
@@ -74,6 +75,16 @@ function ScrollToTop() {
   return null;
 }
 
+function ChatbotGate() {
+  const { pathname } = useLocation();
+
+  if (pathname !== '/test_bot') {
+    return null;
+  }
+
+  return <ChatbotWidget />;
+}
+
 function App() {
 
   useEffect(() => {
@@ -113,6 +124,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/test_bot" element={<Home />} />
               <Route path="/testinfo" element={<Home showHomeInfoSection={true} />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
@@ -168,6 +180,7 @@ function App() {
             </Routes>
           </Suspense>
           <AnimatedButton />
+          <ChatbotGate />
         </DonationProvider>
       </CartProvider>
     </Router>

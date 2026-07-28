@@ -96,6 +96,7 @@ const DEFAULT_FORM = {
   city: '',
   address: '',
   on_behalf_names: '',
+  jazzcash_cnic: '',
   notification_subscription: true
 }
 
@@ -104,6 +105,7 @@ const paymentFrequency = {
   blinq: 'once',
   payfast: 'once',
   meezan: 'once',
+  jazzcash: 'once',
   stripe: 'once',
   stripe_embed: 'once',
   alfalah: 'once',
@@ -893,6 +895,18 @@ const CheckoutForm = ({ testCheckout = false }) => {
       return
     }
 
+    if (currentPayment === 'jazzcash') {
+      const cnicDigits = String(formData.jazzcash_cnic || '').replace(/\D/g, '')
+      if (!/^\d{6}$/.test(cnicDigits)) {
+        setFormMessage({
+          type: 'error',
+          text: 'Please enter the last 6 digits of your CNIC for JazzCash payment',
+        })
+        document.querySelector('input[name="jazzcash_cnic"]')?.focus()
+        return
+      }
+    }
+
     // Use amount from context (already calculated from all sources)
     // Fallback to totalAmountFromState if amount is 0 and we have state
     let totalAmount = amount || 0
@@ -1193,6 +1207,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
         ...(currentPayment === 'alfalah' && {
           alfalah_transaction_type: '3',
         }),
+        ...(currentPayment === 'jazzcash' && {
+          jazzcash_cnic: String(formData.jazzcash_cnic || '').replace(/\D/g, ''),
+        }),
       }
       
       console.log('payload', payload)
@@ -1240,6 +1257,23 @@ const CheckoutForm = ({ testCheckout = false }) => {
           })
         }
         setIsLoading(null)
+      } else if (currentPayment === 'jazzcash') {
+        const data = response.data?.data || response.data
+        setIsLoading(null)
+        const donationId = data?.donationId || data?.id
+        if (data?.paymentCompleted || data?.status === 'completed') {
+          navigate(
+            `/thank-you?donationId=${donationId || ''}&status=success`,
+          )
+        } else {
+          setFormMessage({
+            type: 'error',
+            text:
+              data?.pp_ResponseMessage ||
+              response.data?.message ||
+              'JazzCash payment failed. Please check your wallet balance and try again.',
+          })
+        }
       } else if (currentPayment === STRIPE_DONATION_METHOD || currentPayment === 'stripe_embed') {
         const data = response.data?.data || response.data
         const clientSecret = data?.clientSecret
@@ -1417,6 +1451,22 @@ const CheckoutForm = ({ testCheckout = false }) => {
               />
             </div>
           </div>
+
+          {/* JazzCash CNIC field — hidden while JazzCash payment is disabled */}
+          {/* <div className="col-md-6">
+            <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
+              <input
+                type="text"
+                name="jazzcash_cnic"
+                placeholder="CNIC last 6 digits (for JazzCash)"
+                value={formData.jazzcash_cnic}
+                onChange={handleInputChange}
+                maxLength={6}
+                inputMode="numeric"
+                className="checkout-panel__input"
+              />
+            </div>
+          </div> */}
 
           <div className="col-md-6">
             <span className="donation_type_select checkout-panel__field">
@@ -1769,6 +1819,33 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
+
+          {/* JazzCash MWallet — disabled for now */}
+          {/* <div className="col-12">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'jazzcash')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay by JazzCash</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
+                </div>
+                {isLoading === 'jazzcash' && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div> */}
 
           {/* Alfalah account (SMS + email OTAC) — disabled */}
           {/* <div className="col-md-6">
