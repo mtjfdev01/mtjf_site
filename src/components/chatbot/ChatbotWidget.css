@@ -2,7 +2,7 @@
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 1200;
+  z-index: 10001;
 }
 
 .chatbot-widget--open {
