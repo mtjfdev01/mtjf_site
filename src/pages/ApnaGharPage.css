@@ -1,0 +1,160 @@
+/* src/pages/ApnaGharPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+.apna-ghar-page {
+  /* Updated MTJ Foundation Brand Color Palette */
+  --bg: #FFFFFF;
+  --bg-alt: #F3F6F2;
+  --bg-mint: #E7F7F4;
+  
+  --forest: #004D40;         /* Primary Deep Teal */
+  --forest-deep: #1A2A27;    /* Primary Heading Color */
+  --cyan-primary: #38B6FF;   /* MTJ Sky Blue Accent */
+  --sage: #4EAF4E;           /* Accent Green */
+  
+  --gold: #38B6FF;           /* Eyebrows converted to MTJ Cyan */
+  --gold-deep: #38B6FF;
+  
+  --ink: #1B2524;            /* Main Text Dark Charcoal */
+  --ink-soft: #4A5568;       /* Paragraph Slate Gray */
+  
+  --card: #FFFFFF;
+  --line: rgba(0, 77, 64, 0.12);
+  --radius: 6px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings & Brand Typography Rules */
+.apna-ghar-page h1, 
+.apna-ghar-page h2, 
+.apna-ghar-page h3, 
+.apna-ghar-page .display {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--forest-deep);
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.apna-ghar-page .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--cyan-primary);
+  font-weight: 600;
+}
+
+.apna-ghar-page .wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.apna-ghar-page section {
+  padding: 72px 0;
+}
+
+/* Background Alternating Section Tints */
+.apna-ghar-page section:nth-child(even) {
+  background-color: var(--bg-alt);
+}
+
+@media (max-width: 720px) {
+  .apna-ghar-page section {
+    padding: 48px 0;
+  }
+  .apna-ghar-page .wrap {
+    padding: 0 20px;
+  }
+}
+
+.apna-ghar-page .rule {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+
+/* Shared Buttons Aligned with MTJ Action Colors */
+.apna-ghar-page .btn {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.apna-ghar-page .btn-primary {
+  background: var(--cyan-primary);
+  color: #FFFFFF;
+}
+
+.apna-ghar-page .btn-primary:hover {
+  background: #25a4ed;
+}
+
+.apna-ghar-page .btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--forest);
+  color: var(--forest);
+}
+
+.apna-ghar-page .btn-outline:hover {
+  background: var(--forest);
+  color: #FFFFFF;
+}
+
+.apna-ghar-page .btn-gold {
+  background: var(--sage);
+  color: #FFFFFF;
+}
+
+.apna-ghar-page .btn-gold:hover {
+  background: #3e963e;
+}
+
+.apna-ghar-page .btn-white {
+  background: #FFFFFF;
+  color: var(--forest-deep);
+}
+
+.apna-ghar-page .btn-white:hover {
+  background: var(--bg-alt);
+}
+
+/* Section Head Formatting */
+.apna-ghar-page .section-head {
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+.apna-ghar-page .section-head h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-top: 8px;
+  color: var(--forest-deep);
+}
+
+.apna-ghar-page .section-head p.lede {
+  color: var(--ink-soft);
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+/* Table Header/Footer Sync for Impact Component */
+.apna-ghar-page table thead {
+  background-color: var(--forest) !important;
+  color: #FFFFFF !important;
+}

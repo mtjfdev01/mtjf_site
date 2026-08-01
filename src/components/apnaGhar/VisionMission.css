@@ -1,0 +1,35 @@
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.vm-card {
+  background: var(--card);
+  padding: 38px 36px;
+}
+
+.vm-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.vm-card p {
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  font-size: 0.94rem;
+}
+
+.vm-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .vm-grid {
+    grid-template-columns: 1fr;
+  }
+}

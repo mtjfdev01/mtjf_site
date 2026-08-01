@@ -1,0 +1,88 @@
+.donate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.donate-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 26px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.donate-card .icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(173, 138, 63, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donate-card .icon-circle svg {
+  width: 22px;
+  height: 22px;
+  color: var(--gold-deep);
+}
+
+.donate-card h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--forest-deep);
+}
+
+.donate-card .tag {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
+.donate-price {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.donate-price .amount {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  color: var(--forest-deep);
+  font-size: 0.9rem;
+}
+
+.add-btn {
+  background: #00A3E0;
+  color: #fff;
+  border: none;
+  padding: 9px 15px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: var(--forest-deep);
+}
+
+@media (max-width: 900px) {
+  .donate-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
+}
