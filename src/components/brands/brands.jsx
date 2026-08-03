@@ -75,7 +75,7 @@ const brandsData = [
     //     alt: 'SDG Logo'
     // },
     {
-            image:  logo10,
+        image:  logo10,
         link: 'https://sdgs.un.org/goals',
         alt: 'SDG Logo'
     },
@@ -89,18 +89,22 @@ const brandsData = [
 ];
 
 
-const BrandArea = ({ className = '', speed = 70, brands, title = 'Commitment to Global Goals', itemWidth, mobWidth }) => {
+const BrandArea = ({ className = '', variant = '', speed = 70, brands, title = 'Commitment to Global Goals', itemWidth, mobWidth }) => {
   const data = brands && brands.length > 0 ? brands : brandsData;
 
   // Duplicate once for seamless loop
-  const marqueeItems = useMemo(() => [...data, ...data], [data]);
+  // const marqueeItems = useMemo(() => [...data, ...data], [data]);
+  const marqueeItems = useMemo(() => [...data, ...data, ...data, ...data], [data]);
 
   // Ensure a sensible duration (don’t let 500s look “frozen”)
   const durationSec = Math.max(1, Number(speed) || 20);
 
+  // Dynamic class assignment for scoped variants
+  const variantClass = variant ? `brand-area-${variant}` : '';
+
   return (
     <section
-      className={`brands-section ${className}`}
+      className={`brands-section ${variantClass} ${className}`.trim()}
       // drive the CSS var that the animation uses
       style={{ ['--duration']: `${durationSec}s`, ...(itemWidth ? { ['--item-width']: `${itemWidth}px` } : {}), ...(mobWidth ? { ['--item-mob-width']: `${mobWidth}px` } : {}) }}
     >

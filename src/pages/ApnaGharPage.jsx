@@ -39,7 +39,7 @@ const ApnaGharPage = () => {
         <section className="wrap">
           <Impact />
         </section>
-           <BrandArea />
+           <BrandArea variant="small" />
         <section className="wrap">
           <CtaBanner />
         </section>

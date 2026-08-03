@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CtaBanner.css';
 
 export default function CtaBanner() {
@@ -9,9 +10,9 @@ export default function CtaBanner() {
           <h3>Looking for a dream Shelter?</h3>
           <p>We can help you, We realize your dream of a new Shelter</p>
         </div>
-        <a href="#contact" className="btn btn-white">
+        <Link to="/contact" className="btn btn-white">
           Get Your Shelter &nbsp;&rarr;
-        </a>
+        </Link>
       </div>
     </div>
   );

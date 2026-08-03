@@ -508,11 +508,11 @@ const DonationForm = ({
                     }
                   }}
                 />
-                {formData.customAmount && Number(formData.customAmount) > 0 && (
+                {/* {formData.customAmount && Number(formData.customAmount) > 0 && (
                   <small className="donation-form-amount-preview">
                     {formatCurrency(Number(formData.customAmount), effectiveCurrency)}
                   </small>
-                )}
+                )} */}
               </div>
             )}
 

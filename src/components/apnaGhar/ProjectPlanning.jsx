@@ -4,7 +4,7 @@ import './ProjectPlanning.css';
 
 export default function ProjectPlanning() {
   const [activeTab, setActiveTab] = useState('plan-1');
-  const [activeSubTab, setActiveSubTab] = useState('mosque'); // Selected Mosque tab
+  const [activeSubTab, setActiveSubTab] = useState('community-map'); // Selected Mosque tab
 
   const currentSubTabData = subTabsContentData[activeSubTab];
 

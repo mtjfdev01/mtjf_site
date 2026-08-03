@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDonation } from '../../contexts/DonationContext';
 import './QuickDonate.css';
 
 const donateItems = [
   {
+    id: 'apna-ghar-brick',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M3 11l9-7 9 7" />
@@ -12,8 +15,10 @@ const donateItems = [
     title: 'Lay the Foundation of a New Life',
     tag: 'Donate a Brick',
     amount: '500 PKR',
+    numericAmount: 500,
   },
   {
+    id: 'apna-ghar-wall',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <rect x="4" y="3" width="16" height="18" rx="1" />
@@ -23,8 +28,10 @@ const donateItems = [
     title: 'Raise Walls of Safety & Strength',
     tag: 'Contribute Toward a Wall',
     amount: '2,500 PKR',
+    numericAmount: 2500,
   },
   {
+    id: 'apna-ghar-door',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <rect x="6" y="3" width="12" height="18" rx="1" />
@@ -34,8 +41,10 @@ const donateItems = [
     title: 'Open Doors to a Brighter Future',
     tag: 'Sponsor a Door',
     amount: '1,500 PKR',
+    numericAmount: 1500,
   },
   {
+    id: 'apna-ghar-roof',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M3 11l9-7 9 7" />
@@ -45,8 +54,10 @@ const donateItems = [
     title: 'Shelter Them Under a Roof of Love',
     tag: 'Fund a Roof',
     amount: '5,000 PKR',
+    numericAmount: 5000,
   },
   {
+    id: 'apna-ghar-window',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <rect x="4" y="6" width="16" height="12" rx="1" />
@@ -56,10 +67,33 @@ const donateItems = [
     title: 'Let Hope Shine Through Their Window',
     tag: 'Gift a Window',
     amount: '\u00A0',
+    numericAmount: 1000, // Default fallback amount for custom option
   },
 ];
 
 export default function QuickDonate() {
+  const navigate = useNavigate();
+  const { updateProjectDonation, donationType } = useDonation();
+
+  const handleAddToCart = (item) => {
+    const donationItem = {
+      projectId: 'apna-ghar',
+      initiativeId: item.id || `quick-donate-${Date.now()}`,
+      projectTitle: 'Apna Ghar',
+      initiativeTitle: item.tag,
+      quantity: 1,
+      donationType: (donationType || 'SADQA').toUpperCase(),
+      basePrice: item.numericAmount,
+      totalAmount: item.numericAmount,
+    };
+
+    // 1. Save item to donation context state
+    updateProjectDonation(donationItem);
+
+    // 2. Navigate user directly to checkout
+    navigate('/checkout');
+  };
+
   return (
     <section id="donate">
       <div className="wrap">
@@ -75,7 +109,13 @@ export default function QuickDonate() {
               <p className="tag">{item.tag}</p>
               <div className="donate-price">
                 <span className="amount">{item.amount}</span>
-                <button className="add-btn">Add to Cart</button>
+                <button 
+                  type="button" 
+                  className="add-btn"
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           ))}
