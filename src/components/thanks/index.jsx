@@ -135,7 +135,7 @@ const Thanks = () => {
         // title="Thanks"
         image={image}
       />
-      {(donationId || donationAmount) && (
+      {/* {(donationId || donationAmount) && (
       <div style={{
         minHeight: '60vh',
         display: 'flex',
@@ -229,7 +229,7 @@ const Thanks = () => {
           </div>
         )}
       </div>
-      )}
+      )} */}
       <Footer />
     </>
   )
