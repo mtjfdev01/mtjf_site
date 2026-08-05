@@ -1452,8 +1452,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash CNIC field — hidden while JazzCash payment is disabled */}
-          {/* <div className="col-md-6">
+          {/* JazzCash CNIC — /test-checkout only */}
+          {testCheckout && (
+          <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
                 type="text"
@@ -1466,7 +1467,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 className="checkout-panel__input"
               />
             </div>
-          </div> */}
+          </div>
+          )}
 
           <div className="col-md-6">
             <span className="donation_type_select checkout-panel__field">
@@ -1820,8 +1822,9 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash MWallet — disabled for now */}
-          {/* <div className="col-12">
+          {/* JazzCash MWallet — /test-checkout only */}
+          {testCheckout && (
+          <div className="col-12">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -1845,7 +1848,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
+          )}
 
           {/* Alfalah account (SMS + email OTAC) — disabled */}
           {/* <div className="col-md-6">
