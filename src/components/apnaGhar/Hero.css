@@ -86,9 +86,11 @@ blockquote.hadith cite {
   box-shadow: var(--shadow);
 }
 
-.hero-art svg {
+/* Updated selector from svg to img for responsiveness */
+.hero-art img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -148,6 +150,7 @@ blockquote.hadith cite {
     border-top: none;
   }
 }
+
 /* Play Button Fix */
 .play-circle {
   cursor: pointer;

@@ -1,5 +1,9 @@
 import React from 'react';
+import objectives from '../../assets/img/apnaGhar/objectives-apna-ghar.jpeg';
 import './About.css';
+
+// Import your image here, or pass an image URL string directly to src
+// import aboutImage from './path-to-your-image.jpg'; 
 
 export default function About() {
   return (
@@ -7,19 +11,11 @@ export default function About() {
       <div className="wrap">
         <div className="about-grid">
           <div className="about-photo">
-            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-              {/* Neutral Light Background */}
-              <rect width="400" height="500" fill="#F3F6F2" />
-              
-              {/* Top Circle: MTJ Brand Green (#009A44) */}
-              <circle cx="200" cy="190" r="66" fill="#009A44" opacity="0.95" />
-              
-              {/* Left Column: #00A3E0 */}
-              <rect x="122" y="258" width="68" height="140" rx="8" fill="#00A3E0" />
-              
-              {/* Right Column: MTJ Brand Gold (#EAAA00) */}
-              <rect x="210" y="278" width="68" height="120" rx="8" fill="#EAAA00" opacity="0.95" />
-            </svg>
+            <img 
+              src={objectives}
+              alt="APNA GHAR Project Community" 
+              loading="lazy"
+            />
           </div>
           <div>
             <span className="eyebrow">Objectives</span>

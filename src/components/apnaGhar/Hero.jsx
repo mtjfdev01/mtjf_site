@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import SupportHero from '../../assets/img/apnaGhar/support-hero.jpg';
+
+import './About.css';
 import './Hero.css';
 
 export default function Hero() {
@@ -44,30 +47,13 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Side SVG Art */}
+            {/* Right Side Image Art Container */}
             <div className="hero-art">
-              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-                <rect width="400" height="400" fill="#004D40" />
-                <g stroke="#EAAA00" strokeWidth="1.6" opacity="0.85">
-                  <rect x="40" y="60" width="80" height="46" fill="none" />
-                  <rect x="140" y="60" width="80" height="46" fill="none" />
-                  <rect x="240" y="60" width="80" height="46" fill="none" />
-                  <rect x="40" y="126" width="80" height="46" fill="none" />
-                  <rect x="140" y="126" width="80" height="46" fill="none" />
-                  <rect x="240" y="126" width="80" height="46" fill="none" />
-                  <rect x="90" y="192" width="80" height="46" fill="none" />
-                  <rect x="190" y="192" width="80" height="46" fill="none" />
-                  <rect x="40" y="258" width="80" height="46" fill="none" />
-                  <rect x="140" y="258" width="80" height="46" fill="none" />
-                  <rect x="240" y="258" width="80" height="46" fill="none" />
-                  <rect x="90" y="324" width="80" height="40" fill="none" />
-                  <rect x="190" y="324" width="80" height="40" fill="none" />
-                </g>
-                <g opacity="0.6" stroke="#009A44" strokeWidth="1.5">
-                  <line x1="0" y1="30" x2="400" y2="30" />
-                  <line x1="0" y1="380" x2="400" y2="380" />
-                </g>
-              </svg>
+              <img 
+                src={SupportHero }
+                alt="APNA GHAR Project Support for Widows and Orphans" 
+                loading="eager"
+              />
             </div>
           </div>
 

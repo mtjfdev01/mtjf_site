@@ -12,9 +12,12 @@
   box-shadow: var(--shadow);
 }
 
-.about-photo svg {
+/* Updated selector from svg to img */
+.about-photo img {
   width: 100%;
   height: 100%;
+  /* object-fit: cover; */
+  display: block;
 }
 
 .objective-grid {
