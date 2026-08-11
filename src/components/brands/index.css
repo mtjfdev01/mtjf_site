@@ -140,8 +140,8 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
 Brand Area - Scoped Small Variant
 ---------------------------------------------------------------*/
 .brands-section.brand-area-small {
-  --item-width: 80px;
-  --item-mob-width: 60px;
+  --item-width: 130px;
+  --item-mob-width: 100px;
   --gap: 20px;
   padding: 20px 0;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import objectives from '../../assets/img/apnaGhar/objectives-apna-ghar.jpeg';
+import objectives from '../../assets/img/apnaGhar/desktop-image.webp';
 import './About.css';
 
 // Import your image here, or pass an image URL string directly to src
