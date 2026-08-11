@@ -56,6 +56,8 @@ const AppealsListing = lazy(() => import("./pages/AppealsListing"));
 const AppealDetail = lazy(() => import("./pages/AppealDetail"));
 const NewFooterPage = lazy(() => import("./pages/NewFooterPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const ApnaGharPage = lazy(() => import("./pages/ApnaGharPage"));
+
 
 
 // const QuickBlogs = lazy(() => import("./components/quickblogs"));
@@ -176,6 +178,7 @@ function App() {
               <Route path="/donor/donations/:id" element={<DonorDonationView />} />
               <Route path="/new_footer" element={<NewFooterPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />}/>
+              <Route path="/apna-ghar" element={<ApnaGharPage />} />
               
             </Routes>
           </Suspense>

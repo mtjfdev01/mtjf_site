@@ -1,0 +1,596 @@
+/* Navigation Tabs */
+.tabs-nav {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line, #e5e7eb);
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--ink-soft, #6b7280);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 20px 16px 20px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  color: var(--forest-deep, #111827);
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold, #4F7A5C);
+}
+
+/* Sub Tabs Navigation Bar */
+.sub-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  padding-top: 4px;
+}
+
+.sub-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink, #374151);
+  cursor: pointer;
+  position: relative;
+  padding: 4px 0 10px 0;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.sub-tab-btn:hover,
+.sub-tab-btn.active {
+  color: #4F7A5C;
+}
+
+.sub-tab-btn.active {
+  font-weight: 600;
+}
+
+/* Active Indicator with Center Dot Node */
+.sub-tab-btn .active-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: #4F7A5C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-tab-btn .active-indicator .dot-node {
+  width: 5px;
+  height: 5px;
+  background-color: #4F7A5C;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* -------------------------------------------------------------
+   HOME & MOSQUE TAB - SIDE BY SIDE LAYOUT (Base Styles)
+   ------------------------------------------------------------- */
+.side-by-side-container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feature-info-card {
+  background-color: #f2f6f6;
+  border-radius: 6px;
+  padding: 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.feature-info-card h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 18px 0;
+}
+
+.feature-info-card .feature-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 24px 0;
+}
+
+.feature-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-bullets li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.feature-bullets li::before {
+  content: "•";
+  color: #4b5563;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 4px;
+  top: -3px;
+}
+
+.floorplan-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.floorplan-image-wrapper picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.floorplan-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Map Placeholder Styling */
+.map-placeholder-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.map-placeholder-box h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------------------------------------
+   DESKTOP VIEW (min-width: 901px)
+   ------------------------------------------------------------- */
+@media (min-width: 901px) {
+  .side-by-side-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+    margin-top: 20px;
+  }
+
+  .feature-info-card {
+    flex: 0 0 46%;
+    max-width: 46%;
+    padding: 48px 40px;
+  }
+
+  /* Desktop View: Icon Badge Hidden */
+  .feature-info-card .icon-badge {
+    display: none !important;
+  }
+
+  .floorplan-image-wrapper {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .map-placeholder-box {
+    justify-content: center;
+    padding-left: 20px;
+  }
+}
+
+/* -------------------------------------------------------------
+   MOBILE VIEW (max-width: 900px)
+   ------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .side-by-side-container {
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .feature-info-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 32px 24px;
+  }
+
+  /* Mobile View: Icon Badge Visible (Top Right) */
+  .feature-info-card .icon-badge {
+    display: flex;
+    position: absolute;
+    top: -20px;
+    right: 12px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #5c9c74;
+    border: 4px solid #f2f6f6;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .floorplan-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  .map-placeholder-box {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .map-placeholder-box h3 {
+    font-size: 1.35rem;
+    text-align: left;
+  }
+}
+
+/* -------------------------------------------------------------
+   MOBILE SPECIFIC TABS FIX (max-width: 768px)
+   ------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Main Nav Tabs: 2 Columns x 2 Rows */
+  .tabs-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px 10px !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .tab-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    padding: 10px 4px 14px 4px !important;
+    font-size: 0.82rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    flex: none !important;
+  }
+
+  .tab-btn.active::after {
+    left: 10% !important;
+    right: 10% !important;
+    bottom: 0 !important;
+    height: 2px !important;
+  }
+
+  /* Sub Tabs Navigation: Multi-line Centered Wrapping */
+  .sub-tabs-nav {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px 16px !important;
+    width: 100% !important;
+    margin-bottom: 24px !important;
+    padding: 4px 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .sub-tab-btn {
+    flex: 0 0 auto !important;
+    padding: 4px 6px 10px 6px !important;
+    font-size: 0.86rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* -------------------------------------------------------------
+   COMMUNITY MAP & OTHER TABS (Untouched & Preserved)
+   ------------------------------------------------------------- */
+.map-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.map-image-wrapper {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.map-image-wrapper picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.community-map-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Apna Ghar Detail Card */
+.apna-ghar-card {
+  width: 100%;
+  background: #f4f7f6;
+  border-radius: 8px;
+  padding: 36px 40px;
+  box-sizing: border-box;
+}
+
+.apna-ghar-card h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+
+.apna-ghar-card .card-description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0 0 32px 0;
+}
+
+.info-dotted-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dotted-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.dotted-item .label {
+  color: #374151;
+  font-weight: 500;
+  white-space: nowrap;
+  padding-right: 12px;
+}
+
+.dotted-item .dots {
+  flex-grow: 1;
+  border-bottom: 2px dotted #9ca3af;
+  margin: 0 4px;
+  position: relative;
+  top: -4px;
+}
+
+.dotted-item .val {
+  color: #111827;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-left: 12px;
+}
+
+.sub-tab-placeholder {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--ink-soft);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: fade 0.25s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+}
+
+table.data th {
+  background: #00A3E0;
+  color: #fff;
+  text-align: left;
+  padding: 14px 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+table.data td {
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+table.data tr.total td {
+  font-weight: 700;
+  background: var(--bg-alt);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.table-note {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.elig-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.elig-card {
+  background: var(--card);
+  padding: 24px 22px;
+}
+
+.elig-card h4 {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--forest-deep);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.elig-card p {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.sdg-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sdg-badge {
+  width: 108px;
+  height: 108px;
+  border-radius: var(--radius);
+  padding: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Work Sans', sans-serif;
+  flex: none;
+}
+
+.sdg-badge .n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.sdg-badge .t {
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.sdg-hub {
+  width: 108px;
+  height: 108px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--forest-deep);
+  letter-spacing: 0.03em;
+}
+
+/* Responsive Breakpoints for Other Components */
+@media (max-width: 900px) {
+  .elig-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .apna-ghar-card {
+    padding: 24px 20px;
+  }
+
+  .dotted-item {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .elig-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dotted-item .dots {
+    margin: 0 2px;
+  }
+}

@@ -136,3 +136,38 @@ Brands Section - Modern marquee (CSS only, no <marquee>)
   @media (max-width: 576px)  {
     .brands-section { --gap: 20px; }
   }
+  /*--------------------------------------------------------------
+Brand Area - Scoped Small Variant
+---------------------------------------------------------------*/
+.brands-section.brand-area-small {
+  --item-width: 80px;
+  --item-mob-width: 60px;
+  --gap: 20px;
+  padding: 20px 0;
+}
+
+.brands-section.brand-area-small .brand-item {
+  width: var(--item-width, 80px);
+  height: var(--item-width, 80px);
+}
+
+.brands-section.brand-area-small .brand-item img {
+  max-width: var(--item-width, 80px);
+  max-height: var(--item-width, 80px);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 992px) {
+  .brands-section.brand-area-small {
+    --gap: 14px;
+  }
+  .brands-section.brand-area-small .brand-item {
+    width: var(--item-mob-width, 60px);
+    height: var(--item-mob-width, 60px);
+  }
+  .brands-section.brand-area-small .brand-item img {
+    max-width: var(--item-mob-width, 60px);
+    max-height: var(--item-mob-width, 60px);
+  }
+}
