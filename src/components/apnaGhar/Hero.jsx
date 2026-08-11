@@ -22,13 +22,13 @@ export default function Hero() {
                 <span className="eyebrow">A Shelter of Dignity for Widows, Abandoned Women &amp; Orphans</span>
               </div>
               <h1>
-                Support a Mother,<br />
-                Strengthen <span className="accent">Generations</span>
+                <span className="accent">More than shelter</span> <br />
               </h1>
+              <p>a community raised the way the Ansar raised theirs:<br />
+                with open hearts and open homes.</p>
               <blockquote className="hadith">
                 <p>The Prophet ﷺ said: &ldquo;The best house is the one that treats orphans well.&rdquo;</p>
                 <cite>Jami at-Tirmidhi 1917</cite>
-                <p>More than shelter — a community raised the way the Ansar raised theirs: with open hearts and open homes.</p>
               </blockquote>
               <div className="hero-ctas">
                 <a href="#donate" className="btn btn-gold">Donate Now</a>
@@ -50,7 +50,7 @@ export default function Hero() {
             {/* Right Side Image Art Container */}
             <div className="hero-art">
               <img 
-                src={SupportHero }
+                src={SupportHero}
                 alt="APNA GHAR Project Support for Widows and Orphans" 
                 loading="eager"
               />
