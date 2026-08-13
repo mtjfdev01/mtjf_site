@@ -1949,8 +1949,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
           </div>
           )}
 
-          {/* Bank Alfalah — /test-checkout only */}
-          {testCheckout && (
+          {/* Bank Alfalah — production checkout + test-checkout */}
           <div className="col-12">
             <div className="input-item">
               <div
@@ -1976,7 +1975,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
-          )}
         </div>
       </form>
     </section>
