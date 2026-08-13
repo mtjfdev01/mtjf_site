@@ -1,10 +1,12 @@
 // CRA ES6 Imports for Assets (src/assets/...)
-import desktopMapImg from '../assets/img/apnaGhar/desktop-image.webp';
-import mobileMapImg from '../assets/img/apnaGhar/mobile-image.webp';
+import desktopMapImg from '../assets/img/apnaGhar/objectives-apna-ghar.jpeg';
+// import mobileMapImg from '../assets/img/apnaGhar/mobile-image.webp';
 
 // Home Tab Floor Plan Image Imports
-import homeFloorPlanDesktopImg from '../assets/img/apnaGhar/home-tab.jpg';
-import homeFloorPlanMobileImg from '../assets/img/apnaGhar/home-tab.jpg';
+import homeFloorPlanDesktopImg from '../assets/img/apnaGhar/home-tab.jpeg';
+import homeFloorPlanMobileImg from '../assets/img/apnaGhar/home-tab.jpeg';
+import mosque from '../assets/img/apnaGhar/mosque.png';
+import school from '../assets/img/apnaGhar/school.png';
 
 export const subTabsData = [
   { id: 'community-map', label: 'Community Map' },
@@ -21,7 +23,7 @@ export const subTabsContentData = {
     type: 'map-card',
     images: {
       desktopImg: desktopMapImg,
-      mobileImg: mobileMapImg,
+      mobileImg: desktopMapImg,
     },
     cardData: {
       title: 'Apna Ghar',
@@ -58,8 +60,12 @@ export const subTabsContentData = {
   // 3. Mosque Tab Data
   'mosque': {
     type: 'side-by-side',
-    isPlaceholderMap: true,
-    placeholderText: 'Map Will be uploaded soon...',
+     images: {
+      desktopImg: mosque,
+      mobileImg: mosque,
+    },
+    // isPlaceholderMap: true,
+    // placeholderText: 'Map Will be uploaded soon...',
     cardData: {
       title: 'Mosque',
       description: 'Community mosque serving residents and local community with:',
@@ -75,8 +81,12 @@ export const subTabsContentData = {
   // 4. Hasnaing Dream School Tab Data
   'hasnaing-school': {
     type: 'side-by-side',
-    isPlaceholderMap: true,
-    placeholderText: 'Map Will be uploaded soon...',
+      images: {
+      desktopImg: school,
+      mobileImg: school,
+    },
+    // isPlaceholderMap: true,
+    // placeholderText: 'Map Will be uploaded soon...',
     cardData: {
       title: 'Al-Hasnain Dream School',
       description: 'Comprehensive educational institution offering:',
@@ -92,8 +102,12 @@ export const subTabsContentData = {
   // 5. Community Center Tab Data
   'community-center': {
     type: 'side-by-side',
-    isPlaceholderMap: true,
-    placeholderText: 'Map Will be uploaded soon...',
+      images: {
+      desktopImg: homeFloorPlanDesktopImg,
+      mobileImg: homeFloorPlanMobileImg,
+    },
+    // isPlaceholderMap: true,
+    // placeholderText: 'Map Will be uploaded soon...',
     cardData: {
       title: 'Community Center',
       description: 'Dedicated space for community development and empowerment:',
@@ -109,8 +123,12 @@ export const subTabsContentData = {
   // 6. Livestock Farm Tab Data
   'livestock-farm': {
     type: 'side-by-side',
-    isPlaceholderMap: true,
-    placeholderText: 'Map Will be uploaded soon...',
+      images: {
+      desktopImg: homeFloorPlanDesktopImg,
+      mobileImg: homeFloorPlanMobileImg,
+    },
+    // isPlaceholderMap: true,
+    // placeholderText: 'Map Will be uploaded soon...',
     cardData: {
       title: 'Dairy & Livestock Farm',
       description: 'DAIRY & LIVESTOCK FARM (200+ ANIMALS)',
