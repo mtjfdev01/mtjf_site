@@ -14,6 +14,7 @@ import PublicNoticePopup from './components/publicNoticePopup';
 import ChatbotWidget from './components/chatbot/ChatbotWidget';
 import ramzanZakatWebPopup from './assets/img/zakat/ramzan_zakat_web_popup.webp';
 import ramzanZakatMobPopup from './assets/img/zakat/ramzan_zakat_mob_popup.webp';
+import augustPopup from './assets/img/hero/august_popup.webp';
 import GlobeSection from "./components/globe/GlobeSection";
 import CampaignTracker from './components/analytics/CampaignTracker'
 
@@ -100,6 +101,18 @@ function App() {
         <DonationProvider>
           <ScrollToTop />
           <CampaignTracker />
+
+            <PromoPopup
+            routes={['/', '/home']}
+            redirectUrl=""
+            desktopImage={augustPopup} 
+            mobileImage={augustPopup}
+            bannerStyle="standard"
+            storageKey="august_promo_popup_shown"
+            showOnce={false}
+            delay={3000}
+            altText="August 14th, MTJ Foundation"
+          />
 
           {/* <PromoPopup
             routes={['/', '/home']}
