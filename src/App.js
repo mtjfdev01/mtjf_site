@@ -102,7 +102,7 @@ function App() {
           <ScrollToTop />
           <CampaignTracker />
 
-            <PromoPopup
+            {/* <PromoPopup
             routes={['/', '/home']}
             redirectUrl=""
             desktopImage={augustPopup} 
@@ -112,7 +112,7 @@ function App() {
             showOnce={false}
             delay={3000}
             altText="August 14th, MTJ Foundation"
-          />
+          /> */}
 
           {/* <PromoPopup
             routes={['/', '/home']}

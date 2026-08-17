@@ -13,7 +13,7 @@ import apna_ghar_hero_mob from '../../assets/img/projects/projects-details/Apna 
 import './hero.css'
 
 const HERO_IMAGES = [
-  { desktop: slider_august, mobile: slider_august_mob, link: '/' },
+  // { desktop: slider_august, mobile: slider_august_mob, link: '/' },
   { desktop: apna_ghar_hero_web, mobile: apna_ghar_hero_mob, link: '/donate/apna-ghar' },
   { desktop: clean_water_hero_web, mobile: clean_water_hero_mob, link: '/donate/clean-water' }, 
   { desktop: change_hero_health, mobile: hero_health_mobile, link: '/donate/health' },
