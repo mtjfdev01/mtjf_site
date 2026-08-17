@@ -154,32 +154,32 @@ const Career = () => {
     <div className="careers-page">
       <div className="careers-container container py-48">
         {/* Header */}
-      <div className="careers-header mb-48">
+      {/* <div className="careers-header mb-48">
         <div className="careers-heading">
           <h2 className="heading-secondary">Career</h2>
         </div>
         <h2 className='mt-0'>
           Current Openings
         </h2> 
-      </div>
+      </div> */}
         {/* Filter Section */}
-        <div className="careers-filters mb-48">
-          <div className="careers-filter-selects">
-            <select
+        {/* <div className="careers-filters mb-48"> */}
+          {/* <div className="careers-filter-selects"> */}
+            {/* <select
               className="careers-filter-select"
               value={filters.department}
               onChange={(e) => handleFilterChange('department', e.target.value)}
-            >
-              <option value="">Department</option>
-              <option value="fund_raising">Fund Raising</option>
+            > */}
+              {/* <option value="">Department</option> */}
+              {/* <option value="fund_raising">Fund Raising</option> */}
               {/* Add more department options based on actual API data */}
               {/* <option value="it">IT</option> */}
               {/* <option value="marketing">Marketing</option> */}
               {/* <option value="design">Design</option> */}
               {/* <option value="operations">Operations</option> */}
-            </select>
+            {/* </select> */}
 
-            <select
+            {/* <select
               className="careers-filter-select"
               value={filters.type}
               onChange={(e) => handleFilterChange('type', e.target.value)}
@@ -188,7 +188,7 @@ const Career = () => {
               <option value="Full Time">Full Time</option>
               <option value="Part Time">Part Time</option>
               <option value="Contract">Contract</option>
-            </select>
+            </select> */}
 
             {/* Location filter - commented out for now, will implement later */}
             {/* <select
@@ -202,11 +202,11 @@ const Career = () => {
               <option value="Multan">Multan</option>
               <option value="Faisalabad">Faisalabad</option>
             </select> */}
-          </div>
-          <button className="careers-apply-btn btn" onClick={handleApplyFilters}>
+          {/* </div> */}
+          {/* <button className="careers-apply-btn btn" onClick={handleApplyFilters}>
             Filter Jobs
-          </button>
-        </div>
+          </button> */}
+        {/* </div> */}
 
         {/* Job Listings Grid */}
         {/* <div className="careers-jobs-grid"> */}
@@ -218,7 +218,7 @@ const Career = () => {
               <div 
                 key={job.id} 
                 className={`careers-job-card card ${job.status === 'closed' ? 'careers-job-closed' : ''}`}
-                onClick={() => handleJobCardClick(job)}
+                onClick={() => { if (job.status !== 'closed') handleJobCardClick(job) }}
               >
                 <div className="careers-job-card-content">
                   <div className="careers-job-main">

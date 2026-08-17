@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import './Footer.css'
-import logoImg from '../../assets/img/logos/footer_logo.png'
+import logoImg from '../../assets/img/logos/footer_logo.webp'
 import googlePlayImg from '../../assets/img/app-stores/play_store.webp'
 // import appStoreImg from '../../assets/img/app-stores/app-store.png'
 

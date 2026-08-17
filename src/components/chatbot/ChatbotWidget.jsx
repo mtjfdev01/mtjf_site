@@ -12,7 +12,7 @@ import {
 import { BsChatDotsFill } from 'react-icons/bs'
 import { HiShieldCheck } from 'react-icons/hi'
 import axiosInstance from '../../utils/axios'
-import logoImg from '../../assets/img/logos/only_logo.png'
+import logoImg from '../../assets/img/logos/only_logo.webp'
 import './ChatbotWidget.css'
 
 const BOT_GREETING =

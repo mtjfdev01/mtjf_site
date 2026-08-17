@@ -13,7 +13,7 @@ import {
 } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import './NewFooter.css'
-import logoImg from '../../assets/img/logos/footer_logo.png'
+import logoImg from '../../assets/img/logos/footer_logo.webp'
 import googlePlayImg from '../../assets/img/app-stores/play_store.webp'
 
 const aboutLinks = [
