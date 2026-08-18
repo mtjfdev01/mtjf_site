@@ -6,7 +6,7 @@ import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
 import MobileNavBrand from '../mobilenavbar/MobileNavBrand'
 import Loader from '../Loader/Loader'
-import logo from '../../assets/img/logos/only_logo.webp'
+import logo from '../../assets/img/logos/only_logo.png'
 // import ZakatCountdownBanner from './ZakatCountdownBanner'
 // import MobileZakatCountdownBanner from '../mobilenavbar/MobileZakatCountdownBanner'
 
