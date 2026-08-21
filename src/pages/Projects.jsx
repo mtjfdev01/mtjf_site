@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
 import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
-import { ALL_PROJECTS_DATA } from '../data/projectsData'
+import { PROJECTS_LISTING_DATA } from '../data/projectsData'
+import { useWebsiteProjectsListing } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 import { useCart } from '../contexts/CartContext'
@@ -19,6 +20,7 @@ const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial
 const Projects = () => {
   const navigate = useNavigate()
   const { shortDonate } = useCart()
+  const projects = useWebsiteProjectsListing(PROJECTS_LISTING_DATA)
   // First component after header - loads immediately
   const [projectsRef, showProjects] = useIntersectionObserver({ 
     rootMargin: '50px',
@@ -48,7 +50,7 @@ const Projects = () => {
               </div>
 
               <div className="projects-page-grid grid grid-2 gap-32"> 
-                {ALL_PROJECTS_DATA.slice(0, 10).map((project) => (
+                {projects.map((project) => (
                   <div key={project.id} className="projects-page-item">
                     <h2 className="heading-secondary projects-page-card-title mb-16 text-center">{project.title}</h2>
                     <Link to={`/projects/${project.id}`}>

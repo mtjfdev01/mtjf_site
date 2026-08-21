@@ -31,10 +31,6 @@ const ProjectDetail = ({ forcedProjectId }) => {
     rootMargin: '50px',
     loadImmediately: true 
   });
-  // Next component - loads on short scroll
-  const [imageRef, showImage] = useIntersectionObserver({ 
-    rootMargin: '100px'
-  });
   // Next section - loads on short scroll (or immediately if no content)
   const [mediaRef, showMedia] = useIntersectionObserver({ 
     rootMargin: '100px',
@@ -70,12 +66,12 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
   return (
     <div className="project-detail-page">
-      <div className='d-none md:d-block'>
-      <PageHeader title={project.title} image={project.headerImage} url={project?.url}/>
-    </div>
-    <div className='md:d-none'>
-    <PageHeader title={project.title} image={project?.headerImageMob || project?.headerImage}/>
-    </div>
+      <PageHeader
+        title={project.title}
+        image={project.headerImage}
+        imageMob={project.headerImageMob}
+        url={project?.url}
+      />
       <div ref={contentRef}>
         {showContent && (
           <>
@@ -239,20 +235,17 @@ const ProjectDetail = ({ forcedProjectId }) => {
         )}
       </div>
 
-      {/* Full Width Image Section - loads on short scroll */}
-      {project?.mainImage && <div ref={imageRef} style={{ minHeight: '200px' }}>
-        {showImage && (
-          <section className="project-full-image-section">
-            <div className="project-full-image-container">
-              <LazyImage
-                src={project.mainImage}
-                alt={`${project.title} - Impact`}
-                className="project-full-image"
-              />
-            </div>
-          </section>
-        )}
-      </div> }
+      {project?.mainImage ? (
+        <section className="project-full-image-section">
+          <div className="project-full-image-container">
+            <img
+              src={project.mainImage}
+              alt={`${project.title} - Impact`}
+              className="project-full-image"
+            />
+          </div>
+        </section>
+      ) : null}
 
       {/* Media Content Section for Sub-Projects - loads on short scroll */}
       <div ref={mediaRef} style={{ minHeight: '200px' }}>

@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
-import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
+import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
+import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
 import './DonationForm.css'
 
 const QURBANI_PROJECT_IDS = ['qurbani-baraye-mustehqeen', 'qurbani']
@@ -59,7 +60,13 @@ const DonationForm = ({
   className = ''
 }) => {
   const navigate = useNavigate()
-  const { setDonationFormData, updateProjectDonation } = useDonation() 
+  const { setDonationFormData, updateProjectDonation } = useDonation()
+  const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
+  /** API catalog first; static `projects` prop kept for later / page-specific forms. */
+  const selectableProjects = useMemo(
+    () => (showProjectSelect && projectCards.length ? projectCards : projects),
+    [showProjectSelect, projectCards, projects]
+  )
   const mergedDonationOptions = useMemo(() => {
     return {
       PKR: donationOptions.PKR || DEFAULT_DONATION_OPTIONS.PKR,
@@ -69,9 +76,14 @@ const DonationForm = ({
   }, [donationOptions])
 
   const [formData, setFormData] = useState(() => {
-    const initialProjectId = defaultProjectId || projects[0]?.id || ''
-    const initialProject = projects.find(p => p.id === initialProjectId)
-    const projectMenuData = projectCards.find(p => p.id === initialProjectId)
+    const initialProjectId =
+      defaultProjectId || projectCards[0]?.id || projects[0]?.id || ''
+    const initialProject =
+      projectCards.find((p) => p.id === initialProjectId) ||
+      projects.find((p) => p.id === initialProjectId)
+    const projectMenuData =
+      projectCards.find((p) => p.id === initialProjectId) ||
+      projects.find((p) => p.id === initialProjectId)
     const firstInitiative = projectMenuData?.initiatives?.[0]
     const fallbackCategory = defaultCategory || categoryOptions[0] || 'General'
 
@@ -96,8 +108,12 @@ const DonationForm = ({
   const [errorMessage, setErrorMessage] = useState('')
 
   const selectedProjectData = useMemo(() => {
-    return projectCards.find(p => p.id === formData.projectId)
-  }, [formData.projectId])
+    return (
+      projectCards.find((p) => p.id === formData.projectId) ||
+      projects.find((p) => p.id === formData.projectId) ||
+      null
+    )
+  }, [formData.projectId, projectCards, projects])
 
   const isQurbaniMultiCurrencyProject = QURBANI_PROJECT_IDS.includes(formData.projectId)
   const effectiveCurrency = isQurbaniMultiCurrencyProject ? formData.currency : 'PKR'
@@ -124,11 +140,11 @@ const DonationForm = ({
   useEffect(() => {
     if (!showProjectSelect) return
 
-    const hasCurrent = !!formData.projectId && projects.some((p) => p.id === formData.projectId)
+    const hasCurrent = !!formData.projectId && selectableProjects.some((p) => p.id === formData.projectId)
     if (hasCurrent) return
 
-    const nextId = defaultProjectId || projects[0]?.id || ''
-    const nextProject = projects.find((p) => p.id === nextId)
+    const nextId = defaultProjectId || selectableProjects[0]?.id || ''
+    const nextProject = selectableProjects.find((p) => p.id === nextId)
     const nextName = defaultProjectName || nextProject?.title || nextProject?.name || ''
     const fallbackCategory = defaultCategory || categoryOptions[0] || 'General'
 
@@ -138,7 +154,7 @@ const DonationForm = ({
       projectName: nextName,
       category: resolveCategoryForProjectId(nextId, prev.category, fallbackCategory)
     }))
-  }, [showProjectSelect, projects, defaultProjectId, defaultProjectName, formData.projectId, defaultCategory, categoryOptions])
+  }, [showProjectSelect, selectableProjects, defaultProjectId, defaultProjectName, formData.projectId, defaultCategory, categoryOptions])
 
   const getDonationAmounts = (currency) =>
     mergedDonationOptions[currency] || mergedDonationOptions[initialCurrency]
@@ -327,52 +343,57 @@ const DonationForm = ({
           <div className="donation-form-row">
             <div className="donation-form-group donation-form-frequency-group">
               <label className="donation-form-label">Frequency</label>
-              <select
-                className="donation-form-input"
-                value={formData.frequency}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, frequency: e.target.value }))
-                }
-              >
-                <option value="once">Give Once</option>
-                <option value="monthly">Give Monthly</option>
-              </select>
+              <div className="donation-form-select">
+                <select
+                  className="donation-form-input"
+                  value={formData.frequency}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, frequency: e.target.value }))
+                  }
+                >
+                  <option value="once">Give Once</option>
+                  <option value="monthly">Give Monthly</option>
+                </select>
+              </div>
             </div>
 
             {!isQurbaniMultiCurrencyProject && (
               <div className="donation-form-group donation-form-category">
                 <label className="donation-form-label">Category</label>
-                <select
-                  className="donation-form-input"
-                  value={formData.category}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      category: e.target.value
-                    }))
-                  }
-                >
-                  {categoryOptions.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
+                <div className="donation-form-select">
+                  <select
+                    className="donation-form-input"
+                    value={formData.category}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        category: e.target.value
+                      }))
+                    }
+                  >
+                    {categoryOptions.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             )}
 
             {showProjectSelect && (
               <div className="donation-form-group">
                 <label className="donation-form-label">Projects</label>
-                <select
-                  className="donation-form-input"
-                  value={formData.projectId}
-                  onChange={(e) => {
+                <div className="donation-form-select">
+                  <select
+                    className="donation-form-input"
+                    value={formData.projectId}
+                    onChange={(e) => {
                     const selectedId = e.target.value
-                    const selectedProject = projects.find((p) => p.id === selectedId)
-                    
-                    // Find the first initiative for this project from projectCards
-                    const projectMenuData = projectCards.find(p => p.id === selectedId)
+                    const selectedProject = selectableProjects.find((p) => p.id === selectedId)
+                    const projectMenuData =
+                      projectCards.find((p) => p.id === selectedId) ||
+                      projects.find((p) => p.id === selectedId)
                     const firstInitiative = projectMenuData?.initiatives?.[0]
                     const fallbackCategory =
                       defaultCategory || categoryOptions[0] || 'General'
@@ -396,30 +417,33 @@ const DonationForm = ({
                     }))
                   }
                 }
-                >
-                  {projects.map((project) => (
-                    <option key={project.id} value={project.id}>
-                      {project.title || project.name}
-                    </option>
-                  ))}
-                </select>
+                  >
+                    {selectableProjects.map((project) => (
+                      <option key={project.id} value={project.id}>
+                        {project.title || project.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             )}
 
             {selectedProjectData?.initiatives?.length > 0 && (
               <div className="donation-form-group">
                 <label className="donation-form-label">Sub Project</label>
-                <select
-                  className="donation-form-input"
-                  value={formData.initiativeId}
-                  onChange={(e) => handleInitiativeChange(e.target.value)}
-                >
-                  {selectedProjectData?.initiatives?.map((initiative) => (
-                    <option key={initiative.id} value={initiative.id}>
-                      {initiative.title}
-                    </option>
-                  ))}
-                </select>
+                <div className="donation-form-select">
+                  <select
+                    className="donation-form-input"
+                    value={formData.initiativeId}
+                    onChange={(e) => handleInitiativeChange(e.target.value)}
+                  >
+                    {selectedProjectData?.initiatives?.map((initiative) => (
+                      <option key={initiative.id} value={initiative.id}>
+                        {initiative.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             )}
           </div>
@@ -428,28 +452,30 @@ const DonationForm = ({
           <div className="donation-form-row mt-24">
             <div className="donation-form-group donation-form-currency">
               <label className="donation-form-label">Currency</label>
-              <select
-                className="donation-form-input"
-                value={formData.currency}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    currency: e.target.value
-                  }))
-                }
-              >
-                <option value="PKR">PKR</option>
-                {isQurbaniMultiCurrencyProject && (
-                  <>
-                    <option value="CAD">CAD</option>
-                    <option value="USD">USD</option>
-                    <option value="SAR">SAR</option>
-                    <option value="AED">AED</option>
-                    <option value="GBP">GBP</option>
-                    <option value="EUR">EUR</option>
-                  </>
-                )}
-              </select>
+              <div className="donation-form-select">
+                <select
+                  className="donation-form-input"
+                  value={formData.currency}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      currency: e.target.value
+                    }))
+                  }
+                >
+                  <option value="PKR">PKR</option>
+                  {isQurbaniMultiCurrencyProject && (
+                    <>
+                      <option value="CAD">CAD</option>
+                      <option value="USD">USD</option>
+                      <option value="SAR">SAR</option>
+                      <option value="AED">AED</option>
+                      <option value="GBP">GBP</option>
+                      <option value="EUR">EUR</option>
+                    </>
+                  )}
+                </select>
+              </div>
             </div>
 
             {formData.initiativeId && (

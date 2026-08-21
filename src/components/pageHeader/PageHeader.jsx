@@ -1,13 +1,27 @@
 import { Link } from 'react-router-dom'
 import './PageHeader.css'
 
-const PageHeader = ({ title, image, url, onClick }) => {
-  const img = (
+const PageHeader = ({ title, image, imageMob, url, onClick }) => {
+  const desktopImg = (
     <img
       src={image}
       alt={title}
-      className="page-header-image"
+      className="page-header-image page-header-image--desktop"
     />
+  )
+  const mobileImg = (
+    <img
+      src={imageMob || image}
+      alt={title}
+      className="page-header-image page-header-image--mobile"
+    />
+  )
+
+  const images = (
+    <>
+      {desktopImg}
+      {mobileImg}
+    </>
   )
 
   return (
@@ -18,7 +32,7 @@ const PageHeader = ({ title, image, url, onClick }) => {
           onClick={onClick}
           style={onClick ? { cursor: 'pointer' } : undefined}
         >
-          {url ? <Link to={url}>{img}</Link> : img}
+          {url ? <Link to={url}>{images}</Link> : images}
         </div>
       </div>
     </section>

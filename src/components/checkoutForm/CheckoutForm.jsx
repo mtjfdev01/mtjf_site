@@ -4,7 +4,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useDonation } from '../../contexts/DonationContext'
 import axiosInstance from '../../utils/axios'
-import { ALL_PROJECTS_DATA } from '../../data/projectsData'
+import { PROJECTS_DETAIL_DATA } from '../../data/projectsData'
 import './CheckoutForm.css'
 import CountryDropdown from './CountryDropdown'
 import AppealCheckoutFields from './AppealCheckoutFields'
@@ -19,16 +19,30 @@ import { postGatewayForm } from '../../lib/paymentGatewayForm'
 import {
   getNextFirstOfMonthDateString,
   getStripeRecurringForPayload,
+  getTodayDayOfMonth,
   isDailyDonationFrequency,
   isMonthlyDonationFrequency,
   isRecurringDonationFrequency,
   isWeeklyDonationFrequency,
   RECURRING_CONSENT_TEXT,
   RECURRING_START_CUSTOM,
+  RECURRING_START_DAY_OF_MONTH,
   RECURRING_START_FIRST_OF_MONTH,
   RECURRING_START_SAME_DATE,
   STRIPE_DONATION_METHOD,
 } from '../../lib/stripeRecurring'
+import {
+  computeRecurringPresetTotals,
+  getRecurringAmountKeyFromSearch,
+  getRecurringBaseAmount,
+  getRecurringFrequencyFromSearch,
+  getRecurringGiftModeFromSearch,
+  getRecurringPeriodsFromSearch,
+  prepaidPeriodCadenceLabel,
+  RECURRING_GIFT_MODE_MONTHLY,
+  RECURRING_GIFT_MODE_PREPAID,
+  RECURRING_PRESET_FREQUENCIES,
+} from '../../lib/recurringAmountPresets'
 import { CiCreditCard2 } from "react-icons/ci";
 import { fetchAppealsList } from '../../lib/appealsApi'
 import { buildAppealDonationLine, isAppealDonationLine } from '../../lib/appealsHelpers'
@@ -91,6 +105,7 @@ const DEFAULT_FORM = {
   donation_frequency: 'once',
   recurring_start_mode: RECURRING_START_SAME_DATE,
   recurring_start_date: '',
+  recurring_day_of_month: String(getTodayDayOfMonth()),
   recurring_consent: true,
   country: '',
   city: '',
@@ -160,6 +175,47 @@ const CheckoutForm = ({ testCheckout = false }) => {
     const searchParams = new URLSearchParams(location.search)
     return searchParams.get('campaignId')
   }, [location.search])
+
+  const recurringAmountKey = useMemo(
+    () => getRecurringAmountKeyFromSearch(location.search),
+    [location.search],
+  )
+  const recurringBaseAmount = useMemo(
+    () => getRecurringBaseAmount(recurringAmountKey),
+    [recurringAmountKey],
+  )
+  const [recurringGiftMode, setRecurringGiftMode] = useState(() =>
+    getRecurringGiftModeFromSearch(location.search),
+  )
+  const [recurringPrepaidFrequency, setRecurringPrepaidFrequency] = useState(() =>
+    getRecurringFrequencyFromSearch(location.search, 'monthly'),
+  )
+  const [recurringAmountUnits, setRecurringAmountUnits] = useState(1)
+  const [recurringPrepaidPeriods, setRecurringPrepaidPeriods] = useState(() =>
+    getRecurringPeriodsFromSearch(
+      location.search,
+      getRecurringFrequencyFromSearch(location.search, 'monthly'),
+      3,
+    ),
+  )
+  const recurringPresetTotals = useMemo(() => {
+    if (!recurringBaseAmount) return null
+    return computeRecurringPresetTotals({
+      baseAmount: recurringBaseAmount,
+      mode: recurringGiftMode,
+      amountUnits: recurringAmountUnits,
+      prepaidPeriods: recurringPrepaidPeriods,
+      frequency: recurringPrepaidFrequency,
+    })
+  }, [
+    recurringBaseAmount,
+    recurringGiftMode,
+    recurringAmountUnits,
+    recurringPrepaidPeriods,
+    recurringPrepaidFrequency,
+  ])
+  const recurringPresetAmount = recurringPresetTotals?.payNow ?? null
+  const isRecurringAmountPresetFlow = Boolean(recurringBaseAmount)
 
   // Get donationID from query parameters
   useEffect(() => {
@@ -274,6 +330,67 @@ const CheckoutForm = ({ testCheckout = false }) => {
       projectDonationItemsForCheckout,
     ]
   )
+
+  // URL preset amount (?recurring=gold / ?plan=silver) — skip when campaign/appeal/retry owns amount
+  const showRecurringAmountStepper =
+    isRecurringAmountPresetFlow &&
+    !isCampaignCheckoutFlow &&
+    !isAppealCheckoutFlow &&
+    !isFailedTransactionFlow
+
+  // Reset when URL key / mode / periods change
+  useEffect(() => {
+    const frequency = getRecurringFrequencyFromSearch(location.search, 'monthly')
+    setRecurringGiftMode(getRecurringGiftModeFromSearch(location.search))
+    setRecurringPrepaidFrequency(frequency)
+    setRecurringPrepaidPeriods(getRecurringPeriodsFromSearch(location.search, frequency, 3))
+    setRecurringAmountUnits(1)
+  }, [recurringAmountKey, location.search])
+
+  // Seed amount + frequency from URL preset
+  useEffect(() => {
+    if (!showRecurringAmountStepper || !recurringPresetTotals) return
+    setDonationFormData({
+      amount: String(recurringPresetTotals.payNow),
+      finalAmount: recurringPresetTotals.payNow,
+      currency: 'PKR',
+      category: 'General',
+      donation_type: 'general',
+      recurring_amount_key: recurringAmountKey,
+      recurring_gift_mode: recurringPresetTotals.mode,
+      prepaid_periods: recurringPresetTotals.prepaidPeriods,
+      prepaid_months:
+        recurringPresetTotals.frequency === 'monthly'
+          ? recurringPresetTotals.prepaidPeriods
+          : undefined,
+      monthly_amount: recurringPresetTotals.periodAmount,
+      recurring_frequency: recurringPresetTotals.frequency,
+    })
+    setFormData((prev) => {
+      const nextFrequency =
+        recurringPresetTotals.mode === RECURRING_GIFT_MODE_PREPAID
+          ? 'once'
+          : recurringPrepaidFrequency
+      const nextConsent = true
+      if (
+        prev.donation_frequency === nextFrequency &&
+        prev.recurring_consent === nextConsent
+      ) {
+        return prev
+      }
+      return {
+        ...prev,
+        donation_frequency: nextFrequency,
+        recurring_consent: nextConsent,
+      }
+    })
+  }, [
+    showRecurringAmountStepper,
+    recurringPresetTotals,
+    recurringAmountKey,
+    recurringPrepaidFrequency,
+    setDonationFormData,
+  ])
 
   // Campaign checkout: load campaign + items from ?campaignId=
   useEffect(() => {
@@ -910,12 +1027,14 @@ const CheckoutForm = ({ testCheckout = false }) => {
     // Use amount from context (already calculated from all sources)
     // Fallback to totalAmountFromState if amount is 0 and we have state
     let totalAmount = amount || 0
-    if (isCampaignCheckoutFlow) {
+    if (showRecurringAmountStepper && recurringPresetAmount) {
+      totalAmount = recurringPresetAmount
+    } else if (isCampaignCheckoutFlow) {
       totalAmount = campaignCheckoutTotal
     } else if (totalAmount === 0 && totalAmountFromState > 0) {
       totalAmount = totalAmountFromState
     }
-    if (totalAmount === 0 && testCheckout && !isCampaignCheckoutFlow) {
+    if (totalAmount === 0 && testCheckout && !isCampaignCheckoutFlow && !showRecurringAmountStepper) {
       totalAmount = 111
     }
     totalAmount = Math.round(Number(totalAmount))
@@ -973,7 +1092,12 @@ const CheckoutForm = ({ testCheckout = false }) => {
       return
     }
 
-    if (isRecurringDonationFrequency(formData.donation_frequency) && !formData.recurring_consent) {
+    if (
+      (isRecurringDonationFrequency(formData.donation_frequency) ||
+        (showRecurringAmountStepper &&
+          recurringPresetTotals?.mode === RECURRING_GIFT_MODE_PREPAID)) &&
+      !formData.recurring_consent
+    ) {
       setFormMessage({
         type: 'error',
         text: 'Please confirm the recurring donation authorization to continue.',
@@ -984,7 +1108,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
     if (
       isRecurringDonationFrequency(formData.donation_frequency) &&
       !isDailyDonationFrequency(formData.donation_frequency) &&
-      (currentPayment === STRIPE_DONATION_METHOD || currentPayment === 'stripe') &&
       formData.recurring_start_mode === RECURRING_START_CUSTOM &&
       !String(formData.recurring_start_date || '').trim()
     ) {
@@ -993,6 +1116,20 @@ const CheckoutForm = ({ testCheckout = false }) => {
         text: 'Please choose a recurring start date.',
       })
       return
+    }
+
+    if (
+      isMonthlyDonationFrequency(formData.donation_frequency) &&
+      formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH
+    ) {
+      const dom = Number(formData.recurring_day_of_month)
+      if (!Number.isFinite(dom) || dom < 1 || dom > 31) {
+        setFormMessage({
+          type: 'error',
+          text: 'Please choose a valid day of the month (1–31).',
+        })
+        return
+      }
     }
 
     if (currentPayment === STRIPE_DONATION_METHOD && !stripePromise) {
@@ -1030,8 +1167,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
         // For old donation form flow
         project_id = donationData?.projectId || ''
         if (project_id) {
-          const project = ALL_PROJECTS_DATA.find(p => p.id === project_id)
-          project_name = project?.title || ''
+          const project = PROJECTS_DETAIL_DATA[project_id]
+          project_name = project?.title || project?.donateCategory || ''
         }
       }
 
@@ -1039,6 +1176,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
         on_behalf_names,
         recurring_start_mode,
         recurring_start_date,
+        recurring_day_of_month,
         recurring_consent,
         ...formFieldsForPayload
       } = formData
@@ -1049,11 +1187,19 @@ const CheckoutForm = ({ testCheckout = false }) => {
           ? Number(selectedAppealId)
           : null)
 
-      const stripeRecurringPayload = getStripeRecurringForPayload(formData.donation_frequency, {
-        startDateMode: recurring_start_mode,
-        startDate: recurring_start_date,
-        consent: recurring_consent,
-      })
+      const isPresetPrepaid =
+        showRecurringAmountStepper &&
+        recurringPresetTotals?.mode === RECURRING_GIFT_MODE_PREPAID
+
+      const stripeRecurringPayload = getStripeRecurringForPayload(
+        isPresetPrepaid ? recurringPrepaidFrequency : formData.donation_frequency,
+        {
+          startDateMode: recurring_start_mode,
+          startDate: recurring_start_date,
+          dayOfMonth: recurring_day_of_month,
+          consent: recurring_consent === true || isPresetPrepaid,
+        },
+      )
 
       const isStripePayment =
         currentPayment === 'stripe' || currentPayment === STRIPE_DONATION_METHOD
@@ -1116,7 +1262,10 @@ const CheckoutForm = ({ testCheckout = false }) => {
         }),
         donation_method: currentPayment,
         // Stripe = auto subscription; other gateways charge once (+ manual pledge enrollment)
-        donation_frequency: isCampaignCheckoutFlow
+        // URL prepaid preset: charge total now, then ledger continues monthly after coverage
+        donation_frequency: isPresetPrepaid
+          ? 'once'
+          : isCampaignCheckoutFlow
           ? campaignCheckout?.is_recurring && campaignPledgeMode === 'prepaid_months'
             ? 'once'
             : !campaignCheckout?.is_recurring
@@ -1133,6 +1282,17 @@ const CheckoutForm = ({ testCheckout = false }) => {
             ? (donationData?.currency || 'PKR')
             : 'PKR',
         status: 'pending',
+        ...(isPresetPrepaid &&
+          recurringPresetTotals && {
+            prepaid_periods: recurringPresetTotals.prepaidPeriods,
+            ...(recurringPresetTotals.frequency === 'monthly' && {
+              prepaid_months: recurringPresetTotals.prepaidPeriods,
+            }),
+            recurring_consent: true,
+            ...(stripeRecurringPayload && { recurring: stripeRecurringPayload }),
+            item_name: `Prepaid ${recurringPresetTotals.prepaidPeriods}-${recurringPresetTotals.periodUnitLabel} donation`,
+            item_description: `Paid ${recurringPresetTotals.payNow.toLocaleString()} PKR now (${recurringPresetTotals.prepaidPeriods}×${recurringPresetTotals.periodAmount.toLocaleString()}); then ${recurringPresetTotals.periodAmount.toLocaleString()} PKR / ${recurringPresetTotals.cadenceLabel}`,
+          }),
         ...(enrollManualRecurring && {
           enroll_manual_recurring: true,
           pledge_mode: 'prepaid_months',
@@ -1142,10 +1302,12 @@ const CheckoutForm = ({ testCheckout = false }) => {
           prepaid_months: Number(campaignPrepaidMonths) || 1,
           recurring_consent: recurring_consent === true,
         }),
-        // Consent for recurring (Stripe auto-charge or non-Stripe ledger + cron reminders)
-        ...(isRecurringDonationFrequency(formData.donation_frequency) && {
-          recurring_consent: recurring_consent === true,
-        }),
+        // Consent + billing schedule for all recurring gateways (non-prepaid preset)
+        ...(!isPresetPrepaid &&
+          isRecurringDonationFrequency(formData.donation_frequency) && {
+            recurring_consent: recurring_consent === true,
+            ...(stripeRecurringPayload && { recurring: stripeRecurringPayload }),
+          }),
         // Include donation items for project donations flow
         ...(isProjectDonationsFlow && {
           donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
@@ -1198,10 +1360,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 ? donationData?.currency || 'PKR'
                 : 'PKR',
           ).toLowerCase(),
-          ...(stripeRecurringPayload && {
-            recurring: stripeRecurringPayload,
-            recurring_consent: recurring_consent === true,
-          }),
         }),
         notification_subscription: formData.notification_subscription !== false,
         ...(currentPayment === 'alfalah' && {
@@ -1545,10 +1703,190 @@ const CheckoutForm = ({ testCheckout = false }) => {
           />
         </div>
 
+        {showRecurringAmountStepper && recurringPresetTotals && (
+          <div className="checkout-panel__amount-stepper" role="group" aria-label="Recurring donation amount">
+            <div className="checkout-panel__amount-stepper-header">
+              <h3 className="checkout-panel__amount-stepper-title">Choose how you give</h3>
+              <span className="checkout-panel__amount-stepper-plan">
+                Plan: <strong>{recurringAmountKey}</strong>
+                {' · '}
+                base {recurringBaseAmount?.toLocaleString()} PKR /{' '}
+                {prepaidPeriodCadenceLabel(recurringPrepaidFrequency)}
+              </span>
+            </div>
+
+            <div className="checkout-panel__freq-chips" role="group" aria-label="Gift mode">
+              <button
+                type="button"
+                className={`checkout-panel__freq-chip${
+                  recurringGiftMode === RECURRING_GIFT_MODE_MONTHLY
+                    ? ' checkout-panel__freq-chip--active'
+                    : ''
+                }`}
+                onClick={() => setRecurringGiftMode(RECURRING_GIFT_MODE_MONTHLY)}
+              >
+                Each {prepaidPeriodCadenceLabel(recurringPrepaidFrequency)}
+              </button>
+              <button
+                type="button"
+                className={`checkout-panel__freq-chip${
+                  recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                    ? ' checkout-panel__freq-chip--active'
+                    : ''
+                }`}
+                onClick={() => setRecurringGiftMode(RECURRING_GIFT_MODE_PREPAID)}
+              >
+                Pay {recurringPresetTotals.periodUnitLabel} in advance
+              </button>
+            </div>
+
+            {recurringGiftMode === RECURRING_GIFT_MODE_PREPAID && (
+              <div
+                className="checkout-panel__freq-chips checkout-panel__freq-chips--nested"
+                role="group"
+                aria-label="Prepaid frequency"
+              >
+                {RECURRING_PRESET_FREQUENCIES.map((freq) => (
+                  <button
+                    key={freq}
+                    type="button"
+                    className={`checkout-panel__freq-chip${
+                      recurringPrepaidFrequency === freq
+                        ? ' checkout-panel__freq-chip--active'
+                        : ''
+                    }`}
+                    onClick={() => setRecurringPrepaidFrequency(freq)}
+                  >
+                    {freq.charAt(0).toUpperCase() + freq.slice(1)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <p className="checkout-panel__amount-stepper-help">
+              {recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                ? `Pay for several ${recurringPresetTotals.periodUnitLabel} now. After that period, the same amount continues automatically.`
+                : `Donate this amount every ${prepaidPeriodCadenceLabel(recurringPrepaidFrequency)}. Use + / − to change the gift.`}
+            </p>
+
+            <div className="checkout-panel__amount-stepper-controls">
+              <button
+                type="button"
+                className="checkout-panel__amount-btn"
+                aria-label={
+                  recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                    ? `Fewer ${recurringPresetTotals.periodUnitLabel}`
+                    : 'Decrease amount'
+                }
+                disabled={
+                  recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                    ? recurringPrepaidPeriods <= 1
+                    : recurringAmountUnits <= 1
+                }
+                onClick={() => {
+                  if (recurringGiftMode === RECURRING_GIFT_MODE_PREPAID) {
+                    setRecurringPrepaidPeriods((prev) => Math.max(1, prev - 1))
+                  } else {
+                    setRecurringAmountUnits((prev) => Math.max(1, prev - 1))
+                  }
+                }}
+              >
+                −
+              </button>
+              <div className="checkout-panel__amount-value" aria-live="polite">
+                <span className="checkout-panel__amount-value-num">
+                  {recurringPresetTotals.payNow.toLocaleString()}
+                </span>
+                <span className="checkout-panel__amount-value-currency">
+                  {recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                    ? `PKR now · ${recurringPrepaidPeriods} ${recurringPresetTotals.periodUnitLabel}`
+                    : `PKR / ${recurringPresetTotals.cadenceLabel}`}
+                </span>
+              </div>
+              <button
+                type="button"
+                className="checkout-panel__amount-btn"
+                aria-label={
+                  recurringGiftMode === RECURRING_GIFT_MODE_PREPAID
+                    ? `More ${recurringPresetTotals.periodUnitLabel}`
+                    : 'Increase amount'
+                }
+                disabled={
+                  recurringGiftMode === RECURRING_GIFT_MODE_PREPAID &&
+                  recurringPrepaidPeriods >= 36
+                }
+                onClick={() => {
+                  if (recurringGiftMode === RECURRING_GIFT_MODE_PREPAID) {
+                    setRecurringPrepaidPeriods((prev) => Math.min(36, prev + 1))
+                  } else {
+                    setRecurringAmountUnits((prev) => prev + 1)
+                  }
+                }}
+              >
+                +
+              </button>
+            </div>
+
+            {recurringGiftMode === RECURRING_GIFT_MODE_PREPAID && (
+              <p className="checkout-panel__amount-stepper-footnote">
+                Then continues at{' '}
+                <strong>
+                  {recurringPresetTotals.periodAmount.toLocaleString()} PKR
+                </strong>{' '}
+                each {recurringPresetTotals.cadenceLabel} after the prepaid period.
+              </p>
+            )}
+
+            {recurringGiftMode === RECURRING_GIFT_MODE_MONTHLY && (
+              <div
+                className="checkout-panel__freq-chips checkout-panel__freq-chips--nested"
+                role="group"
+                aria-label="Recurring frequency"
+              >
+                {RECURRING_PRESET_FREQUENCIES.map((freq) => (
+                  <button
+                    key={freq}
+                    type="button"
+                    className={`checkout-panel__freq-chip${
+                      recurringPrepaidFrequency === freq
+                        ? ' checkout-panel__freq-chip--active'
+                        : ''
+                    }`}
+                    onClick={() => setRecurringPrepaidFrequency(freq)}
+                  >
+                    {freq.charAt(0).toUpperCase() + freq.slice(1)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <label
+              className={`checkout-panel__consent-card${
+                formData.recurring_consent ? ' checkout-panel__consent-card--checked' : ''
+              }`}
+            >
+              <input
+                type="checkbox"
+                name="recurring_consent"
+                checked={formData.recurring_consent}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    recurring_consent: e.target.checked,
+                  }))
+                }
+                className="checkout-panel__checkbox"
+              />
+              <span className="checkout-panel__consent-text">{RECURRING_CONSENT_TEXT}</span>
+            </label>
+          </div>
+        )}
+
         {/* Donation frequency — recurring (Stripe); /test-checkout only; not for prepaid campaign */}
         {testCheckout &&
           !(isCampaignCheckoutFlow && campaignCheckout && !campaignCheckout.is_recurring) &&
-          !(isCampaignCheckoutFlow && campaignPledgeMode === 'prepaid_months') && (
+          !(isCampaignCheckoutFlow && campaignPledgeMode === 'prepaid_months') &&
+          !showRecurringAmountStepper && (
         <div className="checkout-panel__recurring-block">
           <div className="checkout-panel__recurring-header">
             <h3 className="checkout-panel__recurring-title">
@@ -1607,14 +1945,14 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 <>
               <div className="checkout-panel__recurring-subheader">
                 <h4 className="checkout-panel__recurring-subtitle">
-                  Select recurring start date
+                  Recurring billing day
                   <span style={{ fontWeight: 400, color: '#6b7280', marginLeft: 6, fontSize: 13 }}>
-                    (Stripe auto-charge only)
+                    (reminders &amp; Stripe auto-charge)
                   </span>
                 </h4>
               </div>
 
-              <div className="checkout-panel__start-options" role="radiogroup" aria-label="Recurring start date">
+              <div className="checkout-panel__start-options" role="radiogroup" aria-label="Recurring billing day">
                 <button
                   type="button"
                   role="radio"
@@ -1628,19 +1966,55 @@ const CheckoutForm = ({ testCheckout = false }) => {
                     setFormData((prev) => ({
                       ...prev,
                       recurring_start_mode: RECURRING_START_SAME_DATE,
+                      recurring_day_of_month: String(getTodayDayOfMonth()),
                     }))
                   }
                 >
                   <span className="checkout-panel__start-option-radio" aria-hidden />
                   <span className="checkout-panel__start-option-copy">
                     <span className="checkout-panel__start-option-title">
-                      Donate today and repeat on the same date
+                      {isMonthlyDonationFrequency(formData.donation_frequency)
+                        ? `Today — repeat on the ${getTodayDayOfMonth()}th each month`
+                        : 'Donate today and repeat on the same date'}
                     </span>
                     <span className="checkout-panel__start-option-desc">
-                      First charge today, then on this same day each cycle
+                      {isMonthlyDonationFrequency(formData.donation_frequency)
+                        ? 'Default: donate today, then on this same day every month'
+                        : 'First charge today, then on this same day each cycle'}
                     </span>
                   </span>
                 </button>
+
+                {isMonthlyDonationFrequency(formData.donation_frequency) && (
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH}
+                    className={`checkout-panel__start-option${
+                      formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH
+                        ? ' checkout-panel__start-option--active'
+                        : ''
+                    }`}
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        recurring_start_mode: RECURRING_START_DAY_OF_MONTH,
+                        recurring_day_of_month:
+                          prev.recurring_day_of_month || String(getTodayDayOfMonth()),
+                      }))
+                    }
+                  >
+                    <span className="checkout-panel__start-option-radio" aria-hidden />
+                    <span className="checkout-panel__start-option-copy">
+                      <span className="checkout-panel__start-option-title">
+                        Choose day of every month
+                      </span>
+                      <span className="checkout-panel__start-option-desc">
+                        e.g. pay on the 5th of each month (next reminder is at least 20 days after this donation)
+                      </span>
+                    </span>
+                  </button>
+                )}
 
                 {isMonthlyDonationFrequency(formData.donation_frequency) && (
                   <button
@@ -1699,6 +2073,28 @@ const CheckoutForm = ({ testCheckout = false }) => {
                   </span>
                 </button>
               </div>
+
+              {formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH &&
+                isMonthlyDonationFrequency(formData.donation_frequency) && (
+                <div className="checkout-panel__field checkout-panel__date-field">
+                  <label className="checkout-panel__date-label" htmlFor="checkout-recurring-day-of-month">
+                    Day of month
+                  </label>
+                  <select
+                    id="checkout-recurring-day-of-month"
+                    name="recurring_day_of_month"
+                    className="checkout-panel__input checkout-panel__select"
+                    value={formData.recurring_day_of_month || String(getTodayDayOfMonth())}
+                    onChange={handleInputChange}
+                  >
+                    {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                      <option key={day} value={String(day)}>
+                        {day}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               {formData.recurring_start_mode === RECURRING_START_CUSTOM && (
                 <div className="checkout-panel__field checkout-panel__date-field">

@@ -266,7 +266,7 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
                 )}
 
                 {/* Quran Ayat / Hadith Section */}
-                {subProject.quranAyat && (
+                {subProject.quranAyat?.text && (
                   <div className="media-content-quran-ayat">
                     <p className="media-content-quran-ayat__text">
                       {subProject.quranAyat.text.split('\n').map((line, index) => (

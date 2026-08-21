@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
 import Hero from "../components/hero/Hero";
-import { ALL_PROJECTS_DATA } from "../data/projectsData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import BrandArea from "../components/brands/brands";
   import QuickBlogs from "../components/quickblogs";
@@ -52,7 +51,6 @@ const Home = ({ showHomeInfoSection = false }) => {
               formId="home-donation-form"
               layout="vertical"
               showProjectSelect={true}
-              projects={ALL_PROJECTS_DATA}
             />
             <HeroContent />
       {/* Rest of components - Load when near viewport */}

@@ -7,6 +7,7 @@ import DonationProjectsMenuForm from './DonationProjectsMenuForm'
 import InitiativeDonationCard from './InitiativeDonationCard'
 import DonationSidebar from './DonationSidebar'
 import { getCheckoutPathForProjects } from '../../../lib/donationCheckoutPath'
+import { useWebsiteDonationProjects } from '../../../hooks/useWebsiteDonationProjects'
 import './DonationProjectsMenu.css'
 
 import health from '../../../assets/img/projects/icons/MTJF_Logos/health.svg'
@@ -21,7 +22,7 @@ import aaslab from '../../../assets/img/projects/icons/MTJF_Logos/aaslab.svg'
 import community from '../../../assets/img/projects/icons/MTJF_Logos/community.svg'
 import marriageGift from '../../../assets/img/projects/marriage_gift.webp'
 
-export const projectCards = [
+export const FALLBACK_PROJECT_CARDS = [
   // {
   //   id: 'qurbani-baraye-mustehqeen', 
   //   title: "Qurbani Baraye Mustehqeen",
@@ -224,11 +225,14 @@ export const projectCards = [
     },
   ]
 
+export { FALLBACK_PROJECT_CARDS as projectCards }
+
 const DonationProjectsMenu = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { projectId } = useParams()
   const { projectDonations, amount: totalDonationAmount, donationType, setDonationType, clearDonationData, updateProjectDonation, setRef } = useDonation()
+  const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
   const [selectedProjects, setSelectedProjects] = useState([])
   const [expandedProjectId, setExpandedProjectId] = useState(null)
   const [message, setMessage] = useState("")

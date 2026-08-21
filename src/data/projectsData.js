@@ -4485,139 +4485,43 @@ export const projectsInfo = Object.values(PROJECTS_DETAIL_DATA).map((project) =>
   })),
 }))
 
-export const ALL_PROJECTS_DATA = [
-//   {
-//     id: '10-days-of-barakah',
-//     title: '10 Days of Barakah',
-//     subtitle: 'Every Day, One Act of Khair',
-//     description: `The blessed days of Dhul Hijjah are here: the days Allah swore by. Days when a small act of charity carries immense reward.
-// In these final days, turn your Sadaqah, Astaghfar, and intention into real relief for families struggling to survive.`,
-//     impactStatement: 'Your Sadaqah becomes nourishment, dignity, and hope for those in need.',
-//     image: barakah_hero_web,
-//     donateButtonText: 'Donate Now',
-//     learnMorePath: '/projects/10-days-of-barakah',
-//     donatePath: '/donate/10-days-of-barakah'
-//   },
-//   {
-//     id: 'qurbani-baraye-mustehqeen',
-//     title: 'Qurbani Baraye Mustehqeen',
-//     subtitle: 'When Your Sacrifice Becomes Someone’s Only Meal',
-//     description: `Eid ul Adha is a reminder that true devotion is not only expressed in worship, but also in how we care for those who have nothing.
-// For many families living in poverty, conflict zones, and disaster affected regions, Eid does not feel like celebration. It feels like another day of struggle. No special meal. No gathering. No joy of shared food.`,
-//     impactStatement: 'Your sacrifice becomes their joy, nourishment, and hope.',
-//     image: Qurbani,
-//     donateButtonText: 'Book Your Qurbani',
-//     learnMorePath: '/projects/qurbani-2026',
-//     donatePath: '/donate/qurbani-2026'
-//   },
-  {
-    id: 'health',
-    title: 'Health',
-    subtitle: 'Ensuring Access to Dignified, Affordable Healthcare',
-    description: 'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
-    impactStatement: 'Every patient we serve moves one step closer to a healthier, dignified life, because healthcare should never be a privilege.',
-    image: Health,
-    donateButtonText: 'Support Healthcare Services',
-    learnMorePath: '/projects/health',
-    donatePath: '/donate/health'
-  },
-  {
-    id: 'education',
-    title: 'Education',
-    subtitle: 'Opening Doors to Learning and Opportunity',
-    description: 'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
-    impactStatement: 'Education transforms lives and your support ensures no child is left behind.',
-    image: Education,
-    donateButtonText: 'Educate a Child',
-    learnMorePath: '/projects/education',
-    donatePath: '/donate/education'
-  },
-  {
-    id: 'clean-water',
-    title: 'Clean Water',
-    subtitle: 'Providing Safe Water for Healthier Communities',
-    description: 'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
-    impactStatement: 'Clean water reduces disease, restores dignity, and protects generations.',
-    image: CleanWater,
-    donateButtonText: 'Sponsor a Water Project',
-    learnMorePath: '/projects/clean-water',
-    donatePath: '/donate/clean-water'
-  },
-  {
-    id: 'apna-ghar',
-    title: 'Apna Ghar',
-    subtitle: 'Safe Shelter for Orphans and Widows',
-    description: 'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
-    impactStatement: 'Here, safety becomes healing, and broken lives begin again.',
-    image: ApnaGhar,
-    donateButtonText: 'Support Apna Ghar',
-    learnMorePath: '/projects/apna-ghar',
-    donatePath: '/donate/apna-ghar'
-  },
-  {
-    id: 'disaster-management',
-    title: 'Disaster Relief',
-    subtitle: 'Rapid Response When Crisis Strikes',
-    description: 'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
-    impactStatement: 'Your support ensures no family faces disaster alone.',
-    image: DisasterRelief,
-    donateButtonText: 'Help in Emergencies',
-    learnMorePath: '/projects/disaster-management',
-    donatePath: '/donate/disaster-management'
-  },
-  {
-    id: 'kasb-skill-development',
-    title: 'KASB Skill Development',
-    subtitle: 'Empowering Youth and Women Through Skills',
-    description: 'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
-    impactStatement: 'When someone gains a skill, they gain the power to change their own future.',
-    image: KasbSkill,
-    donateButtonText: 'Sponsor Skill Training',
-    learnMorePath: '/projects/kasb-skill-development',
-    donatePath: '/donate/kasb-skill-development'
-  },
-  {
-    id: 'seeds-of-change',
-    title: 'Seeds of Change',
-    subtitle: 'Protecting the Environment for Future Generations',
-    description: 'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
-    impactStatement: 'Every tree planted brings us closer to a cleaner, safer world.',
-    image: SeedsOfChange,
-    donateButtonText: 'Plant a Tree',
-    learnMorePath: '/projects/seeds-of-change',
-    donatePath: '/donate/seeds-of-change'
-  },
-  {
-    id: 'aas-lab-diagnostics',
-    title: 'AAS Lab & Diagnostics',
-    subtitle: 'Accessible and Affordable Diagnostic Care for all',
-    description: 'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
-    impactStatement: 'A correct diagnosis can save a life and your support makes it possible.',
-    image: AASLab,
-    donateButtonText: 'Support Diagnostic Care',
-    learnMorePath: '/projects/aas-lab-diagnostics',
-    donatePath: '/donate/aas-lab-diagnostics'
-  },
-  {
-    id: 'community-services',
-    title: 'Community Services',
-    subtitle: 'Supporting Vulnerable Families With Essential Relief',
-    description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
-    impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
-    image: image1,
-    donateButtonText: 'Support a Family',
-    learnMorePath: '/projects/community-services',
-    donatePath: '/donate/community-services'
-  },
-  // {
-  //   id: 'ramzan-ration',
-  //   title: 'Ramadan Ration',
-  //   subtitle: 'Providing Ramadan Ration to Families in Need',
-  //   description: 'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
-  //   impactStatement: 'Your generosity turns hardship into hope for those who need it most.',
-  //   image: ramzanRation,
-  //   donateButtonText: 'Support a Family',
-  //   learnMorePath: '/projects/ramzan-ration',
-  //   donatePath: '/donate/ramzan-ration'
-  // }
+/** Slugs shown on /projects listing (same programs as legacy ALL_PROJECTS_DATA). */
+export const PROJECTS_LISTING_SLUGS = [
+  'health',
+  'education',
+  'clean-water',
+  'apna-ghar',
+  'disaster-management',
+  'kasb-skill-development',
+  'seeds-of-change',
+  'aas-lab-diagnostics',
+  'community-services',
 ]
+
+/** Map project detail record → listing card shape for /projects page. */
+export const projectDetailToListingCard = (detail) => {
+  const id = detail.id
+  const shortTitle =
+    detail.donateCategory ||
+    (detail.title && detail.title.split('–')[0].trim()) ||
+    detail.title ||
+    id
+
+  return {
+    id,
+    title: shortTitle,
+    subtitle: detail.content?.subtitle || detail.subProjects?.[0]?.subtitle || '',
+    description: detail.content?.paragraph1 || '',
+    impactStatement: detail.subProjects?.[0]?.impact || '',
+    image: detail.headerImage || detail.headerImageMob,
+    donateButtonText: detail.donateButtonText || 'Donate',
+    learnMorePath: `/projects/${id}`,
+    donatePath: `/donate/${id}`,
+  }
+}
+
+export const PROJECTS_LISTING_DATA = PROJECTS_LISTING_SLUGS.map(
+  (slug) => PROJECTS_DETAIL_DATA[slug],
+)
+  .filter(Boolean)
+  .map(projectDetailToListingCard)

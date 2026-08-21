@@ -63,6 +63,54 @@
   box-shadow: 0 0 0 3px rgba(48, 174, 227, 0.1);
 }
 
+.vertical-donation-select {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--color-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  box-sizing: border-box;
+}
+
+.vertical-donation-select:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(48, 174, 227, 0.1);
+}
+
+.vertical-donation-select select.vertical-donation-input {
+  field-sizing: content;
+  width: auto;
+  max-width: 100%;
+  flex: 0 1 auto;
+  height: 42px;
+  margin-left: var(--space-16);
+  padding: 0 22px 0 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%231a1a1a' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.vertical-donation-select select.vertical-donation-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+select.vertical-donation-input::-ms-expand {
+  display: none;
+}
+
 .vertical-donation-frequency {
   display: flex;
   gap: var(--space-12);

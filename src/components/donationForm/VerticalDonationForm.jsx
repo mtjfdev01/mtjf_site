@@ -2,7 +2,8 @@ import { useMemo, useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
-import { projectCards } from '../donation/projects_menu/DonationProjectsMenu'
+import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
+import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
 import { getCheckoutPathForProjects } from '../../lib/donationCheckoutPath'
 import './VerticalDonationForm.css'
 
@@ -16,7 +17,7 @@ const DEFAULT_DONATION_OPTIONS = {
 const QURBANI_PROJECT_IDS = ['qurbani-baraye-mustehqeen', 'qurbani']
 
 /** Resolve templateCode from projectCards for checkout / API (initiative-level or project fallback). */
-const resolveInitiativeTemplateCode = (projectId, initiativeId) => {
+const resolveInitiativeTemplateCode = (projectId, initiativeId, projectCards) => {
   if (!projectCards?.length) return null
   if (projectId && initiativeId) {
     const project = projectCards.find((p) => p.id === projectId)
@@ -60,6 +61,12 @@ const VerticalDonationForm = ({
 }) => {
   const navigate = useNavigate()
   const location = useLocation()
+  const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
+  /** API catalog first; static `projects` prop kept for later / page-specific forms. */
+  const selectableProjects = useMemo(
+    () => (showProjectSelect && projectCards.length ? projectCards : projects),
+    [showProjectSelect, projectCards, projects]
+  )
   // ✅ Only qurbani page check
   const isQurbaniPage = location.pathname.includes('qurbani')
   const showQurbaniTabs =
@@ -191,7 +198,7 @@ const VerticalDonationForm = ({
     }, [])
 
     return allInitiatives
-  }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId, projects, showProjectSelect])
+  }, [formData.category, formData.projectId, isQurbaniMultiCurrencyProject, urlProjectId, projects, showProjectSelect, projectCards])
 
   useEffect(() => {
     if (isQurbaniMultiCurrencyProject) return
@@ -418,7 +425,7 @@ const VerticalDonationForm = ({
     // Prepare donation data
     const amountPKRToStore = isQurbaniMultiCurrencyProject ? Math.round(amountNumber) : amountNumber
     const projectIdToUse = urlProjectId || formData.projectId
-    const templateCode = resolveInitiativeTemplateCode(projectIdToUse, formData.subCategory)
+    const templateCode = resolveInitiativeTemplateCode(projectIdToUse, formData.subCategory, projectCards)
 
     const usingCustomAmount =
       !isQurbaniMultiCurrencyProject &&
@@ -531,99 +538,107 @@ const VerticalDonationForm = ({
                     />
                   ) : (
                     // ✅ Normal dropdown for other pages
-                    <select
-                      className="vertical-donation-input"
-                      value={formData.frequency}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          frequency: e.target.value
-                        }))
-                      }
-                    >
-                      <option value="once">Give Once</option>
-                      <option value="monthly">Give Monthly</option>
-                    </select>
+                    <div className="vertical-donation-select">
+                      <select
+                        className="vertical-donation-input"
+                        value={formData.frequency}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            frequency: e.target.value
+                          }))
+                        }
+                      >
+                        <option value="once">Give Once</option>
+                        <option value="monthly">Give Monthly</option>
+                      </select>
+                    </div>
                   )}
                 </div>
 
                 <div className="vertical-donation-group">
                   <label className="vertical-donation-label">Currency</label>
-                  <select
-                    className="vertical-donation-input"
-                    value={formData.currency}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        currency: e.target.value,
-                        // keep PKR base price for Qurbani projects; only affects display
-                        ...(isQurbaniMultiCurrencyProject ? {} : { amount: '' }),
-                        customAmount: ''
-                      }))
-                    }
-                  >
-                    <option value="PKR">PKR</option>
-                    {isQurbaniMultiCurrencyProject && (
-                      <>
-                        <option value="CAD">CAD</option>
-                        <option value="USD">USD</option>
-                        <option value="SAR">SAR</option>
-                        <option value="AED">AED</option>
-                        <option value="GBP">GBP</option>
-                        <option value="EUR">EUR</option>
-                      </>
-                    )}
-                  </select>
+                  <div className="vertical-donation-select">
+                    <select
+                      className="vertical-donation-input"
+                      value={formData.currency}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          currency: e.target.value,
+                          // keep PKR base price for Qurbani projects; only affects display
+                          ...(isQurbaniMultiCurrencyProject ? {} : { amount: '' }),
+                          customAmount: ''
+                        }))
+                      }
+                    >
+                      <option value="PKR">PKR</option>
+                      {isQurbaniMultiCurrencyProject && (
+                        <>
+                          <option value="CAD">CAD</option>
+                          <option value="USD">USD</option>
+                          <option value="SAR">SAR</option>
+                          <option value="AED">AED</option>
+                          <option value="GBP">GBP</option>
+                          <option value="EUR">EUR</option>
+                        </>
+                      )}
+                    </select>
+                  </div>
                 </div>
               </div>
 
               <div className="vertical-donation-inline">
                 <div className="vertical-donation-group">
                   <label className="vertical-donation-label">Category</label>
-                  <select
-                    className="vertical-donation-input"
-                    value={formData.category}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        category: e.target.value
-                      }))
-                    }
-                  >
-                    {categoryOptionsToShow.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="vertical-donation-select">
+                    <select
+                      className="vertical-donation-input"
+                      value={formData.category}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          category: e.target.value
+                        }))
+                      }
+                    >
+                      {categoryOptionsToShow.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 {filteredInitiatives.length > 0 && (
                   <div className="vertical-donation-group">
                     <label className="vertical-donation-label">Sub Category</label>
-                    <select
-                      className="vertical-donation-input"
-                      value={formData.subCategory}
-                      onChange={(e) => {
-                        const selectedId = e.target.value
-                        const selectedInitiative = filteredInitiatives.find(i => i.id === selectedId)
+                    <div className="vertical-donation-select">
+                      <select
+                        className="vertical-donation-input"
+                        value={formData.subCategory}
+                        onChange={(e) => {
+                          const selectedId = e.target.value
+                          const selectedInitiative = filteredInitiatives.find(i => i.id === selectedId)
 
-                        setFormData((prev) => ({
-                          ...prev,
-                          subCategory: selectedId,
-                          quantity: 1,
-                          amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
-                          customAmount: ''
-                        }))
-                      }}
-                    >
-                      {/* <option value="">Select Sub Category</option> */}
-                      {filteredInitiatives.map((initiative) => (
-                        <option key={initiative.id} value={initiative.id}>
-                          {initiative.title}
-                        </option>
-                      ))}
-                    </select>
+                          setFormData((prev) => ({
+                            ...prev,
+                            subCategory: selectedId,
+                            quantity: 1,
+                            amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
+                            customAmount: ''
+                          }))
+                        }}
+                      >
+                        {/* <option value="">Select Sub Category</option> */}
+                        {filteredInitiatives.map((initiative) => (
+                          <option key={initiative.id} value={initiative.id}>
+                            {initiative.title}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 )}
               </div>
@@ -659,22 +674,24 @@ const VerticalDonationForm = ({
               {showProjectSelect && (
                 <div className="vertical-donation-group">
                   <label className="vertical-donation-label">Select Project</label>
-                  <select
-                    className="vertical-donation-input"
-                    value={formData.projectId}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        projectId: e.target.value
-                      }))
-                    }
-                  >
-                    {projects.map((project) => (
-                      <option key={project.id} value={project.id}>
-                        {project.title || project.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="vertical-donation-select">
+                    <select
+                      className="vertical-donation-input"
+                      value={formData.projectId}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          projectId: e.target.value
+                        }))
+                      }
+                    >
+                      {selectableProjects.map((project) => (
+                        <option key={project.id} value={project.id}>
+                          {project.title || project.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               )}
 

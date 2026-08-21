@@ -32,6 +32,20 @@
   transition: transform 0.3s var(--ease);
 }
 
+.page-header-image--mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .page-header-image--desktop {
+    display: none;
+  }
+
+  .page-header-image--mobile {
+    display: block;
+  }
+}
+
 .page-header-container:hover .page-header-image {
   transform: scale(1.05);
 }
