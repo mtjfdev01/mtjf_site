@@ -12,6 +12,12 @@ import qurbani from '../assets/img/projects/icons/qurbani.png'
 import aaslab from '../assets/img/projects/icons/MTJF_Logos/aaslab.svg'
 import community from '../assets/img/projects/icons/MTJF_Logos/community.svg'
 
+/**
+ * Flip to true only when testing / shipping DMS catalog for donation forms.
+ * Default false = static FALLBACK_PROJECT_CARDS / projectsData (no API call).
+ */
+export const USE_DMS_WEBSITE_DONATION_PROJECTS = false
+
 const ICON_MAP = {
   health,
   education,
@@ -53,10 +59,18 @@ const applyIcons = (cards) =>
     }
   })
 
-export const useWebsiteDonationProjects = (fallback = []) => {
+export const useWebsiteDonationProjects = (
+  fallback = [],
+  enabled = USE_DMS_WEBSITE_DONATION_PROJECTS,
+) => {
   const [projectCards, setProjectCards] = useState(() => applyIcons(fallback))
 
   useEffect(() => {
+    if (!enabled) {
+      setProjectCards(applyIcons(fallback))
+      return undefined
+    }
+
     let cancelled = false
     axiosInstance
       .get('/donations/public/website-projects')
@@ -71,7 +85,7 @@ export const useWebsiteDonationProjects = (fallback = []) => {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [fallback, enabled])
 
   return projectCards
 }
