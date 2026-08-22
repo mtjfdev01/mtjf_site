@@ -4,7 +4,10 @@ import '../components/projects/ProjectsPage.css'
 import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { PROJECTS_LISTING_DATA } from '../data/projectsData'
-import { useWebsiteProjectsListing } from '../hooks/useWebsiteProjectsListing'
+import {
+  useWebsiteProjectsListing,
+  USE_DMS_WEBSITE_PROJECTS_LISTING,
+} from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
 import { useCart } from '../contexts/CartContext'
@@ -20,7 +23,11 @@ const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial
 const Projects = () => {
   const navigate = useNavigate()
   const { shortDonate } = useCart()
-  const projects = useWebsiteProjectsListing(PROJECTS_LISTING_DATA)
+  // Static projectsData.js by default; API only when USE_DMS_WEBSITE_PROJECTS_LISTING is true
+  const projects = useWebsiteProjectsListing(
+    PROJECTS_LISTING_DATA,
+    USE_DMS_WEBSITE_PROJECTS_LISTING,
+  )
   // First component after header - loads immediately
   const [projectsRef, showProjects] = useIntersectionObserver({ 
     rootMargin: '50px',

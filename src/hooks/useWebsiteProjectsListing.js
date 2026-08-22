@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import axiosInstance from '../utils/axios'
 import { PROJECTS_LISTING_DATA } from '../data/projectsData'
+
+/**
+ * Flip to true only when testing / shipping DMS catalog for /projects.
+ * Default false = static PROJECTS_LISTING_DATA from projectsData.js.
+ */
+export const USE_DMS_WEBSITE_PROJECTS_LISTING = false
+
 const mergeListing = (apiRows, fallback) => {
   const staticById = Object.fromEntries(
     (fallback || []).map((project) => [project.id, project]),
@@ -30,12 +37,21 @@ const mergeListing = (apiRows, fallback) => {
 }
 
 /**
- * Projects listing page: DMS catalog order/visibility + static card copy/images from fallback.
+ * Projects listing page.
+ * When USE_DMS_WEBSITE_PROJECTS_LISTING is false, returns static fallback only.
  */
-export const useWebsiteProjectsListing = (fallback = PROJECTS_LISTING_DATA) => {
+export const useWebsiteProjectsListing = (
+  fallback = PROJECTS_LISTING_DATA,
+  enabled = USE_DMS_WEBSITE_PROJECTS_LISTING,
+) => {
   const [projects, setProjects] = useState(() => fallback)
 
   useEffect(() => {
+    if (!enabled) {
+      setProjects(fallback)
+      return undefined
+    }
+
     let cancelled = false
 
     axiosInstance
@@ -52,7 +68,7 @@ export const useWebsiteProjectsListing = (fallback = PROJECTS_LISTING_DATA) => {
     return () => {
       cancelled = true
     }
-  }, [fallback])
+  }, [fallback, enabled])
 
   return projects
 }
