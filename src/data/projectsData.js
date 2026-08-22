@@ -236,6 +236,16 @@ import cleanwater_hero_web from '../assets/img/projects/projects-details/cleanwa
 export const PROJECTS_DETAIL_DATA = {
   education: {
     id: 'education',
+    listing_title: 'Education',
+    listing_subtitle: 'Opening Doors to Learning and Opportunity',
+    listing_description:
+      'We offer quality education, Islamic learning, scholarships, and support for out-of-school children to help them build brighter futures.',
+    listing_impactStatement:
+      'Education transforms lives and your support ensures no child is left behind.',
+    listing_image: Education,
+    listing_donateButtonText: 'Educate a Child',
+    listing_learnMorePath: '/projects/education',
+    listing_donatePath: '/donate/education',
     title: 'Education – Knowledge for Every Child, Opportunity for Every Dream',
     headerImage: education,
     stats: [
@@ -440,6 +450,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   health: {
     id: 'health',
+    listing_title: 'Health',
+    listing_subtitle: 'Ensuring Access to Dignified, Affordable Healthcare',
+    listing_description:
+      'We provide free OPDs, medical camps, essential treatments, and life-saving surgeries to vulnerable families who cannot afford healthcare.',
+    listing_impactStatement:
+      'Every patient we serve moves one step closer to a healthier, dignified life, because healthcare should never be a privilege.',
+    listing_image: Health,
+    listing_donateButtonText: 'Support Healthcare Services',
+    listing_learnMorePath: '/projects/health',
+    listing_donatePath: '/donate/health',
     title: 'Health – Restoring Dignity, One Patient at a Time',
     headerImage: healthhero,
     stats: [
@@ -682,6 +702,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'disaster-management': {
     id: 'disaster-management',
+    listing_title: 'Disaster Relief',
+    listing_subtitle: 'Rapid Response When Crisis Strikes',
+    listing_description:
+      'Our teams deliver food, shelter, medical assistance, and long-term recovery support to families affected by floods, earthquakes, and emergencies.',
+    listing_impactStatement:
+      'Your support ensures no family faces disaster alone.',
+    listing_image: DisasterRelief,
+    listing_donateButtonText: 'Help in Emergencies',
+    listing_learnMorePath: '/projects/disaster-management',
+    listing_donatePath: '/donate/disaster-management',
     title: 'Disaster Relief',
     headerImage: image3,
     stats: [
@@ -830,6 +860,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'clean-water': {
     id: 'clean-water',
+    listing_title: 'Clean Water',
+    listing_subtitle: 'Providing Safe Water for Healthier Communities',
+    listing_description:
+      'We install hand pumps, filtration systems, and community water solutions where families struggle for safe drinking water.',
+    listing_impactStatement:
+      'Clean water reduces disease, restores dignity, and protects generations.',
+    listing_image: CleanWater,
+    listing_donateButtonText: 'Sponsor a Water Project',
+    listing_learnMorePath: '/projects/clean-water',
+    listing_donatePath: '/donate/clean-water',
     headerImage: cleanwater_hero_web,
     headerImageMob: cleanwater_hero_mob,
     title: 'Give the Gift of Water This Muharram',
@@ -1097,6 +1137,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'kasb-skill-development': {
     id: 'kasb-skill-development',
+    listing_title: 'KASB Skill Development',
+    listing_subtitle: 'Empowering Youth and Women Through Skills',
+    listing_description:
+      'We offer vocational training, digital skills, and tailoring that help individuals earn a stable income.',
+    listing_impactStatement:
+      'When someone gains a skill, they gain the power to change their own future.',
+    listing_image: KasbSkill,
+    listing_donateButtonText: 'Sponsor Skill Training',
+    listing_learnMorePath: '/projects/kasb-skill-development',
+    listing_donatePath: '/donate/kasb-skill-development',
     title: 'KASB Skill Development – Skills That Build Futures',
     headerImage: kasb,
     stats: [
@@ -1253,6 +1303,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'apna-ghar': {
     id: 'apna-ghar',
+    listing_title: 'Apna Ghar',
+    listing_subtitle: 'Safe Shelter for Orphans and Widows',
+    listing_description:
+      'Apna Ghar provides a nurturing home, education, emotional care, and long-term stability and independence for widows and orphaned children.',
+    listing_impactStatement:
+      'Here, safety becomes healing, and broken lives begin again.',
+    listing_image: ApnaGhar,
+    listing_donateButtonText: 'Support Apna Ghar',
+    listing_learnMorePath: '/projects/apna-ghar',
+    listing_donatePath: '/donate/apna-ghar',
     title: 'Apna Ghar – A Safe, Dignified, and Empowering Community for Widows & Orphans',
     headerImage: apna_ghar,
     headerImageMob: apna_ghar_hero_mob,
@@ -1470,6 +1530,16 @@ export const PROJECTS_DETAIL_DATA = {
   },
   'aas-lab-diagnostics': {
     id: 'aas-lab-diagnostics',
+    listing_title: 'AAS Lab & Diagnostics',
+    listing_subtitle: 'Accessible and Affordable Diagnostic Care for all',
+    listing_description:
+      'We provide accurate and affordable CT scans, MRIs, ultrasounds, and essential lab tests in underserved areas where such facilities never existed. These tests are also done free of cost for the more deserving patients.',
+    listing_impactStatement:
+      'A correct diagnosis can save a life and your support makes it possible.',
+    listing_image: AASLab,
+    listing_donateButtonText: 'Support Diagnostic Care',
+    listing_learnMorePath: '/projects/aas-lab-diagnostics',
+    listing_donatePath: '/donate/aas-lab-diagnostics',
     title: 'Objective: Basic Healthcare for the Underprivileged',
     headerImage: healthhero,
     headerImageMob: apna_ghar_hero_mob,
@@ -1582,6 +1652,16 @@ team will provide you with individualised attention and assistance.`,
   },
   'seeds-of-change': {
     id: 'seeds-of-change',
+    listing_title: 'Seeds of Change',
+    listing_subtitle: 'Protecting the Environment for Future Generations',
+    listing_description:
+      'Through plantation drives, climate awareness, and community engagement, we strengthen environmental resilience and promote sustainable living.',
+    listing_impactStatement:
+      'Every tree planted brings us closer to a cleaner, safer world.',
+    listing_image: SeedsOfChange,
+    listing_donateButtonText: 'Plant a Tree',
+    listing_learnMorePath: '/projects/seeds-of-change',
+    listing_donatePath: '/donate/seeds-of-change',
     title: 'Make Pakistan Green Again',
     headerImage: SeedsOfChange,
     headerImageMob: apna_ghar_hero_mob,
@@ -1664,6 +1744,16 @@ team will provide you with individualised attention and assistance.`,
   },
   'community-services': {
     id: 'community-services',
+    listing_title: 'Community Services',
+    listing_subtitle: 'Supporting Vulnerable Families With Essential Relief',
+    listing_description:
+      'We provide financial assistance, ration support, winter kits, marriage support, and cooked food to families struggling with daily survival.',
+    listing_impactStatement:
+      'Your generosity turns hardship into hope for those who need it most.',
+    listing_image: image1,
+    listing_donateButtonText: 'Support a Family',
+    listing_learnMorePath: '/projects/community-services',
+    listing_donatePath: '/donate/community-services',
     title: 'Marriage gift',
     headerImage: image1,
     headerImageMob: image1,
@@ -4500,23 +4590,19 @@ export const PROJECTS_LISTING_SLUGS = [
 
 /** Map project detail record → listing card shape for /projects page. */
 export const projectDetailToListingCard = (detail) => {
+  if (!detail) return null
   const id = detail.id
-  const shortTitle =
-    detail.donateCategory ||
-    (detail.title && detail.title.split('–')[0].trim()) ||
-    detail.title ||
-    id
 
   return {
     id,
-    title: shortTitle,
-    subtitle: detail.content?.subtitle || detail.subProjects?.[0]?.subtitle || '',
-    description: detail.content?.paragraph1 || '',
-    impactStatement: detail.subProjects?.[0]?.impact || '',
-    image: detail.headerImage || detail.headerImageMob,
-    donateButtonText: detail.donateButtonText || 'Donate',
-    learnMorePath: `/projects/${id}`,
-    donatePath: `/donate/${id}`,
+    title: detail.listing_title || detail.donateCategory || detail.title || id,
+    subtitle: detail.listing_subtitle || '',
+    description: detail.listing_description || '',
+    impactStatement: detail.listing_impactStatement || '',
+    image: detail.listing_image || detail.headerImage || detail.headerImageMob,
+    donateButtonText: detail.listing_donateButtonText || detail.donateButtonText || 'Donate',
+    learnMorePath: detail.listing_learnMorePath || `/projects/${id}`,
+    donatePath: detail.listing_donatePath || `/donate/${id}`,
   }
 }
 
