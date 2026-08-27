@@ -1610,8 +1610,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash CNIC — /test-checkout only */}
-          {testCheckout && (
+          {/* JazzCash CNIC — hidden while JazzCash payment is disabled */}
+          {/* {testCheckout && (
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
@@ -1626,7 +1626,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
               />
             </div>
           </div>
-          )}
+          )} */}
 
           <div className="col-md-6">
             <span className="donation_type_select checkout-panel__field">
@@ -2218,35 +2218,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash MWallet — /test-checkout only */}
-          {testCheckout && (
-          <div className="col-12">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, 'jazzcash')
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Pay by JazzCash</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
-                </div>
-                {isLoading === 'jazzcash' && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          )}
-
           {/* Alfalah account (SMS + email OTAC) — disabled */}
           {/* <div className="col-md-6">
             <div className="input-item">
@@ -2302,48 +2273,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div> */}
-          
-
-          
-
-
-          {/* Stripe — /test-checkout only */}
-          {testCheckout && (
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, STRIPE_DONATION_METHOD)
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Pay with Stripe</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Card</span>
-                  {isWeeklyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Weekly</span>
-                  )}
-                  {isMonthlyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Monthly</span>
-                  )}
-                  {isDailyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Daily</span>
-                  )}
-                </div>
-                {isLoading === STRIPE_DONATION_METHOD && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          )}
 
           {/* Bank Alfalah — production checkout + test-checkout */}
           <div className="col-12">
@@ -2371,6 +2300,55 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             </div>
           </div>
+
+          {/* JazzCash MWallet — /test-checkout only (disabled, last) */}
+          {testCheckout && (
+          <div className="col-12">
+            <div className="input-item">
+              <div
+                className="payment-option payment-option--disabled"
+                aria-disabled="true"
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay by JazzCash</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
+
+          {/* Stripe — /test-checkout only (disabled, last) */}
+          {testCheckout && (
+          <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className="payment-option payment-option--disabled"
+                aria-disabled="true"
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay with Stripe</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Card</span>
+                  {isWeeklyDonationFrequency(formData.donation_frequency) && (
+                    <span className="payment-option-badge">Weekly</span>
+                  )}
+                  {isMonthlyDonationFrequency(formData.donation_frequency) && (
+                    <span className="payment-option-badge">Monthly</span>
+                  )}
+                  {isDailyDonationFrequency(formData.donation_frequency) && (
+                    <span className="payment-option-badge">Daily</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
         </div>
       </form>
     </section>
