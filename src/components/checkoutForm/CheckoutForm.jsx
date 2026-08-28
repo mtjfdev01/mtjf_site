@@ -47,6 +47,11 @@ import { CiCreditCard2 } from "react-icons/ci";
 import { fetchAppealsList } from '../../lib/appealsApi'
 import { buildAppealDonationLine, isAppealDonationLine } from '../../lib/appealsHelpers'
 
+const MAX_RECURRING_DAY_OF_MONTH = 30
+
+const getDefaultRecurringDayOfMonth = () =>
+  String(Math.min(getTodayDayOfMonth(), MAX_RECURRING_DAY_OF_MONTH))
+
 const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
 const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null
 
@@ -103,9 +108,9 @@ const DEFAULT_FORM = {
   donor_phone: '',
   donation_type: 'general',
   donation_frequency: 'once',
-  recurring_start_mode: RECURRING_START_SAME_DATE,
-  recurring_start_date: '',
-  recurring_day_of_month: String(getTodayDayOfMonth()),
+  recurring_start_mode: RECURRING_START_FIRST_OF_MONTH,
+  recurring_start_date: getNextFirstOfMonthDateString(),
+  recurring_day_of_month: getDefaultRecurringDayOfMonth(),
   recurring_consent: true,
   country: '',
   city: '',
@@ -198,6 +203,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
       3,
     ),
   )
+  const [showMoreRecurringBillingOptions, setShowMoreRecurringBillingOptions] = useState(false)
   const recurringPresetTotals = useMemo(() => {
     if (!recurringBaseAmount) return null
     return computeRecurringPresetTotals({
@@ -487,6 +493,16 @@ const CheckoutForm = ({ testCheckout = false }) => {
       }
     })
   }, [isCampaignCheckoutFlow, campaignPledgeMode, campaignCheckout?.is_recurring])
+
+  useEffect(() => {
+    if (!isRecurringDonationFrequency(formData.donation_frequency)) {
+      setShowMoreRecurringBillingOptions(false)
+      return
+    }
+    if (formData.recurring_start_mode !== RECURRING_START_FIRST_OF_MONTH) {
+      setShowMoreRecurringBillingOptions(true)
+    }
+  }, [formData.donation_frequency, formData.recurring_start_mode])
 
   // Appeal donate URL: clear other cart lines and pre-select appeal id before API list loads
   useEffect(() => {
@@ -1123,10 +1139,10 @@ const CheckoutForm = ({ testCheckout = false }) => {
       formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH
     ) {
       const dom = Number(formData.recurring_day_of_month)
-      if (!Number.isFinite(dom) || dom < 1 || dom > 31) {
+      if (!Number.isFinite(dom) || dom < 1 || dom > MAX_RECURRING_DAY_OF_MONTH) {
         setFormMessage({
           type: 'error',
-          text: 'Please choose a valid day of the month (1–31).',
+          text: `Please choose a valid day of the month (1–${MAX_RECURRING_DAY_OF_MONTH}).`,
         })
         return
       }
@@ -1892,11 +1908,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
           <div className="checkout-panel__recurring-header">
             <h3 className="checkout-panel__recurring-title">
               Select frequency:{' '}
-              <span className="checkout-panel__recurring-hint">
-                {isCampaignCheckoutFlow && campaignCheckout?.is_recurring
-                  ? '(Stripe = auto-charge · Other methods = pay once now + cron reminders)'
-                  : '(Stripe = auto-charge · Other methods = pay once now + cron reminders)'}
-              </span>
             </h3>
           </div>
 
@@ -1951,70 +1962,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
 
               <div className="checkout-panel__start-options" role="radiogroup" aria-label="Recurring billing day">
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={formData.recurring_start_mode === RECURRING_START_SAME_DATE}
-                  className={`checkout-panel__start-option${
-                    formData.recurring_start_mode === RECURRING_START_SAME_DATE
-                      ? ' checkout-panel__start-option--active'
-                      : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      recurring_start_mode: RECURRING_START_SAME_DATE,
-                      recurring_day_of_month: String(getTodayDayOfMonth()),
-                    }))
-                  }
-                >
-                  <span className="checkout-panel__start-option-radio" aria-hidden />
-                  <span className="checkout-panel__start-option-copy">
-                    <span className="checkout-panel__start-option-title">
-                      {isMonthlyDonationFrequency(formData.donation_frequency)
-                        ? `Today — repeat on the ${getTodayDayOfMonth()}th each month`
-                        : 'Donate today and repeat on the same date'}
-                    </span>
-                    <span className="checkout-panel__start-option-desc">
-                      {isMonthlyDonationFrequency(formData.donation_frequency)
-                        ? 'Default: donate today, then on this same day every month'
-                        : 'First charge today, then on this same day each cycle'}
-                    </span>
-                  </span>
-                </button>
-
-                {isMonthlyDonationFrequency(formData.donation_frequency) && (
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH}
-                    className={`checkout-panel__start-option${
-                      formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH
-                        ? ' checkout-panel__start-option--active'
-                        : ''
-                    }`}
-                    onClick={() =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        recurring_start_mode: RECURRING_START_DAY_OF_MONTH,
-                        recurring_day_of_month:
-                          prev.recurring_day_of_month || String(getTodayDayOfMonth()),
-                      }))
-                    }
-                  >
-                    <span className="checkout-panel__start-option-radio" aria-hidden />
-                    <span className="checkout-panel__start-option-copy">
-                      <span className="checkout-panel__start-option-title">
-                        Choose day of every month
-                      </span>
-                      <span className="checkout-panel__start-option-desc">
-                        e.g. pay on the 5th of each month (next reminder is at least 20 days after this donation)
-                      </span>
-                    </span>
-                  </button>
-                )}
-
-                {isMonthlyDonationFrequency(formData.donation_frequency) && (
+                {isMonthlyDonationFrequency(formData.donation_frequency) ? (
                   <button
                     type="button"
                     role="radio"
@@ -2042,9 +1990,106 @@ const CheckoutForm = ({ testCheckout = false }) => {
                       </span>
                     </span>
                   </button>
+                ) : (
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={formData.recurring_start_mode === RECURRING_START_SAME_DATE}
+                    className={`checkout-panel__start-option${
+                      formData.recurring_start_mode === RECURRING_START_SAME_DATE
+                        ? ' checkout-panel__start-option--active'
+                        : ''
+                    }`}
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        recurring_start_mode: RECURRING_START_SAME_DATE,
+                        recurring_day_of_month: getDefaultRecurringDayOfMonth(),
+                      }))
+                    }
+                  >
+                    <span className="checkout-panel__start-option-radio" aria-hidden />
+                    <span className="checkout-panel__start-option-copy">
+                      <span className="checkout-panel__start-option-title">
+                        Donate today and repeat on the same date
+                      </span>
+                      <span className="checkout-panel__start-option-desc">
+                        First charge today, then on this same day each cycle
+                      </span>
+                    </span>
+                  </button>
                 )}
 
+                {isMonthlyDonationFrequency(formData.donation_frequency) &&
+                !showMoreRecurringBillingOptions ? (
+                  <button
+                    type="button"
+                    className="checkout-panel__see-more-link"
+                    onClick={() => setShowMoreRecurringBillingOptions(true)}
+                  >
+                    See more options
+                  </button>
+                ) : (
+                  isMonthlyDonationFrequency(formData.donation_frequency) && (
+                  <>
                 <button
+                  type="button"
+                  role="radio"
+                  aria-checked={formData.recurring_start_mode === RECURRING_START_SAME_DATE}
+                  className={`checkout-panel__start-option${
+                    formData.recurring_start_mode === RECURRING_START_SAME_DATE
+                      ? ' checkout-panel__start-option--active'
+                      : ''
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      recurring_start_mode: RECURRING_START_SAME_DATE,
+                      recurring_day_of_month: getDefaultRecurringDayOfMonth(),
+                    }))
+                  }
+                >
+                  <span className="checkout-panel__start-option-radio" aria-hidden />
+                  <span className="checkout-panel__start-option-copy">
+                    <span className="checkout-panel__start-option-title">
+                      {`Today — repeat on the ${getTodayDayOfMonth()}th each month`}
+                    </span>
+                    <span className="checkout-panel__start-option-desc">
+                      Donate today, then on this same day every month
+                    </span>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH}
+                  className={`checkout-panel__start-option${
+                    formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH
+                      ? ' checkout-panel__start-option--active'
+                      : ''
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      recurring_start_mode: RECURRING_START_DAY_OF_MONTH,
+                      recurring_day_of_month:
+                        prev.recurring_day_of_month || getDefaultRecurringDayOfMonth(),
+                    }))
+                  }
+                >
+                  <span className="checkout-panel__start-option-radio" aria-hidden />
+                  <span className="checkout-panel__start-option-copy">
+                    <span className="checkout-panel__start-option-title">
+                      Choose day of every month
+                    </span>
+                    <span className="checkout-panel__start-option-desc">
+                      e.g. pay on the 5th of each month (next reminder is at least 20 days after this donation)
+                    </span>
+                  </span>
+                </button>
+
+                {/* <button
                   type="button"
                   role="radio"
                   aria-checked={formData.recurring_start_mode === RECURRING_START_CUSTOM}
@@ -2070,27 +2115,82 @@ const CheckoutForm = ({ testCheckout = false }) => {
                     </span>
                   </span>
                 </button>
+                */}
+
+                {formData.recurring_start_mode === RECURRING_START_FIRST_OF_MONTH && (
+                  <button
+                    type="button"
+                    className="checkout-panel__see-more-link"
+                    onClick={() => setShowMoreRecurringBillingOptions(false)}
+                  >
+                    See fewer options
+                  </button>
+                )}
+                  </>
+                  )
+                )}
               </div>
 
               {formData.recurring_start_mode === RECURRING_START_DAY_OF_MONTH &&
                 isMonthlyDonationFrequency(formData.donation_frequency) && (
-                <div className="checkout-panel__field checkout-panel__date-field">
-                  <label className="checkout-panel__date-label" htmlFor="checkout-recurring-day-of-month">
-                    Day of month
-                  </label>
-                  <select
+                <div className="checkout-panel__field checkout-panel__day-picker-field">
+                  <div className="checkout-panel__day-picker-header">
+                    <label className="checkout-panel__date-label" htmlFor="checkout-recurring-day-of-month">
+                      Day of month
+                    </label>
+                    <span className="checkout-panel__day-picker-selected">
+                      {(() => {
+                        const day = Number(
+                          formData.recurring_day_of_month || getDefaultRecurringDayOfMonth(),
+                        )
+                        const suffix =
+                          day % 10 === 1 && day !== 11
+                            ? 'st'
+                            : day % 10 === 2 && day !== 12
+                              ? 'nd'
+                              : day % 10 === 3 && day !== 13
+                                ? 'rd'
+                                : 'th'
+                        return `Charges on the ${day}${suffix}`
+                      })()}
+                    </span>
+                  </div>
+                  <p className="checkout-panel__day-picker-hint">
+                    Pick the day you want to be charged each month
+                  </p>
+                  <div
                     id="checkout-recurring-day-of-month"
-                    name="recurring_day_of_month"
-                    className="checkout-panel__input checkout-panel__select"
-                    value={formData.recurring_day_of_month || String(getTodayDayOfMonth())}
-                    onChange={handleInputChange}
+                    className="checkout-panel__day-picker"
+                    role="radiogroup"
+                    aria-label="Day of month"
                   >
-                    {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
-                      <option key={day} value={String(day)}>
-                        {day}
-                      </option>
-                    ))}
-                  </select>
+                    {Array.from({ length: MAX_RECURRING_DAY_OF_MONTH }, (_, i) => i + 1).map((day) => {
+                      const dayValue = String(day)
+                      const isSelected =
+                        (formData.recurring_day_of_month || getDefaultRecurringDayOfMonth()) ===
+                        dayValue
+
+                      return (
+                        <button
+                          key={day}
+                          type="button"
+                          role="radio"
+                          aria-checked={isSelected}
+                          className={`checkout-panel__day-chip${
+                            isSelected ? ' checkout-panel__day-chip--active' : ''
+                          }`}
+                          onClick={() =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              recurring_day_of_month: dayValue,
+                            }))
+                          }
+                        >
+                          {day}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
 
