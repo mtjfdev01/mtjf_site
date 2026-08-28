@@ -1860,7 +1860,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
               </div>
             )}
 
-            <label
+            {/* Recurring consent — hidden for now */}
+            {/* <label
               className={`checkout-panel__consent-card${
                 formData.recurring_consent ? ' checkout-panel__consent-card--checked' : ''
               }`}
@@ -1878,7 +1879,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 className="checkout-panel__checkbox"
               />
               <span className="checkout-panel__consent-text">{RECURRING_CONSENT_TEXT}</span>
-            </label>
+            </label> */}
           </div>
         )}
 
@@ -1946,9 +1947,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
               <div className="checkout-panel__recurring-subheader">
                 <h4 className="checkout-panel__recurring-subtitle">
                   Recurring billing day
-                  <span style={{ fontWeight: 400, color: '#6b7280', marginLeft: 6, fontSize: 13 }}>
-                    (reminders &amp; Stripe auto-charge)
-                  </span>
                 </h4>
               </div>
 
@@ -2119,7 +2117,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
                 </>
               )}
 
-              <label
+              {/* Recurring consent — hidden for now */}
+              {/* <label
                 className={`checkout-panel__consent-card${
                   formData.recurring_consent ? ' checkout-panel__consent-card--checked' : ''
                 }`}
@@ -2137,7 +2136,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
                   className="checkout-panel__checkbox"
                 />
                 <span className="checkout-panel__consent-text">{RECURRING_CONSENT_TEXT}</span>
-              </label>
+              </label> */}
             </div>
           )}
         </div>
