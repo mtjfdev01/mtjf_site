@@ -131,7 +131,7 @@ const paymentFrequency = {
   alfalah: 'once',
 }
 
-const CheckoutForm = ({ testCheckout = false }) => {
+const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams } = useDonation()
@@ -1626,8 +1626,8 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash CNIC — hidden while JazzCash payment is disabled */}
-          {/* {testCheckout && (
+          {/* JazzCash CNIC — required when JazzCash is enabled on /test-checkout-b */}
+          {enableJazzCash && (
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
@@ -1642,7 +1642,7 @@ const CheckoutForm = ({ testCheckout = false }) => {
               />
             </div>
           </div>
-          )} */}
+          )}
 
           <div className="col-md-6">
             <span className="donation_type_select checkout-panel__field">
@@ -1915,7 +1915,6 @@ const CheckoutForm = ({ testCheckout = false }) => {
             {[
               { value: 'once', label: 'One-time' },
               { value: 'daily', label: 'Daily' },
-              { value: 'weekly', label: 'Weekly' },
               { value: 'monthly', label: 'Monthly' },
             ].map((opt) => (
               <button
@@ -2400,8 +2399,37 @@ const CheckoutForm = ({ testCheckout = false }) => {
             </div>
           </div>
 
-          {/* JazzCash MWallet — /test-checkout only (disabled, last) */}
-          {testCheckout && (
+          {/* JazzCash MWallet — enabled on /test-checkout-b only */}
+          {enableJazzCash && (
+          <div className="col-12">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, 'jazzcash')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>Pay by JazzCash</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
+                </div>
+                {isLoading === 'jazzcash' && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          )}
+
+          {/* JazzCash MWallet — /test-checkout only (disabled) */}
+          {testCheckout && !enableJazzCash && (
           <div className="col-12">
             <div className="input-item">
               <div

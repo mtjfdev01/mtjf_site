@@ -23,6 +23,7 @@ import CampaignTracker from './components/analytics/CampaignTracker'
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
+const ProjectsReplica = lazy(() => import("./pages/ProjectsReplica"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Publications = lazy(() => import("./pages/Publications"));
 const GetInvolved = lazy(() => import("./pages/GetInvolved"));
@@ -143,6 +144,7 @@ function App() {
               <Route path="/testinfo" element={<Home showHomeInfoSection={true} />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/projects-replica" element={<ProjectsReplica />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/laylat-ul-qadar" element={<ProjectDetail forcedProjectId="layla_tul_qadr" />} />
               <Route path="/gaza" element={<ProjectDetail forcedProjectId="gaza" />} />
@@ -161,6 +163,8 @@ function App() {
               <Route path="/volunteerRegistration" element={<VolunteerRegistration />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/test-checkout" element={<Checkout />} />
+              <Route path="/test-checkout-b" element={<Checkout />} />
+              <Route path="/test_checkout_b" element={<Checkout />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donate/:projectId" element={<Donate />} />
               <Route path="/donation" element={<Donate />} />

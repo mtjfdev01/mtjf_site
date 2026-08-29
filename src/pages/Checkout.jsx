@@ -15,7 +15,10 @@ const TEST_CHECKOUT_DEFAULT_AMOUNT = 100
 
 const Checkout = () => {
   const location = useLocation()
-  const testCheckout = location.pathname === '/test-checkout'
+  const pathname = location.pathname.replace(/\/$/, '') || '/'
+  const isTestCheckoutB = pathname === '/test-checkout-b' || pathname === '/test_checkout_b'
+  const testCheckout = pathname === '/test-checkout' || isTestCheckoutB
+  const enableJazzCash = isTestCheckoutB
   const { amount, setDonationFormData } = useDonation()
 
   const campaignIdFromQuery = useMemo(() => {
@@ -53,7 +56,7 @@ const Checkout = () => {
       <div ref={formRef}>
         {showForm && (
           <Suspense fallback={null}>
-            <CheckoutForm testCheckout={testCheckout} />
+            <CheckoutForm testCheckout={testCheckout} enableJazzCash={enableJazzCash} />
           </Suspense>
         )}
       </div>

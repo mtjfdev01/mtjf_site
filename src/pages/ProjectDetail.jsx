@@ -3,6 +3,7 @@ import { Suspense, lazy, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
+import '../components/projects/ProjectsCardsAnimation.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
 import InitiativeDonationCard from '../components/donation/projects_menu/InitiativeDonationCard'
 import DonationSidebar from '../components/donation/projects_menu/DonationSidebar'
@@ -65,7 +66,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
   const projectCtaProps = project?.ctaProps || project?.ctaContent || {}
 
   return (
-    <div className="project-detail-page">
+    <div className="project-detail-page projects-detail-animated">
       <PageHeader
         title={project.title}
         image={project.headerImage}
@@ -195,24 +196,41 @@ const ProjectDetail = ({ forcedProjectId }) => {
                   {project.showInitiative && project.initiatives ? (
                     <div className="project-initiative-cards">
                       {Array.isArray(project.initiatives) ? (
-                        project.initiatives.map((initiative) => (
-                          <InitiativeDonationCard
+                        project.initiatives.map((initiative, index) => (
+                          <div
                             key={initiative.id}
+                            className="project-initiative-card-animated"
+                            style={{
+                              '--projects-card-delay': `${0.35 + index * 0.22}s`,
+                              '--projects-card-from-x':
+                                index % 2 === 0 ? '-64px' : '64px',
+                            }}
+                          >
+                            <InitiativeDonationCard
+                              initiative={{
+                                ...initiative,
+                                parentProjectId: project.id,
+                                parentProjectTitle: project.title
+                              }}
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        <div
+                          className="project-initiative-card-animated"
+                          style={{
+                            '--projects-card-delay': '0.35s',
+                            '--projects-card-from-x': '64px',
+                          }}
+                        >
+                          <InitiativeDonationCard
                             initiative={{
-                              ...initiative,
+                              ...project.initiatives,
                               parentProjectId: project.id,
                               parentProjectTitle: project.title
                             }}
                           />
-                        ))
-                      ) : (
-                        <InitiativeDonationCard
-                          initiative={{
-                            ...project.initiatives,
-                            parentProjectId: project.id,
-                            parentProjectTitle: project.title
-                          }}
-                        />
+                        </div>
                       )}
                     </div>
                   ) : (

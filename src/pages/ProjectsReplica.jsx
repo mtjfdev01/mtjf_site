@@ -2,16 +2,16 @@ import React, { Suspense, lazy } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
 import '../components/projects/ProjectsCardsAnimation.css'
-import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
+import './ProjectsReplica.css'
 import image1 from '../assets/img/projects/hero-project.webp'
-import PageHeader from '../components/pageHeader/PageHeader'
+import PageHeaderReplica from '../components/pageHeader/PageHeaderReplica'
 import { PROJECTS_LISTING_DATA } from '../data/projectsData'
 import {
   useWebsiteProjectsListing,
   USE_DMS_WEBSITE_PROJECTS_LISTING,
 } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import LazyImage from '../components/common/LazyImage'
+import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
 import { useCart } from '../contexts/CartContext'
 
 // const Events = lazy(() => import('../components/events/Events'))
@@ -22,7 +22,7 @@ const DonationCta = lazy(() =>
 const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
-const Projects = () => {
+const ProjectsReplica = () => {
   const navigate = useNavigate()
   const { shortDonate } = useCart()
   // Static projectsData.js by default; API only when USE_DMS_WEBSITE_PROJECTS_LISTING is true
@@ -46,73 +46,70 @@ const Projects = () => {
 
   return (
     <>
-      <section className="projects-page-section container py-48">
-        <PageHeader image={image1} />
+      <section className="projects-page-section projects-replica-page container py-48">
+        <PageHeaderReplica image={image1} />
 
         {/* First component after header - loads immediately */}
         <div ref={projectsRef}>
           {showProjects && (
             <>
               <div className="projects-page-header text-center mb-48">
-                <h2 className="heading-secondary">Our Work</h2>
-                <h2 className='mt-0'style={{maxWidth: '90vw', margin: '0 auto'}}>Explore our programs and see how your contribution transforms futures</h2>
+                {/* <h2 className="heading-secondary">Our Work</h2>
+                <h2 className='mt-0'style={{maxWidth: '90vw', margin: '0 auto'}}>Explore our programs and see how your contribution transforms futures</h2> */}
               </div>
 
-              <div className="projects-page-grid grid grid-2 gap-32 projects-cards-animated"> 
+              <div className="projects-page-grid projects-replica-grid projects-cards-animated gap-32"> 
                 {projects.map((project, index) => (
                   <ProjectsAnimatedItem
                     key={project.id}
                     index={index}
-                    className="projects-page-item"
+                    className="projects-page-item projects-replica-item"
                   >
-                    <h2 className="heading-secondary projects-page-card-title mb-16 text-center">{project.title}</h2>
-                    <Link to={`/projects/${project.id}`}>
-                      <div
-                        className="projects-page-card card relative overflow-hidden"
-                      >
-                        <div className="projects-page-image-container relative w-100 h-100">
-                          {/* <LazyImage
+                    <Link to={`/projects/${project.id}`} className="projects-replica-card-link">
+                      <div className="projects-replica-card card">
+                        <div className="projects-replica-card-media">
+                          <img
                             src={project.image}
                             alt={project.title}
-                            className="projects-page-image"
-                          /> */}
-                          <img src={project.image} alt={project.title} className="projects-page-image" />
-                          <div className="projects-page-overlay absolute w-100 h-100"></div>
+                            className="projects-replica-card-image"
+                          />
                         </div>
 
-                      <div className="projects-page-content absolute w-100 h-100 flex flex-col justify-end p-24">
-                        {project.subtitle && (
-                          <p className="text-sm text-white mb-8 projects-page-subtitle">
-                            {project.subtitle}
-                          </p>
-                        )}
-                        <p className="text-sm text-white mb-24 projects-page-description">
-                          {project.description}
-                        </p>
+                        <div className="projects-replica-card-body">
+                          <h2 className="heading-secondary projects-replica-card-title">
+                            {project.title}
+                          </h2>
 
-                          <div className="projects-page-actions flex gap-12">
+                          <p className="text-sm projects-replica-card-subtitle">
+                            {project.subtitle || '\u00A0'}
+                          </p>
+
+                          <p className="text-sm projects-replica-card-description">
+                            {project.description}
+                          </p>
+
+                          <div className="projects-replica-card-actions">
                             <button
                               type="button"
                               className="projects-page-donate-btn"
                               onClick={(e) => {
                                 e.preventDefault()
+                                e.stopPropagation()
                                 navigate(`/donate/${project.id}`)
                               }}
                             >
                               {project.donateButtonText || 'Donate'}
                             </button>
-                            {/* <Link to={project.learnMorePath}> */}
-                              <button
-                                type="button"
-                                className="projects-page-learn-btn"
-                              >
-                                Learn More
-                              </button>
-                            {/* </Link> */}
+                            <button
+                              type="button"
+                              className="projects-page-learn-btn"
+                            >
+                              Learn More
+                            </button>
                           </div>
                         </div>
                       </div>
-                      </Link>
+                    </Link>
                   </ProjectsAnimatedItem>
                 ))}
               </div>
@@ -171,4 +168,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default ProjectsReplica

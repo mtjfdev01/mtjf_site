@@ -3,11 +3,31 @@ import { useNavigate } from 'react-router-dom'
 import LazyImage from '../common/LazyImage'
 import BrandArea from '../brands/brands'
 import './MediaContentSection.css'
+import '../projects/ProjectsCardsAnimation.css'
+import { useInViewOnce } from '../../hooks/useInViewOnce'
 import PageHeader from '../pageHeader/PageHeader'
 const ProjectsTestimonial = lazy(() => import('../projectsTestimonial/ProjectsTestimonial'))
 const Newsletter = lazy(() => import('../newsletter/Newsletter'))
 const DonationCta = lazy(() => import('../donationCta/DonationCta'))
 const Footer = lazy(() => import('../footer/Footer'))
+
+const MediaContentAnimatedItem = ({ index, children }) => {
+  const [itemRef, isVisible] = useInViewOnce({ rootMargin: '80px', threshold: 0.15 })
+
+  return (
+    <div
+      ref={itemRef}
+      className={`media-content-item ${
+        isVisible ? 'media-content-item--visible' : ''
+      } ${index % 2 === 0 ? 'media-content-item--from-left' : 'media-content-item--from-right'}`}
+      style={{
+        '--projects-card-from-x': index % 2 === 0 ? '-64px' : '64px',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
 
 const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
   const navigate = useNavigate()
@@ -169,7 +189,7 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
   }
 
   return (
-    <section className="media-content-section">
+    <section className="media-content-section media-content-animated">
       {subProjects.map((subProject, index) => {
         const listItems = getListItems(subProject)
         const image = getSubProjectImage(subProject)
@@ -177,7 +197,7 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
         const imagePosition = isEven ? 'right' : 'left'
 
         return (
-          <div key={subProject.id || index} className="media-content-item"> 
+          <MediaContentAnimatedItem key={subProject.id || index} index={index}>
             <div className={`media-content-wrapper container ${(image || subProject.video) ? imagePosition : 'no-image'}`}>
               {/* Content Side */}
               <div className="media-content-text">
@@ -443,7 +463,7 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
                   <img src={subProject.bottom_banner_mobile_img} alt={subProject.title} />
                 </div>
                 </>)}
-          </div>
+          </MediaContentAnimatedItem>
         )
       })}
 
