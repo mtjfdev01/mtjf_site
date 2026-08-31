@@ -137,6 +137,10 @@
 }
 
 @media (max-width: 768px) {
+  .projects-replica-page .projects-replica-grid {
+    margin-top: var(--space-8);
+  }
+
   .projects-replica-page .projects-replica-card {
     flex-direction: column;
     min-height: auto;

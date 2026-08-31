@@ -210,8 +210,18 @@
 
 @media (max-width: 768px) {
   .page-header-replica {
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--space-32);
     margin-top: var(--mobile-header-height);
+  }
+
+  .page-header-replica-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .page-header-replica-image-wrapper {
+    flex-shrink: 0;
   }
 
   .page-header-replica-progress {
@@ -226,12 +236,21 @@
   }
 
   .page-header-replica-form {
+    position: static;
     top: auto;
-    left: var(--space-16);
-    right: var(--space-16);
-    bottom: var(--space-16);
-    width: auto;
-    max-height: calc(100% - var(--space-32));
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-height: none;
+    padding: 0 var(--space-16);
+    box-sizing: border-box;
+    align-items: stretch;
+    pointer-events: auto;
+  }
+
+  .page-header-replica-form .vertical-donation-replica-form {
+    width: 100%;
   }
 
   .page-header-replica-title {
