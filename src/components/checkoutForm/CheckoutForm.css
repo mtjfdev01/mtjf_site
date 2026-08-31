@@ -22,6 +22,10 @@
   gap: 16px;
 }
 
+.checkout-panel__form .row > * {
+  min-width: 0;
+}
+
 .checkout-panel__field {
   background: #f3f3f3;
   border-radius: 16px;
@@ -559,6 +563,14 @@
 }
 
 /* Payment Options */
+.checkout-payment-options {
+  row-gap: var(--space-12);
+}
+
+.checkout-payment-options > [class*='col-'] {
+  margin-bottom: var(--space-12);
+}
+
 .payment-option {
   background: #f3f3f3;
   border-radius: 16px;

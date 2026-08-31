@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
 import '../components/projects/ProjectsCardsAnimation.css'
 import './ProjectsReplica.css'
@@ -12,7 +12,6 @@ import {
 } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
-import { useCart } from '../contexts/CartContext'
 
 // const Events = lazy(() => import('../components/events/Events'))
 //   const QuickBlogs = lazy(() => import('../components/quickblogs'))
@@ -23,8 +22,6 @@ const Footer = lazy(() => import('../components/footer/Footer'))
 const Newsletter = lazy(() => import('../components/newsletter/Newsletter'))
 const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
 const ProjectsReplica = () => {
-  const navigate = useNavigate()
-  const { shortDonate } = useCart()
   // Static projectsData.js by default; API only when USE_DMS_WEBSITE_PROJECTS_LISTING is true
   const projects = useWebsiteProjectsListing(
     PROJECTS_LISTING_DATA,
@@ -65,7 +62,7 @@ const ProjectsReplica = () => {
                     index={index}
                     className="projects-page-item projects-replica-item"
                   >
-                    <Link to={`/projects/${project.id}`} className="projects-replica-card-link">
+                    {/* <Link to={`/projects/${project.id}`} className="projects-replica-card-link"> */}
                       <div className="projects-replica-card card">
                         <div className="projects-replica-card-media">
                           <img
@@ -87,29 +84,9 @@ const ProjectsReplica = () => {
                           <p className="text-sm projects-replica-card-description">
                             {project.description}
                           </p>
-
-                          <div className="projects-replica-card-actions">
-                            <button
-                              type="button"
-                              className="projects-page-donate-btn"
-                              onClick={(e) => {
-                                e.preventDefault()
-                                e.stopPropagation()
-                                navigate(`/donate/${project.id}`)
-                              }}
-                            >
-                              {project.donateButtonText || 'Donate'}
-                            </button>
-                            <button
-                              type="button"
-                              className="projects-page-learn-btn"
-                            >
-                              Learn More
-                            </button>
-                          </div>
                         </div>
                       </div>
-                    </Link>
+                    {/* </Link> */}
                   </ProjectsAnimatedItem>
                 ))}
               </div>

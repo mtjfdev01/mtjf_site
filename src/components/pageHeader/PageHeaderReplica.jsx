@@ -13,7 +13,6 @@ const PageHeaderReplica = ({
   showProgressBar = true,
   progress = 78,
 }) => {
-  const clampedProgress = Math.min(100, Math.max(0, Number(progress) || 0))
   const navigate = useNavigate()
 
   const handleDonationSubmit =
@@ -56,31 +55,13 @@ const PageHeaderReplica = ({
           {url ? <Link to={url}>{images}</Link> : images}
         </div>
 
-        {showProgressBar && (
-          <div className="page-header-replica-progress">
-            <div
-              className="page-header-replica-progress-track"
-              role="progressbar"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={clampedProgress}
-              aria-label="Fundraising progress"
-            >
-              <div
-                className="page-header-replica-progress-fill"
-                style={{ width: `${clampedProgress}%` }}
-              >
-                <span className="page-header-replica-progress-shine" aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-        )}
-
         {showDonationForm && (
           <div className="page-header-replica-form">
             <VerticalDonationFormReplica
               formId="page-header-replica-donation-form"
               showProjectSelect
+              showProgressBar={showProgressBar}
+              progress={progress}
               {...donationFormProps}
               onSubmit={handleDonationSubmit}
             />

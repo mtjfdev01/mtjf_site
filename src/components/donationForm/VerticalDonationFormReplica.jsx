@@ -4,9 +4,11 @@ import { FcDonate } from 'react-icons/fc'
 import { useDonation } from '../../contexts/DonationContext'
 import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
 import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
-import { getCheckoutPathForProjects } from '../../lib/donationCheckoutPath'
 import './VerticalDonationFormReplica.css'
 
+
+const REPLICA_DEFAULT_AMOUNT = 2500
+const REPLICA_MORE_AMOUNTS = [5000, 7500, 10000]
 
 const DEFAULT_DONATION_OPTIONS = {
   PKR: [5000, 10000, 25000, 50000],
@@ -48,7 +50,7 @@ const QURBANI_EXCHANGE_RATES_PKR = {
 
 const VerticalDonationFormReplica = ({
   formId,
-  title = 'Donate',
+  title = 'Donate Now',
   initialCurrency = 'PKR',
   donationOptions = {},
   categoryOptions = ['General'],
@@ -58,7 +60,10 @@ const VerticalDonationFormReplica = ({
   defaultProjectId,
   onSubmit = (data) => console.log('Donation submitted:', data),
   className = '',
+  showProgressBar = true,
+  progress = 78,
 }) => {
+  const clampedProgress = Math.min(100, Math.max(0, Number(progress) || 0))
   const navigate = useNavigate()
   const location = useLocation()
   const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
@@ -100,14 +105,14 @@ const VerticalDonationFormReplica = ({
     let initialCategory = defaultCategory || (project && project.category) || categoryOptions[0] || 'General'
 
     return {
-      frequency: 'once',
+      frequency: 'monthly',
       currency: initialCurrency,
-      amount: isQurbaniInit && firstInitiative?.price ? String(firstInitiative.price) : '',
+      amount: String(REPLICA_DEFAULT_AMOUNT),
       customAmount: '',
       category: initialCategory,
       // store initiative id (not title) — needed for quantity → amount linkage
       subCategory: isQurbaniInit && firstInitiative?.id ? firstInitiative.id : '',
-      projectId: initialProjectId,
+      projectId: initialProjectId || (projectCards[0]?.id ?? ''),
       quantity: 1
     }
   })
@@ -216,8 +221,6 @@ const VerticalDonationFormReplica = ({
       ...prev,
       subCategory: first.id,
       quantity: 1,
-      amount: first.price ? first.price.toString() : '',
-      customAmount: ''
     }))
   }, [filteredInitiatives, isQurbaniMultiCurrencyProject])
 
@@ -234,8 +237,6 @@ const VerticalDonationFormReplica = ({
       ...prev,
       subCategory: exists ? prev.subCategory : first.id,
       quantity: 1,
-      amount: String(first.price ?? ''),
-      customAmount: ''
     }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isQurbaniMultiCurrencyProject, filteredInitiatives])
@@ -370,6 +371,17 @@ const VerticalDonationFormReplica = ({
     }))
   }
 
+  const handlePresetAmountClick = (amount) => {
+    setFormData((prev) => ({
+      ...prev,
+      amount: amount.toString(),
+      customAmount: '',
+    }))
+  }
+
+  const isPresetSelected = (amount) =>
+    !formData.customAmount && Number(formData.amount) === amount
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -474,8 +486,7 @@ const VerticalDonationFormReplica = ({
     onSubmit?.(donationData)
 
     const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
-    const checkoutPath = getCheckoutPathForProjects([projectIdToUse])
-    navigate(checkoutPath, { state: { returnTo } })
+    navigate('/test-checkout', { state: { returnTo } })
   }
 
   return (
@@ -525,228 +536,75 @@ const VerticalDonationFormReplica = ({
                 </div>
               )}
 
-              <div className="vertical-donation-replica-inline">
-                <div className="vertical-donation-replica-group">
-                  <label className="vertical-donation-replica-label">Frequency</label>
-                  {isQurbaniPage ? (
-                    // ✅ Fixed value (no dropdown)
-                    <input
-                      type="text"
-                      className="vertical-donation-replica-input"
-                      value="Give Once"
-                      readOnly
-                    />
-                  ) : (
-                    // ✅ Normal dropdown for other pages
-                    <div className="vertical-donation-replica-select">
-                      <select
-                        className="vertical-donation-replica-input"
-                        value={formData.frequency}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            frequency: e.target.value
-                          }))
-                        }
-                      >
-                        <option value="once">Give Once</option>
-                        <option value="monthly">Give Monthly</option>
-                      </select>
-                    </div>
-                  )}
-                </div>
+              <div className="vertical-donation-replica-top-row">
+                <input
+                  type="text"
+                  className="vertical-donation-replica-input vertical-donation-replica-input--readonly"
+                  value="Give Monthly"
+                  readOnly
+                />
+                <button
+                  type="button"
+                  className={`vertical-donation-replica-amount-btn vertical-donation-replica-amount-btn--primary${
+                    isPresetSelected(REPLICA_DEFAULT_AMOUNT) ? ' vertical-donation-replica-amount-btn--selected' : ''
+                  }`}
+                  onClick={() => handlePresetAmountClick(REPLICA_DEFAULT_AMOUNT)}
+                >
+                  PKR {REPLICA_DEFAULT_AMOUNT.toLocaleString()}
+                </button>
+              </div>
 
-                <div className="vertical-donation-replica-group">
-                  <label className="vertical-donation-replica-label">Currency</label>
-                  <div className="vertical-donation-replica-select">
-                    <select
-                      className="vertical-donation-replica-input"
-                      value={formData.currency}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          currency: e.target.value,
-                          // keep PKR base price for Qurbani projects; only affects display
-                          ...(isQurbaniMultiCurrencyProject ? {} : { amount: '' }),
-                          customAmount: ''
-                        }))
-                      }
+              <div className="vertical-donation-replica-amount-section">
+                <p className="vertical-donation-replica-more-label">In Case of More</p>
+
+                <div className="vertical-donation-replica-more-amounts">
+                  {REPLICA_MORE_AMOUNTS.map((amount) => (
+                    <button
+                      key={amount}
+                      type="button"
+                      className={`vertical-donation-replica-amount-btn${
+                        isPresetSelected(amount) ? ' vertical-donation-replica-amount-btn--selected' : ''
+                      }`}
+                      onClick={() => handlePresetAmountClick(amount)}
                     >
-                      <option value="PKR">PKR</option>
-                      {isQurbaniMultiCurrencyProject && (
-                        <>
-                          <option value="CAD">CAD</option>
-                          <option value="USD">USD</option>
-                          <option value="SAR">SAR</option>
-                          <option value="AED">AED</option>
-                          <option value="GBP">GBP</option>
-                          <option value="EUR">EUR</option>
-                        </>
-                      )}
-                    </select>
-                  </div>
+                     {amount.toLocaleString()}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="vertical-donation-replica-inline">
-                <div className="vertical-donation-replica-group">
-                  <label className="vertical-donation-replica-label">Category</label>
-                  <div className="vertical-donation-replica-select">
-                    <select
-                      className="vertical-donation-replica-input"
-                      value={formData.category}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          category: e.target.value
-                        }))
-                      }
-                    >
-                      {categoryOptionsToShow.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+              <div className="vertical-donation-replica-bottom-row">
+                <input
+                  type="number"
+                  className="vertical-donation-replica-input"
+                  placeholder="PKR amount"
+                  value={formData.customAmount}
+                  onChange={(e) => {
+                    const customValue = e.target.value
 
-                {filteredInitiatives.length > 0 && (
-                  <div className="vertical-donation-replica-group">
-                    <label className="vertical-donation-replica-label">Sub Category</label>
-                    <div className="vertical-donation-replica-select">
-                      <select
-                        className="vertical-donation-replica-input"
-                        value={formData.subCategory}
-                        onChange={(e) => {
-                          const selectedId = e.target.value
-                          const selectedInitiative = filteredInitiatives.find(i => i.id === selectedId)
-
-                          setFormData((prev) => ({
-                            ...prev,
-                            subCategory: selectedId,
-                            quantity: 1,
-                            amount: selectedInitiative?.price ? selectedInitiative.price.toString() : prev.amount,
-                            customAmount: ''
-                          }))
-                        }}
-                      >
-                        {/* <option value="">Select Sub Category</option> */}
-                        {filteredInitiatives.map((initiative) => (
-                          <option key={initiative.id} value={initiative.id}>
-                            {initiative.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                )}
+                    if (customValue === '' || customValue === null) {
+                      setFormData((prev) => ({
+                        ...prev,
+                        customAmount: '',
+                        amount: REPLICA_DEFAULT_AMOUNT.toString(),
+                      }))
+                    } else {
+                      setFormData((prev) => ({
+                        ...prev,
+                        customAmount: customValue,
+                        amount: '0',
+                      }))
+                    }
+                  }}
+                />
+                <button type="submit" className="vertical-donation-replica-submit btn-donate-animated">
+                  <span className="glow-border"></span>
+                  <span className="btn-donate-content">
+                    <FcDonate className="btn-donate-icon" size={20} />
+                    <span>Donate</span>
+                  </span>
+                </button>
               </div>
-
-              {!formData.customAmount && (
-                <div className="vertical-donation-replica-inline">
-                  <div className="vertical-donation-replica-group">
-                    <label className="vertical-donation-replica-label">Quantity</label>
-                    <div className="vertical-donation-replica-quantity-wrapper">
-                      <button type="button" onClick={handleDecrement} className="vertical-donation-replica-quantity-btn">−</button>
-                      <input
-                        type="number"
-                        className="vertical-donation-replica-input vertical-donation-replica-quantity-input"
-                        value={formData.quantity}
-                        readOnly
-                      />
-                      <button type="button" onClick={handleIncrement} className="vertical-donation-replica-quantity-btn">+</button>
-                    </div>
-                  </div>
-
-                  <div className="vertical-donation-replica-group">
-                    <label className="vertical-donation-replica-label">Amount</label>
-                    <input
-                      type="text"
-                      className="vertical-donation-replica-input"
-                      value={formData.amount ? `${formData.currency} ${toDisplayAmount(formData.amount).toLocaleString()}` : ''}
-                      readOnly
-                    />
-                  </div>
-                </div>
-              )}
-
-              {showProjectSelect && (
-                <div className="vertical-donation-replica-group">
-                  <label className="vertical-donation-replica-label">Select Project</label>
-                  <div className="vertical-donation-replica-select">
-                    <select
-                      className="vertical-donation-replica-input"
-                      value={formData.projectId}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          projectId: e.target.value
-                        }))
-                      }
-                    >
-                      {selectableProjects.map((project) => (
-                        <option key={project.id} value={project.id}>
-                          {project.title || project.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              )}
-
-              {!isQurbaniMultiCurrencyProject && (
-                <div className="vertical-donation-replica-group">
-                  <label className="vertical-donation-replica-label">
-                    {formData.currency} Enter an amount
-                  </label>
-                  <input
-                    type="number"
-                    className="vertical-donation-replica-input"
-                    placeholder="Enter custom amount"
-                    value={formData.customAmount}
-                    onChange={(e) => {
-                      const customValue = e.target.value
-
-                      // If clearing the custom amount, restore the calculated amount
-                      if (customValue === '' || customValue === null) {
-                        const selectedInitiative = filteredInitiatives.find(i => i.id === formData.subCategory)
-                        const basePrice = selectedInitiative?.price || 0
-                        const restoredAmount = basePrice > 0 ? (formData.quantity * basePrice).toString() : ''
-                        
-                        setFormData((prev) => ({
-                          ...prev,
-                          customAmount: '',
-                          amount: restoredAmount
-                        }))
-                      } else {
-                        setFormData((prev) => ({
-                          ...prev,
-                          customAmount: customValue,
-                          amount: '0'
-                        }))
-                      }
-                    }}
-                  />
-                </div>
-              )}
-
-              <button type="submit" className="vertical-donation-replica-submit btn-donate-animated">
-                {/* Animated background particles */}
-                {/* <span className="particle particle-1"></span>
-              <span className="particle particle-2"></span> */}
-                {/* <span className="particle particle-3"></span> */}
-                {/* <span className="particle particle-4"></span> */}
-
-                {/* Glowing border */}
-                <span className="glow-border"></span>
-
-                {/* Button content */}
-                <span className="btn-donate-content">
-                  <FcDonate className="btn-donate-icon" size={20} />
-                  <span>Donate</span>
-                </span>
-              </button>
             </form>
           )}
 
@@ -801,6 +659,37 @@ const VerticalDonationFormReplica = ({
 
             </div>
           )}
+
+        {showProgressBar && (
+          <div className="vertical-donation-replica-progress">
+            <div
+              className="vertical-donation-replica-progress-tooltip"
+              style={{ left: `${clampedProgress}%` }}
+              aria-hidden="true"
+            >
+              {clampedProgress}%
+            </div>
+            <div
+              className="vertical-donation-replica-progress-track"
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={clampedProgress}
+              aria-label="Fundraising progress"
+            >
+              <div
+                className="vertical-donation-replica-progress-fill"
+                style={{ width: `${clampedProgress}%` }}
+              >
+                <span className="vertical-donation-replica-progress-shine" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="vertical-donation-replica-progress-labels" aria-hidden="true">
+              <span>0%</span>
+              <span>100%</span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

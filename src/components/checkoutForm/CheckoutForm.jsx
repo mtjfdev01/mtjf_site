@@ -120,6 +120,49 @@ const DEFAULT_FORM = {
   notification_subscription: true
 }
 
+const DONATION_TYPE_LABEL_MAP = {
+  General: 'general',
+  Zakat: 'zakat',
+  Sadqa: 'sadqa',
+  Qurbani: 'qurbani-baraye-mustehqeen',
+  'qurbani-baraye-mustehqeen': 'qurbani-baraye-mustehqeen',
+  qurbani: 'qurbani-baraye-mustehqeen',
+}
+
+const DONATION_TYPE_VALUE_MAP = {
+  general: 'general',
+  sadqa: 'sadqa',
+  sadka: 'sadqa',
+  zakat: 'zakat',
+  fitrana: 'fitrana_2026',
+  fitrana_2026: 'fitrana_2026',
+  'qurbani-baraye-mustehqeen': 'qurbani-baraye-mustehqeen',
+}
+
+function normalizeCheckoutDonationType(raw) {
+  if (raw == null || String(raw).trim() === '') return null
+  const value = String(raw).trim()
+  const lower = value.toLowerCase()
+  return DONATION_TYPE_VALUE_MAP[lower] || DONATION_TYPE_LABEL_MAP[value] || null
+}
+
+function resolveCheckoutDonationType({
+  donationData,
+  firstDonationType,
+  contextDonationType,
+  isQurbaniOnlyCheckout,
+  defaultType = 'general',
+}) {
+  if (isQurbaniOnlyCheckout) return 'qurbani-baraye-mustehqeen'
+  return (
+    normalizeCheckoutDonationType(firstDonationType) ||
+    normalizeCheckoutDonationType(donationData?.donation_type) ||
+    normalizeCheckoutDonationType(donationData?.category) ||
+    normalizeCheckoutDonationType(contextDonationType) ||
+    defaultType
+  )
+}
+
 // Non-Stripe gateways are one-time only; monthly uses donation_method stripe + recurring object
 const paymentFrequency = {
   blinq: 'once',
@@ -134,7 +177,9 @@ const paymentFrequency = {
 const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams } = useDonation()
+  const checkoutPathname = location.pathname.replace(/\/$/, '') || '/'
+  const isTestCheckoutOnly = checkoutPathname === '/test-checkout'
+  const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams, donationType: contextDonationType } = useDonation()
   console.log("donationData", donationData);
   console.log("projectDonations", projectDonations);
 
@@ -494,6 +539,21 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     })
   }, [isCampaignCheckoutFlow, campaignPledgeMode, campaignCheckout?.is_recurring])
 
+  // Projects replica / plain test-checkout: monthly recurring by default
+  useEffect(() => {
+    if (!isTestCheckoutOnly) return
+    if (isCampaignCheckoutFlow || showRecurringAmountStepper) return
+    setFormData((prev) =>
+      prev.donation_frequency === 'monthly' && prev.recurring_consent
+        ? prev
+        : {
+            ...prev,
+            donation_frequency: 'monthly',
+            recurring_consent: true,
+          },
+    )
+  }, [isTestCheckoutOnly, isCampaignCheckoutFlow, showRecurringAmountStepper])
+
   useEffect(() => {
     if (!isRecurringDonationFrequency(formData.donation_frequency)) {
       setShowMoreRecurringBillingOptions(false)
@@ -670,6 +730,32 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
       ? projectDonationItemsForCheckout[0]?.donationType
       : null
   }, [projectDonationItemsForCheckout])
+
+  const resolvedDonationType = useMemo(
+    () =>
+      resolveCheckoutDonationType({
+        donationData,
+        firstDonationType,
+        contextDonationType,
+        isQurbaniOnlyCheckout,
+        defaultType: isTestCheckoutOnly ? 'sadqa' : 'general',
+      }),
+    [
+      donationData,
+      firstDonationType,
+      contextDonationType,
+      isQurbaniOnlyCheckout,
+      isTestCheckoutOnly,
+    ],
+  )
+
+  useEffect(() => {
+    setFormData((prev) =>
+      prev.donation_type === resolvedDonationType
+        ? prev
+        : { ...prev, donation_type: resolvedDonationType },
+    )
+  }, [resolvedDonationType])
   
   useEffect(() => {
     if (isQurbaniOnlyCheckout) {
@@ -682,17 +768,9 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     }
 
     if (isProjectDonationsFlow && firstDonationType) {
-      const normalizedType = String(firstDonationType).trim().toLowerCase()
-      const typeMap = {
-        general: 'general',
-        sadqa: 'sadqa',
-        sadka: 'sadqa',
-        zakat: 'zakat',
-        fitrana: 'fitrana_2026',
-        fitrana_2026: 'fitrana_2026',
-        'qurbani-baraye-mustehqeen': 'qurbani-baraye-mustehqeen'
-      }
-      const newDonationType = typeMap[normalizedType] || 'general'
+      const newDonationType =
+        normalizeCheckoutDonationType(firstDonationType) ||
+        (isTestCheckoutOnly ? 'sadqa' : 'general')
 
       if (previousDonationTypeRef.current !== newDonationType) {
         setFormData((prev) => {
@@ -709,7 +787,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     } else if (!isProjectDonationsFlow) {
       previousDonationTypeRef.current = null
     }
-  }, [isProjectDonationsFlow, firstDonationType, isQurbaniOnlyCheckout])
+  }, [isProjectDonationsFlow, firstDonationType, isQurbaniOnlyCheckout, isTestCheckoutOnly])
 
   // Handle failed transaction flow - fetch and populate form data
   useEffect(() => {
@@ -962,24 +1040,25 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     }
 
     if (!formData.donor_email.trim()) {
-      setFormMessage({ 
-        type: 'error', 
-        text: 'Please enter your email' 
-      })
-      setTimeout(() => {
-        const emailField = document.querySelector('input[name="donor_email"]')
-        if (emailField) {
-          emailField.focus()
-          emailField.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-      }, 100)
-      return
+      // Email is optional
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(formData.donor_email)) {
+        setFormMessage({
+          type: 'error',
+          text: 'Please enter a valid email address',
+        })
+        document.querySelector('input[name="donor_email"]')?.focus()
+        return
+      }
     }
 
     if (!formData.donor_phone.trim()) {
-      setFormMessage({ 
-        type: 'error', 
-        text: 'Please enter your phone number' 
+      setFormMessage({
+        type: 'error',
+        text: isTestCheckoutOnly
+          ? 'Please enter your WhatsApp number'
+          : 'Please enter your phone number',
       })
       setTimeout(() => {
         const phoneField = document.querySelector('input[name="donor_phone"]')
@@ -1003,17 +1082,6 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           cityField.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
       }, 100)
-      return
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(formData.donor_email)) {
-      setFormMessage({ 
-        type: 'error', 
-        text: 'Please enter a valid email address' 
-      })
-      document.querySelector('input[name="donor_email"]')?.focus()
       return
     }
 
@@ -1257,6 +1325,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           ? appealLine?.projectTitle || appealsList.find((a) => String(a.id) === String(selectedAppealId))?.title || ''
           : project_name,
         ...formFieldsForPayload,
+        donation_type: resolvedDonationType,
         ...(isCampaignCheckoutFlow && {
           campaign_id: resolvedCampaignId,
           item_description: buildCampaignPledgeSummary(
@@ -1571,8 +1640,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           />
         )}
 
-        <div className="row">
-          {isAppealCheckoutFlow && (
+        {isAppealCheckoutFlow && (
+          <div className="row">
             <AppealCheckoutFields
               appealTitle={selectedAppealForCheckout?.title || ''}
               loading={appealsLoading}
@@ -1582,8 +1651,10 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                 if (val === '' || Number(val) >= 0) setAppealAmount(val)
               }}
             />
-          )}
+          </div>
+        )}
 
+        <div className="row">
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
@@ -1601,23 +1672,24 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           <div className="col-md-6">
             <div className="input-item input-item-email ltn__custom-icon checkout-panel__field">
               <input
-                type="email"
+                type="text"
                 name="donor_email"
-                placeholder="Enter email address"
+                placeholder="Enter email address (optional)"
                 value={formData.donor_email}
                 onChange={handleInputChange}
-                required
                 className="checkout-panel__input"
               />
             </div>
           </div>
+        </div>
 
+        <div className="row">
           <div className="col-md-6">
             <div className="input-item input-item-phone ltn__custom-icon checkout-panel__field">
               <input
                 type="text"
                 name="donor_phone"
-                placeholder="Enter phone number"
+                placeholder={isTestCheckoutOnly ? 'Enter WhatsApp number' : 'Enter phone number'}
                 value={formData.donor_phone}
                 onChange={handleInputChange}
                 required
@@ -1626,55 +1698,34 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             </div>
           </div>
 
-          {/* JazzCash CNIC — required when JazzCash is enabled on /test-checkout-b */}
-          {enableJazzCash && (
-          <div className="col-md-6">
-            <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
-              <input
-                type="text"
-                name="jazzcash_cnic"
-                placeholder="CNIC last 6 digits (for JazzCash)"
-                value={formData.jazzcash_cnic}
-                onChange={handleInputChange}
-                maxLength={6}
-                inputMode="numeric"
-                className="checkout-panel__input"
-              />
-            </div>
-          </div>
-          )}
-
-          <div className="col-md-6">
-            <span className="donation_type_select checkout-panel__field">
-              <select
-                name="donation_type"
-                value={formData.donation_type}
-                onChange={handleInputChange}
-                className="checkout-panel__input checkout-panel__select"
-              >
-                {isQurbaniOnlyCheckout ? (
-                  <option value="qurbani-baraye-mustehqeen">Qurbani </option>
-                ) : (
-                  <>
-                    <option value="general">General Donation</option>
-                    <option value="zakat">Zakat </option>
-                    <option value="sadqa">Sadqa </option>
-                    {/* <option value="fitrana_2026">Fitrana </option> */}
-                    {/* <option value="qurbani-baraye-mustehqeen">Qurbani </option> */}
-                  </>
-                )}
-              </select>
-            </span>
-          </div>
-
-          {/* country dropdown */}
           <div className="col-md-6">
             <CountryDropdown
               value={formData.country}
               onChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
             />
           </div>
+        </div>
 
+        {enableJazzCash && (
+          <div className="row">
+            <div className="col-md-6">
+              <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
+                <input
+                  type="text"
+                  name="jazzcash_cnic"
+                  placeholder="CNIC last 6 digits (for JazzCash)"
+                  value={formData.jazzcash_cnic}
+                  onChange={handleInputChange}
+                  maxLength={6}
+                  inputMode="numeric"
+                  className="checkout-panel__input"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="row">
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
@@ -1687,6 +1738,22 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               />
             </div>
           </div>
+
+          <div className="col-md-6">
+            <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
+              <input
+                id="checkout-address"
+                type="text"
+                name="address"
+                placeholder="Enter address"
+                value={formData.address}
+                onChange={handleInputChange}
+                className="checkout-panel__input"
+              />
+            </div>
+          </div>
+        </div>
+
         {isQurbaniCheckout && (
           <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
             {/* <label className="donation-form-label" htmlFor="checkout-on-behalf-names">
@@ -1703,22 +1770,6 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             />
           </div>
         )}
-
-        <div className="input-item input-item-name ltn__custom-icon checkout-panel__field checkout-panel__field--full">
-          {/* <label className="donation-form-label" htmlFor="checkout-address">
-            Address
-          </label> */}
-          <input
-            id="checkout-address"
-            type="text"
-            name="address"
-            placeholder="Enter address"
-            value={formData.address}
-            onChange={handleInputChange}
-            className="checkout-panel__input"
-          />
-        </div>
-
         {showRecurringAmountStepper && recurringPresetTotals && (
           <div className="checkout-panel__amount-stepper" role="group" aria-label="Recurring donation amount">
             <div className="checkout-panel__amount-stepper-header">
@@ -1899,8 +1950,9 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           </div>
         )}
 
-        {/* Donation frequency — recurring (Stripe); /test-checkout only; not for prepaid campaign */}
+        {/* Donation frequency — recurring (Stripe); /test-checkout-b + campaigns; hidden on plain /test-checkout */}
         {testCheckout &&
+          !(isTestCheckoutOnly && !isCampaignCheckoutFlow && !showRecurringAmountStepper) &&
           !(isCampaignCheckoutFlow && campaignCheckout && !campaignCheckout.is_recurring) &&
           !(isCampaignCheckoutFlow && campaignPledgeMode === 'prepaid_months') &&
           !showRecurringAmountStepper && (
@@ -2241,8 +2293,6 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         </div>
         )}
 
-        </div>
-
         {/* Notification / campaign subscription */}
         <div className="checkout-panel__field checkout-panel__field--checkbox">
           <label className="checkout-panel__checkbox-label">
@@ -2258,7 +2308,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         </div>
 
         {/* Payment Method Section */}
-        <div className="row">
+        <div className="row checkout-payment-options">
                   {/* blinq payment option */}
           {/* <div className="col-md-6">
             <div className="input-item">
@@ -2290,7 +2340,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           </div> */}
 
           {/* PayFast — production checkout + test-checkout */}
-          <div className="col-12">
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -2304,8 +2354,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Credit / Debit Card</h6>
-                  <span className="payment-option-badge payment-option-badge--info">PayFast</span>
+                  <h6>Credit / Debit Card (1st)</h6>
+                  {/* <span className="payment-option-badge payment-option-badge--info">PayFast</span> */}
                 </div>
                 {isLoading === 'payfast' && (
                   <div className="payment-loading">
@@ -2373,7 +2423,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           </div> */}
 
           {/* Bank Alfalah — production checkout + test-checkout */}
-          <div className="col-12">
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -2387,8 +2437,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Credit / Debit Card</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span>
+                  <h6>Credit / Debit Card (2nd)</h6>
+                  {/* <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span> */}
                 </div>
                 {isLoading === 'alfalah' && (
                   <div className="payment-loading">
@@ -2400,8 +2450,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           </div>
 
           {/* JazzCash MWallet — enabled on /test-checkout-b only */}
-          {enableJazzCash && (
-          <div className="col-12">
+          {/* {enableJazzCash && (
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -2426,43 +2476,47 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               </div>
             </div>
           </div>
-          )}
+          )} */}
 
           {/* JazzCash MWallet — /test-checkout only (disabled) */}
-          {testCheckout && !enableJazzCash && (
-          <div className="col-12">
-            <div className="input-item">
-              <div
-                className="payment-option payment-option--disabled"
-                aria-disabled="true"
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>Pay by JazzCash</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          )}
+          {/* {testCheckout && !enableJazzCash && (
+          // <div className="col-md-6">
+          //   <div className="input-item">
+          //     <div
+          //       className="payment-option payment-option--disabled"
+          //       aria-disabled="true"
+          //     >
+          //       <div className="payment-icon">
+          //         <CiCreditCard2 />
+          //       </div>
+          //       <div className="payment-content">
+          //         <h6>Pay by JazzCash</h6>
+          //         <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>
+          )} */}
 
-          {/* Stripe — /test-checkout only (disabled, last) */}
-          {testCheckout && (
+          {/* Stripe — /test-checkout only */}
+          {isTestCheckoutOnly && (
           <div className="col-md-6">
             <div className="input-item">
               <div
-                className="payment-option payment-option--disabled"
-                aria-disabled="true"
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    handleSubmit(e, STRIPE_DONATION_METHOD)
+                  }
+                }}
               >
                 <div className="payment-icon">
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Pay with Stripe</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Card</span>
-                  {isWeeklyDonationFrequency(formData.donation_frequency) && (
+                  <h6>For International Donors</h6>
+                  <span className="payment-option-badge payment-option-badge--info">Stripe</span>
+                  {/* {isWeeklyDonationFrequency(formData.donation_frequency) && (
                     <span className="payment-option-badge">Weekly</span>
                   )}
                   {isMonthlyDonationFrequency(formData.donation_frequency) && (
@@ -2470,8 +2524,13 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                   )}
                   {isDailyDonationFrequency(formData.donation_frequency) && (
                     <span className="payment-option-badge">Daily</span>
-                  )}
+                  )} */}
                 </div>
+                {(isLoading === STRIPE_DONATION_METHOD || isLoading === 'stripe_embed') && (
+                  <div className="payment-loading">
+                    <span>Processing...</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

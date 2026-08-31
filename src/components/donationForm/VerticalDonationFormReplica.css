@@ -134,33 +134,126 @@ select.vertical-donation-replica-input::-ms-expand {
   border-color: #4caf50;
 }
 
-.vertical-donation-replica-amounts {
+.vertical-donation-replica-input--readonly {
+  background-color: var(--color-100);
+  cursor: default;
+}
+
+.vertical-donation-replica-top-row .vertical-donation-replica-input--readonly {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: var(--color-white);
+  font-weight: 600;
+  text-align: center;
+}
+
+.vertical-donation-replica-top-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
+  align-items: stretch;
+}
+
+.vertical-donation-replica-top-row .vertical-donation-replica-input,
+.vertical-donation-replica-top-row .vertical-donation-replica-amount-btn {
+  height: 52px;
+  min-height: 52px;
+}
+
+.vertical-donation-replica-bottom-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
+  align-items: stretch;
+}
+
+.vertical-donation-replica-bottom-row .vertical-donation-replica-input,
+.vertical-donation-replica-bottom-row .vertical-donation-replica-submit {
+  height: 52px;
+  min-height: 52px;
+}
+
+.vertical-donation-replica-bottom-row .vertical-donation-replica-submit .btn-donate-content {
+  padding: 0 var(--space-16);
+  font-size: var(--fs-16);
+  height: 100%;
+}
+
+.vertical-donation-replica-amount-section {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-12);
 }
 
 .vertical-donation-replica-amount-btn {
+  width: 100%;
+  min-height: 44px;
   padding: var(--space-12) var(--space-16);
   border: 1px solid var(--color-300);
   border-radius: var(--radius-md);
   background-color: var(--color-white);
   font-size: var(--fs-14);
   font-weight: 600;
+  line-height: 1.3;
   text-align: center;
+  color: var(--color-900);
+  white-space: nowrap;
   cursor: pointer;
   transition: var(--transition);
+  box-sizing: border-box;
 }
 
-.vertical-donation-replica-amount-btn.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+.vertical-donation-replica-amount-btn--primary {
+  min-height: 52px;
+  font-size: var(--fs-16);
+}
+
+.vertical-donation-replica-amount-btn:hover:not(.vertical-donation-replica-amount-btn--selected) {
+  background-color: var(--color-100);
+  border-color: #4caf50;
+}
+
+.vertical-donation-replica-amount-btn--selected {
+  background-color: #4caf50;
+  border-color: #4caf50;
   color: var(--color-white);
 }
 
-.vertical-donation-replica-amount-btn:hover:not(.active) {
-  background-color: var(--color-100);
-  border-color: var(--color-primary);
+.vertical-donation-replica-more-label {
+  margin: var(--space-4) 0 0;
+  font-size: var(--fs-12);
+  font-weight: 600;
+  color: var(--color-700);
+  text-align: center;
+}
+
+.vertical-donation-replica-more-amounts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+}
+
+.vertical-donation-replica-more-amounts .vertical-donation-replica-amount-btn {
+  min-height: 52px;
+  padding: var(--space-12) var(--space-8);
+  font-size: var(--fs-16);
+}
+
+@media (max-width: 480px) {
+  .vertical-donation-replica-more-amounts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vertical-donation-replica-more-amounts .vertical-donation-replica-amount-btn {
+    font-size: var(--fs-16);
+    padding: var(--space-12) var(--space-4);
+  }
+}
+
+.vertical-donation-replica-amounts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-12);
 }
 
 .vertical-donation-replica-submit {
@@ -184,6 +277,100 @@ select.vertical-donation-replica-input::-ms-expand {
   background-color: #45a049;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
+}
+
+.vertical-donation-replica-progress {
+  position: relative;
+  width: 100%;
+  margin-top: var(--space-12);
+  padding-top: var(--space-28);
+}
+
+.vertical-donation-replica-progress-tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-900);
+  font-size: var(--fs-12);
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.vertical-donation-replica-progress-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-white);
+}
+
+.vertical-donation-replica-progress-track {
+  position: relative;
+  height: 24px;
+  padding: 3px;
+  border-radius: 999px;
+  background-color: #f3f3f3;
+  border: 1px solid var(--color-200);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.vertical-donation-replica-progress-track::before {
+  display: none;
+}
+
+.vertical-donation-replica-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-4);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  color: var(--color-700);
+}
+
+.vertical-donation-replica-progress-fill {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  border-radius: 999px;
+  background-color: #45e01a;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.22) 0,
+    rgba(255, 255, 255, 0.22) 6px,
+    rgba(0, 0, 0, 0.08) 6px,
+    rgba(0, 0, 0, 0.08) 12px
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.18),
+    0 0 10px rgba(69, 224, 26, 0.55);
+  transition: width 0.4s var(--ease);
+  overflow: hidden;
+}
+
+.vertical-donation-replica-progress-shine {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  right: 4px;
+  height: 40%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.18) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .vertical-donation-replica-error {
@@ -436,7 +623,7 @@ select.vertical-donation-replica-input::-ms-expand {
 
   .other-donation-replica-btn,
   .other-donation-replica-btn-full {
-    font-size: var(--fs-13);
+    font-size: var(--fs-12);
     height: 44px;
   }
 }

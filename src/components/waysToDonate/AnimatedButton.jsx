@@ -10,16 +10,11 @@ const AnimatedButton = () => {
   const [isNearFooter, setIsNearFooter] = useState(false)
   const { pathname } = location
 
+  const allowedPaths = ['/', '/home', '/about', '/contact', '/careers']
+  const isAllowedPage = allowedPaths.includes(pathname)
+
   const shouldHideButton =
-    pathname === '/new_footer' ||
-    pathname === '/donate' ||
-    pathname.startsWith('/donate/') ||
-    pathname === '/fitrana' ||
-    pathname.startsWith('/fitrana/') ||
-    pathname === '/checkout' ||
-    pathname.startsWith('/checkout/') ||
-    pathname === '/test-checkout' ||
-    pathname.startsWith('/test-checkout/') ||
+    !isAllowedPage ||
     isNearFooter
 
   useEffect(() => {

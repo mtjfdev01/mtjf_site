@@ -115,9 +115,27 @@
 .page-header-replica-form .vertical-donation-replica-form {
   margin-top: 0;
   width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
   pointer-events: auto;
+}
+
+.page-header-replica-form .vertical-donation-replica-card {
+  padding: var(--space-20);
+  gap: var(--space-16);
+}
+
+.page-header-replica-form .vertical-donation-replica-title {
+  font-size: var(--fs-24);
+  margin-bottom: 0;
+}
+
+.page-header-replica-form .vertical-donation-replica-body {
+  gap: var(--space-16);
+}
+
+.page-header-replica-form .vertical-donation-replica-group {
+  gap: var(--space-8);
 }
 
 @media (max-width: 767px) {
