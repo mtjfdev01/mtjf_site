@@ -1,9 +1,11 @@
 import { useMemo, useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { FcDonate } from 'react-icons/fc'
+import { FaHeart, FaUsers } from 'react-icons/fa'
 import { useDonation } from '../../contexts/DonationContext'
 import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
 import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
+import Loader from '../Loader/Loader'
 import './VerticalDonationFormReplica.css'
 
 
@@ -62,8 +64,10 @@ const VerticalDonationFormReplica = ({
   className = '',
   showProgressBar = true,
   progress = 78,
+  donorsGoal = 250000,
 }) => {
   const clampedProgress = Math.min(100, Math.max(0, Number(progress) || 0))
+  const formattedDonorsGoal = Number(donorsGoal).toLocaleString()
   const navigate = useNavigate()
   const location = useLocation()
   const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
@@ -117,6 +121,11 @@ const VerticalDonationFormReplica = ({
     }
   })
   const [errorMessage, setErrorMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    setIsSubmitting(false)
+  }, [location.pathname])
 
   useEffect(() => {
     if (!isQurbaniPage) return
@@ -385,6 +394,8 @@ const VerticalDonationFormReplica = ({
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    if (isSubmitting) return
+
     // Clear previous error
     setErrorMessage('')
 
@@ -486,11 +497,14 @@ const VerticalDonationFormReplica = ({
     onSubmit?.(donationData)
 
     const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
+    setIsSubmitting(true)
     navigate('/test-checkout', { state: { returnTo } })
   }
 
   return (
-    <div id={formId} className={`vertical-donation-replica-form ${className}`}>
+    <>
+      <Loader loading={isSubmitting} />
+      <div id={formId} className={`vertical-donation-replica-form ${className}`}>
       {/* =========================================
           Qurbani Tabs Only
       ========================================= */}
@@ -597,7 +611,12 @@ const VerticalDonationFormReplica = ({
                     }
                   }}
                 />
-                <button type="submit" className="vertical-donation-replica-submit btn-donate-animated">
+                <button
+                  type="submit"
+                  className="vertical-donation-replica-submit btn-donate-animated"
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
+                >
                   <span className="glow-border"></span>
                   <span className="btn-donate-content">
                     <FcDonate className="btn-donate-icon" size={20} />
@@ -661,7 +680,18 @@ const VerticalDonationFormReplica = ({
           )}
 
         {showProgressBar && (
-          <div className="vertical-donation-replica-progress">
+          <div className="vertical-donation-replica-progress-section">
+            <div className="vertical-donation-replica-progress-header">
+              <span className="vertical-donation-replica-progress-goal-icon" aria-hidden="true">
+                <FaUsers className="vertical-donation-replica-progress-goal-users" />
+                <FaHeart className="vertical-donation-replica-progress-goal-heart" />
+              </span>
+              <p className="vertical-donation-replica-progress-goal-text">
+                {formattedDonorsGoal} Donors Goal
+              </p>
+            </div>
+
+            <div className="vertical-donation-replica-progress">
             <div
               className="vertical-donation-replica-progress-tooltip"
               style={{ left: `${clampedProgress}%` }}
@@ -688,12 +718,13 @@ const VerticalDonationFormReplica = ({
               <span>0%</span>
               <span>100%</span>
             </div>
+            </div>
           </div>
         )}
       </div>
     </div>
+    </>
   )
 }
 
 export default VerticalDonationFormReplica
-

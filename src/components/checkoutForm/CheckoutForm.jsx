@@ -2499,42 +2499,6 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           )} */}
 
           {/* Stripe — /test-checkout only */}
-          {isTestCheckoutOnly && (
-          <div className="col-md-6">
-            <div className="input-item">
-              <div
-                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
-                onClick={(e) => {
-                  if (!isSubmitting && !isLoading) {
-                    handleSubmit(e, STRIPE_DONATION_METHOD)
-                  }
-                }}
-              >
-                <div className="payment-icon">
-                  <CiCreditCard2 />
-                </div>
-                <div className="payment-content">
-                  <h6>For International Donors</h6>
-                  <span className="payment-option-badge payment-option-badge--info">Stripe</span>
-                  {/* {isWeeklyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Weekly</span>
-                  )}
-                  {isMonthlyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Monthly</span>
-                  )}
-                  {isDailyDonationFrequency(formData.donation_frequency) && (
-                    <span className="payment-option-badge">Daily</span>
-                  )} */}
-                </div>
-                {(isLoading === STRIPE_DONATION_METHOD || isLoading === 'stripe_embed') && (
-                  <div className="payment-loading">
-                    <span>Processing...</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          )}
         </div>
       </form>
     </section>

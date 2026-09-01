@@ -279,10 +279,54 @@ select.vertical-donation-replica-input::-ms-expand {
   box-shadow: var(--shadow-md);
 }
 
+.vertical-donation-replica-progress-section {
+  width: 100%;
+  margin-top: var(--space-12);
+}
+
+.vertical-donation-replica-progress-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.vertical-donation-replica-progress-goal-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #e8f5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4caf50;
+}
+
+.vertical-donation-replica-progress-goal-users {
+  font-size: 22px;
+}
+
+.vertical-donation-replica-progress-goal-heart {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: #4caf50;
+}
+
+.vertical-donation-replica-progress-goal-text {
+  margin: 0;
+  font-size: var(--fs-18);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-900);
+}
+
 .vertical-donation-replica-progress {
   position: relative;
   width: 100%;
-  margin-top: var(--space-12);
   padding-top: var(--space-28);
 }
 
