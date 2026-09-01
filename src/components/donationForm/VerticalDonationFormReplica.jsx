@@ -52,7 +52,7 @@ const QURBANI_EXCHANGE_RATES_PKR = {
 
 const VerticalDonationFormReplica = ({
   formId,
-  title = 'Donate Now',
+  title = 'Donate Monthly',
   initialCurrency = 'PKR',
   donationOptions = {},
   categoryOptions = ['General'],
@@ -63,7 +63,7 @@ const VerticalDonationFormReplica = ({
   onSubmit = (data) => console.log('Donation submitted:', data),
   className = '',
   showProgressBar = true,
-  progress = 78,
+  progress = 15,
   donorsGoal = 250000,
 }) => {
   const clampedProgress = Math.min(100, Math.max(0, Number(progress) || 0))
@@ -550,13 +550,7 @@ const VerticalDonationFormReplica = ({
                 </div>
               )}
 
-              <div className="vertical-donation-replica-top-row">
-                <input
-                  type="text"
-                  className="vertical-donation-replica-input vertical-donation-replica-input--readonly"
-                  value="Give Monthly"
-                  readOnly
-                />
+              <div className="vertical-donation-replica-default-amount">
                 <button
                   type="button"
                   className={`vertical-donation-replica-amount-btn vertical-donation-replica-amount-btn--primary${

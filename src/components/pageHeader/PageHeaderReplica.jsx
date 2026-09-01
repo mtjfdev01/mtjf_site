@@ -11,7 +11,7 @@ const PageHeaderReplica = ({
   showDonationForm = true,
   donationFormProps = {},
   showProgressBar = true,
-  progress = 78,
+  progress = 15,
 }) => {
   const navigate = useNavigate()
 

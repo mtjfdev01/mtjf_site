@@ -30,7 +30,7 @@ const StickyQuickDonationForm = () => {
   const [shouldShow, setShouldShow] = useState(false)
 
   // Pages where StickyQuickDonationForm should not be shown
-  const hiddenPages = ['/donate', '/donation', '/checkout']
+  const hiddenPages = ['/donate', '/donation', '/checkout', '/projects-replica', '/test-checkout']
   const shouldHideOnPage = hiddenPages.some(page =>
     location.pathname === page || location.pathname.startsWith(page + '/')
   )

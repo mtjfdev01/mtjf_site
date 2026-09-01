@@ -147,17 +147,14 @@ select.vertical-donation-replica-input::-ms-expand {
   text-align: center;
 }
 
-.vertical-donation-replica-top-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-12);
-  align-items: stretch;
+.vertical-donation-replica-default-amount {
+  width: 100%;
 }
 
-.vertical-donation-replica-top-row .vertical-donation-replica-input,
-.vertical-donation-replica-top-row .vertical-donation-replica-amount-btn {
+.vertical-donation-replica-default-amount .vertical-donation-replica-amount-btn {
   height: 52px;
   min-height: 52px;
+  width: 100%;
 }
 
 .vertical-donation-replica-bottom-row {
