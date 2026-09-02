@@ -10,7 +10,6 @@ import './VerticalDonationFormReplica.css'
 
 
 const REPLICA_DEFAULT_AMOUNT = 2500
-const REPLICA_MORE_AMOUNTS = [5000, 7500, 10000]
 
 const DEFAULT_DONATION_OPTIONS = {
   PKR: [5000, 10000, 25000, 50000],
@@ -560,25 +559,6 @@ const VerticalDonationFormReplica = ({
                 >
                   PKR {REPLICA_DEFAULT_AMOUNT.toLocaleString()}
                 </button>
-              </div>
-
-              <div className="vertical-donation-replica-amount-section">
-                <p className="vertical-donation-replica-more-label">In Case of More</p>
-
-                <div className="vertical-donation-replica-more-amounts">
-                  {REPLICA_MORE_AMOUNTS.map((amount) => (
-                    <button
-                      key={amount}
-                      type="button"
-                      className={`vertical-donation-replica-amount-btn${
-                        isPresetSelected(amount) ? ' vertical-donation-replica-amount-btn--selected' : ''
-                      }`}
-                      onClick={() => handlePresetAmountClick(amount)}
-                    >
-                     {amount.toLocaleString()}
-                    </button>
-                  ))}
-                </div>
               </div>
 
               <div className="vertical-donation-replica-bottom-row">

@@ -138,6 +138,12 @@
   gap: var(--space-8);
 }
 
+@media (min-width: 769px) {
+  .page-header-replica-form .vertical-donation-replica-form {
+    transform: translateY(var(--space-32));
+  }
+}
+
 @media (max-width: 767px) {
   .page-header-replica-image--desktop {
     display: none;
