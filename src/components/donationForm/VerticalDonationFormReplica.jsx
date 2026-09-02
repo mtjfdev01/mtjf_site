@@ -110,7 +110,7 @@ const VerticalDonationFormReplica = ({
     return {
       frequency: 'monthly',
       currency: initialCurrency,
-      amount: String(REPLICA_DEFAULT_AMOUNT),
+      amount: '',
       customAmount: '',
       category: initialCategory,
       // store initiative id (not title) — needed for quantity → amount linkage
@@ -574,7 +574,7 @@ const VerticalDonationFormReplica = ({
                       setFormData((prev) => ({
                         ...prev,
                         customAmount: '',
-                        amount: REPLICA_DEFAULT_AMOUNT.toString(),
+                        amount: '',
                       }))
                     } else {
                       setFormData((prev) => ({
