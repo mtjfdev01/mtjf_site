@@ -12,7 +12,8 @@ import {
 } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
-
+import apna_ghar_hero_web from '../assets/img/projects/projects-details/Apna Ghar/hero.webp'
+import apna_ghar_hero_mob from '../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
 // const Events = lazy(() => import('../components/events/Events'))
 //   const QuickBlogs = lazy(() => import('../components/quickblogs'))
 const DonationCta = lazy(() =>
@@ -44,7 +45,7 @@ const ProjectsReplica = () => {
   return (
     <>
       <section className="projects-page-section projects-replica-page container py-48">
-        <PageHeaderReplica image={image1} />
+        <PageHeaderReplica image={apna_ghar_hero_web} imageMob={apna_ghar_hero_mob} />  
 
         {/* First component after header - loads immediately */}
         <div ref={projectsRef}>
