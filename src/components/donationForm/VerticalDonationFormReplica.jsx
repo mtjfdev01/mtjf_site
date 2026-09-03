@@ -565,7 +565,7 @@ const VerticalDonationFormReplica = ({
                 <input
                   type="number"
                   className="vertical-donation-replica-input"
-                  placeholder="PKR amount"
+                  placeholder="Custom Amount"
                   value={formData.customAmount}
                   onChange={(e) => {
                     const customValue = e.target.value
