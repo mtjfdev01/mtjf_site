@@ -159,7 +159,7 @@ select.vertical-donation-replica-input::-ms-expand {
 
 .vertical-donation-replica-bottom-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1.6fr 1fr;
   gap: var(--space-12);
   align-items: stretch;
 }
@@ -284,6 +284,7 @@ select.vertical-donation-replica-input::-ms-expand {
 .vertical-donation-replica-progress-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-12);
   margin-bottom: var(--space-12);
 }

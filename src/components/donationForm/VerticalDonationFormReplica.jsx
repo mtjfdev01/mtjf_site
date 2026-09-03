@@ -565,7 +565,7 @@ const VerticalDonationFormReplica = ({
                 <input
                   type="number"
                   className="vertical-donation-replica-input"
-                  placeholder="Custom Amount"
+                  placeholder="Enter Custom Amount"
                   value={formData.customAmount}
                   onChange={(e) => {
                     const customValue = e.target.value
@@ -655,16 +655,6 @@ const VerticalDonationFormReplica = ({
 
         {showProgressBar && (
           <div className="vertical-donation-replica-progress-section">
-            <div className="vertical-donation-replica-progress-header">
-              <span className="vertical-donation-replica-progress-goal-icon" aria-hidden="true">
-                <FaUsers className="vertical-donation-replica-progress-goal-users" />
-                <FaHeart className="vertical-donation-replica-progress-goal-heart" />
-              </span>
-              <p className="vertical-donation-replica-progress-goal-text">
-                {formattedDonorsGoal} Donors Goal
-              </p>
-            </div>
-
             <div className="vertical-donation-replica-progress">
             <div
               className="vertical-donation-replica-progress-tooltip"
@@ -692,6 +682,15 @@ const VerticalDonationFormReplica = ({
               <span>0%</span>
               <span>100%</span>
             </div>
+            </div>
+            <div className="vertical-donation-replica-progress-header">
+              <span className="vertical-donation-replica-progress-goal-icon" aria-hidden="true">
+                <FaUsers className="vertical-donation-replica-progress-goal-users" />
+                <FaHeart className="vertical-donation-replica-progress-goal-heart" />
+              </span>
+              <p className="vertical-donation-replica-progress-goal-text">
+                {formattedDonorsGoal} Donors Goal
+              </p>
             </div>
           </div>
         )}
