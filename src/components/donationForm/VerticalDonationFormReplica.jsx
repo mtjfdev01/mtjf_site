@@ -382,12 +382,13 @@ const VerticalDonationFormReplica = ({
     setFormData((prev) => ({
       ...prev,
       amount: amount.toString(),
-      customAmount: '',
+      customAmount: amount.toString(),
     }))
+    setErrorMessage('')
   }
 
   const isPresetSelected = (amount) =>
-    !formData.customAmount && Number(formData.amount) === amount
+    Number(formData.customAmount || formData.amount) === amount
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -427,12 +428,10 @@ const VerticalDonationFormReplica = ({
       return
     }
 
-    // Validate minimum amount (100 PKR)
-    // For Qurbani multi-currency mode, `formData.amount` is intentionally kept in PKR
-    // (currency selection is display-only). So do NOT reconvert PKR -> PKR again.
+    // Membership form: minimum is PKR 2,500
     const amountPKRForValidation = isQurbaniMultiCurrencyProject ? Math.round(amountNumber) : toPKRAmount(amountNumber)
-    if (amountPKRForValidation < 100) {
-      setErrorMessage('Minimum donation amount is 100 PKR')
+    if (amountPKRForValidation < REPLICA_DEFAULT_AMOUNT) {
+      setErrorMessage(`Minimum donation amount is Rs. ${REPLICA_DEFAULT_AMOUNT.toLocaleString()}`)
       setTimeout(() => {
         const amountInput = document.querySelector('input[type="number"]')
         if (amountInput) {
@@ -572,7 +571,8 @@ const VerticalDonationFormReplica = ({
                 <input
                   type="number"
                   className="vertical-donation-replica-input"
-                  placeholder="Enter Custom Amount"
+                  placeholder="If you want to donate more than Rs. 2,500"
+                  min={REPLICA_DEFAULT_AMOUNT}
                   value={formData.customAmount}
                   onChange={(e) => {
                     const customValue = e.target.value
@@ -583,12 +583,27 @@ const VerticalDonationFormReplica = ({
                         customAmount: '',
                         amount: '',
                       }))
-                    } else {
+                      return
+                    }
+
+                    setFormData((prev) => ({
+                      ...prev,
+                      customAmount: customValue,
+                      amount: customValue,
+                    }))
+                  }}
+                  onBlur={() => {
+                    if (formData.customAmount === '' || formData.customAmount == null) return
+                    const numeric = Number(formData.customAmount)
+                    if (!Number.isFinite(numeric) || numeric < REPLICA_DEFAULT_AMOUNT) {
                       setFormData((prev) => ({
                         ...prev,
-                        customAmount: customValue,
-                        amount: '0',
+                        customAmount: String(REPLICA_DEFAULT_AMOUNT),
+                        amount: String(REPLICA_DEFAULT_AMOUNT),
                       }))
+                      setErrorMessage(`Minimum donation amount is Rs. ${REPLICA_DEFAULT_AMOUNT.toLocaleString()}`)
+                    } else {
+                      setErrorMessage('')
                     }
                   }}
                 />

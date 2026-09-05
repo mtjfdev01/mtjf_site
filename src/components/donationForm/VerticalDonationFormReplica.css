@@ -662,6 +662,16 @@ select.vertical-donation-replica-input::-ms-expand {
 ========================================= */
 
 @media (max-width: 768px) {
+  .vertical-donation-replica-title {
+    font-size: clamp(1.25rem, 5.8vw, 1.65rem);
+    white-space: nowrap;
+    line-height: 1.35;
+  }
+
+  .vertical-donation-replica-bottom-row .vertical-donation-replica-input::placeholder {
+    font-size: var(--fs-12);
+  }
+
   .vertical-donation-replica-tabs {
     flex-direction: row;
     gap: 0;
