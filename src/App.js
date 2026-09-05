@@ -144,7 +144,7 @@ function App() {
               <Route path="/testinfo" element={<Home showHomeInfoSection={true} />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/projects-replica" element={<ProjectsReplica />} />
+              <Route path="/membership-campaign" element={<ProjectsReplica />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/laylat-ul-qadar" element={<ProjectDetail forcedProjectId="layla_tul_qadr" />} />
               <Route path="/gaza" element={<ProjectDetail forcedProjectId="gaza" />} />
