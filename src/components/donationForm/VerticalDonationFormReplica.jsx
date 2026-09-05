@@ -541,8 +541,7 @@ const VerticalDonationFormReplica = ({
             Support with <span className="vertical-donation-replica-title-accent">Membership</span>
           </h3>
           <p className="vertical-donation-replica-subtitle">
-            Join our community and help us make a lasting{' '}
-            <span className="vertical-donation-replica-title-accent">impact</span> every month.
+            Out of 250 Million People, Just 250,000 Donors Giving Rs. 2,500 Monthly Can Transform Millions of Lives.
           </p>
         </div>
         {/* {(!isQurbaniPage || */}
