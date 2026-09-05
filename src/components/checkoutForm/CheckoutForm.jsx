@@ -1585,7 +1585,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   return (
     <>
       <Loader loading={showCheckoutApiLoader} />
-      <section className="checkout-panel">
+      <section className={`checkout-panel${testCheckout ? ' checkout-panel--compact-header' : ''}`}>
       {stripeEmbedClientSecret && stripePromise && (
         <div className="stripe-embed-overlay" role="dialog" aria-modal="true" aria-labelledby="stripe-embed-title">
           <div className="stripe-embed-modal">

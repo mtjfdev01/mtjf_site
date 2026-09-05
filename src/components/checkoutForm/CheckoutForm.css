@@ -801,6 +801,15 @@
     margin-top: var(--mobile-header-clearance);
   }
 
+  /* Match membership header: Donate/Zakat row is hidden on test-checkout */
+  .checkout-panel--compact-header {
+    margin-top: calc(
+      var(--nav-mobile-top) +
+      var(--nav-mobile-row1-height) -
+      var(--space-12)
+    );
+  }
+
   .checkout-panel__form .row {
     grid-template-columns: 1fr;
   }
