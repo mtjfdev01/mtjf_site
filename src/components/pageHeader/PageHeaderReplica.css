@@ -126,8 +126,12 @@
 }
 
 .page-header-replica-form .vertical-donation-replica-title {
-  font-size: var(--fs-24);
+  font-size: var(--fs-28);
   margin-bottom: 0;
+}
+
+.page-header-replica-form .vertical-donation-replica-subtitle {
+  font-size: var(--fs-13);
 }
 
 .page-header-replica-form .vertical-donation-replica-body {

@@ -51,7 +51,6 @@ const QURBANI_EXCHANGE_RATES_PKR = {
 
 const VerticalDonationFormReplica = ({
   formId,
-  title = 'Donate Monthly',
   initialCurrency = 'PKR',
   donationOptions = {},
   categoryOptions = ['General'],
@@ -538,7 +537,15 @@ const VerticalDonationFormReplica = ({
         </div>
       )}
       <div className="vertical-donation-replica-card">
-        <h3 className="vertical-donation-replica-title h2">{title}</h3>
+        <div className="vertical-donation-replica-heading">
+          <h3 className="vertical-donation-replica-title">
+            Support with <span className="vertical-donation-replica-title-accent">Membership</span>
+          </h3>
+          <p className="vertical-donation-replica-subtitle">
+            Join our community and help us make a lasting{' '}
+            <span className="vertical-donation-replica-title-accent">impact</span> every month.
+          </p>
+        </div>
         {/* {(!isQurbaniPage || */}
         {(!showQurbaniTabs ||
           activeTab === 'online-donation') && (
