@@ -222,7 +222,12 @@
   .page-header-replica {
     width: 100vw;
     margin-bottom: var(--space-32);
-    margin-top: var(--mobile-header-height);
+    /* Row 2 (Donate/Zakat) is hidden on membership/test-checkout */
+    margin-top: calc(
+      var(--nav-mobile-top) +
+      var(--nav-mobile-row1-height) -
+      var(--space-12)
+    );
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     padding: 0 var(--space-8);

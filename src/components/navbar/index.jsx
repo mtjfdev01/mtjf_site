@@ -36,6 +36,14 @@ const Navbar = () => {
    // Always use white background for all states
    const [isLightTheme, setIsLightTheme] = useState(false);
 
+   const hideNavActionButtons = [
+     '/membership-campaign',
+     '/test-checkout',
+   ].some(
+     (page) =>
+       location.pathname === page || location.pathname.startsWith(page + '/')
+   );
+
    // Update active link based on current route
    useEffect(() => {
      const currentPath = location.pathname.trim();
@@ -176,6 +184,7 @@ const Navbar = () => {
             </div>
 
             {/* button section - desktop */}
+            {!hideNavActionButtons && (
             <div className='nav-btn-group d-none md:d-flex'>
               <button 
                 className='btn btn-zakat-nav' 
@@ -197,11 +206,13 @@ const Navbar = () => {
                 </span>
               </button>
             </div>
+            )}
             <div className='md:d-none'>
               <Hamburger/>
             </div>
         </div>
         {/* Row 2 - mobile only buttons */}
+        {!hideNavActionButtons && (
         <div className='nav-row-2 md:d-none'>
           <button 
             className='btn btn-zakat-nav nav-row-2__btn' 
@@ -218,6 +229,7 @@ const Navbar = () => {
             Donate Now
           </button>
         </div>
+        )}
       </div>
       {/* <MobileZakatCountdownBanner /> */}
       {/* <ZakatCountdownBanner /> */}
