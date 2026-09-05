@@ -594,7 +594,7 @@ const VerticalDonationFormReplica = ({
                   <span className="glow-border"></span>
                   <span className="btn-donate-content">
                     <FcDonate className="btn-donate-icon" size={20} />
-                    <span>Donate</span>
+                    <span>Become a Member</span>
                   </span>
                 </button>
               </div>
