@@ -8,7 +8,33 @@ const DonationCta = ({
   cta_btn_text = 'Donate Now',
   route = '/donate'
 }) => {
-  const navigate = useNavigate()  
+  const navigate = useNavigate()
+
+  const handleCtaClick = () => {
+    if (route) {
+      navigate(route)
+      return
+    }
+
+    // Same as donateButtonText with empty donationUrl: scroll to donation form
+    setTimeout(() => {
+      let donationForm = document.querySelector('.vertical-donation-form')
+      if (!donationForm) {
+        donationForm = document.querySelector('.vertical-donation-replica-form')
+      }
+      if (!donationForm) {
+        donationForm = document.querySelector('.donation-form')
+      }
+      if (donationForm) {
+        donationForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const firstInput = donationForm.querySelector('input, select, button')
+        if (firstInput) {
+          firstInput.focus()
+        }
+      }
+    }, 100)
+  }
+
   return (
     <section className="donation-cta">
       <div className="donation-cta-colored-section donation-cta-colored-section--left"></div>
@@ -26,7 +52,7 @@ const DonationCta = ({
         </div>
         
         <button 
-        onClick={() => navigate(route)}
+        onClick={handleCtaClick}
         className="donation-cta-btn cta_primary_btn btn--alert btn-donate-animated">
           {/* Animated background particles */}
           <span className="particle particle-3"></span>
