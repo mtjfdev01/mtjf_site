@@ -123,7 +123,7 @@ const ProjectsReplica = () => {
 
       {/* Rest of components - load on more scroll */}
       <div ref={restRef} style={{ minHeight: '200px' }}>
-        {showRest && (
+        {/* {showRest && ( */}
           <>
             {/* <Suspense fallback={null}>
               <Events />
@@ -131,17 +131,17 @@ const ProjectsReplica = () => {
             {/* <Suspense fallback={null}>
               <QuickBlogs />
             </Suspense> */}
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
               <Newsletter />
             </Suspense>
             <Suspense fallback={null}>
               <DonationCta />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={null}>
               <Footer />
             </Suspense>
           </>
-        )}
+        {/* )} */}
       </div>
     </>
   )
