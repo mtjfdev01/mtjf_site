@@ -70,7 +70,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
   return (
     <div className="project-detail-page projects-detail-animated">
-      {resolvedProjectId === 'projects-replica-detail' ? (
+      {resolvedProjectId === 'membership-campaign' ? (
         // <PageHeaderReplica
         //   title={project.title}
         //   image={project.headerImage}
@@ -248,7 +248,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
                       )}
                     </div>
                   ) : (
-                    resolvedProjectId === 'projects-replica-detail' ? (
+                    resolvedProjectId === 'membership-campaign' ? (
                       <VerticalDonationFormReplica
                         formId="project-detail-donation-form"
                         donationOptions={project.donationOptions}

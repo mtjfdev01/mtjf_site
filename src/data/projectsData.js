@@ -4564,8 +4564,8 @@ This Ramadan, Let Your Zakat Speak for You`,
     //   donateButtonText: 'Give Your Zakat Now'
     // }
   },
-   'projects-replica-detail': {
-    id: 'projects-replica-detail',
+   'membership-campaign': {
+    id: 'membership-campaign',
     title: '250,000 Monthly Donors',
     headerImage: barakah_hero_web,
     headerImageMob: barakah_hero_mob,
