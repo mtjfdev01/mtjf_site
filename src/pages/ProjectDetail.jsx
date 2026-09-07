@@ -1,10 +1,13 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { Suspense, lazy, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
+import PageHeaderReplica from '../components/pageHeader/PageHeaderReplica'
+import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.jpg'
 import { PROJECTS_DETAIL_DATA } from '../data/projectsData'
 import './ProjectDetail.css'
 import '../components/projects/ProjectsCardsAnimation.css'
 import VerticalDonationForm from '../components/donationForm/VerticalDonationForm'
+import VerticalDonationFormReplica from '../components/donationForm/VerticalDonationFormReplica'
 import InitiativeDonationCard from '../components/donation/projects_menu/InitiativeDonationCard'
 import DonationSidebar from '../components/donation/projects_menu/DonationSidebar'
 import { useDonation } from '../contexts/DonationContext'
@@ -67,12 +70,23 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
   return (
     <div className="project-detail-page projects-detail-animated">
-      <PageHeader
-        title={project.title}
-        image={project.headerImage}
-        imageMob={project.headerImageMob}
-        url={project?.url}
-      />
+      {resolvedProjectId === 'projects-replica-detail' ? (
+        // <PageHeaderReplica
+        //   title={project.title}
+        //   image={project.headerImage}
+        //   imageMob={project.headerImageMob}
+        //   url={project?.url}
+        //   showDonationForm={false}
+        // />
+         <PageHeaderReplica image={molanaSahibImage} imageMob={molanaSahibImage} /> 
+      ) : (
+        <PageHeader
+          title={project.title}
+          image={project.headerImage}
+          imageMob={project.headerImageMob}
+          url={project?.url}
+        />
+      )}
       <div ref={contentRef}>
         {showContent && (
           <>
@@ -234,15 +248,29 @@ const ProjectDetail = ({ forcedProjectId }) => {
                       )}
                     </div>
                   ) : (
-                    <VerticalDonationForm
-                      formId="project-detail-donation-form"
-                      donationOptions={project.donationOptions}
-                      categoryOptions={categoryOptions}
-                      defaultCategory={project.donateCategory}
-                      defaultProjectId={resolvedProjectId}
-                      onSubmit={handleDonationSubmit}
-                      projects={project.initiatives || []} // pass the initiatives as projects to the donation form
-                    />
+                    resolvedProjectId === 'projects-replica-detail' ? (
+                      <VerticalDonationFormReplica
+                        formId="project-detail-donation-form"
+                        donationOptions={project.donationOptions}
+                        categoryOptions={categoryOptions}
+                        defaultCategory={project.donateCategory}
+                        defaultProjectId={resolvedProjectId}
+                        onSubmit={handleDonationSubmit}
+                        projects={project.initiatives || []}
+                        className="project-detail-donate-form-replica"
+                        showProgressBar={true}
+                      />
+                    ) : (
+                      <VerticalDonationForm
+                        formId="project-detail-donation-form"
+                        donationOptions={project.donationOptions}
+                        categoryOptions={categoryOptions}
+                        defaultCategory={project.donateCategory}
+                        defaultProjectId={resolvedProjectId}
+                        onSubmit={handleDonationSubmit}
+                        projects={project.initiatives || []}
+                      />
+                    )
                   )}
                 </div>
               </div>

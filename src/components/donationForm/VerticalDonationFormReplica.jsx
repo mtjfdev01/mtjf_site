@@ -495,7 +495,7 @@ const VerticalDonationFormReplica = ({
 
     const returnTo = `${location.pathname}${location.search}${location.hash || ''}`
     setIsSubmitting(true)
-    navigate('/test-checkout', { state: { returnTo } })
+    navigate('/checkout', { state: { returnTo } })
   }
 
   return (

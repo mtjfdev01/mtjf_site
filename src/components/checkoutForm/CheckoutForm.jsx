@@ -1689,7 +1689,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               <input
                 type="text"
                 name="donor_phone"
-                placeholder={isTestCheckoutOnly ? 'Enter WhatsApp number' : 'Enter phone number'}
+                placeholder="Enter WhatsApp number"
                 value={formData.donor_phone}
                 onChange={handleInputChange}
                 required
