@@ -49,6 +49,9 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
     setTimeout(() => {
       let donationForm = document.querySelector('.vertical-donation-form')
       if (!donationForm) {
+        donationForm = document.querySelector('.vertical-donation-replica-form')
+      }
+      if (!donationForm) {
         donationForm = document.querySelector('.donation-form')
       }
       if (donationForm) {

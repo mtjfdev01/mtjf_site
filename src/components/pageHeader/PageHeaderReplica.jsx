@@ -8,7 +8,7 @@ const PageHeaderReplica = ({
   imageMob,
   url,
   onClick,
-  showDonationForm = true,
+  showDonationForm = false,
   donationFormProps = {},
   showProgressBar = true,
   progress = 15,

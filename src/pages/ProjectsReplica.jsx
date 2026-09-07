@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import '../components/projects/ProjectsPage.css'
 import '../components/projects/ProjectsCardsAnimation.css'
 import './ProjectsReplica.css'
-import image1 from '../assets/img/projects/hero-project.webp'
 import PageHeaderReplica from '../components/pageHeader/PageHeaderReplica'
 import { PROJECTS_LISTING_DATA } from '../data/projectsData'
 import {
@@ -12,9 +11,8 @@ import {
 } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
-import apna_ghar_hero_web from '../assets/img/projects/projects-details/Apna Ghar/hero.webp'
-import apna_ghar_hero_mob from '../assets/img/projects/projects-details/Apna Ghar/hero_mob.webp'
-import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.jpg'
+ import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.jpg'
+
 // const Events = lazy(() => import('../components/events/Events'))
 //   const QuickBlogs = lazy(() => import('../components/quickblogs'))
 const DonationCta = lazy(() =>
