@@ -180,8 +180,6 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const checkoutPathname = location.pathname.replace(/\/$/, '') || '/'
   const isTestCheckoutOnly = checkoutPathname === '/test-checkout'
   const { donationData, projectDonations, amount, clearDonationData, setProjectDonationData, setDonationFormData, ref, utmParams, donationType: contextDonationType } = useDonation()
-  console.log("donationData", donationData);
-  console.log("projectDonations", projectDonations);
 
   const [formData, setFormData] = useState(DEFAULT_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -700,6 +698,21 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           ...prev,
           donation_type: donationType
         }))
+      }
+
+      const incomingFrequency =
+        donationData.donation_frequency || donationData.frequency || null
+      if (incomingFrequency) {
+        setFormData((prev) => {
+          if (prev.donation_frequency === incomingFrequency) return prev
+          return {
+            ...prev,
+            donation_frequency: incomingFrequency,
+            recurring_consent: isRecurringDonationFrequency(incomingFrequency)
+              ? true
+              : prev.recurring_consent,
+          }
+        })
       }
     }
   }, [donationData, isFailedTransactionFlow, isAppealCheckoutFlow])

@@ -108,6 +108,7 @@ const VerticalDonationFormReplica = ({
 
     return {
       frequency: 'monthly',
+      donation_frequency: 'monthly',
       currency: initialCurrency,
       amount: '',
       customAmount: '',
@@ -457,6 +458,8 @@ const VerticalDonationFormReplica = ({
 
     const donationData = {
       ...formData,
+      frequency: 'monthly',
+      donation_frequency: 'monthly',
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
       amount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
@@ -487,8 +490,11 @@ const VerticalDonationFormReplica = ({
       templateCode
     }
 
-    // Avoid double counting: clear single-flow object and store as project donation line item.
-    setDonationFormData(null)
+    // Keep monthly frequency in context for checkout; amount stays on projectDonations only.
+    setDonationFormData({
+      frequency: 'monthly',
+      donation_frequency: 'monthly',
+    })
     updateProjectDonation(projectDonationItem)
 
     onSubmit?.(donationData)
