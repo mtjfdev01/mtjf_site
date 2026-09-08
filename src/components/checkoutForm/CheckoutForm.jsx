@@ -2352,8 +2352,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             </div>
           </div> */}
 
-          {/* PayFast — production checkout + test-checkout — temporarily disabled (Alfalah only) */}
-          {/* <div className="col-md-6">
+          {/* PayFast — production checkout + test-checkout */}
+          <div className="col-md-6">
             <div className="input-item">
               <div
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
@@ -2376,7 +2376,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
 
           {/* Alfalah account (SMS + email OTAC) — disabled */}
           {/* <div className="col-md-6">
@@ -2449,7 +2449,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Credit / Debit Card</h6>
+                  <h6>Credit / Debit Card (2nd)</h6>
                   {/* <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span> */}
                 </div>
                 {isLoading === 'alfalah' && (
