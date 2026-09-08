@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useMemo } from 'react'
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDonation } from '../contexts/DonationContext'
 // import image1 from '../assets/img/projects/apna_ghr.webp'
@@ -10,6 +10,9 @@ const CheckoutForm = lazy(() =>
 const DonationCta = lazy(() => import('../components/donationCta/DonationCta'))
 const Footer = lazy(() => import('../components/footer/Footer'))
 const DonationSidebar = lazy(() => import('../components/donation/projects_menu/DonationSidebar'))
+const WaysToDonateSection = lazy(() =>
+  import('../components/waysToDonate/WaysToDonateSection')
+)
 
 const TEST_CHECKOUT_DEFAULT_AMOUNT = 2500
 const TEST_CHECKOUT_B_DEFAULT_AMOUNT = 100
@@ -22,6 +25,7 @@ const Checkout = () => {
   const testCheckout = isTestCheckoutOnly || isTestCheckoutB
   const enableJazzCash = isTestCheckoutB
   const { amount, setDonationFormData } = useDonation()
+  const [showWaysToDonate, setShowWaysToDonate] = useState(false)
 
   const campaignIdFromQuery = useMemo(() => {
     const searchParams = new URLSearchParams(location.search)
@@ -79,6 +83,22 @@ const Checkout = () => {
           </Suspense>
         )}
       </div>
+
+      <div style={{ textAlign: 'center', padding: '16px 16px 32px' }}>
+        <button
+          type="button"
+          className="btn btn--alert"
+          onClick={() => setShowWaysToDonate(true)}
+        >
+          Other Ways To Donate
+        </button>
+      </div>
+
+      {showWaysToDonate && (
+        <Suspense fallback={null}>
+          <WaysToDonateSection initialMainTab="bank-transfer" />
+        </Suspense>
+      )}
 
       {/* Donation Sidebar - visible on checkout page */}
       {totalAmount > 0 && (

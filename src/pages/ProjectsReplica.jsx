@@ -11,7 +11,7 @@ import {
 } from '../hooks/useWebsiteProjectsListing'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import ProjectsAnimatedItem from '../components/projects/ProjectsAnimatedItem'
- import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.jpg'
+ import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.png'
 
 // const Events = lazy(() => import('../components/events/Events'))
 //   const QuickBlogs = lazy(() => import('../components/quickblogs'))

@@ -182,14 +182,14 @@
 }
 
 .btn-zakat-nav {
-  background-color: #2cade3 !important;
+  background-color: #0a6e8a !important;
   color: #fff !important;
   border: none !important;
   padding: 0 !important;
 }
 
 .btn-zakat-nav:hover {
-  background-color: #1e9ad0 !important;
+  background-color: #085a70 !important;
 }
 
 /* Compact Navbar Button Overrides */

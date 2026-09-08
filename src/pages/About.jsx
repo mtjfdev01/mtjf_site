@@ -3,7 +3,7 @@ import PageHeader from "../components/pageHeader/PageHeader";
 import image1 from '../assets/img/about/hero-image.webp'
 import viceChairmanImage from '../assets/img/about/yousaf_sb.webp'
 import viceChairmanImageMobile from '../assets/img/about/yousaf_sb_sm.jpg'
-import chairmanImage from '../assets/img/directors/molana_sahib_sm.jpg'
+import chairmanImage from '../assets/img/directors/molana_sahib_sm.png'
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import HeroContent from "../components/heroContent/HeroContent";
 

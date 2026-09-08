@@ -188,11 +188,11 @@ const Navbar = () => {
             <div className='nav-btn-group d-none md:d-flex'>
               <button 
                 className='btn btn-zakat-nav' 
-                onClick={() => handleNavigate('/zakat-calculator')}
-                aria-label="Navigate to zakat calculator"
+                onClick={() => handleNavigate('/membership-campaign')}
+                aria-label="Join Our Support Community"
               >
                 <span className="btn-donate-content">
-                  <span>Give Your Zakat</span>
+                  <span>Join Our Support Community</span>
                 </span>
               </button>
               <button 
@@ -216,10 +216,10 @@ const Navbar = () => {
         <div className='nav-row-2 md:d-none'>
           <button 
             className='btn btn-zakat-nav nav-row-2__btn' 
-            onClick={() => handleNavigate('/zakat-calculator')}
-            aria-label="Navigate to zakat calculator"
+            onClick={() => handleNavigate('/membership-campaign')}
+            aria-label="Join Our Support Community"
           >
-            Give Your Zakat
+            Join Our Support Community
           </button>
           <button 
             className='btn btn--alert btn-donate-animated nav-row-2__btn'  

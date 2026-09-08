@@ -18,10 +18,10 @@ import telenorLogo from '../../assets/img/ways_to_donate/telenor.webp'
 import easypaisaImage from '../../assets/img/ways_to_donate/easypesa.webp'
 import alflah from '../../assets/img/ways_to_donate/alflah.jpg'
 
-const WaysToDonateSection = () => {
+const WaysToDonateSection = ({ initialMainTab = 'online-banking' }) => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [activeMainTab, setActiveMainTab] = useState('online-banking')
+  const [activeMainTab, setActiveMainTab] = useState(initialMainTab)
   const [activeSubTab, setActiveSubTab] = useState('debit-credit')
   const [activeCategory, setActiveCategory] = useState('general-donation')
   const [copiedItem, setCopiedItem] = useState(null)
