@@ -2449,7 +2449,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                   <CiCreditCard2 />
                 </div>
                 <div className="payment-content">
-                  <h6>Credit / Debit Card (1st)</h6>
+                  <h6>Credit / Debit Card</h6>
                   {/* <span className="payment-option-badge payment-option-badge--info">Bank Alfalah</span> */}
                 </div>
                 {isLoading === 'alfalah' && (
