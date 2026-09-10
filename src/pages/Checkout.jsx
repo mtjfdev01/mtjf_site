@@ -44,7 +44,7 @@ const Checkout = () => {
       customAmount: testCheckoutFallbackAmount,
       currency: 'PKR',
       category: 'General',
-      donation_type: 'general',
+      donation_type: 'zakat',
       ...(isTestCheckoutOnly && {
         frequency: 'monthly',
         donation_frequency: 'monthly',

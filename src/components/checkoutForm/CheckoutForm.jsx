@@ -751,7 +751,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         firstDonationType,
         contextDonationType,
         isQurbaniOnlyCheckout,
-        defaultType: isTestCheckoutOnly ? 'sadqa' : 'general',
+      defaultType: isTestCheckoutOnly ? 'zakat' : 'general',
       }),
     [
       donationData,
@@ -783,7 +783,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     if (isProjectDonationsFlow && firstDonationType) {
       const newDonationType =
         normalizeCheckoutDonationType(firstDonationType) ||
-        (isTestCheckoutOnly ? 'sadqa' : 'general')
+        (isTestCheckoutOnly ? 'zakat' : 'general')
 
       if (previousDonationTypeRef.current !== newDonationType) {
         setFormData((prev) => {
@@ -1338,7 +1338,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           ? appealLine?.projectTitle || appealsList.find((a) => String(a.id) === String(selectedAppealId))?.title || ''
           : project_name,
         ...formFieldsForPayload,
-        donation_type: resolvedDonationType,
+        donation_type: formData.donation_type || resolvedDonationType,
         ...(isCampaignCheckoutFlow && {
           campaign_id: resolvedCampaignId,
           item_description: buildCampaignPledgeSummary(
@@ -1740,6 +1740,27 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
 
         <div className="row">
           <div className="col-md-6">
+            <span className="donation_type_select checkout-panel__field">
+              <select
+                name="donation_type"
+                value={formData.donation_type}
+                onChange={handleInputChange}
+                className="checkout-panel__input checkout-panel__select"
+              >
+                {isQurbaniOnlyCheckout ? (
+                  <option value="qurbani-baraye-mustehqeen">Qurbani </option>
+                ) : (
+                  <>
+                    <option value="general">General Donation</option>
+                    <option value="zakat">Zakat </option>
+                    <option value="sadqa">Sadqa </option>
+                  </>
+                )}
+              </select>
+            </span>
+          </div>
+
+          <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input
                 type="text"
@@ -1751,7 +1772,9 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               />
             </div>
           </div>
+        </div>
 
+        <div className="row">
           <div className="col-md-6">
             <div className="input-item input-item-name ltn__custom-icon checkout-panel__field">
               <input

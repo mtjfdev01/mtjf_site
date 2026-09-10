@@ -36,6 +36,8 @@ const BlogsDetails = lazy(() => import("./pages/BlogsDetails"));
 const BlogsDetailsV2 = lazy(() => import("./pages/BlogsDetailsV2"));
 const VolunteerRegistration = lazy(() => import("./pages/VolunteerRegistration"));
 const Checkout = lazy(() => import("./pages/Checkout"));
+const CampaignPledges = lazy(() => import("./pages/CampaignPledges"));
+const EventPledges = lazy(() => import("./pages/EventPledges"));
 const DonationCardsPage = lazy(() => import("./components/donation/projects_menu/DonationCardsPage"));
 const WaysToDonate = lazy(() => import("./pages/WaysToDonate"));
 const DiagnosticCenter = lazy(() => import("./pages/DiagnosticCenter"));
@@ -164,6 +166,8 @@ function App() {
               <Route path="/test-checkout" element={<Checkout />} />
               <Route path="/test-checkout-b" element={<Checkout />} />
               <Route path="/test_checkout_b" element={<Checkout />} />
+              <Route path="/campaign-pledges" element={<CampaignPledges />} />
+              <Route path="/event-pledges" element={<EventPledges />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donate/:projectId" element={<Donate />} />
               <Route path="/donation" element={<Donate />} />

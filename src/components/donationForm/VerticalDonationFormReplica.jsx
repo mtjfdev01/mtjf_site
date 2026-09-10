@@ -460,6 +460,8 @@ const VerticalDonationFormReplica = ({
       ...formData,
       frequency: 'monthly',
       donation_frequency: 'monthly',
+      donation_type: 'zakat',
+      category: 'Zakat',
       currency: isQurbaniMultiCurrencyProject ? 'PKR' : formData.currency,
       displayCurrency: isQurbaniMultiCurrencyProject ? formData.currency : undefined,
       amount: isQurbaniMultiCurrencyProject ? amountPKRToStore.toString() : finalAmount,
@@ -479,21 +481,21 @@ const VerticalDonationFormReplica = ({
       initiativeTitle: selectedInitiative?.title || null,
       initiativeSubtitle: selectedInitiative?.subtitle || null,
       quantity: quantityStored,
-      donationType: String(
-        isQurbaniMultiCurrencyProject
-          ? 'qurbani-baraye-mustehqeen'
-          : String(formData.category || 'GENERAL').toUpperCase()
-      ),
+      donationType: isQurbaniMultiCurrencyProject
+        ? 'qurbani-baraye-mustehqeen'
+        : 'zakat',
       basePrice: quantityStored > 0 ? Math.round(amountPKRToStore / quantityStored) : amountPKRToStore,
       customAmount: usingCustomAmount ? amountPKRToStore : 0,
       totalAmount: amountPKRToStore,
       templateCode
     }
 
-    // Keep monthly frequency in context for checkout; amount stays on projectDonations only.
+    // Keep monthly frequency + hidden zakat type for membership checkout.
     setDonationFormData({
       frequency: 'monthly',
       donation_frequency: 'monthly',
+      donation_type: 'zakat',
+      category: 'Zakat',
     })
     updateProjectDonation(projectDonationItem)
 
