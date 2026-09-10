@@ -10,6 +10,17 @@
   }
 }
 
+/* Event pledges: closer under sticky header (no PageHeader) */
+.checkout-panel.event-pledge-panel {
+  margin-top: var(--space-80);
+}
+
+@media (min-width: 769px) {
+  .checkout-panel.event-pledge-panel {
+    margin-top: calc(var(--desktop-header-clearance) - 24px);
+  }
+}
+
 .checkout-panel__form {
   display: flex;
   flex-direction: column;

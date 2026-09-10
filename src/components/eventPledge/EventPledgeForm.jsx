@@ -77,12 +77,12 @@ const EventPledgeForm = () => {
   }
 
   return (
-    <section className="checkout-panel">
+    <section className="checkout-panel event-pledge-panel">
       <form className="checkout-panel__form" onSubmit={handleSubmit}>
-        <h2 className="checkout-panel__title-2">Event Pledge</h2>
-        <p style={{ marginBottom: 16, color: '#4b5563', fontSize: 14 }}>
+        {/* <h2 className="checkout-panel__title-2" style={{ marginTop: 0 }}>Event Pledge</h2> */}
+        {/* <p style={{ marginBottom: 16, color: '#4b5563', fontSize: 14 }}>
           Share your pledge details. Our team will follow up with you.
-        </p>
+        </p> */}
 
         {formMessage.text && (
           <div className={`checkout-panel__message checkout-panel__message--${formMessage.type}`}>
