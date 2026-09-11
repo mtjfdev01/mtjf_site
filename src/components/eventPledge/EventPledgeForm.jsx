@@ -6,7 +6,7 @@ const INITIAL_FORM = {
   donor_name: '',
   contact_number: '',
   care_of_representative: '',
-  donation_type: 'general',
+  donation_type: 'zakat',
   donation_amount: '',
   address: '',
 }
