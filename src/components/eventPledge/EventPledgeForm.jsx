@@ -138,6 +138,7 @@ const EventPledgeForm = () => {
               disabled={isSubmitting}
             >
               <option value="general">General</option>
+              <option value="sadqa">Sadqa</option>
               <option value="zakat">Zakat</option>
             </select>
           </div>
