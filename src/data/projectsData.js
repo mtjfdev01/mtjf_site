@@ -4578,22 +4578,8 @@ This Ramadan, Let Your Zakat Speak for You`,
                     One person. One monthly contribution. One shared purpose.`,
     },
     donateCategory: '',
-    donateButtonText: 'BECOME A MONTHLY DONOR →  ',
+    donateButtonText: 'JOIN THE 250,000 MOVEMENT',
     subProjects: [
-      // {
-      //   id: 'what-if-250000-give-together',
-      //   title: 'WHAT IF 250,000 OF US GIVE TOGETHER',
-      //   subtitle: 'PKR 2,500 EVERY MONTH?',
-      //   description: 'Imagine 250,000 people choosing to give a small amount every month.',
-      //   description2:
-      //     'Together, that support can help MTJ Foundation reach more families and communities across Pakistan with healthcare, education, food, clean water, housing and opportunities to earn a better living.',
-      //   description3: 'This is the idea behind the 250,000 Movement.',
-      //   afterServicesText: 'One person. One monthly contribution. One shared purpose.',
-      //   donateButtonText: 'JOIN THE 250,000 MOVEMENT',
-      //   donationUrl: '',
-      //   image: gaza_relief,
-      //   imageMob: '',
-      // },
       {
         id: 'why-do-we-need-to-donate',
         title: 'Why do we need to donate?',
