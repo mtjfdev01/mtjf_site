@@ -4580,192 +4580,164 @@ This Ramadan, Let Your Zakat Speak for You`,
     donateButtonText: 'BECOME A MONTHLY DONOR →  ',
     subProjects: [
       {
-        id: '',
-        title: '',
-        subtitle: '',
-        description: ``,
-        donateButtonText: '',
+        id: 'what-if-250000-give-together',
+        title: 'WHAT IF 250,000 OF US GIVE TOGETHER',
+        subtitle: 'PKR 2,500 EVERY MONTH?',
+        description: 'Imagine 250,000 people choosing to give a small amount every month.',
+        description2:
+          'Together, that support can help MTJ Foundation reach more families and communities across Pakistan with healthcare, education, food, clean water, housing and opportunities to earn a better living.',
+        description3: 'This is the idea behind the 250,000 Movement.',
+        afterServicesText: 'One person. One monthly contribution. One shared purpose.',
+        donateButtonText: 'JOIN THE 250,000 MOVEMENT',
         donationUrl: '',
-        image: '',
+        image: gaza_relief,
         imageMob: '',
-        carosellItemWidth: '',
-        carosellMobWidth: '',
-      },
-       {
-        id: 'what-is-the-250-000-movement',
-        title: 'What Is the 250,000 Movement?',
-        subtitle: 'A WorldWIDE COMMUNITY OF MONTHLY DONORS CREATING SUSTAINABLE CHANGE ACROSS PAKISTAN',
-        quranAyat: {
-          text: '',
-          reference: ''
-        },
-        description: `The 250,000 Movement is MTJ Foundation's worldwide monthly giving initiative, created to bring together 250,000 committed donors around one simple idea: PKR 2,500 every month.`,
-        services: [],
-        afterServicesText:`Rather than relying solely on one-time contributions, the initiative builds a consistent, sustainable stream of support for MTJ Foundation's humanitarian programmes across healthcare, education, clean water, food security, housing, livelihood development, vocational training, and emergency relief.
-        Every monthly donor becomes part of a growing community committed to making humanitarian support more consistent, sustainable, and far-reaching — helping MTJ Foundation plan beyond immediate needs and create lasting impact for deserving families across Pakistan.`,
-        donateButtonText: 'BECOME A MONTHLY DONOR →  ',
-        donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob
       },
       {
-        id: 'why-monthly-giving-matters',
-        title: 'Why Monthly Giving Matters',
-        subtitle: 'BECAUSE LASTING CHANGE NEEDS MORE THAN A ONE-TIME CONTRIBUTION',
-        quranAyat: {
-          text: '',
-          reference: ''
-        },
-        description: `Across Pakistan, vulnerable families face challenges that require consistent, year-round support:`,
-        services: [
-          'Limited access to quality healthcare',
-          'Barriers to education and opportunity',
-          'Lack of safe and clean drinking water',
-          'Food insecurity and financial hardship',
-          'Inadequate housing and livelihood opportunities',
-          'Emergencies and disasters that require immediate response',
-        ],
-        afterServicesText:`One-time donations respond to an immediate need. Monthly giving builds the stability to keep responding — today, tomorrow, and throughout the year.
-        By giving PKR 2,500 every month, you become part of a sustainable community helping MTJ Foundation plan ahead, strengthen its humanitarian programmes, and extend support to more deserving families across Pakistan.`,
-        donateButtonText: 'BECOME A MONTHLY DONOR →  ',
-        donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob
-      },
-      {
-        id: 'how-it-works',
-        title: 'How It Works',
-        subtitle: 'JOINING THE MOVEMENT TAKES LESS THAN TWO MINUTES',
-        description: ``,
-        services: [
-          '1. Choose Your Contribution — Choose your monthly amount and select a donation category — General, Zakat, or Sadqa-e-Jariya.',
-          `2. set up Secure Recurring Giving — Set up a secure recurring payment through your preferred method — card, bank transfer, or mobile wallet.`,
-          `3. Stay Connected to Your Impact — Receive a confirmation and monthly receipt, and get regular updates on the impact you’re giving is creating.`
-        ],
-        afterServicesText: '',
+        id: 'why-do-we-need-to-donate',
+        title: 'Why do we need to donate?',
+        subtitle: '',
+        description:
+          'How will you feel if you are uncertain about your next meal? You are not sure how you will feed your children? For some people, the hard choice is what to cook for dinner today and for others, it\'s a lack of basic food to survive on a daily basis.',
+        description2:
+          'In Pakistan, certain underserved areas don\'t have the resources to provide basic education to their children. They can\'t afford school fees, a school bag and even a school uniform.',
+        description3:
+          'Several people have no idea today that their leaking roof will stay intact or that they will become homeless again in Monsoon weather. Imagine you have to choose between providing medicine for your elderly parents, spending on your children\'s education or giving a permanent roof to your family?',
+        afterServicesText:
+          'Unfortunately, this is the sad daily reality for millions across Pakistan. But you are blessed with the right power to participate in this noble cause with your commitment every single month.',
         donateButtonText: '',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob
+        image: turkey_morocco_earthquakes,
+        imageMob: '',
       },
       {
-        id: 'our-mission',
-        title: 'Our Mission',
-        subtitle: 'TO BUILD A COMMUNITY OF CONSISTENT GIVERS, CREATING SUSTAINABLE IMPACT ACROSS PAKISTAN',
-        description: `The 250,000 Movement is committed to building:`,
+        id: 'where-your-pkr-2500-can-help',
+        title: 'WHERE YOUR PKR 2,500 CAN HELP?',
+        subtitle: '',
+        description: 'Your monthly contribution can help provide:',
         services: [
-          'A nationwide community of 250,000 committed monthly donors',
-          'A simple giving model of PKR 2,500 per month',
-          `Reliable, year-round support for MTJ Foundation's humanitarian programmes`,
-          `Greater continuity across healthcare, education, clean water, food security, housing, livelihoods, vocational development, and emergency relief`,
-          `A culture where consistent giving becomes a powerful force for long-term social change`,
+          {
+            heading: 'Food',
+            text: 'A warm meal for a family who has learned to sleep hungry, hoping tomorrow someone will give their leftover food',
+          },
+          {
+            heading: 'Education',
+            text: 'Paid school fees, uniforms, and books that let an innocent child walk into class with their head held high, instead of watching other fellows from the gate.',
+          },
+          {
+            heading: 'Healthcare',
+            text: 'Medical treatment and medicines so a parent doesn\'t have to swallow their pain in silence, pretending to be fine while their family watches them suffer.',
+          },
+          {
+            heading: 'Clean Water',
+            text: 'Safe drinking water for a community where mothers silently pray over every glass, hoping it won\'t make her child sick.',
+          },
+          {
+            heading: 'Apna Ghar (Own Shelter)',
+            text: 'A proper home where family can live without wondering if their children will wake up under a collapsed roof.',
+          },
         ],
-        afterServicesText: `Our mission is not simply to raise funds, but to build a sustainable community of givers — people who come together every month to create dignity, opportunity, and lasting change for deserving families across Pakistan.`,
-        donateButtonText: `JOIN THE 250,000 MOVEMENT → `,
+        donateButtonText: '',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob
+        image: pakistan_floods,
+        imageMob: '',
       },
       {
-        id: 'what-we--building',
-        title: `What We're Building`,
-        subtitle: 'A SUSTAINABLE GIVING COMMUNITY POWERING CHANGE ACROSS PAKISTAN',
-        description: `Together, 250,000 monthly donors create a reliable foundation of support that enables MTJ Foundation to respond to immediate needs while investing in long-term solutions. Your monthly contribution helps strengthen:`,
+        id: 'why-your-monthly-giving-matters',
+        title: 'Why Your Monthly Giving Matters',
+        subtitle: '',
+        description:
+          'PKR 2,500 may seem small on its own. But when many people give this amount every month, it becomes a steady source of support for communities across Pakistan.',
+        description2: 'Regular monthly donations help MTJ Foundation:',
         services: [
-          `Healthcare — accessible diagnostics, treatment and medical support`,
-          'Education — learning opportunities and educational assistance',
-          'Clean Water — safe drinking water for underserved communities',
-          `Food Security — essential food support for deserving families`,
-          `Housing — safe and dignified homes for vulnerable families`,
-          `Livelihoods — opportunities that support financial independence`,
-          `KASB Vocational Development — skills that lead to sustainable livelihoods`,
-          `Emergency Relief — timely assistance when disasters and crises strike`
+          {
+            heading: 'Plan programmes better',
+            text: 'Schools, AAS Labs, Clean water projects and “Apna Ghar” initiatives can continue without interruption.',
+          },
+          {
+            heading: 'Work throughout the year',
+            text: 'Underserved people can continue to receive support even when there is no emergency.',
+          },
+          {
+            heading: 'Respond quickly in a crisis',
+            text: 'Help can reach people faster when floods, health emergencies or other disasters happen.',
+          },
         ],
-        afterServicesText:`We're not building a one-time campaign. We're building a community capable of creating impact, month after month.`,
+        afterServicesText:
+          'Your monthly contribution gives MTJ Foundation the consistency it needs to keep supporting underserved people today, tomorrow, and throughout the year.',
         donateButtonText: '',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
-        bottom_banner_img:"",
-        bottom_banner_mobile_img: QurbaniBottomBannerMobile
+        image: pakistan_floods_2025,
+        imageMob: '',
       },
       {
-        id: 'impact-we-aim-to-create',
-        title: 'Impact We Aim to Create',
-        subtitle: 'TURNING CONSISTENT GIVING INTO LASTING CHANGE',
-        description: `Through the 250,000 Movement, MTJ Foundation aims to:`,
-          services: [
-          `Build a nationwide community of 250,000 committed monthly donors`,
-          `Mobilize PKR 2,500 per donor every month for sustained humanitarian impact`,
-          `Provide reliable, year-round support across healthcare, education, clean water, food security, housing, and livelihoods`,
-          `Strengthen vocational development and self-reliance for underserved communities`,
-          `Enable faster and more effective emergency and disaster response`,
-          `Build a sustainable giving model that allows humanitarian programmes to grow, plan ahead, and reach more lives`,
+        id: 'how-to-join-the-250000-movement',
+        title: 'How to Join the 250,000 Movement',
+        subtitle: 'A few minutes to join. A lifetime of impact to give',
+        description: '',
+        services: [
+          {
+            heading: '01 Choose Your Contribution',
+            text: 'Select your monthly amount and pick a donation category among General, Zakat, or Sadqa-e-Jariya.',
+          },
+          {
+            heading: '02 Set Up Secure Recurring Giving',
+            text: 'Complete your recurring payment through your preferred method: card, bank transfer, or mobile wallet.',
+          },
+          {
+            heading: '03 See the Lives You Help Change',
+            text: 'Receive a confirmation, monthly receipt and regular updates on how your support is creating real change.',
+          },
         ],
-        afterServicesText:`Together, consistent giving turns individual contributions into collective, measurable impact.`,
-        donateButtonText: 'BE PART OF THE CHANGE →',
-        donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
-        // bottom_banner_img: barakah_hero_web,
-        // bottom_banner_mobile_img: barakah_hero_mob
-      },
-       {
-        id: 'trust-transparency',
-        title: 'Trust & Transparency',
-        subtitle: 'GIVE WITH CONFIDENCE — EVERY CONTRIBUTION IS TRACKED AND ACCOUNTABLE',
-        description: `International donors trust monthly giving programmes when they can see exactly how funds are used. This section should give visitors that confidence at a glance:`,
-          services: [
-          `Registered & Verified — MTJ Foundation's registration status, tax-exemption details, and relevant regulatory certifications.`,
-          `Audited Financials — A short note or link to the latest audited financial statement or annual report.`,
-          `Where Your Money Goes — A brief, honest breakdown of how contributions are allocated across programmes and operations.`,
-          `Secure Giving — SSL-secured payment processing and recognized payment gateway logos (Visa, MasterCard, local banks) displayed near the donation form.`,
-        ],
-        afterServicesText:``,
         donateButtonText: '',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
-        // bottom_banner_img: barakah_hero_web,
-        // bottom_banner_mobile_img: barakah_hero_mob
+        image: accountability_transparency,
+        imageMob: '',
       },
       {
-        id: 'give-from-abroad',
-        title: 'Give From Abroad — For Overseas Pakistanis',
-        subtitle: 'A GLOBAL COMMUNITY SUPPORTING PAKISTAN, TOGETHER',
-        description: `The 250,000 Movement welcomes support from Pakistanis and friends of Pakistan around the world. Overseas donors can give monthly in their local currency — USD, GBP, AED, EUR, and more — through secure international payment options, with the full value directed toward MTJ Foundation's programmes in Pakistan.`,
-          services: [
-          ``,
-          ``,
-          ``,
-          ``,
+        id: 'how-we-handle-your-contributions',
+        title: 'How We Handle Your Contributions',
+        subtitle: '',
+        description:
+          'When you choose to give every month, you deserve to know that your contribution is being handled with care and responsibility.',
+        services: [
+          {
+            heading: 'Registered & Accountable',
+            text: 'MTJ Foundation is a registered Section 42 non-profit organisation under the Companies Act, 2017.',
+          },
+          {
+            heading: 'Transparent Reporting',
+            text: 'We keep our donors informed about our programmes, progress and the impact of their contributions.',
+          },
+          {
+            heading: 'Secure Giving',
+            text: 'Your monthly donation is processed through secure payment channels.',
+          },
+          {
+            heading: 'Responsible Use of Funds',
+            text: 'Your support goes towards MTJ Foundation’s programmes serving people and communities across Pakistan.',
+          },
         ],
-        afterServicesText:``,
-        donateButtonText: 'GIVE FROM ABROAD →',
-        donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
-        // bottom_banner_img: barakah_hero_web,
-        // bottom_banner_mobile_img: barakah_hero_mob
-      },
-        {
-        id: 'join-growing-community',
-        title: 'Join a Growing Community',
-        subtitle: `YOU WON'T BE GIVING ALONE`,
-        description: `( Total registered Donors Updates ) `,
-          services: [
-          ``,
-          ``,
-          ``,
-          ``,
-        ],
-        afterServicesText:``,
         donateButtonText: '',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
-        // bottom_banner_img: barakah_hero_web,
-        // bottom_banner_mobile_img: barakah_hero_mob
+        image: voices_from_field,
+        imageMob: '',
+      },
+      {
+        id: 'your-support-can-travel-further',
+        title: 'Your Support Can Travel Further Than You Think',
+        subtitle: 'Making a Difference Back Home!',
+        description:
+          'Maybe you left Pakistan to build a better future. Maybe your parents did. But your own people are still struggling to choose between food, shelter and basic human rights.',
+        description2:
+          'The 250,000 Movement brings together Pakistanis and friends of Pakistan from around the world to stand with these families.',
+        description3:
+          'Give PKR 2,500 every month in your preferred currency through secure international payment options. Let your distance become a bridge, not a barrier.',
+        afterServicesText: 'From wherever you are, your giving can reach home.',
+        donateButtonText: 'JOIN THE 250,000 MOVEMENT TODAY!',
+        donationUrl: '',
+        image: call_to_action,
+        imageMob: '',
       },
        {
         id: 'aligned-with-global-goals',
@@ -4785,8 +4757,8 @@ This Ramadan, Let Your Zakat Speak for You`,
         afterServicesText:`By giving consistently, our donor community helps turn these global ambitions into meaningful action for communities across Pakistan.`,
         donateButtonText: 'BECOME A MONTHLY DONOR →  ',
         donationUrl: '',
-        image: barakah_hero_web,
-        imageMob: barakah_hero_mob,
+        image: gaza_relief,
+        imageMob: '',
         // bottom_banner_img: barakah_hero_web,
         // bottom_banner_mobile_img: barakah_hero_mob
       },
