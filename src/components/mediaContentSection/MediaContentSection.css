@@ -127,6 +127,27 @@
   margin-top: 2px;
 }
 
+.media-content-section--membership-campaign .media-content-list-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.media-content-section--membership-campaign .media-content-list-item:nth-child(4n + 1) .media-content-list-icon {
+  background: #EAAA00;
+}
+
+.media-content-section--membership-campaign .media-content-list-item:nth-child(4n + 2) .media-content-list-icon {
+  background: #00A3E0;
+}
+
+.media-content-section--membership-campaign .media-content-list-item:nth-child(4n + 3) .media-content-list-icon {
+  background: #E4002B;
+}
+
+.media-content-section--membership-campaign .media-content-list-item:nth-child(4n + 4) .media-content-list-icon {
+  background: #009A44;
+}
+
 .media-content-list-text {
   font-size: var(--fs-16);
   line-height: 1.6;

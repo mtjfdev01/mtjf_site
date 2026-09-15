@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { Suspense, lazy, useState } from 'react'
+import { Fragment, Suspense, lazy, useState } from 'react'
 import PageHeader from '../components/pageHeader/PageHeader'
 import PageHeaderReplica from '../components/pageHeader/PageHeaderReplica'
 import molanaSahibImage from '../assets/img/directors/molana_sahib_sm.png'
@@ -63,6 +63,13 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
   const handleDonationSubmit = (formData) => {
     navigate(`/donate/${project.id}`, { state: { ...formData } })
+  }
+
+  const handleMembershipDonateClick = () => {
+    const donationForm = document.getElementById('project-detail-donation-form')
+    if (donationForm) {
+      donationForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   const categoryOptions = ['General', project.donateCategory].filter(Boolean)
@@ -153,8 +160,27 @@ const ProjectDetail = ({ forcedProjectId }) => {
 
                   {project.content.paragraph3 && (
                     <div className="project-content-text">
-                      <p className="text-base">{project.content.paragraph3}</p>
+                      <p className="text-base">
+                        {project.id === 'membership-campaign'
+                          ? project.content.paragraph3.split(/\r?\n/).map((line, index, lines) => (
+                              <Fragment key={index}>
+                                {line.trim()}
+                                {index < lines.length - 1 && <br />}
+                              </Fragment>
+                            ))
+                          : project.content.paragraph3}
+                      </p>
                     </div>
+                  )}
+
+                  {project.id === 'membership-campaign' && project.donateButtonText && (
+                    <button
+                      type="button"
+                      className="media-content-cta btn btn--primary"
+                      onClick={handleMembershipDonateClick}
+                    >
+                      {project.donateButtonText}
+                    </button>
                   )}
 
                   {project.content.hadith && (

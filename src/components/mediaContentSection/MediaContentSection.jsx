@@ -192,7 +192,9 @@ const MediaContentSection = ({ subProjects, defaultImage, projectKey }) => {
   }
 
   return (
-    <section className="media-content-section media-content-animated">
+    <section className={`media-content-section media-content-animated ${
+      projectKey === 'membership-campaign' ? 'media-content-section--membership-campaign' : ''
+    }`}>
       {subProjects.map((subProject, index) => {
         const listItems = getListItems(subProject)
         const image = getSubProjectImage(subProject)
