@@ -2484,8 +2484,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             </div>
           </div>
 
-          {/* JazzCash MWallet — enabled on /test-checkout-b only */}
-          {/* {enableJazzCash && (
+          {/* JazzCash MWallet — /test-checkout and /test-checkout-b */}
+          {enableJazzCash && (
           <div className="col-md-6">
             <div className="input-item">
               <div
@@ -2511,27 +2511,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               </div>
             </div>
           </div>
-          )} */}
-
-          {/* JazzCash MWallet — /test-checkout only (disabled) */}
-          {/* {testCheckout && !enableJazzCash && (
-          // <div className="col-md-6">
-          //   <div className="input-item">
-          //     <div
-          //       className="payment-option payment-option--disabled"
-          //       aria-disabled="true"
-          //     >
-          //       <div className="payment-icon">
-          //         <CiCreditCard2 />
-          //       </div>
-          //       <div className="payment-content">
-          //         <h6>Pay by JazzCash</h6>
-          //         <span className="payment-option-badge payment-option-badge--info">Mobile wallet</span>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
-          )} */}
+          )}
 
           {/* Stripe — /test-checkout only */}
         </div>

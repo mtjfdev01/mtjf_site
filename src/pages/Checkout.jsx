@@ -14,7 +14,7 @@ const WaysToDonateSection = lazy(() =>
   import('../components/waysToDonate/WaysToDonateSection')
 )
 
-const TEST_CHECKOUT_DEFAULT_AMOUNT = 2500
+const TEST_CHECKOUT_DEFAULT_AMOUNT = 100
 const TEST_CHECKOUT_B_DEFAULT_AMOUNT = 100
 
 const Checkout = () => {
@@ -23,7 +23,7 @@ const Checkout = () => {
   const isTestCheckoutOnly = pathname === '/test-checkout'
   const isTestCheckoutB = pathname === '/test-checkout-b' || pathname === '/test_checkout_b'
   const testCheckout = isTestCheckoutOnly || isTestCheckoutB
-  const enableJazzCash = isTestCheckoutB
+  const enableJazzCash = isTestCheckoutOnly || isTestCheckoutB
   const { amount, setDonationFormData } = useDonation()
   const [showWaysToDonate, setShowWaysToDonate] = useState(false)
 
