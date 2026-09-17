@@ -6,6 +6,7 @@ import { useDonation } from '../../contexts/DonationContext'
 import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
 import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
 import Loader from '../Loader/Loader'
+import axiosInstance from '../../utils/axios'
 import './VerticalDonationFormReplica.css'
 
 
@@ -64,10 +65,55 @@ const VerticalDonationFormReplica = ({
   progress = 15,
   donorsGoal = 250000,
 }) => {
-  const clampedProgress = Math.min(100, Math.max(0, Number(progress) || 0))
-  const formattedDonorsGoal = Number(donorsGoal).toLocaleString()
   const navigate = useNavigate()
   const location = useLocation()
+  const goal = Math.max(0, Number(donorsGoal) || 0)
+  const formattedDonorsGoal = goal.toLocaleString()
+
+  const [registeredRecurringDonorsCount, setRegisteredRecurringDonorsCount] =
+    useState(null)
+
+  useEffect(() => {
+    if (!showProgressBar) return undefined
+    let cancelled = false
+    ;(async () => {
+      try {
+        const res = await axiosInstance.get(
+          '/donations/public/recurring-donors-counts',
+        )
+        const count = Number(
+          res?.data?.data?.registered_recurring_donors_count ?? NaN,
+        )
+        if (!cancelled && Number.isFinite(count)) {
+          setRegisteredRecurringDonorsCount(count)
+        }
+      } catch {
+        // Keep fallback `progress` prop if public stats fail
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [showProgressBar])
+
+  const liveProgress =
+    registeredRecurringDonorsCount != null && goal > 0
+      ? (registeredRecurringDonorsCount / goal) * 100
+      : Number(progress) || 0
+  const clampedProgress = Math.min(100, Math.max(0, liveProgress))
+  /** Keep decimals for tiny progress (e.g. 0.005%), trim trailing zeros. */
+  const progressLabel = (() => {
+    if (!Number.isFinite(clampedProgress) || clampedProgress <= 0) return '0'
+    if (clampedProgress >= 100) return '100'
+    if (clampedProgress < 1) {
+      return clampedProgress.toFixed(3).replace(/\.?0+$/, '') || '0'
+    }
+    if (clampedProgress < 10) {
+      return clampedProgress.toFixed(2).replace(/\.?0+$/, '')
+    }
+    return clampedProgress.toFixed(1).replace(/\.0$/, '')
+  })()
+
   const projectCards = useWebsiteDonationProjects(FALLBACK_PROJECT_CARDS)
   /** API catalog first; static `projects` prop kept for later / page-specific forms. */
   const selectableProjects = useMemo(
@@ -690,14 +736,14 @@ const VerticalDonationFormReplica = ({
               style={{ left: `${clampedProgress}%` }}
               aria-hidden="true"
             >
-              {clampedProgress}%
+              {progressLabel}%
             </div>
             <div
               className="vertical-donation-replica-progress-track"
               role="progressbar"
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-valuenow={clampedProgress}
+              aria-valuenow={Number(progressLabel)}
               aria-label="Fundraising progress"
             >
               <div

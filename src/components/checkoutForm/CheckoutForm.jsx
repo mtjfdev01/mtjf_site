@@ -16,6 +16,7 @@ import {
   buildCampaignPledgeSummary,
 } from '../../lib/campaignCheckoutApi'
 import { postGatewayForm } from '../../lib/paymentGatewayForm'
+import { getStoredReferralCode } from '../analytics/CampaignTracker'
 import {
   getNextFirstOfMonthDateString,
   getStripeRecurringForPayload,
@@ -1171,6 +1172,14 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
       return
     }
 
+    if (Number(totalAmount) > 1000000) {
+      setFormMessage({
+        type: 'error',
+        text: 'Maximum donation amount is 1,000,000 PKR',
+      })
+      return
+    }
+
     if (isAppealCheckoutFlow && !selectedAppealId) {
       setFormMessage({ type: 'error', text: 'Appeal information is missing. Please open checkout from the appeal page again.' })
       return
@@ -1432,6 +1441,11 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         ...(ref && {
           ref: ref
         }),
+        // Staff referral from ?referral_code= (sessionStorage)
+        ...(() => {
+          const referralCode = getStoredReferralCode()
+          return referralCode ? { referral_code: referralCode } : {}
+        })(),
         // UTM campaign tracking (captured from landing URL)
         ...(utmParams && !isCampaignCheckoutFlow && {
           ...(() => {
