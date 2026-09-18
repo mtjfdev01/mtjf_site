@@ -188,8 +188,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const [formMessage, setFormMessage] = useState({ type: '', text: '' })
   const [isLoadingFailedTransaction, setIsLoadingFailedTransaction] = useState(false)
   const [isDonationPostLoading, setIsDonationPostLoading] = useState(false)
-  const [donationIdFromQuery, setDonationIdFromQuery] = useState(null)
-  /** Set when `?donationId=` retry flow loads `/donations/public/failed-transaction/:id` — sent as `donor_id` on POST */
+  const [donationPublicIdFromQuery, setDonationPublicIdFromQuery] = useState(null)
+  /** Set when `?donation_public_id=` retry flow loads `/donations/public/failed-transaction/:publicId` — sent as `previous_donation_id` on POST */
   const [failedRetryDonorId, setFailedRetryDonorId] = useState(null)
   const [stripeEmbedClientSecret, setStripeEmbedClientSecret] = useState(null)
   const hasFetchedFailedTransaction = useRef(false)
@@ -267,21 +267,19 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const recurringPresetAmount = recurringPresetTotals?.payNow ?? null
   const isRecurringAmountPresetFlow = Boolean(recurringBaseAmount)
 
-  // Get donationID from query parameters
+  // Get donation_public_id from query (retry / installment payment links)
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
-    const donationID = searchParams.get('donationId')
-    if (donationID && donationID !== donationIdFromQuery) {
-      // Reset the fetch flag when donationId changes
+    const publicId = searchParams.get('donation_public_id')
+    if (publicId && publicId !== donationPublicIdFromQuery) {
       hasFetchedFailedTransaction.current = false
-      setDonationIdFromQuery(donationID)
-    } else if (!donationID) {
-      // Reset when donationId is removed from URL
+      setDonationPublicIdFromQuery(publicId)
+    } else if (!publicId) {
       hasFetchedFailedTransaction.current = false
-      setDonationIdFromQuery(null)
+      setDonationPublicIdFromQuery(null)
       setFailedRetryDonorId(null)
     }
-  }, [location.search, donationIdFromQuery])
+  }, [location.search, donationPublicIdFromQuery])
 
   // Get donation items from location state (passed from donation projects menu)
   const donationItemsFromState = location.state?.donationItems || []
@@ -310,7 +308,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     [isQurbaniOnlyCheckout, donationData?.projectId]
   )
   const isOldDonationFormFlow = !!donationData
-  const isFailedTransactionFlow = !!donationIdFromQuery
+  const isFailedTransactionFlow = !!donationPublicIdFromQuery
 
   const isCampaignCheckoutFlow = useMemo(
     () =>
@@ -803,10 +801,9 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     }
   }, [isProjectDonationsFlow, firstDonationType, isQurbaniOnlyCheckout, isTestCheckoutOnly])
 
-  // Handle failed transaction flow - fetch and populate form data
+  // Handle failed / pending payment retry — fetch by donation_public_id
   useEffect(() => {
-    // Prevent multiple calls - only fetch once per donationId
-    if (!donationIdFromQuery || hasFetchedFailedTransaction.current) return
+    if (!donationPublicIdFromQuery || hasFetchedFailedTransaction.current) return
 
     const fetchFailedTransaction = async () => {
       try {
@@ -818,7 +815,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         setFailedRetryDonorId(null)
 
         // Fetch failed transaction data
-        const response = await axiosInstance.get(`/donations/public/failed-transaction/${donationIdFromQuery}`)
+        const response = await axiosInstance.get(`/donations/public/failed-transaction/${donationPublicIdFromQuery}`)
 
         if (response.data && response.data.success) {
           const failedTransaction = response.data?.data
@@ -927,7 +924,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
 
     fetchFailedTransaction()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [donationIdFromQuery]) // Only depend on donationIdFromQuery
+  }, [donationPublicIdFromQuery])
 
   // REMOVED: Redirect check - always show checkout page
   // useEffect(() => {
@@ -1429,8 +1426,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             template_code: String(donationData.templateCode).trim()
           }),
         // Include donationID if this is a retry of failed transaction
-        ...(isFailedTransactionFlow && donationIdFromQuery && {
-          previous_donation_id: donationIdFromQuery
+        ...(isFailedTransactionFlow && donationPublicIdFromQuery && {
+          previous_donation_id: donationPublicIdFromQuery
         }),
         ...(isFailedTransactionFlow &&
           failedRetryDonorId != null &&

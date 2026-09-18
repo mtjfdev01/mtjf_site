@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FcDonate } from 'react-icons/fc'
+import { BiSolidDonateHeart } from 'react-icons/bi'
+import { FaHeart, FaUsers } from 'react-icons/fa'
 import './index.css' 
 import Hamburger from '../hamburgermenu/Hamburger'
 import Mobilenavbar from '../mobilenavbar/Mobilenavbar'
@@ -192,6 +193,10 @@ const Navbar = () => {
                 aria-label="Join Our Support Community"
               >
                 <span className="btn-donate-content">
+                  <span className="vertical-donation-replica-progress-goal-icon" aria-hidden="true">
+                    <FaUsers className="vertical-donation-replica-progress-goal-users" />
+                    <FaHeart className="vertical-donation-replica-progress-goal-heart" />
+                  </span>
                   <span>Join Our Support Community</span>
                 </span>
               </button>
@@ -201,7 +206,7 @@ const Navbar = () => {
                 aria-label="Navigate to donation form"
               >
                 <span className="btn-donate-content">
-                  <FcDonate className="btn-donate-icon" size={20} />
+                  <BiSolidDonateHeart className="btn-donate-icon" size={20} />
                   <span>Donate Now</span>
                 </span>
               </button>
@@ -219,14 +224,23 @@ const Navbar = () => {
             onClick={() => handleNavigate('/membership-campaign')}
             aria-label="Join Our Support Community"
           >
-            Join Our Support Community
+            <span className="btn-donate-content">
+              <span className="vertical-donation-replica-progress-goal-icon" aria-hidden="true">
+                <FaUsers className="vertical-donation-replica-progress-goal-users" />
+                <FaHeart className="vertical-donation-replica-progress-goal-heart" />
+              </span>
+              <span>Join Our Support Community</span>
+            </span>
           </button>
           <button 
             className='btn btn--alert btn-donate-animated nav-row-2__btn'  
             onClick={() => handleNavigate('/donate')}
             aria-label="Navigate to donation form"
           >
-            Donate Now
+            <span className="btn-donate-content">
+              <BiSolidDonateHeart className="btn-donate-icon" size={16} aria-hidden="true" />
+              <span>Donate Now</span>
+            </span>
           </button>
         </div>
         )}
