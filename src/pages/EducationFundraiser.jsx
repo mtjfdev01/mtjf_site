@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/img/logos/only_logo.png'
+import step1Illustration from '../assets/img/fundraising/step1.svg'
+import Footer from '../components/footer/Footer'
 import { educationFundraiserData } from '../data/educationFundraiserData'
 import './EducationFundraiser.css'
 
@@ -14,21 +16,6 @@ const EducationFundraiser = () => {
 
   return (
     <main className="education-fundraiser">
-      <header className="education-fundraiser__header">
-        <Link to="/" className="education-fundraiser__brand" aria-label="MTJ Foundation home">
-          <img src={logo} alt="MTJ Foundation" />
-          <span>MTJ Foundation</span>
-        </Link>
-        <nav aria-label="Campaign navigation">
-          {navItems.map((item) => (
-            <a key={item} href={`#${item.toLowerCase().replaceAll(' ', '-')}`}>
-              {item}
-            </a>
-          ))}
-        </nav>
-        <a className="education-fundraiser__header-action" href="#fundraiser-start">Start Fundraising</a>
-      </header>
-
       <section className="education-fundraiser__hero" aria-labelledby="education-fundraiser-title">
         <div className="education-fundraiser__hero-copy">
           <p className="education-fundraiser__eyebrow">{hero.eyebrow}</p>
@@ -36,23 +23,46 @@ const EducationFundraiser = () => {
           <p>{hero.description}</p>
           <a className="education-fundraiser__button" href="#fundraiser-start">{hero.action}</a>
         </div>
-        <Placeholder label="Education campaign hero" className="education-fundraiser__hero-image" />
       </section>
 
       <section className="education-fundraiser__steps" id="the-fundraiser" aria-labelledby="steps-title">
         <h2 id="steps-title" className="education-fundraiser__sr-only">How to start a fundraiser</h2>
-        {steps.map((step, index) => (
-          <article className={`education-fundraiser__step education-fundraiser__step--${step.tone}`} key={step.number}>
-            <div className={`education-fundraiser__step-inner ${index % 2 ? 'education-fundraiser__step-inner--reverse' : ''}`}>
-              <Placeholder label={step.imageLabel} className="education-fundraiser__step-image" />
-              <div className="education-fundraiser__step-copy">
-                <span className="education-fundraiser__step-number">{step.number}</span>
-                <h2>{step.title}</h2>
-                <p>{step.description}</p>
-              </div>
-            </div>
-          </article>
-        ))}
+        {steps.map((step, index) => {
+          const isStepOne = step.number === 'STEP 1'
+
+          return (
+            <article
+              className={`education-fundraiser__step education-fundraiser__step--${step.tone} ${isStepOne ? 'education-fundraiser__step--first' : ''}`}
+              key={step.number}
+            >
+              {isStepOne ? (
+                <>
+                  <div className="education-fundraiser__step-top">
+                    <h2>Starting an education fundraiser is easy.</h2>
+                  </div>
+                  <hr className="education-fundraiser__step-divider" />
+                  <div className={`education-fundraiser__step-inner ${index % 2 ? 'education-fundraiser__step-inner--reverse' : ''} ${isStepOne ? 'education-fundraiser__step-inner--first' : ''}`}>
+                    <div className="education-fundraiser__step-copy education-fundraiser__step-copy--first">
+                      <span className="education-fundraiser__step-number">{step.number}</span>
+                      <h2>{step.title}</h2>
+                      <p>{step.description}</p>
+                    </div>
+                    <img src={step1Illustration} alt="Fundraiser setup illustration" className="education-fundraiser__step-illustration education-fundraiser__step-illustration--first" />
+                  </div>
+                </>
+              ) : (
+                <div className={`education-fundraiser__step-inner ${index % 2 ? 'education-fundraiser__step-inner--reverse' : ''}`}>
+                  <Placeholder label={step.imageLabel} className="education-fundraiser__step-image" />
+                  <div className="education-fundraiser__step-copy">
+                    <span className="education-fundraiser__step-number">{step.number}</span>
+                    <h2>{step.title}</h2>
+                    <p>{step.description}</p>
+                  </div>
+                </div>
+              )}
+            </article>
+          )
+        })}
       </section>
 
       <section className="education-fundraiser__inspiration" id="the-team" aria-labelledby="inspiration-title">
@@ -91,6 +101,8 @@ const EducationFundraiser = () => {
           <ul>{lists.teams.map((item) => <li key={item}><a href="#the-team">{item}</a></li>)}</ul>
         </div>
       </section>
+
+      <Footer />
     </main>
   )
 }

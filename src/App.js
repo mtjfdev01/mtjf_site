@@ -61,7 +61,7 @@ const AppealDetail = lazy(() => import("./pages/AppealDetail"));
 const NewFooterPage = lazy(() => import("./pages/NewFooterPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const ApnaGharPage = lazy(() => import("./pages/ApnaGharPage"));
-const EducationFundraiser = lazy(() => import("./pages/EducationFundraiser"));
+const MembershipCampaign = lazy(() => import("./pages/MembershipCampaign"));
 
 
 
@@ -214,7 +214,7 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />}/>
               <Route path="/apna-ghar" element={<ApnaGharPage />} />
               <Route path="/membership-campaign" element={<ProjectDetail forcedProjectId="membership-campaign" />} />
-              <Route path="/fundraising" element={<EducationFundraiser />} />
+              <Route path="/fundraising" element={<MembershipCampaign />} />
               
             </Routes>
           </Suspense>

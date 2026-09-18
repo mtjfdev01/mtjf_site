@@ -13,6 +13,7 @@ import DonationSidebar from '../components/donation/projects_menu/DonationSideba
 import { useDonation } from '../contexts/DonationContext'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import LazyImage from '../components/common/LazyImage'
+import HomeInfoSection from '../components/homeInfoSection/HomeInfoSection'
 const MediaContentSection = lazy(() => import('../components/mediaContentSection/MediaContentSection'))
 const FAQs = lazy(() => import('../components/faqs/FAQs'))
 const ProjectsTestimonial = lazy(() => import('../components/projectsTestimonial/ProjectsTestimonial'))
@@ -354,6 +355,7 @@ const ProjectDetail = ({ forcedProjectId }) => {
                 />
               </Suspense>
             )}
+            {resolvedProjectId === 'membership-campaign' && <HomeInfoSection />}
           </>
         )}
       </div>
