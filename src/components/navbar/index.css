@@ -192,6 +192,32 @@
   background-color: #085a70 !important;
 }
 
+.btn-zakat-nav .vertical-donation-replica-progress-goal-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: none;
+  border-radius: 0;
+}
+
+.btn-zakat-nav .vertical-donation-replica-progress-goal-users {
+  font-size: 16px;
+  color: #fff;
+}
+
+.btn-zakat-nav .vertical-donation-replica-progress-goal-heart {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-size: 8px;
+  color: #fff;
+}
+
 /* Compact Navbar Button Overrides */
 .nav-btn-group .btn-donate-content {
   padding: 8px 16px;
