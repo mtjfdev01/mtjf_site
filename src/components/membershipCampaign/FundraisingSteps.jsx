@@ -1,5 +1,5 @@
-import step1Illustration from '../../assets/img/fundraising/step1.svg'
-import step2Illustration from '../../assets/img/fundraising/step2.svg'
+import step1Illustration from '../../assets/img/fundraising/step1.jpg'
+import step2Illustration from '../../assets/img/fundraising/step2.jpg'
 import step3Illustration from '../../assets/img/fundraising/step3.svg'
 // import './FundraisingSteps.css'
 
