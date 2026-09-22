@@ -388,6 +388,10 @@
     max-width: 100%;
   }
 
+  .nav-row-2__btn .vertical-donation-replica-progress-goal-icon {
+    display: none;
+  }
+
   .nav-row-2__btn .btn-donate-content > span:last-child {
     white-space: normal;
     overflow-wrap: anywhere;
