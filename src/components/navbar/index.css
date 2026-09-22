@@ -368,12 +368,30 @@
   }
 
   .nav-row-2__btn {
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     border-radius: 0 !important;
-    padding: 12px 0 !important;
-    font-size: 14px !important;
+    padding: 10px 6px !important;
+    font-size: 12px !important;
     font-weight: 600;
     text-align: center;
+    line-height: 1.25;
+  }
+
+  .nav-row-2__btn .btn-donate-content {
+    white-space: normal;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 1.25;
+    max-width: 100%;
+  }
+
+  .nav-row-2__btn .btn-donate-content > span:last-child {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 
