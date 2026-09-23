@@ -84,7 +84,7 @@ const Checkout = () => {
         )}
       </div>
 
-      <div style={{ textAlign: 'center', padding: '16px 16px 32px' }}>
+      {/* <div style={{ textAlign: 'center', padding: '16px 16px 32px' }}>
         <button
           type="button"
           className="btn btn--alert"
@@ -92,7 +92,7 @@ const Checkout = () => {
         >
           Other Ways To Donate
         </button>
-      </div>
+      </div> */}
 
       {showWaysToDonate && (
         <Suspense fallback={null}>

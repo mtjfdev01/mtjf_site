@@ -147,6 +147,34 @@ function normalizeCheckoutDonationType(raw) {
   return DONATION_TYPE_VALUE_MAP[lower] || DONATION_TYPE_LABEL_MAP[value] || null
 }
 
+const MEMBERSHIP_PROJECT_ID = 'membership-campaign'
+const MEMBERSHIP_PROJECT_NAME = '250,000 Movement'
+
+/** ERP campaign id for membership (optional). Set REACT_APP_MEMBERSHIP_CAMPAIGN_ID in .env */
+function getMembershipCampaignId() {
+  const n = Number(process.env.REACT_APP_MEMBERSHIP_CAMPAIGN_ID)
+  return Number.isFinite(n) && n > 0 ? n : null
+}
+
+function resolveWebsiteProjectName(projectId, fallback = '') {
+  const id = String(projectId || '').trim()
+  if (!id) return String(fallback || '').trim()
+  if (id === MEMBERSHIP_PROJECT_ID) return MEMBERSHIP_PROJECT_NAME
+  const fromFallback = String(fallback || '').trim()
+  if (fromFallback) return fromFallback
+  const detail = PROJECTS_DETAIL_DATA[id]
+  return String(detail?.title || detail?.donateCategory || '').trim()
+}
+
+/** Drop empty-string optional fields so the create payload stays lean. */
+function omitEmptyPayloadFields(payload, keys) {
+  const next = { ...payload }
+  for (const key of keys) {
+    if (next[key] === '' || next[key] == null) delete next[key]
+  }
+  return next
+}
+
 function resolveCheckoutDonationType({
   donationData,
   firstDonationType,
@@ -1264,14 +1292,16 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         if (donationsToUse.length > 0) {
           const firstDonation = donationsToUse[0]
           project_id = firstDonation.projectId || ''
-          project_name = firstDonation.projectTitle || ''
+          project_name = resolveWebsiteProjectName(
+            project_id,
+            firstDonation.projectTitle || '',
+          )
         }
       } else if (isOldDonationFormFlow) {
         // For old donation form flow
         project_id = donationData?.projectId || ''
         if (project_id) {
-          const project = PROJECTS_DETAIL_DATA[project_id]
-          project_name = project?.title || project?.donateCategory || ''
+          project_name = resolveWebsiteProjectName(project_id)
         }
       }
 
@@ -1281,6 +1311,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         recurring_start_date,
         recurring_day_of_month,
         recurring_consent,
+        jazzcash_cnic,
         ...formFieldsForPayload
       } = formData
       const appealLine = projectDonationItemsForCheckout.find(isAppealDonationLine)
@@ -1338,7 +1369,15 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         return
       }
 
-      const payload = {
+      const membershipCampaignId =
+        project_id === MEMBERSHIP_PROJECT_ID ? getMembershipCampaignId() : null
+
+      // donation_items is only consumed server-side for Qurbani progress trackers
+      const shouldSendDonationItems =
+        isProjectDonationsFlow && isQurbaniCheckout
+
+      const payload = omitEmptyPayloadFields(
+        {
         project_id: isAppealCheckoutFlow ? 'appeal' : project_id,
         project_name: isAppealCheckoutFlow
           ? appealLine?.projectTitle || appealsList.find((a) => String(a.id) === String(selectedAppealId))?.title || ''
@@ -1361,6 +1400,13 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                 ? 'Monthly campaign pledge'
                 : 'Campaign donation',
         }),
+        // Membership marketing page → bind ERP campaign when env is set
+        ...(!isCampaignCheckoutFlow &&
+          membershipCampaignId != null && {
+            campaign_id: membershipCampaignId,
+            item_name: 'Monthly membership pledge',
+            item_description: `${MEMBERSHIP_PROJECT_NAME} — PKR ${Number(totalAmount).toLocaleString()} / month`,
+          }),
         ...(isQurbaniCheckout && {
           on_behalf_names: typeof on_behalf_names === 'string' ? on_behalf_names.trim() : ''
         }),
@@ -1412,9 +1458,11 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             recurring_consent: recurring_consent === true,
             ...(stripeRecurringPayload && { recurring: stripeRecurringPayload }),
           }),
-        // Include donation items for project donations flow
-        ...(isProjectDonationsFlow && {
-          donation_items: donationItemsFromState.length > 0 ? donationItemsFromState : projectDonations
+        ...(shouldSendDonationItems && {
+          donation_items:
+            donationItemsFromState.length > 0
+              ? donationItemsFromState
+              : projectDonations,
         }),
         ...(appealIdForPayload && {
           appeal_id: Number(appealIdForPayload),
@@ -1456,7 +1504,12 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             return {
               ...(utm_source ? { utm_source } : {}),
               ...(utm_medium ? { utm_medium } : {}),
-              ...(hasUtmCampaign ? { campaign_id: resolvedCampaignId } : {})
+              // Don't override membership campaign_id with a null UTM map
+              ...(hasUtmCampaign && resolvedCampaignId != null
+                ? { campaign_id: resolvedCampaignId }
+                : hasUtmCampaign && membershipCampaignId == null
+                  ? { campaign_id: null }
+                  : {}),
             }
           })()
         }),
@@ -1475,9 +1528,11 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           alfalah_transaction_type: '3',
         }),
         ...(currentPayment === 'jazzcash' && {
-          jazzcash_cnic: String(formData.jazzcash_cnic || '').replace(/\D/g, ''),
+          jazzcash_cnic: String(jazzcash_cnic || '').replace(/\D/g, ''),
         }),
-      }
+      },
+        ['country', 'city', 'address', 'jazzcash_cnic', 'project_name'],
+      )
       
       console.log('payload', payload)
       // return;

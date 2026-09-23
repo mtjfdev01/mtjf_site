@@ -5,12 +5,15 @@ import { FaHeart, FaUsers } from 'react-icons/fa'
 import { useDonation } from '../../contexts/DonationContext'
 import { FALLBACK_PROJECT_CARDS } from '../donation/projects_menu/DonationProjectsMenu'
 import { useWebsiteDonationProjects } from '../../hooks/useWebsiteDonationProjects'
+import { PROJECTS_DETAIL_DATA } from '../../data/projectsData'
 import Loader from '../Loader/Loader'
 import axiosInstance from '../../utils/axios'
 import './VerticalDonationFormReplica.css'
 
 
 const REPLICA_DEFAULT_AMOUNT = 2500
+const MEMBERSHIP_PROJECT_ID = 'membership-campaign'
+const MEMBERSHIP_PROJECT_NAME = '250,000 Movement'
 
 const DEFAULT_DONATION_OPTIONS = {
   PKR: [5000, 10000, 25000, 50000],
@@ -519,11 +522,21 @@ const VerticalDonationFormReplica = ({
     const selectedProject = projectCards?.find((p) => p.id === projectIdToUse) || null
     const selectedInitiative =
       selectedProject?.initiatives?.find((i) => i.id === formData.subCategory) || null
+    const detailTitle =
+      projectIdToUse === MEMBERSHIP_PROJECT_ID
+        ? MEMBERSHIP_PROJECT_NAME
+        : PROJECTS_DETAIL_DATA[projectIdToUse]?.title ||
+          PROJECTS_DETAIL_DATA[projectIdToUse]?.donateCategory ||
+          ''
 
     const projectDonationItem = {
       projectId: projectIdToUse || 'general',
-      initiativeId: formData.subCategory || `vertical-form-${Date.now()}`,
-      projectTitle: selectedProject?.title || '',
+      initiativeId:
+        formData.subCategory ||
+        (projectIdToUse === MEMBERSHIP_PROJECT_ID
+          ? 'membership-monthly'
+          : `vertical-form-${Date.now()}`),
+      projectTitle: selectedProject?.title || detailTitle || '',
       initiativeTitle: selectedInitiative?.title || null,
       initiativeSubtitle: selectedInitiative?.subtitle || null,
       quantity: quantityStored,
