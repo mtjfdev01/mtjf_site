@@ -61,6 +61,8 @@ const AppealDetail = lazy(() => import("./pages/AppealDetail"));
 const NewFooterPage = lazy(() => import("./pages/NewFooterPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const ApnaGharPage = lazy(() => import("./pages/ApnaGharPage"));
+const MembershipCampaign = lazy(() => import("./pages/MembershipCampaign"));
+const MonthlyMembershipCampaign = lazy(() => import("./pages/MonthlyMembershipCampaign"));
 
 
 
@@ -89,6 +91,21 @@ function ChatbotGate() {
   }
 
   return <ChatbotWidget />;
+}
+
+function CampaignShell() {
+  const { pathname } = useLocation();
+  const isEducationFundraiser = pathname === '/fundraising/education';
+
+  if (isEducationFundraiser) return null;
+
+  return (
+    <>
+      <StickyBar />
+      <Navbar />
+      <StickyQuickDonationForm />
+    </>
+  );
 }
 
 function App() {
@@ -135,9 +152,7 @@ function App() {
             showOnce={false}
             delay={2000}
           /> */}
-          <StickyBar />
-          <Navbar />
-          <StickyQuickDonationForm />
+          <CampaignShell />
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -200,6 +215,8 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />}/>
               <Route path="/apna-ghar" element={<ApnaGharPage />} />
               <Route path="/membership-campaign" element={<ProjectDetail forcedProjectId="membership-campaign" />} />
+              <Route path="/fundraising" element={<MembershipCampaign />} />
+              <Route path="/monthly-membership-campaign" element={<MonthlyMembershipCampaign />} />
               
             </Routes>
           </Suspense>

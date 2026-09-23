@@ -155,11 +155,21 @@ const BlogDetailsV2 = () => {
           {subProject.bottom_banner_img && subProject.bottom_banner_mobile_img && (
             <div className="blog-v2-banner-wrapper">
               <div className="banner_img d-none md:d-block">
-                <PageHeader 
-                  title={subProject.title} 
-                  image={subProject.bottom_banner_img} 
-                  url={subProject.donationUrl}
-                />
+                {subProject.donationUrl ? (
+                  <Link to={subProject.donationUrl}>
+                    <img
+                      src={subProject.bottom_banner_img}
+                      alt={subProject.title}
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
+                  </Link>
+                ) : (
+                  <img
+                    src={subProject.bottom_banner_img}
+                    alt={subProject.title}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                )}
               </div>
               <div className="banner_img--mobile sm:d-block md:d-none">
                 {subProject.donationUrl ? (
