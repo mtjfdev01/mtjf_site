@@ -5,7 +5,7 @@ export const monthlyMembershipCampaignData = {
     action: 'Become a Member'
   },
   plans: [
-    { amount: '1,000', name: 'Member', detail: 'Join the MTJF family with one steady gift every month.' },
+    { amount: '2500', name: 'Member', detail: 'Join the MTJF family with one steady gift every month.' },
     { amount: '[AMOUNT]', name: 'Apna Ghar', detail: '[One line on what this membership supports]' },
     { amount: '[AMOUNT]', name: 'AAS Lab', detail: '[One line on what this membership supports]' },
     { amount: '[AMOUNT]', name: '[Patron tier]', detail: '[One line on what this membership supports]' }

@@ -22,7 +22,7 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
             <article className={`membership-plan ${selected === index ? 'is-selected' : ''}`} key={plan.amount}>
               <span className="membership-plan__label">{plan.name}</span>
               {index === 0 && <span className="membership-plan__badge">Start here</span>}
-              <strong><small>Rs.</small> {billing === 'yearly' && index === 0 ? '12,000' : plan.amount}</strong>
+              <strong><small>Rs.</small> {billing === 'yearly' && index === 0 ? '30,000' : plan.amount}</strong>
               <span className="membership-plan__month">per month</span>
               <span className="membership-plan__detail">{plan.detail}</span>
               <button className="membership-plan__action" onClick={() => setSelected(index)} type="button" aria-pressed={selected === index}>Become a member</button>
