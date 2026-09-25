@@ -9,8 +9,8 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
       <div className="membership-shell">
         <div className="membership-plans__heading">
           <div className="membership-heading">
-            <h2 id="plans-title">Choose your membership</h2>
-            <p>Pick the level that suits you. Every membership keeps MTJF's work going all year round.</p>
+            <h2 id="plans-title">Choose Your Impact Level</h2>
+            <p>Pick a monthly amount that's right for you. Every level supports MTJ’s work year-round.</p>
           </div>
           <div className="membership-billing" role="group" aria-label="Choose billing frequency">
             <button className={billing === 'monthly' ? 'is-active' : ''} type="button" onClick={() => setBilling('monthly')}>Monthly</button>
@@ -19,7 +19,7 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
         </div>
         <div className="membership-plans__grid">
           {plans.map((plan, index) => (
-            <article className={`membership-plan ${selected === index ? 'is-selected' : ''}`} key={plan.amount}>
+            <article className={`membership-plan ${selected === index ? 'is-selected' : ''}`} key={`${plan.amount}-${index}`}>
               <span className="membership-plan__label">{plan.name}</span>
               {index === 0 && <span className="membership-plan__badge">Start here</span>}
               <strong><small>Rs.</small> {billing === 'yearly' && index === 0 ? '30,000' : plan.amount}</strong>
