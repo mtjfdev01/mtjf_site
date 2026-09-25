@@ -20,8 +20,8 @@ const MonthlyMembershipCampaignWays = ({ ways }) => {
     <section className="membership-section membership-ways" aria-labelledby="ways-title">
       <div className="membership-shell">
         <div className="membership-heading">
-          <h2 id="ways-title">Easy ways to join</h2>
-          <p>Sign up the way that's most convenient for you.</p>
+          <h2 id="ways-title">EASY WAYS TO JOIN 250k DONOR MOVEMENT</h2>
+          <p>Sign up the way that’s most convenient for you</p>
         </div>
         <div className="membership-ways__grid">
           {ways.map((way) => {

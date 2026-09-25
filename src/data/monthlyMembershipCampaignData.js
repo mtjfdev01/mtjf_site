@@ -1,7 +1,7 @@
 export const monthlyMembershipCampaignData = {
   hero: {
-    title: 'Rs. 2500 a month.\nA lifetime of difference.',
-    description: 'Become a member of MTJ Foundation and give steady, month-after-month support to families in need across Pakistan.',
+    title: '250,000 PEOPLE.\n ONE SHARED PURPOSE.',
+    description: 'PKR 2500, More Than a Monthly Donation. A Promise That Lasts.',
     action: 'Become a Member'
   },
   plans: [
@@ -11,10 +11,10 @@ export const monthlyMembershipCampaignData = {
     { amount: '[AMOUNT]', name: '[Patron tier]', detail: '[One line on what this membership supports]' }
   ],
   ways: [
-    { icon: 'card', title: 'Join online', detail: 'Set up your monthly membership online in a few minutes.', action: 'Start now', href: '#membership-plans' },
-    { icon: 'whatsapp', title: 'Register on WhatsApp', detail: 'Send your name, address and mobile number to 0303-2440000.', action: 'Open WhatsApp', href: 'https://wa.me/923032440000' },
-    { icon: 'phone', title: 'Call our helpline', detail: 'Register over the phone by calling 061-111-786-853.', action: 'Call now', href: 'tel:061111786853' },
-    { icon: 'bank', title: 'Bank transfer', detail: '[Bank name] · [Account title] · IBAN [PK00 XXXX 0000 0000 0000 0000]', action: 'View bank details', href: '#membership-bank-details' }
+    { icon: 'card', title: 'Join Online', detail: 'Set up your monthly membership online in a few minutes.', action: 'Start now', href: 'donate/membership-campaign' },
+    { icon: 'whatsapp', title: 'Register on WhatsApp', detail: 'Send your name, address & mobile number to', action: 'Open WhatsApp', href: 'https://wa.me/0303-2440000' },
+    { icon: 'phone', title: 'Call our Helpline', detail: 'Register over the phone by calling 061-111-786-853', action: 'Call now', href: 'tel:061111786853' },
+    { icon: 'bank', title: 'Bank transfer', detail: 'Make your monthly contribution directly through bank transfer', action: 'View bank details', href: '#membership-bank-details' }
   ],
   impact: [
     { title: '[Beneficiary name]', detail: 'Apna Ghar · [City]' },
@@ -26,21 +26,23 @@ export const monthlyMembershipCampaignData = {
     {
       title: 'ABOUT MEMBERSHIP',
       items: [
-        { question: 'What is MTJF membership?', answer: '[Answer to be supplied by MTJF]' },
-        { question: 'How much does membership cost?' },
-        { question: 'Can I give my Zakat through membership?' },
-        { question: 'How is my monthly contribution collected?' },
-        { question: 'Can I change or cancel my membership?' },
-        { question: 'Will I receive a receipt?' }
+        { question: 'What is the 250K Membership Campaign?', answer: 'The 250K Membership Campaign brings together 250,000 people committed to supporting MTJ Foundation’s humanitarian work through a monthly contribution of PKR 2,500.' },
+        { question: 'How much do I contribute each month?', answer: ' The monthly membership contribution is PKR 2,500, providing consistent support for MTJ Foundation’s ongoing programmes.' },
+        { question: 'How will my monthly contribution be used?', answer: 'Your contribution supports MTJ Foundation’s work in healthcare, education, food assistance, clean water, housing, livelihoods and KASB Vocational Centre, and emergency relief based on programme needs.' },
+        { question: 'Can I contribute as Zakat or Sadqa-e-Jariya?', answer: 'Yes. You can select General Donation, Zakat or Sadqa-e-Jariya when registering, according to the nature of your contribution.' },
+        { question: 'How do I set up my monthly contribution?', answer: 'You can register through the campaign and set up recurring giving using the available card, bank transfer or mobile wallet options.' },
+        { question: 'Can I join the campaign from outside Pakistan?', answer: ' Yes. International donors can participate through the available payment options in USD, GBP, AED and EUR.' },
+        { question: 'Will I receive confirmation and updates?', answer: '  Yes. After registration, you will receive a confirmation and monthly receipt, along with updates on the work supported through your contribution.' },
+        { question: 'Can I change or cancel my monthly membership?', answer: 'Yes. You can contact MTJ Foundation if you need to update, pause or cancel your monthly contribution.' }
       ]
     },
     {
       title: 'ABOUT MTJ FOUNDATION',
       items: [
-        { question: 'Where are membership funds used?' },
-        { question: 'How does MTJF ensure funds are used properly?' },
-        { question: 'Is my contribution tax-exempt?' },
-        { question: 'How can I contact MTJF about my membership?' }
+        { question: 'Where are membership funds used?', answer: 'Membership funds are used to support MTJ Foundation’s humanitarian projects and initiatives.' },
+        { question: 'How does MTJF ensure funds are used properly?', answer: 'MTJ Foundation has a robust financial management system and regularly reports on the use of funds to ensure transparency and accountability.' },
+        { question: 'Is my contribution tax-exempt?', answer: 'Yes, your contribution is tax-exempt as MTJ Foundation is a registered non-profit organization.' },
+        { question: 'How can I contact MTJF about my membership?', answer: 'You can contact MTJ Foundation at any time through our helpline or email for any queries related to your membership.' }
       ]
     }
   ]
