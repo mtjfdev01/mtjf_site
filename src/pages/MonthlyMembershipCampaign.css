@@ -272,6 +272,73 @@
   gap: 16px;
 }
 
+.membership-plans__wrapper {
+  position: relative;
+}
+
+.membership-plans__wrapper .slider-nav-prev {
+  left: -43px;
+}
+
+.membership-plans__wrapper .slider-nav-next {
+  right: -43px;
+}
+
+.membership-plans__scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.membership-plans__scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.membership-plan {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .membership-plans__scroll-container {
+    scroll-snap-type: x mandatory;
+  }
+
+  .membership-plans__grid {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    padding: 4px 0;
+  }
+
+  .membership-plan {
+    flex: 0 0 calc((100vw - 48px - 16px) / 2);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .membership-plans__wrapper .slider-nav-prev {
+    left: 4px;
+  }
+
+  .membership-plans__wrapper .slider-nav-next {
+    right: 4px;
+  }
+}
+
+@media (min-width: 1101px) {
+  .membership-plans__grid {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    padding: 4px 0;
+  }
+
+  .membership-plan {
+    flex: 0 0 calc((min(1120px, 100vw - 48px) - 48px) / 4);
+  }
+}
+
 .membership-plan {
   position: relative;
   display: flex;
@@ -852,9 +919,47 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .membership-plans__scroll-container {
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+  }
+
+  .membership-plans__grid {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    padding: 4px 0;
+  }
+
+  .membership-plan {
+    width: calc(100vw - 32px);
+    min-width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .membership-plans__wrapper .slider-nav-btn {
+    display: flex;
+    visibility: visible;
+    top: 50%;
+    z-index: 10;
+  }
+
+  .membership-plans__wrapper .slider-nav-prev {
+    left: 4px;
+  }
+
+  .membership-plans__wrapper .slider-nav-next {
+    right: 4px;
+  }
+
   .membership-plan {
     min-height: 300px;
     padding: 24px 18px 18px;
+    align-items: center;
+    text-align: center;
   }
 
   .membership-plan.is-selected {

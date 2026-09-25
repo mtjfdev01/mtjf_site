@@ -6,9 +6,16 @@ export const monthlyMembershipCampaignData = {
   },
   plans: [
     { amount: '2500', name: 'Member', detail: 'Join the MTJF family with one steady gift every month.' },
-    { amount: '[AMOUNT]', name: 'Apna Ghar', detail: '[One line on what this membership supports]' },
-    { amount: '[AMOUNT]', name: 'AAS Lab', detail: '[One line on what this membership supports]' },
-    { amount: '[AMOUNT]', name: '[Patron tier]', detail: '[One line on what this membership supports]' }
+    { amount: '2500', name: 'Education', detail: 'Your donation helps a child stay in school.' },
+    { amount: '2500', name: 'Food & Ration', detail: 'Your donation helps put food on the table.' },
+    { amount: '2500', name: 'Clean Water', detail: 'Your donation brings clean water closer to home.'},
+    { amount: '2500', name: 'Housing', detail: 'Your donation helps build apna ghar for a family.'},
+    { amount: '2500', name: 'Skills Development ', detail: 'Your donation helps someone build a lasting livelihood.'},
+    { amount: '2500', name: 'Emergency Relief', detail: 'Your donation supports urgent emergency relief.'},
+    { amount: '2500', name: 'Community Services', detail: 'Your donation supports families in their toughest moments.'},
+    { amount: '2500', name: 'Marriage Gift', detail: 'Your donation helps a daughter marry with dignity.'},
+    { amount: '2500', name: 'Financial Assistance', detail: 'Your donation provides direct relief to families in crisis.'},
+    { amount: '2500', name: 'AAS Lab & Diagnostics', detail: 'Your donation makes healthcare accessible.'},
   ],
   ways: [
     { icon: 'card', title: 'Join Online', detail: 'Set up your monthly membership online in a few minutes.', action: 'Start now', href: 'donate/membership-campaign' },
