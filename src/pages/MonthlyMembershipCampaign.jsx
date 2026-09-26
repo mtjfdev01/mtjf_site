@@ -1,5 +1,5 @@
 import MonthlyMembershipCampaignHero from '../components/MonthlyMembershipCampaign/MonthlyMembershipCampaignHero'
-import MonthlyMembershipCampaignPlans from '../components/MonthlyMembershipCampaign/MonthlyMembershipCampaignPlans'
+import MembershipPlanCards from '../components/MonthlyMembershipCampaign/MembershipPlanCards'
 import MonthlyMembershipCampaignImpact from '../components/MonthlyMembershipCampaign/MonthlyMembershipCampaignImpact'
 import MonthlyMembershipCampaignCta from '../components/MonthlyMembershipCampaign/MonthlyMembershipCampaignCta'
 import MonthlyMembershipCampaignFaq from '../components/MonthlyMembershipCampaign/MonthlyMembershipCampaignFaq'
@@ -14,7 +14,7 @@ const MonthlyMembershipCampaign = () => {
   return (
     <main className="membership-page">
       <MonthlyMembershipCampaignHero hero={hero} />
-      <MonthlyMembershipCampaignPlans plans={plans} />
+      <MembershipPlanCards plans={plans} />
       <OtherWaysToDonate />
       <MonthlyMembershipCampaignImpact impact={impact} />
       <MonthlyMembershipCampaignCta />

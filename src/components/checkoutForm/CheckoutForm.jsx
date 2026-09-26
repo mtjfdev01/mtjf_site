@@ -158,12 +158,17 @@ function getMembershipCampaignId() {
 
 function resolveWebsiteProjectName(projectId, fallback = '') {
   const id = String(projectId || '').trim()
-  if (!id) return String(fallback || '').trim()
-  if (id === MEMBERSHIP_PROJECT_ID) return MEMBERSHIP_PROJECT_NAME
   const fromFallback = String(fallback || '').trim()
+  if (!id) return fromFallback
+  // Prefer the selected plan/project title when provided
   if (fromFallback) return fromFallback
+  if (id === MEMBERSHIP_PROJECT_ID) return MEMBERSHIP_PROJECT_NAME
   const detail = PROJECTS_DETAIL_DATA[id]
   return String(detail?.title || detail?.donateCategory || '').trim()
+}
+
+function isMembershipPlanDonation(donation) {
+  return String(donation?.initiativeId || '').startsWith('membership-plan-')
 }
 
 /** Drop empty-string optional fields so the create payload stays lean. */
@@ -331,7 +336,9 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
   const isMembershipCheckoutFlow = useMemo(
     () =>
       projectDonationItemsForCheckout.some(
-        (d) => String(d?.projectId || '').trim() === MEMBERSHIP_PROJECT_ID,
+        (d) =>
+          isMembershipPlanDonation(d) ||
+          String(d?.projectId || '').trim() === MEMBERSHIP_PROJECT_ID,
       ),
     [projectDonationItemsForCheckout],
   )
@@ -1390,8 +1397,13 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
         return
       }
 
+      const isMembershipPlanCheckout = projectDonationItemsForCheckout.some(
+        isMembershipPlanDonation,
+      )
       const membershipCampaignId =
-        project_id === MEMBERSHIP_PROJECT_ID ? getMembershipCampaignId() : null
+        project_id === MEMBERSHIP_PROJECT_ID || isMembershipPlanCheckout
+          ? getMembershipCampaignId()
+          : null
 
       // donation_items is only consumed server-side for Qurbani progress trackers
       const shouldSendDonationItems =
@@ -1426,7 +1438,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           membershipCampaignId != null && {
             campaign_id: membershipCampaignId,
             item_name: 'Monthly membership pledge',
-            item_description: `${MEMBERSHIP_PROJECT_NAME} — PKR ${Number(totalAmount).toLocaleString()} / month`,
+            item_description: `${project_name || MEMBERSHIP_PROJECT_NAME} — PKR ${Number(totalAmount).toLocaleString()} / month`,
           }),
         ...(isQurbaniCheckout && {
           on_behalf_names: typeof on_behalf_names === 'string' ? on_behalf_names.trim() : ''

@@ -4,6 +4,7 @@ import { FaCopy, FaCheck } from 'react-icons/fa'
 import { CiMoneyCheck1 } from 'react-icons/ci'
 import { PiBank } from 'react-icons/pi'
 import { BsCreditCard2Front, BsWhatsapp, BsTelephone } from 'react-icons/bs'
+import { LuPhoneCall } from "react-icons/lu";
 import './OtherWaysToDonate.css'
 
 const HELPLINE = '061-111-786-853'
@@ -48,7 +49,7 @@ const WAYS = [
   {
     id: 'call-helpline',
     title: 'Call our Helpline',
-    Icon: BsTelephone,
+    Icon: LuPhoneCall,
     accent: '#e4002b',
     description: (
       <>

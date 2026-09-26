@@ -5,7 +5,7 @@ export const monthlyMembershipCampaignData = {
     action: 'Become a Member'
   },
   plans: [
-    { amount: '2500', name: 'Member', detail: 'Join the MTJF family with one steady gift every month.' },
+    { amount: '2500', name: '250,000 Movement', detail: 'Join the MTJF family with one steady gift every month.' },
     { amount: '2500', name: 'Education', detail: 'Your donation helps a child stay in school.' },
     { amount: '2500', name: 'Food & Ration', detail: 'Your donation helps put food on the table.' },
     { amount: '2500', name: 'Clean Water', detail: 'Your donation brings clean water closer to home.'},
