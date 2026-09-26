@@ -31,6 +31,9 @@ const DonationCta = lazy(() =>
 const FeaturedIn = lazy(() => import("../components/featuredIn/FeaturedIn"));
 const Footer = lazy(() => import("../components/footer/Footer"));
 const Newsletter = lazy(() => import("../components/newsletter/Newsletter"));
+const OtherWaysToDonate = lazy(() =>
+  import("../components/waysToDonate/OtherWaysToDonate")
+);
 // const Partners = lazy(() => import("../components/partners/Partners"));
 
 const Home = ({ showHomeInfoSection = false }) => {
@@ -98,14 +101,20 @@ const Home = ({ showHomeInfoSection = false }) => {
           )}
 
           <AnimatedSection index={showHomeInfoSection ? 9 : 8}>
-            <Newsletter />
+            <Suspense fallback={null}>
+              <OtherWaysToDonate />
+            </Suspense>
           </AnimatedSection>
 
           <AnimatedSection index={showHomeInfoSection ? 10 : 9}>
-            <DonationCta />
+            <Newsletter />
           </AnimatedSection>
 
           <AnimatedSection index={showHomeInfoSection ? 11 : 10}>
+            <DonationCta />
+          </AnimatedSection>
+
+          <AnimatedSection index={showHomeInfoSection ? 12 : 11}>
             <Footer />
           </AnimatedSection>
         </div>

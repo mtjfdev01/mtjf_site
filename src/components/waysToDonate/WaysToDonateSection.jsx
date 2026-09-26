@@ -31,6 +31,9 @@ const WaysToDonateSection = ({ initialMainTab = 'online-banking' }) => {
   // When navigated here with a specific bankId in location state,
   // switch to bank-transfer tab and filter to that card
   useEffect(() => {
+    if (location.state?.mainTab) {
+      setActiveMainTab(location.state.mainTab)
+    }
     if (location.state?.bankId) {
       setActiveMainTab('bank-transfer')
       setSelectedBankId(location.state.bankId)

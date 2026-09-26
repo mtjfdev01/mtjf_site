@@ -1,0 +1,181 @@
+.other-ways-to-donate {
+  padding: clamp(48px, 6vw, 80px) var(--space-16);
+  background:
+    linear-gradient(180deg, #f7fbfe 0%, #ffffff 28%, #ffffff 100%);
+}
+
+.other-ways-to-donate__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
+}
+
+.other-ways-to-donate__header {
+  margin-bottom: clamp(36px, 5vw, 56px);
+  text-align: center;
+}
+
+.other-ways-to-donate__title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding-bottom: 14px;
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-weight: 700;
+  color: #2c2c2c;
+  letter-spacing: 0.01em;
+}
+
+.other-ways-to-donate__title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  transform: translateX(-50%);
+}
+
+.other-ways-to-donate__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.other-ways-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 8px 8px 4px;
+  transition: transform 0.25s ease;
+}
+
+.other-ways-card:hover {
+  transform: translateY(-4px);
+}
+
+.other-ways-card__icon-wrap {
+  position: relative;
+  width: 110px;
+  height: 96px;
+  margin-bottom: 4px;
+}
+
+.other-ways-card__accent {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.other-ways-card__glyph {
+  position: absolute;
+  left: 4px;
+  bottom: 2px;
+  z-index: 1;
+  width: 64px !important;
+  height: 64px !important;
+  color: #111;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12));
+}
+
+.other-ways-card__label {
+  margin: 0;
+  padding: 9px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  background: #f1ebe0;
+  border-radius: 4px;
+  line-height: 1.3;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.other-ways-card__text {
+  margin: 0;
+  max-width: 300px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5f5f5f;
+}
+
+.other-ways-link {
+  color: #009a44;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 154, 68, 0.35);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.other-ways-link:hover,
+.other-ways-link:focus-visible {
+  color: #007a36;
+  border-bottom-color: #007a36;
+  outline: none;
+}
+
+.other-ways-card__copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.other-ways-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #009a44;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.other-ways-copy-btn:hover {
+  color: #007a36;
+}
+
+@media (max-width: 992px) {
+  .other-ways-to-donate__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .other-ways-to-donate__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .other-ways-card__icon-wrap {
+    width: 100px;
+    height: 88px;
+  }
+
+  .other-ways-card__accent {
+    width: 66px;
+    height: 66px;
+  }
+
+  .other-ways-card__glyph {
+    width: 58px !important;
+    height: 58px !important;
+  }
+}

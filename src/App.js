@@ -220,7 +220,7 @@ function App() {
               
             </Routes>
           </Suspense>
-          <AnimatedButton />
+          {/* <AnimatedButton /> */}
           <ChatbotGate />
         </DonationProvider>
       </CartProvider>

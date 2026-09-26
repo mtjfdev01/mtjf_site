@@ -328,6 +328,13 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
       ),
     [isProjectDonationsFlow, projectDonationItemsForCheckout]
   )
+  const isMembershipCheckoutFlow = useMemo(
+    () =>
+      projectDonationItemsForCheckout.some(
+        (d) => String(d?.projectId || '').trim() === MEMBERSHIP_PROJECT_ID,
+      ),
+    [projectDonationItemsForCheckout],
+  )
   const isQurbaniCheckout = useMemo(
     () =>
       isQurbaniOnlyCheckout ||
@@ -578,6 +585,20 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
           },
     )
   }, [isTestCheckoutOnly, isCampaignCheckoutFlow, showRecurringAmountStepper])
+
+  // Membership campaign cart: always recurring monthly
+  useEffect(() => {
+    if (!isMembershipCheckoutFlow) return
+    setFormData((prev) =>
+      prev.donation_frequency === 'monthly' && prev.recurring_consent
+        ? prev
+        : {
+            ...prev,
+            donation_frequency: 'monthly',
+            recurring_consent: true,
+          },
+    )
+  }, [isMembershipCheckoutFlow])
 
   useEffect(() => {
     if (!isRecurringDonationFrequency(formData.donation_frequency)) {

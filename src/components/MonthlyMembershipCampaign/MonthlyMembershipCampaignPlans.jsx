@@ -4,10 +4,9 @@ import { useDonation } from '../../contexts/DonationContext'
 
 const MonthlyMembershipCampaignPlans = ({ plans }) => {
   const navigate = useNavigate()
-  const { updateProjectDonation } = useDonation()
+  const { updateProjectDonation, setDonationFormData } = useDonation()
   const scrollContainerRef = useRef(null)
   const [selected, setSelected] = useState(0)
-  const [billing, setBilling] = useState('monthly')
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
@@ -16,14 +15,7 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(true)
 
-  const getPlanAmount = (plan) => {
-    if (billing !== 'yearly') return plan.amount
-
-    const monthlyAmount = Number(plan.amount)
-    return Number.isFinite(monthlyAmount)
-      ? (monthlyAmount * 12).toLocaleString('en-IN')
-      : plan.amount
-  }
+  const getPlanAmount = (plan) => plan.amount
 
   const checkScrollPosition = () => {
     if (!scrollContainerRef.current) return
@@ -99,10 +91,12 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
 
   const goToCheckout = (index, plan) => {
     setSelected(index)
-    const monthlyAmount = Number(plan.amount)
-    const amount = billing === 'yearly'
-      ? (Number.isFinite(monthlyAmount) ? monthlyAmount * 12 : 0)
-      : monthlyAmount || 0
+    const amount = Number(plan.amount) || 0
+    // Membership page donations are always recurring monthly
+    setDonationFormData({
+      frequency: 'monthly',
+      donation_frequency: 'monthly',
+    })
     updateProjectDonation({
       projectId: 'membership-campaign',
       initiativeId: `membership-plan-${index}`,
@@ -112,6 +106,8 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
       basePrice: amount,
       customAmount: 0,
       totalAmount: amount,
+      frequency: 'monthly',
+      donation_frequency: 'monthly',
     })
     navigate('/checkout')
   }
@@ -137,11 +133,7 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
         <div className="membership-plans__heading">
           <div className="membership-heading">
             <h2 id="plans-title">Choose Your Impact Level</h2>
-            <p>Pick a {billing === 'yearly' ? 'yearly' : 'monthly'} amount that's right for you. Every level supports MTJ’s work year-round.</p>
-          </div>
-          <div className="membership-billing" role="group" aria-label="Choose billing frequency">
-            <button className={billing === 'monthly' ? 'is-active' : ''} type="button" onClick={() => setBilling('monthly')}>Monthly</button>
-            <button className={billing === 'yearly' ? 'is-active' : ''} type="button" onClick={() => setBilling('yearly')}>Yearly</button>
+            <p>Pick a monthly amount that's right for you. Every level supports MTJ’s work year-round.</p>
           </div>
         </div>
         <div className="membership-plans__wrapper">
@@ -177,7 +169,7 @@ const MonthlyMembershipCampaignPlans = ({ plans }) => {
                   <span className="membership-plan__label">{plan.name}</span>
                   {index === 0 && <span className="membership-plan__badge">Start here</span>}
                   <strong><small>Rs.</small> {getPlanAmount(plan)}</strong>
-                  <span className="membership-plan__month">per {billing === 'yearly' ? 'year' : 'month'}</span>
+                  <span className="membership-plan__month">per month</span>
                   <span className="membership-plan__detail">{plan.detail}</span>
                   <button
                     className="membership-plan__action"
