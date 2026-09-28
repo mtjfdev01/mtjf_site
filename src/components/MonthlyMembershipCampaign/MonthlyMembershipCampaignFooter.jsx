@@ -5,7 +5,9 @@ const MonthlyMembershipCampaignFooter = () => (
     <div className="membership-footer__inner">
       <div className="membership-footer__brand">
         <h2>MTJ Foundation</h2>
-        <p>[One-line organisation description]</p>
+        <p>MTJ Foundation is a Registered NGO under section 42 of Companies Act 2017 <br/>
+         (As Non-Profit Company)
+         </p>
       </div>
       <div className="membership-footer__contact">
         <h3>Get in touch</h3>
@@ -14,8 +16,8 @@ const MonthlyMembershipCampaignFooter = () => (
       </div>
       <nav className="membership-footer__nav" aria-label="Footer navigation">
         <h3>Explore</h3>
-        <a href="/projects">Programmes</a>
-        <a href="/appeals">Campaigns</a>
+        <a href="/projects">Programs</a>
+        <a href="#membership-plans">Campaigns</a>
         <a href="/about">About Us</a>
       </nav>
     </div>

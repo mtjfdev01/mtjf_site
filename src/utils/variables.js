@@ -16,3 +16,18 @@ export const home_testimonials = {
     'https://www.youtube.com/watch?v=7Z9YoYVrE9c'
   ]
 }
+
+export const monthlyMembershipCampaign = {
+  id:'monthly-membership-campaign',
+  title:'Every Membership Writes a New Story.',
+  subtitle:' A family fed. A patient treated. A child back in school.',
+  videos:[
+    'https://youtu.be/hP49OyNIQ60?si=ha4GuMPp6tsKXd-w',
+    'https://youtu.be/9Fw9-T-ZXxQ?si=VQUmMgEZC_Tp69OB',
+    'https://youtu.be/WORMVg2e3Qw?si=fm8v4lzZ2jNBCvGo',
+    'https://youtu.be/02mK2XOjJ4M?si=E_z7ZSuGT14tn6rA',
+    'https://youtu.be/0AFDHGg8ePE?si=EtB2PTyrWB3WGeQx',
+    'https://youtu.be/Mx72l-dm3os?si=po6WKZFfJf9Qk4-P',
+    'https://youtu.be/X2VFuVKo5jg?si=BIsW9X4CcQR4K5vj',
+  ]
+}

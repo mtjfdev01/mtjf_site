@@ -20,9 +20,9 @@ const WAYS = [
     description: (
       <>
         Set up your monthly membership{' '}
-        <Link to="/membership-campaign" className="other-ways-link">
+        <a href="#membership-plans" className="other-ways-link">
           online
-        </Link>{' '}
+        </a>{' '}
         in a few minutes.
       </>
     ),
