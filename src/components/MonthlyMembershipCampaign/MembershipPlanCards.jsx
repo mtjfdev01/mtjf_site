@@ -43,6 +43,7 @@ const MembershipPlanCards = ({ plans = [] }) => {
   const { updateProjectDonation, setDonationFormData } = useDonation()
   const [sectionRef, isInView] = useInViewOnce({ threshold: 0.08, rootMargin: '40px' })
   const scrollContainerRef = useRef(null)
+  const [billingFrequency, setBillingFrequency] = useState('monthly')
   const [selected, setSelected] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
@@ -119,13 +120,13 @@ const MembershipPlanCards = ({ plans = [] }) => {
   }
 
   const goToCheckout = (index, plan) => {
+    const amount = billingFrequency === 'yearly' ? 30000 : Number(plan.amount) || 0
     setSelected(index)
-    const amount = Number(plan.amount) || 0
     const planTitle = String(plan.name || '').trim() || 'Member'
     const projectId = getPlanProjectId(planTitle)
     setDonationFormData({
-      frequency: 'monthly',
-      donation_frequency: 'monthly',
+      frequency: billingFrequency,
+      donation_frequency: billingFrequency,
     })
     updateProjectDonation({
       projectId,
@@ -136,8 +137,8 @@ const MembershipPlanCards = ({ plans = [] }) => {
       basePrice: amount,
       customAmount: 0,
       totalAmount: amount,
-      frequency: 'monthly',
-      donation_frequency: 'monthly',
+      frequency: billingFrequency,
+      donation_frequency: billingFrequency,
     })
     navigate('/checkout')
   }
@@ -162,9 +163,29 @@ const MembershipPlanCards = ({ plans = [] }) => {
       aria-labelledby="plan-cards-title"
     >
       <div className="membership-shell">
-        <div className="membership-plan-cards__heading membership-heading">
-          <h2 id="plan-cards-title">Choose Your Impact Level</h2>
-          <p>Pick a monthly amount that&apos;s right for you. Every level supports MTJ&apos;s work year-round.</p>
+        <div className="membership-plan-cards__top">
+          <div className="membership-plan-cards__heading membership-heading">
+            <h2 id="plan-cards-title">Choose Your Impact Level</h2>
+            <p>Pick a monthly amount that&apos;s right for you. Every level supports MTJ&apos;s work year-round.</p>
+          </div>
+          <div className="membership-plan-cards__frequency" role="group" aria-label="Membership billing frequency">
+            <button
+              type="button"
+              aria-pressed={billingFrequency === 'monthly'}
+              className={billingFrequency === 'monthly' ? 'is-active' : ''}
+              onClick={() => setBillingFrequency('monthly')}
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              aria-pressed={billingFrequency === 'yearly'}
+              className={billingFrequency === 'yearly' ? 'is-active' : ''}
+              onClick={() => setBillingFrequency('yearly')}
+            >
+              Yearly
+            </button>
+          </div>
         </div>
 
         <div className="membership-plan-cards__wrapper">
@@ -194,6 +215,7 @@ const MembershipPlanCards = ({ plans = [] }) => {
               {plans.map((plan, index) => {
                 const color = PLAN_COLORS[index % PLAN_COLORS.length]
                 const light = isLightColor(color)
+                const amount = billingFrequency === 'yearly' ? '30,000' : plan.amount
                 return (
                   <Link
                     key={`${plan.name}-${index}`}
@@ -209,9 +231,9 @@ const MembershipPlanCards = ({ plans = [] }) => {
                     <span className="membership-plan-card__label">{plan.name}</span>
                     {index === 0 && <span className="membership-plan-card__badge">Start here</span>}
                     <strong className="membership-plan-card__amount">
-                      <small>Rs.</small> {plan.amount}
+                      <small>Rs.</small> {amount}
                     </strong>
-                    <span className="membership-plan-card__month">per month</span>
+                    <span className="membership-plan-card__month">per {billingFrequency === 'yearly' ? 'year' : 'month'}</span>
                     <span className="membership-plan-card__detail">{plan.detail}</span>
                     <button
                       className="membership-plan-card__action"
