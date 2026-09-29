@@ -2583,6 +2583,27 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
             </div>
           </div>
 
+          {/* More Ways to Donate */}
+          <div className="col-md-6">
+            <div className="input-item">
+              <div
+                className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
+                onClick={(e) => {
+                  if (!isSubmitting && !isLoading) {
+                    navigate('/ways-to-donate')
+                  }
+                }}
+              >
+                <div className="payment-icon">
+                  <CiCreditCard2 />
+                </div>
+                <div className="payment-content">
+                  <h6>More Ways to Donate</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* JazzCash MWallet — /test-checkout and /test-checkout-b */}
           {enableJazzCash && (
           <div className="col-md-6">
