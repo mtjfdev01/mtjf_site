@@ -102,6 +102,36 @@
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
 }
 
+.other-ways-card__title-link,
+.other-ways-card__title-button {
+  display: block;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.other-ways-card__title-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.other-ways-card__title-link:hover,
+.other-ways-card__title-button:hover {
+  color: #009a44;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.other-ways-card__title-link:focus-visible,
+.other-ways-card__title-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 .other-ways-card__text {
   margin: 0;
   max-width: 300px;

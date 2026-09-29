@@ -24,6 +24,7 @@ import {
   isDailyDonationFrequency,
   isMonthlyDonationFrequency,
   isRecurringDonationFrequency,
+  isYearlyDonationFrequency,
   isWeeklyDonationFrequency,
   RECURRING_CONSENT_TEXT,
   RECURRING_START_CUSTOM,
@@ -593,19 +594,22 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
     )
   }, [isTestCheckoutOnly, isCampaignCheckoutFlow, showRecurringAmountStepper])
 
-  // Membership campaign cart: always recurring monthly
+  // Membership campaign plans carry their selected billing frequency into checkout.
   useEffect(() => {
     if (!isMembershipCheckoutFlow) return
+    const membershipFrequency = donationData?.donation_frequency === 'yearly'
+      ? 'yearly'
+      : 'monthly'
     setFormData((prev) =>
-      prev.donation_frequency === 'monthly' && prev.recurring_consent
+      prev.donation_frequency === membershipFrequency && prev.recurring_consent
         ? prev
         : {
             ...prev,
-            donation_frequency: 'monthly',
+            donation_frequency: membershipFrequency,
             recurring_consent: true,
           },
     )
-  }, [isMembershipCheckoutFlow])
+  }, [isMembershipCheckoutFlow, donationData?.donation_frequency])
 
   useEffect(() => {
     if (!isRecurringDonationFrequency(formData.donation_frequency)) {
@@ -1705,6 +1709,8 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               <h2 id="stripe-embed-title" className="stripe-embed-modal__title">
                 {isWeeklyDonationFrequency(formData.donation_frequency)
                   ? 'Complete weekly donation'
+                  : isYearlyDonationFrequency(formData.donation_frequency)
+                    ? 'Complete yearly donation'
                   : isMonthlyDonationFrequency(formData.donation_frequency)
                     ? 'Complete monthly donation'
                     : isDailyDonationFrequency(formData.donation_frequency)
@@ -2103,6 +2109,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
               { value: 'once', label: 'One-time' },
               { value: 'daily', label: 'Daily' },
               { value: 'monthly', label: 'Monthly' },
+              ...(isMembershipCheckoutFlow ? [{ value: 'yearly', label: 'Yearly' }] : []),
             ].map((opt) => (
               <button
                 key={opt.value}
@@ -2121,12 +2128,16 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                     recurring_start_mode:
                       isDailyDonationFrequency(nextFrequency)
                         ? RECURRING_START_SAME_DATE
+                        : isYearlyDonationFrequency(nextFrequency)
+                          ? RECURRING_START_SAME_DATE
                         : nextFrequency === 'monthly'
                           ? prev.recurring_start_mode
                           : prev.recurring_start_mode === RECURRING_START_FIRST_OF_MONTH
                             ? RECURRING_START_SAME_DATE
                             : prev.recurring_start_mode,
-                    recurring_start_date: isDailyDonationFrequency(nextFrequency)
+                    recurring_start_date:
+                      isDailyDonationFrequency(nextFrequency) ||
+                      isYearlyDonationFrequency(nextFrequency)
                       ? ''
                       : prev.recurring_start_date,
                   }))

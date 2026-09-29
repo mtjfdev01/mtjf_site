@@ -16,6 +16,11 @@ export const STRIPE_RECURRING_MONTHLY = Object.freeze({
   interval_count: 1,
 })
 
+export const STRIPE_RECURRING_YEARLY = Object.freeze({
+  interval: 'year',
+  interval_count: 1,
+})
+
 /** Recurring billing start options (sent under `recurring`). */
 export const RECURRING_START_SAME_DATE = 'same_date'
 export const RECURRING_START_FIRST_OF_MONTH = 'first_of_month'
@@ -113,6 +118,10 @@ export function isMonthlyDonationFrequency(frequency) {
   return frequency === 'monthly'
 }
 
+export function isYearlyDonationFrequency(frequency) {
+  return frequency === 'yearly'
+}
+
 export function isWeeklyDonationFrequency(frequency) {
   return frequency === 'weekly'
 }
@@ -125,7 +134,8 @@ export function isRecurringDonationFrequency(frequency) {
   return (
     isDailyDonationFrequency(frequency) ||
     isWeeklyDonationFrequency(frequency) ||
-    isMonthlyDonationFrequency(frequency)
+    isMonthlyDonationFrequency(frequency) ||
+    isYearlyDonationFrequency(frequency)
   )
 }
 
@@ -142,6 +152,8 @@ export function getStripeRecurringForPayload(donationFrequency, options = {}) {
     base = { ...STRIPE_RECURRING_WEEKLY }
   } else if (isMonthlyDonationFrequency(donationFrequency)) {
     base = { ...STRIPE_RECURRING_MONTHLY }
+  } else if (isYearlyDonationFrequency(donationFrequency)) {
+    base = { ...STRIPE_RECURRING_YEARLY }
   } else {
     return undefined
   }
@@ -178,7 +190,8 @@ export function getStripeRecurringForPayload(donationFrequency, options = {}) {
 
   if (
     start_date_mode === RECURRING_START_SAME_DATE &&
-    isMonthlyDonationFrequency(donationFrequency)
+    (isMonthlyDonationFrequency(donationFrequency) ||
+      isYearlyDonationFrequency(donationFrequency))
   ) {
     payload.start_date = getTodayDateString()
   }

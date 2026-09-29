@@ -24,6 +24,7 @@ const WAYS = [
   {
     id: 'join-online',
     title: 'Join Online',
+    titleHref: '#membership-plans',
     Icon: BsCreditCard2Front,
     accent: '#eaaa00',
     description: (
@@ -39,6 +40,8 @@ const WAYS = [
   {
     id: 'register-whatsapp',
     title: 'Register on WhatsApp',
+    titleHref: WHATSAPP_LINK,
+    titleTarget: '_blank',
     Icon: BsWhatsapp,
     accent: '#00a3e0',
     description: (
@@ -58,6 +61,7 @@ const WAYS = [
   {
     id: 'call-helpline',
     title: 'Call our Helpline',
+    titleHref: `tel:${HELPLINE.replace(/-/g, '')}`,
     Icon: LuPhoneCall,
     accent: '#e4002b',
     description: (
@@ -169,7 +173,7 @@ const OtherWaysToDonate = () => {
           </div>
 
           <div className="other-ways-to-donate__grid">
-            {WAYS.map(({ id, title, Icon, accent, description, showHelplineCopy, showBankPopup }) => (
+            {WAYS.map(({ id, title, titleHref, titleTarget, Icon, accent, description, showHelplineCopy, showBankPopup }) => (
               <article
                 key={id}
                 className={`other-ways-card${showBankPopup ? ' other-ways-card--clickable' : ''}`}
@@ -188,7 +192,26 @@ const OtherWaysToDonate = () => {
                   <span className="other-ways-card__accent" style={{ backgroundColor: accent }} />
                   <Icon className="other-ways-card__glyph" />
                 </div>
-                <h3 className="other-ways-card__label">{title}</h3>
+                <h3 className="other-ways-card__label">
+                  {showBankPopup ? (
+                    <button
+                      type="button"
+                      className="other-ways-card__title-button"
+                      onClick={openBankPopup}
+                    >
+                      {title}
+                    </button>
+                  ) : (
+                    <a
+                      href={titleHref}
+                      target={titleTarget}
+                      rel={titleTarget === '_blank' ? 'noopener noreferrer' : undefined}
+                      className="other-ways-card__title-link"
+                    >
+                      {title}
+                    </a>
+                  )}
+                </h3>
                 <p className="other-ways-card__text">{description}</p>
                 {showHelplineCopy && (
                   <div className="other-ways-card__copy-row">
