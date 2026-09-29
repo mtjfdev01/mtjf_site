@@ -179,3 +179,424 @@
     height: 58px !important;
   }
 }
+
+/* ============================================================
+   Bank Transfer Popup Modal
+   ============================================================ */
+
+.other-ways-card--clickable {
+  cursor: pointer;
+}
+
+.other-ways-link--btn {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.bank-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 32px);
+  background: rgba(10, 20, 30, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: bankPopupFade 0.18s ease-out both;
+}
+
+@keyframes bankPopupFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.bank-popup {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: bankPopupIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bankPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bank-popup__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #f4f6f8;
+  color: #444;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.bank-popup__close:hover,
+.bank-popup__close:focus-visible {
+  background: #e6eaef;
+  color: #111;
+  transform: rotate(90deg);
+  outline: none;
+}
+
+.bank-popup__header {
+  padding: 28px 28px 18px;
+  background:
+    linear-gradient(135deg, #e8f5ee 0%, #f7fbfe 62%, #ffffff 100%);
+  border-bottom: 1px solid #eef1f4;
+  border-radius: 16px 16px 0 0;
+}
+
+.bank-popup__header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: calc(100% - 28px);
+}
+
+.bank-popup__bank-logo {
+  flex-shrink: 0;
+}
+
+.bank-popup__logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #009a44, #007a36);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 154, 68, 0.22);
+}
+
+.bank-popup__bank-name {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #007a36;
+  line-height: 1.3;
+}
+
+.bank-popup__bank-subtitle {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #6a7480;
+}
+
+.bank-popup__card {
+  margin: 20px 28px 0;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.bank-popup__bank-info {
+  gap: 12px;
+}
+
+/* Reuse WaysToDonateSection bank-details-box layout */
+.bank-details-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid #e8ecef;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.bank-logo {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: #f4f6f8;
+  overflow: hidden;
+}
+
+.bank-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary, #009a44), var(--color-primary, #009a44));
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.bank-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-primary, #009a44);
+  margin: 0;
+}
+
+.bank-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bank-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3c4652;
+  margin: 0;
+}
+
+.bank-info strong {
+  color: #1f2530;
+  font-weight: 600;
+}
+
+/* Copyable Field */
+.copyable-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3c4652;
+  margin: 0;
+}
+
+.copyable-value {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+  font-family: 'Courier New', ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #f6f8fa;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #e8ecef;
+  font-size: 0.93em;
+  color: #1f2530;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: auto;
+  height: 32px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  background-color: #f1f4f7;
+  color: #5a6470;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.copy-btn:hover,
+.copy-btn:focus-visible {
+  background-color: #e8f5ee;
+  color: #007a36;
+  border-color: rgba(0, 154, 68, 0.25);
+  outline: none;
+}
+
+.copy-btn .copy-icon {
+  font-size: 12px;
+  transition: transform 0.15s ease;
+}
+
+.copy-btn .copy-icon.copied {
+  color: #009a44;
+  transform: scale(1.1);
+}
+
+.bank-popup__footer {
+  padding: 18px 28px 28px;
+}
+
+.bank-popup__footer-note {
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4a5562;
+  background: #fff8e8;
+  border: 1px solid #f1e1b8;
+  border-radius: 10px;
+}
+
+/* Responsive modal — tablets */
+@media (max-width: 768px) {
+  .bank-popup {
+    max-width: 520px;
+    border-radius: 14px;
+  }
+
+  .bank-popup__header {
+    padding: 24px 22px 16px;
+  }
+
+  .bank-popup__header-inner {
+    max-width: calc(100% - 20px);
+    gap: 12px;
+  }
+
+  .bank-popup__bank-logo,
+  .bank-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .bank-popup__logo-placeholder {
+    font-size: 17px;
+    border-radius: 10px;
+  }
+
+  .bank-popup__card {
+    margin: 18px 22px 0;
+    border-radius: 12px;
+  }
+
+  .bank-details-box {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .bank-popup__footer {
+    padding: 16px 22px 24px;
+  }
+
+  .copyable-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .copyable-field strong {
+    width: 100%;
+  }
+
+  .copyable-value {
+    width: 100%;
+  }
+
+  .copy-btn {
+    align-self: flex-start;
+  }
+}
+
+/* Responsive modal — phones */
+@media (max-width: 480px) {
+  .bank-popup-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .bank-popup {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 16px 16px 12px 12px;
+    box-shadow:
+      0 -10px 40px rgba(0, 0, 0, 0.25),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .bank-popup__header {
+    padding: 22px 18px 14px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .bank-popup__header-inner {
+    max-width: calc(100% - 16px);
+  }
+
+  .bank-popup__bank-name {
+    font-size: 1rem;
+  }
+
+  .bank-popup__bank-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .bank-popup__card {
+    margin: 16px 16px 0;
+    border-radius: 12px;
+  }
+
+  .bank-details-box {
+    padding: 18px 16px;
+    gap: 14px;
+    border-radius: 12px;
+  }
+
+  .bank-info p,
+  .copyable-field {
+    font-size: 15px;
+  }
+
+  .bank-popup__footer {
+    padding: 14px 16px 22px;
+  }
+
+  .bank-popup__footer-note {
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    border-radius: 8px;
+  }
+
+  .bank-popup__close {
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}

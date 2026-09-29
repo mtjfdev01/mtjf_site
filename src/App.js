@@ -214,9 +214,9 @@ function App() {
               <Route path="/new_footer" element={<NewFooterPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />}/>
               <Route path="/apna-ghar" element={<ApnaGharPage />} />
-              <Route path="/membership-campaign" element={<ProjectDetail forcedProjectId="membership-campaign" />} />
+              <Route path="/monthly-membership-campaign" element={<ProjectDetail forcedProjectId="membership-campaign" />} />
               <Route path="/fundraising" element={<MembershipCampaign />} />
-              <Route path="/monthly-membership-campaign" element={<MonthlyMembershipCampaign />} />
+              <Route path="/membership-campaign" element={<MonthlyMembershipCampaign />} />
               
             </Routes>
           </Suspense>

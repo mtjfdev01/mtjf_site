@@ -31,7 +31,7 @@ const WaysToDonate = () => {
       <div ref={sectionRef}>
         {showSection && (
           <Suspense fallback={null}>
-            <OtherWaysToDonate />
+           
             <WaysToDonateSection initialMainTab={initialMainTab} />
           </Suspense>
         )}
@@ -40,6 +40,7 @@ const WaysToDonate = () => {
       <div ref={footerRef} style={{ minHeight: '200px' }}>
         {showFooter && (
           <Suspense fallback={null}>
+           <OtherWaysToDonate />
             <Footer />
           </Suspense>
         )}

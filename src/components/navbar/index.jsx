@@ -38,7 +38,7 @@ const Navbar = () => {
    const [isLightTheme, setIsLightTheme] = useState(false);
 
    const hideNavActionButtons = [
-     '/monthly-membership-campaign',
+     '/membership-campaign',
      '/test-checkout',
    ].some(
      (page) =>
@@ -189,7 +189,7 @@ const Navbar = () => {
             <div className='nav-btn-group d-none md:d-flex'>
               <button 
                 className='btn btn-zakat-nav' 
-                onClick={() => handleNavigate('/monthly-membership-campaign')}
+                onClick={() => handleNavigate('/membership-campaign')}
                 aria-label="Join Our Support Community"
               >
                 <span className="btn-donate-content">
@@ -221,7 +221,7 @@ const Navbar = () => {
         <div className='nav-row-2 md:d-none'>
           <button 
             className='btn btn-zakat-nav nav-row-2__btn' 
-            onClick={() => handleNavigate('/monthly-membership-campaign')}
+            onClick={() => handleNavigate('/membership-campaign')}
             aria-label="Join Our Support Community"
           >
             <span className="btn-donate-content">
