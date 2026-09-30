@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { FaCopy, FaCheck } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
 import { PiBank } from 'react-icons/pi'
@@ -27,10 +28,10 @@ const WAYS = [
     titleHref: '#membership-plans',
     Icon: BsCreditCard2Front,
     accent: '#eaaa00',
-    description: (
+    description: (membershipPlansHref) => (
       <>
         Set up your monthly membership{' '}
-        <a href="#membership-plans" className="other-ways-link">
+        <a href={membershipPlansHref} className="other-ways-link">
           online
         </a>{' '}
         in a few minutes.
@@ -93,6 +94,11 @@ const WAYS = [
 ]
 
 const OtherWaysToDonate = () => {
+  const location = useLocation()
+  const isMembershipCampaignPage = location.pathname.replace(/\/$/, '') === '/membership-campaign'
+  const membershipPlansHref = isMembershipCampaignPage
+    ? '#membership-plans'
+    : '/membership-campaign'
   const [copied, setCopied] = useState(false)
   const [copiedItem, setCopiedItem] = useState(null)
   const [isBankPopupOpen, setIsBankPopupOpen] = useState(false)
@@ -203,7 +209,7 @@ const OtherWaysToDonate = () => {
                     </button>
                   ) : (
                     <a
-                      href={titleHref}
+                      href={id === 'join-online' ? membershipPlansHref : titleHref}
                       target={titleTarget}
                       rel={titleTarget === '_blank' ? 'noopener noreferrer' : undefined}
                       className="other-ways-card__title-link"
@@ -212,7 +218,9 @@ const OtherWaysToDonate = () => {
                     </a>
                   )}
                 </h3>
-                <p className="other-ways-card__text">{description}</p>
+                <p className="other-ways-card__text">
+                  {typeof description === 'function' ? description(membershipPlansHref) : description}
+                </p>
                 {showHelplineCopy && (
                   <div className="other-ways-card__copy-row">
                     <a href={`tel:${HELPLINE.replace(/-/g, '')}`} className="other-ways-link">
