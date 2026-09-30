@@ -2601,7 +2601,7 @@ const CheckoutForm = ({ testCheckout = false, enableJazzCash = false }) => {
                 className={`payment-option ${isSubmitting || isLoading ? 'payment-option--disabled' : ''}`}
                 onClick={(e) => {
                   if (!isSubmitting && !isLoading) {
-                    navigate('/ways-to-donate')
+                    navigate('/ways-to-donate', { state: { mainTab: 'bank-transfer' } })
                   }
                 }}
               >
