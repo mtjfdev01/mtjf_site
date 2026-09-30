@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDonation } from '../../contexts/DonationContext'
 import { useInViewOnce } from '../../hooks/useInViewOnce'
 import './MembershipPlanCards.css'
@@ -40,6 +40,8 @@ function isLightColor(hex) {
 
 const MembershipPlanCards = ({ plans = [] }) => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const returnTo = `${location.pathname}${location.search}${location.hash}`
   const { updateProjectDonation, setDonationFormData } = useDonation()
   const [sectionRef, isInView] = useInViewOnce({ threshold: 0.08, rootMargin: '40px' })
   const scrollContainerRef = useRef(null)
@@ -140,7 +142,7 @@ const MembershipPlanCards = ({ plans = [] }) => {
       frequency: billingFrequency,
       donation_frequency: billingFrequency,
     })
-    navigate('/checkout')
+    navigate('/checkout', { state: { returnTo } })
   }
 
   useEffect(() => {
@@ -166,7 +168,7 @@ const MembershipPlanCards = ({ plans = [] }) => {
         <div className="membership-plan-cards__top">
           <div className="membership-plan-cards__heading membership-heading">
             <h2 id="plan-cards-title">Choose Your Impact Level</h2>
-            <p>Pick a monthly amount that&apos;s right for you. Every level supports MTJ&apos;s work year-round.</p>
+            <p>Pick a {billingFrequency} amount that&apos;s right for you. Every level supports MTJ&apos;s work year-round.</p>
           </div>
           <div className="membership-plan-cards__frequency" role="group" aria-label="Membership billing frequency">
             <button
@@ -220,6 +222,7 @@ const MembershipPlanCards = ({ plans = [] }) => {
                   <Link
                     key={`${plan.name}-${index}`}
                     to="/checkout"
+                    state={{ returnTo }}
                     onClick={() => goToCheckout(index, plan)}
                     className={`membership-plan-card ${selected === index ? 'is-selected' : ''} ${light ? 'is-light' : 'is-dark'}`}
                     style={{
