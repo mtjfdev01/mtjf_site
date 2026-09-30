@@ -4,6 +4,8 @@ import change_hero_health from '../../assets/img/hero/change_hero_health.webp'
 import hero_health_mobile from '../../assets/img/hero/hero_health_mobile.webp'
 import slider_august from '../../assets/img/hero/slider_august.webp'
 import slider_august_mob from '../../assets/img/hero/slider_august_mob.webp'
+import campaign_2500_web from '../../assets/img/hero/campaign_2500_web.webp'
+import campaign_2500_mob from '../../assets/img/hero/campaign_2500_mob.webp'
 import clean_water_hero_mob from '../../assets/img/projects/projects-details/cleanwater/mob_hero.webp'
 import clean_water_hero_web from '../../assets/img/projects/projects-details/cleanwater/hero-section.webp'
 import apna_ghar_hero_web from '../../assets/img/projects/projects-details/Apna Ghar/hero.webp'
@@ -19,6 +21,7 @@ const USE_DMS_HOME_HERO_SLIDES = false
 
 /** Static home hero slides (default). */
 const HERO_IMAGES = [
+  { desktop: campaign_2500_web, mobile: campaign_2500_mob, link: '/membership-campaign' },
   // { desktop: slider_august, mobile: slider_august_mob, link: '/' },
   { desktop: apna_ghar_hero_web, mobile: apna_ghar_hero_mob, link: '/donate/apna-ghar' },
   { desktop: clean_water_hero_web, mobile: clean_water_hero_mob, link: '/donate/clean-water' },
