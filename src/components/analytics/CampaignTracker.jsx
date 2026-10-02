@@ -16,6 +16,10 @@ function pickUtmParams(search) {
   return Object.keys(utm).length > 0 ? utm : null
 }
 
+/**
+ * Staff referral code from session (set by CampaignTracker from URL).
+ * Used by CheckoutForm for donate + membership-campaign flows.
+ */
 export function getStoredReferralCode() {
   try {
     const code = sessionStorage.getItem(REFERRAL_CODE_SESSION_KEY)
@@ -25,6 +29,26 @@ export function getStoredReferralCode() {
   }
 }
 
+function storeReferralCode(raw) {
+  const normalized = String(raw || '')
+    .trim()
+    .toUpperCase()
+  if (!normalized) return
+  try {
+    sessionStorage.setItem(REFERRAL_CODE_SESSION_KEY, normalized)
+  } catch {
+    // ignore storage failures
+  }
+}
+
+/**
+ * Captures campaign attribution from the URL on every page, including:
+ * - /donate?referral_code=XXXX
+ * - /membership-campaign?referral_code=XXXX
+ * - /membership-campaign?code=XXXX  (alias for referral_code)
+ *
+ * CheckoutForm reads getStoredReferralCode() and sends referral_code on submit.
+ */
 export default function CampaignTracker() {
   const location = useLocation()
   const { setUtmParams, setRef } = useDonation()
@@ -43,26 +67,26 @@ export default function CampaignTracker() {
       }
     }
 
-    // Optional: also capture `ref` from URL for agency/campaign tracking
     const sp = new URLSearchParams(location.search || '')
+
+    // Optional: also capture `ref` from URL for agency/campaign tracking
     const refParam = sp.get('ref')
     if (refParam) {
       setRef?.(refParam)
     }
 
-    // Staff referral: mtjfoundation.org/donate?referral_code=XXXX
-    const referralCode = sp.get('referral_code')
-    if (referralCode && String(referralCode).trim()) {
-      try {
-        sessionStorage.setItem(
-          REFERRAL_CODE_SESSION_KEY,
-          String(referralCode).trim(),
-        )
-      } catch {
-        // ignore storage failures
-      }
+    // Staff referral — same storage for donate, membership-campaign, and any other page.
+    // Prefer referral_code everywhere. Accept short `code=` only on membership campaign.
+    const isMembershipCampaign = location.pathname
+      .replace(/\/$/, '')
+      .endsWith('membership-campaign')
+    const referralCode =
+      sp.get('referral_code') ||
+      (isMembershipCampaign ? sp.get('code') : null)
+    if (referralCode) {
+      storeReferralCode(referralCode)
     }
-  }, [location.search, setUtmParams, setRef])
+  }, [location.pathname, location.search, setUtmParams, setRef])
 
   return null
 }

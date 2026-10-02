@@ -120,6 +120,7 @@ function App() {
       <CartProvider>
         <DonationProvider>
           <ScrollToTop />
+          {/* Captures ?referral_code= (and ?code=) site-wide — donate + membership-campaign */}
           <CampaignTracker />
 
             {/* <PromoPopup
