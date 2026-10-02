@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axiosInstance from '../../utils/axios'
 import './JobApplyPanel.css'
 
 const APPLY_SUB_TABS = [
@@ -19,6 +20,7 @@ const DEFAULT_PROFILE = {
 }
 
 const DEFAULT_CONTACT = {
+  email: '',
   country: '',
   state: '',
   city: '',
@@ -79,6 +81,10 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
   const [profileSaved, setProfileSaved] = useState(false)
   const [educationSaved, setEducationSaved] = useState(false)
   const [contactSaved, setContactSaved] = useState(false)
+  const [resumeFile, setResumeFile] = useState(null)
+  const [resumeFileName, setResumeFileName] = useState('No file chosen')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const showHusbandName =
     profile.gender === 'female' &&
@@ -143,6 +149,10 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
 
   const validateContact = () => {
     const errors = {}
+    if (!contact.email.trim()) errors.email = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email.trim())) {
+      errors.email = 'Enter a valid email address'
+    }
     if (!contact.country.trim()) errors.country = 'Country is required'
     if (!contact.state.trim()) errors.state = 'State is required'
     if (!contact.city.trim()) errors.city = 'City is required'
@@ -150,8 +160,55 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
     if (!contact.mobile.trim()) errors.mobile = 'Mobile is required'
     if (!contact.currentAddress.trim()) errors.currentAddress = 'Current address is required'
     if (!contact.permanentAddress.trim()) errors.permanentAddress = 'Permanent address is required'
+    if (!resumeFile) {
+      errors.resume = 'CV/Resume is required'
+    }
     setContactErrors(errors)
     return Object.keys(errors).length === 0
+  }
+
+  const handleResumeChange = (event) => {
+    const file = event.target.files?.[0] || null
+    setContactSaved(false)
+
+    if (!file) {
+      setResumeFile(null)
+      setResumeFileName('No file chosen')
+      return
+    }
+
+    const allowedTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    ]
+    const maxSize = 5 * 1024 * 1024
+
+    if (!allowedTypes.includes(file.type)) {
+      setContactErrors((prev) => ({
+        ...prev,
+        resume: 'File must be PDF, DOC, or DOCX format',
+      }))
+      setResumeFile(null)
+      setResumeFileName('No file chosen')
+      event.target.value = ''
+      return
+    }
+
+    if (file.size > maxSize) {
+      setContactErrors((prev) => ({
+        ...prev,
+        resume: 'File size must be less than 5MB',
+      }))
+      setResumeFile(null)
+      setResumeFileName('No file chosen')
+      event.target.value = ''
+      return
+    }
+
+    setResumeFile(file)
+    setResumeFileName(file.name)
+    setContactErrors((prev) => ({ ...prev, resume: '' }))
   }
 
   const validateEducation = () => {
@@ -185,10 +242,82 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
     setSubTab('contact')
   }
 
-  const handleSaveContact = (event) => {
+  const handleSaveContact = async (event) => {
     event.preventDefault()
     if (!validateContact()) return
-    setContactSaved(true)
+    if (!validateProfile() || !validateEducation()) {
+      setSubmitError('Please complete Profile and Education steps before submitting.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitError('')
+    setContactSaved(false)
+
+    try {
+      const formData = new FormData()
+      formData.append('first_name', profile.firstName.trim())
+      formData.append('last_name', profile.lastName.trim())
+      formData.append(
+        'applicant_name',
+        `${profile.firstName.trim()} ${profile.lastName.trim()}`.trim(),
+      )
+      formData.append('father_name', profile.fatherName.trim())
+      formData.append('cnic', profile.cnic.trim())
+      formData.append('disability', profile.disability)
+      formData.append('gender', profile.gender)
+      formData.append('marital_status', profile.maritalStatus)
+      if (showHusbandName) {
+        formData.append('husband_name', profile.husbandName.trim())
+      }
+      formData.append('email', contact.email.trim().toLowerCase())
+      formData.append('phone_number', contact.mobile.trim())
+      formData.append('mobile', contact.mobile.trim())
+      if (contact.officePhone.trim()) {
+        formData.append('office_phone', contact.officePhone.trim())
+      }
+      if (contact.residencePhone.trim()) {
+        formData.append('residence_phone', contact.residencePhone.trim())
+      }
+      formData.append('country', contact.country.trim())
+      formData.append('state', contact.state.trim())
+      formData.append('city', contact.city.trim())
+      formData.append('postal_code', contact.postalCode.trim())
+      formData.append('current_address', contact.currentAddress.trim())
+      formData.append('permanent_address', contact.permanentAddress.trim())
+      formData.append(
+        'education',
+        JSON.stringify(educationRows.map(({ id, ...row }) => row)),
+      )
+      formData.append(
+        'has_work_experience',
+        hasWorkExperience === 'yes' ? 'true' : 'false',
+      )
+      formData.append(
+        'experience',
+        JSON.stringify(
+          hasWorkExperience === 'yes'
+            ? experienceRows.map(({ id, ...row }) => row)
+            : [],
+        ),
+      )
+      formData.append('disclosure', JSON.stringify(disclosure))
+      if (jobId) formData.append('job_id', String(jobId))
+      formData.append('cvResume', resumeFile)
+
+      await axiosInstance.post('/job_applications', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      setContactSaved(true)
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error?.message ||
+        'Failed to submit application. Please try again.'
+      setSubmitError(Array.isArray(message) ? message.join(', ') : message)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -367,11 +496,11 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
           )}
 
           {profileSaved && (
-            <p className="job-apply-success">Profile information saved.</p>
+            <p className="job-apply-success">Profile information saved. Continue to the next step.</p>
           )}
 
           <button type="submit" className="job-apply-save">
-            Save
+            Next
           </button>
         </form>
       )}
@@ -648,12 +777,12 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
           </div>
 
           {educationSaved && (
-            <p className="job-apply-success">Education & experience details saved.</p>
+            <p className="job-apply-success">Education & experience details saved. Continue to the next step.</p>
           )}
 
           <div className="job-apply-actions">
             <button type="submit" className="job-apply-save">
-              Save
+              Next
             </button>
           </div>
         </form>
@@ -664,6 +793,21 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
           <h3 className="job-apply-form__heading">Contact Information</h3>
 
           <div className="job-apply-form__grid">
+            <label className="job-apply-field">
+              <span className="job-apply-label">
+                Email <span className="job-apply-required">*</span>
+              </span>
+              <input
+                type="email"
+                value={contact.email}
+                onChange={(e) => updateContact('email', e.target.value)}
+                className={contactErrors.email ? 'has-error' : ''}
+              />
+              {contactErrors.email && (
+                <span className="job-apply-error">{contactErrors.email}</span>
+              )}
+            </label>
+
             <label className="job-apply-field">
               <span className="job-apply-label">
                 Country <span className="job-apply-required">*</span>
@@ -798,14 +942,51 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
                 <span className="job-apply-error">{contactErrors.permanentAddress}</span>
               )}
             </label>
+
+            <div className="job-apply-field job-apply-field--full">
+              <span className="job-apply-label">
+                Upload CV/Resume <span className="job-apply-required">*</span>
+              </span>
+              <div className="job-apply-file">
+                <input
+                  type="file"
+                  id="job-apply-resume"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  onChange={handleResumeChange}
+                  className="job-apply-file__input"
+                />
+                <label htmlFor="job-apply-resume" className="job-apply-file__button">
+                  Choose file
+                </label>
+                <span className="job-apply-file__name">{resumeFileName}</span>
+              </div>
+              {contactErrors.resume && (
+                <span className="job-apply-error">{contactErrors.resume}</span>
+              )}
+              <p className="job-apply-hint">Allowed types: .pdf, .doc, .docx (Max size: 5MB)</p>
+            </div>
           </div>
 
-          {contactSaved && (
-            <p className="job-apply-success">Contact information saved.</p>
+          {submitError && (
+            <p className="job-apply-error" style={{ marginTop: 12 }}>
+              {submitError}
+            </p>
           )}
 
-          <button type="submit" className="job-apply-save">
-            Save
+          {contactSaved && (
+            <p className="job-apply-success">Application submitted successfully.</p>
+          )}
+
+          <button
+            type="submit"
+            className="job-apply-save"
+            disabled={isSubmitting || contactSaved}
+          >
+            {isSubmitting
+              ? 'Submitting...'
+              : contactSaved
+                ? 'Submitted'
+                : 'Submit Application'}
           </button>
         </form>
       )}

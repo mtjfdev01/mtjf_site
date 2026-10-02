@@ -285,6 +285,46 @@
   justify-content: flex-end;
 }
 
+.job-apply-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.job-apply-file__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.job-apply-file__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #9ca3af;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.job-apply-file__button:hover {
+  background: #6b7280;
+}
+
+.job-apply-file__name {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
 @media (max-width: 767px) {
   .job-apply-form__grid {
     grid-template-columns: 1fr;
