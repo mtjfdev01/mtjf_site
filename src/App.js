@@ -63,6 +63,7 @@ const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const ApnaGharPage = lazy(() => import("./pages/ApnaGharPage"));
 const MembershipCampaign = lazy(() => import("./pages/MembershipCampaign"));
 const MonthlyMembershipCampaign = lazy(() => import("./pages/MonthlyMembershipCampaign"));
+const ComplaintPortal = lazy(() => import("./pages/ComplaintPortal"));
 
 
 
@@ -218,6 +219,7 @@ function App() {
               {/* <Route path="/monthly-membership-campaign" element={<ProjectDetail forcedProjectId="monthly-membership-campaign" />} /> */}
               <Route path="/fundraising" element={<MembershipCampaign />} />
               <Route path="/membership-campaign" element={<MonthlyMembershipCampaign />} />
+              <Route path="/complaint-portal" element={<ComplaintPortal />} />
               
             </Routes>
           </Suspense>
