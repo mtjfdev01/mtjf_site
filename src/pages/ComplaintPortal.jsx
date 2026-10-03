@@ -4,10 +4,13 @@ import axiosInstance from '../utils/axios'
 import {
   ORGANIZATION_OPTIONS,
   COMPLAINANT_TYPE_OPTIONS,
+  DEPARTMENT_OPTIONS,
   CATEGORY_OPTIONS,
   ASLAB_BRANCH_OPTIONS,
   UI_COPY,
   optionLabel,
+  priorityForCategory,
+  priorityLabel,
 } from '../constants/ceoComplaintOptions'
 import './ComplaintPortal.css'
 
@@ -18,6 +21,7 @@ const STEPS = {
   BRANCH: 'branch',
   TYPE: 'type',
   CONTACT: 'contact',
+  DEPARTMENT: 'department',
   CATEGORY: 'category',
   DETAILS: 'details',
   SUCCESS: 'success',
@@ -29,8 +33,8 @@ const EMPTY_FORM = {
   complainant_type: '',
   complainant_name: '',
   contact_number: '',
+  department: '',
   category: '',
-  category_other: '',
   details: '',
 }
 
@@ -67,7 +71,8 @@ const ComplaintPortal = () => {
     else if (step === STEPS.TYPE) {
       setStep(form.organization === 'aslab' ? STEPS.BRANCH : STEPS.ORG)
     } else if (step === STEPS.CONTACT) setStep(STEPS.TYPE)
-    else if (step === STEPS.CATEGORY) setStep(STEPS.CONTACT)
+    else if (step === STEPS.DEPARTMENT) setStep(STEPS.CONTACT)
+    else if (step === STEPS.CATEGORY) setStep(STEPS.DEPARTMENT)
     else if (step === STEPS.DETAILS) setStep(STEPS.CATEGORY)
   }
 
@@ -79,12 +84,20 @@ const ComplaintPortal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitError('')
-    if (!form.details.trim() || form.details.trim().length < 5) {
-      setSubmitError(t.errDetails)
+    if (!form.complainant_name.trim() || !form.contact_number.trim()) {
+      setSubmitError(t.errContact)
       return
     }
-    if (form.category === 'other' && !form.category_other.trim()) {
-      setSubmitError(t.errOther)
+    if (!form.department) {
+      setSubmitError(t.errDepartment)
+      return
+    }
+    if (!form.category) {
+      setSubmitError(t.errCategory)
+      return
+    }
+    if (!form.details.trim() || form.details.trim().length < 5) {
+      setSubmitError(t.errDetails)
       return
     }
 
@@ -94,16 +107,10 @@ const ComplaintPortal = () => {
         organization: form.organization,
         ...(form.organization === 'aslab' ? { branch: form.branch } : {}),
         complainant_type: form.complainant_type,
-        ...(form.complainant_name.trim()
-          ? { complainant_name: form.complainant_name.trim() }
-          : {}),
-        ...(form.contact_number.trim()
-          ? { contact_number: form.contact_number.trim() }
-          : {}),
+        complainant_name: form.complainant_name.trim(),
+        contact_number: form.contact_number.trim(),
+        department: form.department,
         category: form.category,
-        ...(form.category === 'other'
-          ? { category_other: form.category_other.trim() }
-          : {}),
         details: form.details.trim(),
       }
       const res = await axiosInstance.post(
@@ -287,6 +294,7 @@ const ComplaintPortal = () => {
                   lang={inputLang}
                   dir="auto"
                   autoComplete="name"
+                  required
                 />
               </label>
               <label className="ceo-complaint-portal__label">
@@ -301,6 +309,7 @@ const ComplaintPortal = () => {
                   dir="ltr"
                   inputMode="tel"
                   autoComplete="tel"
+                  required
                 />
               </label>
               <div className="ceo-complaint-portal__actions">
@@ -313,22 +322,12 @@ const ComplaintPortal = () => {
                 </button>
                 <button
                   type="button"
-                  className="ceo-complaint-portal__ghost"
-                  onClick={() => {
-                    setForm((prev) => ({
-                      ...prev,
-                      complainant_name: '',
-                      contact_number: '',
-                    }))
-                    setStep(STEPS.CATEGORY)
-                  }}
-                >
-                  {t.skip}
-                </button>
-                <button
-                  type="button"
                   className="ceo-complaint-portal__primary"
-                  onClick={() => setStep(STEPS.CATEGORY)}
+                  disabled={
+                    !form.complainant_name.trim() ||
+                    !form.contact_number.trim()
+                  }
+                  onClick={() => setStep(STEPS.DEPARTMENT)}
                 >
                   {t.continue}
                 </button>
@@ -336,38 +335,25 @@ const ComplaintPortal = () => {
             </section>
           )}
 
-          {step === STEPS.CATEGORY && (
+          {step === STEPS.DEPARTMENT && (
             <section className="ceo-complaint-portal__card">
-              <h2>{t.categoryTitle}</h2>
-              <select
-                name="category"
-                className="ceo-complaint-portal__select"
-                value={form.category}
-                lang={inputLang}
-                dir={inputDir}
-                onChange={handleChange}
-              >
-                <option value="">{t.selectCategory}</option>
-                {CATEGORY_OPTIONS.map((c) => (
-                  <option key={c.value} value={c.value}>
-                    {optionLabel(c, lang)}
-                  </option>
+              <h2>{t.selectDepartment}</h2>
+              <div className="ceo-complaint-portal__org-grid ceo-complaint-portal__org-grid--dept">
+                {DEPARTMENT_OPTIONS.map((d) => (
+                  <button
+                    key={d.value}
+                    type="button"
+                    className={`ceo-complaint-portal__org-btn ${
+                      form.department === d.value ? 'is-selected' : ''
+                    }`}
+                    onClick={() =>
+                      setForm((prev) => ({ ...prev, department: d.value }))
+                    }
+                  >
+                    {optionLabel(d, lang)}
+                  </button>
                 ))}
-              </select>
-              {form.category === 'other' && (
-                <label className="ceo-complaint-portal__label">
-                  {t.otherSpecify}
-                  <input
-                    name="category_other"
-                    value={form.category_other}
-                    onChange={handleChange}
-                    className="ceo-complaint-portal__input"
-                    placeholder={t.otherPh}
-                    lang={inputLang}
-                    dir="auto"
-                  />
-                </label>
-              )}
+              </div>
               <div className="ceo-complaint-portal__actions">
                 <button
                   type="button"
@@ -379,10 +365,58 @@ const ComplaintPortal = () => {
                 <button
                   type="button"
                   className="ceo-complaint-portal__primary"
-                  disabled={
-                    !form.category ||
-                    (form.category === 'other' && !form.category_other.trim())
-                  }
+                  disabled={!form.department}
+                  onClick={() => setStep(STEPS.CATEGORY)}
+                >
+                  {t.continue}
+                </button>
+              </div>
+            </section>
+          )}
+
+          {step === STEPS.CATEGORY && (
+            <section className="ceo-complaint-portal__card">
+              <h2>{t.categoryTitle}</h2>
+              <label className="ceo-complaint-portal__label">
+                {t.selectCategory}
+                <select
+                  name="category"
+                  className="ceo-complaint-portal__select"
+                  value={form.category}
+                  lang={inputLang}
+                  dir={inputDir}
+                  onChange={handleChange}
+                >
+                  <option value="">{t.selectCategory}</option>
+                  {CATEGORY_OPTIONS.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {optionLabel(c, lang)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {form.category ? (
+                <div className="ceo-complaint-portal__priority">
+                  <span className="ceo-complaint-portal__priority-label">
+                    {t.priorityLabel}
+                  </span>
+                  <strong>
+                    {priorityLabel(priorityForCategory(form.category), lang)}
+                  </strong>
+                </div>
+              ) : null}
+              <div className="ceo-complaint-portal__actions">
+                <button
+                  type="button"
+                  className="ceo-complaint-portal__ghost"
+                  onClick={goBack}
+                >
+                  {t.back}
+                </button>
+                <button
+                  type="button"
+                  className="ceo-complaint-portal__primary"
+                  disabled={!form.category}
                   onClick={() => setStep(STEPS.DETAILS)}
                 >
                   {t.continue}

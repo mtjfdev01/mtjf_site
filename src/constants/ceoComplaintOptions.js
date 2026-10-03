@@ -8,34 +8,169 @@ export const ORGANIZATION_OPTIONS = [
   { value: 'aslab', label: { en: 'Aas Lab', ur: 'آس لیب' } },
   {
     value: 'education_system',
-    label: { en: 'Education System', ur: 'تعلیمی نظام' },
+    label: {
+      en: 'Al Hasanain College',
+      ur: 'الحسنین کالج',
+    },
   },
 ]
 
 export const COMPLAINANT_TYPE_OPTIONS = [
   { value: 'employee', label: { en: 'Employee', ur: 'ملازم' } },
-  { value: 'patient', label: { en: 'Patient', ur: 'مریض' } },
-  { value: 'visitor', label: { en: 'Visitor', ur: 'زائر' } },
+  { value: 'visitor', label: { en: 'Visitor', ur: 'وزیٹر' } },
 ]
 
-export const CATEGORY_OPTIONS = [
+export const DEPARTMENT_OPTIONS = [
   {
-    value: 'staff_behavior',
-    label: { en: 'Staff behaviour', ur: 'عملے کا رویہ' },
+    value: 'hr',
+    label: { en: 'Human Resources (HR)', ur: 'انسانی وسائل (HR)' },
   },
-  { value: 'report_delay', label: { en: 'Report delay', ur: 'رپورٹ میں تاخیر' } },
-  { value: 'test_quality', label: { en: 'Test quality', ur: 'ٹیسٹ کا معیار' } },
   {
-    value: 'wrong_test_billing',
-    label: { en: 'Wrong test billing', ur: 'غلط ٹیسٹ بلنگ' },
+    value: 'finance_accounts',
+    label: { en: 'Finance / Accounts', ur: 'فنانس / اکاؤنٹس' },
   },
-  { value: 'overcharging', label: { en: 'Overcharging', ur: 'زیادہ چارجنگ' } },
-  { value: 'cleanliness', label: { en: 'Cleanliness', ur: 'صفائی' } },
+  { value: 'it', label: { en: 'IT', ur: 'آئی ٹی' } },
+  { value: 'admin', label: { en: 'Admin', ur: 'انتظامیہ (Admin)' } },
+  { value: 'operations', label: { en: 'Operations', ur: 'آپریشنز' } },
+  { value: 'marketing', label: { en: 'Marketing', ur: 'مارکیٹنگ' } },
   {
-    value: 'system_software',
-    label: { en: 'System or software', ur: 'سسٹم یا سافٹ ویئر' },
+    value: 'procurement',
+    label: { en: 'Procurement / Purchasing', ur: 'پروکیورمنٹ / خریداری' },
+  },
+  {
+    value: 'legal_compliance',
+    label: { en: 'Legal / Compliance', ur: 'قانونی / تعمیل' },
+  },
+  {
+    value: 'internal_audit',
+    label: { en: 'Internal Audit', ur: 'اندرونی آڈٹ' },
+  },
+  { value: 'audio_video', label: { en: 'Audio Video', ur: 'آڈیو وڈیو' } },
+  {
+    value: 'customer_service',
+    label: { en: 'Customer Service', ur: 'کسٹمر سروس' },
   },
   { value: 'other', label: { en: 'Other', ur: 'دیگر' } },
+  { value: 'unknown', label: { en: 'Unknown', ur: 'معلوم نہیں' } },
+]
+
+export const PRIORITY_OPTIONS = [
+  {
+    value: 'critical_high',
+    label: { en: 'Critical / High', ur: 'نہایت اہم / اعلیٰ' },
+  },
+  { value: 'critical', label: { en: 'Critical', ur: 'نہایت اہم' } },
+  { value: 'high', label: { en: 'High', ur: 'اعلیٰ' } },
+  {
+    value: 'medium_high',
+    label: { en: 'Medium / High', ur: 'درمیانہ / اعلیٰ' },
+  },
+  { value: 'medium', label: { en: 'Medium', ur: 'درمیانہ' } },
+  {
+    value: 'high_critical',
+    label: { en: 'High / Critical', ur: 'اعلیٰ / نہایت اہم' },
+  },
+  {
+    value: 'low_medium',
+    label: { en: 'Low / Medium', ur: 'کم / درمیانہ' },
+  },
+]
+
+/** Complaint type (کمپلینٹ ٹائپ) with mapped ترجیح (Priority). */
+export const CATEGORY_OPTIONS = [
+  {
+    value: 'harassment_discrimination',
+    label: {
+      en: 'Harassment and Discrimination',
+      ur: 'ہراسانی اور امتیازی سلوک',
+    },
+    priority: 'critical_high',
+  },
+  {
+    value: 'ethics_fraud_corruption',
+    label: {
+      en: 'Ethics, Fraud and Corruption Reporting',
+      ur: 'اخلاقیات، فراڈ اور بدعنوانی کی اطلاع دینا',
+    },
+    priority: 'critical',
+  },
+  {
+    value: 'abuse_of_authority',
+    label: {
+      en: 'Abuse of Authority / Leadership Misconduct',
+      ur: 'اختیارات کا غلط استعمال / قیادت کی بدسلوکی',
+    },
+    priority: 'high',
+  },
+  {
+    value: 'unfair_employment',
+    label: {
+      en: 'Unfair Employment Practices',
+      ur: 'غیر منصفانہ ملازمت کے طریقے',
+    },
+    priority: 'medium_high',
+  },
+  {
+    value: 'compensation_benefits_payroll',
+    label: {
+      en: 'Compensation, Benefits and Payroll',
+      ur: 'معاوضہ، مراعات اور پے رول',
+    },
+    priority: 'medium',
+  },
+  {
+    value: 'workplace_safety_health',
+    label: {
+      en: 'Workplace Safety, Health and Environment',
+      ur: 'کام کی جگہ کی حفاظت، صحت اور ماحول',
+    },
+    priority: 'high_critical',
+  },
+  {
+    value: 'working_conditions_facilities',
+    label: {
+      en: 'Working Conditions and Facilities',
+      ur: 'کام کے حالات اور سہولیات',
+    },
+    priority: 'low_medium',
+  },
+  {
+    value: 'policy_compliance',
+    label: {
+      en: 'Policy and Compliance Violations',
+      ur: 'پالیسی اور تعمیل کی خلاف ورزیاں',
+    },
+    priority: 'high',
+  },
+  {
+    value: 'it_data_cybersecurity',
+    label: {
+      en: 'IT, Data and Cyber Security',
+      ur: 'آئی ٹی، ڈیٹا اور سائبر سیکیورٹی',
+    },
+    priority: 'high_critical',
+  },
+  {
+    value: 'retaliation_victimization',
+    label: {
+      en: 'Retaliation and Victimization',
+      ur: 'انتقامی کارروائی اور شکار بنانا',
+    },
+    priority: 'critical_high',
+  },
+  {
+    value: 'employee_relations',
+    label: {
+      en: 'Interpersonal / Employee Relations',
+      ur: 'باہمی تعلقات / ملازمین کے تعلقات',
+    },
+    priority: 'low_medium',
+  },
+  {
+    value: 'other_general',
+    label: { en: 'Other / General', ur: 'دیگر / عمومی' },
+    priority: 'medium',
+  },
 ]
 
 export const ASLAB_BRANCH_OPTIONS = [
@@ -61,21 +196,24 @@ export const UI_COPY = {
     eyebrow: 'CEO Office',
     title: 'Complaint Portal',
     lead:
-      'Share your concern with MTJ Foundation. You will receive a complaint number after submission. You may write in English or Urdu.',
+      'Share your concern with MTJ Foundation. You will receive a complaint number after submission. You may write in English or Urdu. Your identity will be kept secret.',
     selectOrg: 'Select organization',
     selectBranch: 'Select Aas Lab branch',
     chooseBranch: 'Choose branch',
     complainingAs: 'I am complaining as',
     contactTitle: 'Your contact details',
-    contactHint: 'Optional — you may skip this step.',
-    name: 'Name',
+    contactHint: 'Name and contact number are required.',
+    name: 'Name *',
     namePh: 'Your name',
-    contact: 'Contact number',
+    contact: 'Contact number *',
     contactPh: 'Phone number',
-    categoryTitle: 'Complaint regarding',
-    selectCategory: 'Select category',
-    otherSpecify: 'Please specify',
-    otherPh: 'Describe the category',
+    errContact: 'Please enter your name and contact number.',
+    selectDepartment: 'Select department',
+    errDepartment: 'Please select a department.',
+    categoryTitle: 'Complaint type',
+    selectCategory: 'Select complaint type',
+    priorityLabel: 'Priority (Tarjih)',
+    errCategory: 'Please select a complaint type.',
     detailsTitle: 'Complaint details',
     detailsLabel: 'Describe your complaint',
     detailsPh: 'Please share what happened (English or Urdu)',
@@ -89,28 +227,30 @@ export const UI_COPY = {
     submitAnother: 'Submit another',
     backHome: 'Back to home',
     errDetails: 'Please enter at least a short complaint description.',
-    errOther: 'Please describe the other category.',
     errSubmit: 'Failed to submit complaint',
   },
   ur: {
     eyebrow: 'سی ای او آفس',
     title: 'شکایت پورٹل',
     lead:
-      'ایم ٹی جے فاؤنڈیشن کے ساتھ اپنی شکایت شیئر کریں۔ جمع کرانے کے بعد آپ کو شکایت نمبر ملے گا۔ آپ انگریزی یا اردو میں لکھ سکتے ہیں۔',
+      'ایم ٹی جے فاؤنڈیشن کے ساتھ اپنی شکایت شیئر کریں۔ جمع کرانے کے بعد آپ کو شکایت نمبر ملے گا۔ آپ انگریزی یا اردو میں لکھ سکتے ہیں۔ آپ کی شناخت خفیہ رکھی جائے گی۔',
     selectOrg: 'ادارہ منتخب کریں',
     selectBranch: 'آس لیب برانچ منتخب کریں',
     chooseBranch: 'برانچ منتخب کریں',
     complainingAs: 'میں شکایت کر رہا/رہی ہوں بطور',
     contactTitle: 'آپ کی رابطہ تفصیلات',
-    contactHint: 'اختیاری — آپ اس مرحلے کو چھوڑ سکتے ہیں۔',
-    name: 'نام',
+    contactHint: 'نام اور رابطہ نمبر لازمی ہیں۔',
+    name: 'نام *',
     namePh: 'آپ کا نام',
-    contact: 'رابطہ نمبر',
+    contact: 'رابطہ نمبر *',
     contactPh: 'فون نمبر',
-    categoryTitle: 'شکایت کس بارے میں ہے',
-    selectCategory: 'زمرہ منتخب کریں',
-    otherSpecify: 'براہ کرم وضاحت کریں',
-    otherPh: 'زمرہ کی وضاحت لکھیں',
+    errContact: 'براہ کرم اپنا نام اور رابطہ نمبر درج کریں۔',
+    selectDepartment: 'محکمہ منتخب کریں',
+    errDepartment: 'براہ کرم محکمہ منتخب کریں۔',
+    categoryTitle: 'کمپلینٹ ٹائپ',
+    selectCategory: 'کمپلینٹ ٹائپ منتخب کریں',
+    priorityLabel: 'ترجیح (Priority)',
+    errCategory: 'براہ کرم کمپلینٹ ٹائپ منتخب کریں۔',
     detailsTitle: 'شکایت کی تفصیل',
     detailsLabel: 'اپنی شکایت بیان کریں',
     detailsPh: 'کیا ہوا بیان کریں (انگریزی یا اردو)',
@@ -124,10 +264,19 @@ export const UI_COPY = {
     submitAnother: 'ایک اور جمع کرائیں',
     backHome: 'ہوم پیج',
     errDetails: 'براہ کرم شکایت کی مختصر تفصیل لکھیں۔',
-    errOther: 'براہ کرم دیگر زمرہ کی وضاحت لکھیں۔',
     errSubmit: 'شکایت جمع نہیں ہو سکی',
   },
 }
 
 export const optionLabel = (option, lang = 'en') =>
   option?.label?.[lang] || option?.label?.en || ''
+
+export const priorityForCategory = (categoryValue) => {
+  const hit = CATEGORY_OPTIONS.find((c) => c.value === categoryValue)
+  return hit?.priority || ''
+}
+
+export const priorityLabel = (priorityValue, lang = 'en') => {
+  const hit = PRIORITY_OPTIONS.find((p) => p.value === priorityValue)
+  return hit ? optionLabel(hit, lang) : priorityValue || '-'
+}
