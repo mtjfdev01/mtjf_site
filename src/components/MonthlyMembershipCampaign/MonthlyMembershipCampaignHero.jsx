@@ -2,8 +2,8 @@ import { useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaWhatsapp } from 'react-icons/fa'
 import { useDonation } from '../../contexts/DonationContext'
-import heroWeb from '../../assets/img/monthlyMembershipCampaign/monthly_campaign_hero-web.jpg'
-import heroMobile from '../../assets/img/monthlyMembershipCampaign/monthly_campaign_hero-mob.jpg'
+import heroWeb from '../../assets/img/monthlyMembershipCampaign/monthly_campaign_hero-web.webp'
+import heroMobile from '../../assets/img/monthlyMembershipCampaign/monthly_campaign_hero-mob.webp'
 
 const MonthlyMembershipCampaignHero = ({ hero }) => {
   const navigate = useNavigate()
