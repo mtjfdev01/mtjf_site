@@ -1,14 +1,14 @@
 .membership-page {
   --membership-ink: #009a44;
   --membership-blue: #00a3e0;
-  --membership-soft: #f4f1e9;
+  --membership-soft: #fff;
   --membership-paper: #fbfaf6;
   --membership-line: #d9d8ce;
   --membership-yellow: #f4c95d;
   min-height: 100vh;
   padding-top: 82px;
   color: var(--membership-ink);
-  background: var(--membership-paper);
+  background: var(--membership-soft);
    font-family: 'Montserrat', sans-serif;
 }
 
@@ -191,7 +191,7 @@
 
 .membership-member-card {
   position: absolute;
-  bottom: -40px;
+  bottom: -60px;
   display: flex;
   width: 294px;
   min-height: 145px;
@@ -939,7 +939,7 @@
   }
 
   .membership-member-card--clickable {
-    margin-top: -72px;
+    margin-top: -60px;
   }
 
   .membership-member-card--clickable:hover {
