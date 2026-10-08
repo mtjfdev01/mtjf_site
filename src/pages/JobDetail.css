@@ -1,7 +1,13 @@
 .job-detail-page {
   min-height: 100vh;
   background: #ffffff;
-  padding-top: var(--space-80);
+  padding-top: calc(var(--mobile-header-clearance) + 1rem);
+}
+
+@media (min-width: 769px) {
+  .job-detail-page {
+    padding-top: calc(var(--desktop-header-clearance) + 1.5rem);
+  }
 }
 
 .job-detail-container {
