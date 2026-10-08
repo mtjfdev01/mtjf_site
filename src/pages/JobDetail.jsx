@@ -17,42 +17,46 @@ function toListItems(value) {
   return []
 }
 
-function buildJobSections(job) {
-  if (!job) return []
-  const sections = []
+const JOB_DETAIL_STEP_DEFS = [
+  { id: 'about', title: 'Position Summary', type: 'text' },
+  { id: 'qualifications', title: 'Educational Requirements', type: 'list' },
+  { id: 'experience', title: 'Experience Required', type: 'list' },
+  { id: 'skills', title: 'Required Skills', type: 'list' },
+  { id: 'responsibilities', title: 'Key Duties', type: 'list' },
+  { id: 'apply', title: 'Submit Application', type: 'apply' },
+]
 
-  if (job.about) {
-    sections.push({ id: 'about', title: 'About the Job', type: 'text', content: job.about })
-  }
+function buildJobSteps(job) {
+  if (!job) return JOB_DETAIL_STEP_DEFS.map((def) => ({ ...def, content: def.type === 'list' ? [] : '' }))
 
-  const qualifications = toListItems(job.qualifications)
-  if (qualifications.length) {
-    sections.push({ id: 'qualifications', title: 'Qualifications', type: 'list', content: qualifications })
-  }
-
-  const experience = toListItems(job.experience)
-  if (experience.length) {
-    sections.push({ id: 'experience', title: 'Experience', type: 'list', content: experience })
-  }
-
-  const skills = toListItems(job.skills)
-  if (skills.length) {
-    sections.push({ id: 'skills', title: 'Skills', type: 'list', content: skills })
-  }
-
-  const responsibilities = toListItems(job.responsibilities)
-  if (responsibilities.length) {
-    sections.push({ id: 'responsibilities', title: 'Responsibilities', type: 'list', content: responsibilities })
-  }
-
-  return sections
+  return JOB_DETAIL_STEP_DEFS.map((def) => {
+    if (def.id === 'about') {
+      return { ...def, content: job.about || '' }
+    }
+    if (def.id === 'qualifications') {
+      return { ...def, content: toListItems(job.qualifications) }
+    }
+    if (def.id === 'experience') {
+      return { ...def, content: toListItems(job.experience) }
+    }
+    if (def.id === 'skills') {
+      return { ...def, content: toListItems(job.skills) }
+    }
+    if (def.id === 'responsibilities') {
+      return { ...def, content: toListItems(job.responsibilities) }
+    }
+    return { ...def }
+  })
 }
 
-function renderSectionBody(section) {
-  if (section.type === 'list') {
+function renderStepBody(step) {
+  if (step.type === 'list') {
+    if (!step.content?.length) {
+      return <p className="job-detail-empty">No details available for this section.</p>
+    }
     return (
       <ul className="job-detail-list">
-        {section.content.map((item, index) => (
+        {step.content.map((item, index) => (
           <li key={index} className="job-detail-list-item">
             {item}
           </li>
@@ -61,7 +65,11 @@ function renderSectionBody(section) {
     )
   }
 
-  return <p className="job-detail-section-text">{section.content}</p>
+  if (!String(step.content || '').trim()) {
+    return <p className="job-detail-empty">No details available for this section.</p>
+  }
+
+  return <p className="job-detail-section-text">{step.content}</p>
 }
 
 function CompanyBlurb() {
@@ -92,17 +100,19 @@ const JobDetail = () => {
   // Get job data from navigation state (passed when clicking job card)
   const jobFromState = location.state?.job
 
-  const sections = useMemo(() => buildJobSections(job), [job])
-  const activeSection = sections.find((section) => section.id === activeTab) || sections[0]
+  const steps = useMemo(() => buildJobSteps(job), [job])
+  const activeStep = steps.find((step) => step.id === activeTab) || steps[0]
+  const activeStepIndex = Math.max(
+    0,
+    steps.findIndex((step) => step.id === activeTab),
+  )
   const isApplyTab = activeTab === 'apply'
 
   useEffect(() => {
-    if (activeTab === 'apply') return
-    if (!sections.length) return
-    if (!sections.some((section) => section.id === activeTab)) {
-      setActiveTab(sections[0].id)
+    if (!steps.some((step) => step.id === activeTab)) {
+      setActiveTab(steps[0]?.id || 'about')
     }
-  }, [sections, activeTab])
+  }, [steps, activeTab])
 
   useEffect(() => {
     // If job data was passed via navigation state, use it
@@ -285,44 +295,49 @@ const JobDetail = () => {
                 </div>
               </div>
 
-        {/* Content Sections — tabs on desktop, stacked on mobile */}
+        {/* Content Sections — step bar on desktop, stacked on mobile */}
         <div className="job-detail-content">
-          <div className="job-detail-tabs" role="tablist" aria-label="Job details">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                type="button"
-                role="tab"
-                id={`job-tab-${section.id}`}
-                aria-selected={!isApplyTab && activeSection?.id === section.id}
-                aria-controls={`job-panel-${section.id}`}
-                className={`job-detail-tab ${!isApplyTab && activeSection?.id === section.id ? 'is-active' : ''}`}
-                onClick={() => setActiveTab(section.id)}
-              >
-                {section.title}
-              </button>
-            ))}
-            <button
-              type="button"
-              role="tab"
-              id="job-tab-apply"
-              aria-selected={isApplyTab}
-              aria-controls="job-panel-apply"
-              className={`job-detail-tab ${isApplyTab ? 'is-active' : ''}`}
-              onClick={() => setActiveTab('apply')}
-            >
-              Apply
-            </button>
-          </div>
+          <nav className="job-detail-steps" aria-label="Job detail steps">
+            <ol className="job-detail-steps__list">
+              {steps.map((step, index) => {
+                const isCompleted = index < activeStepIndex
+                const isActive = index === activeStepIndex
+                const isLast = index === steps.length - 1
+                return (
+                  <li
+                    key={step.id}
+                    className={`job-detail-steps__item ${isCompleted ? 'is-completed' : ''} ${isActive ? 'is-active' : ''}`}
+                  >
+                    <button
+                      type="button"
+                      className="job-detail-steps__trigger"
+                      onClick={() => setActiveTab(step.id)}
+                      aria-current={isActive ? 'step' : undefined}
+                    >
+                      <span className="job-detail-steps__circle">{index + 1}</span>
+                      <span className="job-detail-steps__label">{step.title}</span>
+                    </button>
+                    {!isLast && (
+                      <span
+                        className={`job-detail-steps__line ${index < activeStepIndex ? 'is-completed' : ''}`}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </li>
+                )
+              })}
+            </ol>
+          </nav>
 
-          {!isApplyTab && activeSection && (
+          {!isApplyTab && activeStep && (
             <div
-              className={`job-detail-tab-panel${activeSection.id === 'about' ? ' job-detail-tab-panel--about' : ''}`}
+              className={`job-detail-tab-panel${activeStep.id === 'about' ? ' job-detail-tab-panel--about' : ''}`}
               role="tabpanel"
-              id={`job-panel-${activeSection.id}`}
-              aria-labelledby={`job-tab-${activeSection.id}`}
+              id={`job-panel-${activeStep.id}`}
+              aria-labelledby={`job-step-${activeStep.id}`}
             >
-              {renderSectionBody(activeSection)}
+              <h2 className="job-detail-section-title job-detail-tab-panel__heading">{activeStep.title}</h2>
+              {renderStepBody(activeStep)}
               {/* <CompanyBlurb /> */}
             </div>
           )}
@@ -332,22 +347,25 @@ const JobDetail = () => {
               className="job-detail-tab-panel job-detail-tab-panel--apply"
               role="tabpanel"
               id="job-panel-apply"
-              aria-labelledby="job-tab-apply"
+              aria-labelledby="job-step-apply"
             >
+              <h2 className="job-detail-section-title job-detail-tab-panel__heading">Submit Application</h2>
               <JobApplyPanel jobId={job.id || id} jobTitle={job.title} />
             </div>
           )}
 
           <div className="job-detail-sections-mobile">
-            {sections.map((section) => (
-              <section key={section.id} className="job-detail-section">
-                <h2 className="job-detail-section-title">{section.title}</h2>
-                {renderSectionBody(section)}
-                {/* <CompanyBlurb /> */}
-              </section>
-            ))}
+            {steps
+              .filter((step) => step.type !== 'apply')
+              .map((step) => (
+                <section key={step.id} className="job-detail-section">
+                  <h2 className="job-detail-section-title">{step.title}</h2>
+                  {renderStepBody(step)}
+                  {/* <CompanyBlurb /> */}
+                </section>
+              ))}
             <section className="job-detail-section job-detail-section--apply">
-              <h2 className="job-detail-section-title">Apply</h2>
+              <h2 className="job-detail-section-title">Submit Application</h2>
               <JobApplyPanel jobId={job.id || id} jobTitle={job.title} />
             </section>
           </div>

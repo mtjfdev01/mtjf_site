@@ -1,5 +1,10 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import axiosInstance from '../../utils/axios'
+import {
+  APPLY_COUNTRIES,
+  PAKISTAN_PROVINCES,
+  getPakistanCities,
+} from '../../data/pakistanLocations'
 import './JobApplyPanel.css'
 
 const APPLY_SUB_TABS = [
@@ -21,7 +26,7 @@ const DEFAULT_PROFILE = {
 
 const DEFAULT_CONTACT = {
   email: '',
-  country: '',
+  country: 'Pakistan',
   state: '',
   city: '',
   postalCode: '',
@@ -83,12 +88,19 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
   const [contactSaved, setContactSaved] = useState(false)
   const [resumeFile, setResumeFile] = useState(null)
   const [resumeFileName, setResumeFileName] = useState('No file chosen')
+  const [willingToRelocate, setWillingToRelocate] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
 
   const showHusbandName =
     profile.gender === 'female' &&
     (profile.maritalStatus === 'married' || profile.maritalStatus === 'widow')
+
+  const isPakistan = contact.country === 'Pakistan'
+  const pakistanCities = useMemo(
+    () => getPakistanCities(contact.state),
+    [contact.state],
+  )
 
   const updateProfile = (field, value) => {
     setProfile((prev) => ({ ...prev, [field]: value }))
@@ -99,11 +111,37 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
   }
 
   const updateContact = (field, value) => {
-    setContact((prev) => ({ ...prev, [field]: value }))
+    setContact((prev) => {
+      if (field === 'country') {
+        return {
+          ...prev,
+          country: value,
+          state: '',
+          city: '',
+        }
+      }
+      if (field === 'state') {
+        return {
+          ...prev,
+          state: value,
+          city: '',
+        }
+      }
+      return { ...prev, [field]: value }
+    })
     setContactSaved(false)
-    if (contactErrors[field]) {
-      setContactErrors((prev) => ({ ...prev, [field]: '' }))
-    }
+    setContactErrors((prev) => {
+      const next = { ...prev }
+      if (next[field]) delete next[field]
+      if (field === 'country') {
+        delete next.state
+        delete next.city
+      }
+      if (field === 'state') {
+        delete next.city
+      }
+      return next
+    })
   }
 
   const updateEducationRow = (id, field, value) => {
@@ -154,8 +192,12 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
       errors.email = 'Enter a valid email address'
     }
     if (!contact.country.trim()) errors.country = 'Country is required'
-    if (!contact.state.trim()) errors.state = 'State is required'
-    if (!contact.city.trim()) errors.city = 'City is required'
+    if (contact.country === 'Pakistan') {
+      if (!contact.state.trim()) errors.state = 'Province/Territory is required'
+      if (!contact.city.trim()) errors.city = 'City is required'
+    } else if (!contact.city.trim()) {
+      errors.city = 'City is required'
+    }
     if (!contact.postalCode.trim()) errors.postalCode = 'Postal code is required'
     if (!contact.mobile.trim()) errors.mobile = 'Mobile is required'
     if (!contact.currentAddress.trim()) errors.currentAddress = 'Current address is required'
@@ -181,13 +223,18 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
       'application/pdf',
       'application/msword',
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
     ]
-    const maxSize = 5 * 1024 * 1024
+    const allowedExtensions = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png']
+    const fileExtension = `.${(file.name.split('.').pop() || '').toLowerCase()}`
+    const maxSize = 3 * 1024 * 1024
 
-    if (!allowedTypes.includes(file.type)) {
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
       setContactErrors((prev) => ({
         ...prev,
-        resume: 'File must be PDF, DOC, or DOCX format',
+        resume: 'File must be PDF, DOC, DOCX, JPG, JPEG, or PNG format',
       }))
       setResumeFile(null)
       setResumeFileName('No file chosen')
@@ -198,7 +245,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
     if (file.size > maxSize) {
       setContactErrors((prev) => ({
         ...prev,
-        resume: 'File size must be less than 5MB',
+        resume: 'File size must be less than 3MB',
       }))
       setResumeFile(null)
       setResumeFileName('No file chosen')
@@ -280,7 +327,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
         formData.append('residence_phone', contact.residencePhone.trim())
       }
       formData.append('country', contact.country.trim())
-      formData.append('state', contact.state.trim())
+      formData.append('state', isPakistan ? contact.state.trim() : '')
       formData.append('city', contact.city.trim())
       formData.append('postal_code', contact.postalCode.trim())
       formData.append('current_address', contact.currentAddress.trim())
@@ -302,6 +349,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
         ),
       )
       formData.append('disclosure', JSON.stringify(disclosure))
+      formData.append('willing_to_relocate', willingToRelocate ? 'true' : 'false')
       if (jobId) formData.append('job_id', String(jobId))
       formData.append('cvResume', resumeFile)
 
@@ -817,49 +865,69 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
                 onChange={(e) => updateContact('country', e.target.value)}
                 className={contactErrors.country ? 'has-error' : ''}
               >
-                <option value="">Select Country</option>
-                <option value="Pakistan">Pakistan</option>
-                <option value="Other">Other</option>
+                {APPLY_COUNTRIES.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
               </select>
               {contactErrors.country && (
                 <span className="job-apply-error">{contactErrors.country}</span>
               )}
             </label>
 
-            <label className="job-apply-field">
-              <span className="job-apply-label">
-                State <span className="job-apply-required">*</span>
-              </span>
-              <select
-                value={contact.state}
-                onChange={(e) => updateContact('state', e.target.value)}
-                className={contactErrors.state ? 'has-error' : ''}
-              >
-                <option value="">Select a state</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Sindh">Sindh</option>
-                <option value="KPK">Khyber Pakhtunkhwa</option>
-                <option value="Balochistan">Balochistan</option>
-                <option value="ICT">Islamabad Capital Territory</option>
-                <option value="AJK">Azad Jammu & Kashmir</option>
-                <option value="GB">Gilgit-Baltistan</option>
-              </select>
-              {contactErrors.state && (
-                <span className="job-apply-error">{contactErrors.state}</span>
-              )}
-            </label>
+            {isPakistan && (
+              <label className="job-apply-field">
+                <span className="job-apply-label">
+                  Province/Territory <span className="job-apply-required">*</span>
+                </span>
+                <select
+                  value={contact.state}
+                  onChange={(e) => updateContact('state', e.target.value)}
+                  className={contactErrors.state ? 'has-error' : ''}
+                >
+                  <option value="">Select a province/territory</option>
+                  {PAKISTAN_PROVINCES.map((province) => (
+                    <option key={province.value} value={province.value}>
+                      {province.label}
+                    </option>
+                  ))}
+                </select>
+                {contactErrors.state && (
+                  <span className="job-apply-error">{contactErrors.state}</span>
+                )}
+              </label>
+            )}
 
             <label className="job-apply-field">
               <span className="job-apply-label">
                 City <span className="job-apply-required">*</span>
               </span>
-              <input
-                type="text"
-                value={contact.city}
-                onChange={(e) => updateContact('city', e.target.value)}
-                className={contactErrors.city ? 'has-error' : ''}
-                placeholder="Select a City"
-              />
+              {isPakistan ? (
+                <select
+                  value={contact.city}
+                  onChange={(e) => updateContact('city', e.target.value)}
+                  className={contactErrors.city ? 'has-error' : ''}
+                  disabled={!contact.state}
+                >
+                  <option value="">
+                    {contact.state ? 'Select a city' : 'Select a province/territory first'}
+                  </option>
+                  {pakistanCities.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  value={contact.city}
+                  onChange={(e) => updateContact('city', e.target.value)}
+                  className={contactErrors.city ? 'has-error' : ''}
+                  placeholder="Enter city"
+                />
+              )}
               {contactErrors.city && (
                 <span className="job-apply-error">{contactErrors.city}</span>
               )}
@@ -896,7 +964,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
             </label>
 
             <label className="job-apply-field">
-              <span className="job-apply-label">Office#</span>
+              <span className="job-apply-label">Office Contact No.</span>
               <input
                 type="tel"
                 value={contact.officePhone}
@@ -905,7 +973,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
             </label>
 
             <label className="job-apply-field job-apply-field--full">
-              <span className="job-apply-label">Residence#</span>
+              <span className="job-apply-label">Residence Contact No.</span>
               <input
                 type="tel"
                 value={contact.residencePhone}
@@ -951,7 +1019,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
                 <input
                   type="file"
                   id="job-apply-resume"
-                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png"
                   onChange={handleResumeChange}
                   className="job-apply-file__input"
                 />
@@ -963,7 +1031,7 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
               {contactErrors.resume && (
                 <span className="job-apply-error">{contactErrors.resume}</span>
               )}
-              <p className="job-apply-hint">Allowed types: .pdf, .doc, .docx (Max size: 5MB)</p>
+              <p className="job-apply-hint">Allowed types: .pdf, .doc, .docx, .jpg, .jpeg, .png (Max size: 3MB)</p>
             </div>
           </div>
 
@@ -976,6 +1044,20 @@ const JobApplyPanel = ({ jobId, jobTitle }) => {
           {contactSaved && (
             <p className="job-apply-success">Application submitted successfully.</p>
           )}
+
+          <label className="job-apply-consent">
+            <input
+              type="checkbox"
+              checked={willingToRelocate}
+              onChange={(e) => {
+                setWillingToRelocate(e.target.checked)
+                setContactSaved(false)
+              }}
+            />
+            <span>
+              I am willing to relocate if required for this position.
+            </span>
+          </label>
 
           <button
             type="submit"
