@@ -78,16 +78,33 @@ const ComplaintPortal = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    setSubmitError('')
+    if (name === 'contact_number') {
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 11)
+      setForm((prev) => ({ ...prev, contact_number: digitsOnly }))
+      return
+    }
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const isValidPhone = (value) => /^\d{11}$/.test(String(value || '').trim())
+
+  const continueFromContact = () => {
     setSubmitError('')
     if (!form.complainant_name.trim() || !form.contact_number.trim()) {
       setSubmitError(t.errContact)
       return
     }
+    if (!isValidPhone(form.contact_number)) {
+      setSubmitError(t.errPhone)
+      return
+    }
+    setStep(STEPS.DEPARTMENT)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitError('')
     if (!form.department) {
       setSubmitError(t.errDepartment)
       return
@@ -307,11 +324,15 @@ const ComplaintPortal = () => {
                   placeholder={t.contactPh}
                   lang="en"
                   dir="ltr"
-                  inputMode="tel"
+                  inputMode="numeric"
                   autoComplete="tel"
+                  maxLength={11}
                   required
                 />
               </label>
+              {submitError && step === STEPS.CONTACT && (
+                <div className="ceo-complaint-portal__error">{submitError}</div>
+              )}
               <div className="ceo-complaint-portal__actions">
                 <button
                   type="button"
@@ -325,9 +346,9 @@ const ComplaintPortal = () => {
                   className="ceo-complaint-portal__primary"
                   disabled={
                     !form.complainant_name.trim() ||
-                    !form.contact_number.trim()
+                    !isValidPhone(form.contact_number)
                   }
-                  onClick={() => setStep(STEPS.DEPARTMENT)}
+                  onClick={continueFromContact}
                 >
                   {t.continue}
                 </button>
