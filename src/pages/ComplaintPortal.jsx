@@ -2,21 +2,23 @@ import React, { Suspense, lazy, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axiosInstance from '../utils/axios'
 import {
+  ENTRY_KIND_OPTIONS,
   ORGANIZATION_OPTIONS,
   COMPLAINANT_TYPE_OPTIONS,
   DEPARTMENT_OPTIONS,
   CATEGORY_OPTIONS,
   ASLAB_BRANCH_OPTIONS,
-  UI_COPY,
   optionLabel,
   priorityForCategory,
   priorityLabel,
+  resolveUiCopy,
 } from '../constants/ceoComplaintOptions'
 import './ComplaintPortal.css'
 
 const Footer = lazy(() => import('../components/footer/Footer'))
 
 const STEPS = {
+  KIND: 'kind',
   ORG: 'org',
   BRANCH: 'branch',
   TYPE: 'type',
@@ -28,6 +30,7 @@ const STEPS = {
 }
 
 const EMPTY_FORM = {
+  entry_kind: 'complaint',
   organization: '',
   branch: '',
   complainant_type: '',
@@ -40,13 +43,14 @@ const EMPTY_FORM = {
 
 const ComplaintPortal = () => {
   const [lang, setLang] = useState('ur')
-  const [step, setStep] = useState(STEPS.ORG)
+  const [step, setStep] = useState(STEPS.KIND)
   const [form, setForm] = useState({ ...EMPTY_FORM })
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [complaintNumber, setComplaintNumber] = useState('')
 
-  const t = UI_COPY[lang] || UI_COPY.en
+  const isIssue = form.entry_kind === 'issue'
+  const t = resolveUiCopy(lang, form.entry_kind)
   const isUrdu = lang === 'ur'
   const inputLang = isUrdu ? 'ur' : 'en'
   const inputDir = isUrdu ? 'rtl' : 'ltr'
@@ -55,6 +59,15 @@ const ComplaintPortal = () => {
     const hit = ORGANIZATION_OPTIONS.find((o) => o.value === form.organization)
     return hit ? optionLabel(hit, lang) : form.organization
   }, [form.organization, lang])
+
+  const selectKind = (value) => {
+    setForm((prev) => ({
+      ...prev,
+      entry_kind: value,
+      category: value === 'issue' ? '' : prev.category,
+    }))
+    setStep(STEPS.ORG)
+  }
 
   const selectOrg = (value) => {
     setForm((prev) => ({
@@ -67,13 +80,16 @@ const ComplaintPortal = () => {
 
   const goBack = () => {
     setSubmitError('')
-    if (step === STEPS.BRANCH) setStep(STEPS.ORG)
+    if (step === STEPS.ORG) setStep(STEPS.KIND)
+    else if (step === STEPS.BRANCH) setStep(STEPS.ORG)
     else if (step === STEPS.TYPE) {
       setStep(form.organization === 'aslab' ? STEPS.BRANCH : STEPS.ORG)
     } else if (step === STEPS.CONTACT) setStep(STEPS.TYPE)
     else if (step === STEPS.DEPARTMENT) setStep(STEPS.CONTACT)
     else if (step === STEPS.CATEGORY) setStep(STEPS.DEPARTMENT)
-    else if (step === STEPS.DETAILS) setStep(STEPS.CATEGORY)
+    else if (step === STEPS.DETAILS) {
+      setStep(isIssue ? STEPS.DEPARTMENT : STEPS.CATEGORY)
+    }
   }
 
   const handleChange = (e) => {
@@ -102,6 +118,16 @@ const ComplaintPortal = () => {
     setStep(STEPS.DEPARTMENT)
   }
 
+  const continueFromDepartment = () => {
+    if (!form.department) {
+      setSubmitError(t.errDepartment)
+      return
+    }
+    setSubmitError('')
+    // Issues skip complaint-type dropdowns → go straight to details
+    setStep(isIssue ? STEPS.DETAILS : STEPS.CATEGORY)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitError('')
@@ -109,7 +135,7 @@ const ComplaintPortal = () => {
       setSubmitError(t.errDepartment)
       return
     }
-    if (!form.category) {
+    if (!isIssue && !form.category) {
       setSubmitError(t.errCategory)
       return
     }
@@ -121,14 +147,15 @@ const ComplaintPortal = () => {
     setSubmitting(true)
     try {
       const payload = {
+        entry_kind: form.entry_kind || 'complaint',
         organization: form.organization,
         ...(form.organization === 'aslab' ? { branch: form.branch } : {}),
         complainant_type: form.complainant_type,
         complainant_name: form.complainant_name.trim(),
         contact_number: form.contact_number.trim(),
         department: form.department,
-        category: form.category,
         details: form.details.trim(),
+        ...(!isIssue && form.category ? { category: form.category } : {}),
       }
       const res = await axiosInstance.post(
         '/ceo-complaints/public/submit',
@@ -153,7 +180,7 @@ const ComplaintPortal = () => {
     setForm({ ...EMPTY_FORM })
     setComplaintNumber('')
     setSubmitError('')
-    setStep(STEPS.ORG)
+    setStep(STEPS.KIND)
   }
 
   return (
@@ -196,6 +223,26 @@ const ComplaintPortal = () => {
             <p className="ceo-complaint-portal__lead">{t.lead}</p>
           </header>
 
+          {step === STEPS.KIND && (
+            <section className="ceo-complaint-portal__card">
+              <h2>{t.selectEntryKind}</h2>
+              <div className="ceo-complaint-portal__org-grid">
+                {ENTRY_KIND_OPTIONS.map((kind) => (
+                  <button
+                    key={kind.value}
+                    type="button"
+                    className={`ceo-complaint-portal__org-btn ${
+                      form.entry_kind === kind.value ? 'is-selected' : ''
+                    }`}
+                    onClick={() => selectKind(kind.value)}
+                  >
+                    {optionLabel(kind, lang)}
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
           {step === STEPS.ORG && (
             <section className="ceo-complaint-portal__card">
               <h2>{t.selectOrg}</h2>
@@ -210,6 +257,15 @@ const ComplaintPortal = () => {
                     {optionLabel(org, lang)}
                   </button>
                 ))}
+              </div>
+              <div className="ceo-complaint-portal__actions">
+                <button
+                  type="button"
+                  className="ceo-complaint-portal__ghost"
+                  onClick={goBack}
+                >
+                  {t.back}
+                </button>
               </div>
             </section>
           )}
@@ -387,7 +443,7 @@ const ComplaintPortal = () => {
                   type="button"
                   className="ceo-complaint-portal__primary"
                   disabled={!form.department}
-                  onClick={() => setStep(STEPS.CATEGORY)}
+                  onClick={continueFromDepartment}
                 >
                   {t.continue}
                 </button>
@@ -395,7 +451,7 @@ const ComplaintPortal = () => {
             </section>
           )}
 
-          {step === STEPS.CATEGORY && (
+          {step === STEPS.CATEGORY && !isIssue && (
             <section className="ceo-complaint-portal__card">
               <h2>{t.categoryTitle}</h2>
               <label className="ceo-complaint-portal__label">

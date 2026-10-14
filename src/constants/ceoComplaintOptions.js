@@ -1,5 +1,17 @@
 /** Static CEO complaint portal options (no meta API). */
 
+/** First-step choice — Complaint (default) vs Issue. */
+export const ENTRY_KIND_OPTIONS = [
+  {
+    value: 'complaint',
+    label: { en: 'Complaint', ur: 'شکایت' },
+  },
+  {
+    value: 'issue',
+    label: { en: 'Issue', ur: 'مسئلہ' },
+  },
+]
+
 export const ORGANIZATION_OPTIONS = [
   {
     value: 'mtj_foundation',
@@ -197,6 +209,7 @@ export const UI_COPY = {
     title: 'Complaint Portal',
     lead:
       'Share your concern with MTJ Foundation. You will receive a complaint number after submission. You may write in English or Urdu. Your identity will be kept secret.',
+    selectEntryKind: 'What would you like to submit?',
     selectOrg: 'Select organization',
     selectBranch: 'Select Aas Lab branch',
     chooseBranch: 'Choose branch',
@@ -235,6 +248,7 @@ export const UI_COPY = {
     title: 'شکایت پورٹل',
     lead:
       'ایم ٹی جے فاؤنڈیشن کے ساتھ اپنی شکایت شیئر کریں۔ جمع کرانے کے بعد آپ کو شکایت نمبر ملے گا۔ آپ انگریزی یا اردو میں لکھ سکتے ہیں۔ آپ کی شناخت خفیہ رکھی جائے گی۔',
+    selectEntryKind: 'آپ کیا جمع کرانا چاہتے ہیں؟',
     selectOrg: 'ادارہ منتخب کریں',
     selectBranch: 'آس لیب برانچ منتخب کریں',
     chooseBranch: 'برانچ منتخب کریں',
@@ -268,6 +282,47 @@ export const UI_COPY = {
     errDetails: 'براہ کرم شکایت کی مختصر تفصیل لکھیں۔',
     errSubmit: 'شکایت جمع نہیں ہو سکی',
   },
+}
+
+/** Issue-mode copy overrides (titles / labels only). Complaint copy stays default. */
+export const ISSUE_UI_COPY = {
+  en: {
+    title: 'Issue Portal',
+    lead:
+      'Share your issue with MTJ Foundation. You will receive a reference number after submission. You may write in English or Urdu. Your identity will be kept secret.',
+    complainingAs: 'I am reporting as',
+    detailsTitle: 'Issue details',
+    detailsLabel: 'Describe your issue',
+    detailsPh: 'Please share what the issue is (English or Urdu)',
+    submit: 'Submit issue',
+    successTitle: 'Issue submitted',
+    successHint: 'Please save your issue number for future reference.',
+    submitAnother: 'Submit another',
+    errDetails: 'Please enter at least a short issue description.',
+    errSubmit: 'Failed to submit issue',
+  },
+  ur: {
+    title: 'مسئلہ پورٹل',
+    lead:
+      'ایم ٹی جے فاؤنڈیشن کے ساتھ اپنا مسئلہ شیئر کریں۔ جمع کرانے کے بعد آپ کو حوالہ نمبر ملے گا۔ آپ انگریزی یا اردو میں لکھ سکتے ہیں۔ آپ کی شناخت خفیہ رکھی جائے گی۔',
+    complainingAs: 'میں اطلاع دے رہا/رہی ہوں بطور',
+    detailsTitle: 'مسئلہ کی تفصیل',
+    detailsLabel: 'اپنا مسئلہ بیان کریں',
+    detailsPh: 'مسئلہ بیان کریں (انگریزی یا اردو)',
+    submit: 'مسئلہ جمع کرائیں',
+    successTitle: 'مسئلہ جمع ہو گیا',
+    successHint: 'براہ کرم مستقبل کے حوالے کے لیے اپنا مسئلہ نمبر محفوظ رکھیں۔',
+    submitAnother: 'ایک اور جمع کرائیں',
+    errDetails: 'براہ کرم مسئلہ کی مختصر تفصیل لکھیں۔',
+    errSubmit: 'مسئلہ جمع نہیں ہو سکا',
+  },
+}
+
+export const resolveUiCopy = (lang = 'en', entryKind = 'complaint') => {
+  const base = UI_COPY[lang] || UI_COPY.en
+  if (entryKind !== 'issue') return base
+  const overrides = ISSUE_UI_COPY[lang] || ISSUE_UI_COPY.en
+  return { ...base, ...overrides }
 }
 
 export const optionLabel = (option, lang = 'en') =>
