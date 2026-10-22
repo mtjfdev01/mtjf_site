@@ -12,13 +12,19 @@ const COMPANY_BLURB =
   'MTJ Foundation is a non-profit organization dedicated to serving communities and making a positive impact. We are committed to creating opportunities for growth and development while maintaining the highest standards of excellence in all our endeavors.'
 
 function toListItems(value) {
-  if (Array.isArray(value)) return value.filter(Boolean)
-  if (typeof value === 'string' && value.trim()) return [value.trim()]
+  if (Array.isArray(value)) return value.map((item) => String(item).trim()).filter(Boolean)
+  if (typeof value === 'string' && value.trim()) {
+    const parts = value
+      .split(/\r?\n|•|●|▪|\u2022/)
+      .map((item) => item.replace(/^[\s\-–—]+/, '').trim())
+      .filter(Boolean)
+    return parts.length ? parts : [value.trim()]
+  }
   return []
 }
 
 const JOB_DETAIL_STEP_DEFS = [
-  { id: 'about', title: 'Position Summary', type: 'text' },
+  { id: 'about', title: 'Job Description', type: 'list' },
   { id: 'qualifications', title: 'Educational Requirements', type: 'list' },
   { id: 'experience', title: 'Experience Required', type: 'list' },
   { id: 'skills', title: 'Required Skills', type: 'list' },
@@ -31,7 +37,7 @@ function buildJobSteps(job) {
 
   return JOB_DETAIL_STEP_DEFS.map((def) => {
     if (def.id === 'about') {
-      return { ...def, content: job.about || '' }
+      return { ...def, content: toListItems(job.about) }
     }
     if (def.id === 'qualifications') {
       return { ...def, content: toListItems(job.qualifications) }
