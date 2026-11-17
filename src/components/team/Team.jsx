@@ -26,13 +26,14 @@ const teamMembers = [
     accent: 'sunset',
     rounded: true,
   },
-  {
-    id: 'Fundraising',
-    name: 'Mairaj Khalid',
-    role: 'Country Head-CRD ',
-    image: memberFundraising,
-    accent: 'aqua',
-  },
+  // {
+  //   id: 'Fundraising',
+  //   name: 'Mairaj Khalid',
+  //   role: 'Country Head-CRD ',
+  //   image: memberFundraising,
+  //   accent: 'aqua',
+  // },
+
   {
     id: 'hr',
     name: 'Muhammad Farukh',
